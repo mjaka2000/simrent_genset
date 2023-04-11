@@ -9,8 +9,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Data Stok Sparepart</h1>
-                    <ul class="navbar-nav" style="width: 100px;">
-                        <li class=" dropdown" style="width: 50px;">
+                    <ul class="nav">
+                        <li class=" dropdown">
                             <a href="#" data-toggle="dropdown">
                                 <i class="far fa-bell"></i>
                                 <?php if (empty($num)) { ?>

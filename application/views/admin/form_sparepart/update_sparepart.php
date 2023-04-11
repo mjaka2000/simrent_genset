@@ -14,7 +14,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item"><a href="<?= base_url('admin/tabel_sparepart'); ?>">Stok Sparepart</a></li>
-                        <li class="breadcrumb-item active">Update Data Stok Sparepart</li>
+                        <li class="breadcrumb-item active">Edit Data </li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
