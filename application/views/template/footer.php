@@ -20,7 +20,7 @@
                         <!-- <p>This website are using :</p> -->
                         <h4 class="modal-title" id="staticBackdropLabel">About This Version</h4>
                         <ul type="square">
-                            <li>Website Version 0.1.2</li>
+                            <li>Website Version 0.1.3</li>
                             <li>Codeigniter Version 3.1.12</li>
                             <li>PHP Version 7.4</li>
                         </ul>

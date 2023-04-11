@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       <link rel="stylesheet" href="<?= base_url(); ?>assets/sweetalert2/sweetalert2.css">
       <link rel="stylesheet" href="<?= base_url(); ?>assets/sweetalert2/sweetalert2.min.css">
-      <link rel="icon" href="<?= base_url(); ?>assets/upload/logo/ws-w.png">
+      <link rel="icon" href="<?= base_url(); ?>assets/style/logo/ws-w.png">
 
 
     </head>

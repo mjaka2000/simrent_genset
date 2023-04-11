@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="<?= base_url(); ?>assets/admin32/dist/css/adminlte.min.css">
 
   <link rel="stylesheet" href="<?= base_url() ?>assets/style/style.css">
-  <link rel="icon" href="<?= base_url(); ?>assets/upload/logo/ws-w.png">
+  <link rel="icon" href="<?= base_url(); ?>assets/style/logo/ws-w.png">
 
   <style>
     body {

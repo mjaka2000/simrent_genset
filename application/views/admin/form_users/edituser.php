@@ -12,8 +12,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin/users'); ?>">Data User</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('admin/users'); ?>">User</a></li>
                         <li class="breadcrumb-item active">Edit Data User</li>
                     </ol>
                 </div><!-- /.col -->
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card" style="width: 30%; margin-left: 35%;">
-                        <div class="card-header">
+                        <div class="card-header"><i class="fas fa-edit"></i>
                             Edit Data User
                         </div>
                         <div class="card-body">

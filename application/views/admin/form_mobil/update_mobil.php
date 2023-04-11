@@ -4,28 +4,36 @@
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>Data Mobil</h1>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?= base_url('admin/tabel_mobil'); ?>"> Data Mobil</a></li>
-            <li class="breadcrumb-item active">Edit Mobil</li>
-        </ol>
-        <!-- /.container-fluid -->
-    </section>
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Data Mobil</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('admin/tabel_mobil'); ?>">Mobil</a></li>
+                        <li class="breadcrumb-item active">Edit Data Mobil</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
     <!-- Main content -->
     <section class="content">
 
-        <div class="row">
-            <div class="col-md-12">
-
-                <div class="container">
-                    <div class="box box-primary" style="width:50%;margin:auto">
-                        <div class="box-header">
-                            <h3 class="box-title"><i class="nav-icon fa fa-edit"></i>&nbsp;Edit Mobil</h3>
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" style="width: 30%; margin-left: 35%;">
+                        <div class="card-header"><i class="fas fa-edit"></i>
+                            Edit Data Mobil
                         </div>
-                        <div class="box-body">
+                        <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
                                 <div class="alert alert-success alert-dismissable">
                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -74,12 +82,12 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="pajak" class="form-label">Pajak</label>
-                                        <input type="text" name="pajak" class="form-control form_datetime" id="pajak" placeholder="Pajak" required value="<?= $m->pajak; ?>">
+                                        <label for="pajak" class="form-label">Pajak</label>&nbsp;<span style="color: red;"><small>*1 Th</small></span>
+                                        <input type="date" name="pajak" class="form-control form_datetime" id="pajak" placeholder="Pajak" required value="<?= $m->pajak; ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="stnk" class="form-label">STNK</label>
-                                        <input type="text" name="stnk" class="form-control form_datetime" id="stnk" placeholder="STNK" required value="<?= $m->stnk; ?>">
+                                        <label for="stnk" class="form-label">STNK</label>&nbsp;<span style="color: red;"><small>*5 Th</small></span>
+                                        <input type="date" name="stnk" class="form-control form_datetime" id="stnk" placeholder="STNK" required value="<?= $m->stnk; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="gambar_mobil" class="form-label">Gambar Mobil</label>
@@ -98,17 +106,14 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
-
-
+        </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
 </div>
-
 <?php $this->load->view('template/footer'); ?>
+
 <?php $this->load->view('admin/template/script') ?>
+
 </body>
 
 </html>

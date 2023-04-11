@@ -12,8 +12,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin/tabel_service_genset'); ?>">Data Perbaikan Genset</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('admin/tabel_service_genset'); ?>">Perbaikan Genset</a></li>
                         <li class="breadcrumb-item active">Edit Data Perbaikan Genset</li>
                     </ol>
                 </div><!-- /.col -->
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card" style="width: 30%; margin-left: 35%;">
-                        <div class="card-header">
+                        <div class="card-header"><i class="fas fa-edit"></i>
                             Edit Data Perbaikan Genset
                         </div>
                         <div class="card-body">
