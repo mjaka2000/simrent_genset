@@ -60,7 +60,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="nama_genset" class="form-label">Nama Genset</label>
-                                    <p><strong><span style="color: red;" id="nama_genset"></span></strong></p>
+                                    <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Nama Genset" disabled>
+                                    <!-- <p><strong><span style="color: red;" id="nama_genset"></span></strong></p> -->
                                 </div>
                                 <div class="form-group">
                                     <label for="jenis_perbaikan" class="form-label">Jenis Perbaikan</label>
@@ -130,17 +131,17 @@
     // });
 
     //* Script untuk memuat data genset
-    $("#id_genset").change(function() {
-        let kode_genset = $(this).val();
-        let nama_genset = document.getElementById("nama_genset");
+    // $("#id_genset").change(function() {
+    //     let kode_genset = $(this).val();
+    //     let nama_genset = document.getElementById("nama_genset");
 
-        <?php foreach ($list_genset as $l) { ?>
-            if (kode_genset == "<?php echo $l->id_genset ?>") {
-                var text = document.createTextNode("<?= $l->nama_genset; ?>");
-                nama_genset.innerHTML = "<?= $l->nama_genset; ?>";
-            }
-        <?php } ?>
-    })
+    //     <?php foreach ($list_genset as $l) { ?>
+    //         if (kode_genset == "<?php echo $l->id_genset ?>") {
+    //             var text = document.createTextNode("<?= $l->nama_genset; ?>");
+    //             nama_genset.innerHTML = "<?= $l->nama_genset; ?>";
+    //         }
+    //     <?php } ?>
+    // })
 
     //*Script untuk memuat stok
     $("#spare_part").change(function() {
@@ -152,7 +153,7 @@
                 var text = document.createTextNode("<?= $ls->stok; ?>");
 
                 $("#stok_input").val("<?= $ls->stok; ?>");
-                if (stok.innerHTML = "<?= $ls->stok  <= 0; ?>") {
+                if (stok.innerHTML = "<?= $ls->stok  < 1; ?>") {
                     Swal.fire(
                         'Error!',
                         'Maaf, Stok Sparepart Tidak Cukup, lakukan pembelian untuk menambah stok.',
@@ -167,6 +168,18 @@
         <?php } ?>
     })
 </script>
+<script type="text/javascript">
+    // 
+    $("#id_genset").change(function() {
+        let kode_genset = $(this).val();
+        <?php foreach ($list_genset as $l) { ?>
+            if (kode_genset == "<?php echo $l->id_genset ?>") {
+                $("#nama_genset").val("<?php echo $l->nama_genset ?>");
+            }
+        <?php } ?>
+    })
+</script>
+
 
 </body>
 
