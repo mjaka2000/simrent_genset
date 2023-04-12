@@ -168,7 +168,7 @@
                                             <hr>
                                             <div class="form-group" align="center">
                                                 <div class=" col-sm-10">
-                                                    <a href="<?= base_url('admin'); ?>" type="button" class="btn btn-sm btn-default" onclick="" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</a>
+                                                    <button onclick="window.location.href='<?= base_url('admin'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                                 </div>
                                             </div>

@@ -69,7 +69,7 @@
                                 </div>
                                 <hr>
                                 <div class="form-group" align="center">
-                                    <a href="<?= base_url('admin/tabel_sparepart'); ?>" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</a>
+                                    <button onclick="window.location.href='<?= base_url('admin/tabel_sparepart'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                     <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-eraser mr-2"></i>Reset</button>
                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                 </div>

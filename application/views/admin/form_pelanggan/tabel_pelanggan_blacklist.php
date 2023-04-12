@@ -41,7 +41,7 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <a style="margin-bottom:10px;" href="<?= base_url('admin/tabel_pelanggan'); ?>" type="button" class="btn btn-sm btn-default" name="blacklist_data"><i class="fa fa-reply"></i>&nbsp;Kembali</a>
+                            <button style="margin-bottom:10px;" onclick="window.location.href='<?= base_url('admin/tabel_pelanggan'); ?>'" type="button" class="btn btn-sm btn-default" name="blacklist_data"><i class="fa fa-reply"></i>&nbsp;Kembali</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>

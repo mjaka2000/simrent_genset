@@ -1,0 +1,36 @@
+// $("#spare_part").show(function() {
+    //     let spare_part = $(this).val();
+    //     let stok = document.getElementById("stok");
+
+    //     <?php foreach ($list_sparepart as $ls) { ?>
+    //         if (spare_part == "<?= $ls->id_sparepart ?>") {
+    //             var text = document.createTextNode("<?= $ls->stok; ?>");
+
+    //             $("#stok_input").val("<?= $ls->stok; ?>");
+    //             if (stok.innerHTML = "<?= $ls->stok  < 1; ?>") {
+    //                 Swal.fire(
+    //                     'Error!',
+    //                     'Maaf, Stok Sparepart Tidak Cukup, lakukan pembelian untuk menambah stok.',
+    //                     'error'
+    //                 ).then(result => {
+    //                     window.location.href = "<?= base_url('admin/tabel_sparepart'); ?>"
+    //                 })
+    //             } else {
+    //                 stok.innerHTML = "<?= $ls->stok; ?>";
+    //             }
+    //         }
+    //     <?php } ?>
+    // })
+
+     //* Script untuk memuat data genset
+    // $("#id_genset").click(function() {
+    //     let kode_genset = $(this).val();
+    //     let nama_genset = document.getElementById("nama_genset");
+
+    //     <?php foreach ($list_genset as $l) { ?>
+    //         if (kode_genset == "<?php echo $l->id_genset ?>") {
+    //             var text = document.createTextNode("<?= $l->nama_genset; ?>");
+    //             nama_genset.innerHTML = "<?= $l->nama_genset; ?>";
+    //         }
+    //     <?php } ?>
+    // })

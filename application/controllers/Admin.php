@@ -455,7 +455,7 @@ class Admin extends CI_Controller
 				'ket_perbaikan' => $ket_perbaikan,
 				'biaya_perbaikan' => $biaya_perbaikan
 			);
-			$stok_new = (int)$stok - 1;
+			$stok_new = --$stok;
 
 			$this->M_admin->mengurangi_stok('tb_sparepart', $spare_part, $stok_new);
 			$this->M_admin->insert('tb_serv_genset', $data);
@@ -511,7 +511,7 @@ class Admin extends CI_Controller
 				'ket_perbaikan' => $ket_perbaikan,
 				'biaya_perbaikan' => $biaya_perbaikan,
 			);
-			$stok_new = (int)$stok - 1;
+			$stok_new = --$stok;
 
 			$this->M_admin->mengurangi_stok('tb_sparepart', $spare_part, $stok_new);
 			$this->M_admin->update('tb_serv_genset', $data, $where);
