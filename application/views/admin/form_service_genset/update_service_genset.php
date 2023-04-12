@@ -77,7 +77,7 @@
                                     <div class="form-group">
                                         <label for="spare_part" class="form-label">Spare Part (Diganti)</label>&nbsp;<span style="color: red;"><small>*Jika tidak ada yang diganti abaikan</small></span>
                                         <input type="hidden" name="stok" id="stok_input" value="">
-                                        <p><small>*Sisa Stok&nbsp;<span style="color: red;" id="stok"></small></span></p>
+                                        <p><small>*Sisa Stok&nbsp;<span style="color: red;" id="stk"></span></small></p>
                                         <select name="id_sparepart" class="form-control" id="spare_part">
                                             <option value="">-- Pilih Sparepart --</option>
                                             <?php foreach ($list_sparepart as $s) { ?>
@@ -121,9 +121,9 @@
                                 <?php } ?>
                                 <hr>
                                 <div class="form-group" align="center">
-                                    <a href="<?= base_url('admin/tabel_service_genset'); ?>" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</a>
+                                    <button onclick="window.location.href='<?= base_url('admin/tabel_service_genset'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                     <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-eraser mr-2"></i>Reset</button>
-                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-check mr-2"></i>Submit</button>
+                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -137,36 +137,41 @@
 
 <?php $this->load->view('admin/template/script') ?>
 <script type="text/javascript">
-    //* Script untuk memuat data genset
-    // $("#id_genset").click(function() {
-    //     let kode_genset = $(this).val();
-    //     let nama_genset = document.getElementById("nama_genset");
-
-    //     <?php foreach ($list_genset as $l) { ?>
-    //         if (kode_genset == "<?php echo $l->id_genset ?>") {
-    //             var text = document.createTextNode("<?= $l->nama_genset; ?>");
-    //             nama_genset.innerHTML = "<?= $l->nama_genset; ?>";
-    //         }
-    //     <?php } ?>
-    // })
-
     //*Script untuk memuat stok
     $("#spare_part").change(function() {
         let spare_part = $(this).val();
-        let stok = document.getElementById("stok");
+        let stk = document.getElementById("stk");
 
         <?php foreach ($list_sparepart as $ls) { ?>
             if (spare_part == "<?= $ls->id_sparepart ?>") {
                 var text = document.createTextNode("<?= $ls->stok; ?>");
 
                 $("#stok_input").val("<?= $ls->stok; ?>");
-                stok.innerHTML = "<?= $ls->stok; ?>";
+                if (stk.innerHTML = "<?= $ls->stok < 1; ?>") {
+                    Swal.fire(
+                        'Error!',
+                        'Maaf, Stok Sparepart Tidak Cukup, lakukan pembelian untuk menambah stok.',
+                        'error'
+                    ).then(result => {
+                        window.location.href = "<?= base_url('admin/tabel_sparepart'); ?>"
+                    })
+                } else {
+                    stk.innerHTML = "<?= $ls->stok; ?>";
+                }
             }
         <?php } ?>
     })
 </script>
 <script type="text/javascript">
     // 
+    $("#id_genset").show(function() {
+        let kode_genset = $(this).val();
+        <?php foreach ($list_genset as $l) { ?>
+            if (kode_genset == "<?php echo $l->id_genset ?>") {
+                $("#nama_genset").val("<?php echo $l->nama_genset ?>");
+            }
+        <?php } ?>
+    })
     $("#id_genset").click(function() {
         let kode_genset = $(this).val();
         <?php foreach ($list_genset as $l) { ?>

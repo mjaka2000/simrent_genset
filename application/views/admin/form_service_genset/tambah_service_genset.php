@@ -70,7 +70,7 @@
                                 <div class="form-group">
                                     <label for="spare_part" class="form-label">Spare Part (Diganti)</label>&nbsp;<span style="color: red;"><small>*Jika tidak ada yang diganti abaikan</small></span>
                                     <input type="hidden" name="stok" id="stok_input" value="">
-                                    <p><small>*Sisa Stok&nbsp;<span style="color: red;" id="stok"></small></span></p>
+                                    <p><small>*Sisa Stok&nbsp;<span style="color: red;" id="stk"></small></span></p>
                                     <!-- <input type="text" name="spare_part" class="form-control" id="spare_part" placeholder="Filter Oli, Filter Solar dll"> -->
                                     <select name="id_sparepart" class="form-control" id="spare_part">
                                         <option value="" selected>-- Pilih Sparepart --</option>
@@ -104,7 +104,7 @@
 
                                 <hr>
                                 <div class="form-group" align="center">
-                                    <a href="<?= base_url('admin/tabel_service_genset'); ?>" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</a>
+                                    <button onclick="window.location.href='<?= base_url('admin/tabel_service_genset'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                     <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-eraser mr-2"></i>Reset</button>
                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                 </div>
@@ -146,14 +146,14 @@
     //*Script untuk memuat stok
     $("#spare_part").change(function() {
         let spare_part = $(this).val();
-        let stok = document.getElementById("stok");
+        let stk = document.getElementById("stk");
 
         <?php foreach ($list_sparepart as $ls) { ?>
             if (spare_part == "<?= $ls->id_sparepart ?>") {
                 var text = document.createTextNode("<?= $ls->stok; ?>");
 
                 $("#stok_input").val("<?= $ls->stok; ?>");
-                if (stok.innerHTML = "<?= $ls->stok  < 1; ?>") {
+                if (stk.innerHTML = "<?= $ls->stok  < 1; ?>") {
                     Swal.fire(
                         'Error!',
                         'Maaf, Stok Sparepart Tidak Cukup, lakukan pembelian untuk menambah stok.',
@@ -162,7 +162,7 @@
                         window.location.href = "<?= base_url('admin/tabel_sparepart'); ?>"
                     })
                 } else {
-                    stok.innerHTML = "<?= $ls->stok; ?>";
+                    stk.innerHTML = "<?= $ls->stok; ?>";
                 }
             }
         <?php } ?>
