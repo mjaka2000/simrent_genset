@@ -75,7 +75,7 @@
                                         <input type="text" name="jenis_perbaikan" class="form-control" id="jenis_perbaikan" placeholder="Contoh : Perbaikan Aki dll" required value="<?= $ld->jenis_perbaikan; ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="spare_part" class="form-label">Spare Part (Diganti)</label>&nbsp;<span style="color: red;"><small>*Jika tidak ada yang diganti abaikan</small></span>
+                                        <label for="spare_part" class="form-label">Spare Part (Diganti)</label>&nbsp;<!--<span style="color: red;"><small>*Jika tidak ada yang diganti abaikan</small></span>-->
                                         <input type="hidden" name="stok" id="stok_input" value="">
                                         <p><small>*Sisa Stok&nbsp;<span style="color: red;" id="stk"></span></small></p>
                                         <select name="id_sparepart" class="form-control" id="spare_part">

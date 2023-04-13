@@ -104,6 +104,12 @@
                         </li>
                     </ul>
                 <li class="nav-item">
+                    <a href="<?= base_url(); ?>admin/#" class="nav-link">
+                        <i class="fas fa-file nav-icon"></i>
+                        <p>Laporan Data</p>
+                    </a>
+                </li>
+                <!-- <li class="nav-header">LAPORAN DATA</li> -->
                 <li class="nav-header">PENGATURAN</li>
                 <li class="nav-item ">
                     <a href="#" class="nav-link">
@@ -128,12 +134,13 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+
                 <li class="nav-item">
                     <a href="<?= base_url(''); ?>admin/signout" class="nav-link">
                         <i class="fas fa-sign-out-alt nav-icon"></i>
                         <p>Logout</p>
                     </a>
-                </li>
                 </li>
             </ul>
         </nav>
