@@ -9,9 +9,6 @@ class Pimpinan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_pimpinan');
-        if ($this->session->userdata('status') != "login") {
-            redirect(base_url("login"));
-        }
     }
     public function index()
     {
