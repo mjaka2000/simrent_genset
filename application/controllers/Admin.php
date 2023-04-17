@@ -52,6 +52,27 @@ class Admin extends CI_Controller
 		$this->load->view('template/nav', $data);
 	}*/
 
+	public function backup_db()
+	{
+		$this->load->dbutil();
+		$db_name = $this->db->database . '.sql';
+		$prefs = array(
+			'format' => 'txt',
+			'filename' => $db_name,
+			// 'add_insert' => true,
+			// 'foreign_key_checks' => false
+		);
+
+		$backup = $this->dbutil->backup($prefs);
+		$save = '.assets/backup_db/' . $db_name;
+
+		$this->load->helper('file');
+		write_file($save, $backup);
+
+		$this->load->helper('download');
+		force_download($db_name, $backup);
+	}
+
 	####################################
 	//* Users
 	####################################

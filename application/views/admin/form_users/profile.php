@@ -102,6 +102,9 @@
                                 <li class="nav-item">
                                     <a href="#picture" class="nav-link" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Change Picture</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="#backupdb" class="nav-link" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Backup DB</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="card-body">
@@ -125,57 +128,58 @@
                                         </div>
                                     </form>
                                 </div>
+                                <div class="tab-pane fade" id="backupdb" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+                                    <button onclick="window.location.href='<?= base_url('admin/backup_db'); ?>'" class="btn btn-sm btn-primary"><i class="fa fa-database"></i>&nbsp;Backup DB</button>
+                                </div>
 
                                 <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
-                                    <form class="form-horizontal" action="<?= base_url('admin/proses_newpassword'); ?>" method="post" enctype="multipart/form-data">
-                                        <?php if ($this->session->flashdata('msg_sukses')) { ?>
-                                            <div class="alert alert-success alert-dismissable">
-                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
+                                    <?php if ($this->session->flashdata('msg_sukses')) { ?>
+                                        <div class="alert alert-success alert-dismissable">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
+                                        </div>
+                                    <?php } ?>
+                                    <?php if (validation_errors()) { ?>
+                                        <div class="alert alert-warning alert-dismissable">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            <strong>Perhatian!</strong><br> <?php echo validation_errors(); ?>
+                                        </div>
+                                    <?php } ?>
+                                    <form class="form-horizontal" action="<?= base_url('admin/proses_newpassword'); ?>" method="post">
+                                        <div class="form-group row">
+                                            <label for="username" class="col-sm-2 control-label">Username</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="username" class="form-control" id="username" disabled value="<?= $this->session->userdata('name'); ?>">
                                             </div>
-                                        <?php } ?>
-                                        <?php if (validation_errors()) { ?>
-                                            <div class="alert alert-warning alert-dismissable">
-                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                <strong>Perhatian!</strong><br> <?php echo validation_errors(); ?>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="nama" class="col-sm-2 control-label">Nama</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="nama" class="form-control" id="nama" value="<?= $this->session->userdata('nama'); ?>">
                                             </div>
-                                        <?php } ?>
-                                        <form class="form-horizontal" action="<?= base_url('admin/proses_newpassword'); ?>" method="post">
-                                            <div class="form-group row">
-                                                <label for="username" class="col-sm-2 control-label">Username</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="username" class="form-control" id="username" disabled value="<?= $this->session->userdata('name'); ?>">
-                                                </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="new_password" class="col-sm-2 control-label">Password Baru</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" name="new_password" class="form-control" id="new_password" placeholder="Password Baru">
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="nama" class="col-sm-2 control-label">Nama</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="nama" class="form-control" id="nama" value="<?= $this->session->userdata('nama'); ?>">
-                                                </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="confirm_new_password" class="col-sm-2 control-label">Konfirmasi Password Baru</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" name="confirm_new_password" class="form-control" id="confirm_new_password" placeholder="Konfirmasi Password Baru">
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="new_password" class="col-sm-2 control-label">Password Baru</label>
-                                                <div class="col-sm-10">
-                                                    <input type="password" name="new_password" class="form-control" id="new_password" placeholder="Password Baru">
-                                                </div>
+                                        </div>
+                                        <hr>
+                                        <div class="form-group" align="center">
+                                            <div class=" col-sm-10">
+                                                <button onclick="window.location.href='<?= base_url('admin'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="confirm_new_password" class="col-sm-2 control-label">Konfirmasi Password Baru</label>
-                                                <div class="col-sm-10">
-                                                    <input type="password" name="confirm_new_password" class="form-control" id="confirm_new_password" placeholder="Konfirmasi Password Baru">
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="form-group" align="center">
-                                                <div class=" col-sm-10">
-                                                    <button onclick="window.location.href='<?= base_url('admin'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <!-- <a href="<?= base_url('admin/users'); ?>" type="button" class="btn btn-sm btn-secondary" onclick="" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</a> -->
+                                        </div>
+                                    </form>
+                                    <!-- <a href="<?= base_url('admin/users'); ?>" type="button" class="btn btn-sm btn-secondary" onclick="" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</a> -->
                                 </div>
-                                </form>
                             </div>
 
                         </div>
