@@ -9,7 +9,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Data Stok Sparepart</h1>
-                    <ul class="nav">
+                    <!-- <ul class="nav">
                         <li class=" dropdown">
                             <a href="#" data-toggle="dropdown">
                                 <i class="far fa-bell"></i>
@@ -22,16 +22,12 @@
                             <ul class="dropdown-menu dropdown-menu-lg">
                                 <span class="dropdown-header" style="background-color: #2596be; color: white;">You have <?= $num; ?> notifications</span>
                                 <div class="dropdown-divider"></div>
-                                <!-- inner menu: contains the actual data -->
-
                                 <?php if (is_array($count)) { ?>
                                     <?php foreach ($count as $c) : ?>
-                                        <!-- <li style="background-color: ghostwhite;color: white;"> -->
                                         <a href="#" class="dropdown-item">
                                             <strong> <?= $c->nama_sparepart; ?></strong><span> sisa <strong><?= $c->stok; ?></strong></span><br>
                                             <small style="color: red;">Segera lakukan pembelian untuk menambah stok</small>
                                         </a>
-                                        <!-- </li> -->
                                     <?php endforeach ?>
                                 <?php } ?>
 
@@ -40,7 +36,7 @@
                                 <a href="#" style="background-color: #2596be;" class="dropdown-item dropdown-footer"></a>
                             </ul>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div><!-- /.col -->
 
                 <div class="col-sm-6">

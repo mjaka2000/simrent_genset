@@ -3,13 +3,6 @@
 class M_admin extends CI_Model
 {
 
-  public function get_data()
-  {
-    $query = $this->db->get('tb_user');
-    return $query->result();
-  }
-
-
   ####################################
   // CRUD
   ####################################
@@ -59,7 +52,7 @@ class M_admin extends CI_Model
     return $query->result_array();
   }
 
-  public function get_data_tb($tabel, $id_transaksi)
+  public function get_data($tabel, $id_transaksi)
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -172,15 +165,8 @@ class M_admin extends CI_Model
   //* New Query
   ####################################
 
-  // public function get_data_avatar($tabel, $idusername)
-  // {
-  //   $query = $this->db->select('tb_avatar.*, tb_user.id AS id_user')
-  //     ->join('tb_user', 'tb_avatar.id_user = tb_user.id')
-  //     ->from('tb_avatar')
-  //     ->get();
-  //   return $query->result();
-  // }
-  public function get_data_avatar($tabel, $username)
+
+  public function get_avatar($tabel, $username)
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -228,28 +214,6 @@ class M_admin extends CI_Model
       ->get();
     return $query->result();
   }
-
-  // public function numrows_where_service($tabel, $where)
-  // {
-  //   $query = $this->db->select()
-  //     ->from($tabel)
-  //     ->join('tb_genset', ' tb_genset.id = tb_serv_genset.id_genset')
-  //     ->join('tb_sparepart', 'tb_sparepart.id = tb_serv_genset.id_sparepart')
-  //     ->where($where)
-  //     ->get();
-  //   return $query->num_rows();
-  // }
-
-  // public function get_service_tb($tabel, $where)
-  // {
-  //   $query = $this->db->select('*')
-  //     ->from($tabel)
-  //     ->join('tb_genset', 'tb_genset.id = tb_serv_genset.id_genset')
-  //     ->join('tb_sparepart', 'tb_sparepart.id = tb_serv_genset.id_sparepart')
-  //     ->where($where)
-  //     ->get();
-  //   return $query->result();
-  // }
 
   public function mengurangi_stok($tabel, $spare_part, $stok_new)
   {
