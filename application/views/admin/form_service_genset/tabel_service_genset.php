@@ -43,7 +43,7 @@
                             <?php } ?>
                             <button onclick="window.location.href='<?= base_url('admin/tambah_service_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
 
-                            <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
+                            <table id="tableserv" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th style="width :10px">No.</th>
@@ -57,28 +57,7 @@
                                         <th style="width:10%">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php
-                                    $no = 1;
-                                    if (is_array($list_data)) { ?>
-                                        <?php foreach ($list_data as $dt) : ?>
-                                            <tr>
-                                                <td><?= $no++; ?></td>
-                                                <td><?= $dt->kode_genset; ?></td>
-                                                <td><?= $dt->nama_genset; ?></td>
-                                                <td><?= $dt->jenis_perbaikan; ?></td>
-                                                <td><?= $dt->nama_sparepart; ?></td>
-                                                <td><?= $dt->tgl_perbaikan; ?></td>
-                                                <td><?= $dt->ket_perbaikan; ?></td>
-                                                <td>Rp&nbsp;<?= number_format($dt->biaya_perbaikan); ?></td>
-                                                <td><a href="<?= base_url('admin/update_data_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
-                                                    <a href="<?= base_url('admin/hapus_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
-                                                    <!-- <a href="<?= base_url('admin/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php } ?>
-                                </tbody>
+
                             </table>
                         </div>
                     </div>
@@ -119,7 +98,7 @@
         })
     }); //* Script untuk memuat datatable
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $('.btn-delete').on('click', function() {
         var getLink = $(this).attr('href');
         Swal.fire({
@@ -136,6 +115,44 @@
         })
         return false;
     }); //* Script untuk memuat sweetalert hapus data
+</script> -->
+<script>
+    //setting datatables
+    $('#tableserv').DataTable({
+        // "language": {
+        //     "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Indonesian.json"
+        // },
+        "autoWidth": false,
+        "responsive": true,
+        "processing": true,
+        "serverSide": true,
+        "order": [],
+        "ajax": {
+            //panggil method ajax list dengan ajax
+            "url": '<?= base_url('admin/ajax_list_serv'); ?>',
+            "type": "POST"
+        }
+    });
+</script>
+<script type="text/javascript">
+    $('#tableserv').on('click', '.btn-delete', function() {
+        var getLink = $(this).attr('href');
+        // var id = $(this).data('id_pemakai');
+        Swal.fire({
+            title: 'Hapus Data',
+            text: 'Yakin ingin menghapus data?',
+            type: 'warning',
+            confirmButtonColor: '#d9534f',
+            showCancelButton: true,
+        }).then(result => {
+            if (result.isConfirmed) {
+                window.location.href = getLink
+            }
+        })
+        return false;
+    });
+
+    //* Script untuk memuat sweetalert hapus data
 </script>
 </body>
 
