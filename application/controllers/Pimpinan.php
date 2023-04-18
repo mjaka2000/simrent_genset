@@ -9,6 +9,9 @@ class Pimpinan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_pimpinan');
+        if ($this->session->userdata('status') != 'login') {
+            redirect(base_url("login"));
+        }
     }
     public function index()
     {
@@ -22,7 +25,9 @@ class Pimpinan extends CI_Controller
         if ($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 1) {
 
 
-            echo "<h1>Halaman Pimpinan Coming Soon</h1>";
+            $data['avatar'] = $this->M_pimpinan->get_data_gambar(' tb_avatar', $this->session->userdata('name'));
+            $data['title'] = 'Home';
+            $this->load->view('pimpinan/index', $data);
         } else {
             $this->load->view('login/login');
         }
