@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Apr 2023 pada 04.03
+-- Waktu pembuatan: 19 Apr 2023 pada 03.01
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -183,8 +183,7 @@ CREATE TABLE `tb_serv_genset` (
 
 INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `jenis_perbaikan`, `tgl_perbaikan`, `ket_perbaikan`, `biaya_perbaikan`) VALUES
 (1, 2, 1, 'ganti filter solar', '2023-04-12', 'Selesai Diperbaiki', '0'),
-(2, 3, 1, 'Ganti Oli', '2023-04-11', 'Selesai Diperbaiki', '250000'),
-(3, 2, 2, 'oli', '2023-04-10', 'Selesai Diperbaiki', '100000');
+(2, 3, 1, 'Ganti Oli', '2023-04-11', 'Selesai Diperbaiki', '250000');
 
 -- --------------------------------------------------------
 
@@ -270,10 +269,10 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$/TIhUCTyJV0mBGwMcbDmSOgG7KgFgnucybRnPq1L.xhA3wxfqxfgO', 0, '13-04-2023 9:56'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '18-04-2023 16:58'),
 (31, 'jakaja', 'Jaka', '$2y$10$BKPTzEWnptxgS63pLJh8UeCEG2POxhVqpL297bC3w6fEeOWF7QPw6', 0, '13-04-2023 9:56'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '13-04-2023 9:57'),
-(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '13-04-2023 9:58');
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '18-04-2023 17:50'),
+(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '18-04-2023 17:28');
 
 --
 -- Indexes for dumped tables
