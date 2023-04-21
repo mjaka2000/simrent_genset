@@ -104,7 +104,7 @@
                         </li>
                     </ul>
                 <li class="nav-item">
-                    <a href="<?= base_url(); ?>admin/#" class="nav-link">
+                    <a href="<?= base_url(); ?>admin/laporan" class="nav-link">
                         <i class="fas fa-file nav-icon"></i>
                         <p>Laporan Data</p>
                     </a>
