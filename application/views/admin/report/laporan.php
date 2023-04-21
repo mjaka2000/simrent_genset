@@ -37,7 +37,7 @@
                             Laporan Data
                         </div>
                         <div class="card-body">
-                            <table id="tablepakai" class="table table-bordered" style="width:100%">
+                            <table id="reporttable" class="table table-bordered" style="width:100%">
                                 <tr>
                                     <form action="<?= base_url(); ?>admin/#" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle">Laporan #</th>
