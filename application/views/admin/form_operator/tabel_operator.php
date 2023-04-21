@@ -62,9 +62,9 @@
                                         <?php foreach ($list_operator as $dt) : ?>
                                             <tr>
                                                 <td><?= $no++; ?></td>
-                                                <td><?= $dt->nama; ?></td>
-                                                <td><?= $dt->alamat; ?></td>
-                                                <td><?= $dt->no_hp; ?></td>
+                                                <td><?= $dt->nama_op; ?></td>
+                                                <td><?= $dt->alamat_op; ?></td>
+                                                <td><?= $dt->nohp_op; ?></td>
                                                 <?php if ($dt->status_op == 1) { ?>
                                                     <td><em>Standby</em></td>
                                                 <?php } else { ?>

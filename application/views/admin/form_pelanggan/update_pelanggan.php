@@ -50,23 +50,23 @@
                             <form action="<?= base_url('admin/proses_update_pelanggan'); ?>" method="post" role="form">
                                 <?php foreach ($list_data as $d) { ?>
                                     <div class="form-group">
-                                        <input type="hidden" name="id" value="<?= $d->id_pelanggan; ?>">
+                                        <input type="hidden" name="id_pelanggan" value="<?= $d->id_pelanggan; ?>">
                                         <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan Nama" required value="<?= $d->nama; ?>">
+                                        <input type="text" name="nama_plg" class="form-control" id="nama_plg" placeholder="Masukkan Nama" required value="<?= $d->nama_plg; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat" class="form-label">Alamat</label>
-                                        <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Masukkan Alamat" required value="<?= $d->alamat; ?>">
+                                        <input type="text" name="alamat_plg" class="form-control" id="alamat_plg" placeholder="Masukkan Alamat" required value="<?= $d->alamat_plg; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="no_hp" class="form-label">No. HP</label>
-                                        <input type="text" maxlength="13" name="no_hp" class="form-control" id="no_hp" placeholder="Masukkan No. HP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->no_hp; ?>">
+                                        <input type="text" maxlength="13" name="nohp_plg" class="form-control" id="nohp_plg" placeholder="Masukkan No. HP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->nohp_plg; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                        <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
+                                        <select name="jk_plg" id="jk_plg" class="form-control">
                                             <option value="">-- Pilih --</option>
-                                            <?php if ($d->jenis_kelamin == "Laki-Laki") { ?>
+                                            <?php if ($d->jk_plg == "Laki-Laki") { ?>
                                                 <option value="Laki-Laki" selected>Laki-Laki</option>
                                                 <option value="Perempuan">Perempuan</option>
                                             <?php } else { ?>
@@ -77,11 +77,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_perusahaan" class="form-label">Nama Perusahaan</label>
-                                        <input type="text" name="nama_perusahaan" class="form-control" id="nama_perusahaan" placeholder="Nama Perusahaan" required value="<?= $d->nama_perusahaan; ?>">
+                                        <input type="text" name="namaperusahaan_plg" class="form-control" id="nama_perusahaan" placeholder="Nama Perusahaan" required value="<?= $d->namaperusahaan_plg; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="tgl_update" class="form-label">Tanggal Update</label>
-                                        <input type="date" name="tanggal_update" class="form-control" id="tanggal_update" placeholder="Tanggal Update" required value="<?= $d->tanggal_update; ?>">
+                                        <input type="date" name="tglupdate_plg" class="form-control" id="tanggal_update" placeholder="Tanggal Update" required value="<?= $d->tglupdate_plg; ?>">
                                     </div>
                                 <?php } ?>
                                 <hr>

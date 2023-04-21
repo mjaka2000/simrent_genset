@@ -890,20 +890,20 @@ class Admin extends CI_Controller
 
 	public function proses_tambah_operator()
 	{
-		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
-		$this->form_validation->set_rules('no_hp', 'No Hp', 'trim|required');
+		$this->form_validation->set_rules('nama_op', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('alamat_op', 'Alamat', 'trim|required');
+		$this->form_validation->set_rules('nohp_op', 'No Hp', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
-			$nama = $this->input->post('nama', TRUE);
-			$alamat = $this->input->post('alamat', TRUE);
-			$no_hp = $this->input->post('no_hp', TRUE);
+			$nama_op = $this->input->post('nama_op', TRUE);
+			$alamat_op = $this->input->post('alamat_op', TRUE);
+			$nohp_op = $this->input->post('nohp_op', TRUE);
 			$status           = 1;
 
 			$data = array(
-				'nama' => $nama,
-				'alamat' => $alamat,
-				'no_hp' => $no_hp,
+				'nama_op' => $nama_op,
+				'alamat_op' => $alamat_op,
+				'nohp_op' => $nohp_op,
 				'status_op' => $status
 			);
 			$this->M_admin->insert('tb_operator', $data);
@@ -918,21 +918,21 @@ class Admin extends CI_Controller
 
 	public function proses_update_operator()
 	{
-		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
-		$this->form_validation->set_rules('no_hp', 'No Hp', 'trim|required');
+		$this->form_validation->set_rules('nama_op', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('alamat_op', 'Alamat', 'trim|required');
+		$this->form_validation->set_rules('nohp_op', 'No Hp', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
-			$id = $this->input->post('id', TRUE);
-			$nama = $this->input->post('nama', TRUE);
-			$alamat = $this->input->post('alamat', TRUE);
-			$no_hp = $this->input->post('no_hp', TRUE);
+			$id = $this->input->post('id_operator', TRUE);
+			$nama = $this->input->post('nama_op', TRUE);
+			$alamat = $this->input->post('alamat_op', TRUE);
+			$no_hp = $this->input->post('nohp_op', TRUE);
 
 			$where = array('id_operator' => $id);
 			$data = array(
-				'nama' => $nama,
-				'alamat' => $alamat,
-				'no_hp' => $no_hp
+				'nama_op' => $nama,
+				'alamat_op' => $alamat,
+				'nohp_op' => $no_hp
 			);
 			$this->M_admin->update('tb_operator', $data, $where);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Di Update');
@@ -997,29 +997,30 @@ class Admin extends CI_Controller
 
 	public function proses_tambah_pelanggan()
 	{
-		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
-		$this->form_validation->set_rules('no_hp', 'No Hp', 'trim|required');
-		$this->form_validation->set_rules('nama_perusahaan', 'Nama Perusahaan', 'trim|required');
-		$this->form_validation->set_rules('tanggal_update', 'Tanggal Update', 'trim|required');
+		$this->form_validation->set_rules('nama_plg', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('alamat_plg', 'Alamat', 'trim|required');
+		$this->form_validation->set_rules('nohp_plg', 'No Hp', 'trim|required');
+		$this->form_validation->set_rules('jk_plg', 'Jenis Kelamin', 'trim|required');
+		$this->form_validation->set_rules('namaperusahaan_plg', 'Nama Perusahaan', 'trim|required');
+		$this->form_validation->set_rules('tglupdate_plg', 'Tanggal Update', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
-			$nama = $this->input->post('nama', TRUE);
-			$alamat = $this->input->post('alamat', TRUE);
-			$no_hp = $this->input->post('no_hp', TRUE);
-			$jenis_kelamin = $this->input->post('jenis_kelamin', TRUE);
-			$nama_perusahaan = $this->input->post('nama_perusahaan', TRUE);
-			$tgl_update = $this->input->post('tanggal_update', TRUE);
-			$status           = 1;
+			$nama = $this->input->post('nama_plg', TRUE);
+			$alamat = $this->input->post('alamat_plg', TRUE);
+			$no_hp = $this->input->post('nohp_plg', TRUE);
+			$jenis_kelamin = $this->input->post('jk_plg', TRUE);
+			$nama_perusahaan = $this->input->post('namaperusahaan_plg', TRUE);
+			$tgl_update = $this->input->post('tglupdate_plg', TRUE);
+			// $status           = 1;
 
 			$data = array(
-				'nama' => $nama,
-				'alamat' => $alamat,
-				'no_hp' => $no_hp,
-				'jenis_kelamin' => $jenis_kelamin,
-				'nama_perusahaan' => $nama_perusahaan,
-				'tanggal_update' => $tgl_update,
-				'ket_plg' => $status,
+				'nama_plg' => $nama,
+				'alamat_plg' => $alamat,
+				'nohp_plg' => $no_hp,
+				'jk_plg' => $jenis_kelamin,
+				'namaperusahaan_plg' => $nama_perusahaan,
+				'tglupdate_plg' => $tgl_update,
+				// 'ket_plg' => $status,
 			);
 			$this->M_admin->insert('tb_pelanggan', $data);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Di Tambahkan');
@@ -1033,29 +1034,30 @@ class Admin extends CI_Controller
 
 	public function proses_update_pelanggan()
 	{
-		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
-		$this->form_validation->set_rules('no_hp', 'No Hp', 'trim|required');
-		$this->form_validation->set_rules('nama_perusahaan', 'Nama Perusahaan', 'trim|required');
-		$this->form_validation->set_rules('tanggal_update', 'Tanggal Update', 'trim|required');
+		$this->form_validation->set_rules('nama_plg', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('alamat_plg', 'Alamat', 'trim|required');
+		$this->form_validation->set_rules('nohp_plg', 'No Hp', 'trim|required');
+		$this->form_validation->set_rules('jk_plg', 'Jenis Kelamin', 'trim|required');
+		$this->form_validation->set_rules('namaperusahaan_plg', 'Nama Perusahaan', 'trim|required');
+		$this->form_validation->set_rules('tglupdate_plg', 'Tanggal Update', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
-			$id = $this->input->post('id', TRUE);
-			$nama = $this->input->post('nama', TRUE);
-			$alamat = $this->input->post('alamat', TRUE);
-			$no_hp = $this->input->post('no_hp', TRUE);
-			$jenis_kelamin = $this->input->post('jenis_kelamin', TRUE);
-			$nama_perusahaan = $this->input->post('nama_perusahaan', TRUE);
-			$tgl_update = $this->input->post('tanggal_update', TRUE);
+			$id = $this->input->post('id_pelanggan', TRUE);
+			$nama = $this->input->post('nama_plg', TRUE);
+			$alamat = $this->input->post('alamat_plg', TRUE);
+			$no_hp = $this->input->post('nohp_plg', TRUE);
+			$jenis_kelamin = $this->input->post('jk_plg', TRUE);
+			$nama_perusahaan = $this->input->post('namaperusahaan_plg', TRUE);
+			$tgl_update = $this->input->post('tglupdate_plg', TRUE);
 
 			$where = array('id_pelanggan' => $id);
 			$data = array(
-				'nama' => $nama,
-				'alamat' => $alamat,
-				'no_hp' => $no_hp,
-				'jenis_kelamin' => $jenis_kelamin,
-				'nama_perusahaan' => $nama_perusahaan,
-				'tanggal_update' => $tgl_update
+				'nama_plg' => $nama,
+				'alamat_plg' => $alamat,
+				'nohp_plg' => $no_hp,
+				'jk_plg' => $jenis_kelamin,
+				'namaperusahaan_plg' => $nama_perusahaan,
+				'tglupdate_plg' => $tgl_update
 
 			);
 			$this->M_admin->update('tb_pelanggan', $data, $where);
@@ -1088,28 +1090,29 @@ class Admin extends CI_Controller
 
 	public function proses_blacklist_pelanggan()
 	{
-		$id = $this->input->post('id', TRUE);
-		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
-		$this->form_validation->set_rules('no_hp', 'No Hp', 'trim|required');
-		$this->form_validation->set_rules('nama_perusahaan', 'Nama Perusahaan', 'trim|required');
-		$this->form_validation->set_rules('tanggal_update', 'Tanggal Update', 'trim|required');
+		$id = $this->input->post('id_pelanggan', TRUE);
+		$this->form_validation->set_rules('nama_plg_blk', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('alamat_plg_blk', 'Alamat', 'trim|required');
+		$this->form_validation->set_rules('nohp_plg_blk', 'No Hp', 'trim|required');
+		$this->form_validation->set_rules('jk_plg_blk', 'Jenis Kelamin', 'trim|required');
+		$this->form_validation->set_rules('namaperusahaan_plg_blk', 'Nama Perusahaan', 'trim|required');
+		$this->form_validation->set_rules('tglupdate_plg_blk', 'Tanggal Update', 'trim|required');
 		if ($this->form_validation->run() === TRUE) {
-			$nama = $this->input->post('nama', TRUE);
-			$alamat = $this->input->post('alamat', TRUE);
-			$no_hp = $this->input->post('no_hp', TRUE);
-			$jenis_kelamin = $this->input->post('jenis_kelamin', TRUE);
-			$nama_perusahaan = $this->input->post('nama_perusahaan', TRUE);
-			$tgl_update = $this->input->post('tanggal_update', TRUE);
+			$nama = $this->input->post('nama_plg_blk', TRUE);
+			$alamat = $this->input->post('alamat_plg_blk', TRUE);
+			$no_hp = $this->input->post('nohp_plg_blk', TRUE);
+			$jenis_kelamin = $this->input->post('jk_plg_blk', TRUE);
+			$nama_perusahaan = $this->input->post('namaperusahaan_plg_blk', TRUE);
+			$tgl_update = $this->input->post('tglupdate_plg_blk', TRUE);
 
 			$where = array('id_pelanggan' => $id);
 			$data = array(
-				'nama' => $nama,
-				'alamat' => $alamat,
-				'no_hp' => $no_hp,
-				'jenis_kelamin' => $jenis_kelamin,
-				'nama_perusahaan' => $nama_perusahaan,
-				'tanggal_update' => $tgl_update
+				'nama_plg_blk' => $nama,
+				'alamat_plg_blk' => $alamat,
+				'nohp_plg_blk' => $no_hp,
+				'jk_plg_blk' => $jenis_kelamin,
+				'namaperusahaan_plg_blk' => $nama_perusahaan,
+				'tglupdate_plg_blk' => $tgl_update
 			);
 			$this->M_admin->insert('tb_pelanggan_blacklist', $data);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Di Pindah');
@@ -1589,9 +1592,9 @@ class Admin extends CI_Controller
 
 	public function laporan()
 	{
-		$data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'));
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Laporan';
-		$this->load->view('admin/laporan/laporan', $data);
+		$this->load->view('admin/report/laporan', $data);
 	}
 
 	####################################

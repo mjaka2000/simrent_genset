@@ -51,15 +51,15 @@
 
                                 <div class="form-group">
                                     <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan Nama" required>
+                                    <input type="text" name="nama_op" class="form-control" id="nama_op" placeholder="Masukkan Nama" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat" class="form-label">Alamat</label>
-                                    <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Masukkan Alamat" required>
+                                    <input type="text" name="alamat_op" class="form-control" id="alamat_op" placeholder="Masukkan Alamat" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="no_hp" class="form-label">No. HP</label>
-                                    <input type="text" maxlength="13" name="no_hp" class="form-control" id="no_hp" placeholder="Masukkan No. HP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
+                                    <input type="text" maxlength="13" name="nohp_op" class="form-control" id="nohp_op" placeholder="Masukkan No. HP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
                                 </div>
                                 <hr>
                                 <div class="form-group" align="center">

@@ -51,19 +51,19 @@
 
                                 <div class="form-group">
                                     <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan Nama" required>
+                                    <input type="text" name="nama_plg" class="form-control" id="nama_plg" placeholder="Masukkan Nama" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat" class="form-label">Alamat</label>
-                                    <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Masukkan Alamat" required>
+                                    <input type="text" name="alamat_plg" class="form-control" id="alamat_plg" placeholder="Masukkan Alamat" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="no_hp" class="form-label">No. HP</label>
-                                    <input type="text" maxlength="13" name="no_hp" class="form-control" id="no_hp" placeholder="Masukkan No. HP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
+                                    <input type="text" maxlength="13" name="nohp_plg" class="form-control" id="nohp_plg" placeholder="Masukkan No. HP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
                                 </div>
                                 <div class="form-group">
-                                    <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                    <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
+                                    <label for="jk_plg" class="form-label">Jenis Kelamin</label>
+                                    <select name="jk_plg" id="jk_plg" class="form-control" required>
                                         <option value="">-- Pilih --</option>
                                         <option value="Laki-Laki">Laki-Laki</option>
                                         <option value="Perempuan">Perempuan</option>
@@ -71,11 +71,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="nama_perusahaan" class="form-label">Nama Perusahaan</label>
-                                    <input type="text" name="nama_perusahaan" class="form-control" id="nama_perusahaan" placeholder="Nama Perusahaan" required>
+                                    <input type="text" name="namaperusahaan_plg" class="form-control" id="namaperusahaan_plg" placeholder="Nama Perusahaan" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="tgl_update" class="form-label">Tanggal Update</label>
-                                    <input type="date" name="tanggal_update" class="form-control" id="tanggal_update" placeholder="Tanggal Update" required>
+                                    <input type="date" name="tglupdate_plg" class="form-control" id="tglupdate_plg" placeholder="Tanggal Update" required>
                                 </div>
                                 <hr>
                                 <div class="form-group" align="center">

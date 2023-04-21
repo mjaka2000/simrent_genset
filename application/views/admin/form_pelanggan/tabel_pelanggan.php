@@ -67,12 +67,12 @@
                                         <?php foreach ($list_pelanggan as $dt) : ?>
                                             <tr>
                                                 <td><?= $no++; ?></td>
-                                                <td><?= $dt->nama; ?></td>
-                                                <td><?= $dt->alamat; ?></td>
-                                                <td><?= $dt->no_hp; ?></td>
-                                                <td><?= $dt->jenis_kelamin; ?></td>
-                                                <td><?= $dt->nama_perusahaan; ?></td>
-                                                <td><?= $dt->tanggal_update; ?></td>
+                                                <td><?= $dt->nama_plg; ?></td>
+                                                <td><?= $dt->alamat_plg; ?></td>
+                                                <td><?= $dt->nohp_plg; ?></td>
+                                                <td><?= $dt->jk_plg; ?></td>
+                                                <td><?= $dt->namaperusahaan_plg; ?></td>
+                                                <td><?= $dt->tglupdate_plg; ?></td>
                                                 <?php if ($dt->ket_plg == 1) { ?>
                                                     <td><a href="<?= base_url('admin/pindah_data_pelanggan/' . $dt->id_pelanggan); ?>" type="button" class="btn btn-xs btn-danger btn-plg" name="btn_ket_plg">Blacklist?</a></td>
                                                 <?php } else { ?>

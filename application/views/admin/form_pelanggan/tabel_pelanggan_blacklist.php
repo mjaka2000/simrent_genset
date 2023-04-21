@@ -64,12 +64,12 @@
                                         <?php foreach ($list_pelanggan_blacklist as $dt) : ?>
                                             <tr>
                                                 <td><?= $no++; ?></td>
-                                                <td><?= $dt->nama; ?></td>
-                                                <td><?= $dt->alamat; ?></td>
-                                                <td><?= $dt->no_hp; ?></td>
-                                                <td><?= $dt->jenis_kelamin; ?></td>
-                                                <td><?= $dt->nama_perusahaan; ?></td>
-                                                <!-- <td><?= $dt->tanggal_update; ?></td> -->
+                                                <td><?= $dt->nama_plg_blk; ?></td>
+                                                <td><?= $dt->alamat_plg_blk; ?></td>
+                                                <td><?= $dt->nohp_plg_blk; ?></td>
+                                                <td><?= $dt->jk_plg_blk; ?></td>
+                                                <td><?= $dt->namaperusahaan_plg_blk; ?></td>
+                                                <!-- <td><?= $dt->tglupdate_plg_blk; ?></td> -->
                                                 <td>
                                                     <!-- <a href="<?= base_url('admin/update_data_pelanggan/' . $dt->id_plg_blacklist); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a> -->
                                                     <!-- <a href="<?= base_url('admin/kembalikan_pelanggan/' . $dt->id_plg_blacklist); ?>" type="button" class="btn btn-sm btn-warning" name="btn_delete"><i class="fa fa-history"></i></a> -->
