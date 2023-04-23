@@ -232,7 +232,7 @@ class Admin extends CI_Controller
 			'ecrypt_name'	=> false,
 			'overwrite'	=> true,
 			// 'file_name'	=> uniqid(),
-			'max_size' => "5000",
+			'max_size' => "1024",
 			'max_height' => "1024",
 			'max_width' => "1024"
 		);

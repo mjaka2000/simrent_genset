@@ -69,10 +69,10 @@
                             <div class="card-header p-2">
                                 <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
                                     <li class="nav-item">
-                                        <a href="#settings" class="nav-link active" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Change Password</a>
+                                        <a href="#settings" class="nav-link active" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Ganti Password</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#picture" class="nav-link" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Change Picture</a>
+                                        <a href="#picture" class="nav-link" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Ganti Gambar</a>
                                     </li>
                                     <!-- <li class="nav-item">
                                         <a href="#backupdb" class="nav-link" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Backup DB</a>
@@ -84,10 +84,13 @@
                                     <div class="tab-pane fade" id="picture" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
                                         <form class="form-horizontal" action="<?= base_url('admin/proses_gambarupload'); ?>" method="post" enctype="multipart/form-data">
                                             <div class="form-group row">
-                                                <label for="userpicture" class="col-sm-2 control-label">Open Picture</label>
+                                                <label for="userpicture" class="col-sm-2 control-label">Pilih File</label>
 
                                                 <div class="col-sm-10">
                                                     <input type="file" name="userpicture" class="form-control" id="username">
+                                                    <small style="color: red;">
+                                                        <p>*File yang diijinkan adalah "jpg|png|jpeg", max size 1MB.</p>
+                                                    </small>
                                                 </div>
                                             </div>
                                             <hr>
