@@ -65,7 +65,7 @@
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
                                 <div class="alert alert-success alert-dismissible">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>

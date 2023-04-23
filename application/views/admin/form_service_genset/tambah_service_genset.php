@@ -36,13 +36,13 @@
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
                                 <div class="alert alert-success alert-dismissable">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
                             <?php if (validation_errors()) { ?>
                                 <div class="alert alert-warning alert-dismissable">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
                                     <strong>Perhatian!</strong><br> <?php echo validation_errors(); ?>
                                 </div>
                             <?php } ?>

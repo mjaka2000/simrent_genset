@@ -15,7 +15,7 @@
                     <form action="<?= base_url('login/proses_login'); ?>" class="login" method="post">
                         <?php if ($this->session->flashdata('msg')) { ?>
                             <div class="alert alert-warning alert-dismissible">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
                                 <strong>Peringatan!</strong><br> <?php echo $this->session->flashdata('msg'); ?>
                             </div>
                         <?php } ?>
