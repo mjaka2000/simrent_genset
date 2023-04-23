@@ -42,7 +42,7 @@ class Login extends CI_Controller
 			// if ($this->session->userdata('token_generate') === $this->input->post('token')) {
 			$cek =  $this->M_login->cek_user('tb_user', $username);
 			if ($cek->num_rows() != 1) {
-				$this->session->set_flashdata('msg', 'Username Belum Dibuat Admin');
+				$this->session->set_flashdata('msg', 'Username Dan Password Salah');
 				redirect(base_url());
 			} else {
 
