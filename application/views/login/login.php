@@ -16,7 +16,7 @@
                         <?php if ($this->session->flashdata('msg')) { ?>
                             <div class="alert alert-warning alert-dismissible">
                                 <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                <strong>Peringatan!</strong><br> <?php echo $this->session->flashdata('msg'); ?>
+                                <strong>Perhatian!</strong><br> <?php echo $this->session->flashdata('msg'); ?>
                             </div>
                         <?php } ?>
                         <div class="input-group mb-3">

@@ -51,13 +51,13 @@
                             <?php if ($this->session->flashdata('msg_gambar_error')) { ?>
                                 <div class="alert alert-warning alert-dismissable">
                                     <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                    <strong>Peringatan!</strong><br> <?= $this->session->flashdata('msg_gambar_error'); ?>
+                                    <strong>Perhatian!</strong><br> <?= $this->session->flashdata('msg_gambar_error'); ?>
                                 </div>
                             <?php } ?>
                             <?php if (isset($pesan_error)) { ?>
                                 <div class="alert alert-danger alert-dismissable">
                                     <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                    <strong>Peringatan!</strong><br> <?= $pesan; ?>
+                                    <strong>Perhatian!</strong><br> <?= $pesan; ?>
                                 </div>
                             <?php } ?>
                         </div>
