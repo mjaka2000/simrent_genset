@@ -51,13 +51,13 @@
                             <?php if ($this->session->flashdata('msg_gambar_error')) { ?>
                                 <div class="alert alert-warning alert-dismissable">
                                     <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                    <strong>Perhatian!</strong><br> <?= $this->session->flashdata('msg_gambar_error'); ?>
+                                    <strong>Peringatan!</strong><br> <?= $this->session->flashdata('msg_gambar_error'); ?>
                                 </div>
                             <?php } ?>
                             <?php if (isset($pesan_error)) { ?>
                                 <div class="alert alert-danger alert-dismissable">
                                     <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                    <strong>Perhatian!</strong><br> <?= $pesan; ?>
+                                    <strong>Peringatan!</strong><br> <?= $pesan; ?>
                                 </div>
                             <?php } ?>
                         </div>
@@ -117,7 +117,7 @@
                                         <?php if (validation_errors()) { ?>
                                             <div class="alert alert-warning alert-dismissable">
                                                 <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                                <strong>Perhatian!</strong><br> <?php echo validation_errors(); ?>
+                                                <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
                                             </div>
                                         <?php } ?>
                                         <form class="form-horizontal" action="<?= base_url('admin/proses_newpassword'); ?>" method="post">

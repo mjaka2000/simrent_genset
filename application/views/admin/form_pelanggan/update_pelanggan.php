@@ -43,7 +43,7 @@
                             <?php if (validation_errors()) { ?>
                                 <div class="alert alert-warning alert-dismissable">
                                     <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                    <strong>Perhatian!</strong><br> <?php echo validation_errors(); ?>
+                                    <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
                                 </div>
                             <?php } ?>
 
