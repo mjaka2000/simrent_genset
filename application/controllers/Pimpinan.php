@@ -13,17 +13,10 @@ class Pimpinan extends CI_Controller
             redirect(base_url("login"));
         }
     }
+
     public function index()
     {
-        /*if ($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 1) {
-            $data['avatar'] = $this->M_pimpinan->get_data_gambar(' tb_upload_gambar_user', $this->session->userdata('name'));
-            $data['title'] = 'Home';
-            $this->load->view('pimpinan/index', $data);
-        } else {
-            $this->load->view('login/login');
-        }*/
         if ($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 1) {
-
 
             $data['avatar'] = $this->M_pimpinan->get_data_gambar(' tb_avatar', $this->session->userdata('name'));
             $data['title'] = 'Home';

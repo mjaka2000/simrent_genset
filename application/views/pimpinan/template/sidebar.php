@@ -1,121 +1,112 @@
-<aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="pull-left image">
+<!--  -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="position:fixed ;">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+        <img src="<?= base_url(); ?>assets/style/logo/ws-w.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light"><b>Wardah</b>Solution</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
                 <?php foreach ($avatar as $a) { ?>
-                    <img src="<?= base_url('assets/upload/user/img/' . $a->nama_file); ?>" class="img-circle" alt="User Image">
-                <?php  } ?>
+                    <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class=" img-responsive img-circle" alt="User Image">
+                <?php } ?>
             </div>
-            <div class="pull-left info">
-                <p><?= $this->session->userdata('name') ?></p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            <div class="info">
+                <a href="#" class="d-block"><strong><?= $this->session->userdata('name') ?></strong></a>
             </div>
         </div>
-        <!-- search form -->
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                <li class="nav-header">MAIN NAVIGATION</li>
+                <li class="nav-item">
+                    <a href="<?= base_url('pimpinan') ?>" class="nav-link">
+                        <i class="nav-icon fa fa-home"></i>
+                        <p>Dashboard</p>
+                    </a>
 
-        <!-- /.search form -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MAIN NAVIGATION</li>
-            <li>
-                <a href="<?= base_url('guest') ?>">
-                    <i class="fa fa-home"></i> <span>Dashboard</span>
-                </a>
+                </li>
+                <li class="nav-item ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-list-alt"></i>
+                        <p>
+                            Menu Data
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
 
-            </li>
-            <li class="treeview"><a href="#"><i class="fa fa-table"></i>
-                    <span>Data Master</span><span class="pull-right-container"></span><i class="pull-right fa fa-angle-left "></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="<?= base_url(); ?>guest/tabel_genset">
-                            <i class="fa fa-circle-o"></i>
-                            <span>Data Genset</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url(); ?>guest/tabel_service_genset">
-                            <i class="fa fa-circle-o"></i>
-                            <span>Data Perbaikan Genset</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url(); ?>guest/tabel_mobil">
-                            <i class="fa fa-circle-o"></i>
-                            <span>Data Mobil</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url(); ?>guest/tabel_operator">
-                            <i class="fa fa-circle-o"></i>
-                            <span>Data Operator</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url(); ?>guest/tabel_pelanggan">
-                            <i class="fa fa-circle-o"></i>
-                            <span>Data Pelanggan</span>
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data #</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data #</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-                </ul>
-            </li>
-            <!--  -->
-            <li class="treeview"><a href="#"><i class="fa fa-copy"></i>
-                    <span>Transaksi</span><span class="pull-right-container"></span><i class="pull-right fa fa-angle-left "></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="<?= base_url(); ?>guest/tabel_barang_keluar">
-                            <i class="fa fa-upload nav-icon"></i>
-                            <span>Data Genset Keluar</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url(); ?>guest/tabel_barang_masuk">
-                            <i class="fa fa-download nav-icon"></i>
-                            <span>Data Genset Masuk</span>
-                        </a>
-                    </li>
+                <li class="nav-item ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Data Sewa
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
 
-                </ul>
-            </li>
-            <li>
-                <a href="<?= base_url(); ?>guest/tambah_data_pelanggan">
-                    <i class="fa fa-file"></i>
-                    <span>Tambah Data Pelanggan</span>
-                </a>
-            </li>
-            <li>
-                <a href="<?= base_url('guest/pengajuan_baru') ?>">
-                    <i class="fa fa-file"></i> <span>Permohonan</span>
-                </a>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Unit Keluar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Unit Masuk</p>
+                            </a>
+                        </li>
+                    </ul>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-clipboard nav-icon"></i>
+                        <p>Laporan Data</p>
+                    </a>
+                </li>
+                <!-- <li class="nav-header">LAPORAN DATA</li> -->
+                <li class="nav-header">PENGATURAN</li>
+                <li class="nav-item ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Profile
+                        </p>
+                    </a>
 
-            </li>
-            <li class="header">LAPORAN</li>
-            <li>
-                <a href="<?= base_url('guest/laporan') ?>">
-                    <i class="ion ion-stats-bars"></i> <span>Laporan Data</span>
-                </a>
+                </li>
 
-            </li>
-
-            <!-- <li><a href="https://guestlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li> -->
-            <li class="header">PENGATURAN</li>
-            <li>
-                <a href="<?= base_url(); ?>guest/profile">
-                    <i class="fa fa-user"></i>
-                    <span>Menu Profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="<?= base_url(''); ?>admin/signout">
-                    <i class="fa fa-sign-out"></i>
-                    <span>Logout</span></a>
-            </li>
-        </ul>
-    </section>
+                <li class="nav-item">
+                    <a href="<?= base_url(''); ?>pimpinan/signout" class="nav-link">
+                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
     <!-- /.sidebar -->
 </aside>

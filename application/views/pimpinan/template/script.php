@@ -5,7 +5,7 @@
 <!-- AdminLTE App -->
 <script src="<?= base_url(); ?>assets/admin32/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="<?= base_url(); ?>assets/admin32/dist/js/demo.js"></script>
+<!-- <script src="<?= base_url(); ?>assets/admin32/dist/js/demo.js"></script> -->
 
 <script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.min.js"></script>
@@ -26,14 +26,14 @@
 
 <script type="text/javascript">
     //* Script untuk membuat input tanggal
-    $('.form_datetime').datetimepicker({
-        format: 'dd-mm-yyyy',
-        autoclose: true,
-        todayBtn: true,
-        pickTime: false,
-        minView: 2,
-        maxView: 4,
-    });
+    // $('.form_datetime').datetimepicker({
+    //     format: 'dd-mm-yyyy',
+    //     autoclose: true,
+    //     todayBtn: true,
+    //     pickTime: false,
+    //     minView: 2,
+    //     maxView: 4,
+    // });
 </script>
 <!-- <script>
     //* Script untuk menampilkan loading
