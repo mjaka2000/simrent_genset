@@ -22,36 +22,6 @@
 
 <script src="<?= base_url(); ?>assets/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 
-
-
-<script type="text/javascript">
-    //* Script untuk membuat input tanggal
-    // $('.form_datetime').datetimepicker({
-    //     format: 'dd-mm-yyyy',
-    //     autoclose: true,
-    //     todayBtn: true,
-    //     pickTime: false,
-    //     minView: 2,
-    //     maxView: 4,
-    // });
-</script>
-<!-- <script>
-    //* Script untuk menampilkan loading
-    document.onreadystatechange = function() {
-        if (document.readyState !== "complete") {
-            document.querySelector(
-                "body").style.visibility = "hidden";
-            document.querySelector(
-                "#loading").style.visibility = "visible";
-        } else {
-            document.querySelector(
-                "#loading").style.display = "none";
-            document.querySelector(
-                "body").style.visibility = "visible";
-        }
-    };
-</script> -->
-
 <script type="text/javascript">
     // $(document).ready(function() {
     //     $('.sidebar-menu').tree()
