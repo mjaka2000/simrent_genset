@@ -35,22 +35,22 @@ class M_admin extends CI_Model
   //! Old Query 
   ####################################
 
-  public function cek_jumlah($tabel, $id_transaksi)
-  {
-    return  $this->db->select('*')
-      ->from($tabel)
-      ->where('id_transaksi', $id_transaksi)
-      ->get();
-  }
+  // public function cek_jumlah($tabel, $id_transaksi)
+  // {
+  //   return  $this->db->select('*')
+  //     ->from($tabel)
+  //     ->where('id_transaksi', $id_transaksi)
+  //     ->get();
+  // }
 
-  public function get_data_array($tabel, $id_transaksi)
-  {
-    $query = $this->db->select()
-      ->from($tabel)
-      ->where($id_transaksi)
-      ->get();
-    return $query->result_array();
-  }
+  // public function get_data_array($tabel, $id_transaksi)
+  // {
+  //   $query = $this->db->select()
+  //     ->from($tabel)
+  //     ->where($id_transaksi)
+  //     ->get();
+  //   return $query->result_array();
+  // }
 
   public function get_data($tabel, $id_transaksi)
   {
@@ -110,21 +110,6 @@ class M_admin extends CI_Model
     $this->db->update($tabel, $data);
   }
 
-  public function get_data_gambar($tabel, $username)
-  {
-    $query = $this->db->select()
-      ->from($tabel)
-      ->where('username_user', $username)
-      ->get();
-    return $query->result();
-  }
-
-  public function update_gambar($where, $data)
-  {
-    $this->db->set($data);
-    $this->db->where($where);
-    $this->db->update('tb_upload_gambar_user');
-  }
 
   public function sum($tabel, $field)
   {
@@ -151,15 +136,6 @@ class M_admin extends CI_Model
     return $query->num_rows();
   }
 
-  public function kecuali($tabel, $username)
-  {
-    $query = $this->db->select()
-      ->from($tabel)
-      ->where_not_in('username', $username)
-      ->get();
-
-    return $query->result();
-  }
 
   ####################################
   //* New Query
