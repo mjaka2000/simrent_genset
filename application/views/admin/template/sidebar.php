@@ -137,7 +137,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= base_url(''); ?>admin/signout" class="nav-link">
+                    <a href="<?= base_url(''); ?>admin/logout" class="nav-link">
                         <i class="fas fa-sign-out-alt nav-icon"></i>
                         <p>Logout</p>
                     </a>

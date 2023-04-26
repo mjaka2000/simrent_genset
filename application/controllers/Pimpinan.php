@@ -9,7 +9,7 @@ class Pimpinan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_pimpinan');
-        if ($this->session->userdata('status') != 'login') {
+        if ($this->session->userdata('status') != 'login' && $this->session->userdata('role') != 1) {
             redirect(base_url("login"));
         }
     }
@@ -18,7 +18,7 @@ class Pimpinan extends CI_Controller
     {
         if ($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 1) {
 
-            $data['avatar'] = $this->M_pimpinan->get_data_gambar(' tb_avatar', $this->session->userdata('name'));
+            $data['avatar'] = $this->M_pimpinan->get_avatar(' tb_avatar', $this->session->userdata('name'));
             $data['title'] = 'Home';
             $this->load->view('pimpinan/index', $data);
         } else {
@@ -26,7 +26,7 @@ class Pimpinan extends CI_Controller
         }
     }
 
-    public function signout()
+    public function logout()
     {
         session_destroy();
         redirect('login');

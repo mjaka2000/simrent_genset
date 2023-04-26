@@ -49,7 +49,7 @@
                             <button class="win7-btn btn-xs" onclick="window.location.href='<?= base_url('admin/profile'); ?>'"><i class="fa fa-cog"></i>&nbsp;Profile</button>
                         </span>
                         <span class="pull-right" style="margin-left: 28%;">
-                            <button class="win7-btn btn-xs" onclick="window.location.href='<?= base_url('admin/signout'); ?>'"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button>
+                            <button class="win7-btn btn-xs" onclick="window.location.href='<?= base_url('admin/logout'); ?>'"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button>
                         </span>
                     </li>
                 </ul>

@@ -2,20 +2,87 @@
 class M_pimpinan extends CI_Model
 {
 
+  ####################################
+  // CRUD
+  ####################################
+
+  public function insert($tabel, $data)
+  {
+    $this->db->insert($tabel, $data);
+  }
+
+  public function select($tabel)
+  {
+    $query = $this->db->get($tabel);
+    return $query->result();
+  }
+
+  public function update($tabel, $data, $where)
+  {
+    $this->db->where($where);
+    $this->db->update($tabel, $data);
+  }
+
+  public function delete($tabel, $where)
+  {
+    $this->db->where($where);
+    $this->db->delete($tabel);
+  }
+
+
+  ####################################
+  //! Old Query 
+  ####################################
+
+  public function get_data_array($tabel, $id_transaksi)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where($id_transaksi)
+      ->get();
+    return $query->result_array();
+  }
+
+  public function get_data($tabel, $id_transaksi)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where($id_transaksi)
+      ->get();
+    return $query->result();
+  }
+
   public function update_password($tabel, $where, $data)
   {
     $this->db->where($where);
     $this->db->update($tabel, $data);
   }
 
-  public function select($tabel)
+  public function numrows($tabel)
   {
-    return $this->db->select()
+    $query = $this->db->select()
       ->from($tabel)
-      ->get()->result();
+      ->get();
+    return $query->num_rows();
   }
 
-  public function get_data_gambar($tabel, $username)
+  public function numrows_where($tabel, $where)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where($where)
+      ->get();
+    return $query->num_rows();
+  }
+
+
+
+  ####################################
+  //* New Query
+  ####################################
+
+
+  public function get_avatar($tabel, $username)
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -24,31 +91,29 @@ class M_pimpinan extends CI_Model
     return $query->result();
   }
 
-  public function mengurangi($tabel, $kode_genset, $stok_gd_new)
+  public function update_avatar($where, $data)
   {
-    $this->db->set("stok_gd", $stok_gd_new);
-    $this->db->where('kode_genset', $kode_genset);
-    $this->db->update($tabel);
+    $this->db->set($data);
+    $this->db->where($where);
+    $this->db->update('tb_avatar');
   }
 
-  public function menambah($tabel, $kode_genset, $stok_pj_new)
-  {
-    $this->db->set("stok_pj", $stok_pj_new);
-    $this->db->where('kode_genset', $kode_genset);
-    $this->db->update($tabel);
-  }
 
-  public function insert($tabel, $data)
-  {
-    $this->db->insert($tabel, $data);
-  }
+  // public function notif_stok($tabel)
+  // {
+  //   $query = $this->db->select()
+  //     ->from($tabel)
+  //     ->where('stok <', 2)
+  //     ->get();
+  //   return $query->result();
+  // }
 
-  public function get_data_tb($tabel, $id_transaksi)
-  {
-    $query = $this->db->select()
-      ->from($tabel)
-      ->where($id_transaksi)
-      ->get();
-    return $query->result();
-  }
+  // public function notif_stok_jml($tabel)
+  // {
+  //   $query = $this->db->select()
+  //     ->from($tabel)
+  //     ->where('stok <', 2)
+  //     ->get();
+  //   return $query->num_rows();
+  // }
 }
