@@ -12,27 +12,28 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">About Version</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span>&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- <p>This website are using :</p> -->
-                        <h4 class="modal-title" id="staticBackdropLabel">About This Version</h4>
-                        <ul type="square">
-                            <li>Website Version 0.1.3</li>
-                            <li>Codeigniter Version 3.1.12</li>
-                            <li>PHP Version 7.4</li>
-                        </ul>
-                        <strong>Copyright &copy; 2022-<script type="text/javascript">
-                                document.write(new Date().getFullYear());
-                            </script></strong>
-                        <!-- Muhammad Jaka Permana Putra Agus -->
+                        <h6>
+                            <p>Website Version 0.1.3-dev</p>
+                            This website uses:
+                            <ul>
+                                <li><a href="https://www.codeigniter.com/download" target="_blank"><u>Codeigniter</u></a> Version 3.1.12</li>
+                                <!-- <li>PHP Version ≤7.4</li> -->
+                            </ul>
+                            <strong>Copyright &copy; 2022-<script type="text/javascript">
+                                    document.write(new Date().getFullYear());
+                                </script>
+                            </strong>
+                            <!-- Muhammad Jaka Permana Putra Agus -->
+                        </h6>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="win7-btn btn-xs" data-dismiss="modal">Close</button>
-                        <!-- <button type="submit" class="btn btn-sm btn-primary">Sign in</button> -->
-                        <!-- <button type="button" class="btn btn-primary">Understood</button> -->
                     </div>
                 </div>
             </div>
