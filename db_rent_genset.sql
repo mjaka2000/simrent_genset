@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Apr 2023 pada 05.18
+-- Waktu pembuatan: 30 Apr 2023 pada 04.32
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -38,7 +38,7 @@ CREATE TABLE `tb_avatar` (
 --
 
 INSERT INTO `tb_avatar` (`id`, `username_user`, `nama_file`) VALUES
-(1, 'admin', 'jaka.jpg'),
+(1, 'admin', 'jaka1.jpg'),
 (12, 'jakaja', 'nopic.png'),
 (13, 'bos', 'nopic.png'),
 (14, 'aril', 'nopic.png');
@@ -274,10 +274,10 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '21-04-2023 9:50'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '30-04-2023 9:19'),
 (31, 'jakaja', 'Jaka', '$2y$10$BKPTzEWnptxgS63pLJh8UeCEG2POxhVqpL297bC3w6fEeOWF7QPw6', 0, '13-04-2023 9:56'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '18-04-2023 17:50'),
-(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '18-04-2023 17:28');
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
+(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
 
 --
 -- Indexes for dumped tables
