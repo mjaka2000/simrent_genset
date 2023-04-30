@@ -189,10 +189,13 @@ class Admin extends CI_Controller
 	####################################
 	public function profile()
 	{
-		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-		$data['title'] = 'Profile';
-		$this->load->view('admin/form_users/profile', $data);
-		// $this->load->view('admin/profile', $data);
+		if ($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 0) {
+			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+			$data['title'] = 'Profile';
+			$this->load->view('admin/form_users/profile', $data);
+		} else {
+			$this->load->view('login/login');
+		}
 	}
 
 	public function proses_newpassword()
