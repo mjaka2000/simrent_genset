@@ -12,14 +12,14 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">About Version</h5>
+                        <h6 class="modal-title" id="staticBackdropLabel">About Version</h6>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span>&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <h6>
-                            <p>Version 0.1.3</p>
+                            <p><strong>Version</strong> 0.1.3</p>
                             This website uses:
                             <ul>
                                 <li><a href="https://www.codeigniter.com/download" target="_blank"><u>Codeigniter</u></a> Version 3.1.12</li>
