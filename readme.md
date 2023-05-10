@@ -7,9 +7,9 @@ SIMRent Genset WS
 <!-- <h3> user : admin </h3> -->
 <!-- <h3> password : admin </h3> -->
 
-                        <h6>About Version</h6>
-                            <p>Version 0.1</p>
-                            This website uses:
+About Version
+Version 0.1
+This website uses:
 
 <ul type="square">
                             <li><a href="https://www.codeigniter.com/download" target="_blank"><u>Codeigniter</u></a> Version 3.1.12</li>
