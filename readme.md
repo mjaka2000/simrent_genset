@@ -7,7 +7,7 @@ SIMRent Genset WS
 <!-- <h3> user : admin </h3> -->
 <!-- <h3> password : admin </h3> -->
 
-<p>About Version</p>
+<!-- <p>About Version</p> -->
 <p>Version 0.1</p>
 <p>This website uses:</p>
 
