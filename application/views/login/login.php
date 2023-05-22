@@ -41,7 +41,7 @@
                             <?php } else {
                                         redirect(base_url());
                                     } ?> -->
-                            <div class="col-8">
+                            <div class="col-4">
                                 <!-- <div class="icheck-primary">
                                     <input type="checkbox" id="remember">
                                     <label for="remember">
