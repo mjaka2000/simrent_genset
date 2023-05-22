@@ -44,12 +44,12 @@
                     <!-- Menu Body -->
 
                     <!-- Menu Footer-->
-                    <li class="user-footer">
+                    <li class="card-body">
                         <span class="pull-left">
-                            <button class="win7-btn btn-xs" onclick="window.location.href='<?= base_url('admin/profile'); ?>'"><i class="fa fa-cog"></i>&nbsp;Profile</button>
+                            <button class="win7-btn btn-xs" type="button" onclick="window.location.href='<?= base_url('admin/profile'); ?>'"><i class="fa fa-cog"></i>&nbsp;Profile</button>
                         </span>
-                        <span class="pull-right" style="margin-left: 28%;">
-                            <button class="win7-btn btn-xs" onclick="window.location.href='<?= base_url('admin/logout'); ?>'"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button>
+                        <span class="pull-right" style="margin-left: 20%;">
+                            <button class="win7-btn btn-xs" type="button" onclick="window.location.href='<?= base_url('admin/logout'); ?>'"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button>
                         </span>
                     </li>
                 </ul>
