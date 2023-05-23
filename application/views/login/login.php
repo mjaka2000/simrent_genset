@@ -41,16 +41,16 @@
                             <?php } else {
                                         redirect(base_url());
                                     } ?> -->
-                            <div class="col-4">
-                                <!-- <div class="icheck-primary">
+                            <!-- <div class="col-4">
+                                <div class="icheck-primary">
                                     <input type="checkbox" id="remember">
                                     <label for="remember">
                                         Remember Me
                                     </label>
-                                </div> -->
-                            </div>
+                                </div>
+                            </div> -->
                             <!-- /.col -->
-                            <div class="col-4">
+                            <div class="col-12">
                                 <button type="submit" class="btn btn-sm btn-primary btn-block"><i class="fas fa-sign-in-alt"></i>&nbsp;Log In</button>
                             </div>
                             <!-- /.col -->
