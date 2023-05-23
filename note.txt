@@ -1,10 +1,14 @@
 LAST CHANGE GIT LOG:
 
+{folder_name} : {Commit Message}
+
+cth:
 Login : {Commit Message}
 Admin : {Commit Message}
 Pimpinan : {Commit Message}
 Teknisi : {Commit Message}
 etc.
+
 
 =========================================================================================================================================
 // $("#spare_part").show(function() {
