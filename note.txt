@@ -1,3 +1,12 @@
+LAST CHANGE GIT LOG:
+
+Login : {Commit Message}
+Admin : {Commit Message}
+Pimpinan : {Commit Message}
+Teknisi : {Commit Message}
+etc.
+
+=========================================================================================================================================
 // $("#spare_part").show(function() {
     //     let spare_part = $(this).val();
     //     let stok = document.getElementById("stok");
