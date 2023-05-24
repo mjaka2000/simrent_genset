@@ -48,5 +48,29 @@
       /* display: table; */
       /* vertical-align: middle; */
     }
+
+    .button {
+      width: 100%;
+      height: 100%;
+      padding: 10px 10px;
+      background: #2196F3;
+      color: #fff;
+      display: block;
+      border: none;
+      margin-top: 20px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      max-height: 50px;
+      border: 0px solid rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 2px 2px;
+      transform: rotateZ(0deg);
+      transition: all 0.1s ease-out;
+      border-bottom-width: 5px;
+    }
+
+    .button:hover {
+      box-shadow: 0px 1px 3px #fff;
+    }
   </style>
 </head>

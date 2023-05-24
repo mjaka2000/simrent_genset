@@ -7,11 +7,11 @@
                 <a href="#"><strong style="color: white;">LOGIN</strong></a>
             </div>
             <!-- /.login-logo -->
-            <div class="card">
+            <div class="card card-primary card-outline">
                 <div class="card-body login-card-body">
                     <img class="img" src="<?= base_url(); ?>assets/style/logo/ws.png" alt="Logo" width="80%">
-                    <p class="login-box-msg">Login Untuk Memulai Sesi</p>
-
+                    <!-- <p class="login-box-msg">Login Untuk Memulai Sesi</p> -->
+                    <hr>
                     <form action="<?= base_url('login/proses_login'); ?>" class="login" method="post">
                         <?php if ($this->session->flashdata('msg')) { ?>
                             <div class="alert alert-warning alert-dismissible">
@@ -50,10 +50,8 @@
                                 </div> -->
                             </div>
                         </div>
-                        <div class="row mt-3">
-                            <div class="col-12">
-                                <button type="submit" class="btn bg-gradient-primary btn-block"><i class="fas fa-sign-in-alt"></i>&nbsp;Log In</button>
-                            </div>
+                        <div class="mt-5">
+                            <button type="submit" class="button"><i class="fas fa-sign-in-alt"></i>&nbsp;Log In</button>
                         </div>
                     </form>
 
