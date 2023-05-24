@@ -35,25 +35,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <!-- <?php if (isset($token_generate)) { ?>
+                        <!-- <?php if (isset($token_generate)) { ?>
                                 <input type="hidden" name="token" value="<?php echo $token_generate ?>">
                             <?php } else {
-                                        redirect(base_url());
-                                    } ?> -->
-                            <!-- <div class="col-4">
-                                <div class="icheck-primary">
+                                    redirect(base_url());
+                                } ?> -->
+                        <div class="row">
+                            <div class="col-6">
+                                <!-- <div class="icheck-primary">
                                     <input type="checkbox" id="remember">
                                     <label for="remember">
                                         Remember Me
                                     </label>
-                                </div>
-                            </div> -->
-                            <!-- /.col -->
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-sm btn-primary btn-block"><i class="fas fa-sign-in-alt"></i>&nbsp;Log In</button>
+                                </div> -->
                             </div>
-                            <!-- /.col -->
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <button type="submit" class="btn bg-gradient-primary btn-block"><i class="fas fa-sign-in-alt"></i>&nbsp;Log In</button>
+                            </div>
                         </div>
                     </form>
 

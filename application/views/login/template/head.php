@@ -35,6 +35,7 @@
       height: 100%;
       padding: 50px;
       background: rgba(4, 40, 68, 0.85);
+      text-align: center;
     }
 
     .auth-bg {
@@ -42,9 +43,8 @@
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      text-align: center;
-      /* height: 100%;
-      width: 100%; */
+      /* height: 100%; */
+      /* width: 100%; */
       /* display: table; */
       /* vertical-align: middle; */
     }
