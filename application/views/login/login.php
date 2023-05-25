@@ -1,6 +1,6 @@
 <?php $this->load->view('login/template/head'); ?>
 
-<body class="hold-transition login-page auth-bg">
+<body class="hold-transition login-page auth-bg" style="background-image: url(<?= base_url('assets/style/ws-1.jpg'); ?>);">
     <div class="wrapper">
         <div class="login-box">
             <div class="login-logo">
