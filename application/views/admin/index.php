@@ -24,7 +24,7 @@
   <!-- Main content -->
   <section class="content">
     <div id="loading">
-      <img src="<?= base_url(); ?>assets/style/loading.gif" alt="loading" width="50%">
+      <img src="<?= site_url(); ?>assets/style/loading.gif" alt="loading" width="50%">
     </div>
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
@@ -44,7 +44,7 @@
             <div class="icon">
               <i class="fa fa-download"></i>
             </div>
-            <a href="<?= base_url('admin/tabel_unit_masuk') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= site_url('admin/tabel_unit_masuk') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -63,7 +63,7 @@
             <div class="icon">
               <i class="fa fa-upload"></i>
             </div>
-            <a href="<?= base_url('admin/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= site_url('admin/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -83,7 +83,7 @@
             <div class="icon">
               <i class="fas fa-wrench"></i>
             </div>
-            <a href="<?= base_url(); ?>admin/tabel_service_genset" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="<?= site_url(); ?>admin/tabel_service_genset" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -101,7 +101,7 @@
             <div class="icon">
               <i class="fas fa-box"></i>
             </div>
-            <a href="<?= base_url(); ?>admin/tabel_sparepart" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="<?= site_url(); ?>admin/tabel_sparepart" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -120,7 +120,7 @@
             <div class="icon">
               <i class="fas fa-user"></i>
             </div>
-            <a href="<?= base_url('admin/tabel_pelanggan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= site_url('admin/tabel_pelanggan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
@@ -137,7 +137,7 @@
             <div class="icon">
               <i class="fas fa-user"></i>
             </div>
-            <a href="<?= base_url('admin/tabel_operator') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= site_url('admin/tabel_operator') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
@@ -154,7 +154,7 @@
             <div class="icon">
               <i class="fas fa-user"></i>
             </div>
-            <a href="<?= base_url('admin/users') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= site_url('admin/users') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
@@ -168,7 +168,7 @@
             <div class="icon">
               <i class="fas fa-graph"></i>
             </div>
-            <a href="<?= base_url('admin/laporan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= site_url('admin/laporan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="card">
@@ -177,7 +177,7 @@
               <?php foreach ($count as $c) : ?>
                 <div class="alert alert-warning alert-dismissible">
                   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <a href="<?= base_url(); ?>admin/tabel_sparepart" style="text-decoration: none; color: black;"><strong> <?= $c->nama_sparepart; ?></strong><span> sisa <strong><?= $c->stok; ?></strong></span><br>
+                  <a href="<?= site_url(); ?>admin/tabel_sparepart" style="text-decoration: none; color: black;"><strong> <?= $c->nama_sparepart; ?></strong><span> sisa <strong><?= $c->stok; ?></strong></span><br>
                     <small style="color: red;">Segera lakukan pembelian untuk menambah stok</small></a>
                 </div>
               <?php endforeach ?>
