@@ -78,42 +78,4 @@ class Login extends CI_Controller
 			// }
 		}
 	}
-
-	// public function proses_login()
-	// {
-	// 	$this->form_validation->set_rules('username', 'Username', 'required');
-	// 	$this->form_validation->set_rules('password', 'Password', 'required');
-	// 	date_default_timezone_set("ASIA/KUALA_LUMPUR");
-	// 	if ($this->form_validation->run() == TRUE) {
-	// 		$username = $this->input->post('username', TRUE);
-	// 		$password = $this->input->post('password', TRUE);
-
-	// 		$where = array(
-	// 			'username' => $username,
-	// 			'password' => md5($password)
-	// 		);
-	// 		$cek = $this->M_login->cek_login('tb_user', $where)->num_rows();
-	// 		if ($cek > 0) {
-
-	// 			$data_session = array(
-	// 				'nama' => $username,
-	// 				'status' => "login",
-	// 				'role' => $where['role'],
-	// 				'last_login' => $cek->last_login
-	// 			);
-	// 			$this->db->update('tb_user', array('last_login' => date('d-m-Y G:i')));
-	// 			$this->session->set_userdata($data_session);
-
-	// 			if ($where['role'] == 1) {
-	// 				redirect(base_url('admin'));
-	// 			} else {
-	// 				redirect(base_url('user'));
-	// 			}
-	// 		} else {
-	// 			// echo "Username dan password salah !";
-	// 			$this->session->set_flashdata('msg', 'Username Dan Password Salah!');
-	// 			redirect(base_url());
-	// 		}
-	// 	}
-	// }
 }
