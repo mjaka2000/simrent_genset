@@ -44,7 +44,7 @@
             <div class="icon">
               <i class="fa fa-download"></i>
             </div>
-            <a href="<?= base_url('admin/tabel_barang_masuk') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= base_url('admin/tabel_unit_masuk') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -63,7 +63,7 @@
             <div class="icon">
               <i class="fa fa-upload"></i>
             </div>
-            <a href="<?= base_url('admin/tabel_barang_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= base_url('admin/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
