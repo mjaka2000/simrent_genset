@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="mt-5">
-                            <button type="submit" class="button"><i class="fas fa-sign-in-alt"></i>&nbsp;Log In</button>
+                            <button type="submit" class="button"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</button>
                         </div>
                     </form>
 
