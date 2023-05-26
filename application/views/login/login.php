@@ -12,7 +12,7 @@
                     <img class="img" src="<?= base_url(); ?>assets/style/logo/ws.png" alt="Logo" width="80%">
                     <!-- <p class="login-box-msg">Login Untuk Memulai Sesi</p> -->
                     <hr>
-                    <form action="<?= base_url('login/proses_login'); ?>" class="login" method="post">
+                    <form action="<?= site_url('login/proses_login'); ?>" class="login" method="post">
                         <?php if ($this->session->flashdata('msg')) { ?>
                             <div class="alert alert-warning alert-dismissible">
                                 <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
@@ -38,7 +38,7 @@
                         <!-- <?php if (isset($token_generate)) { ?>
                                 <input type="hidden" name="token" value="<?php echo $token_generate ?>">
                             <?php } else {
-                                    redirect(base_url());
+                                    redirect(site_url());
                                 } ?> -->
                         <div class="row">
                             <div class="col-6">
