@@ -43,7 +43,7 @@ class Login extends CI_Controller
 			$cek =  $this->M_login->cek_user('tb_user', $username);
 			if ($cek->num_rows() != 1) {
 				$this->session->set_flashdata('msg', 'Username Dan Password Salah');
-				redirect(base_url());
+				redirect(site_url());
 			} else {
 
 				$isi = $cek->row();
@@ -62,19 +62,19 @@ class Login extends CI_Controller
 					$this->M_login->edit_user(['username' => $username], ['last_login' => date('d-m-Y G:i')]);
 
 					if ($isi->role == 0) {
-						redirect(base_url('admin'));
+						redirect(site_url('admin'));
 					} elseif ($isi->role == 1) {
-						redirect(base_url('pimpinan'));
+						redirect(site_url('pimpinan'));
 					} else {
-						redirect(base_url('teknisi'));
+						redirect(site_url('teknisi'));
 					}
 				} else {
 					$this->session->set_flashdata('msg', 'Username Dan Password Salah');
-					redirect(base_url());
+					redirect(site_url());
 				}
 			}
 			// } else {
-			// 	redirect(base_url());
+			// 	redirect(site_url());
 			// }
 		}
 	}
