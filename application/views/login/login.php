@@ -2,12 +2,20 @@
 
 <body class="hold-transition login-page auth-bg" style="background-image: url(<?= base_url('assets/style/ws-1.jpg'); ?>);">
     <div class="wrapper">
-        <div class="login-box">
+        <!-- <div class="small-box bg-primary">
+            <div class="inner">
+                <h4>Selamat Datang di Aplikasi SIMRent Genset Wardah Solution</h4>
+            </div>
+        </div> -->
+        <div class="login-box" style="margin-top: 120px;">
             <div class="login-logo">
                 <a href="#"><strong style="color: white;">LOGIN</strong></a>
             </div>
             <!-- /.login-logo -->
             <div class="card card-primary card-outline">
+                <!-- <div class="card-header">
+                    <h6><strong>LOGIN</strong></h6>
+                </div> -->
                 <div class="card-body login-card-body">
                     <img class="img" src="<?= base_url(); ?>assets/style/logo/ws.png" alt="Logo" width="80%">
                     <!-- <p class="login-box-msg">Login Untuk Memulai Sesi</p> -->
