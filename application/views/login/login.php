@@ -2,12 +2,20 @@
 
 <body class="hold-transition login-page auth-bg" style="background-image: url(<?= base_url('assets/style/ws-1.jpg'); ?>);">
     <div class="wrapper">
+        <div class="col">
+            <div class="small-box bg-gradient-primary">
+                <div class="inner">
+                    <h4>Selamat Datang!<br><small>Silahkan Login Untuk Mengakses Sistem</small></h4>
+                </div>
+            </div>
+        </div>
         <!-- <div class="small-box bg-primary">
             <div class="inner">
                 <h4>Selamat Datang di Aplikasi SIMRent Genset Wardah Solution</h4>
             </div>
         </div> -->
-        <div class="login-box" style="margin-top: 120px;">
+
+        <div class="login-box" style="margin-bottom: 350px;margin-top: 0px;">
             <div class="login-logo">
                 <a href="#"><strong style="color: white;">LOGIN</strong></a>
             </div>
