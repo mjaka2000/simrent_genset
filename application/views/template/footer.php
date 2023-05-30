@@ -19,7 +19,7 @@
                     </div>
                     <div class="modal-body">
                         <h6>
-                            <p><strong>Version</strong> 1.1.0</p>
+                            <p><strong>Version</strong> 1.1.2</p>
                             This website uses:
                             <ul>
                                 <li><a href="https://www.codeigniter.com/download" target="_blank"><u>Codeigniter</u></a> Version 3.1.13</li>
@@ -33,7 +33,7 @@
                         </h6>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="win7-btn btn-xs" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
