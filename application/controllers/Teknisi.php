@@ -9,7 +9,7 @@ class Teknisi extends CI_Controller
         parent::__construct();
         $this->load->model('M_teknisi');
         if ($this->session->userdata('status') != 'login') {
-            redirect(base_url("login"));
+            redirect(site_url("login"));
         }
     }
 

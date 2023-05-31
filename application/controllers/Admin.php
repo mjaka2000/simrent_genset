@@ -15,7 +15,6 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
-		// if ($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 0) {
 		$data['stokBarangMasuk'] = $this->M_admin->numrows('tb_unit_masuk');
 		$data['stokBarangKeluar'] = $this->M_admin->numrows('tb_unit_keluar');
 		$data['dataUser'] = $this->M_admin->numrows('tb_user');
@@ -28,9 +27,6 @@ class Admin extends CI_Controller
 		$data['avatar'] = $this->M_admin->get_avatar(' tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Home';
 		$this->load->view('admin/index', $data);
-		// } else {
-		// 	$this->load->view('login/login');
-		// }
 	}
 	public function logout()
 	{
@@ -189,13 +185,9 @@ class Admin extends CI_Controller
 	####################################
 	public function profile()
 	{
-		// if ($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 0) {
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Profile';
 		$this->load->view('admin/form_users/profile', $data);
-		// } else {
-		// 	$this->load->view('login/login');
-		// }
 	}
 
 	public function proses_newpassword()

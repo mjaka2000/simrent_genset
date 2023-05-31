@@ -10,7 +10,7 @@ class Pimpinan extends CI_Controller
         parent::__construct();
         $this->load->model('M_pimpinan');
         if ($this->session->userdata('status') != 'login') {
-            redirect(base_url("login"));
+            redirect(site_url("login"));
         }
     }
 
@@ -75,7 +75,7 @@ class Pimpinan extends CI_Controller
             );
             $this->M_pimpinan->update_password('tb_user', $where, $data);
             $this->session->set_flashdata('msg_sukses', 'Password Berhasil Diganti, Silahkan Sign Out dan Login Kembali');
-            redirect(base_url('pimpinan/profile'));
+            redirect(site_url('pimpinan/profile'));
         } else {
             $data['avatar'] = $this->M_pimpinan->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'));
             $data['title'] = 'Profile';
@@ -115,7 +115,7 @@ class Pimpinan extends CI_Controller
 
             $this->M_pimpinan->update_gambar($where, $data);
             $this->session->set_flashdata('msg_gambar_sukses', 'Gambar Berhasil Di Upload');
-            redirect(base_url('pimpinan/profile'));
+            redirect(site_url('pimpinan/profile'));
         }
     }
 
@@ -224,7 +224,7 @@ class Pimpinan extends CI_Controller
             );
             $this->M_pimpinan->insert('tb_pelanggan', $data);
             $this->session->set_flashdata('msg_sukses', 'Data Berhasil Di Tambahkan');
-            redirect(base_url('pimpinan/tambah_data_pelanggan'));
+            redirect(site_url('pimpinan/tambah_data_pelanggan'));
         } else {
             $this->load->view('pimpinan/form_pelanggan/tambah_pelanggan');
         }
@@ -373,7 +373,7 @@ class Pimpinan extends CI_Controller
             $this->M_pimpinan->insert('tb_barang_keluar', $data);
             $this->session->set_flashdata('msg_sukses', 'Data Berhasil Ditambahkan');
 
-            redirect(base_url('pimpinan/tabel_barang_keluar'));
+            redirect(site_url('pimpinan/tabel_barang_keluar'));
         } else {
             $data['list_genset'] = $this->M_pimpinan->select('tb_genset');
             $data['avatar'] = $this->M_pimpinan->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'));
