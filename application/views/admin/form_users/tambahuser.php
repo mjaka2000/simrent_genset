@@ -27,9 +27,9 @@
 
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card" style="width: 30%; margin-left: 35%;">
+            <div class="row tengah">
+                <div class="col-md-5 ">
+                    <div class="card">
                         <div class="card-header"><i class="fas fa-plus"></i>
                             Tambah Data User
                         </div>
