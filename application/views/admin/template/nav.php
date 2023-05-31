@@ -43,7 +43,7 @@
                 <!-- Menu Body -->
 
                 <!-- Menu Footer-->
-                <li class="card-body">
+                <li class="card-footer">
                     <span class="fa-pull-left">
                         <button class="btn btn-default btn-sm" type="button" onclick="window.location.href='<?= site_url('admin/profile'); ?>'"><i class="fa fa-cog"></i>&nbsp;Profile</button>
                     </span>

@@ -34,45 +34,6 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <?php if (!empty($stokBarangMasuk)) { ?>
-                <h3><?= $stokBarangMasuk ?></h3>
-              <?php } else { ?>
-                <h3>0</h3>
-              <?php } ?>
-              <p>Data Unit Masuk</p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-download"></i>
-            </div>
-            <a href="<?= site_url('admin/tabel_unit_masuk') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <?php if (!empty($stokBarangKeluar)) { ?>
-                <h3><?= $stokBarangKeluar ?></h3>
-              <?php } else { ?>
-                <h3>0</h3>
-              <?php } ?>
-              <p>Data Unit Keluar</p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-upload"></i>
-            </div>
-            <a href="<?= site_url('admin/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-warning">
-            <div class="inner">
               <?php if (!empty($dataServGenset)) { ?>
                 <h3><?= $dataServGenset ?></h3>
               <?php } else { ?>
@@ -89,7 +50,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-danger">
+          <div class="small-box bg-info">
             <div class="inner">
               <?php if (!empty($dataStokSparepart)) { ?>
                 <h3><?= $dataStokSparepart ?></h3>
@@ -108,7 +69,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-yellow">
+          <div class="small-box bg-info">
             <div class="inner">
               <?php if (!empty($dataPelanggan)) { ?>
                 <h3><?= $dataPelanggan ?></h3>
@@ -125,7 +86,7 @@
         </div>
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-purple">
+          <div class="small-box bg-info">
             <div class="inner">
               <?php if (!empty($dataOperator)) { ?>
                 <h3><?= $dataOperator ?></h3>
@@ -142,7 +103,7 @@
         </div>
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-orange">
+          <div class="small-box bg-info">
             <div class="inner">
               <?php if (!empty($dataUser)) { ?>
                 <h3><?= $dataUser ?></h3>
@@ -159,14 +120,49 @@
         </div>
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <?php if (!empty($stokBarangMasuk)) { ?>
+                <h3><?= $stokBarangMasuk ?></h3>
+              <?php } else { ?>
+                <h3>0</h3>
+              <?php } ?>
+              <p>Data Unit Masuk</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-download"></i>
+            </div>
+            <a href="<?= site_url('admin/tabel_unit_masuk') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <?php if (!empty($stokBarangKeluar)) { ?>
+                <h3><?= $stokBarangKeluar ?></h3>
+              <?php } else { ?>
+                <h3>0</h3>
+              <?php } ?>
+              <p>Data Unit Keluar</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-upload"></i>
+            </div>
+            <a href="<?= site_url('admin/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
             <div class="inner">
               <h3>Laporan</h3>
-
               <p>Cetak Laporan</p>
             </div>
             <div class="icon">
-              <i class="fas fa-graph"></i>
+              <i class="fas fa-clipboard"></i>
             </div>
             <a href="<?= site_url('admin/laporan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
