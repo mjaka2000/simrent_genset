@@ -8,29 +8,29 @@ class Admin extends CI_Controller
 		parent::__construct();
 		$this->load->model('M_admin');
 		$this->load->library('upload');
-		if ($this->session->userdata('status') != 'login' && $this->session->userdata('role') != 0) {
+		if ($this->session->userdata('status') != 'login') {
 			redirect(site_url("login"));
 		}
 	}
 
 	public function index()
 	{
-		if ($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 0) {
-			$data['stokBarangMasuk'] = $this->M_admin->numrows('tb_unit_masuk');
-			$data['stokBarangKeluar'] = $this->M_admin->numrows('tb_unit_keluar');
-			$data['dataUser'] = $this->M_admin->numrows('tb_user');
-			$data['dataPelanggan'] = $this->M_admin->numrows('tb_pelanggan');
-			$data['dataOperator'] = $this->M_admin->numrows('tb_operator');
-			$data['dataServGenset'] = $this->M_admin->numrows('tb_serv_genset');
-			$data['dataStokSparepart'] = $this->M_admin->numrows('tb_sparepart');
-			$data['count'] = $this->M_admin->notif_stok('tb_sparepart');
-			$data['num'] = $this->M_admin->notif_stok_jml('tb_sparepart');
-			$data['avatar'] = $this->M_admin->get_avatar(' tb_avatar', $this->session->userdata('name'));
-			$data['title'] = 'Home';
-			$this->load->view('admin/index', $data);
-		} else {
-			$this->load->view('login/login');
-		}
+		// if ($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 0) {
+		$data['stokBarangMasuk'] = $this->M_admin->numrows('tb_unit_masuk');
+		$data['stokBarangKeluar'] = $this->M_admin->numrows('tb_unit_keluar');
+		$data['dataUser'] = $this->M_admin->numrows('tb_user');
+		$data['dataPelanggan'] = $this->M_admin->numrows('tb_pelanggan');
+		$data['dataOperator'] = $this->M_admin->numrows('tb_operator');
+		$data['dataServGenset'] = $this->M_admin->numrows('tb_serv_genset');
+		$data['dataStokSparepart'] = $this->M_admin->numrows('tb_sparepart');
+		$data['count'] = $this->M_admin->notif_stok('tb_sparepart');
+		$data['num'] = $this->M_admin->notif_stok_jml('tb_sparepart');
+		$data['avatar'] = $this->M_admin->get_avatar(' tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Home';
+		$this->load->view('admin/index', $data);
+		// } else {
+		// 	$this->load->view('login/login');
+		// }
 	}
 	public function logout()
 	{
@@ -189,13 +189,13 @@ class Admin extends CI_Controller
 	####################################
 	public function profile()
 	{
-		if ($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 0) {
-			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-			$data['title'] = 'Profile';
-			$this->load->view('admin/form_users/profile', $data);
-		} else {
-			$this->load->view('login/login');
-		}
+		// if ($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 0) {
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Profile';
+		$this->load->view('admin/form_users/profile', $data);
+		// } else {
+		// 	$this->load->view('login/login');
+		// }
 	}
 
 	public function proses_newpassword()
