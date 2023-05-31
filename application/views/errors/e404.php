@@ -1,4 +1,4 @@
-<?php $this->load->view('template/head'); ?>
+<?php $this->load->view('template/head-top-nav'); ?>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -10,14 +10,11 @@
 
     <section class="content">
         <div class="error-page">
-            <h2 class="headline text-yellow"> 404</h2>
+            <h2 class="headline text-yellow">404</h2>
 
             <div class="error-content">
-                <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
-
-                <h4>
-                    🙏Maaf, halaman yang anda cari tidak ditemukan. 🙏
-                </h4>
+                <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
+                <p>🙏Maaf, halaman yang anda cari tidak ditemukan. Silahkan <a href="#" onclick="history.back(-1)">kembali</a> ke halaman sebelumnya. 🙏</p>
             </div>
             <!-- /.error-content -->
         </div>
