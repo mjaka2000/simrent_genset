@@ -19,7 +19,7 @@
                     </div>
                     <div class="modal-body">
                         <h6>
-                            <p><strong>Version</strong> 1.1.2</p>
+                            <p><strong>Version</strong> 1.1.3</p>
                             This website uses:
                             <ul>
                                 <li><a href="https://www.codeigniter.com/download" target="_blank"><u>Codeigniter</u></a> Version 3.1.13</li>
