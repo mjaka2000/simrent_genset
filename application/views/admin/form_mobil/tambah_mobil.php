@@ -12,8 +12,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin/tabel_mobil'); ?>">Mobil</a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin/tabel_mobil'); ?>">Mobil</a></li>
                         <li class="breadcrumb-item active">Tambah Data </li>
                     </ol>
                 </div><!-- /.col -->
@@ -47,7 +47,7 @@
                                 </div>
                             <?php } ?>
 
-                            <form action="<?= base_url('admin/proses_tambah_mobil'); ?>" method="post" role="form" enctype="multipart/form-data">
+                            <form action="<?= site_url('admin/proses_tambah_mobil'); ?>" method="post" role="form" enctype="multipart/form-data">
 
                                 <div class="form-group">
                                     <label for="merek" class="form-label">Merek</label>
@@ -88,7 +88,7 @@
 
                                 <hr>
                                 <div class="form-group" align="center">
-                                    <button onclick="window.location.href='<?= base_url('admin/tabel_mobil'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                    <button onclick="window.location.href='<?= site_url('admin/tabel_mobil'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                     <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-eraser mr-2"></i>Reset</button>
                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                 </div>

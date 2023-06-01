@@ -12,8 +12,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin/tabel_service_genset'); ?>">Perbaikan Genset</a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin/tabel_service_genset'); ?>">Perbaikan Genset</a></li>
                         <li class="breadcrumb-item active">Edit Data </li>
                     </ol>
                 </div><!-- /.col -->
@@ -47,7 +47,7 @@
                                 </div>
                             <?php } ?>
 
-                            <form action="<?= base_url('admin/proses_update_service_genset'); ?>" method="post" role="form">
+                            <form action="<?= site_url('admin/proses_update_service_genset'); ?>" method="post" role="form">
                                 <?php foreach ($list_data as $ld) { ?>
 
                                     <input type="hidden" name="id_perbaikan_gst" value="<?= $ld->id_perbaikan_gst; ?>">
@@ -121,7 +121,7 @@
                                 <?php } ?>
                                 <hr>
                                 <div class="form-group" align="center">
-                                    <button onclick="window.location.href='<?= base_url('admin/tabel_service_genset'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                    <button onclick="window.location.href='<?= site_url('admin/tabel_service_genset'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                     <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-eraser mr-2"></i>Reset</button>
                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                 </div>
@@ -153,7 +153,7 @@
                         'Maaf, Stok Sparepart Tidak Cukup, lakukan pembelian untuk menambah stok.',
                         'error'
                     ).then(result => {
-                        window.location.href = "<?= base_url('admin/tabel_sparepart'); ?>"
+                        window.location.href = "<?= site_url('admin/tabel_sparepart'); ?>"
                     })
                 } else {
                     stk.innerHTML = "<?= $ls->stok; ?>";

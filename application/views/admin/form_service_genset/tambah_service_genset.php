@@ -12,8 +12,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin/tabel_service_genset'); ?>">Perbaikan Genset</a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin/tabel_service_genset'); ?>">Perbaikan Genset</a></li>
                         <li class="breadcrumb-item active">Tambah Data </li>
                     </ol>
                 </div><!-- /.col -->
@@ -47,7 +47,7 @@
                                 </div>
                             <?php } ?>
 
-                            <form action="<?= base_url('admin/proses_tambah_service_genset'); ?>" method="post" role="form">
+                            <form action="<?= site_url('admin/proses_tambah_service_genset'); ?>" method="post" role="form">
 
                                 <div class="form-group">
                                     <label for="kode_genset" class="form-label">Nomor Genset</label>&nbsp;<span style="color: red;"><small>*Pilih dulu untuk menampilkan nama genset</small></span>
@@ -104,7 +104,7 @@
 
                                 <hr>
                                 <div class="form-group" align="center">
-                                    <button onclick="window.location.href='<?= base_url('admin/tabel_service_genset'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                    <button onclick="window.location.href='<?= site_url('admin/tabel_service_genset'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                     <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-eraser mr-2"></i>Reset</button>
                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                 </div>
@@ -120,29 +120,6 @@
 
 <?php $this->load->view('admin/template/script') ?>
 <script type="text/javascript">
-    //* Script untuk membuat input tanggal
-    // $('.form_datetime').datetimepicker({
-    //     format: 'dd-mm-yyyy',
-    //     autoclose: true,
-    //     todayBtn: true,
-    //     pickTime: false,
-    //     minView: 2,
-    //     maxView: 4,
-    // });
-
-    //* Script untuk memuat data genset
-    // $("#id_genset").change(function() {
-    //     let kode_genset = $(this).val();
-    //     let nama_genset = document.getElementById("nama_genset");
-
-    //     <?php foreach ($list_genset as $l) { ?>
-    //         if (kode_genset == "<?php echo $l->id_genset ?>") {
-    //             var text = document.createTextNode("<?= $l->nama_genset; ?>");
-    //             nama_genset.innerHTML = "<?= $l->nama_genset; ?>";
-    //         }
-    //     <?php } ?>
-    // })
-
     //*Script untuk memuat stok
     $("#spare_part").change(function() {
         let spare_part = $(this).val();
@@ -159,7 +136,7 @@
                         'Maaf, Stok Sparepart Tidak Cukup, lakukan pembelian untuk menambah stok.',
                         'error'
                     ).then(result => {
-                        window.location.href = "<?= base_url('admin/tabel_sparepart'); ?>"
+                        window.location.href = "<?= site_url('admin/tabel_sparepart'); ?>"
                     })
                 } else {
                     stk.innerHTML = "<?= $ls->stok; ?>";

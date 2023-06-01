@@ -12,7 +12,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item active">Mobil</li>
                     </ol>
                 </div><!-- /.col -->
@@ -41,7 +41,7 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <button onclick="window.location.href='<?= base_url('admin/tambah_data_mobil'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
+                            <button onclick="window.location.href='<?= site_url('admin/tambah_data_mobil'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
@@ -75,10 +75,10 @@
                                                 <td><?= $dt->jenis_bbm; ?></td>
                                                 <td><?= $dt->pajak; ?></td>
                                                 <td><?= $dt->stnk; ?></td>
-                                                <td><img src="<?= base_url('assets/upload/mobil/' . $dt->gambar_mobil); ?>" class="img-box" width="100" height="100" alt="<?= $dt->nopol; ?>"></td>
-                                                <td><a href="<?= base_url('admin/update_data_mobil/' . $dt->id_mobil); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
-                                                    <a href="<?= base_url('admin/hapus_mobil/' . $dt->id_mobil); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
-                                                    <!-- <a href="<?= base_url('admin/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
+                                                <td><img src="<?= site_url('assets/upload/mobil/' . $dt->gambar_mobil); ?>" class="img-box" width="100" height="100" alt="<?= $dt->nopol; ?>"></td>
+                                                <td><a href="<?= site_url('admin/update_data_mobil/' . $dt->id_mobil); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
+                                                    <a href="<?= site_url('admin/hapus_mobil/' . $dt->id_mobil); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
+                                                    <!-- <a href="<?= site_url('admin/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

@@ -12,7 +12,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item active">Perbaikan Genset</li>
                     </ol>
                 </div><!-- /.col -->
@@ -41,7 +41,7 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <button onclick="window.location.href='<?= base_url('admin/tambah_service_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
+                            <button onclick="window.location.href='<?= site_url('admin/tambah_service_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
 
                             <table id="tableserv" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
@@ -129,7 +129,7 @@
         "order": [],
         "ajax": {
             //panggil method ajax list dengan ajax
-            "url": '<?= base_url('admin/ajax_list_serv'); ?>',
+            "url": '<?= site_url('admin/ajax_list_serv'); ?>',
             "type": "POST"
         }
     });

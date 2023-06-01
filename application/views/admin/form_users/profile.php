@@ -12,7 +12,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item active">Profile</li>
                     </ol>
                 </div><!-- /.col -->
@@ -82,7 +82,7 @@
                             <div class="card-body">
                                 <div class="tab-content" id="custom-tabs-three-tabContent">
                                     <div class="tab-pane fade" id="picture" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
-                                        <form class="form-horizontal" action="<?= base_url('admin/proses_gambarupload'); ?>" method="post" enctype="multipart/form-data">
+                                        <form class="form-horizontal" action="<?= site_url('admin/proses_gambarupload'); ?>" method="post" enctype="multipart/form-data">
                                             <div class="form-group row">
                                                 <label for="userpicture" class="col-sm-2 control-label">Pilih File</label>
 
@@ -96,15 +96,14 @@
                                             <hr>
                                             <div class="form-group " align="center">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <a href="<?= base_url('admin'); ?>" type="button" class="btn btn-sm btn-default" onclick="" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</a>
+                                                    <button onclick="window.location.href='<?= site_url('admin'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                                 </div>
-                                                <!-- <a href="<?= base_url('admin/users'); ?>" type="button" class="btn btn-sm btn-secondary" onclick="" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</a> -->
                                             </div>
                                         </form>
                                     </div>
                                     <div class="tab-pane fade" id="backupdb" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
-                                        <button onclick="window.location.href='<?= base_url('admin/backup_db'); ?>'" class="btn btn-sm btn-primary"><i class="fa fa-database"></i>&nbsp;Backup DB</button>
+                                        <button onclick="window.location.href='<?= site_url('admin/backup_db'); ?>'" class="btn btn-sm btn-primary"><i class="fa fa-database"></i>&nbsp;Backup DB</button>
                                     </div>
 
                                     <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
@@ -120,7 +119,7 @@
                                                 <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
                                             </div>
                                         <?php } ?>
-                                        <form class="form-horizontal" action="<?= base_url('admin/proses_newpassword'); ?>" method="post">
+                                        <form class="form-horizontal" action="<?= site_url('admin/proses_newpassword'); ?>" method="post">
                                             <div class="form-group row">
                                                 <label for="username" class="col-sm-2 control-label">Username</label>
                                                 <div class="col-sm-10">
@@ -148,12 +147,11 @@
                                             <hr>
                                             <div class="form-group" align="center">
                                                 <div class=" col-sm-10">
-                                                    <button onclick="window.location.href='<?= base_url('admin'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                                    <button onclick="window.location.href='<?= site_url('admin'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                                 </div>
                                             </div>
                                         </form>
-                                        <!-- <a href="<?= base_url('admin/users'); ?>" type="button" class="btn btn-sm btn-secondary" onclick="" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</a> -->
                                     </div>
                                 </div>
 

@@ -12,7 +12,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item active">Genset</li>
                     </ol>
                 </div><!-- /.col -->
@@ -41,7 +41,7 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <button onclick="window.location.href='<?= base_url('admin/tambah_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
+                            <button onclick="window.location.href='<?= site_url('admin/tambah_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
@@ -71,9 +71,9 @@
                                                 <td><?= $d->stok_gd; ?></td>
                                                 <td><?= $d->stok_pj; ?></td>
                                                 <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" class="img img-box" width="100" height="100" alt="<?= $d->kode_genset; ?>"></td>
-                                                <td><a href="<?= base_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
-                                                    <a href="<?= base_url('admin/hapus_data/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
-                                                    <!-- <a href="<?= base_url('admin/update_data_service_genset/' . $d->kode_genset); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
+                                                <td><a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
+                                                    <a href="<?= site_url('admin/hapus_data/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
+                                                    <!-- <a href="<?= site_url('admin/update_data_service_genset/' . $d->kode_genset); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

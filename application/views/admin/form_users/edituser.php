@@ -12,8 +12,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin/users'); ?>">User</a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin/users'); ?>">User</a></li>
                         <li class="breadcrumb-item active">Edit Data </li>
                     </ol>
                 </div><!-- /.col -->
@@ -34,7 +34,7 @@
                             Edit Data User
                         </div>
                         <div class="card-body">
-                            <form action="<?= base_url('admin/proses_edituser'); ?>" method="post" role="form">
+                            <form action="<?= site_url('admin/proses_edituser'); ?>" method="post" role="form">
                                 <?php if ($this->session->flashdata('msg_sukses')) { ?>
                                     <div class="alert alert-success alert-dismissible">
                                         <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
@@ -78,7 +78,7 @@
                                 <?php } ?>
                                 <hr>
                                 <div class="form-group" align="center">
-                                    <button onclick="window.location.href='<?= base_url('admin/users'); ?>'" type="button" class="btn btn-sm btn-default" onclick="" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                    <button onclick="window.location.href='<?= site_url('admin/users'); ?>'" type="button" class="btn btn-sm btn-default" onclick="" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                 </div>
                             </form>
