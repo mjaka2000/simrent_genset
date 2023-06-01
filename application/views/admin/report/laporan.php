@@ -12,7 +12,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item active">Report</li>
                     </ol>
                 </div><!-- /.col -->
@@ -39,7 +39,7 @@
                         <div class="card-body">
                             <table id="reporttable" class="table table-bordered" style="width:100%">
                                 <tr>
-                                    <form action="<?= base_url(); ?>admin/#" method="post" role="form" target="_blank">
+                                    <form action="<?= site_url(); ?>admin/#" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle">Laporan #</th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
@@ -61,7 +61,7 @@
                                     </form>
                                 </tr>
                                 <tr>
-                                    <form action="<?= base_url(); ?>admin/#" method="post" role="form" target="_blank">
+                                    <form action="<?= site_url(); ?>admin/#" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle">Laporan #</th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
