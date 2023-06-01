@@ -9,7 +9,13 @@ Pimpinan : {Commit Message}
 Teknisi : {Commit Message}
 etc.
 
+Sematic Versioning {Major.Minor.Patch}:
+    -Major Rilis: Angka yang paling kiri, dimana nilainya +1 jika update yang dilakukan bisa merusak atau tidak cocok dengan versi major sebelumnya.
+    -Minor Rilis: Angka yang tengah-tengah. Digunakan jika ada update atau fitur baru yang tidak berpengaruh terhadap flow software secara besar.
+    -Patches or bug fixes: Angka yang paling kiri, digunakan untuk mencatat jika ada bug fix atau patch baru.
 
+Gunakanlah fungsi site_url() saat Membuat link ke halaman tertentu, Melakukan redirect ke halaman tetentu, Membuat URL action pada form.
+Gunakanlah base_url() Saat membuat link/URL untuk CSS dan Javascript. biasanya sering dipakai untuk membuat URL atau link file statis seperti gambar, CSS, javascript, Video, dan file yang diupload.
 =========================================================================================================================================
 // $("#spare_part").show(function() {
     //     let spare_part = $(this).val();
