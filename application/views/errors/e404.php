@@ -23,15 +23,11 @@
 </div>
 
 <!-- jQuery 3 -->
-<script src="<?= base_url(); ?>assets/admin2/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="<?= base_url(); ?>assets/admin2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="<?= base_url(); ?>assets/admin2/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="<?= base_url(); ?>assets/admin2/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="<?= base_url(); ?>assets/admin32/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?= base_url(); ?>assets/admin32/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?= base_url(); ?>assets/admin2/dist/js/adminlte.min.js"></script>
+<script src="<?= base_url(); ?>assets/admin32/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 </body>
 
