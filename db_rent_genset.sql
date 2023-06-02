@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Jun 2023 pada 13.03
+-- Waktu pembuatan: 02 Jun 2023 pada 16.43
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -219,10 +219,9 @@ INSERT INTO `tb_sparepart` (`id_sparepart`, `nama_sparepart`, `tanggal_beli`, `t
 --
 
 CREATE TABLE `tb_unit_keluar` (
-  `id` int(11) NOT NULL,
+  `id_u_keluar` int(11) NOT NULL,
   `id_transaksi` varchar(20) NOT NULL,
   `tanggal_keluar` date NOT NULL,
-  `tanggal_masuk` date NOT NULL,
   `id_operator` int(11) NOT NULL,
   `id_pelanggan` int(11) NOT NULL,
   `id_genset` int(11) NOT NULL,
@@ -274,7 +273,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '01-06-2023 18:40'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '02-06-2023 22:14'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
 
@@ -336,7 +335,7 @@ ALTER TABLE `tb_sparepart`
 -- Indeks untuk tabel `tb_unit_keluar`
 --
 ALTER TABLE `tb_unit_keluar`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_u_keluar`),
   ADD KEY `id_operator` (`id_operator`,`id_pelanggan`,`id_genset`,`id_mobil`),
   ADD KEY `id_mobil` (`id_mobil`),
   ADD KEY `id_pelanggan` (`id_pelanggan`),
@@ -411,7 +410,7 @@ ALTER TABLE `tb_sparepart`
 -- AUTO_INCREMENT untuk tabel `tb_unit_keluar`
 --
 ALTER TABLE `tb_unit_keluar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_u_keluar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_unit_masuk`
