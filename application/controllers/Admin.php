@@ -851,7 +851,7 @@ class Admin extends CI_Controller
 	}
 
 	####################################
-	// End Data Mobil 
+	//* End Data Mobil 
 	####################################
 
 	####################################
@@ -949,7 +949,7 @@ class Admin extends CI_Controller
 	}
 
 	####################################
-	// End Data Operator 
+	//* End Data Operator 
 	####################################
 
 	####################################
@@ -1130,19 +1130,19 @@ class Admin extends CI_Controller
 	}
 
 	####################################
-	// End Data Pelanggan 
+	//* End Data Pelanggan 
 	####################################
 
 	####################################
-	//* Data Barang Keluar 
+	//* Data Unit Keluar 
 	####################################
 
-	public function tabel_barang_keluar()
+	public function tabel_unit_keluar()
 	{
-		$data['list_data'] = $this->M_admin->select('tb_barang_keluar');
-		$data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'));
+		$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Data Genset Keluar';
-		$this->load->view('admin/form_barang_keluar/tabel_barang_keluar', $data);
+		$this->load->view('admin/form_unit_keluar/tabel_unit_keluar', $data);
 	}
 	public function detail_barang_keluar($id_transaksi)
 	{
@@ -1365,7 +1365,7 @@ class Admin extends CI_Controller
 	}
 
 	####################################
-	// End Data Barang Keluar
+	//* End Data Unit Keluar
 	####################################
 
 	####################################

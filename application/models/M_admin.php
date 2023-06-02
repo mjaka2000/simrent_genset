@@ -4,7 +4,7 @@ class M_admin extends CI_Model
 {
 
   ####################################
-  // CRUD
+  //* CRUD
   ####################################
 
   public function insert($tabel, $data)
@@ -247,5 +247,26 @@ class M_admin extends CI_Model
   }
   ####################################
   //* End Data Perbaikan Genset 
+  ####################################
+
+  ####################################
+  //* Data Unit Keluar 
+  ####################################
+
+  public function get_data_u_keluar($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->get();
+    return $query->result();
+  }
+
+
+
+  ####################################
+  //* End Data Unit Keluar 
   ####################################
 }
