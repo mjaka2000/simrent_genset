@@ -53,6 +53,7 @@ Gunakanlah base_url() Saat membuat link/URL untuk CSS dan Javascript. biasanya s
     //         }
     //     <?php } ?>
     // })
+=========================================================================================================================================
 
     <tbody>
                                     <?php
@@ -76,3 +77,11 @@ Gunakanlah base_url() Saat membuat link/URL untuk CSS dan Javascript. biasanya s
                                         <?php endforeach; ?>
                                     <?php } ?>
                                 </tbody>
+=========================================================================================================================================
+
+<!-- <?php if ($dt->status_ajuan == 1) { ?>
+                                                    <td><a href="<?= base_url('admin/update_baru/' . $dt->id_transaksi); ?>" type="button" class="btn btn-xs btn-danger btn-barangbaru" name="btn_aju"><i class="fa fa-sign-in mr-2"></i>Belum Disetujui</a></td>
+                                                <?php } else { ?>
+                                                    <td><a href="#" type="button" class="btn btn-xs btn-success btn-barangbaru" name="btn_aju"><i class="fa fa-check mr-2"></i>Disetujui</a></td>
+                                                <?php } ?> -->
+=========================================================================================================================================
