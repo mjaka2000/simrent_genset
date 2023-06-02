@@ -23,13 +23,14 @@
 
   <!-- Main content -->
   <section class="content">
-    <div id="loading">
+    <div id="loading" class="tengah">
       <img src="<?= site_url(); ?>assets/style/loading.gif" alt="loading" width="50%">
     </div>
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
       <h2 align="center">Selamat Datang, <strong><?= $this->session->userdata('name') ?></strong> sebagai Administrator!</h2>
       <div class="row">
+
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-info">
@@ -122,12 +123,29 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
+              <?php if (!empty($stokBarangKeluar)) { ?>
+                <h3><?= $stokBarangKeluar ?></h3>
+              <?php } else { ?>
+                <h3>0</h3>
+              <?php } ?>
+              <p>Data Unit Keluar (Pinjam)</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-upload"></i>
+            </div>
+            <a href="<?= site_url('admin/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
               <?php if (!empty($stokBarangMasuk)) { ?>
                 <h3><?= $stokBarangMasuk ?></h3>
               <?php } else { ?>
                 <h3>0</h3>
               <?php } ?>
-              <p>Data Unit Masuk</p>
+              <p>Data Unit Masuk (Kembali)</p>
             </div>
             <div class="icon">
               <i class="fa fa-download"></i>
@@ -137,23 +155,7 @@
         </div>
 
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <?php if (!empty($stokBarangKeluar)) { ?>
-                <h3><?= $stokBarangKeluar ?></h3>
-              <?php } else { ?>
-                <h3>0</h3>
-              <?php } ?>
-              <p>Data Unit Keluar</p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-upload"></i>
-            </div>
-            <a href="<?= site_url('admin/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
+
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-info">

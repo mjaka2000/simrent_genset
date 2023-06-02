@@ -23,7 +23,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <div id="loading">
+        <div id="loading" class="tengah">
             <img src="<?= base_url(); ?>assets/style/loading.gif" alt="loading" width="50%">
         </div>
         <div class="container-fluid">

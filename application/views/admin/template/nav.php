@@ -22,13 +22,13 @@
 
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown" data-toggle="dropdown">
                 <?php foreach ($avatar as $a) { ?>
                     <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="user-image" alt="User Image">
                 <?php } ?>
                 <span class="hidden-xs" style="color: white;"><?= $this->session->userdata('name') ?></span>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu ">
                 <!-- User image -->
                 <li class="user-header">
                     <?php foreach ($avatar as $a) { ?>
@@ -36,7 +36,7 @@
                     <?php } ?>
 
                     <p>
-                        <strong><?= $this->session->userdata('name') ?></strong> as Administrator <br>
+                        <strong><?= $this->session->userdata('name') ?></strong> - Administrator <br>
                         <small>Last Login : <?= $this->session->userdata('last_login') ?></small><br>
                     </p>
                 </li>

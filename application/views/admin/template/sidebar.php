@@ -1,5 +1,5 @@
 <!--  -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4" style="position:fixed ;">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 " style="position:fixed ;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <img src="<?= base_url(); ?>assets/style/logo/ws-w.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -20,7 +20,7 @@
             </div>
         </div>
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
+        <nav class="mt-2 text-sm">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -93,13 +93,13 @@
                         <li class="nav-item">
                             <a href="<?= site_url(); ?>admin/tabel_unit_keluar" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Data Unit Keluar</p>
+                                <p>Data Unit Keluar (Pinjam)</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?= site_url(); ?>admin/tabel_unit_masuk" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Data Unit Masuk</p>
+                                <p>Data Unit Masuk (Kembali)</p>
                             </a>
                         </li>
                     </ul>
