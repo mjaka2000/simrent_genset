@@ -76,13 +76,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="spare_part" class="form-label">Spare Part (Diganti)</label>&nbsp;<!--<span style="color: red;"><small>*Jika tidak ada yang diganti abaikan</small></span>-->
-                                        <input type="hidden" name="stok" id="stok_input" value="">
-                                        <p><small>*Sisa Stok&nbsp;<span style="color: red;" id="stk"></span></small></p>
-                                        <select name="id_sparepart" class="form-control" id="spare_part">
+                                        <!-- <input type="hidden" name="stok" id="stok_input" value=""> -->
+                                        <!-- <p><small>*Sisa Stok&nbsp;<span style="color: red;" id="stk"></span></small></p> -->
+                                        <select name="id_sparepart" class="form-control" id="spare_part" readonly>
                                             <option value="">-- Pilih Sparepart --</option>
                                             <?php foreach ($list_sparepart as $s) { ?>
                                                 <?php if ($ld->id_sparepart == $s->id_sparepart) { ?>
-                                                    <option value="<?= $s->id_sparepart; ?>" selected><?= $s->nama_sparepart; ?></option>
+                                                    <option value="<?= $ld->id_sparepart; ?>" selected><?= $s->nama_sparepart; ?></option>
                                                 <?php } else { ?>
                                                     <option value="<?= $s->id_sparepart; ?>"><?= $s->nama_sparepart; ?></option>
                                                 <?php } ?>
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="tgl_perbaikan" class="form-label">Tanggal Perbaikan</label>
-                                        <input type="text" required name="tgl_perbaikan" class="form_datetime form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" value="<?= $ld->tgl_perbaikan; ?>">
+                                        <input type="date" required name="tgl_perbaikan" class="form_datetime form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" value="<?= $ld->tgl_perbaikan; ?>">
                                     </div>
 
                                     <div class="form-group">
@@ -138,29 +138,29 @@
 <?php $this->load->view('admin/template/script') ?>
 <script type="text/javascript">
     //*Script untuk memuat stok
-    $("#spare_part").change(function() {
-        let spare_part = $(this).val();
-        let stk = document.getElementById("stk");
+    // $("#spare_part").change(function() {
+    //     let spare_part = $(this).val();
+    //     let stk = document.getElementById("stk");
 
-        <?php foreach ($list_sparepart as $ls) { ?>
-            if (spare_part == "<?= $ls->id_sparepart ?>") {
-                var text = document.createTextNode("<?= $ls->stok; ?>");
+    //     <?php foreach ($list_sparepart as $ls) { ?>
+    //         if (spare_part == "<?= $ls->id_sparepart ?>") {
+    //             var text = document.createTextNode("<?= $ls->stok; ?>");
 
-                $("#stok_input").val("<?= $ls->stok; ?>");
-                if (stk.innerHTML = "<?= $ls->stok < 1; ?>") {
-                    Swal.fire(
-                        'Error!',
-                        'Maaf, Stok Sparepart Tidak Cukup, lakukan pembelian untuk menambah stok.',
-                        'error'
-                    ).then(result => {
-                        window.location.href = "<?= site_url('admin/tabel_sparepart'); ?>"
-                    })
-                } else {
-                    stk.innerHTML = "<?= $ls->stok; ?>";
-                }
-            }
-        <?php } ?>
-    })
+    //             $("#stok_input").val("<?= $ls->stok; ?>");
+    //             if (stk.innerHTML = "<?= $ls->stok < 1; ?>") {
+    //                 Swal.fire(
+    //                     'Error!',
+    //                     'Maaf, Stok Sparepart Tidak Cukup, lakukan pembelian untuk menambah stok.',
+    //                     'error'
+    //                 ).then(result => {
+    //                     window.location.href = "<?= site_url('admin/tabel_sparepart'); ?>"
+    //                 })
+    //             } else {
+    //                 stk.innerHTML = "<?= $ls->stok; ?>";
+    //             }
+    //         }
+    //     <?php } ?>
+    // })
 </script>
 <script type="text/javascript">
     // 

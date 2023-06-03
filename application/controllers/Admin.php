@@ -557,9 +557,9 @@ class Admin extends CI_Controller
 				'ket_perbaikan' => $ket_perbaikan,
 				'biaya_perbaikan' => $biaya_perbaikan,
 			);
-			$stok_new = --$stok;
+			// $stok_new = --$stok;
 
-			$this->M_admin->mengurangi_stok('tb_sparepart', $spare_part, $stok_new);
+			// $this->M_admin->mengurangi_stok('tb_sparepart', $spare_part, $stok_new);
 			$this->M_admin->update('tb_serv_genset', $data, $where);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Di Update');
 			redirect(site_url('admin/tabel_service_genset'));
