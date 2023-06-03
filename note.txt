@@ -85,3 +85,12 @@ Gunakanlah base_url() Saat membuat link/URL untuk CSS dan Javascript. biasanya s
                                                     <td><a href="#" type="button" class="btn btn-xs btn-success btn-barangbaru" name="btn_aju"><i class="fa fa-check mr-2"></i>Disetujui</a></td>
                                                 <?php } ?> -->
 =========================================================================================================================================
+=========================================================================================================================================
+<span>
+                                        <!-- Rounded switch -->
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </span>
+=========================================================================================================================================
