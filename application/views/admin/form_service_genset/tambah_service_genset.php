@@ -69,10 +69,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="spare_part" class="form-label">Spare Part (Diganti)</label>&nbsp;<!--<span style="color: red;"><small>*Jika tidak ada yang diganti abaikan</small></span>-->
+                                    <span>
+                                        <!-- Rounded switch -->
+                                        <!-- <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label> -->
+                                    </span>
                                     <input type="hidden" name="stok" id="stok_input" value="">
                                     <p><small>*Sisa Stok&nbsp;<span style="color: red;" id="stk"></small></span></p>
                                     <!-- <input type="text" name="spare_part" class="form-control" id="spare_part" placeholder="Filter Oli, Filter Solar dll"> -->
-                                    <select name="id_sparepart" class="form-control" id="spare_part">
+                                    <select name="id_sparepart" class="form-control" id="spare_part" required>
                                         <option value="" selected>-- Pilih Sparepart --</option>
                                         <?php foreach ($list_sparepart as $s) { ?>
                                             <option value="<?= $s->id_sparepart; ?>"><?= $s->nama_sparepart; ?></option>
