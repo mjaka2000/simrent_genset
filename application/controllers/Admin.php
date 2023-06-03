@@ -476,6 +476,7 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('id_genset', 'Kode Genset', 'trim|required');
 		// $this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
 		$this->form_validation->set_rules('jenis_perbaikan', 'Jenis Perbaikan', 'trim|required');
+		$this->form_validation->set_rules('id_sparepart', 'Nama Sparepart', 'trim|required');
 		$this->form_validation->set_rules('tgl_perbaikan', 'Tanggal Perbaikan', 'trim|required');
 		$this->form_validation->set_rules('ket_perbaikan', 'Keterangan Perbaikan', 'trim|required');
 		$this->form_validation->set_rules('biaya_perbaikan', 'Biaya Perbaikan', 'trim|required');
