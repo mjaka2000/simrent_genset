@@ -15,24 +15,18 @@
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li> -->
-
-    </ul>
-    <ul class="nav navbar-nav">
-        <!-- Messages: style can be found in dropdown.less-->
-
-        <!-- User Account: style can be found in dropdown.less -->
-        <li class="dropdown user user-menu">
-            <a href="#" class="dropdown" data-toggle="dropdown">
+        <li class="nav-item dropdown user-menu">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                 <?php foreach ($avatar as $a) { ?>
-                    <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="user-image" alt="User Image">
+                    <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="user-image img-circle elevation-2" alt="User Image">
                 <?php } ?>
                 <span class="hidden-xs" style="color: white;"><?= $this->session->userdata('name') ?></span>
             </a>
-            <ul class="dropdown-menu ">
+            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
                 <li class="user-header">
                     <?php foreach ($avatar as $a) { ?>
-                        <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="profile-user-img img-responsive img-circle" alt="User Image">
+                        <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="img-circle elevation-2" alt="User Image">
                     <?php } ?>
 
                     <p>
@@ -54,6 +48,5 @@
             </ul>
         </li>
     </ul>
-    <!-- <div class="navbar-custom-menu">
-    </div> -->
+
 </nav>

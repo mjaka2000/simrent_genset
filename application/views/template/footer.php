@@ -1,6 +1,6 @@
 <footer class="main-footer">
 
-    <div class="float-sm-left- d-none d-sm-inline">
+    <div class="float-left d-none d-sm-block">
 
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-sm btn-link" data-toggle="modal" data-target="#staticBackdrop">

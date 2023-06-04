@@ -36,7 +36,7 @@
                             <div class="info">
                                 <?php foreach ($avatar as $a) { ?>
                                     <div class="image">
-                                        <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="profile-user-img img-responsive img-circle" alt="User Image">
+                                        <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="profile-user-img img-fluid img-circle" alt="User Image">
                                     <?php } ?>
                                     </div>
                                     <strong><?= $this->session->userdata('name') ?></strong> sebagai Administrator
