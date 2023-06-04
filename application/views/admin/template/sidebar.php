@@ -84,7 +84,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Data Sewa
+                            Menu Data Transaksi
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>

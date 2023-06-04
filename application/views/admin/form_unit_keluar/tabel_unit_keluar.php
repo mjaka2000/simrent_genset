@@ -80,13 +80,13 @@
                                                 <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
 
                                                 <?php if ($dt->status == 1) { ?>
-                                                    <td><a href="<?= site_url('admin/barang_keluar/' . $dt->id_transaksi); ?>" type="button" class="btn btn-xs btn-warning btn-barangkeluar" name="btn_barangkeluar"><i class="fa fa-sign-in mr-2"></i>Genset Masuk</a></td>
+                                                    <td><a href="<?= site_url('admin/unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs btn-warning btn-barangkeluar" name="btn_barangkeluar"><i class="fa fa-sign-in mr-2"></i>Genset Masuk</a></td>
                                                 <?php } else { ?>
                                                     <td>Genset Masuk (Kembali)</td>
                                                 <?php } ?>
-                                                <td><a href="<?= site_url('admin/update_keluar/' . $dt->id_transaksi); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
-                                                    <a href="<?= site_url('admin/hapus_data_keluar/' . $dt->id_transaksi); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
-                                                    <a href="<?= site_url('admin/detail_barang_keluar/' . $dt->id_transaksi); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a>
+                                                <td><a href="<?= site_url('admin/update_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
+                                                    <a href="<?= site_url('admin/hapus_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
+                                                    <a href="<?= site_url('admin/detail_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a>
 
                                                 </td>
                                             </tr>

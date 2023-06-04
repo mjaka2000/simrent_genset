@@ -4,46 +4,53 @@
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>Tambah Data Genset Keluar</h1>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?= base_url('admin/tabel_barang_keluar'); ?>"> Data Genset Keluar</a></li>
-            <li class="breadcrumb-item active">Tambah Data Genset Keluar</li>
-        </ol>
-        <!-- /.container-fluid -->
-    </section>
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Data Unit Keluar</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin/tabel_unit_keluar'); ?>">Unit Keluar</a></li>
+                        <li class="breadcrumb-item active">Tambah Data </li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
     <!-- Main content -->
     <section class="content">
-        <div id="loading">
-            <img src="<?= base_url(); ?>assets/style/loading.gif" alt="loading" width="50%">
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="container">
-                    <div class="box box-primary" style="width:50%;margin:auto">
-                        <div class="box-header">
-                            <h3 class="box-title"><i class="nav-icon fa fa-plus-circle mr-2"></i>Tambah Data Genset Keluar</h3>
+
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row tengah">
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header"><i class="fas fa-plus"></i>
+                            Tambah Data Unit Keluar
                         </div>
-                        <div class="box-body">
+                        <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
                                 <div class="alert alert-success alert-dismissable">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
                             <?php if (validation_errors()) { ?>
                                 <div class="alert alert-warning alert-dismissable">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <strong>Perhatian!</strong><br> <?php echo validation_errors(); ?>
+                                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                                    <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
                                 </div>
                             <?php } ?>
 
                             <form action="<?= base_url('admin/proses_tambah_genset_keluar'); ?>" method="post" role="form">
 
                                 <div class="form-group row">
-                                    <label for="id_transaksi" class="col-sm-3 col-form-label">ID Transaksi</label>
+                                    <label for="id_transaksi" class="col-sm-3 col-form-label">ID</label>
                                     <div class="col-sm-6">
                                         <input type="text" name="id_transaksi" class="form-control" readonly value="GE-<?= date("M"); ?><?= random_string('numeric', 4); ?>">
                                     </div>
@@ -51,8 +58,7 @@
                                 <div class="form-group row">
                                     <label for="tanggal_keluar" class="col-sm-3 col-form-label">Tanggal Keluar</label>
                                     <div class="col-sm-6">
-
-                                        <input type="text" name="tanggal_keluar" class="form-control form_datetime" id="tanggal_keluar" required placeholder="Tanggal Keluar">
+                                        <input type="date" name="tanggal_keluar" class="form-control form_datetime" id="tanggal_keluar" required placeholder="Tanggal Keluar">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -65,11 +71,10 @@
                                 <div class="form-group row">
                                     <label for="nama_operator" class="col-sm-3 col-form-label">Nama Operator</label>
                                     <div class="col-sm-6">
-
                                         <select name="nama_operator" class="form-control" id="nama_operator" required>
-                                            <option value="">-- Pilih --</option>
+                                            <option value="">-- Pilih Operator --</option>
                                             <?php foreach ($list_operator as $op) { ?>
-                                                <option value="<?= $op->nama ?>"><?= $op->nama ?></option>
+                                                <option value="<?= $op->id_operator ?>"><?= $op->nama_op ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -79,9 +84,9 @@
                                     <div class="col-sm-6">
 
                                         <select name="nama_pelanggan" class="form-control" id="nama_operator" required>
-                                            <option value="">-- Pilih --</option>
+                                            <option value="">-- Pilih Nama Pelanggan--</option>
                                             <?php foreach ($list_pelanggan as $p) { ?>
-                                                <option value="<?= $p->nama ?>"><?= $p->nama ?></option>
+                                                <option value="<?= $p->id_pelanggan ?>"><?= $p->nama_plg ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -95,9 +100,9 @@
                                     <div class="col-sm-6">
 
                                         <select name="kode_genset" class="form-control" id="kode_genset" required>
-                                            <option value="">-- Pilih --</option>
+                                            <option value="">-- Pilih Genset--</option>
                                             <?php foreach ($list_genset as $g) { ?>
-                                                <option value="<?= $g->kode_genset ?>"><?= $g->kode_genset ?></option>
+                                                <option value="<?= $g->id_genset ?>"><?= $g->kode_genset ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -118,8 +123,10 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="harga" class="col-sm-3 col-form-label">Harga (Perhari)</label>
-                                    <div class="col-sm-6">
-
+                                    <div class="input-group col-sm-6">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp</span>
+                                        </div>
                                         <input type="text" readonly name="harga" class="form-control" id="harga_perhari">
                                     </div>
                                 </div>
@@ -129,7 +136,7 @@
                                     <div class="col-sm-6">
 
                                         <select name="nopol" id="nopol" class="form-control" required>
-                                            <option value="">-- Pilih --</option>
+                                            <option value="">-- Pilih Mobil--</option>
                                             <?php foreach ($list_mobil as $m) { ?>
                                                 <option value="<?= $m->nopol ?>"><?= $m->nopol ?></option>
                                             <?php } ?>
@@ -137,14 +144,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="tipe" class="col-sm-3 col-form-label">Tipe</label>
+                                    <label for="tipe" class="col-sm-3 col-form-label">Merk</label>
                                     <div class="col-sm-6">
 
-                                        <input type="text" readonly name="tipe" class="form-control" id="tipe">
+                                        <input type="text" readonly name="merk" class="form-control" id="merk">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="tambahan" class="col-sm-3 col-form-label">Tambahan</label>
+                                    <label for="tambahan" class="col-sm-3 col-form-label">Tambahan Alat</label>
                                     <div class="col-sm-6">
 
                                         <input type="text" name="tambahan" class="form-control" id="tambahan" placeholder="Box Panel, Kabel Roll, dll">
@@ -159,13 +166,16 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="total" class="col-sm-3 col-form-label">Tota Harga (Rp)</label>
-                                    <div class="col-sm-6">
-
+                                    <div class="input-group col-sm-6">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp</span>
+                                        </div>
                                         <input type="text" readonly name="total" class="form-control" id="total_harga" placeholder="Total Harga">
                                     </div>
                                 </div>
+                                <hr>
                                 <div class="box-footer" align="center">
-                                    <a href="<?= base_url('admin/tabel_barang_keluar'); ?>" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</a>
+                                    <button onclick="window.location.href='<?= base_url('admin/tabel_unit_keluar'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                     <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-eraser mr-2"></i>Reset</button>
                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                 </div>
@@ -174,9 +184,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
 </div>
 
 <?php $this->load->view('template/footer'); ?>

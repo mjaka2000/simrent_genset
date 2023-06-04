@@ -1154,15 +1154,15 @@ class Admin extends CI_Controller
 		$this->load->view('admin/form_barang_keluar/detail_keluar', $data);
 	}
 
-	public function tambah_genset_keluar()
+	public function tambah_unit_keluar()
 	{
 		$data['list_mobil'] = $this->M_admin->select('tb_mobil');
 		$data['list_genset'] = $this->M_admin->select('tb_genset');
 		$data['list_pelanggan'] = $this->M_admin->select('tb_pelanggan');
 		$data['list_operator'] = $this->M_admin->select('tb_operator');
-		$data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'));
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Tambah Genset Keluar';
-		$this->load->view('admin/form_barang_keluar/tambah_barang_keluar', $data);
+		$this->load->view('admin/form_unit_keluar/tambah_unit_keluar', $data);
 	}
 
 	public function proses_tambah_genset_keluar()
