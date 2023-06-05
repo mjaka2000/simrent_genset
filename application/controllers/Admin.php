@@ -24,7 +24,7 @@ class Admin extends CI_Controller
 		$data['dataStokSparepart'] = $this->M_admin->numrows('tb_sparepart');
 		$data['count'] = $this->M_admin->notif_stok('tb_sparepart');
 		$data['num'] = $this->M_admin->notif_stok_jml('tb_sparepart');
-		$data['avatar'] = $this->M_admin->get_avatar(' tb_avatar', $this->session->userdata('name'));
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Home';
 		$this->load->view('admin/index', $data);
 	}
@@ -76,7 +76,7 @@ class Admin extends CI_Controller
 	####################################
 	public function users()
 	{
-		$data['avatar'] = $this->M_admin->get_avatar(' tb_avatar', $this->session->userdata('name'));
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['user'] = $this->M_admin->select('tb_user');
 		$data['title'] = 'Users';
 		$this->load->view('admin/form_users/users', $data);
@@ -84,7 +84,7 @@ class Admin extends CI_Controller
 
 	public function tambah_users()
 	{
-		$data['avatar'] = $this->M_admin->get_avatar(' tb_avatar', $this->session->userdata('name'));
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Tambah User';
 		$this->load->view('admin/form_users/tambahuser', $data);
 	}
@@ -122,7 +122,7 @@ class Admin extends CI_Controller
 			$this->session->set_flashdata('msg_sukses', 'User Berhasil Ditambahkan');
 			redirect(site_url('admin/users'));
 		} else {
-			$data['avatar'] = $this->M_admin->get_avatar(' tb_avatar', $this->session->userdata('name'));
+			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 			$header['title'] = 'Tambah User';
 			$this->load->view('admin/form_users/tambahuser', $header);
 		}
@@ -142,7 +142,7 @@ class Admin extends CI_Controller
 
 	public function edit_user()
 	{
-		$data['avatar'] = $this->M_admin->get_avatar(' tb_avatar', $this->session->userdata('name'));
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$id = $this->uri->segment(3);
 		$where = array('id' => $id);
 		$data['list_data'] = $this->M_admin->get_data('tb_user', $where);
@@ -171,7 +171,7 @@ class Admin extends CI_Controller
 			$this->session->set_flashdata('msg_sukses', 'Data User Berhasil Diubah');
 			redirect(site_url('admin/users'));
 		} else {
-			$data['avatar'] = $this->M_admin->get_avatar(' tb_avatar', $this->session->userdata('name'));
+			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 			$data['title'] = 'Edit User';
 			$this->load->view('admin/form_users/edituser', $data);
 		}
@@ -179,7 +179,6 @@ class Admin extends CI_Controller
 	####################################
 	//* End Users
 	####################################
-
 	####################################
 	//* Profile
 	####################################
@@ -259,7 +258,6 @@ class Admin extends CI_Controller
 	####################################
 	//* End Profile
 	####################################
-
 	####################################
 	//* Data Genset
 	####################################
@@ -416,7 +414,6 @@ class Admin extends CI_Controller
 	####################################
 	//* End Data Genset 
 	####################################
-
 	####################################
 	//* Data Perbaikan Genset 
 	####################################
@@ -582,7 +579,6 @@ class Admin extends CI_Controller
 	####################################
 	//* End Data Perbaikan Genset 
 	####################################
-
 	####################################
 	//* Data Sparepart 
 	####################################
@@ -691,7 +687,6 @@ class Admin extends CI_Controller
 	####################################
 	//* End Data Sparepart 
 	####################################
-
 	####################################
 	//* Data Mobil 
 	####################################
@@ -854,7 +849,6 @@ class Admin extends CI_Controller
 	####################################
 	//* End Data Mobil 
 	####################################
-
 	####################################
 	//* Data Operator 
 	####################################
@@ -952,7 +946,6 @@ class Admin extends CI_Controller
 	####################################
 	//* End Data Operator 
 	####################################
-
 	####################################
 	//* Data Pelanggan 
 	####################################
@@ -1133,7 +1126,6 @@ class Admin extends CI_Controller
 	####################################
 	//* End Data Pelanggan 
 	####################################
-
 	####################################
 	//* Data Unit Keluar 
 	####################################
@@ -1367,9 +1359,8 @@ class Admin extends CI_Controller
 	####################################
 	//* End Data Unit Keluar
 	####################################
-
 	####################################
-	// Data Barang Masuk
+	//* Data Unit Masuk
 	####################################
 
 	public function tabel_barang_masuk()
@@ -1578,11 +1569,10 @@ class Admin extends CI_Controller
 	}
 
 	####################################
-	// End Data Barang Masuk
+	//* End Data Unit Masuk
 	####################################
-
 	####################################
-	// Laporan
+	//* Laporan
 	####################################
 
 	public function laporan()
@@ -1593,6 +1583,6 @@ class Admin extends CI_Controller
 	}
 
 	####################################
-	// End Laporan
+	//* End Laporan
 	####################################
 }
