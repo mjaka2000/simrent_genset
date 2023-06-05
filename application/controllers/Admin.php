@@ -1142,7 +1142,7 @@ class Admin extends CI_Controller
 	{
 		$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-		$data['title'] = 'Data Genset Keluar';
+		$data['title'] = 'Data Unit Keluar';
 		$this->load->view('admin/form_unit_keluar/tabel_unit_keluar', $data);
 	}
 	public function detail_barang_keluar($id_transaksi)
@@ -1161,7 +1161,7 @@ class Admin extends CI_Controller
 		$data['list_pelanggan'] = $this->M_admin->select('tb_pelanggan');
 		$data['list_operator'] = $this->M_admin->select('tb_operator');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-		$data['title'] = 'Tambah Genset Keluar';
+		$data['title'] = 'Tambah Unit Keluar';
 		$this->load->view('admin/form_unit_keluar/tambah_unit_keluar', $data);
 	}
 
@@ -1221,7 +1221,7 @@ class Admin extends CI_Controller
 			$data['list_pelanggan'] = $this->M_admin->select('tb_pelanggan');
 			$data['list_operator'] = $this->M_admin->select('tb_operator');
 			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-			$data['title'] = 'Tambah Genset Keluar';
+			$data['title'] = 'Tambah Unit Keluar';
 			$this->load->view('admin/form_unit_keluar/tambah_unit_keluar', $data);
 		}
 	}
