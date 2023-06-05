@@ -47,31 +47,31 @@ class M_admin extends CI_Model
 
 
 
-  public function mengurangi($tabel, $kode_genset, $stok_gd_new)
+  public function mengurangi($tabel, $id_genset, $stok_gd_new)
   {
     $this->db->set("stok_gd", $stok_gd_new);
-    $this->db->where('kode_genset', $kode_genset);
+    $this->db->where('id_genset', $id_genset);
     $this->db->update($tabel);
   }
 
-  public function mengurangi_kembali($tabel, $kode_genset, $stok_pj_new)
+  public function mengurangi_kembali($tabel, $id_genset, $stok_pj_new)
   {
     $this->db->set("stok_pj", $stok_pj_new);
-    $this->db->where('kode_genset', $kode_genset);
+    $this->db->where('id_genset', $id_genset);
     $this->db->update($tabel);
   }
 
-  public function menambah($tabel, $kode_genset, $stok_pj_new)
+  public function menambah($tabel, $id_genset, $stok_pj_new)
   {
     $this->db->set("stok_pj", $stok_pj_new);
-    $this->db->where('kode_genset', $kode_genset);
+    $this->db->where('id_genset', $id_genset);
     $this->db->update($tabel);
   }
 
-  public function menambah_kembali($tabel, $kode_genset, $stok_gd_new)
+  public function menambah_kembali($tabel, $id_genset, $stok_gd_new)
   {
     $this->db->set("stok_gd", $stok_gd_new);
-    $this->db->where('kode_genset', $kode_genset);
+    $this->db->where('id_genset', $id_genset);
     $this->db->update($tabel);
   }
 
@@ -260,6 +260,7 @@ class M_admin extends CI_Model
       ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
       ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
       ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
       ->get();
     return $query->result();
   }

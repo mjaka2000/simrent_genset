@@ -47,7 +47,7 @@
                                 </div>
                             <?php } ?>
 
-                            <form action="<?= base_url('admin/proses_tambah_genset_keluar'); ?>" method="post" role="form">
+                            <form action="<?= site_url('admin/proses_tambah_unit_keluar'); ?>" method="post" role="form">
 
                                 <div class="form-group row">
                                     <label for="id_transaksi" class="col-sm-3 col-form-label">ID</label>
@@ -71,7 +71,7 @@
                                 <div class="form-group row">
                                     <label for="nama_operator" class="col-sm-3 col-form-label">Nama Operator</label>
                                     <div class="col-sm-6">
-                                        <select name="nama_operator" class="form-control" id="nama_operator" required>
+                                        <select name="id_operator" class="form-control" id="nama_operator" required>
                                             <option value="">-- Pilih Operator --</option>
                                             <?php foreach ($list_operator as $op) { ?>
                                                 <option value="<?= $op->id_operator ?>"><?= $op->nama_op ?></option>
@@ -83,7 +83,7 @@
                                     <label for="nama_pelanggan" class="col-sm-3 col-form-label">Nama Pelanggan</label>
                                     <div class="col-sm-6">
 
-                                        <select name="nama_pelanggan" class="form-control" id="nama_operator" required>
+                                        <select name="id_pelanggan" class="form-control" id="nama_operator" required>
                                             <option value="">-- Pilih Nama Pelanggan--</option>
                                             <?php foreach ($list_pelanggan as $p) { ?>
                                                 <option value="<?= $p->id_pelanggan ?>"><?= $p->nama_plg ?></option>
@@ -99,7 +99,7 @@
                                     <input type="hidden" name="stok_pj" id="stok_pj_input" value="">
                                     <div class="col-sm-6">
 
-                                        <select name="kode_genset" class="form-control" id="kode_genset" required>
+                                        <select name="id_genset" class="form-control" id="kode_genset" required>
                                             <option value="">-- Pilih Genset--</option>
                                             <?php foreach ($list_genset as $g) { ?>
                                                 <option value="<?= $g->id_genset ?>"><?= $g->kode_genset ?></option>
@@ -135,10 +135,10 @@
                                     <label for="nopol_mobil" class="col-sm-3 col-form-label">Nopol Mobil</label>
                                     <div class="col-sm-6">
 
-                                        <select name="nopol" id="nopol" class="form-control" required>
+                                        <select name="id_mobil" id="nopol" class="form-control" required>
                                             <option value="">-- Pilih Mobil--</option>
                                             <?php foreach ($list_mobil as $m) { ?>
-                                                <option value="<?= $m->nopol ?>"><?= $m->nopol ?></option>
+                                                <option value="<?= $m->id_mobil ?>"><?= $m->nopol ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -147,7 +147,7 @@
                                     <label for="tipe" class="col-sm-3 col-form-label">Merk</label>
                                     <div class="col-sm-6">
 
-                                        <input type="text" readonly name="merk" class="form-control" id="merk">
+                                        <input type="text" readonly name="merk" class="form-control" id="merek">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -175,7 +175,7 @@
                                 </div>
                                 <hr>
                                 <div class="box-footer" align="center">
-                                    <button onclick="window.location.href='<?= base_url('admin/tabel_unit_keluar'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                    <button onclick="window.location.href='<?= site_url('admin/tabel_unit_keluar'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                     <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-eraser mr-2"></i>Reset</button>
                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                 </div>
@@ -198,7 +198,7 @@
         let stok_gd = document.getElementById("stok_gd");
 
         <?php foreach ($list_genset as $s) { ?>
-            if (kode_genset == "<?php echo $s->kode_genset ?>") {
+            if (kode_genset == "<?php echo $s->id_genset ?>") {
                 var text = document.createTextNode("<?php echo $s->stok_gd ?>");
 
                 $("#daya").val("<?php echo $s->daya ?>");
@@ -221,8 +221,8 @@
     $("#nopol").change(function() {
         let nopol = $(this).val();
         <?php foreach ($list_mobil as $mb) { ?>
-            if (nopol == "<?php echo $mb->nopol ?>") {
-                $("#tipe").val("<?php echo $mb->tipe ?>");
+            if (nopol == "<?php echo $mb->id_mobil ?>") {
+                $("#merek").val("<?php echo $mb->merek ?>");
             }
         <?php } ?>
     })
