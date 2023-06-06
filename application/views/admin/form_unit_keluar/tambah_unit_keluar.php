@@ -31,7 +31,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header"><i class="fas fa-plus"></i>
-                            Tambah Data Unit Keluar
+                            Tambah Data Genset Disewa
                         </div>
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>

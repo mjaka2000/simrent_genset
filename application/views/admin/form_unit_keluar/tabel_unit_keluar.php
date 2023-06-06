@@ -100,12 +100,15 @@
                                     <?php } ?>
                                 </tbody>
                             </table>
-                            <!-- <div class="box-footer">
-                            <h5><strong>Keterangan :</strong></h5>
-                            <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>&nbsp;<span>Untuk Mengedit Data</span><br>
-                            <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>&nbsp;<span>Untuk Menghapus Data</span><br>
-                            <a href="#" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a>&nbsp;<span>Untuk Melihat Detail </span>
-                        </div> -->
+                            <div class="box-footer">
+                                <!-- <?php foreach ($total_data as $td) : ?>
+                                    <h5><strong>Total Pendapatan: Rp&nbsp;<?= number_format($td->total); ?></strong></h5>
+                                <?php endforeach; ?> -->
+                                <!-- <h5><strong>Keterangan :</strong></h5> -->
+                                <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
+                                <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->
+                                <!-- <a href="#" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a>&nbsp;<span>Untuk Melihat Detail </span> -->
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -63,13 +63,13 @@
                                             <input type="date" name="tanggal_keluar" class="form-control " id="tanggal_keluar" value="<?= $du->tanggal_keluar; ?>" required placeholder="Tanggal Keluar" readonly>
                                         </div>
                                     </div>
-                                    <!-- <div class="form-group row">
+                                    <div class="form-group row">
                                         <label for="tanggal_masuk" class="col-sm-3 col-form-label">Tanggal Masuk</label>
                                         <div class="col-sm-6">
 
-                                            <input type="text" name="tanggal_masuk" class="form-control " id="tanggal_masuk" value="<?= $du->tanggal_masuk; ?>" required readonly placeholder="Tanggal Masuk">
+                                            <input type="date" name="tanggal_masuk" class="form-control " id="tanggal_masuk" value="<?= $du->tanggal_masuk; ?>" required readonly placeholder="Tanggal Masuk">
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <div class="form-group row">
                                         <label for="lokasi" class="col-sm-3 col-form-label">Lokasi</label>
                                         <div class="col-sm-6">

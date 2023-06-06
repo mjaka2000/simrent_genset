@@ -1133,6 +1133,7 @@ class Admin extends CI_Controller
 	public function tabel_unit_keluar()
 	{
 		$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
+		$data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_keluar');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Data Unit Keluar';
 		$this->load->view('admin/form_unit_keluar/tabel_unit_keluar', $data);
@@ -1182,13 +1183,13 @@ class Admin extends CI_Controller
 			$total            = $this->input->post('total', TRUE);
 			$status           = 1;
 
-			// $tanggal_masuk    = date('d-m-Y', strtotime($tanggal_keluar . "+" . $jumlah_hari . " days"));
+			$tanggal_masuk    = date('Y-m-d', strtotime($tanggal_keluar . "+" . $jumlah_hari . " days"));
 
 			$data = array(
 				'id_transaksi'     => $id_transaksi,
 				'tanggal_keluar'          => $tanggal_keluar,
 				'lokasi'           => $lokasi,
-				// 'tanggal_masuk'    => $tanggal_masuk,
+				'tanggal_masuk'    => $tanggal_masuk,
 				'id_operator'    => $id_operator,
 				'id_pelanggan'   => $id_pelanggan,
 				'id_genset'      => $id_genset,

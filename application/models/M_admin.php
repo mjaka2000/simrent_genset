@@ -265,7 +265,13 @@ class M_admin extends CI_Model
     return $query->result();
   }
 
-
+  public function sum_pendapatan($tabel)
+  {
+    $query = $this->db->select_sum('total')
+      ->from($tabel)
+      ->get();
+    return $query->result();
+  }
 
   ####################################
   //* End Data Unit Keluar 
