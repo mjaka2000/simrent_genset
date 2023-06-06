@@ -1356,6 +1356,19 @@ class Admin extends CI_Controller
 		redirect(site_url('admin/tabel_unit_keluar'));
 	}
 
+	public function unit_keluar_update()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_u_keluar' => $uri);
+		$data['data_unit_update'] = $this->M_admin->get_data('tb_unit_keluar', $where);
+		$data['list_mobil'] = $this->M_admin->select('tb_mobil');
+		$data['list_genset'] = $this->M_admin->select('tb_genset');
+		$data['list_pelanggan'] = $this->M_admin->select('tb_pelanggan');
+		$data['list_operator'] = $this->M_admin->select('tb_operator');
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Perpanjang Pemakaian Genset';
+		$this->load->view('admin/form_unit_keluar/perpanjang_unit', $data);
+	}
 	####################################
 	//* End Data Unit Keluar
 	####################################
@@ -1462,16 +1475,6 @@ class Admin extends CI_Controller
 			// $data['title'] = 'Update Genset Masuk';
 			$this->load->view('form_barang_masuk/update_barang_masuk/' . $id_transaksi);
 		}
-	}
-	public function barang_masuk_update()
-	{
-		$uri = $this->uri->segment(3);
-		$where = array('id_transaksi' => $uri);
-		$data['data_barang_update'] = $this->M_admin->get_data('tb_barang_masuk', $where);
-		$data['list_genset'] = $this->M_admin->select('tb_genset');
-		$data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'));
-		$data['title'] = 'Perpanjang Pemakaian Genset';
-		$this->load->view('admin/form_barang_masuk/perpanjang_masuk', $data);
 	}
 
 	public function proses_perpanjangan()

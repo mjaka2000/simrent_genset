@@ -80,7 +80,10 @@
                                                 <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
 
                                                 <?php if ($dt->status == 1) { ?>
-                                                    <td><a href="<?= site_url('admin/unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs btn-warning btn-barangkeluar" name="btn_barangkeluar"><i class="fa fa-sign-in mr-2"></i>Genset Masuk</a></td>
+                                                    <td>
+                                                        <a href="<?= base_url('admin/unit_keluar_update/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs bg-fuchsia btn-unitpanjang" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a><br>
+                                                        <a href="<?= site_url('admin/unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs btn-danger btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a>
+                                                    </td>
                                                 <?php } else { ?>
                                                     <td>Genset Masuk (Kembali)</td>
                                                 <?php } ?>
@@ -159,6 +162,25 @@
         })
         return false;
     }); //* Script untuk memuat sweetalert hapus data
+</script>
+<script>
+    //* Script untuk memuat sweetalert status genset
+    $('.btn-kembali').on('click', function() {
+        var getLink = $(this).attr('href');
+        Swal.fire({
+            title: 'Ubah Status',
+            text: 'Yakin ingin ubah Status Genset menjadi Genset Masuk (Kembali)?',
+            type: 'warning',
+            confirmButtonColor: '#d9534f',
+            showCancelButton: true,
+        }).then(result => {
+            //jika klik ya maka arahkan ke proses.php
+            if (result.isConfirmed) {
+                window.location.href = getLink
+            }
+        })
+        return false;
+    });
 </script>
 </body>
 
