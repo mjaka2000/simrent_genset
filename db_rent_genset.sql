@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Jun 2023 pada 02.40
+-- Waktu pembuatan: 06 Jun 2023 pada 17.29
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -65,7 +65,7 @@ CREATE TABLE `tb_genset` (
 --
 
 INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `harga`, `stok_gd`, `stok_pj`, `gambar_genset`) VALUES
-(2, '02', 'Hartech 45 P-02', '40', '1000000', '1', '0', 'ht45p-02.jpg'),
+(2, '02', 'Hartech 45 P-02', '40', '1000000', '0', '1', 'ht45p-02.jpg'),
 (3, '07', 'Denyo 25 ES-07', '20', '750000', '0', '1', 'denyo25es-07.jpg');
 
 -- --------------------------------------------------------
@@ -222,6 +222,7 @@ CREATE TABLE `tb_unit_keluar` (
   `id_u_keluar` int(11) NOT NULL,
   `id_transaksi` varchar(20) NOT NULL,
   `tanggal_keluar` date NOT NULL,
+  `tanggal_masuk` date NOT NULL,
   `lokasi` varchar(50) NOT NULL,
   `id_operator` int(11) NOT NULL,
   `id_pelanggan` int(11) NOT NULL,
@@ -237,8 +238,8 @@ CREATE TABLE `tb_unit_keluar` (
 -- Dumping data untuk tabel `tb_unit_keluar`
 --
 
-INSERT INTO `tb_unit_keluar` (`id_u_keluar`, `id_transaksi`, `tanggal_keluar`, `lokasi`, `id_operator`, `id_pelanggan`, `id_genset`, `id_mobil`, `tambahan`, `jumlah_hari`, `total`, `status`) VALUES
-(3, 'GE-Jun2617', '2023-06-05', 'Binuang', 2, 4, 3, 1, 'Box Panel', '3', '2250000', 1);
+INSERT INTO `tb_unit_keluar` (`id_u_keluar`, `id_transaksi`, `tanggal_keluar`, `tanggal_masuk`, `lokasi`, `id_operator`, `id_pelanggan`, `id_genset`, `id_mobil`, `tambahan`, `jumlah_hari`, `total`, `status`) VALUES
+(6, 'GE-Jun0519', '2023-06-06', '2023-06-08', 'Binuang', 2, 4, 2, 1, 'kabel', '2', '2000000', 1);
 
 -- --------------------------------------------------------
 
@@ -281,7 +282,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '05-06-2023 10:13'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '06-06-2023 17:17'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
 
@@ -418,7 +419,7 @@ ALTER TABLE `tb_sparepart`
 -- AUTO_INCREMENT untuk tabel `tb_unit_keluar`
 --
 ALTER TABLE `tb_unit_keluar`
-  MODIFY `id_u_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_u_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_unit_masuk`
