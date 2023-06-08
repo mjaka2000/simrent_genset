@@ -84,7 +84,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Menu Data Transaksi
+                            Data Sewa
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -103,6 +103,31 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Menu Data Transaksi
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="<?= site_url(); ?>admin/#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Penyewaan Genset</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= site_url(); ?>admin/#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Pengeluaran</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="<?= site_url(); ?>admin/laporan" class="nav-link">
                         <i class="fas fa-clipboard nav-icon"></i>
