@@ -1199,8 +1199,8 @@ class Admin extends CI_Controller
 				'total'            => $total,
 				'status'           => $status
 			);
-			$stok_gd_new = (int)$stok_gd - 1;
-			$stok_pj_new = (int)$stok_pj + 1;
+			$stok_gd_new = ++$stok_gd;
+			$stok_pj_new = --$stok_pj;
 
 			$this->M_admin->mengurangi('tb_genset', $id_genset, $stok_gd_new);
 			$this->M_admin->menambah('tb_genset', $id_genset, $stok_pj_new);
@@ -1219,6 +1219,7 @@ class Admin extends CI_Controller
 		}
 	}
 
+	/*
 	public function update_keluar($id_transaksi)
 	{
 		$where = array('id_transaksi' => $id_transaksi);
@@ -1231,7 +1232,9 @@ class Admin extends CI_Controller
 		$data['title'] = 'Edit Genset Keluar';
 		$this->load->view('admin/form_barang_keluar/update_barang_keluar', $data);
 	}
+*/
 
+	/*
 	public function proses_update_genset_keluar()
 	{
 		$this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
@@ -1281,7 +1284,8 @@ class Admin extends CI_Controller
 			$this->load->view('admin/form_barang_keluar/tambah_barang_keluar', $data);
 		}
 	}
-
+	*/
+	/*
 	public function update_baru($id_transaksi)
 	{
 		$where = array('id_transaksi' => $id_transaksi);
@@ -1294,7 +1298,8 @@ class Admin extends CI_Controller
 		$data['title'] = 'Edit Genset Keluar';
 		$this->load->view('admin/form_barang_keluar/update_barang_baru', $data);
 	}
-
+	*/
+	/*
 	public function proses_update_baru()
 	{
 		$this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
@@ -1347,7 +1352,7 @@ class Admin extends CI_Controller
 			$this->load->view('admin/form_barang_keluar/update_barang_baru', $data);
 		}
 	}
-
+*/
 	public function hapus_unit_keluar()
 	{
 		$uri = $this->uri->segment(3);
@@ -1370,6 +1375,149 @@ class Admin extends CI_Controller
 		$data['title'] = 'Perpanjang Pemakaian Genset';
 		$this->load->view('admin/form_unit_keluar/perpanjang_unit', $data);
 	}
+
+	public function proses_perpanjangan()
+	{
+		$this->form_validation->set_rules('jumlah_hari', 'Jumlah Hari', 'trim|required');
+		$id_u_keluar       = $this->input->post('id_u_keluar', TRUE);
+
+		if ($this->form_validation->run() === TRUE) {
+			$stok_gd           = $this->input->post('stok_gd', TRUE);
+			$stok_pj           = $this->input->post('stok_pj', TRUE);
+
+			$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
+			$tanggal_masuk    = $this->input->post('tanggal_masuk', TRUE);
+			$lokasi           = $this->input->post('lokasi', TRUE);
+			$id_operator    = $this->input->post('id_operator', TRUE);
+			$id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
+			$id_genset      = $this->input->post('id_genset', TRUE);
+			$id_mobil            = $this->input->post('id_mobil', TRUE);
+			$tambahan         = $this->input->post('tambahan', TRUE);
+			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
+			$jumlah_hari_lama = $this->input->post('jumlah_hari_lama', TRUE);
+			$total            = $this->input->post('total', TRUE);
+
+			$status = 1;
+
+			$tanggal_masuk_new    = date('Y-m-d', strtotime($tanggal_keluar . "+" . $jumlah_hari . " days"));
+			// $total = $harga  * $jumlah_hari;
+			if ($tanggal_masuk == $tanggal_masuk_new) {
+				$tanggal_masuk_up = $tanggal_masuk;
+			} else {
+				$tanggal_masuk_up = $tanggal_masuk_new;
+			}
+
+			// if($jumlah_hari_lama == $jumlah_hari){
+			//   $status = 1;
+			// }else{
+			//   $status = 0;
+			// }
+
+			$where = array('id_u_keluar' => $id_u_keluar);
+			$data = array(
+				'id_u_keluar'    => $id_u_keluar,
+				'tanggal_keluar'          => $tanggal_keluar,
+				'tanggal_masuk'   => $tanggal_masuk_up,
+				'lokasi'           => $lokasi,
+				'id_operator'    => $id_operator,
+				'id_pelanggan'   => $id_pelanggan,
+				'id_genset'      => $id_genset,
+				'id_mobil'            => $id_mobil,
+				'tambahan'         => $tambahan,
+				'jumlah_hari'      => $jumlah_hari,
+				'total'            => $total,
+				'status'           => $status
+			);
+
+			$this->M_admin->update('tb_unit_keluar', $data, $where);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diupdate');
+			// $this->M_admin->delete('tb_barang_masuk',$where);
+			redirect(site_url('admin/tabel_unit_keluar'));
+		} else {
+			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+			$data['title'] = 'Perpanjang Pemakaian Genset';
+			$this->load->view('admin/form_unit_keluar/perpanjang_unit', $data);
+		}
+	}
+
+	public function unit_masuk()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_u_keluar' => $uri);
+		$data['data_unit_update'] = $this->M_admin->get_data('tb_unit_keluar', $where);
+		$data['list_mobil'] = $this->M_admin->select('tb_mobil');
+		$data['list_genset'] = $this->M_admin->select('tb_genset');
+		$data['list_pelanggan'] = $this->M_admin->select('tb_pelanggan');
+		$data['list_operator'] = $this->M_admin->select('tb_operator');
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Konfirmasi Genset Masuk';
+		$this->load->view('admin/form_unit_keluar/update_unit_masuk', $data);
+	}
+
+	public function proses_data_masuk()
+	{
+		$this->form_validation->set_rules('tanggal_masuk', 'Tanggal Masuk', 'trim|required');
+
+		$id_u_keluar       = $this->input->post('id_u_keluar', TRUE);
+
+		if ($this->form_validation->run() === TRUE) {
+			$stok_gd           = $this->input->post('stok_gd', TRUE);
+			$stok_pj           = $this->input->post('stok_pj', TRUE);
+			$id_transaksi     = $this->input->post('id_transaksi', TRUE);
+
+			$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
+			$tanggal_masuk    = $this->input->post('tanggal_masuk', TRUE);
+			$lokasi           = $this->input->post('lokasi', TRUE);
+			$id_operator    = $this->input->post('id_operator', TRUE);
+			$id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
+			$id_genset      = $this->input->post('id_genset', TRUE);
+			$id_mobil            = $this->input->post('id_mobil', TRUE);
+			$tambahan         = $this->input->post('tambahan', TRUE);
+			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
+			$jumlah_hari_lama = $this->input->post('jumlah_hari_lama', TRUE);
+			$total            = $this->input->post('total', TRUE);
+
+			$status_b = NULL;
+
+			// if($jumlah_hari_lama == $jumlah_hari){
+			//   $status = 1;
+			// }else{
+			//   $status = 0;
+			// }
+
+			$where = array('id_u_keluar' => $id_u_keluar);
+			$data = array(
+				'id_transaksi'    => $id_transaksi,
+				'tanggal_keluar'          => $tanggal_keluar,
+				'tanggal_masuk'   => $tanggal_masuk,
+				'lokasi'           => $lokasi,
+				'id_operator'    => $id_operator,
+				'id_pelanggan'   => $id_pelanggan,
+				'id_genset'      => $id_genset,
+				'id_mobil'            => $id_mobil,
+				'tambahan'         => $tambahan,
+				'jumlah_hari'      => $jumlah_hari,
+				'total'            => $total,
+				'status'           => $status_b
+			);
+			$stok_gd_new = ++$stok_gd;
+			$stok_pj_new = --$stok_pj;
+			$status = 0;
+
+			$this->M_admin->update_status('tb_unit_keluar', $id_u_keluar, $status);
+			$this->M_admin->menambah_kembali('tb_genset', $id_genset, $stok_gd_new);
+			$this->M_admin->mengurangi_kembali('tb_genset', $id_genset, $stok_pj_new);
+			$this->M_admin->insert('tb_unit_masuk', $data);
+			$this->session->set_flashdata('msg_sukses', 'Data Masuk Berhasil');
+			// $this->M_admin->delete('tb_barang_masuk',$where);
+			redirect(site_url('admin/tabel_unit_masuk'));
+		} else {
+			// $data['title'] = 'Update Genset Masuk';
+			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+			$data['title'] = 'Perpanjang Pemakaian Genset';
+			$this->load->view('admin/form_unit_keluar/perpanjang_unit', $data);
+		}
+	}
 	####################################
 	//* End Data Unit Keluar
 	####################################
@@ -1377,15 +1525,15 @@ class Admin extends CI_Controller
 	//* Data Unit Masuk
 	####################################
 
-	public function tabel_barang_masuk()
+	public function tabel_unit_masuk()
 	{
 		$data = array(
 			// 'list_mobil' => $this->M_admin->select('tb_mobil'),
-			'list_data' => $this->M_admin->select('tb_barang_masuk'),
-			'avatar'    => $this->M_admin->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'))
+			'list_data' => $this->M_admin->get_data_u_masuk('tb_unit_masuk'),
+			'avatar'    => $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'))
 		);
-		$data['title'] = 'Tabel Genset Masuk';
-		$this->load->view('admin/form_barang_masuk/tabel_barang_masuk', $data);
+		$data['title'] = 'Data Unit Masuk/Kembali';
+		$this->load->view('admin/form_unit_masuk/tabel_unit_masuk', $data);
 	}
 
 	public function detail_barang_masuk($id_transaksi)
@@ -1408,147 +1556,11 @@ class Admin extends CI_Controller
 		$this->load->view('admin/form_barang_masuk/update_barang_masuk', $data);
 	}
 
-	public function proses_data_masuk()
-	{
-		$this->form_validation->set_rules('tanggal_masuk', 'Tanggal Masuk', 'trim|required');
 
-		$id_transaksi       = $this->input->post('id_transaksi', TRUE);
 
-		if ($this->form_validation->run() === TRUE) {
-			$stok_gd           = $this->input->post('stok_gd', TRUE);
-			$stok_pj           = $this->input->post('stok_pj', TRUE);
 
-			$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
-			$tanggal_masuk    = $this->input->post('tanggal_masuk', TRUE);
-			$lokasi           = $this->input->post('lokasi', TRUE);
-			$nama_operator    = $this->input->post('nama_operator', TRUE);
-			$nama_pelanggan   = $this->input->post('nama_pelanggan', TRUE);
-			$kode_genset      = $this->input->post('kode_genset', TRUE);
-			$nama_genset      = $this->input->post('nama_genset', TRUE);
-			$daya             = $this->input->post('daya', TRUE);
-			$harga            = $this->input->post('harga', TRUE);
-			$nopol            = $this->input->post('nopol', TRUE);
-			$mobil            = $this->input->post('tipe', TRUE);
-			$tambahan         = $this->input->post('tambahan', TRUE);
-			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
-			$jumlah_hari_lama = $this->input->post('jumlah_hari_lama', TRUE);
-			$total            = $this->input->post('total', TRUE);
 
-			$status_b = NULL;
-
-			// if($jumlah_hari_lama == $jumlah_hari){
-			//   $status = 1;
-			// }else{
-			//   $status = 0;
-			// }
-
-			$where = array('id_transaksi' => $id_transaksi);
-			$data = array(
-				'id_transaksi'    => $id_transaksi,
-				'tanggal_keluar'          => $tanggal_keluar,
-				'tanggal_masuk'   => $tanggal_masuk,
-				'lokasi'           => $lokasi,
-				'nama_operator'    => $nama_operator,
-				'nama_pelanggan'   => $nama_pelanggan,
-				'kode_genset'      => $kode_genset,
-				'nama_genset'      => $nama_genset,
-				'daya'             => $daya,
-				'harga'            => $harga,
-				'nopol'            => $nopol,
-				'mobil'            => $mobil,
-				'tambahan'         => $tambahan,
-				'jumlah_hari'      => $jumlah_hari,
-				'total'            => $total,
-				'status'           => $status_b
-			);
-			$stok_gd_new = (int)$stok_gd + 1;
-			$stok_pj_new = (int)$stok_pj - 1;
-			$status = 0;
-
-			$this->M_admin->update_status('tb_barang_keluar', $id_transaksi, $status);
-			$this->M_admin->menambah_kembali('tb_genset', $kode_genset, $stok_gd_new);
-			$this->M_admin->mengurangi_kembali('tb_genset', $kode_genset, $stok_pj_new);
-			$this->M_admin->insert('tb_barang_masuk', $data);
-			$this->session->set_flashdata('msg_sukses', 'Data Masuk Berhasil');
-			// $this->M_admin->delete('tb_barang_masuk',$where);
-			redirect(site_url('admin/tabel_barang_masuk'));
-		} else {
-			// $data['title'] = 'Update Genset Masuk';
-			$this->load->view('form_barang_masuk/update_barang_masuk/' . $id_transaksi);
-		}
-	}
-
-	public function proses_perpanjangan()
-	{
-		$this->form_validation->set_rules('jumlah_hari', 'Jumlah Hari', 'trim|required');
-		$id_transaksi       = $this->input->post('id_transaksi', TRUE);
-
-		if ($this->form_validation->run() === TRUE) {
-			$stok_gd           = $this->input->post('stok_gd', TRUE);
-			$stok_pj           = $this->input->post('stok_pj', TRUE);
-
-			$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
-			$tanggal_masuk    = $this->input->post('tanggal_masuk', TRUE);
-			$lokasi           = $this->input->post('lokasi', TRUE);
-			$nama_operator    = $this->input->post('nama_operator', TRUE);
-			$nama_pelanggan   = $this->input->post('nama_pelanggan', TRUE);
-			$kode_genset      = $this->input->post('kode_genset', TRUE);
-			$nama_genset      = $this->input->post('nama_genset', TRUE);
-			$daya             = $this->input->post('daya', TRUE);
-			$harga            = $this->input->post('harga', TRUE);
-			$nopol            = $this->input->post('nopol', TRUE);
-			$mobil            = $this->input->post('tipe', TRUE);
-			$tambahan         = $this->input->post('tambahan', TRUE);
-			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
-			$jumlah_hari_lama = $this->input->post('jumlah_hari_lama', TRUE);
-			$total            = $this->input->post('total', TRUE);
-
-			$status = 1;
-
-			$tanggal_masuk_new    = date('d-m-Y', strtotime($tanggal_keluar . "+" . $jumlah_hari . " days"));
-			$total = $harga  * $jumlah_hari;
-			if ($tanggal_masuk == $tanggal_masuk_new) {
-				$tanggal_masuk_up = $tanggal_masuk;
-			} else {
-				$tanggal_masuk_up = $tanggal_masuk_new;
-			}
-
-			// if($jumlah_hari_lama == $jumlah_hari){
-			//   $status = 1;
-			// }else{
-			//   $status = 0;
-			// }
-
-			$where = array('id_transaksi' => $id_transaksi);
-			$data = array(
-				'id_transaksi'    => $id_transaksi,
-				'tanggal_keluar'          => $tanggal_keluar,
-				'tanggal_masuk'   => $tanggal_masuk_up,
-				'lokasi'           => $lokasi,
-				'nama_operator'    => $nama_operator,
-				'nama_pelanggan'   => $nama_pelanggan,
-				'kode_genset'      => $kode_genset,
-				'nama_genset'      => $nama_genset,
-				'daya'             => $daya,
-				'harga'            => $harga,
-				'nopol'            => $nopol,
-				'mobil'            => $mobil,
-				'tambahan'         => $tambahan,
-				'jumlah_hari'      => $jumlah_hari,
-				'total'            => $total,
-				'status'           => $status
-			);
-
-			$this->M_admin->update('tb_barang_masuk', $data, $where);
-			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diupdate');
-			// $this->M_admin->delete('tb_barang_masuk',$where);
-			redirect(site_url('admin/tabel_barang_masuk'));
-		} else {
-			$this->load->view('form_barang_masuk/perpanjang_masuk/' . $id_transaksi);
-		}
-	}
-
-	public function barang_masuk_kembali()
+	public function unit_masuk_kembali()
 	{
 		$uri = $this->uri->segment(3);
 		$data['list_genset'] = $this->M_admin->select('tb_genset');

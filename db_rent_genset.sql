@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Jun 2023 pada 17.29
+-- Waktu pembuatan: 13 Jun 2023 pada 13.47
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -55,8 +55,8 @@ CREATE TABLE `tb_genset` (
   `nama_genset` varchar(50) NOT NULL,
   `daya` varchar(50) NOT NULL,
   `harga` varchar(100) NOT NULL,
-  `stok_gd` varchar(50) NOT NULL,
-  `stok_pj` varchar(50) NOT NULL,
+  `stok_gd` int(50) NOT NULL,
+  `stok_pj` int(50) NOT NULL,
   `gambar_genset` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -65,8 +65,8 @@ CREATE TABLE `tb_genset` (
 --
 
 INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `harga`, `stok_gd`, `stok_pj`, `gambar_genset`) VALUES
-(2, '02', 'Hartech 45 P-02', '40', '1000000', '0', '1', 'ht45p-02.jpg'),
-(3, '07', 'Denyo 25 ES-07', '20', '750000', '0', '1', 'denyo25es-07.jpg');
+(2, '02', 'Hartech 45 P-02', '40', '1000000', 1, 0, 'ht45p-02.jpg'),
+(3, '07', 'Denyo 25 ES-07', '20', '750000', 2, -1, 'denyo25es-07.jpg');
 
 -- --------------------------------------------------------
 
@@ -239,7 +239,8 @@ CREATE TABLE `tb_unit_keluar` (
 --
 
 INSERT INTO `tb_unit_keluar` (`id_u_keluar`, `id_transaksi`, `tanggal_keluar`, `tanggal_masuk`, `lokasi`, `id_operator`, `id_pelanggan`, `id_genset`, `id_mobil`, `tambahan`, `jumlah_hari`, `total`, `status`) VALUES
-(6, 'GE-Jun0519', '2023-06-06', '2023-06-08', 'Binuang', 2, 4, 2, 1, 'kabel', '2', '2000000', 1);
+(6, 'GE-Jun0519', '2023-06-06', '2023-06-09', 'Binuang', 2, 4, 2, 1, 'kabel', '3', '3000000', 0),
+(7, 'GE-Jun9018', '2023-06-13', '2023-06-15', 'Banjarbaru', 2, 5, 3, 1, 'Box Panel', '2', '1500000', 1);
 
 -- --------------------------------------------------------
 
@@ -252,6 +253,7 @@ CREATE TABLE `tb_unit_masuk` (
   `id_transaksi` varchar(20) NOT NULL,
   `tanggal_keluar` date NOT NULL,
   `tanggal_masuk` date NOT NULL,
+  `lokasi` varchar(50) NOT NULL,
   `id_operator` int(11) NOT NULL,
   `id_pelanggan` int(11) NOT NULL,
   `id_genset` int(11) NOT NULL,
@@ -261,6 +263,13 @@ CREATE TABLE `tb_unit_masuk` (
   `total` varchar(50) NOT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data untuk tabel `tb_unit_masuk`
+--
+
+INSERT INTO `tb_unit_masuk` (`id`, `id_transaksi`, `tanggal_keluar`, `tanggal_masuk`, `lokasi`, `id_operator`, `id_pelanggan`, `id_genset`, `id_mobil`, `tambahan`, `jumlah_hari`, `total`, `status`) VALUES
+(1, 'GE-Jun0519', '2023-06-06', '2023-06-09', 'Binuang', 2, 4, 2, 1, 'kabel', '3', '3000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -282,7 +291,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '06-06-2023 17:17'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '13-06-2023 19:03'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
 
@@ -419,13 +428,13 @@ ALTER TABLE `tb_sparepart`
 -- AUTO_INCREMENT untuk tabel `tb_unit_keluar`
 --
 ALTER TABLE `tb_unit_keluar`
-  MODIFY `id_u_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_u_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_unit_masuk`
 --
 ALTER TABLE `tb_unit_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`

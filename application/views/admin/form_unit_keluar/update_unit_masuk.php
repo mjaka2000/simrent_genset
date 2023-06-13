@@ -14,7 +14,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item"><a href="<?= site_url('admin/tabel_unit_keluar'); ?>">Unit Keluar</a></li>
-                        <li class="breadcrumb-item active">Update Data </li>
+                        <li class="breadcrumb-item active">Konfirmasi Data Genset Masuk</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -31,7 +31,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header"><i class="fas fa-edit"></i>
-                            Perpanjang Data Pemakaian
+                            Konfirmasi Data Genset Masuk
                         </div>
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
@@ -47,7 +47,7 @@
                                 </div>
                             <?php } ?>
 
-                            <form action="<?= site_url('admin/proses_perpanjangan'); ?>" method="post" role="form">
+                            <form action="<?= site_url('admin/proses_data_masuk'); ?>" method="post" role="form">
 
                                 <?php foreach ($data_unit_update as $du) { ?>
                                     <input type="hidden" name="id_u_keluar" value="<?= $du->id_u_keluar; ?>">
@@ -200,10 +200,10 @@
                                 <?php } ?>
                                 <hr>
                                 <div class="box-footer" align="center">
-                                    <div class="form-group row">
+                                    <!-- <div class="form-group row">
                                         <a type="button" onclick="editHari()" class="btn btn-sm btn-danger" name="edit_hari" id="edit_hari"><i class="fa fa-edit mr-2"></i>Edit Jumlah Hari</a>
                                         <small style="color: red;">*Klik Untuk Perpanjang Hari</small>
-                                    </div>
+                                    </div> -->
                                     <button onclick="window.location.href='<?= site_url('admin/tabel_unit_keluar'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                     <!-- <button type="reset" class="btn btn-sm btn-info"><i class="fa fa-eraser mr-2"></i>Reset</button> -->
 
@@ -220,7 +220,6 @@
 
 <?php $this->load->view('template/footer'); ?>
 <?php $this->load->view('admin/template/script') ?>
-
 <script type="text/javascript">
     //* Script untuk memuat data genset
     $("#kode_genset").change(function() {
@@ -259,12 +258,12 @@
         <?php } ?>
     })
 
-    $("#jumlah_hari, #harga_perhari").keyup(function() {
-        var harga = parseInt($("#harga_perhari").val()) || 0;
-        var hari = parseInt($("#jumlah_hari").val()) || 0;
+    // $("#jumlah_hari, #harga_perhari").keyup(function() {
+    //     var harga = parseInt($("#harga_perhari").val()) || 0;
+    //     var hari = parseInt($("#jumlah_hari").val()) || 0;
 
-        $("#total_harga").val(harga * hari);
-    })
+    //     $("#total_harga").val(harga * hari);
+    // })
 
     $("#nopol").change(function() {
         let nopol = $(this).val();
@@ -286,9 +285,9 @@
 </script>
 <script type="text/javascript">
     //* Script untuk mengubah atribut jumlah hari
-    function editHari() {
-        document.getElementById("jumlah_hari").removeAttribute("readonly");
-    }
+    // function editHari() {
+    //     document.getElementById("jumlah_hari").removeAttribute("readonly");
+    // }
 
     // $("#jumlah_hari, #harga_perhari").keyup(function() {
     //     var harga = parseInt($("#harga_perhari").val()) || 0;
@@ -297,7 +296,6 @@
     //     $("#total_harga").val(harga * hari);
     // })
 </script>
-
 </body>
 
 </html>
