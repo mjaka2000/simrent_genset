@@ -43,7 +43,7 @@
                             <?php } ?>
                             <!-- <button onclick="window.location.href='<?= site_url('admin/tambah_unit_keluar'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button> -->
 
-                            <table id="mytable" class="table table-bordered table-hover" style="width:100%">
+                            <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th style="width :10px">No.</th>
@@ -65,41 +65,40 @@
                                     <?php
                                     $no = 1;
                                     // $list_data = isset($_POST['list_data']) ? $_POST['list_data'] : '';
-                                    if (is_array($list_data)) { ?>
-                                        <?php foreach ($list_data as $dt) : ?>
-                                            <tr>
-                                                <td><?= $no++; ?></td>
-                                                <td><?= $dt->id_transaksi; ?></td>
-                                                <!-- <td><?= $dt->tanggal_keluar; ?></td> -->
-                                                <td><?= $dt->tanggal_masuk; ?></td>
-                                                <td><?= $dt->lokasi; ?></td>
-                                                <td><?= $dt->nama_plg; ?></td>
-                                                <td><?= $dt->nama_genset; ?></td>
-                                                <td><?= $dt->daya; ?></td>
-                                                <td><?= $dt->nopol; ?></td>
-                                                <td><?= $dt->jumlah_hari; ?></td>
-                                                <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
-                                                <?php if ($dt->status == NULL || $dt->status == 1) { ?>
-                                                    <td>Genset Masuk (Kembali)
-                                                    </td>
-                                                <?php } else { ?>
-                                                    <td>Genset Masuk (Kembali)</td>
-                                                <?php } ?>
-                                                <td>
-                                                    <a href="<?= base_url('admin/hapus_data_masuk/' . $dt->id_transaksi); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
-                                                    <a href="<?= base_url('admin/detail_barang_masuk/' . $dt->id_transaksi); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a>
+                                    ?>
+                                    <?php foreach ($list_data as $dt) : ?>
+                                        <tr>
+                                            <td><?= $no++; ?></td>
+                                            <td><?= $dt->id_transaksi; ?></td>
+                                            <!-- <td><?= $dt->tanggal_keluar; ?></td> -->
+                                            <td><?= $dt->tanggal_masuk; ?></td>
+                                            <td><?= $dt->lokasi; ?></td>
+                                            <td><?= $dt->nama_plg; ?></td>
+                                            <td><?= $dt->nama_genset; ?></td>
+                                            <td><?= $dt->daya; ?></td>
+                                            <td><?= $dt->nopol; ?></td>
+                                            <td><?= $dt->jumlah_hari; ?></td>
+                                            <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
+                                            <?php if ($dt->status == NULL || $dt->status == 1) { ?>
+                                                <td>Genset Masuk (Kembali)
                                                 </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php } else { ?>
-                                        <td colspan="12" align="center"><strong>Data Kosong</strong></td>
-                                    <?php } ?>
+                                            <?php } else { ?>
+                                                <td>Genset Masuk (Kembali)</td>
+                                            <?php } ?>
+                                            <td>
+                                                <a href="<?= base_url('admin/hapus_data_masuk/' . $dt->id_transaksi); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
+                                                <a href="<?= base_url('admin/detail_barang_masuk/' . $dt->id_transaksi); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                             <div class="box-footer">
-                                <!-- <?php foreach ($total_data as $td) : ?>
-                                    <h5><strong>Total Pendapatan: Rp&nbsp;<?= number_format($td->total); ?></strong></h5>
-                                <?php endforeach; ?> -->
+                                <?php foreach ($total_data as $td) : ?>
+                                    <h5>
+                                        <p style="color: red;">Total Pendapatan: Rp&nbsp;<?= number_format($td->total); ?></p>
+                                    </h5>
+                                <?php endforeach; ?>
                                 <!-- <h5><strong>Keterangan :</strong></h5> -->
                                 <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
                                 <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->
