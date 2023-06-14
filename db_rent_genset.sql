@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jun 2023 pada 03.32
+-- Waktu pembuatan: 14 Jun 2023 pada 10.36
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -65,7 +65,7 @@ CREATE TABLE `tb_genset` (
 
 INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `harga`, `ket_genset`, `gambar_genset`) VALUES
 (2, '02', 'Hartech 45 P-02', '40', '1000000', 0, 'ht45p-02.jpg'),
-(3, '07', 'Denyo 25 ES-07', '20', '750000', 1, 'denyo25es-07.jpg'),
+(3, '07', 'Denyo 25 ES-07', '20', '750000', 0, 'denyo25es-07.jpg'),
 (4, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg');
 
 -- --------------------------------------------------------
@@ -104,7 +104,7 @@ CREATE TABLE `tb_operator` (
   `nama_op` varchar(50) NOT NULL,
   `alamat_op` varchar(50) NOT NULL,
   `nohp_op` varchar(50) NOT NULL,
-  `status_op` int(11) DEFAULT NULL
+  `status_op` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -112,10 +112,10 @@ CREATE TABLE `tb_operator` (
 --
 
 INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `status_op`) VALUES
-(1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', 1),
-(2, 'adi', 'jl sukamara', '0878907678956', 1),
-(3, 'ijum', 'jl pulau laut', '0897819271234', 1),
-(5, 'wanda', 'sungai miai', '0897618391837', 1);
+(1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', 0),
+(2, 'adi', 'jl sukamara', '0878907678956', 0),
+(3, 'ijum', 'jl pulau laut', '0897819271234', 0),
+(5, 'wanda', 'sungai miai', '0897618391837', 0);
 
 -- --------------------------------------------------------
 
@@ -131,6 +131,7 @@ CREATE TABLE `tb_pelanggan` (
   `jk_plg` varchar(20) NOT NULL,
   `namaperusahaan_plg` varchar(50) NOT NULL,
   `tglupdate_plg` date NOT NULL,
+  `status_plg` int(10) DEFAULT NULL,
   `ket_plg` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -138,9 +139,9 @@ CREATE TABLE `tb_pelanggan` (
 -- Dumping data untuk tabel `tb_pelanggan`
 --
 
-INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `ket_plg`) VALUES
-(4, 'anonim', 'Jl. SungaAndaii', '0895619213134', 'Laki-Laki', 'PT Rahmat', '2023-04-11', 1),
-(5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 1);
+INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`) VALUES
+(4, 'anonim', 'Jl. SungaAndaii', '0895619213134', 'Laki-Laki', 'PT Rahmat', '2023-04-11', 0, 1),
+(5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -240,7 +241,7 @@ CREATE TABLE `tb_unit_keluar` (
 
 INSERT INTO `tb_unit_keluar` (`id_u_keluar`, `id_transaksi`, `tanggal_keluar`, `tanggal_masuk`, `lokasi`, `id_operator`, `id_pelanggan`, `id_genset`, `id_mobil`, `tambahan`, `jumlah_hari`, `total`, `status`) VALUES
 (6, 'GE-Jun0519', '2023-06-06', '2023-06-09', 'Binuang', 2, 4, 2, 1, 'kabel', '3', '3000000', 0),
-(7, 'GE-Jun9018', '2023-06-13', '2023-06-15', 'Banjarbaru', 2, 5, 3, 1, 'Box Panel', '2', '1500000', 1);
+(8, 'GE-Jun5782', '2023-06-13', '2023-06-17', 'Gambut', 2, 5, 4, 1, 'kabel', '4', '3000000', 0);
 
 -- --------------------------------------------------------
 
@@ -269,7 +270,8 @@ CREATE TABLE `tb_unit_masuk` (
 --
 
 INSERT INTO `tb_unit_masuk` (`id`, `id_transaksi`, `tanggal_keluar`, `tanggal_masuk`, `lokasi`, `id_operator`, `id_pelanggan`, `id_genset`, `id_mobil`, `tambahan`, `jumlah_hari`, `total`, `status`) VALUES
-(1, 'GE-Jun0519', '2023-06-06', '2023-06-09', 'Binuang', 2, 4, 2, 1, 'kabel', '3', '3000000', NULL);
+(1, 'GE-Jun0519', '2023-06-06', '2023-06-09', 'Binuang', 2, 4, 2, 1, 'kabel', '3', '3000000', NULL),
+(2, 'GE-Jun5782', '2023-06-13', '2023-06-17', 'Gambut', 2, 5, 4, 1, 'kabel', '4', '3000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -291,7 +293,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '14-06-2023 8:31'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '14-06-2023 16:29'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
 
@@ -428,13 +430,13 @@ ALTER TABLE `tb_sparepart`
 -- AUTO_INCREMENT untuk tabel `tb_unit_keluar`
 --
 ALTER TABLE `tb_unit_keluar`
-  MODIFY `id_u_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_u_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_unit_masuk`
 --
 ALTER TABLE `tb_unit_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
