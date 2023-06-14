@@ -65,7 +65,7 @@
                                                 <td><?= $dt->nama_op; ?></td>
                                                 <td><?= $dt->alamat_op; ?></td>
                                                 <td><?= $dt->nohp_op; ?></td>
-                                                <?php if ($dt->status_op == 1) { ?>
+                                                <?php if ($dt->status_op == NULL || $dt->status_op == 0) { ?>
                                                     <td><em>Standby</em></td>
                                                 <?php } else { ?>
                                                     <td><a href="#" type="button" class="btn btn-xs btn-success" name="btn_status_op">Berangkat</a></td>

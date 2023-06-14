@@ -125,12 +125,6 @@
                                         </div>
 
                                     </div>
-                                    <?php foreach ($list_genset as $a) { ?>
-                                        <?php if ($du->id_genset == $a->id_genset) { ?>
-                                            <input type="hidden" name="stok_gd" id="stok_gd_input" value="<?= $a->stok_gd; ?>">
-                                            <input type="hidden" name="stok_pj" id="stok_pj_input" value="<?= $a->stok_pj; ?>">
-                                        <?php } ?>
-                                    <?php } ?>
                                     <div class="form-group row">
                                         <label for="genset" class="col-sm-3 col-form-label">Nama Genset</label>
                                         <div class="col-sm-6">
@@ -229,13 +223,10 @@
 
         <?php foreach ($list_genset as $s) { ?>
             if (kode_genset == "<?php echo $s->id_genset ?>") {
-                var text = document.createTextNode("<?php echo $s->stok_gd ?>");
 
                 $("#daya").val("<?php echo $s->daya ?>");
                 $("#nama_genset").val("<?php echo $s->nama_genset ?>");
-                // $("#stok_gd_input").val("<?php echo $s->stok_gd ?>");
-                // $("#stok_pj_input").val("<?php echo $s->stok_pj ?>");
-                // stok_gd.innerHTML = "<?php echo $s->stok_gd ?>";
+
                 $("#harga_perhari").val("<?php echo $s->harga ?>")
             }
         <?php } ?>
@@ -247,13 +238,10 @@
 
         <?php foreach ($list_genset as $s) { ?>
             if (kode_genset == "<?php echo $s->id_genset ?>") {
-                var text = document.createTextNode("<?php echo $s->stok_gd ?>");
 
                 $("#daya").val("<?php echo $s->daya ?>");
                 $("#nama_genset").val("<?php echo $s->nama_genset ?>");
-                // $("#stok_gd_input").val("<?php echo $s->stok_gd ?>");
-                // $("#stok_pj_input").val("<?php echo $s->stok_pj ?>");
-                // stok_gd.innerHTML = "<?php echo $s->stok_gd ?>";
+
                 $("#harga_perhari").val("<?php echo $s->harga ?>")
             }
         <?php } ?>

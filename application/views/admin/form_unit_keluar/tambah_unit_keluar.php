@@ -93,10 +93,11 @@
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label for="kode_genset" class="col-sm-3 col-form-label">Nomor Genset<p><small>*Stok digudang&nbsp;<span style="color: red;" id="stok_gd"></small></span></p></label>
+                                    <label for="kode_genset" class="col-sm-3 col-form-label">Nomor Genset</label>
+                                    <!-- <p><small>*Stok digudang&nbsp;<span style="color: red;" id="stok_gd"></small></span></p> -->
 
-                                    <input type="hidden" name="stok_gd" id="stok_gd_input" value="">
-                                    <input type="hidden" name="stok_pj" id="stok_pj_input" value="">
+                                    <!-- <input type="hidden" name="stok_gd" id="stok_gd_input" value=""> -->
+                                    <!-- <input type="hidden" name="stok_pj" id="stok_pj_input" value=""> -->
                                     <div class="col-sm-6">
 
                                         <select name="id_genset" class="form-control" id="kode_genset" required>
@@ -195,17 +196,14 @@
     //* Script untuk memuat data genset
     $("#kode_genset").change(function() {
         let kode_genset = $(this).val();
-        let stok_gd = document.getElementById("stok_gd");
+        // let stok_gd = document.getElementById("stok_gd");
 
         <?php foreach ($list_genset as $s) { ?>
             if (kode_genset == "<?php echo $s->id_genset ?>") {
-                var text = document.createTextNode("<?php echo $s->stok_gd ?>");
 
                 $("#daya").val("<?php echo $s->daya ?>");
                 $("#nama_genset").val("<?php echo $s->nama_genset ?>");
-                $("#stok_gd_input").val("<?php echo $s->stok_gd ?>");
-                $("#stok_pj_input").val("<?php echo $s->stok_pj ?>");
-                stok_gd.innerHTML = "<?php echo $s->stok_gd ?>";
+
                 $("#harga_perhari").val("<?php echo $s->harga ?>")
             }
         <?php } ?>

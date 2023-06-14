@@ -81,6 +81,7 @@ class M_admin extends CI_Model
     $this->db->where("id_u_keluar", $where);
     $this->db->update($tabel);
   }
+
   public function update_status_aju($tabel, $where, $status_a)
   {
     $this->db->set("status_ajuan", $status_a);
@@ -160,7 +161,26 @@ class M_admin extends CI_Model
     return $query->num_rows();
   }
 
+  public function update_status_gst($tabel, $where, $status_gst)
+  {
+    $this->db->set("ket_genset", $status_gst);
+    $this->db->where("id_genset", $where);
+    $this->db->update($tabel);
+  }
 
+  public function update_status_op($tabel, $where, $status_op)
+  {
+    $this->db->set("status_op", $status_op);
+    $this->db->where("id_operator", $where);
+    $this->db->update($tabel);
+  }
+
+  public function update_status_plg($tabel, $where, $status_plg)
+  {
+    $this->db->set("status_plg", $status_plg);
+    $this->db->where("id_pelanggan", $where);
+    $this->db->update($tabel);
+  }
   ####################################
   //* Data Perbaikan Genset 
   ####################################

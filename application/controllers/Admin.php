@@ -1174,8 +1174,8 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('id_genset', 'Kode Genset', 'required');
 
 		if ($this->form_validation->run() == TRUE) {
-			$stok_gd           = $this->input->post('stok_gd', TRUE);
-			$stok_pj           = $this->input->post('stok_pj', TRUE);
+			// $stok_gd           = $this->input->post('stok_gd', TRUE);
+			// $stok_pj           = $this->input->post('stok_pj', TRUE);
 
 			$id_transaksi     = $this->input->post('id_transaksi', TRUE);
 			$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
@@ -1205,11 +1205,17 @@ class Admin extends CI_Controller
 				'total'            => $total,
 				'status'           => $status
 			);
-			$stok_gd_new = ++$stok_gd;
-			$stok_pj_new = --$stok_pj;
+			$status_gst = 1;
+			$status_op = 1;
+			$status_plg = 1;
+			// $stok_gd_new = ++$stok_gd;
+			// $stok_pj_new = --$stok_pj;
 
-			$this->M_admin->mengurangi('tb_genset', $id_genset, $stok_gd_new);
-			$this->M_admin->menambah('tb_genset', $id_genset, $stok_pj_new);
+			// $this->M_admin->mengurangi('tb_genset', $id_genset, $stok_gd_new);
+			// $this->M_admin->menambah('tb_genset', $id_genset, $stok_pj_new);
+			$this->M_admin->update_status_gst('tb_genset', $id_genset, $status_gst);
+			$this->M_admin->update_status_op('tb_operator', $id_operator, $status_op);
+			$this->M_admin->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
 			$this->M_admin->insert('tb_unit_keluar', $data);
 			$this->session->set_flashdata('msg_sukses', 'Data Unit Keluar Berhasil Ditambahkan');
 
@@ -1483,7 +1489,7 @@ class Admin extends CI_Controller
 			$jumlah_hari_lama = $this->input->post('jumlah_hari_lama', TRUE);
 			$total            = $this->input->post('total', TRUE);
 
-			$status_b = NULL;
+			$status_b = 0;
 
 			// if($jumlah_hari_lama == $jumlah_hari){
 			//   $status = 1;
@@ -1506,13 +1512,19 @@ class Admin extends CI_Controller
 				'total'            => $total,
 				'status'           => $status_b
 			);
-			$stok_gd_new = ++$stok_gd;
-			$stok_pj_new = --$stok_pj;
+			// $stok_gd_new = ++$stok_gd;
+			// $stok_pj_new = --$stok_pj;
+			$status_gst = 0;
+			$status_op = 0;
+			$status_plg = 0;
 			$status = 0;
 
 			$this->M_admin->update_status('tb_unit_keluar', $id_u_keluar, $status);
-			$this->M_admin->menambah_kembali('tb_genset', $id_genset, $stok_gd_new);
-			$this->M_admin->mengurangi_kembali('tb_genset', $id_genset, $stok_pj_new);
+			$this->M_admin->update_status_gst('tb_genset', $id_genset, $status_gst);
+			$this->M_admin->update_status_op('tb_operator', $id_operator, $status_op);
+			$this->M_admin->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
+			// $this->M_admin->menambah_kembali('tb_genset', $id_genset, $stok_gd_new);
+			// $this->M_admin->mengurangi_kembali('tb_genset', $id_genset, $stok_pj_new);
 			$this->M_admin->insert('tb_unit_masuk', $data);
 			$this->session->set_flashdata('msg_sukses', 'Data Masuk Berhasil');
 			// $this->M_admin->delete('tb_barang_masuk',$where);
@@ -1520,8 +1532,8 @@ class Admin extends CI_Controller
 		} else {
 			// $data['title'] = 'Update Genset Masuk';
 			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-			$data['title'] = 'Perpanjang Pemakaian Genset';
-			$this->load->view('admin/form_unit_keluar/perpanjang_unit', $data);
+			$data['title'] = 'Konfirmasi Genset Masuk';
+			$this->load->view('admin/form_unit_keluar/update_unit_masuk', $data);
 		}
 	}
 	####################################

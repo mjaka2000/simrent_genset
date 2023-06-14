@@ -79,7 +79,7 @@
                                             <td><?= $dt->nopol; ?></td>
                                             <td><?= $dt->jumlah_hari; ?></td>
                                             <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
-                                            <?php if ($dt->status == NULL || $dt->status == 1) { ?>
+                                            <?php if ($dt->status == NULL || $dt->status == 0) { ?>
                                                 <td>Genset Masuk (Kembali)
                                                 </td>
                                             <?php } else { ?>
