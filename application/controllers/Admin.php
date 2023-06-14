@@ -283,8 +283,9 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
 		$this->form_validation->set_rules('daya', 'Daya', 'trim|required');
 		$this->form_validation->set_rules('harga', 'Harga', 'trim|required');
-		$this->form_validation->set_rules('stok_gd', 'Stok GUdang', 'trim|required');
-		$this->form_validation->set_rules('stok_pj', 'Stok Pinjam', 'trim|required');
+		$this->form_validation->set_rules('ket_genset', 'Ket. Genset', 'trim|required');
+		// $this->form_validation->set_rules('stok_gd', 'Stok GUdang', 'trim|required');
+		// $this->form_validation->set_rules('stok_pj', 'Stok Pinjam', 'trim|required');
 
 		if ($this->form_validation->run() == true) {
 			$gambar_genset = $this->upload_gambargenset();
@@ -293,16 +294,18 @@ class Admin extends CI_Controller
 			$nama_genset = $this->input->post('nama_genset', true);
 			$daya = $this->input->post('daya', true);
 			$harga = $this->input->post('harga', true);
-			$stok_gd = $this->input->post('stok_gd', true);
-			$stok_pj = $this->input->post('stok_pj', true);
+			$ket_genset = $this->input->post('ket_genset', true);
+			// $stok_gd = $this->input->post('stok_gd', true);
+			// $stok_pj = $this->input->post('stok_pj', true);
 
 			$data = array(
 				'kode_genset' => $kode_genset,
 				'nama_genset' => $nama_genset,
 				'daya' => $daya,
 				'harga' => $harga,
-				'stok_gd' => $stok_gd,
-				'stok_pj' => $stok_pj,
+				'ket_genset' => $ket_genset,
+				// 'stok_gd' => $stok_gd,
+				// 'stok_pj' => $stok_pj,
 				'gambar_genset' => $gambar_genset
 			);
 
@@ -359,8 +362,9 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
 		$this->form_validation->set_rules('daya', 'Daya', 'trim|required');
 		$this->form_validation->set_rules('harga', 'Harga', 'trim|required');
-		$this->form_validation->set_rules('stok_gd', 'Stok GUdang', 'trim|required');
-		$this->form_validation->set_rules('stok_pj', 'Stok Pinjam', 'trim|required');
+		$this->form_validation->set_rules('ket_genset', 'Ket. Genset', 'trim|required');
+		// $this->form_validation->set_rules('stok_gd', 'Stok GUdang', 'trim|required');
+		// $this->form_validation->set_rules('stok_pj', 'Stok Pinjam', 'trim|required');
 
 		if ($this->form_validation->run() == true) {
 
@@ -369,8 +373,9 @@ class Admin extends CI_Controller
 			$nama_genset = $this->input->post('nama_genset', true);
 			$daya = $this->input->post('daya', true);
 			$harga = $this->input->post('harga', true);
-			$stok_gd = $this->input->post('stok_gd', true);
-			$stok_pj = $this->input->post('stok_pj', true);
+			$ket_genset = $this->input->post('ket_genset', true);
+			// $stok_gd = $this->input->post('stok_gd', true);
+			// $stok_pj = $this->input->post('stok_pj', true);
 			$gambar_genset_old = $this->input->post('gambar_genset_old', true);
 
 			$gambar_genset = $this->upload_gambargenset();
@@ -387,8 +392,9 @@ class Admin extends CI_Controller
 				'nama_genset' => $nama_genset,
 				'daya' => $daya,
 				'harga' => $harga,
-				'stok_gd' => $stok_gd,
-				'stok_pj' => $stok_pj,
+				'ket_genset' => $ket_genset,
+				// 'stok_gd' => $stok_gd,
+				// 'stok_pj' => $stok_pj,
 				'gambar_genset' => $gambar_genset_new
 			);
 			$this->M_admin->update('tb_genset', $data, $where);
@@ -1133,7 +1139,7 @@ class Admin extends CI_Controller
 	public function tabel_unit_keluar()
 	{
 		$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
-		$data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_keluar');
+		// $data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_keluar');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Data Unit Keluar';
 		$this->load->view('admin/form_unit_keluar/tabel_unit_keluar', $data);
@@ -1532,6 +1538,7 @@ class Admin extends CI_Controller
 			'list_data' => $this->M_admin->get_data_u_masuk('tb_unit_masuk'),
 			'avatar'    => $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'))
 		);
+		$data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_masuk');
 		$data['title'] = 'Data Unit Masuk/Kembali';
 		$this->load->view('admin/form_unit_masuk/tabel_unit_masuk', $data);
 	}

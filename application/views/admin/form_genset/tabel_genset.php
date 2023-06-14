@@ -51,8 +51,8 @@
                                         <th>Nama Genset</th>
                                         <th>Daya</th>
                                         <th>Harga Perhari</th>
-                                        <th>Unit Digudang</th>
-                                        <th>Unit Disewakan</th>
+                                        <th>Ket. Genset</th>
+                                        <!-- <th>Unit Disewakan</th> -->
                                         <th>Gambar</th>
                                         <th style="width:10%">Aksi</th>
                                     </tr>
@@ -68,8 +68,11 @@
                                                 <td><?= $d->nama_genset; ?></td>
                                                 <td><?= $d->daya; ?></td>
                                                 <td>Rp&nbsp;<?= number_format($d->harga); ?></td>
-                                                <td><?= $d->stok_gd; ?></td>
-                                                <td><?= $d->stok_pj; ?></td>
+                                                <?php if ($d->ket_genset == NULL || $d->ket_genset == 0) { ?>
+                                                    <td><a href="#" class="btn btn-success btn-xs">Genset Ada </a></td>
+                                                <?php } else { ?>
+                                                    <td><a href="#" class="btn btn-danger btn-xs"> Genset Sedang Disewa</a></td>
+                                                <?php } ?>
                                                 <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" class="img img-box" width="100" height="100" alt="<?= $d->kode_genset; ?>"></td>
                                                 <td><a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
                                                     <a href="<?= site_url('admin/hapus_data/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>

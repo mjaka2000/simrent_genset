@@ -73,13 +73,28 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="stok_gd" class="form-label">Ket. Genset</label>
+                                        <select name="ket_genset" id="ket_genset" class="form-control">
+                                            <option value="">-- Status --</option>
+                                            <?php foreach ($data_genset as $k) { ?>
+                                                <?php if ($k->ket_genset == "0") { ?>
+                                                    <option value="0" selected>Genset Ada</option>
+                                                    <option value="1">Genset Sedang Disewa</option>
+                                                <?php } else { ?>
+                                                    <option value="0">Genset Ada</option>
+                                                    <option value="1" selected>Genset Sedang Disewa</option>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <!-- <div class="form-group">
                                         <label for="stok_gd" class="form-label">Unit Digudang</label>
                                         <input type="text" name="stok_gd" class="form-control" id="stok_gd" placeholder="Stok Digudang" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->stok_gd; ?>">
-                                    </div>
-                                    <div class="form-group">
+                                    </div> -->
+                                    <!-- <div class="form-group">
                                         <label for="stok_pj" class="form-label">Unit Disewakan</label>
                                         <input type="text" name="stok_pj" class="form-control" id="stok_pj" placeholder="Stok Dipinjam" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->stok_pj; ?>">
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <label for="gambar_genset" class="form-label">Gambar Genset</label>
                                         <input type="file" name="gambar_genset" class="form-control" id="gambar_genset">

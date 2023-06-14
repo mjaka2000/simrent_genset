@@ -71,13 +71,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="stok_gd" class="form-label">Ket. Genset</label>
+                                    <select name="ket_genset" class="form-control" id="ket_genset" required>
+                                        <option value="">-- Status --</option>
+                                        <option value="0">Genset Ada</option>
+                                        <option value="1">Genset Sedang Disewa</option>
+                                    </select>
+                                </div>
+                                <!-- <div class="form-group">
                                     <label for="stok_gd" class="form-label">Unit Digudang</label>
                                     <input type="number" name="stok_gd" class="form-control" id="stok_gd" placeholder="Unit Digudang" value="0" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
-                                </div>
-                                <div class="form-group">
+                                </div> -->
+                                <!-- <div class="form-group">
                                     <label for="stok_pj" class="form-label">Unit Disewakan</label>
                                     <input type="number" name="stok_pj" class="form-control" id="stok_pj" placeholder="Unit Disewakan" value="0" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="gambar_genset" class="form-label">Gambar Genset</label>
                                     <input type="file" name="gambar_genset" class="form-control" id="gambar_genset">
