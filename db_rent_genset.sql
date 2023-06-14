@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Jun 2023 pada 13.47
+-- Waktu pembuatan: 14 Jun 2023 pada 03.32
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -55,8 +55,7 @@ CREATE TABLE `tb_genset` (
   `nama_genset` varchar(50) NOT NULL,
   `daya` varchar(50) NOT NULL,
   `harga` varchar(100) NOT NULL,
-  `stok_gd` int(50) NOT NULL,
-  `stok_pj` int(50) NOT NULL,
+  `ket_genset` int(10) DEFAULT NULL,
   `gambar_genset` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -64,9 +63,10 @@ CREATE TABLE `tb_genset` (
 -- Dumping data untuk tabel `tb_genset`
 --
 
-INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `harga`, `stok_gd`, `stok_pj`, `gambar_genset`) VALUES
-(2, '02', 'Hartech 45 P-02', '40', '1000000', 1, 0, 'ht45p-02.jpg'),
-(3, '07', 'Denyo 25 ES-07', '20', '750000', 2, -1, 'denyo25es-07.jpg');
+INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `harga`, `ket_genset`, `gambar_genset`) VALUES
+(2, '02', 'Hartech 45 P-02', '40', '1000000', 0, 'ht45p-02.jpg'),
+(3, '07', 'Denyo 25 ES-07', '20', '750000', 1, 'denyo25es-07.jpg'),
+(4, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg');
 
 -- --------------------------------------------------------
 
@@ -291,7 +291,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '13-06-2023 19:03'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '14-06-2023 8:31'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
 
@@ -386,7 +386,7 @@ ALTER TABLE `tb_avatar`
 -- AUTO_INCREMENT untuk tabel `tb_genset`
 --
 ALTER TABLE `tb_genset`
-  MODIFY `id_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_mobil`
