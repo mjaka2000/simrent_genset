@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jun 2023 pada 10.36
+-- Waktu pembuatan: 15 Jun 2023 pada 05.12
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -42,6 +42,21 @@ INSERT INTO `tb_avatar` (`id`, `username_user`, `nama_file`) VALUES
 (12, 'jakaja', 'nopic.png'),
 (13, 'bos', 'nopic.png'),
 (14, 'aril', 'nopic.png');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_detail_serv`
+--
+
+CREATE TABLE `tb_detail_serv` (
+  `id_detail_serv` int(10) NOT NULL,
+  `id_perbaikan_gst` int(11) NOT NULL,
+  `pekerjaan` varchar(255) NOT NULL,
+  `tanggal` date NOT NULL,
+  `kendala` varchar(255) NOT NULL,
+  `status` enum('Pending','Selesai') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -176,7 +191,7 @@ INSERT INTO `tb_pelanggan_blacklist` (`id_plg_blacklist`, `nama_plg_blk`, `alama
 CREATE TABLE `tb_serv_genset` (
   `id_perbaikan_gst` int(11) NOT NULL,
   `id_genset` int(11) NOT NULL,
-  `id_sparepart` int(11) NOT NULL,
+  `id_sparepart` int(11) DEFAULT NULL,
   `jenis_perbaikan` varchar(255) NOT NULL,
   `tgl_perbaikan` date NOT NULL,
   `ket_perbaikan` varchar(255) NOT NULL,
@@ -293,7 +308,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '14-06-2023 16:29'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '15-06-2023 8:41'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
 
@@ -306,6 +321,13 @@ INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login
 --
 ALTER TABLE `tb_avatar`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `tb_detail_serv`
+--
+ALTER TABLE `tb_detail_serv`
+  ADD PRIMARY KEY (`id_detail_serv`),
+  ADD KEY `id_perbaikan_gst` (`id_perbaikan_gst`);
 
 --
 -- Indeks untuk tabel `tb_genset`
@@ -342,8 +364,8 @@ ALTER TABLE `tb_pelanggan_blacklist`
 --
 ALTER TABLE `tb_serv_genset`
   ADD PRIMARY KEY (`id_perbaikan_gst`),
-  ADD KEY `id_sparepart` (`id_sparepart`),
-  ADD KEY `id_genset` (`id_genset`);
+  ADD KEY `id_genset` (`id_genset`),
+  ADD KEY `id_sparepart` (`id_sparepart`);
 
 --
 -- Indeks untuk tabel `tb_sparepart`
@@ -385,6 +407,12 @@ ALTER TABLE `tb_avatar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_detail_serv`
+--
+ALTER TABLE `tb_detail_serv`
+  MODIFY `id_detail_serv` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_genset`
 --
 ALTER TABLE `tb_genset`
@@ -418,7 +446,7 @@ ALTER TABLE `tb_pelanggan_blacklist`
 -- AUTO_INCREMENT untuk tabel `tb_serv_genset`
 --
 ALTER TABLE `tb_serv_genset`
-  MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_sparepart`
@@ -449,11 +477,17 @@ ALTER TABLE `tb_user`
 --
 
 --
+-- Ketidakleluasaan untuk tabel `tb_detail_serv`
+--
+ALTER TABLE `tb_detail_serv`
+  ADD CONSTRAINT `tb_detail_serv_ibfk_1` FOREIGN KEY (`id_perbaikan_gst`) REFERENCES `tb_serv_genset` (`id_perbaikan_gst`);
+
+--
 -- Ketidakleluasaan untuk tabel `tb_serv_genset`
 --
 ALTER TABLE `tb_serv_genset`
-  ADD CONSTRAINT `tb_serv_genset_ibfk_1` FOREIGN KEY (`id_sparepart`) REFERENCES `tb_sparepart` (`id_sparepart`),
-  ADD CONSTRAINT `tb_serv_genset_ibfk_2` FOREIGN KEY (`id_genset`) REFERENCES `tb_genset` (`id_genset`);
+  ADD CONSTRAINT `tb_serv_genset_ibfk_2` FOREIGN KEY (`id_genset`) REFERENCES `tb_genset` (`id_genset`),
+  ADD CONSTRAINT `tb_serv_genset_ibfk_3` FOREIGN KEY (`id_sparepart`) REFERENCES `tb_sparepart` (`id_sparepart`);
 
 --
 -- Ketidakleluasaan untuk tabel `tb_unit_keluar`
