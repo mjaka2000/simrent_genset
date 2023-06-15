@@ -265,6 +265,27 @@ class M_admin extends CI_Model
     $this->db->from($this->tableserv);
     return $this->db->count_all_results();
   }
+
+  public function get_detail_perbaikan($tabel, $id_perbaikan_gst)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_serv_genset.id_genset')
+      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = tb_serv_genset.id_sparepart')
+      ->where($id_perbaikan_gst)
+      ->get();
+    return $query->result();
+  }
+
+  public function detail_perbaikan($tabel, $id_perbaikan_gst)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      // ->join('tb_serv_genset', 'tb_serv_genset.id_perbaikan_gst = tb_detail_serv.id_perbaikan_gst ')
+      ->where($id_perbaikan_gst)
+      ->get();
+    return $query->result();
+  }
   ####################################
   //* End Data Perbaikan Genset 
   ####################################

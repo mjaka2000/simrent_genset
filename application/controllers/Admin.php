@@ -452,7 +452,8 @@ class Admin extends CI_Controller
 			$row[] = $d->ket_perbaikan;
 			$row[] = 'Rp&nbsp;' . number_format($d->biaya_perbaikan);
 			$row[] = '<a href="' . site_url('admin/update_data_service_genset/' . $d->id_perbaikan_gst) . '" id="id_pemakai" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
-            <a href="' . site_url('admin/hapus_service_genset/' . $d->id_perbaikan_gst) . '" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>';
+            <a href="' . site_url('admin/hapus_service_genset/' . $d->id_perbaikan_gst) . '" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
+            <a href="' . site_url('admin/detail_service_genset/' . $d->id_perbaikan_gst) . '" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info mr-2"></i></a>';
 			$data[] = $row;
 		}
 		$output = array(
@@ -580,6 +581,19 @@ class Admin extends CI_Controller
 		$this->M_admin->delete('tb_serv_genset', $where);
 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
 		redirect(site_url('admin/tabel_service_genset'));
+	}
+
+	public function detail_service_genset()
+	{
+		$data['list_genset'] = $this->M_admin->select('tb_genset');
+		$data['list_sparepart'] = $this->M_admin->select('tb_sparepart');
+		$uri = $this->uri->segment(3);
+		$where = array('id_perbaikan_gst' => $uri);
+		$data['list_data'] = $this->M_admin->get_detail_perbaikan('tb_serv_genset', $where);
+		$data['detail_perbaikan'] = $this->M_admin->detail_perbaikan('tb_detail_serv', $where);
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Update Perbaikan Genset';
+		$this->load->view('admin/form_service_genset/detail_service_genset', $data);
 	}
 
 	####################################
