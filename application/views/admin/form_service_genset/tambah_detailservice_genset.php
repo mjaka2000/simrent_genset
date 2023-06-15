@@ -89,43 +89,8 @@
 <?php $this->load->view('template/footer'); ?>
 
 <?php $this->load->view('admin/template/script') ?>
-<script type="text/javascript">
-    //*Script untuk memuat stok
-    $("#spare_part").change(function() {
-        let spare_part = $(this).val();
-        let stk = document.getElementById("stk");
 
-        <?php foreach ($list_sparepart as $ls) { ?>
-            if (spare_part == "<?= $ls->id_sparepart ?>") {
-                var text = document.createTextNode("<?= $ls->stok; ?>");
 
-                $("#stok_input").val("<?= $ls->stok; ?>");
-                if (stk.innerHTML = "<?= $ls->stok  < 1; ?>") {
-                    Swal.fire(
-                        'Error!',
-                        'Maaf, Stok Sparepart Tidak Cukup, lakukan pembelian untuk menambah stok.',
-                        'error'
-                    ).then(result => {
-                        window.location.href = "<?= site_url('admin/tabel_sparepart'); ?>"
-                    })
-                } else {
-                    stk.innerHTML = "<?= $ls->stok; ?>";
-                }
-            }
-        <?php } ?>
-    })
-</script>
-<script type="text/javascript">
-    // 
-    $("#id_genset").change(function() {
-        let kode_genset = $(this).val();
-        <?php foreach ($list_genset as $l) { ?>
-            if (kode_genset == "<?php echo $l->id_genset ?>") {
-                $("#nama_genset").val("<?php echo $l->nama_genset ?>");
-            }
-        <?php } ?>
-    })
-</script>
 
 
 </body>
