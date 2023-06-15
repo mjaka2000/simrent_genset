@@ -42,10 +42,10 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <button onclick="window.location.href='<?= site_url('admin/tambah_service_detail'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
+                            <?php foreach ($list_data as $d) : ?>
+                                <button onclick="window.location.href='<?= site_url('admin/tambah_service_detail/' . $d->id_perbaikan_gst); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
 
-                            <table class="table" style="width:35%">
-                                <?php foreach ($list_data as $d) : ?>
+                                <table class="table" style="width:35%">
                                     <tr>
                                         <th style="vertical-align: middle">Nomor Genset</th>
                                         <td style="vertical-align: middle;">
@@ -133,40 +133,37 @@
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            </table>
-                            <table align="center" id="tableserv" class="table table-bordered table-hover" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th colspan="5" style="text-align: center;">Tracking Aktivitas Perbaikan Genset</th>
-                                    </tr>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Pekerjaan</th>
-                                        <th>Tanggal</th>
-                                        <th>Kendala</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $no = 1;
-                                    ?>
-                                    <?php foreach ($detail_perbaikan as $dt) : ?>
+                                </table>
+                                <table align="center" id="tableserv" class="table table-bordered table-hover" style="width:100%">
+                                    <thead>
                                         <tr>
-                                            <td><?= $no++; ?></td>
-                                            <td><?= $dt->pekerjaan; ?></td>
-                                            <td><?= $dt->tanggal; ?></td>
-                                            <td><?= $dt->kendala; ?></td>
-                                            <td><?= $dt->status; ?></td>
-                                            <td><a href="<?= site_url('admin/update_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
-                                                <a href="<?= site_url('admin/hapus_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
-                                                <!-- <a href="<?= site_url('admin/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
-                                            </td>
+                                            <th colspan="5" style="text-align: center;">Tracking Aktivitas Perbaikan Genset</th>
                                         </tr>
-                                    <?php endforeach; ?>
+                                        <tr>
+                                            <th style="width :10px">No.</th>
+                                            <th>Pekerjaan</th>
+                                            <th>Tanggal</th>
+                                            <th>Kendala</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        ?>
+                                        <?php foreach ($detail_perbaikan as $dt) : ?>
+                                            <tr>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= $dt->pekerjaan; ?></td>
+                                                <td><?= $dt->tanggal; ?></td>
+                                                <td><?= $dt->kendala; ?></td>
+                                                <td><?= $dt->status; ?></td>
 
-                                </tbody>
-                            </table>
+                                            </tr>
+                                        <?php endforeach; ?>
+
+                                    </tbody>
+                                </table>
                         </div>
                     </div>
                 </div>

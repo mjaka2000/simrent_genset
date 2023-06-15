@@ -596,6 +596,50 @@ class Admin extends CI_Controller
 		$this->load->view('admin/form_service_genset/detail_service_genset', $data);
 	}
 
+	public function tambah_service_detail()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_perbaikan_gst' => $uri);
+		$data['list_data'] = $this->M_admin->get_detail_perbaikan('tb_serv_genset', $where);
+		$data['detail_perbaikan'] = $this->M_admin->detail_perbaikan('tb_detail_serv', $where);
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Detail Perbaikan';
+		$this->load->view('admin/form_service_genset/tambah_detailservice_genset', $data);
+	}
+
+	public function proses_tambah_service_detail()
+	{
+		$this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'trim|required');
+		$this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required');
+		$this->form_validation->set_rules('kendala', 'Kendala', 'trim|required');
+		$this->form_validation->set_rules('status', 'Status', 'trim|required');
+
+		if ($this->form_validation->run() === true) {
+
+			$id_perbaikan_gst = $this->input->post('id_perbaikan_gst', true);
+			$pekerjaan = $this->input->post('pekerjaan', true);
+			$tanggal = $this->input->post('tanggal', true);
+			$kendala = $this->input->post('kendala', true);
+			$status = $this->input->post('status', true);
+
+			// $tanggal_beli = date('Y-m-d', strtotime($tanggal_beli));
+			$data = array(
+				'id_perbaikan_gst' => $id_perbaikan_gst,
+				'pekerjaan' => $pekerjaan,
+				'tanggal' => $tanggal,
+				'kendala' => $kendala,
+				'status' => $status
+			);
+			$this->M_admin->insert('tb_detail_serv', $data);
+			$this->session->set_flashdata('msg_sukses', 'Data Detaill Berhasil Ditambah');
+			redirect(site_url('admin/tabel_sparepart'));
+		} else {
+			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+			$data['title'] = 'Tambah Detail Perbaikan';
+			$this->load->view('admin/form_service_genset/tambah_detailservice_genset', $data);
+		}
+	}
+
 	####################################
 	//* End Data Perbaikan Genset 
 	####################################

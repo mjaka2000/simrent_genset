@@ -48,25 +48,26 @@
                             <?php } ?>
 
                             <form action="<?= site_url('admin/proses_update_sparepart'); ?>" method="post" role="form">
-                                <?php foreach ($data_sparepart as $dt) ?>
+                                <?php foreach ($data_sparepart as $dt) { ?>
 
-                                <div class="form-group">
-                                    <input type="hidden" name="id" value="<?= $dt->id_sparepart; ?>">
-                                    <label for="nama_sparepart" class="form-label">Nama Sparepart</label>
-                                    <input type="text" name="nama_sparepart" class="form-control" id="nama_sparepart" placeholder="Masukkan Nama Sparepart" required value="<?= $dt->nama_sparepart; ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="tanggal_beli" class="form-label">Tanggal Beli</label>
-                                    <input type="date" name="tanggal_beli" class="form-control form_datetime" id="tanggal_beli" placeholder="Masukkan Tanggal Beli" required value="<?= $dt->tanggal_beli; ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="tempat_beli" class="form-label">Tempat Beli</label>
-                                    <input type="text" name="tempat_beli" class="form-control" id="tempat_beli" placeholder="Masukkan Tempat Beli" required value="<?= $dt->tempat_beli; ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="stok" class="form-label">Stok</label>
-                                    <input type="number" name="stok" class="form-control" id="stok" placeholder="Masukkan Stok yang Dibeli" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $dt->stok; ?>">
-                                </div>
+                                    <div class="form-group">
+                                        <input type="hidden" name="id" value="<?= $dt->id_sparepart; ?>">
+                                        <label for="nama_sparepart" class="form-label">Nama Sparepart</label>
+                                        <input type="text" name="nama_sparepart" class="form-control" id="nama_sparepart" placeholder="Masukkan Nama Sparepart" required value="<?= $dt->nama_sparepart; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tanggal_beli" class="form-label">Tanggal Beli</label>
+                                        <input type="date" name="tanggal_beli" class="form-control form_datetime" id="tanggal_beli" placeholder="Masukkan Tanggal Beli" required value="<?= $dt->tanggal_beli; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tempat_beli" class="form-label">Tempat Beli</label>
+                                        <input type="text" name="tempat_beli" class="form-control" id="tempat_beli" placeholder="Masukkan Tempat Beli" required value="<?= $dt->tempat_beli; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="stok" class="form-label">Stok</label>
+                                        <input type="number" name="stok" class="form-control" id="stok" placeholder="Masukkan Stok yang Dibeli" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $dt->stok; ?>">
+                                    </div>
+                                <?php } ?>
                                 <hr>
                                 <div class="form-group" align="center">
                                     <button onclick="window.location.href='<?= site_url('admin/tabel_sparepart'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
