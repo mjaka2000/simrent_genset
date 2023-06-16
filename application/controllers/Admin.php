@@ -632,7 +632,7 @@ class Admin extends CI_Controller
 			);
 			$this->M_admin->insert('tb_detail_serv', $data);
 			$this->session->set_flashdata('msg_sukses', 'Data Detaill Berhasil Ditambah');
-			redirect(site_url('admin/tabel_sparepart'));
+			redirect(site_url('admin/detail_service_genset'));
 		} else {
 			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 			$data['title'] = 'Tambah Detail Perbaikan';
@@ -640,6 +640,58 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function hapus_detail()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_detail_serv' => $uri);
+		$this->M_admin->delete('tb_detail_serv', $where);
+		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+		redirect(site_url('admin/detail_service_genset'));
+	}
+
+	public function proses_update_ket_service()
+	{
+		// $this->form_validation->set_rules('id_genset', 'Kode Genset', 'trim|required');
+		// $this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
+		// $this->form_validation->set_rules('jenis_perbaikan', 'Jenis Perbaikan', 'trim|required');
+		// $this->form_validation->set_rules('tgl_perbaikan', 'Tanggal Perbaikan', 'trim|required');
+		$this->form_validation->set_rules('ket_perbaikan', 'Keterangan Perbaikan', 'trim|required');
+		// $this->form_validation->set_rules('biaya_perbaikan', 'Biaya Perbaikan', 'trim|required');
+
+		if ($this->form_validation->run() === TRUE) {
+			// $stok = $this->input->post('stok', true);
+
+			$id = $this->input->post('id_perbaikan_gst', TRUE);
+			// $kode_genset = $this->input->post('id_genset', TRUE);
+			// $nama_genset = $this->input->post('nama_genset', TRUE);
+			// $jenis_perbaikan = $this->input->post('jenis_perbaikan', TRUE);
+			// $spare_part = $this->input->post('id_sparepart', TRUE);
+			// $tgl_perbaikan = $this->input->post('tgl_perbaikan', TRUE);
+			$ket_perbaikan = $this->input->post('ket_perbaikan', TRUE);
+			// $biaya_perbaikan = $this->input->post('biaya_perbaikan', TRUE);
+
+			$where = array('id_perbaikan_gst' => $id);
+			$data = array(
+				// 'id_genset' => $kode_genset,
+				// 'nama_genset' => $nama_genset,
+				// 'jenis_perbaikan' => $jenis_perbaikan,
+				// 'id_sparepart' => $spare_part,
+				// 'tgl_perbaikan' => $tgl_perbaikan,
+				'ket_perbaikan' => $ket_perbaikan,
+				// 'biaya_perbaikan' => $biaya_perbaikan,
+			);
+			// $stok_new = --$stok;
+
+			// $this->M_admin->mengurangi_stok('tb_sparepart', $spare_part, $stok_new);
+			$this->M_admin->update('tb_serv_genset', $data, $where);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Di Update');
+			redirect(site_url('admin/tabel_service_genset'));
+		} else {
+			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+			$data['title'] = 'Update Perbaikan Genset';
+			$this->load->view('admin/form_service_genset/update_service_genset', $data);
+		}
+	}
 	####################################
 	//* End Data Perbaikan Genset 
 	####################################
@@ -1633,10 +1685,6 @@ class Admin extends CI_Controller
 		$this->load->view('admin/form_barang_masuk/update_barang_masuk', $data);
 	}
 
-
-
-
-
 	public function unit_masuk_kembali()
 	{
 		$uri = $this->uri->segment(3);
@@ -1663,6 +1711,19 @@ class Admin extends CI_Controller
 
 	####################################
 	//* End Data Unit Masuk
+	####################################
+	####################################
+	//* Data Pengeluaran
+	####################################
+	public function tabel_pengeluaran()
+	{
+		$data['list_data'] = $this->M_admin->select('tb_pengeluaran');
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Data Pengeluaran';
+		$this->load->view('admin/form_pengeluaran/tabel_pengeluaran', $data);
+	}
+	####################################
+	//* End Data Pengeluaran
 	####################################
 	####################################
 	//* Laporan

@@ -121,9 +121,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= site_url(); ?>admin/#" class="nav-link">
+                            <a href="<?= site_url(); ?>admin/tabel_pengeluaran" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Pengeluaran</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= site_url(); ?>admin/#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Pemasukan</p>
                             </a>
                         </li>
                     </ul>

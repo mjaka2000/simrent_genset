@@ -110,15 +110,31 @@
                                     </tr>
                                     <tr>
                                         <th style="vertical-align: middle">Ket. Perbaikan</th>
-                                        <td style="vertical-align: middle;">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <div class="row">
-                                                        :&nbsp;<?= $d->ket_perbaikan; ?> </div>
+                                        <form action="<?= site_url('admin/proses_update_ket_service'); ?>" method="post" role="form">
+                                            <td style="vertical-align: middle;">
+                                                <div class="row">
+                                                    <div class="col-lg-8">
+                                                        <div class="row">
+                                                            <input type="hidden" name="id_perbaikan_gst" value="<?= $d->id_perbaikan_gst; ?>">
+                                                            :&nbsp;<span><select name="ket_perbaikan" class="form-control" id="ket_perbaikan">
+                                                                    <option value="">-- Status --</option>
+                                                                    <?php if ($d->ket_perbaikan == "Selesai Diperbaiki") { ?>
+                                                                        <option value="Selesai Diperbaiki" selected>Selesai Diperbaiki</option>
+                                                                        <option value="Masih Terkendala">Masih Terkendala</option>
+                                                                    <?php } else { ?>
+                                                                        <option value="Selesai Diperbaiki">Selesai Diperbaiki</option>
+                                                                        <option value="Masih Terkendala" selected>Masih Terkendala</option>
+                                                                    <?php } ?>
 
+                                                                </select>
+                                                                <span><button type="submit" class="btn btn-xs btn-success"><i class="fa fa-check mr-2"></i>Update</button></span>
+                                                            </span>
+                                                        </div>
+
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
+                                            </td>
+                                        </form>
                                     </tr>
                                     <tr>
                                         <th style="vertical-align: middle">Biaya Perbaikan</th>
@@ -137,7 +153,7 @@
                                 <table align="center" id="tableserv" class="table table-bordered table-hover" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th colspan="5" style="text-align: center;">Tracking Aktivitas Perbaikan Genset</th>
+                                            <th colspan="6" style="text-align: center;">Tracking Aktivitas Perbaikan Genset</th>
                                         </tr>
                                         <tr>
                                             <th style="width :10px">No.</th>
@@ -145,6 +161,7 @@
                                             <th>Tanggal</th>
                                             <th>Kendala</th>
                                             <th>Status</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -158,6 +175,8 @@
                                                 <td><?= $dt->tanggal; ?></td>
                                                 <td><?= $dt->kendala; ?></td>
                                                 <td><?= $dt->status; ?></td>
+                                                <td><a href="<?= site_url('admin/hapus_detail/' . $dt->id_detail_serv); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
+                                                </td>
 
                                             </tr>
                                         <?php endforeach; ?>
