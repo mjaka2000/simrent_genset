@@ -122,7 +122,7 @@
                             <?php } ?>
                         </div>
                         <div class="box-footer" align="center">
-                            <a href="<?= base_url('admin/tabel_barang_keluar'); ?>" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</a>
+                            <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                         </div>
                     </div>
                 </div>

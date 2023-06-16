@@ -199,7 +199,7 @@
                                         <a type="button" onclick="editHari()" class="btn btn-sm btn-danger" name="edit_hari" id="edit_hari"><i class="fa fa-edit mr-2"></i>Edit Jumlah Hari</a>
                                         <small style="color: red;">*Klik Untuk Perpanjang Hari</small>
                                     </div> -->
-                                    <button onclick="window.location.href='<?= site_url('admin/tabel_unit_keluar'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                    <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                     <!-- <button type="reset" class="btn btn-sm btn-info"><i class="fa fa-eraser mr-2"></i>Reset</button> -->
 
                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
