@@ -1722,6 +1722,78 @@ class Admin extends CI_Controller
 		$data['title'] = 'Data Pengeluaran';
 		$this->load->view('admin/form_pengeluaran/tabel_pengeluaran', $data);
 	}
+
+	public function tambah_data_pengeluaran()
+	{
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Data Pengeluaran';
+		$this->load->view('admin/form_pengeluaran/tambah_pengeluaran', $data);
+	}
+
+	public function proses_tambah_pengeluaran()
+	{
+		$this->form_validation->set_rules('tgl_pengeluaran', 'Tanggal', 'trim|required');
+		$this->form_validation->set_rules('pengeluaran', 'Keterangan Pengeluaran', 'trim|required');
+		$this->form_validation->set_rules('biaya_pengeluaran', 'Biaya Pengeluaran', 'trim|required');
+
+		if ($this->form_validation->run() === TRUE) {
+			$tgl_pengeluaran = $this->input->post('tgl_pengeluaran', TRUE);
+			$pengeluaran = $this->input->post('pengeluaran', TRUE);
+			$biaya_pengeluaran = $this->input->post('biaya_pengeluaran', TRUE);
+
+			$data = array(
+				'tgl_pengeluaran' => $tgl_pengeluaran,
+				'pengeluaran' => $pengeluaran,
+				'biaya_pengeluaran' => $biaya_pengeluaran
+			);
+			$this->M_admin->insert('tb_pengeluaran', $data);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Di Tambahkan');
+			redirect(site_url('admin/tabel_pengeluaran'));
+		} else {
+			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+			$data['title'] = 'Tambah Data Pengeluaran';
+			$this->load->view('admin/form_pengeluaran/tambah_pengeluaran', $data);
+		}
+	}
+
+	public function update_data_pengeluaran()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_pengeluaran' => $uri);
+		$data['list_data'] = $this->M_admin->get_data('tb_pengeluaran', $where);
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Update Data Pengeluaran';
+		$this->load->view('admin/form_pengeluaran/update_pengeluaran', $data);
+	}
+
+	public function proses_edit_pengeluaran()
+	{
+		$this->form_validation->set_rules('tgl_pengeluaran', 'Tanggal', 'trim|required');
+		$this->form_validation->set_rules('pengeluaran', 'Keterangan Pengeluaran', 'trim|required');
+		$this->form_validation->set_rules('biaya_pengeluaran', 'Biaya Pengeluaran', 'trim|required');
+
+		if ($this->form_validation->run() === TRUE) {
+
+			$id_pengeluaran = $this->input->post('id_pengeluaran', TRUE);
+			$tgl_pengeluaran = $this->input->post('tgl_pengeluaran', TRUE);
+			$pengeluaran = $this->input->post('pengeluaran', TRUE);
+			$biaya_pengeluaran = $this->input->post('biaya_pengeluaran', TRUE);
+
+			$where = array('id_pengeluaran' => $id_pengeluaran);
+			$data = array(
+				'tgl_pengeluaran' => $tgl_pengeluaran,
+				'pengeluaran' => $pengeluaran,
+				'biaya_pengeluaran' => $biaya_pengeluaran
+			);
+			$this->M_admin->update('tb_pengeluaran', $data, $where);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Di Update');
+			redirect(site_url('admin/tabel_pengeluaran'));
+		} else {
+			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+			$data['title'] = 'Update Data Pengeluaran';
+			$this->load->view('admin/form_pengeluaran/update_pengeluaran', $data);
+		}
+	}
 	####################################
 	//* End Data Pengeluaran
 	####################################

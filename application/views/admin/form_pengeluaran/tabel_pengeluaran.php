@@ -48,7 +48,7 @@
                                     <tr>
                                         <th style="width :10px">No.</th>
                                         <th>Tanggal</th>
-                                        <th>Pengeluaran</th>
+                                        <th>Keterangan Pengeluaran</th>
                                         <th>Biaya Pengeluaran</th>
                                         <th style="width:10%">Aksi</th>
                                     </tr>
@@ -62,7 +62,7 @@
                                             <td><?= $no++; ?></td>
                                             <td><?= $dt->tgl_pengeluaran; ?></td>
                                             <td><?= $dt->pengeluaran; ?></td>
-                                            <td><?= $dt->biaya_pengeluaran; ?></td>
+                                            <td>Rp&nbsp;<?= number_format($dt->biaya_pengeluaran); ?></td>
                                             <td><a href="<?= site_url('admin/update_data_pengeluaran/' . $dt->id_pengeluaran); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
                                                 <a href="<?= site_url('admin/hapus_pengeluaran/' . $dt->id_pengeluaran); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
                                                 <!-- <a href="<?= site_url('admin/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
