@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jun 2023 pada 11.06
+-- Waktu pembuatan: 16 Jun 2023 pada 05.29
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -63,7 +63,8 @@ CREATE TABLE `tb_detail_serv` (
 --
 
 INSERT INTO `tb_detail_serv` (`id_detail_serv`, `id_perbaikan_gst`, `pekerjaan`, `tanggal`, `kendala`, `status`) VALUES
-(1, 2, 'Pemasangan filter', '2023-06-15', 'baut lepas', 'Pending');
+(1, 2, 'Pemasangan filter', '2023-06-15', 'baut lepas', 'Pending'),
+(3, 2, 'bongkar mesin', '2023-06-16', '-', 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -192,6 +193,19 @@ INSERT INTO `tb_pelanggan_blacklist` (`id_plg_blacklist`, `nama_plg_blk`, `alama
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_pengeluaran`
+--
+
+CREATE TABLE `tb_pengeluaran` (
+  `id_pengeluaran` int(10) NOT NULL,
+  `tgl_pengeluaran` date NOT NULL,
+  `pengeluaran` varchar(255) NOT NULL,
+  `biaya_pengeluaran` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_serv_genset`
 --
 
@@ -210,7 +224,7 @@ CREATE TABLE `tb_serv_genset` (
 --
 
 INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `jenis_perbaikan`, `tgl_perbaikan`, `ket_perbaikan`, `biaya_perbaikan`) VALUES
-(1, 2, 1, 'ganti filter solar', '2023-04-12', 'Selesai Diperbaiki', '0'),
+(1, 2, 1, 'ganti filter solar', '2023-04-12', 'Masih Terkendala', '0'),
 (2, 3, 2, 'Ganti Oli', '2023-04-14', 'Selesai Diperbaiki', '250000');
 
 -- --------------------------------------------------------
@@ -315,7 +329,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '15-06-2023 16:18'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '16-06-2023 11:13'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
 
@@ -365,6 +379,12 @@ ALTER TABLE `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan_blacklist`
   ADD PRIMARY KEY (`id_plg_blacklist`);
+
+--
+-- Indeks untuk tabel `tb_pengeluaran`
+--
+ALTER TABLE `tb_pengeluaran`
+  ADD PRIMARY KEY (`id_pengeluaran`);
 
 --
 -- Indeks untuk tabel `tb_serv_genset`
@@ -417,7 +437,7 @@ ALTER TABLE `tb_avatar`
 -- AUTO_INCREMENT untuk tabel `tb_detail_serv`
 --
 ALTER TABLE `tb_detail_serv`
-  MODIFY `id_detail_serv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_detail_serv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_genset`
@@ -448,6 +468,12 @@ ALTER TABLE `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan_blacklist`
   MODIFY `id_plg_blacklist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_pengeluaran`
+--
+ALTER TABLE `tb_pengeluaran`
+  MODIFY `id_pengeluaran` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_serv_genset`
