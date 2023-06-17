@@ -94,3 +94,24 @@ Gunakanlah base_url() Saat membuat link/URL untuk CSS dan Javascript. biasanya s
                                         </label>
                                     </span>
 =========================================================================================================================================
+    public function index(){        
+        $tgl_awal = $this->input->get('tgl_awal'); // Ambil data tgl_awal sesuai input (kalau tidak ada set kosong)        
+        $tgl_akhir = $this->input->get('tgl_akhir'); // Ambil data tgl_awal sesuai input (kalau tidak ada set kosong)       
+         if(empty($tgl_awal) or empty($tgl_akhir)){ // Cek jika tgl_awal atau tgl_akhir kosong, maka :  
+
+           $transaksi = $this->TransaksiModel->view_all();  // Panggil fungsi view_all yang ada di TransaksiModel           
+            $url_cetak = 'transaksi/cetak';           
+             $label = 'Semua Data Transaksi';        
+             }else{ // Jika terisi            
+             $transaksi = $this->TransaksiModel->view_by_date($tgl_awal, $tgl_akhir);  // Panggil fungsi view_by_date yang ada di TransaksiModel          
+               $url_cetak = 'transaksi/cetak?tgl_awal='.$tgl_awal.'&tgl_akhir='.$tgl_akhir;           
+                $tgl_awal = date('d-m-Y', strtotime($tgl_awal)); // Ubah format tanggal jadi dd-mm-yyyy         
+                   $tgl_akhir = date('d-m-Y', strtotime($tgl_akhir)); // Ubah format tanggal jadi dd-mm-yyyy       
+                        $label = 'Periode Tanggal '.$tgl_awal.' s/d '.$tgl_akhir;        
+                        }
+
+                        $data['transaksi'] = $transaksi;        
+                        $data['url_cetak'] = base_url('index.php/'.$url_cetak);        
+                        $data['label'] = $label;        
+                        $this->load->view('list', $data);  
+                          }
