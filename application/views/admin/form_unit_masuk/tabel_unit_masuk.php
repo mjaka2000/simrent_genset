@@ -94,11 +94,7 @@
                                 </tbody>
                             </table>
                             <div class="box-footer">
-                                <?php foreach ($total_data as $td) : ?>
-                                    <h5>
-                                        <p style="color: red;">Total Pendapatan: Rp&nbsp;<?= number_format($td->total); ?></p>
-                                    </h5>
-                                <?php endforeach; ?>
+
                                 <!-- <h5><strong>Keterangan :</strong></h5> -->
                                 <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
                                 <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->
