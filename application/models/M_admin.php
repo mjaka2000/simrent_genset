@@ -336,5 +336,32 @@ class M_admin extends CI_Model
   ####################################
   //* End Data Unit Masuk 
   ####################################
+  ####################################
+  //* Pemasukan 
+  ####################################
+  public function pemasukan_periode($tabel, $bulan, $tahun)
+  {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
+
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
+      // ->where('YEAR (tanggal_masuk)' . $tahun)
+      // ->order_by('tanggal_masuk', 'asc')
+      ->get();
+    return $query->result();
+  }
+
+  public function sum_pendapatanMasuk($tabel)
+  {
+    $query = $this->db->select_sum('total')
+      ->from($tabel)
+      ->get();
+    return $query->result();
+  }
+  ####################################
+  //* Pemasukan 
+  ####################################
 
 }

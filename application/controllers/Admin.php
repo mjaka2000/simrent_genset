@@ -1816,12 +1816,49 @@ class Admin extends CI_Controller
 	####################################
 	public function tabel_pemasukan()
 	{
+		$bulan = $this->input->get('bulan');
+		$tahun = $this->input->get('tahun');
+		if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+			$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
+		} else {
+			$data['list_data'] = $this->M_admin->pemasukan_periode('tb_unit_keluar', $bulan, $tahun);
+		}
 		// $data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
+		// $data['list_data'] = $this->M_admin->pemasukan_periode('tb_unit_keluar', $bulan, $tahun);
+		$data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_keluar');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Jadwal Pemasukan';
 		$this->load->view('admin/form_pemasukan/tabel_pemasukan', $data);
 	}
 
+	public function periode_masuk()
+	{
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Data Pelanggan';
+		$this->load->view('admin/form_pemasukan/periode_masuk', $data);
+	}
+
+	public function proses_masukperiode()
+	{
+		$kalender = CAL_GREGORIAN;
+		$tanggal1 = "01";
+		$bulan = $this->input->get('bulan');
+		$tahun = $this->input->get('tahun');
+		$tanggalakhir = cal_days_in_month($kalender, $bulan, $tahun);
+		$awal_bulan = $tahun . "-" . $bulan . "-" . $tanggal1;
+		$akhir_bulan = $tahun . "-" . $bulan . "-" . $tanggalakhir;
+
+
+		// $bulan = date('m', strtotime($bulan));
+		// $tahun = date('Y', strtotime($tahun));
+		// $data = array(
+		// 	'bulan' => $bulan,
+		// 	'tahun' => $tahun
+		// );
+		$this->M_admin->pemasukan_periode('tb_unit_keluar', $awal_bulan, $akhir_bulan);
+		redirect(site_url('admin/tabel_pemasukan'));
+		// $this->load->view('admin/form_pemasukan/tabel_pemasukan', $data, $bulan, $tahun);
+	}
 	####################################
 	//* End Pemasukan
 	####################################
