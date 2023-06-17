@@ -49,7 +49,7 @@
                                         <th style="width :10px">No.</th>
                                         <th>Nomor Genset</th>
                                         <th>Nama Genset</th>
-                                        <th>Daya</th>
+                                        <th>Daya (KVA)</th>
                                         <th>Harga Perhari</th>
                                         <th>Ket. Genset</th>
                                         <!-- <th>Unit Disewakan</th> -->

@@ -1249,7 +1249,7 @@ class Admin extends CI_Controller
 	public function tabel_unit_keluar()
 	{
 		$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
-		// $data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_keluar');
+		$data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_keluar');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Data Unit Keluar';
 		$this->load->view('admin/form_unit_keluar/tabel_unit_keluar', $data);
@@ -1635,10 +1635,10 @@ class Admin extends CI_Controller
 			$this->M_admin->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
 			// $this->M_admin->menambah_kembali('tb_genset', $id_genset, $stok_gd_new);
 			// $this->M_admin->mengurangi_kembali('tb_genset', $id_genset, $stok_pj_new);
-			$this->M_admin->insert('tb_unit_masuk', $data);
-			$this->session->set_flashdata('msg_sukses', 'Data Masuk Berhasil');
+			// $this->M_admin->insert('tb_unit_masuk', $data);
+			$this->session->set_flashdata('msg_sukses', 'Data Status diubah menjadi Masuk (Kembali)');
 			// $this->M_admin->delete('tb_barang_masuk',$where);
-			redirect(site_url('admin/tabel_unit_masuk'));
+			redirect(site_url('admin/tabel_unit_keluar'));
 		} else {
 			// $data['title'] = 'Update Genset Masuk';
 			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
@@ -1653,61 +1653,60 @@ class Admin extends CI_Controller
 	//* Data Unit Masuk
 	####################################
 
-	public function tabel_unit_masuk()
-	{
-		$data = array(
-			// 'list_mobil' => $this->M_admin->select('tb_mobil'),
-			'list_data' => $this->M_admin->get_data_u_masuk('tb_unit_masuk'),
-			'avatar'    => $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'))
-		);
-		$data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_masuk');
-		$data['title'] = 'Data Unit Masuk/Kembali';
-		$this->load->view('admin/form_unit_masuk/tabel_unit_masuk', $data);
-	}
+	// public function tabel_unit_masuk()
+	// {
+	// 	$data = array(
+	// 'list_mobil' => $this->M_admin->select('tb_mobil'),
+	// 		'list_data' => $this->M_admin->get_data_u_masuk('tb_unit_masuk'),
+	// 		'avatar'    => $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'))
+	// 	);
+	// 	$data['title'] = 'Data Unit Masuk/Kembali';
+	// 	$this->load->view('admin/form_unit_masuk/tabel_unit_masuk', $data);
+	// }
 
-	public function detail_barang_masuk($id_transaksi)
-	{
-		$where = array('id_transaksi' => $id_transaksi);
-		$data['list_data'] = $this->M_admin->get_data('tb_barang_masuk', $where);
-		$data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'));
-		$data['title'] = 'Detail Genset Masuk';
-		$this->load->view('admin/form_barang_masuk/detail_masuk', $data);
-	}
+	// public function detail_barang_masuk($id_transaksi)
+	// {
+	// 	$where = array('id_transaksi' => $id_transaksi);
+	// 	$data['list_data'] = $this->M_admin->get_data('tb_barang_masuk', $where);
+	// 	$data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'));
+	// 	$data['title'] = 'Detail Genset Masuk';
+	// 	$this->load->view('admin/form_barang_masuk/detail_masuk', $data);
+	// }
 
-	public function barang_keluar()
-	{
-		$uri = $this->uri->segment(3);
-		$where = array('id_transaksi' => $uri);
-		$data['data_barang_update'] = $this->M_admin->get_data('tb_barang_keluar', $where);
-		$data['list_genset'] = $this->M_admin->select('tb_genset');
-		$data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'));
-		$data['title'] = 'Update Genset Masuk';
-		$this->load->view('admin/form_barang_masuk/update_barang_masuk', $data);
-	}
+	// public function barang_keluar()
+	// {
+	// 	$uri = $this->uri->segment(3);
+	// 	$where = array('id_transaksi' => $uri);
+	// 	$data['data_barang_update'] = $this->M_admin->get_data('tb_barang_keluar', $where);
+	// 	$data['list_genset'] = $this->M_admin->select('tb_genset');
+	// 	$data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'));
+	// 	$data['title'] = 'Update Genset Masuk';
+	// 	$this->load->view('admin/form_barang_masuk/update_barang_masuk', $data);
+	// }
 
-	public function unit_masuk_kembali()
-	{
-		$uri = $this->uri->segment(3);
-		$data['list_genset'] = $this->M_admin->select('tb_genset');
-		$where = array('id_transaksi' => $uri);
-		$status = 0;
+	// public function unit_masuk_kembali()
+	// {
+	// 	$uri = $this->uri->segment(3);
+	// 	$data['list_genset'] = $this->M_admin->select('tb_genset');
+	// 	$where = array('id_transaksi' => $uri);
+	// 	$status = 0;
 
-		$data = array(
-			'status' => $status
-		);
+	// 	$data = array(
+	// 		'status' => $status
+	// 	);
 
-		$this->M_admin->update('tb_barang_masuk', $data, $where);
-		redirect(site_url('admin/tabel_barang_masuk'));
-	}
+	// 	$this->M_admin->update('tb_barang_masuk', $data, $where);
+	// 	redirect(site_url('admin/tabel_barang_masuk'));
+	// }
 
-	public function hapus_data_masuk()
-	{
-		$uri = $this->uri->segment(3);
-		$where = array('id_transaksi' => $uri);
-		$this->M_admin->delete('tb_barang_masuk', $where);
-		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
-		redirect(site_url('admin/tabel_barang_masuk'));
-	}
+	// public function hapus_data_masuk()
+	// {
+	// 	$uri = $this->uri->segment(3);
+	// 	$where = array('id_transaksi' => $uri);
+	// 	$this->M_admin->delete('tb_barang_masuk', $where);
+	// 	$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+	// 	redirect(site_url('admin/tabel_barang_masuk'));
+	// }
 
 	####################################
 	//* End Data Unit Masuk
