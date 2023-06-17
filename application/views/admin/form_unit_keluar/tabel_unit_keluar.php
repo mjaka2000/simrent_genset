@@ -66,40 +66,37 @@
                                     <?php
                                     $no = 1;
                                     // $list_data = isset($_POST['list_data']) ? $_POST['list_data'] : '';
-                                    if (is_array($list_data)) { ?>
-                                        <?php foreach ($list_data as $dt) : ?>
-                                            <tr>
-                                                <td><?= $no++; ?></td>
-                                                <td><?= $dt->id_transaksi; ?></td>
-                                                <td><?= $dt->tanggal_keluar; ?></td>
-                                                <td><?= $dt->tanggal_masuk; ?></td>
-                                                <td><?= $dt->lokasi; ?></td>
-                                                <td><?= $dt->nama_plg; ?></td>
-                                                <td><?= $dt->nama_genset; ?></td>
-                                                <td><?= $dt->daya; ?></td>
-                                                <td><?= $dt->nopol; ?></td>
-                                                <td><?= $dt->jumlah_hari; ?></td>
-                                                <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
+                                    ?>
+                                    <?php foreach ($list_data as $dt) : ?>
+                                        <tr>
+                                            <td><?= $no++; ?></td>
+                                            <td><?= $dt->id_transaksi; ?></td>
+                                            <td><?= $dt->tanggal_keluar; ?></td>
+                                            <td><?= $dt->tanggal_masuk; ?></td>
+                                            <td><?= $dt->lokasi; ?></td>
+                                            <td><?= $dt->nama_plg; ?></td>
+                                            <td><?= $dt->nama_genset; ?></td>
+                                            <td><?= $dt->daya; ?></td>
+                                            <td><?= $dt->nopol; ?></td>
+                                            <td><?= $dt->jumlah_hari; ?></td>
+                                            <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
 
-                                                <?php if ($dt->status == 1) { ?>
-                                                    <td>
-                                                        <a href="<?= base_url('admin/unit_keluar_update/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs bg-fuchsia btn-unitpanjang" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a><br>
-                                                        <a href="<?= site_url('admin/unit_masuk/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs btn-danger btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a>
-                                                    </td>
-                                                <?php } else { ?>
-                                                    <td>Genset Masuk (Kembali)</td>
-                                                <?php } ?>
+                                            <?php if ($dt->status == 1) { ?>
                                                 <td>
-                                                    <!-- <a href="<?= site_url('admin/update_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a> -->
-                                                    <a href="<?= site_url('admin/hapus_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
-                                                    <a href="<?= site_url('admin/detail_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a>
-
+                                                    <a href="<?= base_url('admin/unit_keluar_update/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs bg-fuchsia btn-unitpanjang" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a><br>
+                                                    <a href="<?= site_url('admin/unit_masuk/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs btn-danger btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a>
                                                 </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php } else { ?>
-                                        <td colspan="12" align="center"><strong>Data Kosong</strong></td>
-                                    <?php } ?>
+                                            <?php } else { ?>
+                                                <td>Genset Masuk (Kembali)</td>
+                                            <?php } ?>
+                                            <td>
+                                                <!-- <a href="<?= site_url('admin/update_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a> -->
+                                                <a href="<?= site_url('admin/hapus_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
+                                                <a href="<?= site_url('admin/detail_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a>
+
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                             <div class="box-footer">
