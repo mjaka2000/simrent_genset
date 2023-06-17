@@ -34,7 +34,7 @@
                 </li>
                 <li class="nav-item ">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-list-alt"></i>
+                        <i class="nav-icon fa fa-table"></i>
                         <p>
                             Menu Data
                             <i class="right fas fa-angle-left"></i>
@@ -81,32 +81,32 @@
                 </li>
 
                 <li class="nav-item ">
-                    <a href="#" class="nav-link">
+                    <!-- <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Data Sewa
                             <i class="right fas fa-angle-left"></i>
                         </p>
-                    </a>
+                    </a> -->
                     <ul class="nav nav-treeview">
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?= site_url(); ?>admin/tabel_unit_keluar" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Unit Keluar (Pinjam)</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a href="<?= site_url(); ?>admin/tabel_unit_masuk" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Unit Masuk (Kembali)</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 <li class="nav-item ">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
+                        <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Menu Data Transaksi
                             <i class="right fas fa-angle-left"></i>
@@ -115,7 +115,7 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="<?= site_url(); ?>admin/#" class="nav-link">
+                            <a href="<?= site_url(); ?>admin/tabel_unit_keluar" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Penyewaan Genset</p>
                             </a>
@@ -126,12 +126,12 @@
                                 <p>Data Pengeluaran</p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
+                        <li class="nav-item">
                             <a href="<?= site_url(); ?>admin/#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Pemasukan</p>
                             </a>
-                        </li> -->
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">
