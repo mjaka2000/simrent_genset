@@ -1798,6 +1798,34 @@ class Admin extends CI_Controller
 	//* End Data Pengeluaran
 	####################################
 	####################################
+	//* Data Jadwal Penyewaan Genset
+	####################################
+	public function tabel_jdw_genset()
+	{
+		$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Jadwal Penyewaan Genset';
+		$this->load->view('admin/form_jdw_genset/tabel_jdw_genset', $data);
+	}
+
+	####################################
+	//* Data Jadwal Penyewaan Genset
+	####################################
+	####################################
+	//* Pemasukan
+	####################################
+	public function tabel_pemasukan()
+	{
+		// $data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Jadwal Pemasukan';
+		$this->load->view('admin/form_pemasukan/tabel_pemasukan', $data);
+	}
+
+	####################################
+	//* End Pemasukan
+	####################################
+	####################################
 	//* Laporan
 	####################################
 
