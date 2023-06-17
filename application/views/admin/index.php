@@ -116,7 +116,7 @@
             <div class="icon">
               <i class="fas fa-clipboard"></i>
             </div>
-            <a href="<?= site_url('admin/#') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= site_url('admin/tabel_pengeluaran') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">

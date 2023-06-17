@@ -22,6 +22,7 @@ class Admin extends CI_Controller
 		$data['dataOperator'] = $this->M_admin->numrows('tb_operator');
 		$data['dataServGenset'] = $this->M_admin->numrows('tb_serv_genset');
 		$data['dataStokSparepart'] = $this->M_admin->numrows('tb_sparepart');
+		$data['dataPengeluaran'] = $this->M_admin->numrows('tb_pengeluaran');
 		$data['count'] = $this->M_admin->notif_stok('tb_sparepart');
 		$data['num'] = $this->M_admin->notif_stok_jml('tb_sparepart');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
