@@ -126,12 +126,12 @@
                                 <p>Data Pengeluaran</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?= site_url(); ?>admin/#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Pemasukan</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 <li class="nav-item">
