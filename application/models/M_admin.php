@@ -353,10 +353,13 @@ class M_admin extends CI_Model
     return $query->result();
   }
 
-  public function sum_pendapatanMasuk($tabel)
+  public function sum_pendapatanMasuk($tabel, $bulan, $tahun)
   {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
     $query = $this->db->select_sum('total')
       ->from($tabel)
+      ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
       ->get();
     return $query->result();
   }

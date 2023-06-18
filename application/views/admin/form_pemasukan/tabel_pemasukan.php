@@ -42,10 +42,15 @@
                                 </div>
                             <?php } ?>
                             <button onclick="window.location.href='<?= site_url('admin/#'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-print"></i>&nbsp;Cetak</button>
-                            <button data-toggle="modal" data-target="#staticBulanan" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-print"></i>&nbsp;Cetak</button>
+                            <button data-toggle="modal" data-target="#staticBulanan" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
+                                    <tr>
+                                        <?php foreach ($total_data as $td) : ?>
+                                            <th colspan="4" style="text-align: center;">Total Pendapatan <?php echo $label ?> adalah: <span style="color: red;">Rp&nbsp;<?= number_format($td->total); ?></span></th>
+                                        <?php endforeach; ?>
+                                    </tr>
                                     <tr>
                                         <th style="width :10px">No.</th>
                                         <th>Tanggal</th>
@@ -58,23 +63,29 @@
                                     <?php
                                     $no = 1;
                                     ?>
-                                    <!-- <?php foreach ($list_data as $d) : ?> -->
-                                    <tr>
-                                        <td><?= $no++; ?></td>
-                                        <!-- <td><?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></td> -->
-                                        <td><?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></td>
-                                        <td><?= $d->id_transaksi; ?></td>
-                                        <td><?= $d->total; ?></td>
-                                        <td>
+                                    <?php foreach ($list_data as $d) : ?>
+                                        <tr>
+                                            <td><?= $no++; ?></td>
+                                            <!-- <td><?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></td> -->
+                                            <td><?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></td>
+                                            <td><?= $d->id_transaksi; ?></td>
+                                            <td>Rp&nbsp;<?= number_format($d->total); ?></td>
+                                            <!-- <td> -->
                                             <!-- <a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a> -->
                                             <!-- <a href="<?= site_url('admin/hapus_data/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a> -->
                                             <!-- <a href="<?= site_url('admin/update_data_service_genset/' . $d->kode_genset); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
-                                        </td>
-                                    </tr>
-                                    <!-- <?php endforeach; ?> -->
+                                            <!-- </td> -->
+                                        </tr>
+                                    <?php endforeach; ?>
 
                                 </tbody>
                             </table>
+                            <div class="box-footer">
+
+                                <h5>
+
+                                </h5>
+                            </div>
                         </div>
                     </div>
                     <!-- Modal -->
@@ -113,12 +124,12 @@
                                         <div class="form-group row">
                                             <label for="tahun" class="col-sm-3 col-form-label">Tahun</label>
                                             <div class="col-sm-6">
-                                                <input type="text" name="tahun" class="form-control" id="tahun">
+                                                <input type="text" name="tahun" class="form-control" id="tahun" value="<?= date('Y'); ?>">
                                             </div>
                                         </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-default btn-sm">Print</button>
+                                    <button type="submit" class="btn btn-success btn-sm">Tampilkan</button>
                                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                                 </div>
                                 </form>

@@ -1818,14 +1818,22 @@ class Admin extends CI_Controller
 	{
 		$bulan = $this->input->get('bulan');
 		$tahun = $this->input->get('tahun');
+		// $bulan = date('m');
+		// $tahun = date('Y');
 		if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
 			$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
+			$data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_keluar');
+			$label = 'Bulan ke ...' . ' Tahun ...';
 		} else {
 			$data['list_data'] = $this->M_admin->pemasukan_periode('tb_unit_keluar', $bulan, $tahun);
+			$data['total_data'] = $this->M_admin->sum_pendapatanMasuk('tb_unit_keluar', $bulan, $tahun);
+			$label = 'Bulan ke ' . $bulan . ' Tahun ' .  $tahun;
 		}
 		// $data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
 		// $data['list_data'] = $this->M_admin->pemasukan_periode('tb_unit_keluar', $bulan, $tahun);
-		$data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_keluar');
+
+		// $data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_keluar');
+		$data['label'] = $label;
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Jadwal Pemasukan';
 		$this->load->view('admin/form_pemasukan/tabel_pemasukan', $data);
