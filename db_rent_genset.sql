@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jun 2023 pada 06.39
+-- Waktu pembuatan: 19 Jun 2023 pada 06.16
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -88,8 +88,11 @@ CREATE TABLE `tb_genset` (
 
 INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `harga`, `ket_genset`, `gambar_genset`) VALUES
 (2, '02', 'Hartech 45 P-02', '40', '1000000', 0, 'ht45p-02.jpg'),
-(3, '07', 'Denyo 25 ES-07', '20', '750000', 1, 'denyo25es-07.jpg'),
-(4, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg');
+(3, '07', 'Denyo 25 ES-07', '20', '750000', 0, 'denyo25es-07.jpg'),
+(4, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg'),
+(5, '16', 'Hartech 50 P-16', '50', '1250000', 0, 'ht50p-16.jpg'),
+(6, '08', 'Kubota 13-08', '13', '500000', 0, 'kubota13-08.jpg'),
+(7, '250', 'Hartech C-250', '250', '3500000', 0, 'ht250.jpg');
 
 -- --------------------------------------------------------
 
@@ -115,7 +118,9 @@ CREATE TABLE `tb_mobil` (
 
 INSERT INTO `tb_mobil` (`id_mobil`, `merek`, `tipe`, `tahun`, `nopol`, `jenis_bbm`, `pajak`, `stnk`, `gambar_mobil`) VALUES
 (1, 'Daihatsu Gran Max Biru', 'Pickup', '2015', 'DA 1231 CJ', 'Bensin', '2023-05-18', '2024-05-18', 'daihatsu-gran-max-blu.jpg'),
-(2, 'Mobil Penyewa', 'Mobil Penyewa', '-', 'Mobil Penyewa', 'Bensin', '0001-01-01', '0001-01-01', 'nopic.png');
+(2, 'Mobil Penyewa', 'Mobil Penyewa', '-', 'Mobil Penyewa', 'Bensin', '0001-01-01', '0001-01-01', 'nopic.png'),
+(3, 'Mitsubishi Truk Engkel Kuning', 'Truk', '2005', 'DA 1231 CJ', 'Solar', '2023-06-01', '2024-06-01', 'truk_engkel.jpg'),
+(4, 'L300', 'Pickup', '2010', 'DA 4351 SF', 'Solar', '2023-03-01', '2024-03-01', 'l300.jpg');
 
 -- --------------------------------------------------------
 
@@ -137,7 +142,7 @@ CREATE TABLE `tb_operator` (
 
 INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `status_op`) VALUES
 (1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', 0),
-(2, 'adi', 'jl sukamara', '0878907678956', 1),
+(2, 'adi', 'jl sukamara', '0878907678956', 0),
 (3, 'ijum', 'jl pulau laut', '0897819271234', 0),
 (5, 'wanda', 'sungai miai', '0897618391837', 0);
 
@@ -165,7 +170,7 @@ CREATE TABLE `tb_pelanggan` (
 
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`) VALUES
 (4, 'anonim', 'Jl. SungaAndaii', '0895619213134', 'Laki-Laki', 'PT Rahmat', '2023-04-11', 0, 1),
-(5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 1, 1);
+(5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -290,7 +295,7 @@ INSERT INTO `tb_unit_keluar` (`id_u_keluar`, `id_transaksi`, `tanggal_keluar`, `
 (8, 'GE-Jun5782', '2023-06-13', '2023-06-17', 'Gambut', 2, 5, 4, 1, 'kabel', '4', '3000000', 0),
 (9, 'GE-Jun0867', '2023-06-16', '2023-06-19', 'Martapura', 2, 5, 4, 2, 'Box Panel', '3', '2250000', 0),
 (10, 'GE-Jun9106', '2023-06-16', '2023-06-19', 'Martapura', 1, 4, 3, 1, 'Box Panel', '3', '2250000', 0),
-(11, 'GE-Jun6253', '2023-05-23', '2023-05-25', 'Gambut', 2, 5, 3, 2, '-', '2', '1500000', 1);
+(11, 'GE-Jun6253', '2023-05-23', '2023-05-25', 'Gambut', 2, 5, 3, 2, '-', '2', '1500000', 0);
 
 -- --------------------------------------------------------
 
@@ -342,7 +347,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '18-06-2023 12:27'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '19-06-2023 9:53'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
 
@@ -456,13 +461,13 @@ ALTER TABLE `tb_detail_serv`
 -- AUTO_INCREMENT untuk tabel `tb_genset`
 --
 ALTER TABLE `tb_genset`
-  MODIFY `id_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_mobil`
 --
 ALTER TABLE `tb_mobil`
-  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_operator`
