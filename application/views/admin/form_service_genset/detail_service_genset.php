@@ -44,7 +44,7 @@
                             <?php } ?>
                             <?php foreach ($list_data as $d) : ?>
                                 <button onclick="window.location.href='<?= site_url('admin/tambah_service_detail/' . $d->id_perbaikan_gst); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
-
+                                <a href="<?= site_url('report/cetak_service_detail/' . $d->id_perbaikan_gst); ?>" target="_blank" type="button" style="margin-bottom:10px;margin-left: 10px;" class="btn btn-sm btn-default" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a>
                                 <table class="table" style="width:35%">
                                     <tr>
                                         <th style="vertical-align: middle">Nomor Genset</th>
