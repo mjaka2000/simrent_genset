@@ -329,8 +329,8 @@ class Admin extends CI_Controller
 			'overwrite'	=> true,
 			// 'file_name'	=> uniqid(),
 			'max_size' => 2048,
-			'max_height' => 1920,
-			'max_width' => 1080
+			'max_height' => 1080,
+			'max_width' => 1920
 		);
 		$this->load->library('upload', $config);
 		$this->upload->initialize($config);
@@ -449,7 +449,7 @@ class Admin extends CI_Controller
 			$row[] = $d->nama_genset;
 			$row[] = $d->jenis_perbaikan;
 			$row[] = $d->nama_sparepart;
-			$row[] = $d->tgl_perbaikan;
+			$row[] = date('d-m-Y', strtotime($d->tgl_perbaikan));
 			$row[] = $d->ket_perbaikan;
 			$row[] = 'Rp&nbsp;' . number_format($d->biaya_perbaikan);
 			$row[] = '<a href="' . site_url('admin/update_data_service_genset/' . $d->id_perbaikan_gst) . '" id="id_pemakai" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
@@ -852,8 +852,8 @@ class Admin extends CI_Controller
 			'overwrite'	=> true,
 			// 'file_name'	=> uniqid(),
 			'max_size' => 2048,
-			'max_height' => 1920,
-			'max_width' => 1080
+			'max_height' => 1080,
+			'max_width' => 1920
 		);
 		$this->load->library('upload', $config);
 		$this->upload->initialize($config);
@@ -1717,7 +1717,20 @@ class Admin extends CI_Controller
 	####################################
 	public function tabel_pengeluaran()
 	{
-		$data['list_data'] = $this->M_admin->select('tb_pengeluaran');
+		$bulan = $this->input->get('bulan');
+		$tahun = $this->input->get('tahun');
+		if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+			$data['list_data'] = $this->M_admin->select('tb_pengeluaran');
+			$data['total_data'] = $this->M_admin->sum_pengeluaran('tb_pengeluaran');
+			$label = 'Bulan ke ...' . ' Tahun ...';
+		} else {
+			$data['list_data'] = $this->M_admin->pengeluaran_periode('tb_pengeluaran', $bulan, $tahun);
+			$data['total_data'] = $this->M_admin->sum_penngeluaranPeriode('tb_pengeluaran', $bulan, $tahun);
+			$label = 'Bulan ke ' . $bulan . ' Tahun ' .  $tahun;
+		}
+		$data['label'] = $label;
+
+		// $data['list_data'] = $this->M_admin->select('tb_pengeluaran');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Data Pengeluaran';
 		$this->load->view('admin/form_pengeluaran/tabel_pengeluaran', $data);
@@ -1883,5 +1896,19 @@ class Admin extends CI_Controller
 
 	####################################
 	//* End Laporan
+	####################################
+	####################################
+	//* Laporan Isi
+	####################################
+	// public function cetak_jdw_genset()
+	// {
+	// 	$uri = $this->uri->segment(3);
+	// 	$where = array('id_u_keluar' => $uri);
+	// 	$data['list_data'] = $this->M_admin->select_data_u_keluar('tb_unit_keluar', $where);
+	// 	$this->load->view('report/jdw_genset/rep_jdw_genset', $data);
+	// }
+
+	####################################
+	//* End Laporan Isi
 	####################################
 }

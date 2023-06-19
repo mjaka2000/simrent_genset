@@ -306,6 +306,19 @@ class M_admin extends CI_Model
     return $query->result();
   }
 
+  public function select_data_u_keluar($tabel, $where)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where($where)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->get();
+    return $query->result();
+  }
+
 
 
   ####################################
@@ -364,7 +377,45 @@ class M_admin extends CI_Model
     return $query->result();
   }
   ####################################
-  //* Pemasukan 
+  //* End Pemasukan 
+  ####################################
+  ####################################
+  //* Pengeluaran 
+  ####################################
+  public function pengeluaran_periode($tabel, $bulan, $tahun)
+  {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
+
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where('MONTH (tgl_pengeluaran) =' . $bulan . ' AND YEAR (tgl_pengeluaran) =' . $tahun)
+      // ->where('YEAR (tanggal_masuk)' . $tahun)
+      // ->order_by('tanggal_masuk', 'asc')
+      ->get();
+    return $query->result();
+  }
+
+  public function sum_penngeluaranPeriode($tabel, $bulan, $tahun)
+  {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
+    $query = $this->db->select_sum('biaya_pengeluaran')
+      ->from($tabel)
+      ->where('MONTH (tgl_pengeluaran) =' . $bulan . ' AND YEAR (tgl_pengeluaran) =' . $tahun)
+      ->get();
+    return $query->result();
+  }
+
+  public function sum_pengeluaran($tabel)
+  {
+    $query = $this->db->select_sum('biaya_pengeluaran')
+      ->from($tabel)
+      ->get();
+    return $query->result();
+  }
+  ####################################
+  //* End Pengeluaran 
   ####################################
 
 }

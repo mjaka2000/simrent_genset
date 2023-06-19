@@ -71,7 +71,7 @@
                                             <td><?= $no++; ?></td>
                                             <td><?= $dt->id_transaksi; ?></td>
                                             <!-- <td><?= $dt->tanggal_keluar; ?></td> -->
-                                            <td><?= $dt->tanggal_masuk; ?></td>
+                                            <td><?= date('d-m-Y', strtotime($dt->tanggal_masuk)); ?></td>
                                             <td><?= $dt->lokasi; ?></td>
                                             <td><?= $dt->nama_plg; ?></td>
                                             <td><?= $dt->nama_genset; ?></td>

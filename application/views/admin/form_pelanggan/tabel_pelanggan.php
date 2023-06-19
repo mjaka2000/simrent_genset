@@ -72,7 +72,7 @@
                                                 <td><?= $dt->nohp_plg; ?></td>
                                                 <td><?= $dt->jk_plg; ?></td>
                                                 <td><?= $dt->namaperusahaan_plg; ?></td>
-                                                <td><?= $dt->tglupdate_plg; ?></td>
+                                                <td><?= date('d-m-Y', strtotime($dt->tglupdate_plg)); ?></td>
                                                 <?php if ($dt->status_plg == NULL || $dt->status_plg == 0) { ?>
                                                     <td><a href="#" class="btn btn-success btn-xs">Tidak Menyewa</a></td>
                                                 <?php } else { ?>

@@ -91,7 +91,7 @@
                                             <tr>
                                                 <td><?= $no++; ?></td>
                                                 <td><?= $dt->nama_sparepart; ?></td>
-                                                <td><?= $dt->tanggal_beli; ?></td>
+                                                <td><?= date('d-m-Y', strtotime($dt->tanggal_beli)); ?></td>
                                                 <td><?= $dt->tempat_beli; ?></td>
                                                 <td><?= $dt->stok; ?></td>
                                                 <td><a href="<?= site_url('admin/update_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>

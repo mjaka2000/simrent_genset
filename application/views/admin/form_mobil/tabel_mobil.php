@@ -73,8 +73,8 @@
                                                 <td><?= $dt->tahun; ?></td>
                                                 <td><?= $dt->nopol; ?></td>
                                                 <td><?= $dt->jenis_bbm; ?></td>
-                                                <td><?= $dt->pajak; ?></td>
-                                                <td><?= $dt->stnk; ?></td>
+                                                <td><?= date('d-m-Y', strtotime($dt->pajak)); ?></td>
+                                                <td><?= date('d-m-Y', strtotime($dt->stnk)); ?></td>
                                                 <td><img src="<?= site_url('assets/upload/mobil/' . $dt->gambar_mobil); ?>" class="img-box" width="100" height="100" alt="<?= $dt->nopol; ?>"></td>
                                                 <td><a href="<?= site_url('admin/update_data_mobil/' . $dt->id_mobil); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
                                                     <a href="<?= site_url('admin/hapus_mobil/' . $dt->id_mobil); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>

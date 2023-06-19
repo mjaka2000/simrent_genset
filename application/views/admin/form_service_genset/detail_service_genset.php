@@ -101,7 +101,7 @@
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="row">
-                                                        :&nbsp;<?= $d->tgl_perbaikan; ?>
+                                                        :&nbsp;<?= date('d-m-Y', strtotime($d->tgl_perbaikan)); ?>
 
                                                     </div>
                                                 </div>
@@ -172,7 +172,7 @@
                                             <tr>
                                                 <td><?= $no++; ?></td>
                                                 <td><?= $dt->pekerjaan; ?></td>
-                                                <td><?= $dt->tanggal; ?></td>
+                                                <td><?= date('d-m-Y', strtotime($dt->tanggal)); ?></td>
                                                 <td><?= $dt->kendala; ?></td>
                                                 <td><?= $dt->status; ?></td>
                                                 <td><a href="<?= site_url('admin/hapus_detail/' . $dt->id_detail_serv); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
