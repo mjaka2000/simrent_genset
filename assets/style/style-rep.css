@@ -1,0 +1,37 @@
+@page { size: A4 }
+          
+            h4 {
+                font-weight: bold;
+                font-size: 13pt;
+                text-align: center;
+            }
+          
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+          
+            .table th {
+                padding: 8px 8px;
+                border:1px solid #000000;
+                text-align: left;
+            }
+          
+            .table td {
+                padding: 3px 3px;
+                border:1px solid #000000;
+            }
+          
+            .text-center {
+                text-align: center;
+            }
+
+            .horizontal_center {
+                border-top: 3px solid black;
+                height: 2px;
+                line-height: 30px; 
+            }
+
+            .kanan{
+                float: right;
+            }

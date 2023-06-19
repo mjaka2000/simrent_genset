@@ -52,7 +52,7 @@
                                         <th>Dipakai Tanggal</th>
                                         <th>Sampai Tanggal</th>
                                         <th>Lokasi Sewa</th>
-                                        <!-- <th style="width:10%">Aksi</th> -->
+                                        <th style="width:10%">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,11 +67,11 @@
                                             <td><?= date('d-m-Y', strtotime($d->tanggal_keluar)); ?></td>
                                             <td><?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></td>
                                             <td><?= $d->lokasi; ?></td>
-                                            <!-- <td> -->
-                                            <!-- <a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a> -->
-                                            <!-- <a href="<?= site_url('admin/hapus_data/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a> -->
-                                            <!-- <a href="<?= site_url('admin/update_data_service_genset/' . $d->kode_genset); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
-                                            <!-- </td> -->
+                                            <td>
+                                                <!-- <a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a> -->
+                                                <!-- <a href="<?= site_url('admin/hapus_data/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a> -->
+                                                <a href="<?= site_url('report/cetak_jdw_genset/' . $d->id_u_keluar); ?>" target="_blank" type="button" class="btn btn-sm btn-info" name="btn_detail"><i class="fa fa-print mr-2"></i></a>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
 
