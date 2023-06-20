@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jun 2023 pada 06.16
+-- Waktu pembuatan: 20 Jun 2023 pada 13.00
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -199,6 +199,27 @@ INSERT INTO `tb_pelanggan_blacklist` (`id_plg_blacklist`, `nama_plg_blk`, `alama
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_pendapatan`
+--
+
+CREATE TABLE `tb_pendapatan` (
+  `id_pendapatan` int(10) NOT NULL,
+  `id_u_keluar` int(10) NOT NULL,
+  `tgl_update` date NOT NULL,
+  `keterangan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data untuk tabel `tb_pendapatan`
+--
+
+INSERT INTO `tb_pendapatan` (`id_pendapatan`, `id_u_keluar`, `tgl_update`, `keterangan`) VALUES
+(1, 6, '2023-06-19', 'hasil sewa genset'),
+(2, 11, '2023-06-17', 'hasil sewa genset jarr');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_pengeluaran`
 --
 
@@ -215,8 +236,7 @@ CREATE TABLE `tb_pengeluaran` (
 
 INSERT INTO `tb_pengeluaran` (`id_pengeluaran`, `tgl_pengeluaran`, `pengeluaran`, `biaya_pengeluaran`) VALUES
 (1, '2023-06-16', 'Bayar Pajak mobil grandmax', '540000'),
-(2, '2023-06-15', 'Bayar Pajak mobil grandmax biru', '560000'),
-(3, '2023-06-17', 'Bayar listrik kantor', '450000');
+(2, '2023-06-15', 'Bayar Pajak mobil grandmax biru', '560000');
 
 -- --------------------------------------------------------
 
@@ -347,7 +367,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '19-06-2023 9:53'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '20-06-2023 18:24'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
 
@@ -397,6 +417,13 @@ ALTER TABLE `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan_blacklist`
   ADD PRIMARY KEY (`id_plg_blacklist`);
+
+--
+-- Indeks untuk tabel `tb_pendapatan`
+--
+ALTER TABLE `tb_pendapatan`
+  ADD PRIMARY KEY (`id_pendapatan`),
+  ADD KEY `id_u_keluar` (`id_u_keluar`);
 
 --
 -- Indeks untuk tabel `tb_pengeluaran`
@@ -486,6 +513,12 @@ ALTER TABLE `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan_blacklist`
   MODIFY `id_plg_blacklist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_pendapatan`
+--
+ALTER TABLE `tb_pendapatan`
+  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pengeluaran`
