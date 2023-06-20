@@ -41,7 +41,7 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <button onclick="window.location.href='<?= site_url('admin/#'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-print"></i>&nbsp;Cetak</button>
+                            <!-- <button onclick="window.location.href='<?= site_url('admin/#'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-print"></i>&nbsp;Cetak</button> -->
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
