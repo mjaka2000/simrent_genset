@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data Pemasukan</h1>
+                    <h1 class="m-0">Data Pendapatan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item active">Data Pemasukan</li>
+                        <li class="breadcrumb-item active">Data Pendapatan</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -32,7 +32,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header"><i class="fas fa-table"></i>
-                            Data Pemasukan
+                            Data Pendapatan
                         </div>
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
@@ -41,21 +41,24 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <button onclick="window.location.href='<?= site_url('admin/#'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-print"></i>&nbsp;Cetak</button>
+                            <button onclick="window.location.href='<?= site_url('admin/tambah_pemasukan'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
                             <button data-toggle="modal" data-target="#staticBulanan" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>
                                         <?php foreach ($total_data as $td) : ?>
-                                            <th colspan="4" style="text-align: center;">Total Pendapatan <?php echo $label ?> adalah: <span style="color: red;">Rp&nbsp;<?= number_format($td->total); ?></span></th>
+                                            <th colspan="7" style="text-align: center;">Total Pendapatan <?php echo $label ?> adalah: <span style="color: red;">Rp&nbsp;<?= number_format($td->total); ?></span></th>
                                         <?php endforeach; ?>
                                     </tr>
                                     <tr>
                                         <th style="width :10px">No.</th>
-                                        <th>Tanggal</th>
+                                        <th>Tanggal Penyewaan</th>
                                         <th>ID Transaksi</th>
+                                        <th>Tanggal Di Update</th>
                                         <th>Pendapatan</th>
+                                        <th>Keterangan</th>
+                                        <th>Aksi</th>
 
                                     </tr>
                                 </thead>
@@ -69,12 +72,14 @@
                                             <!-- <td><?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></td> -->
                                             <td><?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></td>
                                             <td><?= $d->id_transaksi; ?></td>
+                                            <td><?= date('d-m-Y', strtotime($d->tgl_update)); ?></td>
                                             <td>Rp&nbsp;<?= number_format($d->total); ?></td>
-                                            <!-- <td> -->
-                                            <!-- <a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a> -->
-                                            <!-- <a href="<?= site_url('admin/hapus_data/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a> -->
-                                            <!-- <a href="<?= site_url('admin/update_data_service_genset/' . $d->kode_genset); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
-                                            <!-- </td> -->
+                                            <td><?= $d->keterangan; ?></td>
+                                            <td>
+                                                <a href="<?= site_url('admin/edit_pemasukan/' . $d->id_pendapatan); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
+                                                <a href="<?= site_url('admin/hapus_pemasukan/' . $d->id_pendapatan); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
+                                                <!-- <a href="<?= site_url('admin/update_data_service_genset/' . $d->kode_genset); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
 

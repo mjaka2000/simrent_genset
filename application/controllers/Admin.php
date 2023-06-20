@@ -991,7 +991,7 @@ class Admin extends CI_Controller
 		$where = array('id_operator' => $uri);
 		$data['list_data'] = $this->M_admin->get_data('tb_operator', $where);
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-		$data['title'] = 'Update Data Operator';
+		$data['title'] = 'Ubah Data Operator';
 		$this->load->view('admin/form_operator/update_operator', $data);
 	}
 
@@ -1046,7 +1046,7 @@ class Admin extends CI_Controller
 			redirect(site_url('admin/tabel_operator'));
 		} else {
 			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-			$data['title'] = 'Update Data Operator';
+			$data['title'] = 'Ubah Data Operator';
 			$this->load->view('admin/form_operator/update_operator');
 		}
 	}
@@ -1088,7 +1088,7 @@ class Admin extends CI_Controller
 		$where = array('id_pelanggan' => $uri);
 		$data['list_data'] = $this->M_admin->get_data('tb_pelanggan', $where);
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-		$data['title'] = 'Update Data Pelanggan';
+		$data['title'] = 'Ubah Data Pelanggan';
 		$this->load->view('admin/form_pelanggan/update_pelanggan', $data);
 	}
 
@@ -1171,7 +1171,7 @@ class Admin extends CI_Controller
 			redirect(site_url('admin/tabel_pelanggan'));
 		} else {
 			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-			$data['title'] = 'Update Data Pelanggan';
+			$data['title'] = 'Ubah Data Pelanggan';
 			$this->load->view('admin/form_pelanggan/update_pelanggan');
 		}
 	}
@@ -1775,7 +1775,7 @@ class Admin extends CI_Controller
 		$where = array('id_pengeluaran' => $uri);
 		$data['list_data'] = $this->M_admin->get_data('tb_pengeluaran', $where);
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-		$data['title'] = 'Update Data Pengeluaran';
+		$data['title'] = 'Ubah Data Pengeluaran';
 		$this->load->view('admin/form_pengeluaran/update_pengeluaran', $data);
 	}
 
@@ -1803,9 +1803,18 @@ class Admin extends CI_Controller
 			redirect(site_url('admin/tabel_pengeluaran'));
 		} else {
 			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-			$data['title'] = 'Update Data Pengeluaran';
+			$data['title'] = 'Ubah Data Pengeluaran';
 			$this->load->view('admin/form_pengeluaran/update_pengeluaran', $data);
 		}
+	}
+
+	public function hapus_pengeluaran()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_pengeluaran' => $uri);
+		$this->M_admin->delete('tb_pengeluaran', $where);
+		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+		redirect(site_url('admin/tabel_pemasukan'));
 	}
 	####################################
 	//* End Data Pengeluaran
@@ -1834,12 +1843,12 @@ class Admin extends CI_Controller
 		// $bulan = date('m');
 		// $tahun = date('Y');
 		if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
-			$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
-			$data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_keluar');
+			$data['list_data'] = $this->M_admin->get_data_pemasukan('tb_pendapatan');
+			$data['total_data'] = $this->M_admin->sum_pemasukan('tb_pendapatan');
 			$label = 'Bulan ke ...' . ' Tahun ...';
 		} else {
-			$data['list_data'] = $this->M_admin->pemasukan_periode('tb_unit_keluar', $bulan, $tahun);
-			$data['total_data'] = $this->M_admin->sum_pendapatanMasuk('tb_unit_keluar', $bulan, $tahun);
+			$data['list_data'] = $this->M_admin->pemasukan_periode('tb_pendapatan', $bulan, $tahun);
+			$data['total_data'] = $this->M_admin->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
 			$label = 'Bulan ke ' . $bulan . ' Tahun ' .  $tahun;
 		}
 		// $data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
@@ -1848,38 +1857,94 @@ class Admin extends CI_Controller
 		// $data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_keluar');
 		$data['label'] = $label;
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-		$data['title'] = 'Jadwal Pemasukan';
+		$data['title'] = 'Data Pendapatan';
 		$this->load->view('admin/form_pemasukan/tabel_pemasukan', $data);
 	}
 
-	public function periode_masuk()
+	public function tambah_pemasukan()
 	{
+		$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-		$data['title'] = 'Tambah Data Pelanggan';
-		$this->load->view('admin/form_pemasukan/periode_masuk', $data);
+		$data['title'] = 'Tambah Data Pendapatan';
+		$this->load->view('admin/form_pemasukan/tambah_pemasukan', $data);
 	}
 
-	public function proses_masukperiode()
+	public function proses_tambah_pemasukan()
 	{
-		$kalender = CAL_GREGORIAN;
-		$tanggal1 = "01";
-		$bulan = $this->input->get('bulan');
-		$tahun = $this->input->get('tahun');
-		$tanggalakhir = cal_days_in_month($kalender, $bulan, $tahun);
-		$awal_bulan = $tahun . "-" . $bulan . "-" . $tanggal1;
-		$akhir_bulan = $tahun . "-" . $bulan . "-" . $tanggalakhir;
 
+		$this->form_validation->set_rules('id_u_keluar', 'ID Transaksi', 'trim|required');
+		$this->form_validation->set_rules('tgl_update', 'Tanggal Update', 'trim|required');
+		$this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
 
-		// $bulan = date('m', strtotime($bulan));
-		// $tahun = date('Y', strtotime($tahun));
-		// $data = array(
-		// 	'bulan' => $bulan,
-		// 	'tahun' => $tahun
-		// );
-		$this->M_admin->pemasukan_periode('tb_unit_keluar', $awal_bulan, $akhir_bulan);
-		redirect(site_url('admin/tabel_pemasukan'));
-		// $this->load->view('admin/form_pemasukan/tabel_pemasukan', $data, $bulan, $tahun);
+		if ($this->form_validation->run() === TRUE) {
+			$id_u_keluar = $this->input->post('id_u_keluar', TRUE);
+			$tgl_update = $this->input->post('tgl_update', TRUE);
+			$keterangan = $this->input->post('keterangan', TRUE);
+
+			$data = array(
+				'id_u_keluar' => $id_u_keluar,
+				'tgl_update' => $tgl_update,
+				'keterangan' => $keterangan
+			);
+			$this->M_admin->insert('tb_pendapatan', $data);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Di Tambahkan');
+			redirect(site_url('admin/tabel_pemasukan'));
+		} else {
+			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+			$data['title'] = 'Tambah Data Pendapatan';
+			$this->load->view('admin/form_pemasukan/tambah_pemasukan', $data);
+		}
 	}
+
+	public function edit_pemasukan()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_pendapatan' => $uri);
+		$data['edit_data'] = $this->M_admin->get_data('tb_pendapatan', $where);
+		$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Ubah Data Pendapatan';
+		$this->load->view('admin/form_pemasukan/edit_pemasukan', $data);
+	}
+
+	public function proses_edit_pemasukan()
+	{
+
+		$this->form_validation->set_rules('id_u_keluar', 'ID Transaksi', 'trim|required');
+		$this->form_validation->set_rules('tgl_update', 'Tanggal Update', 'trim|required');
+		$this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
+
+		if ($this->form_validation->run() === TRUE) {
+			$id_pendapatan = $this->input->post('id_pendapatan', TRUE);
+			$id_u_keluar = $this->input->post('id_u_keluar', TRUE);
+			$tgl_update = $this->input->post('tgl_update', TRUE);
+			$keterangan = $this->input->post('keterangan', TRUE);
+
+			$where = array('id_pendapatan' => $id_pendapatan);
+			$data = array(
+				'id_u_keluar' => $id_u_keluar,
+				'tgl_update' => $tgl_update,
+				'keterangan' => $keterangan
+			);
+			$this->M_admin->update('tb_pendapatan', $data, $where);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Di Ubah');
+			redirect(site_url('admin/tabel_pemasukan'));
+		} else {
+			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+			$data['title'] = 'Ubah Data Pendapatan';
+			$this->load->view('admin/form_pemasukan/edit_pemasukan', $data);
+		}
+	}
+
+	public function hapus_pemasukan()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_pendapatan' => $uri);
+		$this->M_admin->delete('tb_pendapatan', $where);
+		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+		redirect(site_url('admin/tabel_pemasukan'));
+	}
+
 	####################################
 	//* End Pemasukan
 	####################################

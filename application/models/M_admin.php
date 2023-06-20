@@ -352,6 +352,24 @@ class M_admin extends CI_Model
   ####################################
   //* Pemasukan 
   ####################################
+  public function get_data_pemasukan($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      ->get();
+    return $query->result();
+  }
+
+  public function sum_pemasukan($tabel)
+  {
+    $query = $this->db->select_sum('total')
+      ->from($tabel)
+      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      ->get();
+    return $query->result();
+  }
+
   public function pemasukan_periode($tabel, $bulan, $tahun)
   {
     $bulan = $this->db->escape($bulan);
@@ -359,6 +377,7 @@ class M_admin extends CI_Model
 
     $query = $this->db->select()
       ->from($tabel)
+      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
       ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
       // ->where('YEAR (tanggal_masuk)' . $tahun)
       // ->order_by('tanggal_masuk', 'asc')
@@ -372,6 +391,7 @@ class M_admin extends CI_Model
     $tahun = $this->db->escape($tahun);
     $query = $this->db->select_sum('total')
       ->from($tabel)
+      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
       ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
       ->get();
     return $query->result();
