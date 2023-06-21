@@ -30,7 +30,7 @@
             <div class="row tengah">
                 <div class="col-md-5">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-plus"></i>
+                        <div class="card-header">
                             Tambah Data Genset Disewa
                         </div>
                         <div class="card-body">

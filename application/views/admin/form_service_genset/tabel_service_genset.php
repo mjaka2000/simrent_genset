@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-table"></i>
+                        <div class="card-header">
                             Data Perbaikan Genset
                         </div>
                         <div class="card-body">

@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-table"></i>
+                        <div class="card-header">
                             Data Blacklist Pelanggan
                         </div>
                         <div class="card-body">
@@ -71,9 +71,9 @@
                                                 <td><?= $dt->namaperusahaan_plg_blk; ?></td>
                                                 <!-- <td><?= $dt->tglupdate_plg_blk; ?></td> -->
                                                 <td>
-                                                    <!-- <a href="<?= site_url('admin/update_data_pelanggan/' . $dt->id_plg_blacklist); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a> -->
+                                                    <!-- <a href="<?= site_url('admin/update_data_pelanggan/' . $dt->id_plg_blacklist); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
                                                     <!-- <a href="<?= site_url('admin/kembalikan_pelanggan/' . $dt->id_plg_blacklist); ?>" type="button" class="btn btn-sm btn-warning" name="btn_delete"><i class="fa fa-history"></i></a> -->
-                                                    <a href="<?= site_url('admin/hapus_pelanggan_blacklist/' . $dt->id_plg_blacklist); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
+                                                    <a href="<?= site_url('admin/hapus_pelanggan_blacklist/' . $dt->id_plg_blacklist); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

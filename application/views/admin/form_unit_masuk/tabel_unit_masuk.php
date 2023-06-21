@@ -13,7 +13,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item active">Unit Masuk</li>
+                        <li class="breadcrumb-item active">Unit Masuk (Kembali)</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -31,8 +31,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-table"></i>
-                            Data Unit Keluar (Kembali)
+                        <div class="card-header">
+                            Data Unit Masuk (Kembali)
                         </div>
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
@@ -86,8 +86,8 @@
                                                 <td>Genset Masuk (Kembali)</td>
                                             <?php } ?>
                                             <td>
-                                                <a href="<?= base_url('admin/hapus_data_masuk/' . $dt->id_transaksi); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
-                                                <a href="<?= base_url('admin/detail_barang_masuk/' . $dt->id_transaksi); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a>
+                                                <a href="<?= base_url('admin/hapus_data_masuk/' . $dt->id_transaksi); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
+                                                <a href="<?= base_url('admin/detail_barang_masuk/' . $dt->id_transaksi); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -96,9 +96,9 @@
                             <div class="box-footer">
 
                                 <!-- <h5><strong>Keterangan :</strong></h5> -->
-                                <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
-                                <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->
-                                <!-- <a href="#" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a>&nbsp;<span>Untuk Melihat Detail </span> -->
+                                <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
+                                <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash "></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->
+                                <!-- <a href="#" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>&nbsp;<span>Untuk Melihat Detail </span> -->
                             </div>
                         </div>
                     </div>

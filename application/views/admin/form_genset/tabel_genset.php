@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-table"></i>
+                        <div class="card-header">
                             Data Genset
                         </div>
                         <div class="card-body">
@@ -74,9 +74,8 @@
                                                     <td><a href="#" class="btn btn-danger btn-xs"> Genset Sedang Disewa</a></td>
                                                 <?php } ?>
                                                 <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" class="img img-box" width="100" height="100" alt="<?= $d->kode_genset; ?>"></td>
-                                                <td><a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
-                                                    <a href="<?= site_url('admin/hapus_data/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
-                                                    <!-- <a href="<?= site_url('admin/update_data_service_genset/' . $d->kode_genset); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
+                                                <td><a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
+                                                    <a href="<?= site_url('admin/hapus_data/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

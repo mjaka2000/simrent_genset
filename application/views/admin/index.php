@@ -128,30 +128,32 @@
               <?php } else { ?>
                 <h3>0</h3>
               <?php } ?>
-              <p>Data Unit Keluar (Pinjam)</p>
+              <p>Data Penyewaan</p>
             </div>
             <div class="icon">
-              <i class="fa fa-upload"></i>
+              <i class="fa fa-copy"></i>
             </div>
             <a href="<?= site_url('admin/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <?php if (!empty($stokBarangMasuk)) { ?>
-                <h3><?= $stokBarangMasuk ?></h3>
-              <?php } else { ?>
-                <h3>0</h3>
-              <?php } ?>
-              <p>Data Unit Masuk (Kembali)</p>
+          <?php foreach ($pendapatan as $pd) { ?>
+            <div class="small-box bg-info">
+              <div class="inner">
+                <?php if (!empty($pd->total)) { ?>
+                  <h3>Rp&nbsp;<?= number_format($pd->total) ?></h3>
+                <?php } else { ?>
+                  <h3>Rp&nbsp;0</h3>
+                <?php } ?>
+                <p>Total Pendapatan <?= $label ?></p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-download"></i>
+              </div>
+              <a href="<?= site_url('admin/tabel_pemasukan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-            <div class="icon">
-              <i class="fa fa-download"></i>
-            </div>
-            <a href="<?= site_url('admin/tabel_unit_masuk') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
+          <?php } ?>
         </div>
 
         <!-- ./col -->

@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-edit"></i>
+                        <div class="card-header">
                             Detail Progress Data Perbaikan Genset
                         </div>
                         <div class="card-body">
@@ -175,7 +175,7 @@
                                                 <td><?= date('d-m-Y', strtotime($dt->tanggal)); ?></td>
                                                 <td><?= $dt->kendala; ?></td>
                                                 <td><?= $dt->status; ?></td>
-                                                <td><a href="<?= site_url('admin/hapus_detail/' . $dt->id_detail_serv); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
+                                                <td><a href="<?= site_url('admin/hapus_detail/' . $dt->id_detail_serv); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
                                                 </td>
 
                                             </tr>

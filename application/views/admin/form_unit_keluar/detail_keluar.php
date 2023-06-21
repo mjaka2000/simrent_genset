@@ -4,136 +4,243 @@
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>Detail Data Genset Keluar</h1>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?= base_url('admin/tabel_barang_keluar'); ?>"> Data Genset Keluar</a></li>
-            <li class="breadcrumb-item active">Detail Data Genset Keluar</li>
-        </ol>
-        <!-- /.container-fluid -->
-    </section>
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Data Penyewaan Genset</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin/tabel_unit_keluar'); ?>">Penyewaan Genset</a></li>
+                        <li class="breadcrumb-item active">Detail Data Penyewaan Genset </li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
     <!-- Main content -->
     <section class="content">
-        <div id="loading">
-            <img src="<?= base_url(); ?>assets/style/loading.gif" alt="loading" width="50%">
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="container">
-                    <div class="box box-primary" style="width:50%;margin:auto">
-                        <div class="box-header">
-                            <h3 class="box-title"><i class="nav-icon fa fa-info-circle mr-2"></i>Detail Data Genset Keluar</h3>
+
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row tengah">
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header">
+                            Detail Data Penyewaan Genset
                         </div>
-                        <div class="box-body">
+                        <div class="card-body">
                             <?php foreach ($list_data as $d) { ?>
-                                <div class="form-group row">
-                                    <label for="id_transaksi" class="col-sm-3 col-form-label">ID Transaksi</label>
-                                    <div class="col-sm-6">
-                                        <span><?= $d->id_transaksi; ?></span>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="tanggal_keluar" class="col-sm-3 col-form-label">Tanggal Keluar</label>
-                                    <div class="col-sm-6">
-                                        <span><?= $d->tanggal_keluar; ?></span>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="lokasi" class="col-sm-3 col-form-label">Lokasi</label>
-                                    <div class="col-sm-6">
-                                        <span> <?= $d->lokasi; ?></span>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="nama_operator" class="col-sm-3 col-form-label">Nama Operator</label>
-                                    <div class="col-sm-6">
-                                        <span> <?= $d->nama_operator; ?></span>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="nama_pelanggan" class="col-sm-3 col-form-label">Nama Pelanggan</label>
-                                    <div class="col-sm-6">
-                                        <span> <?= $d->nama_pelanggan; ?></span>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="form-group row">
-                                    <label for="kode_genset" class="col-sm-3 col-form-label">Nomor Genset</label>
-                                    <div class="col-sm-6">
-                                        <span> <?= $d->kode_genset; ?></span>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="genset" class="col-sm-3 col-form-label">Nama Genset</label>
-                                    <div class="col-sm-6">
-                                        <span><?= $d->nama_genset; ?></span>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="daya" class="col-sm-3 col-form-label">Daya</label>
-                                    <div class="col-sm-6">
-                                        <span><?= $d->daya; ?></span>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="harga" class="col-sm-3 col-form-label">Harga (Perhari)</label>
-                                    <div class="col-sm-6">
-                                        <span>Rp&nbsp;<?= number_format($d->harga); ?></span>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="form-group row">
-                                    <label for="nopol_mobil" class="col-sm-3 col-form-label">Nopol Mobil</label>
-                                    <div class="col-sm-6">
-                                        <span><?= $d->nopol; ?></span>
+                                <table class="table" style="width:100%">
+                                    <tr>
+                                        <th style="vertical-align: middle">ID Transaksi</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->id_transaksi; ?>
 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="tipe" class="col-sm-3 col-form-label">Tipe</label>
-                                    <div class="col-sm-6">
-                                        <span><?= $d->mobil; ?></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Tanggal Keluar</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= date('d-m-Y', strtotime($d->tanggal_keluar)); ?> </div>
 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="tambahan" class="col-sm-3 col-form-label">Tambahan</label>
-                                    <div class="col-sm-6">
-                                        <span><?= $d->tambahan; ?></span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Tanggal Masuk</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?> </div>
 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="jumlah_hari" class="col-sm-3 col-form-label">Jumlah Hari</label>
-                                    <div class="col-sm-6">
-                                        <span><?= $d->jumlah_hari; ?></span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="total" class="col-sm-3 col-form-label">Total Harga (Rp)</label>
-                                    <div class="col-sm-6">
-                                        <span>Rp&nbsp;<?= number_format($d->total); ?></span>
+                                    <tr>
+                                        <th style="vertical-align: middle">Lokasi</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->lokasi; ?>
 
-                                    </div>
-                                </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Nama Operator</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->nama_op; ?>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Nama Pelanggan</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->nama_plg; ?>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Nomor Genset</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->kode_genset; ?> </div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Nama Genset</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->nama_genset; ?> </div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Daya</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->daya; ?> </div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Harga (Perhari)</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;Rp&nbsp;<?= number_format($d->harga); ?> </div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Nopol Mobil</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->nopol; ?> </div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Merek</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->merek; ?> </div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Tambahan</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->tambahan; ?> </div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Jumlah Hari</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->jumlah_hari; ?> </div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Total Harga (Rp)</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;Rp&nbsp;<?= number_format($d->total); ?> </div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </table>
                             <?php } ?>
                         </div>
-                        <div class="box-footer" align="center">
+                        <div class="card-footer" align="center">
                             <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                            <a href="<?= site_url('report/cetak_unit_keluar/' . $d->id_u_keluar); ?>" target="_blank" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a>
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
 </div>
 
 <?php $this->load->view('template/footer'); ?>
 <?php $this->load->view('admin/template/script') ?>
+
+
 </body>
 
 </html>

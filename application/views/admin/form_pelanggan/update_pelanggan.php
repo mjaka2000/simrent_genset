@@ -14,7 +14,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item"><a href="<?= site_url('admin/tabel_pelanggan'); ?>">Pelanggan</a></li>
-                        <li class="breadcrumb-item active">Edit Data </li>
+                        <li class="breadcrumb-item active">Ubah Data </li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -30,8 +30,8 @@
             <div class="row tengah">
                 <div class="col-md-5 ">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-edit"></i>
-                            Edit Data Pelanggan
+                        <div class="card-header">
+                            Ubah Data Pelanggan
                         </div>
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>

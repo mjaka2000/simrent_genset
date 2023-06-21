@@ -15,7 +15,12 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
-		$data['stokBarangMasuk'] = $this->M_admin->numrows('tb_unit_masuk');
+		// $bulan = $this->input->get('bulan');
+		// $tahun = $this->input->get('tahun');
+		$bulan = date('m');
+		$tahun = date('Y');
+		$label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
+		$data['pendapatan'] = $this->M_admin->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
 		$data['stokBarangKeluar'] = $this->M_admin->numrows('tb_unit_keluar');
 		$data['dataUser'] = $this->M_admin->numrows('tb_user');
 		$data['dataPelanggan'] = $this->M_admin->numrows('tb_pelanggan');
@@ -27,6 +32,7 @@ class Admin extends CI_Controller
 		$data['num'] = $this->M_admin->notif_stok_jml('tb_sparepart');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 		$data['title'] = 'Home';
+		$data['label'] = $label;
 		$this->load->view('admin/index', $data);
 	}
 	public function logout()
@@ -452,9 +458,9 @@ class Admin extends CI_Controller
 			$row[] = date('d-m-Y', strtotime($d->tgl_perbaikan));
 			$row[] = $d->ket_perbaikan;
 			$row[] = 'Rp&nbsp;' . number_format($d->biaya_perbaikan);
-			$row[] = '<a href="' . site_url('admin/update_data_service_genset/' . $d->id_perbaikan_gst) . '" id="id_pemakai" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
-            <a href="' . site_url('admin/hapus_service_genset/' . $d->id_perbaikan_gst) . '" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
-            <a href="' . site_url('admin/detail_service_genset/' . $d->id_perbaikan_gst) . '" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info mr-2"></i></a>';
+			$row[] = '<a href="' . site_url('admin/update_data_service_genset/' . $d->id_perbaikan_gst) . '" id="id_pemakai" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
+            <a href="' . site_url('admin/hapus_service_genset/' . $d->id_perbaikan_gst) . '" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
+            <a href="' . site_url('admin/detail_service_genset/' . $d->id_perbaikan_gst) . '" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle"></i></a>';
 			$data[] = $row;
 		}
 		$output = array(
@@ -1252,16 +1258,17 @@ class Admin extends CI_Controller
 		$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
 		$data['total_data'] = $this->M_admin->sum_pendapatan('tb_unit_keluar');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-		$data['title'] = 'Data Unit Keluar';
+		$data['title'] = 'Data Unit Sewa';
 		$this->load->view('admin/form_unit_keluar/tabel_unit_keluar', $data);
 	}
-	public function detail_barang_keluar($id_transaksi)
+	public function detail_unit_keluar($id_transaksi)
 	{
-		$where = array('id_transaksi' => $id_transaksi);
-		$data['list_data'] = $this->M_admin->get_data('tb_barang_keluar', $where);
-		$data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'));
-		$data['title'] = 'Detail Genset Keluar';
-		$this->load->view('admin/form_barang_keluar/detail_keluar', $data);
+		$uri = $this->uri->segment(3);
+		$where = array('id_u_keluar' => $uri);
+		$data['list_data'] = $this->M_admin->select_data_u_keluar('tb_unit_keluar', $where);
+		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
+		$data['title'] = 'Detail Data Unit Sewa';
+		$this->load->view('admin/form_unit_keluar/detail_keluar', $data);
 	}
 
 	public function tambah_unit_keluar()
@@ -1271,7 +1278,7 @@ class Admin extends CI_Controller
 		$data['list_pelanggan'] = $this->M_admin->select('tb_pelanggan');
 		$data['list_operator'] = $this->M_admin->select('tb_operator');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-		$data['title'] = 'Tambah Unit Keluar';
+		$data['title'] = 'Tambah Unit Sewa';
 		$this->load->view('admin/form_unit_keluar/tambah_unit_keluar', $data);
 	}
 
@@ -1337,7 +1344,7 @@ class Admin extends CI_Controller
 			$data['list_pelanggan'] = $this->M_admin->select('tb_pelanggan');
 			$data['list_operator'] = $this->M_admin->select('tb_operator');
 			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
-			$data['title'] = 'Tambah Unit Keluar';
+			$data['title'] = 'Tambah Unit Sewa';
 			$this->load->view('admin/form_unit_keluar/tambah_unit_keluar', $data);
 		}
 	}
@@ -1872,7 +1879,7 @@ class Admin extends CI_Controller
 	public function proses_tambah_pemasukan()
 	{
 
-		$this->form_validation->set_rules('id_u_keluar', 'ID Transaksi', 'trim|required');
+		$this->form_validation->set_rules('id_u_keluar', 'ID Transaksi', 'trim|required|is_unique[tb_pendapatan.id_u_keluar]');
 		$this->form_validation->set_rules('tgl_update', 'Tanggal Update', 'trim|required');
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
 
@@ -1890,6 +1897,7 @@ class Admin extends CI_Controller
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Di Tambahkan');
 			redirect(site_url('admin/tabel_pemasukan'));
 		} else {
+			$data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
 			$data['avatar'] = $this->M_admin->get_avatar('tb_avatar', $this->session->userdata('name'));
 			$data['title'] = 'Tambah Data Pendapatan';
 			$this->load->view('admin/form_pemasukan/tambah_pemasukan', $data);

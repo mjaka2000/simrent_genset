@@ -30,7 +30,7 @@
             <div class="row tengah">
                 <div class="col-md-5">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-edit"></i>
+                        <div class="card-header">
                             Perpanjang Data Pemakaian
                         </div>
                         <div class="card-body">
@@ -110,7 +110,7 @@
                                     </div>
                                     <hr>
                                     <div class="form-group row">
-                                        <label for="kode_genset" class="col-sm-3 col-form-label">Kode Genset<!--<p><small>*Stok digudang&nbsp;<span style="color: red;" id="stok_gd"></small></span></p>--></label>
+                                        <label for="kode_genset" class="col-sm-3 col-form-label">Nomor Genset<!--<p><small>*Stok digudang&nbsp;<span style="color: red;" id="stok_gd"></small></span></p>--></label>
                                         <div class="col-sm-6">
                                             <select name="id_genset" class="form-control" id="kode_genset" required>
                                                 <option value="">-- Pilih Genset--</option>
@@ -193,7 +193,7 @@
                                     </div>
                                 <?php } ?>
                                 <hr>
-                                <div class="box-footer" align="center">
+                                <div class="card-footer" align="center">
                                     <div class="form-group row">
                                         <a type="button" onclick="editHari()" class="btn btn-sm btn-danger" name="edit_hari" id="edit_hari"><i class="fa fa-edit mr-2"></i>Edit Jumlah Hari</a>
                                         <small style="color: red;">*Klik Untuk Perpanjang Hari</small>

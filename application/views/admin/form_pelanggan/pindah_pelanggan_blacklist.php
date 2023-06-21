@@ -30,7 +30,7 @@
             <div class="row tengah">
                 <div class="col-md-5 ">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-edit"></i>
+                        <div class="card-header">
                             Blacklist Pelanggan
                         </div>
                         <div class="card-body">

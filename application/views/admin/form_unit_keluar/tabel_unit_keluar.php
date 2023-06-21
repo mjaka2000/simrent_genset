@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-table"></i>
+                        <div class="card-header">
                             Data Penyewaan Genset
                         </div>
                         <div class="card-body">
@@ -90,9 +90,9 @@
                                                 <td>Genset Masuk (Kembali)</td>
                                             <?php } ?>
                                             <td>
-                                                <!-- <a href="<?= site_url('admin/update_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a> -->
-                                                <a href="<?= site_url('admin/hapus_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
-                                                <a href="<?= site_url('admin/detail_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a>
+                                                <!-- <a href="<?= site_url('admin/update_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
+                                                <a href="<?= site_url('admin/hapus_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
+                                                <a href="<?= site_url('admin/detail_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
 
                                             </td>
                                         </tr>
@@ -106,9 +106,9 @@
                                     </h5>
                                 <?php endforeach; ?>
                                 <!-- <h5><strong>Keterangan :</strong></h5> -->
-                                <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
-                                <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->
-                                <!-- <a href="#" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a>&nbsp;<span>Untuk Melihat Detail </span> -->
+                                <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
+                                <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash "></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->
+                                <!-- <a href="#" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>&nbsp;<span>Untuk Melihat Detail </span> -->
                             </div>
                         </div>
                     </div>

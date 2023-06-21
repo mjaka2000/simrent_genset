@@ -59,7 +59,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-table"></i>
+                        <div class="card-header">
                             Data Stok Sparepart
                         </div>
                         <div class="card-body">
@@ -94,9 +94,9 @@
                                                 <td><?= date('d-m-Y', strtotime($dt->tanggal_beli)); ?></td>
                                                 <td><?= $dt->tempat_beli; ?></td>
                                                 <td><?= $dt->stok; ?></td>
-                                                <td><a href="<?= site_url('admin/update_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a>
-                                                    <a href="<?= site_url('admin/hapus_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a>
-                                                    <!-- <a href="<?= site_url('admin/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle mr-2"></i></a> -->
+                                                <td><a href="<?= site_url('admin/update_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
+                                                    <a href="<?= site_url('admin/hapus_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
+                                                    <!-- <a href="<?= site_url('admin/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle"></i></a> -->
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

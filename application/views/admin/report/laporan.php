@@ -33,7 +33,6 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-clipboard"></i>
                             Laporan Data
                         </div>
                         <div class="card-body">
