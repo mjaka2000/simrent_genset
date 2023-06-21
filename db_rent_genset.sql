@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Jun 2023 pada 13.00
+-- Waktu pembuatan: 21 Jun 2023 pada 05.30
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -215,7 +215,8 @@ CREATE TABLE `tb_pendapatan` (
 
 INSERT INTO `tb_pendapatan` (`id_pendapatan`, `id_u_keluar`, `tgl_update`, `keterangan`) VALUES
 (1, 6, '2023-06-19', 'hasil sewa genset'),
-(2, 11, '2023-06-17', 'hasil sewa genset jarr');
+(2, 11, '2023-06-17', 'hasil sewa genset jarr'),
+(4, 10, '2023-06-21', 'hasil');
 
 -- --------------------------------------------------------
 
@@ -259,7 +260,7 @@ CREATE TABLE `tb_serv_genset` (
 --
 
 INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `jenis_perbaikan`, `tgl_perbaikan`, `ket_perbaikan`, `biaya_perbaikan`) VALUES
-(1, 2, 1, 'ganti filter solar', '2023-04-12', 'Masih Terkendala', '0'),
+(1, 2, 1, 'ganti filter solar', '2023-04-12', 'Selesai Diperbaiki', '0'),
 (2, 3, 2, 'Ganti Oli', '2023-04-14', 'Selesai Diperbaiki', '250000');
 
 -- --------------------------------------------------------
@@ -367,7 +368,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '20-06-2023 18:24'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '21-06-2023 9:58'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
 
@@ -518,7 +519,7 @@ ALTER TABLE `tb_pelanggan_blacklist`
 -- AUTO_INCREMENT untuk tabel `tb_pendapatan`
 --
 ALTER TABLE `tb_pendapatan`
-  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pengeluaran`
