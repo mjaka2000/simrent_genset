@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Jun 2023 pada 05.30
+-- Waktu pembuatan: 22 Jun 2023 pada 09.18
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -90,7 +90,7 @@ INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `har
 (2, '02', 'Hartech 45 P-02', '40', '1000000', 0, 'ht45p-02.jpg'),
 (3, '07', 'Denyo 25 ES-07', '20', '750000', 0, 'denyo25es-07.jpg'),
 (4, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg'),
-(5, '16', 'Hartech 50 P-16', '50', '1250000', 0, 'ht50p-16.jpg'),
+(5, '16', 'Hartech 50 P-16', '50', '1250000', 1, 'ht50p-16.jpg'),
 (6, '08', 'Kubota 13-08', '13', '500000', 0, 'kubota13-08.jpg'),
 (7, '250', 'Hartech C-250', '250', '3500000', 0, 'ht250.jpg');
 
@@ -143,7 +143,7 @@ CREATE TABLE `tb_operator` (
 INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `status_op`) VALUES
 (1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', 0),
 (2, 'adi', 'jl sukamara', '0878907678956', 0),
-(3, 'ijum', 'jl pulau laut', '0897819271234', 0),
+(3, 'ijum', 'jl pulau laut', '0897819271234', 1),
 (5, 'wanda', 'sungai miai', '0897618391837', 0);
 
 -- --------------------------------------------------------
@@ -170,7 +170,7 @@ CREATE TABLE `tb_pelanggan` (
 
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`) VALUES
 (4, 'anonim', 'Jl. SungaAndaii', '0895619213134', 'Laki-Laki', 'PT Rahmat', '2023-04-11', 0, 1),
-(5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 0, 1);
+(5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -216,7 +216,8 @@ CREATE TABLE `tb_pendapatan` (
 INSERT INTO `tb_pendapatan` (`id_pendapatan`, `id_u_keluar`, `tgl_update`, `keterangan`) VALUES
 (1, 6, '2023-06-19', 'hasil sewa genset'),
 (2, 11, '2023-06-17', 'hasil sewa genset jarr'),
-(4, 10, '2023-06-21', 'hasil');
+(4, 10, '2023-06-21', 'hasil'),
+(5, 9, '2023-06-20', 'ujar');
 
 -- --------------------------------------------------------
 
@@ -237,7 +238,8 @@ CREATE TABLE `tb_pengeluaran` (
 
 INSERT INTO `tb_pengeluaran` (`id_pengeluaran`, `tgl_pengeluaran`, `pengeluaran`, `biaya_pengeluaran`) VALUES
 (1, '2023-06-16', 'Bayar Pajak mobil grandmax', '540000'),
-(2, '2023-06-15', 'Bayar Pajak mobil grandmax biru', '560000');
+(2, '2023-06-15', 'Bayar Pajak mobil grandmax biru', '560000'),
+(4, '2023-07-03', 'Bayar wifi kantor', '380000');
 
 -- --------------------------------------------------------
 
@@ -316,7 +318,8 @@ INSERT INTO `tb_unit_keluar` (`id_u_keluar`, `id_transaksi`, `tanggal_keluar`, `
 (8, 'GE-Jun5782', '2023-06-13', '2023-06-17', 'Gambut', 2, 5, 4, 1, 'kabel', '4', '3000000', 0),
 (9, 'GE-Jun0867', '2023-06-16', '2023-06-19', 'Martapura', 2, 5, 4, 2, 'Box Panel', '3', '2250000', 0),
 (10, 'GE-Jun9106', '2023-06-16', '2023-06-19', 'Martapura', 1, 4, 3, 1, 'Box Panel', '3', '2250000', 0),
-(11, 'GE-Jun6253', '2023-05-23', '2023-05-25', 'Gambut', 2, 5, 3, 2, '-', '2', '1500000', 0);
+(11, 'GE-Jun6253', '2023-05-23', '2023-05-25', 'Gambut', 2, 5, 3, 2, '-', '2', '1500000', 0),
+(12, 'GE-Jun9631', '2023-06-23', '2023-06-26', 'Martapura', 3, 5, 5, 4, 'kabel 20M', '3', '3750000', 1);
 
 -- --------------------------------------------------------
 
@@ -368,7 +371,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '21-06-2023 9:58'),
+(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '22-06-2023 13:30'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
 
@@ -519,13 +522,13 @@ ALTER TABLE `tb_pelanggan_blacklist`
 -- AUTO_INCREMENT untuk tabel `tb_pendapatan`
 --
 ALTER TABLE `tb_pendapatan`
-  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pengeluaran`
 --
 ALTER TABLE `tb_pengeluaran`
-  MODIFY `id_pengeluaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pengeluaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_serv_genset`
@@ -543,7 +546,7 @@ ALTER TABLE `tb_sparepart`
 -- AUTO_INCREMENT untuk tabel `tb_unit_keluar`
 --
 ALTER TABLE `tb_unit_keluar`
-  MODIFY `id_u_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_u_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_unit_masuk`
