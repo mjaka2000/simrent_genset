@@ -7,6 +7,7 @@
 <!-- addon script -->
 <script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.min.js"></script>
+<script src="<?= base_url(); ?>assets/admin32/plugins/chart.js/Chart.min.js"></script>
 
 
 <script src="<?= base_url(); ?>assets/admin32/plugins/datatables/jquery.dataTables.min.js"></script>

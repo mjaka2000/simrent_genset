@@ -184,6 +184,25 @@
             <?php } ?>
           </div> -->
         </div>
+        <!-- <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Line Chart</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart">
+              <canvas id="lineChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+            </div>
+          </div>
+        </div> -->
       </div>
     </div>
 </div><!-- /.container-fluid -->
@@ -207,6 +226,102 @@
         "body").style.visibility = "visible";
     }
   };
+</script>
+<script>
+  $(function() {
+    //-------------
+    //- LINE CHART -
+    //--------------
+    // var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
+    // var lineChartOptions = $.extend(true, {}, areaChartOptions)
+    // var lineChartData = $.extend(true, {}, areaChartData)
+    // lineChartData.datasets[0].fill = false;
+    // lineChartData.datasets[1].fill = false;
+    // lineChartOptions.datasetFill = false
+
+    // var lineChart = new Chart(lineChartCanvas, {
+    //   type: 'line',
+    //   data: lineChartData,
+    //   options: lineChartOptions
+    // })
+
+    //-------------
+    //- LINE CHART -
+    //--------------
+    // var lineChartCanvas = $('#lineChart').getContext('2d')
+    // var lineChartOptions = $.extend(true, {}, areaChartOptions)
+    // var lineChartData = $.extend(true, {}, areaChartData)
+    // lineChartData.datasets[0].fill = true;
+    // lineChartData.datasets[1].fill = true;
+    // lineChartOptions.datasetFill = true
+
+    // var lineChart = new Chart(lineChartCanvas, {
+    //   type: 'line',
+    //   data: {
+    //     // labels: ["Pendapatan", "Bulan"],
+    //     datasets: [{
+    //       label: '',
+
+    //       xAxis: {
+    //         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des']
+    //       },
+    //       yAxis: {
+    //         title: {
+    //           text: '(Rp)'
+    //         },
+    //         data: [{
+    //           <?php foreach ($pendapatanChart as $pd) { ?>
+    //             <?= $pd->total; ?>
+    //           <?php } ?>
+    //       }]
+
+    //       },
+
+    //     }]
+    //   },
+    //   options: lineChartOptions
+    // })
+
+    //   var ctx = document.getElementById("lineChart").getContext('2d');
+    //   var myChart = new Chart(ctx, {
+    //     type: 'line',
+    //     data: {
+    //       labels: ["Pendapatan", "Bulan"],
+    //       datasets: [{
+    //         label: '',
+
+    //         xAxis: {
+    //           categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des']
+    //         },
+    //         yAxis: {
+    //           title: {
+    //             text: '(Rp)'
+    //           },
+    //           data: [
+    //             <?php foreach ($pendapatanChart as $pd) { ?>
+    //               <?= $pd->total; ?>
+    //             <?php } ?>
+    //           ],
+
+    //         },
+    //         borderColor: [
+    //           'rgba(255,99,132,1)',
+    //           'rgba(54, 162, 235, 1)'
+    //         ],
+    //         borderWidth: 1
+    //       }]
+    //     },
+    //     options: {
+    //       scales: {
+    //         yAxes: [{
+    //           ticks: {
+    //             beginAtZero: true
+    //           }
+    //         }]
+    //       }
+    //     }
+    //   });
+  })
 </script>
 </body>
 
