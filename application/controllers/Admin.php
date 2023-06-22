@@ -21,6 +21,7 @@ class Admin extends CI_Controller
 		$tahun = date('Y');
 		$label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
 		$data['pendapatan'] = $this->M_admin->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
+		// $data['pendapatanChart'] = $this->M_admin->chart_pendapatanMasuk('tb_pendapatan');
 		$data['stokBarangKeluar'] = $this->M_admin->numrows('tb_unit_keluar');
 		$data['dataUser'] = $this->M_admin->numrows('tb_user');
 		$data['dataPelanggan'] = $this->M_admin->numrows('tb_pelanggan');

@@ -396,6 +396,18 @@ class M_admin extends CI_Model
       ->get();
     return $query->result();
   }
+  public function chart_pendapatanMasuk($tabel)
+  {
+    // $bulan = $this->db->escape($bulan);
+    // $tahun = $this->db->escape($tahun);
+    $query = $this->db->select('MONTH (tanggal_masuk),total')
+      ->from($tabel)
+      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      // ->where('MONTH (tanggal_masuk) =' . $bln . ' AND YEAR (tanggal_masuk) =' . $thn)
+      ->order_by('total', 'asc')
+      ->get();
+    return $query->result();
+  }
   ####################################
   //* End Pemasukan 
   ####################################
