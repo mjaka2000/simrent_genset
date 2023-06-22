@@ -6,7 +6,7 @@
         <table border="0">
             <tr>
                 <th align="left">
-                    <img src="<?= base_url() ?>assets/style/logo/KOP_SURAT_WARDAH_SOLUTION.png" alt="" width="70%">
+                    <img src="<?= base_url() ?>assets/style/logo/KOP_SURAT_WARDAH_SOLUTION.png" alt="" width="100%">
                 </th>
                 <!-- <th>
                     <p align="center" style="font-family:Arial; font-size:15pt"> PT. RAHMAT TAUFIK RAMADAN </p>
@@ -14,11 +14,11 @@
             </tr>
             <tr>
                 <td align="right">
+                    <hr>
                     <small>Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></small>
                 </td>
             </tr>
         </table>
-        <hr>
         <h2 align="center">Laporan Jadwal Penyewaan Genset</h2><span>
             <!-- <p align="right" style="font-size:10pt">Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></p> -->
         </span>

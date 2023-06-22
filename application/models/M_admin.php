@@ -305,6 +305,36 @@ class M_admin extends CI_Model
       ->get();
     return $query->result();
   }
+  public function gsel_data_u_keluar($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->where('status =', 0)
+
+      ->get();
+    return $query->result();
+  }
+
+  public function grep_data_u_keluar($tabel, $bulan, $tahun)
+  {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
+
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
+      ->where('status =', 0)
+      ->get();
+    return $query->result();
+  }
 
   public function select_data_u_keluar($tabel, $where)
   {

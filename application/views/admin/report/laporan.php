@@ -38,7 +38,7 @@
                         <div class="card-body">
                             <table id="reporttable" class="table table-bordered" style="width:100%">
                                 <tr>
-                                    <form action="<?= site_url(); ?>admin/#" method="post" role="form" target="_blank">
+                                    <form action="<?= site_url(); ?>report/cetak_pengeluaran_periode" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle">Laporan Data Pengeluaran <br><small style="color: red;">*Berdasarkan Periode</small></th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
@@ -85,7 +85,7 @@
                                     </form>
                                 </tr>
                                 <tr>
-                                    <form action="<?= site_url(); ?>admin/#" method="post" role="form" target="_blank">
+                                    <form action="<?= site_url(); ?>report/cetak_pemasukan_periode" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle">Laporan Data Pemasukan<br><small style="color: red;">*Berdasarkan Periode</small></th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
@@ -132,7 +132,7 @@
                                     </form>
                                 </tr>
                                 <tr>
-                                    <form action="<?= site_url(); ?>admin/#" method="post" role="form" target="_blank">
+                                    <form action="<?= site_url(); ?>report/cetak_penyewaan" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle">Laporan Data Penyewaan <br><small style="color: red;">*Berdasarkan Periode</small></th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
@@ -179,7 +179,7 @@
                                     </form>
                                 </tr>
                                 <tr>
-                                    <form action="<?= site_url(); ?>admin/#" method="post" role="form" target="_blank">
+                                    <form action="<?= site_url(); ?>report/cetak_jdw_gensetAll" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle">Laporan Data Jadwal Penyewaan Genset</th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
@@ -201,7 +201,7 @@
                                     </form>
                                 </tr>
                                 <tr>
-                                    <form action="<?= site_url(); ?>admin/#" method="post" role="form" target="_blank">
+                                    <form action="<?= site_url(); ?>report/cetak_serv_gensetAll" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle">Laporan Perbaikan Genset</th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
@@ -224,7 +224,7 @@
                                 </tr>
 
                                 <tr>
-                                    <form action="<?= site_url(); ?>admin/#" method="post" role="form" target="_blank">
+                                    <form action="<?= site_url(); ?>report/cetak_Pelanggan" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle">Laporan Data Pelanggan</th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
@@ -246,7 +246,7 @@
                                     </form>
                                 </tr>
                                 <tr>
-                                    <form action="<?= site_url(); ?>admin/#" method="post" role="form" target="_blank">
+                                    <form action="<?= site_url(); ?>report/cetak_Pelanggan_blacklist" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle">Laporan Data Pelanggan Blacklist</th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
@@ -268,7 +268,7 @@
                                     </form>
                                 </tr>
                                 <tr>
-                                    <form action="<?= site_url(); ?>admin/#" method="post" role="form" target="_blank">
+                                    <form action="<?= site_url(); ?>report/cetak_sparepart" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle">Laporan Data Stok Sparepart</th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
