@@ -3,8 +3,25 @@
 
 <body class="A4">
     <section class="sheet padding-10mm">
-
-        <h4 style="margin-bottom: 5px;">Laporan Jadwal Penyewaan Genset</h4>
+        <table border="0">
+            <tr>
+                <th align="left">
+                    <img src="<?= base_url() ?>assets/style/logo/KOP_SURAT_WARDAH_SOLUTION.png" alt="" width="70%">
+                </th>
+                <!-- <th>
+                    <p align="center" style="font-family:Arial; font-size:15pt"> PT. RAHMAT TAUFIK RAMADAN </p>
+                </th> -->
+            </tr>
+            <tr>
+                <td align="right">
+                    <small>Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></small>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <h2 align="center">Laporan Jadwal Penyewaan Genset</h2><span>
+            <!-- <p align="right" style="font-size:10pt">Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></p> -->
+        </span>
         <!-- <?php echo $label ?> -->
         <?php foreach ($list_data as $dt) { ?>
             <div class="row tengah">
@@ -113,6 +130,19 @@
 
                 </table>
             <?php } ?>
+            <table>
+                <tr>
+
+                    <td><br><br><br><br><br><br><br><br><br><br><br><br></td>
+                    <td align="right">Banjarmasin, <?= format_indo(date('Y-m-d')); ?></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right">
+                        <?= $this->session->userdata('name') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                </tr>
+
+            </table>
             </div>
     </section>
 
