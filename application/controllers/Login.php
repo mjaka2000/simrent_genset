@@ -49,11 +49,12 @@ class Login extends CI_Controller
 				$isi = $cek->row();
 				if (password_verify($password, $isi->password)) {
 					$data_session = array(
-						'id' => $isi->id,
+						'id_user' => $isi->id_user,
 						'name' => $username,
 						'nama' => $isi->nama,
 						'status' => 'login',
 						'role' => $isi->role,
+						'nama_file' => $isi->nama_file,
 						'last_login' => $isi->last_login
 					);
 

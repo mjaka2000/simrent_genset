@@ -131,7 +131,7 @@ class M_admin extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->where('username_user', $username)
+      ->where('username', $username)
       ->get();
     return $query->result();
   }
@@ -140,7 +140,7 @@ class M_admin extends CI_Model
   {
     $this->db->set($data);
     $this->db->where($where);
-    $this->db->update('tb_avatar');
+    $this->db->update('tb_user');
   }
 
 
