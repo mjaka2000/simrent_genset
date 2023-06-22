@@ -30,7 +30,7 @@
             <div class="row tengah">
                 <div class="col-md-5 ">
                     <div class="card">
-                        <div class="card-header"><i class="fas fa-edit"></i>
+                        <div class="card-header">
                             Edit Data User
                         </div>
                         <div class="card-body">
@@ -48,7 +48,7 @@
                                     </div>
                                 <?php } ?>
                                 <?php foreach ($list_data as $d) { ?>
-                                    <input type="hidden" name="id" value="<?= $d->id; ?>">
+                                    <input type="hidden" name="id_user" value="<?= $d->id_user; ?>">
                                     <div class="form-group">
                                         <label for="nama" class="form-label">Nama</label>
                                         <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama" required="" value="<?= $d->nama; ?>">

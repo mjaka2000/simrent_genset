@@ -48,7 +48,7 @@
                                 <thead>
                                     <tr>
                                         <?php foreach ($total_data as $td) : ?>
-                                            <th colspan="5" style="text-align: center;">Pengeluaran <?php echo $label ?> adalah: <span style="color: red;">Rp&nbsp;<?= number_format($td->biaya_pengeluaran); ?></span></th>
+                                            <th colspan="5" style="text-align: center;">Total Pengeluaran <?php echo $label ?> adalah: <span style="color: red;">Rp&nbsp;<?= number_format($td->biaya_pengeluaran); ?></span></th>
                                         <?php endforeach; ?>
                                     </tr>
                                     <tr>
