@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Jun 2023 pada 09.18
+-- Waktu pembuatan: 22 Jun 2023 pada 13.40
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -20,28 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_rent_genset`
 --
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tb_avatar`
---
-
-CREATE TABLE `tb_avatar` (
-  `id` int(11) NOT NULL,
-  `username_user` varchar(50) NOT NULL,
-  `nama_file` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data untuk tabel `tb_avatar`
---
-
-INSERT INTO `tb_avatar` (`id`, `username_user`, `nama_file`) VALUES
-(1, 'admin', 'jaka1.jpg'),
-(12, 'jakaja', 'nopic.png'),
-(13, 'bos', 'nopic.png'),
-(14, 'aril', 'nopic.png');
 
 -- --------------------------------------------------------
 
@@ -358,11 +336,12 @@ INSERT INTO `tb_unit_masuk` (`id`, `id_transaksi`, `tanggal_keluar`, `tanggal_ma
 --
 
 CREATE TABLE `tb_user` (
-  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `role` tinyint(4) NOT NULL,
+  `nama_file` varchar(150) NOT NULL,
   `last_login` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -370,20 +349,15 @@ CREATE TABLE `tb_user` (
 -- Dumping data untuk tabel `tb_user`
 --
 
-INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `role`, `last_login`) VALUES
-(1, 'admin', 'admin1', '$2y$10$eZ1p2/8Ne1va1k5JQDqz2eJQ68mEDCV/LPYrIIDa0GtORa9KGkez2', 0, '22-06-2023 13:30'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, '26-04-2023 11:25'),
-(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, '26-04-2023 11:23');
+INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '22-06-2023 19:33'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'nopic.png', '22-06-2023 19:26'),
+(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '22-06-2023 19:26'),
+(34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 0, 'nopic.png', '22-06-2023 19:29');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indeks untuk tabel `tb_avatar`
---
-ALTER TABLE `tb_avatar`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `tb_detail_serv`
@@ -470,17 +444,11 @@ ALTER TABLE `tb_unit_masuk`
 -- Indeks untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
-
---
--- AUTO_INCREMENT untuk tabel `tb_avatar`
---
-ALTER TABLE `tb_avatar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_detail_serv`
@@ -558,7 +526,7 @@ ALTER TABLE `tb_unit_masuk`
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
