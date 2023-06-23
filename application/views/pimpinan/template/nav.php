@@ -15,45 +15,37 @@
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li> -->
-
-    </ul>
-    <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-            <!-- Messages: style can be found in dropdown.less-->
-
-            <!-- User Account: style can be found in dropdown.less -->
-            <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <li class="nav-item dropdown user-menu">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <?php foreach ($avatar as $a) { ?>
+                    <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="user-image img-circle elevation-2" alt="User Image">
+                <?php } ?>
+                <span class="hidden-xs" style="color: white;"><?= $this->session->userdata('name') ?></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <!-- User image -->
+                <li class="user-header">
                     <?php foreach ($avatar as $a) { ?>
-                        <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="user-image" alt="User Image">
+                        <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="img-circle elevation-2" alt="User Image">
                     <?php } ?>
-                    <span class="hidden-xs" style="color: white;"><?= $this->session->userdata('name') ?></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <!-- User image -->
-                    <li class="user-header">
-                        <?php foreach ($avatar as $a) { ?>
-                            <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="profile-user-img img-responsive img-circle" alt="User Image">
-                        <?php } ?>
 
-                        <p>
-                            <strong><?= $this->session->userdata('name') ?></strong> as Pimpinan <br>
-                            <small>Last Login : <?= $this->session->userdata('last_login') ?></small><br>
-                        </p>
-                    </li>
-                    <!-- Menu Body -->
+                    <p>
+                        <strong><?= $this->session->userdata('name') ?></strong> - Pimpinan <br>
+                        <small>Last Login : <?= $this->session->userdata('last_login') ?></small><br>
+                    </p>
+                </li>
+                <!-- Menu Body -->
 
-                    <!-- Menu Footer-->
-                    <li class="user-footer">
-                        <span class="pull-left">
-                            <button class="win7-btn btn-xs" onclick="window.location.href='<?= base_url('pimpinan#'); ?>'"><i class="fa fa-cog"></i>&nbsp;Profile</button>
-                        </span>
-                        <span class="pull-right" style="margin-left: 28%;">
-                            <button class="win7-btn btn-xs" onclick="window.location.href='<?= base_url('pimpinan/logout'); ?>'"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button>
-                        </span>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+                <!-- Menu Footer-->
+                <li class="card-footer">
+                    <span class="fa-pull-left">
+                        <button class="btn btn-default btn-sm" type="button" onclick="window.location.href='<?= site_url('pimpinan/profile'); ?>'"><i class="fa fa-cog"></i>&nbsp;Profile</button>
+                    </span>
+                    <span class="fa-pull-right">
+                        <button class="btn btn-default btn-sm" type="button" onclick="window.location.href='<?= site_url('pimpinan/logout'); ?>'"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button>
+                    </span>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </nav>
