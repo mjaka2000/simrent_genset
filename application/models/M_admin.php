@@ -294,6 +294,14 @@ class M_admin extends CI_Model
   //* Data Unit Keluar 
   ####################################
 
+  public function get_auto_id($tabel)
+  {
+    $query = $this->db->select_max('id_transaksi')
+      ->from($tabel)
+      ->get();
+    return $query->result();
+  }
+
   public function get_data_u_keluar($tabel)
   {
     $query = $this->db->select()
@@ -305,6 +313,7 @@ class M_admin extends CI_Model
       ->get();
     return $query->result();
   }
+
   public function gsel_data_u_keluar($tabel)
   {
     $query = $this->db->select()

@@ -1266,6 +1266,18 @@ class Admin extends CI_Controller
 
 	public function tambah_unit_keluar()
 	{
+		$kode_id = $this->M_admin->get_auto_id('tb_unit_keluar');
+		foreach ($kode_id as $kd) {
+			if ($kd) {
+				$nilai     = substr($kd->id_transaksi, 6);
+				$kode     = (int) $nilai;
+				//tambahkan sebanyak + 1
+				$kode     = $kode + 1;
+				$auto_kode = "GE-" . date('M') . str_pad($kode, 4, "0",  STR_PAD_LEFT);
+			}
+		}
+		$data['kode_auto'] = $auto_kode;
+
 		$data['list_mobil'] = $this->M_admin->select('tb_mobil');
 		$data['list_genset'] = $this->M_admin->select('tb_genset');
 		$data['list_pelanggan'] = $this->M_admin->select('tb_pelanggan');
