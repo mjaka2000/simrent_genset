@@ -428,12 +428,13 @@ class Admin extends CI_Controller
 
 	public function tabel_service_genset()
 	{
-		// $data['list_data'] = $this->M_admin->get_data_service('tb_serv_genset');
+		$data['list_data'] = $this->M_admin->get_data_service('tb_serv_genset');
 		$data['avatar'] = $this->M_admin->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Data Perbaikan Genset';
 		$this->load->view('admin/form_service_genset/tabel_service_genset', $data);
 	}
 
+	/*
 	public function ajax_list_serv()
 	{
 		header('Content-Type: application/json');
@@ -467,6 +468,7 @@ class Admin extends CI_Controller
 		//output to json format
 		$this->output->set_output(json_encode($output));
 	}
+*/
 
 	public function tambah_service_genset()
 	{
