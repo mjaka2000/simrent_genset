@@ -50,42 +50,36 @@
                             <form action="<?= site_url('admin/proses_blacklist_pelanggan'); ?>" method="post" role="form">
                                 <?php if (is_array($list_plg)) { ?>
                                     <?php foreach ($list_plg as $d) { ?>
-                                        <div class="form-group row">
+                                        <div class="form-group">
                                             <input type="hidden" name="id_pelanggan" value="<?= $d->id_pelanggan; ?>">
-                                            <label for="nama" class="col-sm-3 col-form-label">Nama</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" name="nama_plg_blk" class="form-control" id="nama_plg_blk" placeholder="Masukkan Nama" readonly required value="<?= $d->nama_plg; ?>">
-                                            </div>
+                                            <label for="nama" class="form-label">Nama</label>
+
+                                            <input type="text" name="nama_plg_blk" class="form-control" id="nama_plg_blk" placeholder="Masukkan Nama" readonly required value="<?= $d->nama_plg; ?>">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" name="alamat_plg_blk" class="form-control" id="alamat_plg_blk" placeholder="Masukkan Alamat" readonly required value="<?= $d->alamat_plg; ?>">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="alamat" class="form-label">Alamat</label>
+
+                                            <input type="text" name="alamat_plg_blk" class="form-control" id="alamat_plg_blk" placeholder="Masukkan Alamat" readonly required value="<?= $d->alamat_plg; ?>">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="no_hp" class="col-sm-3 col-form-label">No. HP</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" maxlength="13" name="nohp_plg_blk" class="form-control" id="nohp_plg_blk" placeholder="Masukkan No. HP" readonly required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->nohp_plg; ?>">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="no_hp" class="form-label">No. HP</label>
+
+                                            <input type="text" maxlength="13" name="nohp_plg_blk" class="form-control" id="nohp_plg_blk" placeholder="Masukkan No. HP" readonly required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->nohp_plg; ?>">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="jenis_kelamin" class="col-sm-3 col-form-label">Jenis Kelamin</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" name="jk_plg_blk" class="form-control" id="jk_plg_blk" placeholder="Jenis Kelamin" readonly required value="<?= $d->jk_plg; ?>">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+
+                                            <input type="text" name="jk_plg_blk" class="form-control" id="jk_plg_blk" placeholder="Jenis Kelamin" readonly required value="<?= $d->jk_plg; ?>">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="nama_perusahaan" class="col-sm-3 col-form-label">Nama Perusahaan</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" name="namaperusahaan_plg_blk" class="form-control" id="namaperusahaan_plg_blk" placeholder="Nama Perusahaan" readonly required value="<?= $d->namaperusahaan_plg; ?>">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="nama_perusahaan" class="form-label">Nama Perusahaan</label>
+
+                                            <input type="text" name="namaperusahaan_plg_blk" class="form-control" id="namaperusahaan_plg_blk" placeholder="Nama Perusahaan" readonly required value="<?= $d->namaperusahaan_plg; ?>">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="tgl_update" class="col-sm-3 col-form-label">Tanggal Update</label>
-                                            <div class="col-sm-9">
-                                                <input type="date" name="tglupdate_plg_blk" class="form-control" id="tglupdate_plg_blk" readonly placeholder="Tanggal Update" required value="<?= $d->tglupdate_plg; ?>">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="tgl_update" class="form-label">Tanggal Update</label>
+
+                                            <input type="date" name="tglupdate_plg_blk" class="form-control" id="tglupdate_plg_blk" readonly placeholder="Tanggal Update" required value="<?= $d->tglupdate_plg; ?>">
                                         </div>
                                     <?php } ?>
                                 <?php } ?>

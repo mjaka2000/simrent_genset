@@ -51,46 +51,41 @@
                                 <?php foreach ($edit_data as $ed) { ?>
                                     <input type="hidden" name="id_pendapatan" value="<?= $ed->id_pendapatan; ?>">
 
-                                    <div class="form-group row">
-                                        <label for="bulan" class="col-sm-3 col-form-label">ID Transaksi</label>
-                                        <div class="col-sm-9">
-                                            <select name="id_u_keluar" class="form-control" id="id_transaksi" required>
-                                                <option value="">-- Pilih ID Transaksi --</option>
-                                                <?php foreach ($list_data as $d) { ?>
-                                                    <?php if ($ed->id_u_keluar == $d->id_u_keluar) { ?>
-                                                        <option value="<?= $ed->id_u_keluar ?>" selected><?= $d->id_transaksi ?></option>
-                                                    <?php } else { ?>
-                                                        <option value="<?= $d->id_u_keluar ?>"><?= $d->id_transaksi ?></option>
-                                                    <?php } ?>
+                                    <div class="form-group">
+                                        <label for="bulan" class="form-label">ID Transaksi</label>
+
+                                        <select name="id_u_keluar" class="form-control" id="id_transaksi" required>
+                                            <option value="">-- Pilih ID Transaksi --</option>
+                                            <?php foreach ($list_data as $d) { ?>
+                                                <?php if ($ed->id_u_keluar == $d->id_u_keluar) { ?>
+                                                    <option value="<?= $ed->id_u_keluar ?>" selected><?= $d->id_transaksi ?></option>
+                                                <?php } else { ?>
+                                                    <option value="<?= $d->id_u_keluar ?>"><?= $d->id_transaksi ?></option>
                                                 <?php } ?>
-                                            </select>
-                                        </div>
+                                            <?php } ?>
+                                        </select>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="genset" class="col-sm-3 col-form-label">Tanggal Penyewaan</label>
-                                        <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <label for="genset" class="form-label">Tanggal Penyewaan</label>
 
-                                            <input type="text" readonly name="tanggal_masuk" class="form-control" id="tanggal_masuk">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="genset" class="col-sm-3 col-form-label">Nama Pelanggan</label>
-                                        <div class="col-sm-9">
 
-                                            <input type="text" readonly name="nama_plg" class="form-control" id="nama_plg">
-                                        </div>
+                                        <input type="text" readonly name="tanggal_masuk" class="form-control" id="tanggal_masuk">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="tahun" class="col-sm-3 col-form-label">Tanggal Update</label>
-                                        <div class="col-sm-9">
-                                            <input type="date" name="tgl_update" class="form-control" id="tgl_update" required value="<?= $ed->tgl_update; ?>">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="genset" class="form-label">Nama Pelanggan</label>
+
+
+                                        <input type="text" readonly name="nama_plg" class="form-control" id="nama_plg">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="tahun" class="col-sm-3 col-form-label">Keterangan</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="keterangan" class="form-control" id="keterangan" required value="<?= $ed->keterangan; ?>">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="tahun" class="form-label">Tanggal Update</label>
+
+                                        <input type="date" name="tgl_update" class="form-control" id="tgl_update" required value="<?= $ed->tgl_update; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tahun" class="form-label">Keterangan</label>
+
+                                        <input type="text" name="keterangan" class="form-control" id="keterangan" required value="<?= $ed->keterangan; ?>">
                                     </div>
                                     <div class="box-footer" align="center">
                                         <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>

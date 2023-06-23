@@ -49,51 +49,45 @@
 
                             <form action="<?= site_url('admin/proses_update_pelanggan'); ?>" method="post" role="form">
                                 <?php foreach ($list_data as $d) { ?>
-                                    <div class="form-group row">
+                                    <div class="form-group">
                                         <input type="hidden" name="id_pelanggan" value="<?= $d->id_pelanggan; ?>">
-                                        <label for="nama" class="col-sm-3 col-form-label">Nama</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="nama_plg" class="form-control" id="nama_plg" placeholder="Masukkan Nama" required value="<?= $d->nama_plg; ?>">
-                                        </div>
+                                        <label for="nama" class="form-label">Nama</label>
+
+                                        <input type="text" name="nama_plg" class="form-control" id="nama_plg" placeholder="Masukkan Nama" required value="<?= $d->nama_plg; ?>">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="alamat_plg" class="form-control" id="alamat_plg" placeholder="Masukkan Alamat" required value="<?= $d->alamat_plg; ?>">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="alamat" class="form-label">Alamat</label>
+
+                                        <input type="text" name="alamat_plg" class="form-control" id="alamat_plg" placeholder="Masukkan Alamat" required value="<?= $d->alamat_plg; ?>">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="no_hp" class="col-sm-3 col-form-label">No. HP</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" maxlength="13" name="nohp_plg" class="form-control" id="nohp_plg" placeholder="Masukkan No. HP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->nohp_plg; ?>">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="no_hp" class="form-label">No. HP</label>
+
+                                        <input type="text" maxlength="13" name="nohp_plg" class="form-control" id="nohp_plg" placeholder="Masukkan No. HP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->nohp_plg; ?>">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="jenis_kelamin" class="col-sm-3 col-form-label">Jenis Kelamin</label>
-                                        <div class="col-sm-9">
-                                            <select name="jk_plg" id="jk_plg" class="form-control">
-                                                <option value="">-- Pilih --</option>
-                                                <?php if ($d->jk_plg == "Laki-Laki") { ?>
-                                                    <option value="Laki-Laki" selected>Laki-Laki</option>
-                                                    <option value="Perempuan">Perempuan</option>
-                                                <?php } else { ?>
-                                                    <option value="Laki-Laki">Laki-Laki</option>
-                                                    <option value="Perempuan" selected>Perempuan</option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+
+                                        <select name="jk_plg" id="jk_plg" class="form-control">
+                                            <option value="">-- Pilih --</option>
+                                            <?php if ($d->jk_plg == "Laki-Laki") { ?>
+                                                <option value="Laki-Laki" selected>Laki-Laki</option>
+                                                <option value="Perempuan">Perempuan</option>
+                                            <?php } else { ?>
+                                                <option value="Laki-Laki">Laki-Laki</option>
+                                                <option value="Perempuan" selected>Perempuan</option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="nama_perusahaan" class="col-sm-3 col-form-label">Nama Perusahaan</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="namaperusahaan_plg" class="form-control" id="nama_perusahaan" placeholder="Nama Perusahaan" required value="<?= $d->namaperusahaan_plg; ?>">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="nama_perusahaan" class="form-label">Nama Perusahaan</label>
+
+                                        <input type="text" name="namaperusahaan_plg" class="form-control" id="nama_perusahaan" placeholder="Nama Perusahaan" required value="<?= $d->namaperusahaan_plg; ?>">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="tgl_update" class="col-sm-3 col-form-label">Tanggal Update</label>
-                                        <div class="col-sm-9">
-                                            <input type="date" name="tglupdate_plg" class="form-control" id="tanggal_update" placeholder="Tanggal Update" required value="<?= $d->tglupdate_plg; ?>">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="tgl_update" class="form-label">Tanggal Update</label>
+
+                                        <input type="date" name="tglupdate_plg" class="form-control" id="tanggal_update" placeholder="Tanggal Update" required value="<?= $d->tglupdate_plg; ?>">
                                     </div>
                                 <?php } ?>
                                 <hr>

@@ -50,33 +50,29 @@
                             <?php foreach ($list_data as $det) { ?>
                                 <form action="<?= site_url('admin/proses_tambah_service_detail'); ?>" method="post" role="form">
                                     <input type="hidden" name="id_perbaikan_gst" value="<?= $det->id_perbaikan_gst; ?>">
-                                    <div class="form-group row">
-                                        <label for="pekerjaan" class="col-sm-3 col-form-label">Pekerjaan</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="pekerjaan" class="form-control" id="pekerjaan" placeholder="Pekerjaan" required>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="pekerjaan" class="form-label">Pekerjaan</label>
+
+                                        <input type="text" name="pekerjaan" class="form-control" id="pekerjaan" placeholder="Pekerjaan" required>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="Tanggal" class="col-sm-3 col-form-label">Tanggal</label>
-                                        <div class="col-sm-9">
-                                            <input type="date" name="tanggal" class="form-control" id="tanggal" placeholder="Tanggal" required>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="Tanggal" class="form-label">Tanggal</label>
+
+                                        <input type="date" name="tanggal" class="form-control" id="tanggal" placeholder="Tanggal" required>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="kendala" class="col-sm-3 col-form-label">Kendala</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="kendala" class="form-control" id="kendala" placeholder="Kendala" required>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="kendala" class="form-label">Kendala</label>
+
+                                        <input type="text" name="kendala" class="form-control" id="kendala" placeholder="Kendala" required>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="status" class="col-sm-3 col-form-label">Status</label>
-                                        <div class="col-sm-9">
-                                            <select name="status" class="form-control" id="status" required>
-                                                <option value="">-- Status --</option>
-                                                <option value="Pending">Pending</option>
-                                                <option value="Selesai">Selesai</option>
-                                            </select>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="status" class="form-label">Status</label>
+
+                                        <select name="status" class="form-control" id="status" required>
+                                            <option value="">-- Status --</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Selesai">Selesai</option>
+                                        </select>
                                     </div>
                                 <?php } ?>
                                 <hr>

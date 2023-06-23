@@ -50,27 +50,24 @@
                             <form action="<?= site_url('admin/proses_edit_pengeluaran'); ?>" method="post" role="form">
                                 <?php foreach ($list_data as $dt) { ?>
                                     <input type="hidden" name="id_pengeluaran" value="<?= $dt->id_pengeluaran; ?>">
-                                    <div class="form-group row">
-                                        <label for="nama" class="col-sm-3 col-form-label">Tanggal</label>
-                                        <div class="col-sm-9">
-                                            <input type="date" name="tgl_pengeluaran" class="form-control" id="tgl_pengeluaran" placeholder="Masukkan Tanggal" required value="<?= $dt->tgl_pengeluaran; ?>">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="nama" class="form-label">Tanggal</label>
+
+                                        <input type="date" name="tgl_pengeluaran" class="form-control" id="tgl_pengeluaran" placeholder="Masukkan Tanggal" required value="<?= $dt->tgl_pengeluaran; ?>">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="alamat" class="col-sm-3 col-form-label">Keterangan Pengeluaran</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="pengeluaran" class="form-control" id="pengeluaran" placeholder="Masukkan Keterangan Pengeluaran" required value="<?= $dt->pengeluaran; ?>">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="alamat" class="form-label">Keterangan Pengeluaran</label>
+
+                                        <input type="text" name="pengeluaran" class="form-control" id="pengeluaran" placeholder="Masukkan Keterangan Pengeluaran" required value="<?= $dt->pengeluaran; ?>">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="no_hp" class="col-sm-3 col-form-label">Biaya Pengeluaran</label>
-                                        <div class="col-sm-9">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon">Rp</span>
-                                                </div>
-                                                <input type="text" name="biaya_pengeluaran" class="form-control" id="biaya_pengeluaran" placeholder="Masukkan Biaya Pengeluaran" required value="<?= $dt->biaya_pengeluaran; ?>">
+                                    <div class="form-group">
+                                        <label for="no_hp" class="form-label">Biaya Pengeluaran</label>
+
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon">Rp</span>
                                             </div>
+                                            <input type="text" name="biaya_pengeluaran" class="form-control" id="biaya_pengeluaran" placeholder="Masukkan Biaya Pengeluaran" required value="<?= $dt->biaya_pengeluaran; ?>">
                                         </div>
                                     </div>
                                 <?php } ?>

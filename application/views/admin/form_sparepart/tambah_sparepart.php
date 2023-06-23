@@ -49,29 +49,25 @@
 
                             <form action="<?= site_url('admin/proses_tambah_sparepart'); ?>" method="post" role="form">
 
-                                <div class="form-group row">
-                                    <label for="nama_sparepart" class="col-sm-3 col-form-label">Nama Sparepart</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="nama_sparepart" class="form-control" id="nama_sparepart" placeholder="Masukkan Nama Sparepart" required>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="nama_sparepart" class="form-label">Nama Sparepart</label>
+
+                                    <input type="text" name="nama_sparepart" class="form-control" id="nama_sparepart" placeholder="Masukkan Nama Sparepart" required>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="tanggal_beli" class="col-sm-3 col-form-label">Tanggal Beli</label>
-                                    <div class="col-sm-9">
-                                        <input type="date" name="tanggal_beli" class="form-control" id="tanggal_beli" placeholder="Masukkan Tanggal Beli" required>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="tanggal_beli" class="form-label">Tanggal Beli</label>
+
+                                    <input type="date" name="tanggal_beli" class="form-control" id="tanggal_beli" placeholder="Masukkan Tanggal Beli" required>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="tempat_beli" class="col-sm-3 col-form-label">Tempat Beli</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="tempat_beli" class="form-control" id="tempat_beli" placeholder="Masukkan Tempat Beli" required>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="tempat_beli" class="form-label">Tempat Beli</label>
+
+                                    <input type="text" name="tempat_beli" class="form-control" id="tempat_beli" placeholder="Masukkan Tempat Beli" required>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="stok" class="col-sm-3 col-form-label">Stok</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" name="stok" class="form-control" id="stok" placeholder="Masukkan Stok yang Dibeli" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="stok" class="form-label">Stok</label>
+
+                                    <input type="number" name="stok" class="form-control" id="stok" placeholder="Masukkan Stok yang Dibeli" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
                                 </div>
                                 <hr>
                                 <div class="form-group" align="center">

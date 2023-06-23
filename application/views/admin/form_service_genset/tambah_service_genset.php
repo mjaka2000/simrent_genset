@@ -49,70 +49,62 @@
 
                             <form action="<?= site_url('admin/proses_tambah_service_genset'); ?>" method="post" role="form">
 
-                                <div class="form-group row">
-                                    <label for="kode_genset" class="col-sm-3 col-form-label" title="*Pilih dulu untuk menampilkan nama genset">Nomor Genset</label>
-                                    <div class="col-sm-9">
-                                        <select name="id_genset" class="form-control" id="id_genset" required>
-                                            <option value="" selected disabled>-- Pilih Nomor Genset --</option>
-                                            <?php foreach ($list_genset as $g) { ?>
-                                                <option value="<?= $g->id_genset; ?>"><?= $g->kode_genset; ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="kode_genset" class="form-label" title="*Pilih dulu untuk menampilkan nama genset">Nomor Genset</label>
+
+                                    <select name="id_genset" class="form-control" id="id_genset" required>
+                                        <option value="" selected disabled>-- Pilih Nomor Genset --</option>
+                                        <?php foreach ($list_genset as $g) { ?>
+                                            <option value="<?= $g->id_genset; ?>"><?= $g->kode_genset; ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="nama_genset" class="col-sm-3 col-form-label">Nama Genset</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Nama Genset" disabled>
-                                        <!-- <p><strong><span style="color: red;" id="nama_genset"></span></strong></p> -->
-                                    </div>
+                                <div class="form-group">
+                                    <label for="nama_genset" class="form-label">Nama Genset</label>
+
+                                    <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Nama Genset" disabled>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="jenis_perbaikan" class="col-sm-3 col-form-label">Jenis Perbaikan</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="jenis_perbaikan" class="form-control" id="jenis_perbaikan" placeholder="Contoh : Perbaikan Aki dll" required>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="jenis_perbaikan" class="form-label">Jenis Perbaikan</label>
+
+                                    <input type="text" name="jenis_perbaikan" class="form-control" id="jenis_perbaikan" placeholder="Contoh : Perbaikan Aki dll" required>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="spare_part" class="col-sm-3 col-form-label">Spare Part (Diganti)</label>
+                                <div class="form-group">
+                                    <label for="spare_part" class="form-label">Spare Part (Diganti)</label>
                                     <input type="hidden" name="stok" id="stok_input" value="">
                                     <!-- <input type="text" name="spare_part" class="form-control" id="spare_part" placeholder="Filter Oli, Filter Solar dll"> -->
-                                    <div class="col-sm-9">
-                                        <select name="id_sparepart" class="form-control" id="spare_part" required>
-                                            <option value="" selected>-- Pilih Sparepart --</option>
-                                            <?php foreach ($list_sparepart as $s) { ?>
-                                                <option value="<?= $s->id_sparepart; ?>"><?= $s->nama_sparepart; ?></option>
-                                            <?php } ?>
-                                        </select>
-                                        <small>*Sisa Stok&nbsp;<span style="color: red;" id="stk"></span></small>
-                                    </div>
+
+                                    <select name="id_sparepart" class="form-control" id="spare_part" required>
+                                        <option value="" selected>-- Pilih Sparepart --</option>
+                                        <?php foreach ($list_sparepart as $s) { ?>
+                                            <option value="<?= $s->id_sparepart; ?>"><?= $s->nama_sparepart; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                    <small>*Sisa Stok&nbsp;<span style="color: red;" id="stk"></span></small>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="tgl_perbaikan" class="col-sm-3 col-form-label">Tanggal Perbaikan</label>
-                                    <div class="col-sm-9">
-                                        <input type="date" name="tgl_perbaikan" class="form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" required>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="tgl_perbaikan" class="form-label">Tanggal Perbaikan</label>
+
+                                    <input type="date" name="tgl_perbaikan" class="form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" required>
                                 </div>
 
-                                <div class="form-group row">
-                                    <label for="ket_perbaikan" class="col-sm-3 col-form-label">Keterangan Perbaikan</label>
-                                    <div class="col-sm-9">
-                                        <select name="ket_perbaikan" class="form-control" id="ket_perbaikan" required>
-                                            <option value="">-- Status --</option>
-                                            <option value="Selesai Diperbaiki">Selesai Diperbaiki</option>
-                                            <option value="Masih Terkendala">Masih Terkendala</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="ket_perbaikan" class="form-label">Keterangan Perbaikan</label>
+
+                                    <select name="ket_perbaikan" class="form-control" id="ket_perbaikan" required>
+                                        <option value="">-- Status --</option>
+                                        <option value="Selesai Diperbaiki">Selesai Diperbaiki</option>
+                                        <option value="Masih Terkendala">Masih Terkendala</option>
+                                    </select>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="biaya_perbaikan" class="col-sm-3 col-form-label">Biaya Perbaikan</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Rp</span>
-                                            </div>
-                                            <input type="text" name="biaya_perbaikan" class="form-control" id="biaya_perbaikan" value="0">
+                                <div class="form-group">
+                                    <label for="biaya_perbaikan" class="form-label">Biaya Perbaikan</label>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp</span>
                                         </div>
+                                        <input type="text" name="biaya_perbaikan" class="form-control" id="biaya_perbaikan" value="0">
                                     </div>
                                 </div>
 
