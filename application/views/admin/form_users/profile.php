@@ -96,7 +96,7 @@
                                             <hr>
                                             <div class="form-group " align="center">
                                                 <div class="col-sm-offset-2 col-sm-9">
-                                                    <button onclick="window.location.href='<?= site_url('admin'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                                    <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                                 </div>
                                             </div>
@@ -147,7 +147,7 @@
                                             <hr>
                                             <div class="form-group" align="center">
                                                 <div class=" col-sm-9">
-                                                    <button onclick="window.location.href='<?= site_url('admin'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                                    <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                                 </div>
                                             </div>
