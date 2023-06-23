@@ -49,50 +49,66 @@
 
                             <form action="<?= site_url('admin/proses_update_mobil'); ?>" method="post" role="form" enctype="multipart/form-data">
                                 <?php foreach ($list_data as $m) { ?>
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <input type="hidden" name="id" value="<?= $m->id_mobil; ?>">
-                                        <label for="merek" class="form-label">Merek</label>
-                                        <input type="text" name="merek" class="form-control" id="merek" placeholder="Merek" required value="<?= $m->merek; ?>">
+                                        <label for="merek" class="col-sm-3 col-form-label">Merek</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="merek" class="form-control" id="merek" placeholder="Merek" required value="<?= $m->merek; ?>">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="tipe" class="form-label">Tipe</label>
-                                        <input type="text" name="tipe" class="form-control" id="tipe" placeholder="Tipe" required value="<?= $m->tipe; ?>">
+                                    <div class="form-group row">
+                                        <label for="tipe" class="col-sm-3 col-form-label">Tipe</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="tipe" class="form-control" id="tipe" placeholder="Tipe" required value="<?= $m->tipe; ?>">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="tahun" class="form-label">Tahun</label>
-                                        <input type="text" name="tahun" maxlength="4" class="form-control" id="tahun" placeholder="Tahun" required value="<?= $m->tahun; ?>">
+                                    <div class="form-group row">
+                                        <label for="tahun" class="col-sm-3 col-form-label">Tahun</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="tahun" maxlength="4" class="form-control" id="tahun" placeholder="Tahun" required value="<?= $m->tahun; ?>">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="nopol" class="form-label">Nopol</label>
-                                        <input type="nopol" name="nopol" class="form-control" id="nopol" placeholder="Nopol" required value="<?= $m->nopol; ?>">
+                                    <div class="form-group row">
+                                        <label for="nopol" class="col-sm-3 col-form-label">Nopol</label>
+                                        <div class="col-sm-9">
+                                            <input type="nopol" name="nopol" class="form-control" id="nopol" placeholder="Nopol" required value="<?= $m->nopol; ?>">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="jenis_bbm" class="form-label">Jenis BBM</label>
-                                        <select name="jenis_bbm" id="jenis_bbm" class="form-control">
-                                            <option value="">-- Pilih Jenis BBM --</option>
+                                    <div class="form-group row">
+                                        <label for="jenis_bbm" class="col-sm-3 col-form-label">Jenis BBM</label>
+                                        <div class="col-sm-9">
+                                            <select name="jenis_bbm" id="jenis_bbm" class="form-control">
+                                                <option value="">-- Pilih Jenis BBM --</option>
 
-                                            <?php if ($m->jenis_bbm == "Bensin") { ?>
-                                                <option value="Bensin" selected>Bensin</option>
-                                                <option value="Solar">Solar</option>
-                                            <?php } else { ?>
-                                                <option value="Bensin">Bensin</option>
-                                                <option value="Solar" selected>Solar</option>
-                                            <?php } ?>
+                                                <?php if ($m->jenis_bbm == "Bensin") { ?>
+                                                    <option value="Bensin" selected>Bensin</option>
+                                                    <option value="Solar">Solar</option>
+                                                <?php } else { ?>
+                                                    <option value="Bensin">Bensin</option>
+                                                    <option value="Solar" selected>Solar</option>
+                                                <?php } ?>
 
-                                        </select>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="pajak" class="form-label">Pajak</label>&nbsp;<span style="color: red;"><small>*1 Th</small></span>
-                                        <input type="date" name="pajak" class="form-control form_datetime" id="pajak" placeholder="Pajak" required value="<?= $m->pajak; ?>">
+                                    <div class="form-group row">
+                                        <label for="pajak" class="col-sm-3 col-form-label">Pajak&nbsp;<span style="color: red;"><small>*1 Th</small></span></label>
+                                        <div class="col-sm-9">
+                                            <input type="date" name="pajak" class="form-control form_datetime" id="pajak" placeholder="Pajak" required value="<?= $m->pajak; ?>">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="stnk" class="form-label">STNK</label>&nbsp;<span style="color: red;"><small>*5 Th</small></span>
-                                        <input type="date" name="stnk" class="form-control form_datetime" id="stnk" placeholder="STNK" required value="<?= $m->stnk; ?>">
+                                    <div class="form-group row">
+                                        <label for="stnk" class="col-sm-3 col-form-label">STNK&nbsp;<span style="color: red;"><small>*5 Th</small></span></label>
+                                        <div class="col-sm-9">
+                                            <input type="date" name="stnk" class="form-control form_datetime" id="stnk" placeholder="STNK" required value="<?= $m->stnk; ?>">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="gambar_mobil" class="form-label">Gambar Mobil</label>
-                                        <input type="file" name="gambar_mobil" class="form-control" id="gambar_mobil">
-                                        <input type="hidden" name="gambar_mobil_old" value="<?= $m->gambar_mobil; ?>">
+                                    <div class="form-group row">
+                                        <label for="gambar_mobil" class="col-sm-3 col-form-label">Gambar Mobil</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="gambar_mobil" class="form-control" id="gambar_mobil">
+                                            <input type="hidden" name="gambar_mobil_old" value="<?= $m->gambar_mobil; ?>">
+                                        </div>
                                     </div>
 
                                     <hr>

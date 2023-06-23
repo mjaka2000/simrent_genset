@@ -51,26 +51,26 @@
 
                                 <div class="form-group row">
                                     <label for="id_transaksi" class="col-sm-3 col-form-label">ID</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
                                         <input type="text" name="id_transaksi" class="form-control" readonly value="<?= $kode_auto; ?>">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="tanggal_keluar" class="col-sm-3 col-form-label">Tanggal Keluar</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
                                         <input type="date" name="tanggal_keluar" class="form-control form_datetime" id="tanggal_keluar" required placeholder="Tanggal Keluar">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="lokasi" class="col-sm-3 col-form-label">Lokasi</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
                                         <input type="text" name="lokasi" class="form-control" id="lokasi" placeholder="Masukkan Lokasi" required>
 
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="nama_operator" class="col-sm-3 col-form-label">Nama Operator</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
                                         <select name="id_operator" class="form-control" id="nama_operator" required>
                                             <option value="">-- Pilih Operator --</option>
                                             <?php foreach ($list_operator as $op) { ?>
@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="nama_pelanggan" class="col-sm-3 col-form-label">Nama Pelanggan</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
 
                                         <select name="id_pelanggan" class="form-control" id="nama_operator" required>
                                             <option value="">-- Pilih Nama Pelanggan--</option>
@@ -98,7 +98,7 @@
 
                                     <!-- <input type="hidden" name="stok_gd" id="stok_gd_input" value=""> -->
                                     <!-- <input type="hidden" name="stok_pj" id="stok_pj_input" value=""> -->
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
 
                                         <select name="id_genset" class="form-control" id="kode_genset" required>
                                             <option value="">-- Pilih Genset--</option>
@@ -110,21 +110,21 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="genset" class="col-sm-3 col-form-label">Nama Genset</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
 
                                         <input type="text" readonly name="nama_genset" class="form-control" id="nama_genset">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="daya" class="col-sm-3 col-form-label">Daya</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
 
                                         <input type="text" readonly name="daya" class="form-control" id="daya">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="harga" class="col-sm-3 col-form-label">Harga (Perhari)</label>
-                                    <div class="input-group col-sm-6">
+                                    <div class="input-group col-sm-9">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Rp</span>
                                         </div>
@@ -134,7 +134,7 @@
                                 <hr>
                                 <div class="form-group row">
                                     <label for="nopol_mobil" class="col-sm-3 col-form-label">Nopol Mobil</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
 
                                         <select name="id_mobil" id="nopol" class="form-control" required>
                                             <option value="">-- Pilih Mobil--</option>
@@ -146,28 +146,28 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="tipe" class="col-sm-3 col-form-label">Merk</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
 
                                         <input type="text" readonly name="merk" class="form-control" id="merek">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="tambahan" class="col-sm-3 col-form-label">Tambahan Alat</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
 
                                         <input type="text" name="tambahan" class="form-control" id="tambahan" placeholder="Box Panel, Kabel Roll, dll">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="jumlah_hari" class="col-sm-3 col-form-label">Jumlah Hari</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
 
                                         <input type="number" name="jumlah_hari" class="form-control" id="jumlah_hari" placeholder="Masukkan Hari Pemakaian">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="total" class="col-sm-3 col-form-label">Tota Harga (Rp)</label>
-                                    <div class="input-group col-sm-6">
+                                    <div class="input-group col-sm-9">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Rp</span>
                                         </div>

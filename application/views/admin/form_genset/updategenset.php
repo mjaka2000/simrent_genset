@@ -50,42 +50,52 @@
                             <form action="<?= site_url('admin/proses_updategenset'); ?>" method="post" role="form" enctype="multipart/form-data">
                                 <?php foreach ($data_genset as $d) { ?>
 
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <input type="hidden" name="id_genset" value="<?= $d->id_genset; ?>">
-                                        <label for="kode_genset" class="form-label">Nomor Genset</label>
-                                        <input type="text" name="kode_genset" class="form-control" id="kode_genset" placeholder="Kode Genset" required value="<?= $d->kode_genset; ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nama_genset" class="form-label">Nama Genset</label>
-                                        <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Nama Genset" required value="<?= $d->nama_genset; ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="daya" class="form-label">Daya (KVA)</label>
-                                        <input type="text" name="daya" class="form-control" id="daya" placeholder="Daya" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->daya; ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="harga" class="form-label">Harga</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon">Rp</span>
-                                            </div>
-                                            <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->harga; ?>">
+                                        <label for="kode_genset" class="col-sm-3 col-form-label">Nomor Genset</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="kode_genset" class="form-control" id="kode_genset" placeholder="Kode Genset" required value="<?= $d->kode_genset; ?>">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="stok_gd" class="form-label">Ket. Genset</label>
-                                        <select name="ket_genset" id="ket_genset" class="form-control">
-                                            <option value="">-- Status --</option>
-                                            <?php foreach ($data_genset as $k) { ?>
-                                                <?php if ($k->ket_genset == "0") { ?>
-                                                    <option value="0" selected>Genset Ada</option>
-                                                    <option value="1">Genset Sedang Disewa</option>
-                                                <?php } else { ?>
-                                                    <option value="0">Genset Ada</option>
-                                                    <option value="1" selected>Genset Sedang Disewa</option>
+                                    <div class="form-group row">
+                                        <label for="nama_genset" class="col-sm-3 col-form-label">Nama Genset</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Nama Genset" required value="<?= $d->nama_genset; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="daya" class="col-sm-3 col-form-label">Daya (KVA)</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="daya" class="form-control" id="daya" placeholder="Daya" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->daya; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="harga" class="col-sm-3 col-form-label">Harga</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon">Rp</span>
+                                                </div>
+                                                <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->harga; ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="stok_gd" class="col-sm-3 col-form-label">Ket. Genset</label>
+                                        <div class="col-sm-9">
+                                            <select name="ket_genset" id="ket_genset" class="form-control">
+                                                <option value="">-- Status --</option>
+                                                <?php foreach ($data_genset as $k) { ?>
+                                                    <?php if ($k->ket_genset == "0") { ?>
+                                                        <option value="0" selected>Genset Ada</option>
+                                                        <option value="1">Genset Sedang Disewa</option>
+                                                    <?php } else { ?>
+                                                        <option value="0">Genset Ada</option>
+                                                        <option value="1" selected>Genset Sedang Disewa</option>
+                                                    <?php } ?>
                                                 <?php } ?>
-                                            <?php } ?>
-                                        </select>
+                                            </select>
+                                        </div>
                                     </div>
                                     <!-- <div class="form-group">
                                         <label for="stok_gd" class="form-label">Unit Digudang</label>
@@ -95,10 +105,12 @@
                                         <label for="stok_pj" class="form-label">Unit Disewakan</label>
                                         <input type="text" name="stok_pj" class="form-control" id="stok_pj" placeholder="Stok Dipinjam" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->stok_pj; ?>">
                                     </div> -->
-                                    <div class="form-group">
-                                        <label for="gambar_genset" class="form-label">Gambar Genset</label>
-                                        <input type="file" name="gambar_genset" class="form-control" id="gambar_genset">
-                                        <input type="hidden" name="gambar_genset_old" value="<?= $d->gambar_genset; ?>">
+                                    <div class="form-group row">
+                                        <label for="gambar_genset" class="col-sm-3 col-form-label">Gambar Genset</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="gambar_genset" class="form-control" id="gambar_genset">
+                                            <input type="hidden" name="gambar_genset_old" value="<?= $d->gambar_genset; ?>">
+                                        </div>
                                     </div>
 
                                     <hr>

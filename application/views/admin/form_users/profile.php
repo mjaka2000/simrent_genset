@@ -84,9 +84,9 @@
                                     <div class="tab-pane fade" id="picture" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
                                         <form class="form-horizontal" action="<?= site_url('admin/proses_gambarupload'); ?>" method="post" enctype="multipart/form-data">
                                             <div class="form-group row">
-                                                <label for="userpicture" class="col-sm-2 control-label">Pilih File</label>
+                                                <label for="userpicture" class="col-sm-3 control-label">Pilih File</label>
 
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-9">
                                                     <input type="file" name="userpicture" class="form-control" id="username">
                                                     <small style="color: red;">
                                                         <p>*File yang diijinkan "jpg|png|jpeg", max size 1MB.</p>
@@ -95,7 +95,7 @@
                                             </div>
                                             <hr>
                                             <div class="form-group " align="center">
-                                                <div class="col-sm-offset-2 col-sm-10">
+                                                <div class="col-sm-offset-2 col-sm-9">
                                                     <button onclick="window.location.href='<?= site_url('admin'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                                 </div>
@@ -121,32 +121,32 @@
                                         <?php } ?>
                                         <form class="form-horizontal" action="<?= site_url('admin/proses_newpassword'); ?>" method="post">
                                             <div class="form-group row">
-                                                <label for="username" class="col-sm-2 control-label">Username</label>
-                                                <div class="col-sm-10">
+                                                <label for="username" class="col-sm-3 control-label">Username</label>
+                                                <div class="col-sm-9">
                                                     <input type="text" name="username" class="form-control" id="username" disabled value="<?= $this->session->userdata('name'); ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="nama" class="col-sm-2 control-label">Nama</label>
-                                                <div class="col-sm-10">
+                                                <label for="nama" class="col-sm-3 control-label">Nama</label>
+                                                <div class="col-sm-9">
                                                     <input type="text" name="nama" class="form-control" id="nama" value="<?= $this->session->userdata('nama'); ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="new_password" class="col-sm-2 control-label">Password Baru</label>
-                                                <div class="col-sm-10">
+                                                <label for="new_password" class="col-sm-3 control-label">Password Baru</label>
+                                                <div class="col-sm-9">
                                                     <input type="password" name="new_password" class="form-control" id="new_password" placeholder="Password Baru">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="confirm_new_password" class="col-sm-2 control-label">Konfirmasi Password Baru</label>
-                                                <div class="col-sm-10">
+                                                <label for="confirm_new_password" class="col-sm-3 control-label">Konfirmasi Password Baru</label>
+                                                <div class="col-sm-9">
                                                     <input type="password" name="confirm_new_password" class="form-control" id="confirm_new_password" placeholder="Konfirmasi Password Baru">
                                                 </div>
                                             </div>
                                             <hr>
                                             <div class="form-group" align="center">
-                                                <div class=" col-sm-10">
+                                                <div class=" col-sm-9">
                                                     <button onclick="window.location.href='<?= site_url('admin'); ?>'" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                                     <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                                                 </div>

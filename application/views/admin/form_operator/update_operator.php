@@ -49,18 +49,24 @@
 
                             <form action="<?= site_url('admin/proses_update_operator'); ?>" method="post" role="form">
                                 <?php foreach ($list_data as $op) { ?>
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <input type="hidden" name="id_operator" value="<?= $op->id_operator; ?>">
-                                        <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" name="nama_op" class="form-control" id="nama_op" placeholder="Masukkan Nama" required value="<?= $op->nama_op; ?>">
+                                        <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="nama_op" class="form-control" id="nama_op" placeholder="Masukkan Nama" required value="<?= $op->nama_op; ?>">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="alamat" class="form-label">Alamat</label>
-                                        <input type="text" name="alamat_op" class="form-control" id="alamat_op" placeholder="Masukkan Alamat" required value="<?= $op->alamat_op; ?>">
+                                    <div class="form-group row">
+                                        <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="alamat_op" class="form-control" id="alamat_op" placeholder="Masukkan Alamat" required value="<?= $op->alamat_op; ?>">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="no_hp" class="form-label">No. HP</label>
-                                        <input type="text" maxlength="13" name="nohp_op" class="form-control" id="nohp_op" placeholder="Masukkan No. HP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $op->nohp_op; ?>">
+                                    <div class="form-group row">
+                                        <label for="no_hp" class="col-sm-3 col-form-label">No. HP</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" maxlength="13" name="nohp_op" class="form-control" id="nohp_op" placeholder="Masukkan No. HP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $op->nohp_op; ?>">
+                                        </div>
                                     </div>
                                 <?php } ?>
                                 <hr>

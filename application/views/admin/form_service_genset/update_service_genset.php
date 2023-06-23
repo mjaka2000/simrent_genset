@@ -51,71 +51,84 @@
                                 <?php foreach ($list_data as $ld) { ?>
 
                                     <input type="hidden" name="id_perbaikan_gst" value="<?= $ld->id_perbaikan_gst; ?>">
-                                    <div class="form-group">
-                                        <label for="kode_genset" class="form-label">Nomor Genset</label>&nbsp;<span style="color: red;"><small>*Pilih dulu untuk menampilkan nama genset</small></span>
-
-                                        <select name="id_genset" class="form-control" id="id_genset">
-                                            <option value="" disabled>-- Pilih Nomor Genset --</option>
-                                            <?php foreach ($list_genset as $g) { ?>
-                                                <?php if ($ld->id_genset == $g->id_genset) { ?>
-                                                    <option value="<?= $ld->id_genset; ?>" selected><?= $g->kode_genset; ?></option>
-                                                <?php } else { ?>
-                                                    <option value="<?= $g->id_genset; ?>"><?= $g->kode_genset; ?></option>
+                                    <div class="form-group row">
+                                        <label for="kode_genset" class="col-sm-3 col-form-label" title="*Pilih dulu untuk menampilkan nama genset">Nomor Genset</label>
+                                        <div class="col-sm-9">
+                                            <select name="id_genset" class="form-control" id="id_genset">
+                                                <option value="" disabled>-- Pilih Nomor Genset --</option>
+                                                <?php foreach ($list_genset as $g) { ?>
+                                                    <?php if ($ld->id_genset == $g->id_genset) { ?>
+                                                        <option value="<?= $ld->id_genset; ?>" selected><?= $g->kode_genset; ?></option>
+                                                    <?php } else { ?>
+                                                        <option value="<?= $g->id_genset; ?>"><?= $g->kode_genset; ?></option>
+                                                    <?php } ?>
                                                 <?php } ?>
-                                            <?php } ?>
-                                        </select>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="nama_genset" class="form-label">Nama Genset</label>
-                                        <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Nama Genset" disabled>
-                                        <!-- <p><strong><span style="color: red;" id="nama_genset"></span></strong></p> -->
+                                    <div class="form-group row">
+                                        <label for="nama_genset" class="col-sm-3 col-form-label">Nama Genset</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Nama Genset" disabled>
+                                            <!-- <p><strong><span style="color: red;" id="nama_genset"></span></strong></p> -->
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="jenis_perbaikan" class="form-label">Jenis Perbaikan</label>
-                                        <input type="text" name="jenis_perbaikan" class="form-control" id="jenis_perbaikan" placeholder="Contoh : Perbaikan Aki dll" required value="<?= $ld->jenis_perbaikan; ?>">
+                                    <div class="form-group row">
+                                        <label for="jenis_perbaikan" class="col-sm-3 col-form-label">Jenis Perbaikan</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="jenis_perbaikan" class="form-control" id="jenis_perbaikan" placeholder="Contoh : Perbaikan Aki dll" required value="<?= $ld->jenis_perbaikan; ?>">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="spare_part" class="form-label">Spare Part (Diganti)</label>&nbsp;<!--<span style="color: red;"><small>*Jika tidak ada yang diganti abaikan</small></span>-->
+                                    <div class="form-group row">
+                                        <label for="spare_part" class="col-sm-3 col-form-label">Spare Part (Diganti)</label>
                                         <!-- <input type="hidden" name="stok" id="stok_input" value=""> -->
                                         <!-- <p><small>*Sisa Stok&nbsp;<span style="color: red;" id="stk"></span></small></p> -->
-                                        <select name="id_sparepart" class="form-control" id="spare_part" readonly>
-                                            <option value="">-- Pilih Sparepart --</option>
-                                            <?php foreach ($list_sparepart as $s) { ?>
-                                                <?php if ($ld->id_sparepart == $s->id_sparepart) { ?>
-                                                    <option value="<?= $ld->id_sparepart; ?>" selected><?= $s->nama_sparepart; ?></option>
-                                                <?php } else { ?>
-                                                    <option value="<?= $s->id_sparepart; ?>"><?= $s->nama_sparepart; ?></option>
+                                        <div class="col-sm-9">
+                                            <select name="id_sparepart" class="form-control" id="spare_part" readonly>
+                                                <option value="">-- Pilih Sparepart --</option>
+                                                <?php foreach ($list_sparepart as $s) { ?>
+                                                    <?php if ($ld->id_sparepart == $s->id_sparepart) { ?>
+                                                        <option value="<?= $ld->id_sparepart; ?>" selected><?= $s->nama_sparepart; ?></option>
+                                                    <?php } else { ?>
+                                                        <option value="<?= $s->id_sparepart; ?>"><?= $s->nama_sparepart; ?></option>
+                                                    <?php } ?>
                                                 <?php } ?>
-                                            <?php } ?>
-                                        </select>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="tgl_perbaikan" class="form-label">Tanggal Perbaikan</label>
-                                        <input type="date" required name="tgl_perbaikan" class="form_datetime form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" value="<?= $ld->tgl_perbaikan; ?>">
+                                    <div class="form-group row">
+                                        <label for="tgl_perbaikan" class="col-sm-3 col-form-label">Tanggal Perbaikan</label>
+                                        <div class="col-sm-9">
+                                            <input type="date" required name="tgl_perbaikan" class="form_datetime form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" value="<?= $ld->tgl_perbaikan; ?>">
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="ket_perbaikan" class="form-label">Keterangan Perbaikan</label>
-                                        <select name="ket_perbaikan" class="form-control" id="ket_perbaikan" required>
-                                            <option value="">-- Status --</option>
-                                            <?php foreach ($list_data as $k) { ?>
-                                                <?php if ($k->ket_perbaikan == "Selesai Diperbaiki") { ?>
-                                                    <option value="Selesai Diperbaiki" selected>Selesai Diperbaiki</option>
-                                                    <option value="Masih Terkendala">Masih Terkendala</option>
-                                                <?php } else { ?>
-                                                    <option value="Selesai Diperbaiki">Selesai Diperbaiki</option>
-                                                    <option value="Masih Terkendala" selected>Masih Terkendala</option>
+                                    <div class="form-group row">
+                                        <label for="ket_perbaikan" class="col-sm-3 col-form-label">Keterangan Perbaikan</label>
+                                        <div class="col-sm-9">
+                                            <select name="ket_perbaikan" class="form-control" id="ket_perbaikan" required>
+                                                <option value="">-- Status --</option>
+                                                <?php foreach ($list_data as $k) { ?>
+                                                    <?php if ($k->ket_perbaikan == "Selesai Diperbaiki") { ?>
+                                                        <option value="Selesai Diperbaiki" selected>Selesai Diperbaiki</option>
+                                                        <option value="Masih Terkendala">Masih Terkendala</option>
+                                                    <?php } else { ?>
+                                                        <option value="Selesai Diperbaiki">Selesai Diperbaiki</option>
+                                                        <option value="Masih Terkendala" selected>Masih Terkendala</option>
+                                                    <?php } ?>
                                                 <?php } ?>
-                                            <?php } ?>
-                                        </select>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="biaya_perbaikan" class="form-label">Biaya Perbaikan</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Rp</span>
+                                    <div class="form-group row">
+                                        <label for="biaya_perbaikan" class="col-sm-3 col-form-label">Biaya Perbaikan</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Rp</span>
+                                                </div>
+                                                <input type="text" name="biaya_perbaikan" class="form-control" id="biaya_perbaikan" value="<?= $ld->biaya_perbaikan; ?>">
                                             </div>
-                                            <input type="text" name="biaya_perbaikan" class="form-control" id="biaya_perbaikan" value="<?= $ld->biaya_perbaikan; ?>">
                                         </div>
                                     </div>
                                 <?php } ?>

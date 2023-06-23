@@ -49,34 +49,44 @@
 
                             <form action="<?= site_url('admin/proses_tambahgenset'); ?>" method="post" role="form" enctype="multipart/form-data">
 
-                                <div class="form-group">
-                                    <label for="kode_genset" class="form-label">Nomor Genset</label>
-                                    <input type="text" name="kode_genset" class="form-control" id="kode_genset" placeholder="Masukkan Nomor Genset" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="nama_genset" class="form-label">Nama Genset</label>
-                                    <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Masukkan Nama Genset" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="daya" class="form-label">Daya (KVA)</label>
-                                    <input type="text" name="daya" class="form-control" id="daya" placeholder="Daya" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
-                                </div>
-                                <div class="form-group">
-                                    <label for="harga" class="form-label">Harga</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon">Rp</span>
-                                        </div>
-                                        <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga Unit Perhari" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
+                                <div class="form-group row">
+                                    <label for="kode_genset" class="col-sm-3 col-form-label">Nomor Genset</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="kode_genset" class="form-control" id="kode_genset" placeholder="Masukkan Nomor Genset" required>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="stok_gd" class="form-label">Ket. Genset</label>
-                                    <select name="ket_genset" class="form-control" id="ket_genset" required>
-                                        <option value="">-- Status --</option>
-                                        <option value="0">Genset Ada</option>
-                                        <option value="1">Genset Sedang Disewa</option>
-                                    </select>
+                                <div class="form-group row">
+                                    <label for="nama_genset" class="col-sm-3 col-form-label">Nama Genset</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Masukkan Nama Genset" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="daya" class="col-sm-3 col-form-label">Daya (KVA)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="daya" class="form-control" id="daya" placeholder="Daya" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="harga" class="col-sm-3 col-form-label">Harga</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon">Rp</span>
+                                            </div>
+                                            <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga Unit Perhari" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="stok_gd" class="col-sm-3 col-form-label">Ket. Genset</label>
+                                    <div class="col-sm-9">
+                                        <select name="ket_genset" class="form-control" id="ket_genset" required>
+                                            <option value="">-- Status --</option>
+                                            <option value="0">Genset Ada</option>
+                                            <option value="1">Genset Sedang Disewa</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <!-- <div class="form-group">
                                     <label for="stok_gd" class="form-label">Unit Digudang</label>
@@ -86,9 +96,11 @@
                                     <label for="stok_pj" class="form-label">Unit Disewakan</label>
                                     <input type="number" name="stok_pj" class="form-control" id="stok_pj" placeholder="Unit Disewakan" value="0" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
                                 </div> -->
-                                <div class="form-group">
-                                    <label for="gambar_genset" class="form-label">Gambar Genset</label>
-                                    <input type="file" name="gambar_genset" class="form-control" id="gambar_genset">
+                                <div class="form-group row">
+                                    <label for="gambar_genset" class="col-sm-3 col-form-label">Gambar Genset</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" name="gambar_genset" class="form-control" id="gambar_genset">
+                                    </div>
                                 </div>
 
                                 <hr>

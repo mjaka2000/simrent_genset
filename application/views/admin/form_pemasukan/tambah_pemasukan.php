@@ -50,7 +50,7 @@
                             <form action="<?= site_url('admin/proses_tambah_pemasukan'); ?>" method="post" role="form">
                                 <div class="form-group row">
                                     <label for="bulan" class="col-sm-3 col-form-label">ID Transaksi</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
                                         <select name="id_u_keluar" class="form-control" id="id_transaksi" required>
                                             <option value="">-- Pilih ID Transaksi --</option>
                                             <?php foreach ($list_data as $d) { ?>
@@ -61,27 +61,27 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="genset" class="col-sm-3 col-form-label">Tanggal Penyewaan</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
 
                                         <input type="text" readonly name="tanggal_masuk" class="form-control" id="tanggal_masuk">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="genset" class="col-sm-3 col-form-label">Nama Pelanggan</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
 
                                         <input type="text" readonly name="nama_plg" class="form-control" id="nama_plg">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="tahun" class="col-sm-3 col-form-label">Tanggal Update</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
                                         <input type="date" name="tgl_update" class="form-control" id="tgl_update" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="tahun" class="col-sm-3 col-form-label">Keterangan</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-9">
                                         <input type="text" name="keterangan" class="form-control" id="keterangan" required>
                                     </div>
                                 </div>
