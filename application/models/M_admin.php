@@ -126,8 +126,9 @@ class M_admin extends CI_Model
   //* New Query
   ####################################
 
+  //! Batas Query User
 
-  public function get_avatar($tabel, $username)
+  public function get_avatar($tabel, $username) //*Query User
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -136,13 +137,14 @@ class M_admin extends CI_Model
     return $query->result();
   }
 
-  public function update_avatar($where, $data)
+  public function update_avatar($where, $data) //*Query Avatar User
   {
     $this->db->set($data);
     $this->db->where($where);
     $this->db->update('tb_user');
   }
 
+  //! Batas Query User
 
   public function notif_stok($tabel)
   {
@@ -202,6 +204,9 @@ class M_admin extends CI_Model
     $this->db->update($tabel);
   }
 
+  ####################################
+  //* AJAX Data Perbaikan Genset 
+  ####################################
   //set nama tabel yang akan kita tampilkan datanya
   var $tableserv = 'tb_serv_genset';
   //set kolom order, kolom pertama saya null untuk kolom edit dan hapus
@@ -266,6 +271,9 @@ class M_admin extends CI_Model
     return $this->db->count_all_results();
   }
 
+  ####################################
+  //* End AJAX Data Perbaikan Genset 
+  ####################################
   public function get_detail_perbaikan($tabel, $id_perbaikan_gst)
   {
     $query = $this->db->select()
