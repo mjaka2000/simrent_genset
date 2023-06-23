@@ -587,8 +587,6 @@ class Admin extends CI_Controller
 
 	public function detail_service_genset()
 	{
-		$data['list_genset'] = $this->M_admin->select('tb_genset');
-		$data['list_sparepart'] = $this->M_admin->select('tb_sparepart');
 		$uri = $this->uri->segment(3);
 		$where = array('id_perbaikan_gst' => $uri);
 		$data['list_data'] = $this->M_admin->get_detail_perbaikan('tb_serv_genset', $where);
