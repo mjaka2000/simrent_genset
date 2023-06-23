@@ -16,7 +16,7 @@ class Pimpinan extends CI_Controller
 
     public function index()
     {
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_avatar', $this->session->userdata('name'));
+        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Home';
         $this->load->view('pimpinan/index', $data);
     }
@@ -43,7 +43,7 @@ class Pimpinan extends CI_Controller
 
     public function profile()
     {
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_avatar', $this->session->userdata('name'));
+        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Profile';
         $this->load->view('pimpinan/profile/profile', $data);
     }
