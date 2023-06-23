@@ -15,7 +15,7 @@ class Teknisi extends CI_Controller
 
     public function index()
     {
-        $data['avatar'] = $this->M_teknisi->get_avatar('tb_avatar', $this->session->userdata('name'));
+        $data['avatar'] = $this->M_teknisi->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Home';
         $this->load->view('teknisi/index', $data);
     }

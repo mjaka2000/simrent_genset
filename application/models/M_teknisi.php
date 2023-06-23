@@ -65,23 +65,25 @@ class M_teknisi extends CI_Model
     //* New Query
     ####################################
 
+    //! Batas Query User
 
-    public function get_avatar($tabel, $username)
+    public function get_avatar($tabel, $username) //*Query User
     {
         $query = $this->db->select()
             ->from($tabel)
-            ->where('username_user', $username)
+            ->where('username', $username)
             ->get();
         return $query->result();
     }
 
-    public function update_avatar($where, $data)
+    public function update_avatar($where, $data) //*Query Avatar User
     {
         $this->db->set($data);
         $this->db->where($where);
-        $this->db->update('tb_avatar');
+        $this->db->update('tb_user');
     }
 
+    //! Batas Query User
 
     public function notif_stok($tabel)
     {
