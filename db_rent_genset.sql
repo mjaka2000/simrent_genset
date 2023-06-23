@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Jun 2023 pada 13.40
+-- Waktu pembuatan: 23 Jun 2023 pada 05.58
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -68,7 +68,7 @@ INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `har
 (2, '02', 'Hartech 45 P-02', '40', '1000000', 0, 'ht45p-02.jpg'),
 (3, '07', 'Denyo 25 ES-07', '20', '750000', 0, 'denyo25es-07.jpg'),
 (4, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg'),
-(5, '16', 'Hartech 50 P-16', '50', '1250000', 1, 'ht50p-16.jpg'),
+(5, '16', 'Hartech 50 P-16', '50', '1250000', 0, 'ht50p-16.jpg'),
 (6, '08', 'Kubota 13-08', '13', '500000', 0, 'kubota13-08.jpg'),
 (7, '250', 'Hartech C-250', '250', '3500000', 0, 'ht250.jpg');
 
@@ -121,7 +121,7 @@ CREATE TABLE `tb_operator` (
 INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `status_op`) VALUES
 (1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', 0),
 (2, 'adi', 'jl sukamara', '0878907678956', 0),
-(3, 'ijum', 'jl pulau laut', '0897819271234', 1),
+(3, 'ijum', 'jl pulau laut', '0897819271234', 0),
 (5, 'wanda', 'sungai miai', '0897618391837', 0);
 
 -- --------------------------------------------------------
@@ -148,7 +148,7 @@ CREATE TABLE `tb_pelanggan` (
 
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`) VALUES
 (4, 'anonim', 'Jl. SungaAndaii', '0895619213134', 'Laki-Laki', 'PT Rahmat', '2023-04-11', 0, 1),
-(5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 1, 1);
+(5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -292,12 +292,12 @@ CREATE TABLE `tb_unit_keluar` (
 --
 
 INSERT INTO `tb_unit_keluar` (`id_u_keluar`, `id_transaksi`, `tanggal_keluar`, `tanggal_masuk`, `lokasi`, `id_operator`, `id_pelanggan`, `id_genset`, `id_mobil`, `tambahan`, `jumlah_hari`, `total`, `status`) VALUES
-(6, 'GE-Jun0519', '2023-06-06', '2023-06-09', 'Binuang', 2, 4, 2, 1, 'kabel', '3', '3000000', 0),
-(8, 'GE-Jun5782', '2023-06-13', '2023-06-17', 'Gambut', 2, 5, 4, 1, 'kabel', '4', '3000000', 0),
-(9, 'GE-Jun0867', '2023-06-16', '2023-06-19', 'Martapura', 2, 5, 4, 2, 'Box Panel', '3', '2250000', 0),
-(10, 'GE-Jun9106', '2023-06-16', '2023-06-19', 'Martapura', 1, 4, 3, 1, 'Box Panel', '3', '2250000', 0),
-(11, 'GE-Jun6253', '2023-05-23', '2023-05-25', 'Gambut', 2, 5, 3, 2, '-', '2', '1500000', 0),
-(12, 'GE-Jun9631', '2023-06-23', '2023-06-26', 'Martapura', 3, 5, 5, 4, 'kabel 20M', '3', '3750000', 1);
+(6, 'GE-Jun0001', '2023-06-06', '2023-06-09', 'Binuang', 2, 4, 2, 1, 'kabel', '3', '3000000', 0),
+(8, 'GE-Jun0002', '2023-06-13', '2023-06-17', 'Gambut', 2, 5, 4, 1, 'kabel', '4', '3000000', 0),
+(9, 'GE-Jun0003', '2023-06-16', '2023-06-19', 'Martapura', 2, 5, 4, 2, 'Box Panel', '3', '2250000', 0),
+(10, 'GE-Jun0004', '2023-06-16', '2023-06-19', 'Martapura', 1, 4, 3, 1, 'Box Panel', '3', '2250000', 0),
+(11, 'GE-Jun0005', '2023-05-23', '2023-05-25', 'Gambut', 2, 5, 3, 2, '-', '2', '1500000', 0),
+(12, 'GE-Jun0006', '2023-06-23', '2023-06-26', 'Martapura', 3, 5, 5, 4, 'kabel 20M', '3', '3750000', 0);
 
 -- --------------------------------------------------------
 
@@ -350,7 +350,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '22-06-2023 19:33'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '23-06-2023 8:49'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'nopic.png', '22-06-2023 19:26'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '22-06-2023 19:26'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 0, 'nopic.png', '22-06-2023 19:29');
