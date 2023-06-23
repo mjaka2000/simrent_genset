@@ -105,4 +105,23 @@ class Report extends CI_Controller
         $data['title'] = 'Laporan Data Sparepart';
         $this->load->view('admin/report/sparepart/rep_sparepart', $data);
     }
+
+    public function cetak_penyewaan_detail()
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_u_keluar' => $uri);
+        $data['list_data'] = $this->M_admin->select_data_u_keluar('tb_unit_keluar', $where);
+        $data['title'] = 'Laporan Detail Data Penyewaan Genset';
+        $this->load->view('admin/report/unit_keluar/rep_unit_keluar_detail', $data);
+    }
+
+    public function cetak_service_detail()
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_perbaikan_gst' => $uri);
+        $data['list_data'] = $this->M_admin->get_detail_perbaikan('tb_serv_genset', $where);
+        $data['detail_perbaikan'] = $this->M_admin->detail_perbaikan('tb_detail_serv', $where);
+        $data['title'] = 'Laporan Detail Perbaikan Genset';
+        $this->load->view('admin/report/service_genset/rep_service_genset_detail', $data);
+    }
 }
