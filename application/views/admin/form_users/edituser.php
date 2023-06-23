@@ -49,31 +49,37 @@
                                 <?php } ?>
                                 <?php foreach ($list_data as $d) { ?>
                                     <input type="hidden" name="id_user" value="<?= $d->id_user; ?>">
-                                    <div class="form-group">
-                                        <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama" required="" value="<?= $d->nama; ?>">
+                                    <div class="form-group row">
+                                        <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama" required="" value="<?= $d->nama; ?>">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="username" class="form-label">Username</label>
-                                        <input type="text" name="username" class="form-control" id="username" placeholder="Username" required="" value="<?= $d->username; ?>">
+                                    <div class="form-group row">
+                                        <label for="username" class="col-sm-3 col-form-label">Username</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="username" class="form-control" id="username" placeholder="Username" required="" value="<?= $d->username; ?>">
+                                        </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="role" class="form-label">Role</label>
-                                        <select name="role" id="" style="width: 50%;" class="form-control">
-                                            <?php if ($d->role == 0) { ?>
-                                                <option value="0" selected="">User Admin</option>
-                                                <option value="1">User Pimpinan</option>
-                                                <option value="2">User Teknisi</option>
-                                            <?php } elseif ($d->role == 1) { ?>
-                                                <option value="1" selected="">User Pimpinan</option>
-                                                <option value="0">User Admin</option>
-                                                <option value="2">User Teknisi</option>
-                                            <?php } else { ?>
-                                                <option value="2" selected="">User Teknisi</option>
-                                                <option value="0">User Admin</option>
-                                                <option value="1">User Pimpinan</option>
-                                            <?php } ?> ?>
-                                        </select>
+                                    <div class="form-group row">
+                                        <label for="role" class="col-sm-3 col-form-label">Role</label>
+                                        <div class="col-sm-9">
+                                            <select name="role" id="" style="width: 50%;" class="form-control">
+                                                <?php if ($d->role == 0) { ?>
+                                                    <option value="0" selected="">User Admin</option>
+                                                    <option value="1">User Pimpinan</option>
+                                                    <option value="2">User Teknisi</option>
+                                                <?php } elseif ($d->role == 1) { ?>
+                                                    <option value="1" selected="">User Pimpinan</option>
+                                                    <option value="0">User Admin</option>
+                                                    <option value="2">User Teknisi</option>
+                                                <?php } else { ?>
+                                                    <option value="2" selected="">User Teknisi</option>
+                                                    <option value="0">User Admin</option>
+                                                    <option value="1">User Pimpinan</option>
+                                                <?php } ?> ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 <?php } ?>
                                 <hr>

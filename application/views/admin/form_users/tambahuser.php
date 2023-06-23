@@ -48,31 +48,41 @@
                                     </div>
                                 <?php } ?>
 
-                                <div class="form-group">
-                                    <label for="username" class="form-label">Nama</label>
-                                    <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama" required>
+                                <div class="form-group row">
+                                    <label for="username" class="col-sm-3 col-form-label">Nama</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama" required>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" name="username" class="form-control" id="username" placeholder="Username" required>
+                                <div class="form-group row">
+                                    <label for="username" class="col-sm-3 col-form-label">Username</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="username" class="form-control" id="username" placeholder="Username" required>
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                                <div class="form-group row">
+                                    <label for="password" class="col-sm-3 col-form-label">Password</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="confirm_password" class="form-label">Konfirmasi Password</label>
-                                    <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Konfirmasi Password" required>
+                                <div class="form-group row">
+                                    <label for="confirm_password" class="col-sm-3 col-form-label">Konfirmasi Password</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Konfirmasi Password" required>
+                                    </div>
                                 </div>
-                                <div class="form-group ">
-                                    <label for="role" class="form-label">Role</label>
-                                    <select name="role" id="" class="form-control" style="width: 50%;" required>
-                                        <option value="" selected="" disabled>--Pilih Role User--</option>
-                                        <option value="0">User Admin</option>
-                                        <option value="1">User Teknisi</option>
-                                        <option value="2">User Pimpinan</option>
-                                    </select>
+                                <div class="form-group row">
+                                    <label for="role" class="col-sm-3 col-form-label">Role</label>
+                                    <div class="col-sm-9">
+                                        <select name="role" id="" class="form-control" style="width: 50%;" required>
+                                            <option value="" selected="" disabled>--Pilih Role User--</option>
+                                            <option value="0">User Admin</option>
+                                            <option value="1">User Teknisi</option>
+                                            <option value="2">User Pimpinan</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <hr>
                                 <div class="form-group" align="center">
