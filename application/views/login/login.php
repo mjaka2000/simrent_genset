@@ -56,9 +56,9 @@
                             <?php } else {
                                     redirect(site_url());
                                 } ?> -->
-                        <p class="mb-0" align="left">
+                        <!-- <p class="mb-0" align="left">
                             <a href="<?= site_url('register'); ?>" class="btn btn-xs btn-link" title="*Register bagi user penyewa">Register</a>
-                        </p>
+                        </p> -->
                         <div class="row">
                             <div class="col-6">
                                 <!-- <div class="icheck-primary">
