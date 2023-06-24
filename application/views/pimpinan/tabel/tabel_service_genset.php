@@ -1,6 +1,6 @@
 <?php $this->load->view('template/head'); ?>
-<?php $this->load->view('admin/template/nav'); ?>
-<?php $this->load->view('admin/template/sidebar'); ?>
+<?php $this->load->view('pimpinan/template/nav'); ?>
+<?php $this->load->view('pimpinan/template/sidebar'); ?>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -12,7 +12,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('pimpinan'); ?>"><i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item active">Perbaikan Genset</li>
                     </ol>
                 </div><!-- /.col -->
@@ -41,7 +41,6 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <button onclick="window.location.href='<?= site_url('admin/tambah_service_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
@@ -75,9 +74,8 @@
                                                     <td><a href="#" type="button" class="btn btn-xs btn-danger">Masih Terkendala</a></td>
                                                 <?php } ?>
                                                 <td>Rp&nbsp;<?= number_format($dt->biaya_perbaikan); ?></td>
-                                                <td><a href="<?= base_url('admin/update_data_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
-                                                    <a href="<?= base_url('admin/hapus_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
-                                                    <a href="<?= base_url('admin/detail_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
+                                                <td>
+                                                    <a href="<?= base_url('pimpinan/detail_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -93,7 +91,7 @@
 </div>
 <?php $this->load->view('template/footer'); ?>
 
-<?php $this->load->view('admin/template/script') ?>
+<?php $this->load->view('pimpinan/template/script') ?>
 <script>
     //* Script untuk menampilkan loading
     document.onreadystatechange = function() {
@@ -154,7 +152,7 @@
     // "order": [],
     // "ajax": {
     //panggil method ajax list dengan ajax
-    //         "url": '<?= site_url('admin/ajax_list_serv'); ?>',
+    //         "url": '<?= site_url('pimpinan/ajax_list_serv'); ?>',
     //         "type": "POST"
     //     }
     // });

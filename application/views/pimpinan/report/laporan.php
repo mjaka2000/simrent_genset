@@ -1,121 +1,345 @@
 <?php $this->load->view('template/head'); ?>
-<?php $this->load->view('guest/template/nav'); ?>
-<?php $this->load->view('guest/template/sidebar'); ?>
-<!-- Content Wrapper. Contains page content -->
+<?php $this->load->view('pimpinan/template/nav'); ?>
+<?php $this->load->view('pimpinan/template/sidebar'); ?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            Laporan
-            <small>Report</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="<?= base_url('guest') ?>"><!--<i class="fa fa-home"></i>--> Home</a></li>
-            <li class="active">Report</li>
-        </ol>
-    </section>
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Report</small></h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="<?= site_url('pimpinan'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item active">Report</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
     <!-- Main content -->
     <section class="content">
-        <div id="loading">
+        <div id="loading" class="tengah">
             <img src="<?= base_url(); ?>assets/style/loading.gif" alt="loading" width="50%">
         </div>
-        <div class="box">
-            <div class="box-body">
-                <!-- <h2 align="center">Laporan Data</h2> -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-aqua">
-                        <div class="inner">
-                            <h3>Keluar</h3>
-                            <p>Laporan Data Genset Keluar</p><br>
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <h2 align="center">Selamat Datang, <strong><?= $this->session->userdata('name') ?></strong> sebagai Pimpinan!</h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Laporan Data
                         </div>
+                        <div class="card-body">
+                            <table id="reporttable" class="table table-bordered" style="width:100%">
+                                <tr>
+                                    <form action="<?= site_url(); ?>report/cetak_pengeluaran_periode" method="post" role="form" target="_blank">
+                                        <th style="vertical-align: middle">Laporan Data Pengeluaran <br><small style="color: red;">*Berdasarkan Periode</small></th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        <!-- <div class="col-md-4"> -->
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label for="bulan" class="form-label">Bulan</label>
+                                                                <select name="bulan" id="bulan" class="form-control">
+                                                                    <option value="" selected="">--Pilih Bulan--</option>
+                                                                    <option value="01">Januari</option>
+                                                                    <option value="02">Februari</option>
+                                                                    <option value="03">Maret</option>
+                                                                    <option value="04">April</option>
+                                                                    <option value="05">Mei</option>
+                                                                    <option value="06">Juni</option>
+                                                                    <option value="07">Juli</option>
+                                                                    <option value="08">Agustus</option>
+                                                                    <option value="09">September</option>
+                                                                    <option value="10">Oktober</option>
+                                                                    <option value="11">November</option>
+                                                                    <option value="12">Desember</option>
+                                                                </select>
+                                                                <!-- </div> -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- <span>&nbsp;,&nbsp;</span> -->
+                                                        <!-- <div class="col-md-4"> -->
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label for="tahun" class="form-label">Tahun</label>
+                                                                <input type="text" name="tahun" class="form-control" id="tahun" value="<?= date('Y'); ?>">
+                                                            </div>
+                                                        </div>
+                                                        <!-- </div> -->
+                                                        <div class="col-sm-4"><br>
+                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Cetak</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </form>
+                                </tr>
+                                <tr>
+                                    <form action="<?= site_url(); ?>report/cetak_pemasukan_periode" method="post" role="form" target="_blank">
+                                        <th style="vertical-align: middle">Laporan Data Pemasukan<br><small style="color: red;">*Berdasarkan Periode</small></th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        <!-- <div class="col-md-4"> -->
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label for="bulan" class="form-label">Bulan</label>
+                                                                <select name="bulan" id="bulan" class="form-control">
+                                                                    <option value="" selected="">--Pilih Bulan--</option>
+                                                                    <option value="01">Januari</option>
+                                                                    <option value="02">Februari</option>
+                                                                    <option value="03">Maret</option>
+                                                                    <option value="04">April</option>
+                                                                    <option value="05">Mei</option>
+                                                                    <option value="06">Juni</option>
+                                                                    <option value="07">Juli</option>
+                                                                    <option value="08">Agustus</option>
+                                                                    <option value="09">September</option>
+                                                                    <option value="10">Oktober</option>
+                                                                    <option value="11">November</option>
+                                                                    <option value="12">Desember</option>
+                                                                </select>
+                                                                <!-- </div> -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- <span>&nbsp;,&nbsp;</span> -->
+                                                        <!-- <div class="col-md-4"> -->
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label for="tahun" class="form-label">Tahun</label>
+                                                                <input type="text" name="tahun" class="form-control" id="tahun" value="<?= date('Y'); ?>">
+                                                            </div>
+                                                        </div>
+                                                        <!-- </div> -->
+                                                        <div class="col-sm-4"><br>
+                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Cetak</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </form>
+                                </tr>
+                                <tr>
+                                    <form action="<?= site_url(); ?>report/cetak_penyewaan" method="post" role="form" target="_blank">
+                                        <th style="vertical-align: middle">Laporan Data Penyewaan <br><small style="color: red;">*Berdasarkan Periode</small></th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        <!-- <div class="col-md-4"> -->
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label for="bulan" class="form-label">Bulan</label>
+                                                                <select name="bulan" id="bulan" class="form-control">
+                                                                    <option value="" selected="">--Pilih Bulan--</option>
+                                                                    <option value="01">Januari</option>
+                                                                    <option value="02">Februari</option>
+                                                                    <option value="03">Maret</option>
+                                                                    <option value="04">April</option>
+                                                                    <option value="05">Mei</option>
+                                                                    <option value="06">Juni</option>
+                                                                    <option value="07">Juli</option>
+                                                                    <option value="08">Agustus</option>
+                                                                    <option value="09">September</option>
+                                                                    <option value="10">Oktober</option>
+                                                                    <option value="11">November</option>
+                                                                    <option value="12">Desember</option>
+                                                                </select>
+                                                                <!-- </div> -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- <span>&nbsp;,&nbsp;</span> -->
+                                                        <!-- <div class="col-md-4"> -->
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label for="tahun" class="form-label">Tahun</label>
+                                                                <input type="text" name="tahun" class="form-control" id="tahun" value="<?= date('Y'); ?>">
+                                                            </div>
+                                                        </div>
+                                                        <!-- </div> -->
+                                                        <div class="col-sm-4"><br>
+                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Cetak</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </form>
+                                </tr>
+                                <tr>
+                                    <form action="<?= site_url(); ?>report/cetak_jdw_gensetAll" method="post" role="form" target="_blank">
+                                        <th style="vertical-align: middle">Laporan Data Jadwal Penyewaan Genset</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        <!-- <div class="col-md-4">
+                                                            <input type="date" name="tgl_awal" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
+                                                        </div><span>&nbsp;s/d&nbsp;</span>
+                                                        <div class="col-md-4">
+                                                            <input type="date" name="tgl_akhir" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
+                                                        </div> -->
+                                                        <div class="col-md-4">
+                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </form>
+                                </tr>
+                                <tr>
+                                    <form action="<?= site_url(); ?>report/cetak_serv_gensetAll" method="post" role="form" target="_blank">
+                                        <th style="vertical-align: middle">Laporan Perbaikan Genset</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        <!-- <div class="col-md-4">
+                                                            <input type="date" name="tgl_awal" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
+                                                        </div><span>&nbsp;s/d&nbsp;</span>
+                                                        <div class="col-md-4">
+                                                            <input type="date" name="tgl_akhir" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
+                                                        </div> -->
+                                                        <div class="col-md-4">
+                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </form>
+                                </tr>
 
-                        <a href="<?= base_url('report/dataKeluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                <tr>
+                                    <form action="<?= site_url(); ?>report/cetak_Pelanggan" method="post" role="form" target="_blank">
+                                        <th style="vertical-align: middle">Laporan Data Pelanggan</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        <!-- <div class="col-md-4">
+                                                            <input type="date" name="tgl_awal" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
+                                                        </div><span>&nbsp;s/d&nbsp;</span>
+                                                        <div class="col-md-4">
+                                                            <input type="date" name="tgl_akhir" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
+                                                        </div> -->
+                                                        <div class="col-md-4">
+                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </form>
+                                </tr>
+                                <tr>
+                                    <form action="<?= site_url(); ?>report/cetak_Pelanggan_blacklist" method="post" role="form" target="_blank">
+                                        <th style="vertical-align: middle">Laporan Data Pelanggan Blacklist</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        <!-- <div class="col-md-4">
+                                                            <input type="date" name="tgl_awal" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
+                                                        </div><span>&nbsp;s/d&nbsp;</span>
+                                                        <div class="col-md-4">
+                                                            <input type="date" name="tgl_akhir" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
+                                                        </div> -->
+                                                        <div class="col-md-4">
+                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </form>
+                                </tr>
+                                <tr>
+                                    <form action="<?= site_url(); ?>report/cetak_sparepart" method="post" role="form" target="_blank">
+                                        <th style="vertical-align: middle">Laporan Data Stok Sparepart</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        <!-- <div class="col-md-4">
+                                                            <input type="date" name="tgl_awal" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
+                                                        </div><span>&nbsp;s/d&nbsp;</span>
+                                                        <div class="col-md-4">
+                                                            <input type="date" name="tgl_akhir" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
+                                                        </div> -->
+                                                        <div class="col-md-4">
+                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </form>
+                                </tr>
+
+                                <!-- <tr>
+                                    <form action="<?= site_url(); ?>pimpinan/#" method="post" role="form" target="_blank">
+                                        <th style="vertical-align: middle">Laporan #</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <input type="date" name="tgl_awal" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
+                                                        </div><span>&nbsp;s/d&nbsp;</span>
+                                                        <div class="col-md-4">
+                                                            <input type="date" name="tgl_akhir" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Cetak</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </form>
+                                </tr> -->
+                            </table>
+                            <!-- </div> -->
+                        </div>
                     </div>
                 </div>
-
-                <!-- ./col -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-green">
-                        <div class="inner">
-                            <h3>Masuk</h3>
-                            <p>Laporan Data Genset Masuk</p><br>
-                        </div>
-
-                        <a href="<?= base_url('report/dataMasuk') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-yellow">
-                        <div class="inner">
-                            <h3>Perbaikan Genset</h3>
-                            <p>Laporan Data Perbaikan Genset</p><br>
-                        </div>
-
-                        <a href="<?= base_url('report/serviceGenset') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-red">
-                        <div class="inner">
-                            <h3>Mobil</h3>
-                            <p>Laporan Data Mobil</p><br>
-                        </div>
-
-                        <a href="<?= base_url('report/mobil') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-orange">
-                        <div class="inner">
-                            <h3>Genset</h3>
-                            <p>Laporan Data Genset</p><br>
-                        </div>
-
-                        <a href="<?= base_url('report/genset') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <!-- <div class="small-box bg-purple">
-                        <div class="inner">
-                            <h3>Operator</h3>
-                            <p>Laporan Data Operator</p><br>
-                        </div>
-                        
-                        <a href="<?= base_url('report/operator') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div> -->
-                </div>
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <!-- <div class="small-box bg-blue">
-                        <div class="inner">
-                            <h3>Pelanggan</h3>
-                            <p>Laporan Data Pelanggan</p><br>
-                        </div>
-                        
-                        <a href="<?= base_url('report/pelanggan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div> -->
-                </div>
-                <!-- ./col -->
-
             </div>
-
-        </div>
-        <!-- /.box -->
-
+        </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
-
 <?php $this->load->view('template/footer'); ?>
-<?php $this->load->view('guest/template/script') ?>
+
+<?php $this->load->view('pimpinan/template/script') ?>
+<script>
+    //* Script untuk menampilkan loading
+    document.onreadystatechange = function() {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loading").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loading").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
 </body>
 
 </html>

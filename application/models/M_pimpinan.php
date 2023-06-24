@@ -17,11 +17,11 @@ class M_pimpinan extends CI_Model
     return $query->result();
   }
 
-  // public function update($tabel, $data, $where)
-  // {
-  //   $this->db->where($where);
-  //   $this->db->update($tabel, $data);
-  // }
+  public function update($tabel, $data, $where)
+  {
+    $this->db->where($where);
+    $this->db->update($tabel, $data);
+  }
 
   // public function delete($tabel, $where)
   // {
@@ -57,7 +57,14 @@ class M_pimpinan extends CI_Model
     return $query->num_rows();
   }
 
-
+  public function get_data($tabel, $id_transaksi)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where($id_transaksi)
+      ->get();
+    return $query->result();
+  }
 
   ####################################
   //* New Query
@@ -99,4 +106,35 @@ class M_pimpinan extends CI_Model
   //     ->get();
   //   return $query->num_rows();
   // }
+
+  public function get_data_service($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_serv_genset.id_genset')
+      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = tb_serv_genset.id_sparepart')
+      ->get();
+    return $query->result();
+  }
+
+  public function get_detail_perbaikan($tabel, $id_perbaikan_gst)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_serv_genset.id_genset')
+      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = tb_serv_genset.id_sparepart')
+      ->where($id_perbaikan_gst)
+      ->get();
+    return $query->result();
+  }
+
+  public function detail_perbaikan($tabel, $id_perbaikan_gst)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      // ->join('tb_serv_genset', 'tb_serv_genset.id_perbaikan_gst = tb_detail_serv.id_perbaikan_gst ')
+      ->where($id_perbaikan_gst)
+      ->get();
+    return $query->result();
+  }
 }
