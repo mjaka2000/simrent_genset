@@ -32,7 +32,7 @@
                     </a>
 
                 </li>
-                <li class="nav-item ">
+                <!-- <li class="nav-item ">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-list-alt"></i>
                         <p>
@@ -55,8 +55,26 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
 
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Data Genset</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Data Perbaikan Genset</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Data Stok Sparepart</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-clipboard nav-icon"></i>
@@ -69,10 +87,19 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
-                            Profile
+                            Menu User
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
 
+                        <li class="nav-item">
+                            <a href="<?= site_url(); ?>teknisi/profile" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Profile</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item">
