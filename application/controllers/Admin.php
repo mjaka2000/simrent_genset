@@ -8,7 +8,7 @@ class Admin extends CI_Controller
 		parent::__construct();
 		$this->load->model('M_admin');
 		$this->load->library('upload');
-		if ($this->session->userdata('status') != 'login') {
+		if ($this->session->userdata('role') != '0') {
 			redirect(site_url("login"));
 		}
 	}

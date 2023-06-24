@@ -8,7 +8,7 @@ class Teknisi extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_teknisi');
-        if ($this->session->userdata('status') != 'login') {
+        if ($this->session->userdata('role') != '2') {
             redirect(site_url("login"));
         }
     }
