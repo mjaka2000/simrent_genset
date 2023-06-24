@@ -351,7 +351,168 @@ class Pimpinan extends CI_Controller
         $this->load->view('pimpinan/tabel/detail_keluar', $data);
     }
 
+    public function unit_keluar_update()
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_u_keluar' => $uri);
+        $data['data_unit_update'] = $this->M_pimpinan->get_data('tb_unit_keluar', $where);
+        $data['list_mobil'] = $this->M_pimpinan->select('tb_mobil');
+        $data['list_genset'] = $this->M_pimpinan->select('tb_genset');
+        $data['list_pelanggan'] = $this->M_pimpinan->select('tb_pelanggan');
+        $data['list_operator'] = $this->M_pimpinan->select('tb_operator');
+        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Perpanjang Pemakaian Genset';
+        $this->load->view('pimpinan/form/perpanjang_unit', $data);
+    }
 
+    public function proses_perpanjangan()
+    {
+        $this->form_validation->set_rules('jumlah_hari', 'Jumlah Hari', 'trim|required');
+        $id_u_keluar       = $this->input->post('id_u_keluar', TRUE);
+
+        if ($this->form_validation->run() === TRUE) {
+            $stok_gd           = $this->input->post('stok_gd', TRUE);
+            $stok_pj           = $this->input->post('stok_pj', TRUE);
+
+            $tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
+            $tanggal_masuk    = $this->input->post('tanggal_masuk', TRUE);
+            $lokasi           = $this->input->post('lokasi', TRUE);
+            $id_operator    = $this->input->post('id_operator', TRUE);
+            $id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
+            $id_genset      = $this->input->post('id_genset', TRUE);
+            $id_mobil            = $this->input->post('id_mobil', TRUE);
+            $tambahan         = $this->input->post('tambahan', TRUE);
+            $jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
+            $jumlah_hari_lama = $this->input->post('jumlah_hari_lama', TRUE);
+            $total            = $this->input->post('total', TRUE);
+
+            $status = 1;
+
+            $tanggal_masuk_new    = date('Y-m-d', strtotime($tanggal_keluar . "+" . $jumlah_hari . " days"));
+            // $total = $harga  * $jumlah_hari;
+            if ($tanggal_masuk == $tanggal_masuk_new) {
+                $tanggal_masuk_up = $tanggal_masuk;
+            } else {
+                $tanggal_masuk_up = $tanggal_masuk_new;
+            }
+
+            // if($jumlah_hari_lama == $jumlah_hari){
+            //   $status = 1;
+            // }else{
+            //   $status = 0;
+            // }
+
+            $where = array('id_u_keluar' => $id_u_keluar);
+            $data = array(
+                'id_u_keluar'    => $id_u_keluar,
+                'tanggal_keluar'          => $tanggal_keluar,
+                'tanggal_masuk'   => $tanggal_masuk_up,
+                'lokasi'           => $lokasi,
+                'id_operator'    => $id_operator,
+                'id_pelanggan'   => $id_pelanggan,
+                'id_genset'      => $id_genset,
+                'id_mobil'            => $id_mobil,
+                'tambahan'         => $tambahan,
+                'jumlah_hari'      => $jumlah_hari,
+                'total'            => $total,
+                'status'           => $status
+            );
+
+            $this->M_pimpinan->update('tb_unit_keluar', $data, $where);
+            $this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+            // $this->M_pimpinan->delete('tb_barang_masuk',$where);
+            redirect(site_url('pimpinan/tabel_unit_keluar'));
+        } else {
+            $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['title'] = 'Perpanjang Pemakaian Genset';
+            $this->load->view('pimpinan/form/perpanjang_unit', $data);
+        }
+    }
+
+    public function unit_masuk()
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_u_keluar' => $uri);
+        $data['data_unit_update'] = $this->M_pimpinan->get_data('tb_unit_keluar', $where);
+        $data['list_mobil'] = $this->M_pimpinan->select('tb_mobil');
+        $data['list_genset'] = $this->M_pimpinan->select('tb_genset');
+        $data['list_pelanggan'] = $this->M_pimpinan->select('tb_pelanggan');
+        $data['list_operator'] = $this->M_pimpinan->select('tb_operator');
+        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Konfirmasi Genset Masuk';
+        $this->load->view('pimpinan/form/update_unit_masuk', $data);
+    }
+
+    public function proses_data_masuk()
+    {
+        $this->form_validation->set_rules('tanggal_masuk', 'Tanggal Masuk', 'trim|required');
+
+        $id_u_keluar       = $this->input->post('id_u_keluar', TRUE);
+
+        if ($this->form_validation->run() === TRUE) {
+            $stok_gd           = $this->input->post('stok_gd', TRUE);
+            $stok_pj           = $this->input->post('stok_pj', TRUE);
+            $id_transaksi     = $this->input->post('id_transaksi', TRUE);
+
+            $tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
+            $tanggal_masuk    = $this->input->post('tanggal_masuk', TRUE);
+            $lokasi           = $this->input->post('lokasi', TRUE);
+            $id_operator    = $this->input->post('id_operator', TRUE);
+            $id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
+            $id_genset      = $this->input->post('id_genset', TRUE);
+            $id_mobil            = $this->input->post('id_mobil', TRUE);
+            $tambahan         = $this->input->post('tambahan', TRUE);
+            $jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
+            $jumlah_hari_lama = $this->input->post('jumlah_hari_lama', TRUE);
+            $total            = $this->input->post('total', TRUE);
+
+            $status_b = 0;
+
+            // if($jumlah_hari_lama == $jumlah_hari){
+            //   $status = 1;
+            // }else{
+            //   $status = 0;
+            // }
+
+            $where = array('id_u_keluar' => $id_u_keluar);
+            $data = array(
+                'id_transaksi'    => $id_transaksi,
+                'tanggal_keluar'          => $tanggal_keluar,
+                'tanggal_masuk'   => $tanggal_masuk,
+                'lokasi'           => $lokasi,
+                'id_operator'    => $id_operator,
+                'id_pelanggan'   => $id_pelanggan,
+                'id_genset'      => $id_genset,
+                'id_mobil'            => $id_mobil,
+                'tambahan'         => $tambahan,
+                'jumlah_hari'      => $jumlah_hari,
+                'total'            => $total,
+                'status'           => $status_b
+            );
+            // $stok_gd_new = ++$stok_gd;
+            // $stok_pj_new = --$stok_pj;
+            $status_gst = 0;
+            $status_op = 0;
+            $status_plg = 0;
+            $status = 0;
+
+            $this->M_pimpinan->update_status('tb_unit_keluar', $id_u_keluar, $status);
+            $this->M_pimpinan->update_status_gst('tb_genset', $id_genset, $status_gst);
+            $this->M_pimpinan->update_status_op('tb_operator', $id_operator, $status_op);
+            $this->M_pimpinan->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
+            // $this->M_pimpinan->menambah_kembali('tb_genset', $id_genset, $stok_gd_new);
+            // $this->M_pimpinan->mengurangi_kembali('tb_genset', $id_genset, $stok_pj_new);
+            // $this->M_pimpinan->insert('tb_unit_masuk', $data);
+            $this->session->set_flashdata('msg_sukses', 'Data Status diubah menjadi Masuk (Kembali)');
+            // $this->M_pimpinan->delete('tb_barang_masuk',$where);
+            redirect(site_url('pimpinan/tabel_unit_keluar'));
+        } else {
+            // $data['title'] = 'Update Genset Masuk';
+            $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['title'] = 'Konfirmasi Genset Masuk';
+            $this->load->view('pimpinan/form/update_unit_masuk', $data);
+        }
+    }
     ####################################
     //* End Data Unit Keluar
     ####################################
@@ -403,6 +564,8 @@ class Pimpinan extends CI_Controller
         $data['title'] = 'Data Pengeluaran';
         $this->load->view('pimpinan/tabel/tabel_pengeluaran', $data);
     }
+
+
     ####################################
     //* End Data Pengeluaran
     ####################################
