@@ -1,82 +1,110 @@
 <?php $this->load->view('login/template/head'); ?>
 
-<body class="hold-transition register-page">
+<body class="hold-transition login-page auth-bg" style="background-image: url(<?= base_url('assets/style/ws-1.jpg'); ?>);">
     <div class="wrapper">
-        <div class="register-box">
-            <div class="box box-outline box-primary">
-                <img class="img" src="<?= base_url(); ?>assets/upload/logo/ws.png" alt="Logo" width="100%">
-                <div class="box-header text-center">
-                    <h4><b>REGISTER</b></h4>
+        <div class="col">
+            <div class="small-box bg-gradient-primary">
+                <div class="inner">
+                    <h4>Selamat Datang!<br><small>Silahkan Login Untuk Mengakses Sistem</small></h4>
                 </div>
-                <div class="box-body">
-                    <!-- <p class="login-box-msg"><b>*</b>Register sebagai user biasa</p> -->
-                    <form action="<?= base_url('register/proses_register'); ?>" method="post">
+            </div>
+            <!-- <div class="small-box bg-primary">
+                <div class="inner">
+                    <h4>Selamat Datang di Aplikasi SIMRent Genset Wardah Solution</h4>
+                </div>
+            </div> -->
+        </div>
+
+        <div class="login-box" style="margin-bottom: 180px;margin-top: 0px;">
+            <div class="login-logo">
+                <a href="#" title="*Register bagi user penyewa"><strong style="color: white;">REGISTER</strong></a>
+            </div>
+            <!-- /.login-logo -->
+            <div class="card card-primary card-outline">
+                <!-- <div class="card-header">
+                    <h6><strong>LOGIN</strong></h6>
+                </div> -->
+                <div class="card-body login-card-body">
+                    <img class="img" src="<?= base_url(); ?>assets/style/logo/ws.png" alt="Logo" width="80%">
+                    <!-- <p class="login-box-msg">Login Untuk Memulai Sesi</p> -->
+                    <hr>
+                    <form action="<?= site_url('register/proses_register'); ?>" class="login" method="post">
                         <?php if ($this->session->flashdata('msg')) { ?>
                             <div class="alert alert-warning alert-dismissible">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
                                 <strong>Peringatan!</strong><br> <?php echo $this->session->flashdata('msg'); ?>
                             </div>
                         <?php } ?>
-
-                        <?php if ($this->session->flashdata('msg_daftar')) { ?>
-                            <div class="alert alert-success alert-dismissible">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>Berhasil!</strong><br> <?php echo $this->session->flashdata('msg_daftar'); ?>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="nama" placeholder="Nama Anda" required autofocus>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
                             </div>
-                        <?php } ?>
-
-                        <?php if (validation_errors()) { ?>
-                            <div class="alert alert-danger alert-dismissible">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="username" placeholder="Username" required>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
                             </div>
-                        <?php } ?>
-
-                        <div class="form-group has-feedback">
-                            <input type="text" class="form-control" name="nama" placeholder="Nama Anda" autofocus required="" />
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-
                         </div>
-                        <div class="form-group has-feedback">
-                            <input type="text" class="form-control" name="username" placeholder="Username" required="" />
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
 
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" name="password" placeholder="Password" required>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group has-feedback">
-                            <input type="password" class="form-control" name="password" placeholder="Password" required="" />
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group has-feedback">
-                            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="" />
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-
-                        </div>
+                        <!-- <?php if (isset($token_generate)) { ?>
+                                <input type="hidden" name="token" value="<?php echo $token_generate ?>">
+                            <?php } else {
+                                    redirect(site_url());
+                                } ?> -->
+                        <p class="mb-0" align="left">
+                            <a href="<?= site_url('login'); ?>" class="btn btn-xs btn-link">Login</a>
+                        </p>
                         <div class="row">
-                            <div class="col-xs-8">
+                            <div class="col-6">
                                 <!-- <div class="icheck-primary">
-                            <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                            <label for="agreeTerms">
-                                I agree to the <a href="#">terms</a>
-                            </label>
-                        </div> -->
-                                <?php echo anchor(base_url('login'), 'Log In') ?>
+                                    <input type="checkbox" id="remember">
+                                    <label for="remember">
+                                        Remember Me
+                                    </label>
+                                </div> -->
                             </div>
-                            <!-- /.col -->
-                            <div class="col-xs-4">
-                                <button type="submit" class="btn btn-sm btn-primary btn-block"><i class="fa fa-user-plus"></i>&nbsp;Register</button>
-                            </div>
-                            <!-- /.col -->
+                        </div>
+                        <div class="mt-5">
+                            <button type="submit" class="button"><i class="fas fa-sign-in-alt"></i>&nbsp;Register</button>
                         </div>
                     </form>
 
                 </div>
-                <!-- /.form-box -->
-            </div><!-- /.box -->
+                <!-- /.login-card-body -->
+            </div>
+            <div class="footer">
+                <center style="color: white;"><small>Copyright &copy; 2022-<script type="text/javascript">
+                            document.write(new Date().getFullYear());
+                        </script></small>
+                </center>
+            </div>
         </div>
+        <!-- /.login-box -->
     </div>
+    <?php $this->load->view('login/template/script'); ?>
 
-    <?php $this->load->view('login/template/footer'); ?>
 </body>
 
 </html>

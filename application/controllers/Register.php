@@ -12,8 +12,15 @@ class Register extends CI_Controller
     }
     public function index()
     {
+        $data['token_generate'] = $this->token_generate();
+        $this->session->set_userdata($data);
         $data['title'] = 'Register';
         $this->load->view('login/register', $data);
+    }
+
+    public function token_generate()
+    {
+        return $tokens = md5(uniqid(rand(), true));
     }
 
     private function hash_password($password)
