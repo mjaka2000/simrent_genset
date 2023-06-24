@@ -1256,6 +1256,7 @@ class Admin extends CI_Controller
 		$data['title'] = 'Data Unit Sewa';
 		$this->load->view('admin/form_unit_keluar/tabel_unit_keluar', $data);
 	}
+
 	public function detail_unit_keluar($id_transaksi)
 	{
 		$uri = $this->uri->segment(3);
