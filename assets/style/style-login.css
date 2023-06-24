@@ -2,7 +2,9 @@
       font-family: "Open Sans", sans-serif;
       height: 100vh;
       /* background: url("<?= base_url(''); ?>assets/style/ws-1.jpg") 50% fixed; */
-      /* background-size: cover; */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
     }
 
     .wrapper {
@@ -17,16 +19,6 @@
       text-align: center;
     }
 
-    .auth-bg {
-      /* background-image: url("<?= base_url(''); ?>assets/style/ws-1.jpg"); */
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      /* height: 100%; */
-      /* width: 100%; */
-      /* display: table; */
-      /* vertical-align: middle; */
-    }
 
     .button {
       width: 100%;
