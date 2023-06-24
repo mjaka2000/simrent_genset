@@ -137,4 +137,138 @@ class M_pimpinan extends CI_Model
       ->get();
     return $query->result();
   }
+
+  public function get_data_u_keluar($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->get();
+    return $query->result();
+  }
+
+  public function select_data_u_keluar($tabel, $where)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where($where)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->get();
+    return $query->result();
+  }
+
+  public function sum_pendapatan($tabel)
+  {
+    $query = $this->db->select_sum('total')
+      ->from($tabel)
+      ->get();
+    return $query->result();
+  }
+
+  ####################################
+  //* Pengeluaran 
+  ####################################
+  public function pengeluaran_periode($tabel, $bulan, $tahun)
+  {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
+
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where('MONTH (tgl_pengeluaran) =' . $bulan . ' AND YEAR (tgl_pengeluaran) =' . $tahun)
+      // ->where('YEAR (tanggal_masuk)' . $tahun)
+      // ->order_by('tanggal_masuk', 'asc')
+      ->get();
+    return $query->result();
+  }
+
+  public function sum_penngeluaranPeriode($tabel, $bulan, $tahun)
+  {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
+    $query = $this->db->select_sum('biaya_pengeluaran')
+      ->from($tabel)
+      ->where('MONTH (tgl_pengeluaran) =' . $bulan . ' AND YEAR (tgl_pengeluaran) =' . $tahun)
+      ->get();
+    return $query->result();
+  }
+
+  public function sum_pengeluaran($tabel)
+  {
+    $query = $this->db->select_sum('biaya_pengeluaran')
+      ->from($tabel)
+      ->get();
+    return $query->result();
+  }
+  ####################################
+  //* End Pengeluaran 
+  ####################################
+  ####################################
+  //* Pemasukan 
+  ####################################
+  public function get_data_pemasukan($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      ->get();
+    return $query->result();
+  }
+
+  public function sum_pemasukan($tabel)
+  {
+    $query = $this->db->select_sum('total')
+      ->from($tabel)
+      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      ->get();
+    return $query->result();
+  }
+
+  public function pemasukan_periode($tabel, $bulan, $tahun)
+  {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
+
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
+      // ->where('YEAR (tanggal_masuk)' . $tahun)
+      // ->order_by('tanggal_masuk', 'asc')
+      ->get();
+    return $query->result();
+  }
+
+  public function sum_pendapatanMasuk($tabel, $bulan, $tahun)
+  {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
+    $query = $this->db->select_sum('total')
+      ->from($tabel)
+      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
+      ->get();
+    return $query->result();
+  }
+  public function chart_pendapatanMasuk($tabel)
+  {
+    // $bulan = $this->db->escape($bulan);
+    // $tahun = $this->db->escape($tahun);
+    $query = $this->db->select('MONTH (tanggal_masuk),total')
+      ->from($tabel)
+      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      // ->where('MONTH (tanggal_masuk) =' . $bln . ' AND YEAR (tanggal_masuk) =' . $thn)
+      ->order_by('total', 'asc')
+      ->get();
+    return $query->result();
+  }
+  ####################################
+  //* End Pemasukan 
+  ####################################
 }

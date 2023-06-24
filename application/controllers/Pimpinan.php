@@ -48,6 +48,72 @@ class Pimpinan extends CI_Controller
         $this->load->view('pimpinan/profile/profile', $data);
     }
 
+    public function proses_newpassword()
+    {
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('new_password', 'Password Baru', 'required');
+        $this->form_validation->set_rules('confirm_new_password', 'Konfirmasi Password Baru', 'required|matches[new_password]');
+
+        if ($this->form_validation->run() == true) {
+
+            $username = $this->input->post('username');
+            $nama = $this->input->post('nama');
+            $new_password = $this->input->post('new_password');
+
+            $data = array(
+                'nama' => $nama,
+                'password' => $this->hash_password($new_password)
+            );
+            $where = array(
+                'id_user' => $this->session->userdata('id_user')
+            );
+            $this->M_pimpinan->update_password('tb_user', $where, $data);
+            $this->session->set_flashdata('msg_sukses', 'Password Berhasil Diganti, Silahkan Logout dan Login Kembali');
+            redirect(site_url('pimpinan/profile'));
+        } else {
+            $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['title'] = 'Profile';
+            $this->load->view('pimpinan/profile/profile', $data);
+        }
+    }
+
+    public function proses_gambarupload()
+    {
+        $config = array(
+            'upload_path' => "./assets/upload/user/",
+            'allowed_types' => "jpg|png|jpeg",
+            'ecrypt_name'    => false,
+            'overwrite'    => true,
+            // 'file_name'	=> uniqid(),
+            'max_size' => "1024",
+            'max_height' => "1024",
+            'max_width' => "1024"
+        );
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if (!$this->upload->do_upload('userpicture')) {
+            $this->session->set_flashdata('msg_gambar_error', $this->upload->display_errors());
+            $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['title'] = 'Profile';
+            $this->load->view('pimpinan/profile/profile', $data);
+        } else {
+            $data_upload = array('upload_data' => $this->upload->data());
+            $nama_file = $data_upload['upload_data']['file_name'];
+
+            $where = array(
+                'username' => $this->session->userdata('name')
+            );
+            $data = array(
+                'nama_file' => $nama_file
+            );
+
+            $this->M_pimpinan->update_avatar($where, $data);
+            $this->session->set_flashdata('msg_gambar_sukses', 'Gambar Berhasil Di Upload');
+            redirect(site_url('pimpinan/profile'));
+        }
+    }
+
     ####################################
     //* End Profile
     ####################################
@@ -263,13 +329,31 @@ class Pimpinan extends CI_Controller
     //* End Data Pelanggan 
     ####################################
     ####################################
-    //* Data Barang Keluar 
+    //* Data Unit Keluar 
     ####################################
 
+    public function tabel_unit_keluar()
+    {
+        $data['list_data'] = $this->M_pimpinan->get_data_u_keluar('tb_unit_keluar');
+        $data['total_data'] = $this->M_pimpinan->sum_pendapatan('tb_unit_keluar');
+        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Data Unit Sewa';
+        $this->load->view('pimpinan/tabel/tabel_unit_keluar', $data);
+    }
+
+    public function detail_unit_keluar($id_transaksi)
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_u_keluar' => $uri);
+        $data['list_data'] = $this->M_pimpinan->select_data_u_keluar('tb_unit_keluar', $where);
+        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Detail Data Unit Sewa';
+        $this->load->view('pimpinan/tabel/detail_keluar', $data);
+    }
 
 
     ####################################
-    //* End Data Barang Keluar
+    //* End Data Unit Keluar
     ####################################
     ####################################
     //* Data Barang Masuk
@@ -279,6 +363,78 @@ class Pimpinan extends CI_Controller
 
     ####################################
     //* End Data Barang Masuk
+    ####################################
+    ####################################
+    //* Data Jadwal Penyewaan Genset
+    ####################################
+
+    public function tabel_jdw_genset()
+    {
+        $data['list_data'] = $this->M_pimpinan->get_data_u_keluar('tb_unit_keluar');
+        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Jadwal Penyewaan Genset';
+        $this->load->view('pimpinan/tabel/tabel_jdw_genset', $data);
+    }
+
+    ####################################
+    //* End Data Jadwal Penyewaan Genset
+    ####################################
+    ####################################
+    //* Data Pengeluaran
+    ####################################
+
+    public function tabel_pengeluaran()
+    {
+        $bulan = $this->input->get('bulan');
+        $tahun = $this->input->get('tahun');
+        if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+            $data['list_data'] = $this->M_pimpinan->select('tb_pengeluaran');
+            $data['total_data'] = $this->M_pimpinan->sum_pengeluaran('tb_pengeluaran');
+            $label = 'Bulan ke ...' . ' Tahun ...';
+        } else {
+            $data['list_data'] = $this->M_pimpinan->pengeluaran_periode('tb_pengeluaran', $bulan, $tahun);
+            $data['total_data'] = $this->M_pimpinan->sum_penngeluaranPeriode('tb_pengeluaran', $bulan, $tahun);
+            $label = 'Bulan ke ' . $bulan . ' Tahun ' .  $tahun;
+        }
+        $data['label'] = $label;
+
+        // $data['list_data'] = $this->M_pimpinan->select('tb_pengeluaran');
+        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Data Pengeluaran';
+        $this->load->view('pimpinan/tabel/tabel_pengeluaran', $data);
+    }
+    ####################################
+    //* End Data Pengeluaran
+    ####################################
+    ####################################
+    //* Pemasukan
+    ####################################
+    public function tabel_pemasukan()
+    {
+        $bulan = $this->input->get('bulan');
+        $tahun = $this->input->get('tahun');
+        // $bulan = date('m');
+        // $tahun = date('Y');
+        if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+            $data['list_data'] = $this->M_pimpinan->get_data_pemasukan('tb_pendapatan');
+            $data['total_data'] = $this->M_pimpinan->sum_pemasukan('tb_pendapatan');
+            $label = 'Bulan ke ...' . ' Tahun ...';
+        } else {
+            $data['list_data'] = $this->M_pimpinan->pemasukan_periode('tb_pendapatan', $bulan, $tahun);
+            $data['total_data'] = $this->M_pimpinan->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
+            $label = 'Bulan ke ' . $bulan . ' Tahun ' .  $tahun;
+        }
+        // $data['list_data'] = $this->M_pimpinan->get_data_u_keluar('tb_unit_keluar');
+        // $data['list_data'] = $this->M_pimpinan->pemasukan_periode('tb_unit_keluar', $bulan, $tahun);
+
+        // $data['total_data'] = $this->M_pimpinan->sum_pendapatan('tb_unit_keluar');
+        $data['label'] = $label;
+        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Data Pendapatan';
+        $this->load->view('pimpinan/tabel/tabel_pemasukan', $data);
+    }
+    ####################################
+    //* End Pemasukan
     ####################################
     ####################################
     //* Laporan
