@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jun 2023 pada 05.58
+-- Waktu pembuatan: 24 Jun 2023 pada 07.54
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -147,7 +147,7 @@ CREATE TABLE `tb_pelanggan` (
 --
 
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`) VALUES
-(4, 'anonim', 'Jl. SungaAndaii', '0895619213134', 'Laki-Laki', 'PT Rahmat', '2023-04-11', 0, 1),
+(4, 'anonim', 'Jl. Sunga Andai', '0895619213134', 'Laki-Laki', 'PT Rahmat', '2023-04-11', 0, 1),
 (5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 0, 1);
 
 -- --------------------------------------------------------
@@ -240,7 +240,7 @@ CREATE TABLE `tb_serv_genset` (
 --
 
 INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `jenis_perbaikan`, `tgl_perbaikan`, `ket_perbaikan`, `biaya_perbaikan`) VALUES
-(1, 2, 1, 'ganti filter solar', '2023-04-12', 'Selesai Diperbaiki', '0'),
+(1, 2, 1, 'ganti filter solar', '2023-04-12', 'Masih Terkendala', '0'),
 (2, 3, 2, 'Ganti Oli', '2023-04-14', 'Selesai Diperbaiki', '250000');
 
 -- --------------------------------------------------------
@@ -263,7 +263,7 @@ CREATE TABLE `tb_sparepart` (
 
 INSERT INTO `tb_sparepart` (`id_sparepart`, `nama_sparepart`, `tanggal_beli`, `tempat_beli`, `stok`) VALUES
 (1, 'Filter Oli Donaldson', '2023-03-14', 'Multi Filter', '3'),
-(2, 'oli sx', '2023-03-16', 'Bengkel Yuno', '0');
+(2, 'oli sx', '2023-03-16', 'Bengkel Yuno', '4');
 
 -- --------------------------------------------------------
 
@@ -350,10 +350,10 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '23-06-2023 8:49'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'nopic.png', '22-06-2023 19:26'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '24-06-2023 11:31'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '24-06-2023 13:52'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '22-06-2023 19:26'),
-(34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 0, 'nopic.png', '22-06-2023 19:29');
+(34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26');
 
 --
 -- Indexes for dumped tables
