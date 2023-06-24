@@ -42,6 +42,8 @@
                                 </div>
                             <?php } ?>
 
+                            <!-- <button onclick="window.location.href='<?= site_url('pimpinan/tambah_service_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button> -->
+
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>
@@ -75,6 +77,8 @@
                                                 <?php } ?>
                                                 <td>Rp&nbsp;<?= number_format($dt->biaya_perbaikan); ?></td>
                                                 <td>
+                                                    <!-- <a href="<?= base_url('pimpinan/update_data_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a> -->
+                                                    <!-- <a href="<?= base_url('pimpinan/hapus_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a> -->
                                                     <a href="<?= base_url('pimpinan/detail_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
                                                 </td>
                                             </tr>

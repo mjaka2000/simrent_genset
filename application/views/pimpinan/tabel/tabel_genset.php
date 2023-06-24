@@ -42,6 +42,8 @@
                                 </div>
                             <?php } ?>
 
+                            <!-- <button onclick="window.location.href='<?= site_url('pimpinan/tambah_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button> -->
+
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>
@@ -53,6 +55,7 @@
                                         <th>Ket. Genset</th>
                                         <!-- <th>Unit Disewakan</th> -->
                                         <th>Gambar</th>
+                                        <!-- <th style="width:10%">Aksi</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -72,7 +75,10 @@
                                                     <td><a href="#" class="btn btn-danger btn-xs"> Genset Sedang Disewa</a></td>
                                                 <?php } ?>
                                                 <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" class="img img-box" width="100" height="100" alt="<?= $d->gambar_genset; ?>"></td>
-
+                                                <!-- <td>
+                                                    <a href="<?= site_url('pimpinan/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
+                                                    <a href="<?= site_url('pimpinan/hapus_data_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
+                                                </td> -->
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php } ?>

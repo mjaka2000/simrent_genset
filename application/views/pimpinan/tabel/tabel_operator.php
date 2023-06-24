@@ -42,6 +42,8 @@
                                 </div>
                             <?php } ?>
 
+                            <!-- <button onclick="window.location.href='<?= site_url('pimpinan/tambah_data_operator'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button> -->
+
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>
@@ -50,6 +52,7 @@
                                         <th>Alamat</th>
                                         <th>No. HP</th>
                                         <th>Status</th>
+                                        <!-- <th style="width:10%">Aksi</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -68,7 +71,11 @@
                                                 <?php } else { ?>
                                                     <td><a href="#" type="button" class="btn btn-xs btn-success" name="btn_status_op">Berangkat</a></td>
                                                 <?php } ?>
-
+                                                <!-- <td> -->
+                                                <!-- <a href="<?= site_url('pimpinan/update_data_operator/' . $dt->id_operator); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
+                                                <!-- <a href="<?= site_url('pimpinan/hapus_operator/' . $dt->id_operator); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
+                                                <!-- <a href="<?= site_url('pimpinan/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
+                                                <!-- </td> -->
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php } ?>

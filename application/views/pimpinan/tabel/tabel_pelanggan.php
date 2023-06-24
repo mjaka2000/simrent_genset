@@ -41,6 +41,7 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
+                            <!-- <button onclick="window.location.href='<?= site_url('pimpinan/tambah_data_pelanggan'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>&nbsp; -->
                             <button onclick="window.location.href='<?= site_url('pimpinan/tabel_pelanggan_blacklist'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-default" name="blacklist_data">Data Pelanggan Blacklist</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
@@ -55,6 +56,7 @@
                                         <th>Tanggal Update</th>
                                         <th>Status</th>
                                         <th>Ket.</th>
+                                        <!-- <th style="width:10%">Aksi</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -81,7 +83,11 @@
                                                 <?php } else { ?>
                                                     <td><em>Blacklist</em></td>
                                                 <?php } ?>
-
+                                                <!-- <td> -->
+                                                <!-- <a href="<?= site_url('pimpinan/update_data_pelanggan/' . $dt->id_pelanggan); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
+                                                <!-- <a href="<?= site_url('pimpinan/hapus_pelanggan/' . $dt->id_pelanggan); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
+                                                <!-- <a href="<?= site_url('pimpinan/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
+                                                <!-- </td> -->
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php } ?>

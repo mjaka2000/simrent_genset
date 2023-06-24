@@ -70,6 +70,8 @@
                                 </div>
                             <?php } ?>
 
+                            <!-- <button onclick="window.location.href='<?= site_url('pimpinan/tambah_data_sparepart'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button> -->
+
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>
@@ -78,6 +80,7 @@
                                         <th>Tanggal Beli</th>
                                         <th>Tempat Beli</th>
                                         <th>Stok</th>
+                                        <!-- <th style="width:10%">Aksi</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -92,6 +95,10 @@
                                                 <td><?= date('d-m-Y', strtotime($dt->tanggal_beli)); ?></td>
                                                 <td><?= $dt->tempat_beli; ?></td>
                                                 <td><?= $dt->stok; ?></td>
+                                                <!-- <td>
+                                                    <a href="<?= site_url('pimpinan/update_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
+                                                    <a href="<?= site_url('pimpinan/hapus_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
+                                                </td> -->
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php } else { ?>

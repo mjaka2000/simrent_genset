@@ -42,6 +42,8 @@
                                 </div>
                             <?php } ?>
 
+                            <!-- <button onclick="window.location.href='<?= site_url('pimpinan/tambah_data_mobil'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button> -->
+
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>
@@ -54,6 +56,7 @@
                                         <th>Pajak </th>
                                         <th>STNK </th>
                                         <th>Gambar</th>
+                                        <!-- <th style="width:10%">Aksi</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,7 +77,11 @@
                                                 <td><?= date('d-m-Y', strtotime($dt->pajak)); ?></td>
                                                 <td><?= date('d-m-Y', strtotime($dt->stnk)); ?></td>
                                                 <td><img src="<?= site_url('assets/upload/mobil/' . $dt->gambar_mobil); ?>" class="img-box" width="100" height="100" alt="<?= $dt->nopol; ?>"></td>
-
+                                                <!-- <td> -->
+                                                <!-- <a href="<?= site_url('pimpinan/update_data_mobil/' . $dt->id_mobil); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
+                                                <!-- <a href="<?= site_url('pimpinan/hapus_mobil/' . $dt->id_mobil); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
+                                                <!-- <a href="<?= site_url('pimpinan/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
+                                                <!-- </td> -->
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php } ?>
