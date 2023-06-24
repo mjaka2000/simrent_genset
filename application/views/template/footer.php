@@ -23,7 +23,7 @@
                             This website uses:
                             <ul>
                                 <li><a href="https://www.codeigniter.com/download" target="_blank"><u>Codeigniter</u></a> Version 3.1.13</li>
-                                <li>PHP Version ≤7.4</li>
+                                <li>PHP Version 7.4</li>
                             </ul>
                             <strong>Copyright &copy; 2022-<script type="text/javascript">
                                     document.write(new Date().getFullYear());
