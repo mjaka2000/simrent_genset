@@ -3,7 +3,7 @@ class M_pimpinan extends CI_Model
 {
 
   ####################################
-  // CRUD
+  //* CRUD
   ####################################
 
   // public function insert($tabel, $data)
