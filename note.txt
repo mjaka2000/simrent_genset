@@ -55,7 +55,65 @@ Gunakanlah base_url() Saat membuat link/URL untuk CSS dan Javascript. biasanya s
     // })
 =========================================================================================================================================
 
-    
+    <form action="<?= base_url('register/proses_register'); ?>" method="post">
+                        <?php if ($this->session->flashdata('msg')) { ?>
+                            <div class="alert alert-warning alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>Peringatan!</strong><br> <?php echo $this->session->flashdata('msg'); ?>
+                            </div>
+                        <?php } ?>
+
+                        <?php if ($this->session->flashdata('msg_daftar')) { ?>
+                            <div class="alert alert-success alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>Berhasil!</strong><br> <?php echo $this->session->flashdata('msg_daftar'); ?>
+                            </div>
+                        <?php } ?>
+
+                        <?php if (validation_errors()) { ?>
+                            <div class="alert alert-danger alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
+                            </div>
+                        <?php } ?>
+
+                        <div class="form-group has-feedback">
+                            <input type="text" class="form-control" name="nama" placeholder="Nama Anda" autofocus required="" />
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="text" class="form-control" name="username" placeholder="Username" required="" />
+                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="password" class="form-control" name="password" placeholder="Password" required="" />
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="" />
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <!-- <div class="icheck-primary">
+                            <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                            <label for="agreeTerms">
+                                I agree to the <a href="#">terms</a>
+                            </label>
+                        </div> -->
+                                <?php echo anchor(base_url('login'), 'Log In') ?>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-xs-4">
+                                <button type="submit" class="btn btn-sm btn-primary btn-block"><i class="fa fa-user-plus"></i>&nbsp;Register</button>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </form>
 =========================================================================================================================================
 
 <!-- <?php if ($dt->status_ajuan == 1) { ?>
