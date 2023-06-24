@@ -75,11 +75,11 @@
                                             <td><?= date('d-m-Y', strtotime($d->tgl_update)); ?></td>
                                             <td>Rp&nbsp;<?= number_format($d->total); ?></td>
                                             <td><?= $d->keterangan; ?></td>
-                                            <td>
-                                                <!-- <a href="<?= site_url('pimpinan/edit_pemasukan/' . $d->id_pendapatan); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
-                                                <!-- <a href="<?= site_url('pimpinan/hapus_pemasukan/' . $d->id_pendapatan); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
-                                                <!-- <a href="<?= site_url('pimpinan/update_data_service_genset/' . $d->kode_genset); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
-                                            </td>
+                                            <!-- <td> -->
+                                            <!-- <a href="<?= site_url('pimpinan/edit_pemasukan/' . $d->id_pendapatan); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
+                                            <!-- <a href="<?= site_url('pimpinan/hapus_pemasukan/' . $d->id_pendapatan); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
+                                            <!-- <a href="<?= site_url('pimpinan/update_data_service_genset/' . $d->kode_genset); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
+                                            <!-- </td> -->
                                         </tr>
                                     <?php endforeach; ?>
 
