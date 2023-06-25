@@ -7,7 +7,7 @@ class Teknisi extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_teknisi');
+        $this->load->model('M_data');
         if ($this->session->userdata('role') != '2') {
             redirect(site_url("login"));
         }
@@ -15,7 +15,7 @@ class Teknisi extends CI_Controller
 
     public function index()
     {
-        $data['avatar'] = $this->M_teknisi->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Home';
         $this->load->view('teknisi/index', $data);
     }

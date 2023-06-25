@@ -7,21 +7,21 @@ class Report extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_admin');
+        $this->load->model('M_data');
     }
 
     public function cetak_jdw_genset()
     {
         $uri = $this->uri->segment(3);
         $where = array('id_u_keluar' => $uri);
-        $data['list_data'] = $this->M_admin->select_data_u_keluar('tb_unit_keluar', $where);
+        $data['list_data'] = $this->M_data->select_data_u_keluar('tb_unit_keluar', $where);
         $data['title'] = 'Laporan Jadwal Penyewaan Genset';
         $this->load->view('admin/report/jdw_genset/rep_jdw_genset', $data);
     }
 
     public function cetak_jdw_gensetAll()
     {
-        $data['list_data'] = $this->M_admin->get_data_u_keluar('tb_unit_keluar');
+        $data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_keluar');
         $data['title'] = 'Laporan Jadwal Penyewaan Genset';
         $this->load->view('admin/report/jdw_genset/rep_jdw_gensetAll', $data);
     }
@@ -31,12 +31,12 @@ class Report extends CI_Controller
         $bulan = $this->input->post('bulan');
         $tahun = $this->input->post('tahun');
         if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
-            $data['list_data'] = $this->M_admin->select('tb_pengeluaran');
-            $data['total_data'] = $this->M_admin->sum_pengeluaran('tb_pengeluaran');
+            $data['list_data'] = $this->M_data->select('tb_pengeluaran');
+            $data['total_data'] = $this->M_data->sum_pengeluaran('tb_pengeluaran');
             $label = 'Bulan ...' . ' Tahun ...';
         } else {
-            $data['list_data'] = $this->M_admin->pengeluaran_periode('tb_pengeluaran', $bulan, $tahun);
-            $data['total_data'] = $this->M_admin->sum_penngeluaranPeriode('tb_pengeluaran', $bulan, $tahun);
+            $data['list_data'] = $this->M_data->pengeluaran_periode('tb_pengeluaran', $bulan, $tahun);
+            $data['total_data'] = $this->M_data->sum_penngeluaranPeriode('tb_pengeluaran', $bulan, $tahun);
             $label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
         }
         $data['label'] = $label;
@@ -49,12 +49,12 @@ class Report extends CI_Controller
         $bulan = $this->input->post('bulan');
         $tahun = $this->input->post('tahun');
         if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
-            $data['list_data'] = $this->M_admin->get_data_pemasukan('tb_pendapatan');
-            $data['total_data'] = $this->M_admin->sum_pemasukan('tb_pendapatan');
+            $data['list_data'] = $this->M_data->get_data_pemasukan('tb_pendapatan');
+            $data['total_data'] = $this->M_data->sum_pemasukan('tb_pendapatan');
             $label = 'Bulan ...' . ' Tahun ...';
         } else {
-            $data['list_data'] = $this->M_admin->pemasukan_periode('tb_pendapatan', $bulan, $tahun);
-            $data['total_data'] = $this->M_admin->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
+            $data['list_data'] = $this->M_data->pemasukan_periode('tb_pendapatan', $bulan, $tahun);
+            $data['total_data'] = $this->M_data->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
             $label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
         }
         $data['label'] = $label;
@@ -67,10 +67,10 @@ class Report extends CI_Controller
         $bulan = $this->input->post('bulan');
         $tahun = $this->input->post('tahun');
         if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
-            $data['list_data'] = $this->M_admin->gsel_data_u_keluar('tb_unit_keluar');
+            $data['list_data'] = $this->M_data->gsel_data_u_keluar('tb_unit_keluar');
             $label = 'Bulan ...' . ' Tahun ...';
         } else {
-            $data['list_data'] = $this->M_admin->grep_data_u_keluar('tb_unit_keluar', $bulan, $tahun);
+            $data['list_data'] = $this->M_data->grep_data_u_keluar('tb_unit_keluar', $bulan, $tahun);
             $label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
         }
         $data['label'] = $label;
@@ -80,28 +80,28 @@ class Report extends CI_Controller
 
     public function cetak_serv_gensetAll()
     {
-        $data['list_data'] = $this->M_admin->get_data_service('tb_serv_genset');
+        $data['list_data'] = $this->M_data->get_data_service('tb_serv_genset');
         $data['title'] = 'Laporan Perbaikan Genset';
         $this->load->view('admin/report/service_genset/rep_service_genset', $data);
     }
 
     public function cetak_Pelanggan()
     {
-        $data['list_data'] = $this->M_admin->select('tb_pelanggan');
+        $data['list_data'] = $this->M_data->select('tb_pelanggan');
         $data['title'] = 'Laporan Data Pelanggan';
         $this->load->view('admin/report/pelanggan/rep_pelanggan', $data);
     }
 
     public function cetak_Pelanggan_blacklist()
     {
-        $data['list_pelanggan_blacklist'] = $this->M_admin->select('tb_pelanggan_blacklist');
+        $data['list_pelanggan_blacklist'] = $this->M_data->select('tb_pelanggan_blacklist');
         $data['title'] = 'Laporan Data Pelanggan Blacklist';
         $this->load->view('admin/report/pelanggan/rep_pelanggan_blacklist', $data);
     }
 
     public function cetak_sparepart()
     {
-        $data['list_sparepart'] = $this->M_admin->select('tb_sparepart');
+        $data['list_sparepart'] = $this->M_data->select('tb_sparepart');
         $data['title'] = 'Laporan Data Sparepart';
         $this->load->view('admin/report/sparepart/rep_sparepart', $data);
     }
@@ -110,7 +110,7 @@ class Report extends CI_Controller
     {
         $uri = $this->uri->segment(3);
         $where = array('id_u_keluar' => $uri);
-        $data['list_data'] = $this->M_admin->select_data_u_keluar('tb_unit_keluar', $where);
+        $data['list_data'] = $this->M_data->select_data_u_keluar('tb_unit_keluar', $where);
         $data['title'] = 'Laporan Detail Data Penyewaan Genset';
         $this->load->view('admin/report/unit_keluar/rep_unit_keluar_detail', $data);
     }
@@ -119,8 +119,8 @@ class Report extends CI_Controller
     {
         $uri = $this->uri->segment(3);
         $where = array('id_perbaikan_gst' => $uri);
-        $data['list_data'] = $this->M_admin->get_detail_perbaikan('tb_serv_genset', $where);
-        $data['detail_perbaikan'] = $this->M_admin->detail_perbaikan('tb_detail_serv', $where);
+        $data['list_data'] = $this->M_data->get_detail_perbaikan('tb_serv_genset', $where);
+        $data['detail_perbaikan'] = $this->M_data->detail_perbaikan('tb_detail_serv', $where);
         $data['title'] = 'Laporan Detail Perbaikan Genset';
         $this->load->view('admin/report/service_genset/rep_service_genset_detail', $data);
     }

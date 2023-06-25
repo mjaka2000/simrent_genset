@@ -8,7 +8,7 @@ class Pimpinan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_pimpinan');
+        $this->load->model('M_data');
         if ($this->session->userdata('role') != '1') {
             redirect(site_url("login"));
         }
@@ -16,7 +16,7 @@ class Pimpinan extends CI_Controller
 
     public function index()
     {
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Home';
         $this->load->view('pimpinan/index', $data);
     }
@@ -43,7 +43,7 @@ class Pimpinan extends CI_Controller
 
     public function profile()
     {
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Profile';
         $this->load->view('pimpinan/profile/profile', $data);
     }
@@ -67,11 +67,11 @@ class Pimpinan extends CI_Controller
             $where = array(
                 'id_user' => $this->session->userdata('id_user')
             );
-            $this->M_pimpinan->update_password('tb_user', $where, $data);
+            $this->M_data->update_password('tb_user', $where, $data);
             $this->session->set_flashdata('msg_sukses', 'Password Berhasil Diganti, Silahkan Logout dan Login Kembali');
             redirect(site_url('pimpinan/profile'));
         } else {
-            $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Profile';
             $this->load->view('pimpinan/profile/profile', $data);
         }
@@ -94,7 +94,7 @@ class Pimpinan extends CI_Controller
 
         if (!$this->upload->do_upload('userpicture')) {
             $this->session->set_flashdata('msg_gambar_error', $this->upload->display_errors());
-            $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Profile';
             $this->load->view('pimpinan/profile/profile', $data);
         } else {
@@ -108,7 +108,7 @@ class Pimpinan extends CI_Controller
                 'nama_file' => $nama_file
             );
 
-            $this->M_pimpinan->update_avatar($where, $data);
+            $this->M_data->update_avatar($where, $data);
             $this->session->set_flashdata('msg_gambar_sukses', 'Gambar Berhasil Di Upload');
             redirect(site_url('pimpinan/profile'));
         }
@@ -123,8 +123,8 @@ class Pimpinan extends CI_Controller
 
     public function tabel_genset()
     {
-        $data['list_data'] = $this->M_pimpinan->select('tb_genset');
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_data'] = $this->M_data->select('tb_genset');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Genset';
         $this->load->view('pimpinan/tabel/tabel_genset', $data);
     }
@@ -138,8 +138,8 @@ class Pimpinan extends CI_Controller
 
     public function tabel_service_genset()
     {
-        $data['list_data'] = $this->M_pimpinan->get_data_service('tb_serv_genset');
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_data'] = $this->M_data->get_data_service('tb_serv_genset');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Perbaikan Genset';
         $this->load->view('pimpinan/tabel/tabel_service_genset', $data);
     }
@@ -148,9 +148,9 @@ class Pimpinan extends CI_Controller
     {
         $uri = $this->uri->segment(3);
         $where = array('id_perbaikan_gst' => $uri);
-        $data['list_data'] = $this->M_pimpinan->get_detail_perbaikan('tb_serv_genset', $where);
-        $data['detail_perbaikan'] = $this->M_pimpinan->detail_perbaikan('tb_detail_serv', $where);
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_data'] = $this->M_data->get_detail_perbaikan('tb_serv_genset', $where);
+        $data['detail_perbaikan'] = $this->M_data->detail_perbaikan('tb_detail_serv', $where);
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Update Perbaikan Genset';
         $this->load->view('pimpinan/tabel/detail_service_genset', $data);
     }
@@ -188,12 +188,12 @@ class Pimpinan extends CI_Controller
             );
             // $stok_new = --$stok;
 
-            // $this->M_pimpinan->mengurangi_stok('tb_sparepart', $spare_part, $stok_new);
-            $this->M_pimpinan->update('tb_serv_genset', $data, $where);
+            // $this->M_data->mengurangi_stok('tb_sparepart', $spare_part, $stok_new);
+            $this->M_data->update('tb_serv_genset', $data, $where);
             $this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
             redirect(site_url('pimpinan/tabel_service_genset'));
         } else {
-            $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Update Perbaikan Genset';
             $this->load->view('pimpinan/form_service_genset/update_service_genset', $data);
         }
@@ -203,7 +203,7 @@ class Pimpinan extends CI_Controller
     {
         $uri = $this->uri->segment(3);
         $where = array('id_detail_serv' => $uri);
-        $this->M_pimpinan->delete('tb_detail_serv', $where);
+        $this->M_data->delete('tb_detail_serv', $where);
         $this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
         redirect(site_url('pimpinan/detail_service_genset'));
     }
@@ -217,11 +217,11 @@ class Pimpinan extends CI_Controller
     public function tabel_sparepart()
     {
         // $where = array('stok');
-        // $data['count'] = $this->M_pimpinan->notif_stok('tb_sparepart');
-        // $data['num'] = $this->M_pimpinan->notif_stok_jml('tb_sparepart');
+        // $data['count'] = $this->M_data->notif_stok('tb_sparepart');
+        // $data['num'] = $this->M_data->notif_stok_jml('tb_sparepart');
 
-        $data['list_sparepart'] = $this->M_pimpinan->select('tb_sparepart');
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_sparepart'] = $this->M_data->select('tb_sparepart');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Sparepart';
         $this->load->view('pimpinan/tabel/tabel_sparepart', $data);
     }
@@ -235,8 +235,8 @@ class Pimpinan extends CI_Controller
 
     public function tabel_mobil()
     {
-        $data['list_data'] = $this->M_pimpinan->select('tb_mobil');
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_data'] = $this->M_data->select('tb_mobil');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Mobil';
         $this->load->view('pimpinan/tabel/tabel_mobil', $data);
     }
@@ -250,8 +250,8 @@ class Pimpinan extends CI_Controller
 
     public function tabel_operator()
     {
-        $data['list_operator'] = $this->M_pimpinan->select('tb_operator');
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_operator'] = $this->M_data->select('tb_operator');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Operator';
         $this->load->view('pimpinan/tabel/tabel_operator', $data);
     }
@@ -265,16 +265,16 @@ class Pimpinan extends CI_Controller
 
     public function tabel_pelanggan()
     {
-        $data['list_pelanggan'] = $this->M_pimpinan->select('tb_pelanggan');
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Pelanggan';
         $this->load->view('pimpinan/tabel/tabel_pelanggan', $data);
     }
 
     public function tabel_pelanggan_blacklist()
     {
-        $data['list_pelanggan_blacklist'] = $this->M_pimpinan->select('tb_pelanggan_blacklist');
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_pelanggan_blacklist'] = $this->M_data->select('tb_pelanggan_blacklist');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Pelanggan Blacklist';
         $this->load->view('pimpinan/tabel/tabel_pelanggan_blacklist', $data);
     }
@@ -283,8 +283,8 @@ class Pimpinan extends CI_Controller
     {
         $uri = $this->uri->segment(3);
         $where = array('id_pelanggan' => $uri);
-        $data['list_plg'] = $this->M_pimpinan->get_data('tb_pelanggan', $where);
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_plg'] = $this->M_data->get_data('tb_pelanggan', $where);
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Pindah Data Pelanggan';
         $this->load->view('pimpinan/form/pindah_pelanggan_blacklist', $data);
     }
@@ -315,12 +315,12 @@ class Pimpinan extends CI_Controller
                 'namaperusahaan_plg_blk' => $nama_perusahaan,
                 'tglupdate_plg_blk' => $tgl_update
             );
-            $this->M_pimpinan->insert('tb_pelanggan_blacklist', $data);
+            $this->M_data->insert('tb_pelanggan_blacklist', $data);
             $this->session->set_flashdata('msg_sukses', 'Data Berhasil Dipindah');
-            $this->M_pimpinan->delete('tb_pelanggan', $where);
+            $this->M_data->delete('tb_pelanggan', $where);
             redirect(site_url('pimpinan/tabel_pelanggan_blacklist'));
         } else {
-            $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Pindah Data Pelanggan';
             $this->load->view('pimpinan/form/pindah_pelanggan_blacklist');
         }
@@ -334,9 +334,9 @@ class Pimpinan extends CI_Controller
 
     public function tabel_unit_keluar()
     {
-        $data['list_data'] = $this->M_pimpinan->get_data_u_keluar('tb_unit_keluar');
-        $data['total_data'] = $this->M_pimpinan->sum_pendapatan('tb_unit_keluar');
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_keluar');
+        $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_keluar');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Unit Sewa';
         $this->load->view('pimpinan/tabel/tabel_unit_keluar', $data);
     }
@@ -345,8 +345,8 @@ class Pimpinan extends CI_Controller
     {
         $uri = $this->uri->segment(3);
         $where = array('id_u_keluar' => $uri);
-        $data['list_data'] = $this->M_pimpinan->select_data_u_keluar('tb_unit_keluar', $where);
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_data'] = $this->M_data->select_data_u_keluar('tb_unit_keluar', $where);
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Detail Data Unit Sewa';
         $this->load->view('pimpinan/tabel/detail_keluar', $data);
     }
@@ -355,12 +355,12 @@ class Pimpinan extends CI_Controller
     {
         $uri = $this->uri->segment(3);
         $where = array('id_u_keluar' => $uri);
-        $data['data_unit_update'] = $this->M_pimpinan->get_data('tb_unit_keluar', $where);
-        $data['list_mobil'] = $this->M_pimpinan->select('tb_mobil');
-        $data['list_genset'] = $this->M_pimpinan->select('tb_genset');
-        $data['list_pelanggan'] = $this->M_pimpinan->select('tb_pelanggan');
-        $data['list_operator'] = $this->M_pimpinan->select('tb_operator');
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['data_unit_update'] = $this->M_data->get_data('tb_unit_keluar', $where);
+        $data['list_mobil'] = $this->M_data->select('tb_mobil');
+        $data['list_genset'] = $this->M_data->select('tb_genset');
+        $data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
+        $data['list_operator'] = $this->M_data->select('tb_operator');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Perpanjang Pemakaian Genset';
         $this->load->view('pimpinan/form/perpanjang_unit', $data);
     }
@@ -418,12 +418,12 @@ class Pimpinan extends CI_Controller
                 'status'           => $status
             );
 
-            $this->M_pimpinan->update('tb_unit_keluar', $data, $where);
+            $this->M_data->update('tb_unit_keluar', $data, $where);
             $this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
-            // $this->M_pimpinan->delete('tb_barang_masuk',$where);
+            // $this->M_data->delete('tb_barang_masuk',$where);
             redirect(site_url('pimpinan/tabel_unit_keluar'));
         } else {
-            $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Perpanjang Pemakaian Genset';
             $this->load->view('pimpinan/form/perpanjang_unit', $data);
         }
@@ -433,12 +433,12 @@ class Pimpinan extends CI_Controller
     {
         $uri = $this->uri->segment(3);
         $where = array('id_u_keluar' => $uri);
-        $data['data_unit_update'] = $this->M_pimpinan->get_data('tb_unit_keluar', $where);
-        $data['list_mobil'] = $this->M_pimpinan->select('tb_mobil');
-        $data['list_genset'] = $this->M_pimpinan->select('tb_genset');
-        $data['list_pelanggan'] = $this->M_pimpinan->select('tb_pelanggan');
-        $data['list_operator'] = $this->M_pimpinan->select('tb_operator');
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['data_unit_update'] = $this->M_data->get_data('tb_unit_keluar', $where);
+        $data['list_mobil'] = $this->M_data->select('tb_mobil');
+        $data['list_genset'] = $this->M_data->select('tb_genset');
+        $data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
+        $data['list_operator'] = $this->M_data->select('tb_operator');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Konfirmasi Genset Masuk';
         $this->load->view('pimpinan/form/update_unit_masuk', $data);
     }
@@ -496,19 +496,19 @@ class Pimpinan extends CI_Controller
             $status_plg = 0;
             $status = 0;
 
-            $this->M_pimpinan->update_status('tb_unit_keluar', $id_u_keluar, $status);
-            $this->M_pimpinan->update_status_gst('tb_genset', $id_genset, $status_gst);
-            $this->M_pimpinan->update_status_op('tb_operator', $id_operator, $status_op);
-            $this->M_pimpinan->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
-            // $this->M_pimpinan->menambah_kembali('tb_genset', $id_genset, $stok_gd_new);
-            // $this->M_pimpinan->mengurangi_kembali('tb_genset', $id_genset, $stok_pj_new);
-            // $this->M_pimpinan->insert('tb_unit_masuk', $data);
+            $this->M_data->update_status('tb_unit_keluar', $id_u_keluar, $status);
+            $this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
+            $this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
+            $this->M_data->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
+            // $this->M_data->menambah_kembali('tb_genset', $id_genset, $stok_gd_new);
+            // $this->M_data->mengurangi_kembali('tb_genset', $id_genset, $stok_pj_new);
+            // $this->M_data->insert('tb_unit_masuk', $data);
             $this->session->set_flashdata('msg_sukses', 'Data Status diubah menjadi Masuk (Kembali)');
-            // $this->M_pimpinan->delete('tb_barang_masuk',$where);
+            // $this->M_data->delete('tb_barang_masuk',$where);
             redirect(site_url('pimpinan/tabel_unit_keluar'));
         } else {
             // $data['title'] = 'Update Genset Masuk';
-            $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Konfirmasi Genset Masuk';
             $this->load->view('pimpinan/form/update_unit_masuk', $data);
         }
@@ -531,8 +531,8 @@ class Pimpinan extends CI_Controller
 
     public function tabel_jdw_genset()
     {
-        $data['list_data'] = $this->M_pimpinan->get_data_u_keluar('tb_unit_keluar');
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_keluar');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Jadwal Penyewaan Genset';
         $this->load->view('pimpinan/tabel/tabel_jdw_genset', $data);
     }
@@ -549,18 +549,18 @@ class Pimpinan extends CI_Controller
         $bulan = $this->input->get('bulan');
         $tahun = $this->input->get('tahun');
         if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
-            $data['list_data'] = $this->M_pimpinan->select('tb_pengeluaran');
-            $data['total_data'] = $this->M_pimpinan->sum_pengeluaran('tb_pengeluaran');
+            $data['list_data'] = $this->M_data->select('tb_pengeluaran');
+            $data['total_data'] = $this->M_data->sum_pengeluaran('tb_pengeluaran');
             $label = 'Bulan ke ...' . ' Tahun ...';
         } else {
-            $data['list_data'] = $this->M_pimpinan->pengeluaran_periode('tb_pengeluaran', $bulan, $tahun);
-            $data['total_data'] = $this->M_pimpinan->sum_penngeluaranPeriode('tb_pengeluaran', $bulan, $tahun);
+            $data['list_data'] = $this->M_data->pengeluaran_periode('tb_pengeluaran', $bulan, $tahun);
+            $data['total_data'] = $this->M_data->sum_penngeluaranPeriode('tb_pengeluaran', $bulan, $tahun);
             $label = 'Bulan ke ' . $bulan . ' Tahun ' .  $tahun;
         }
         $data['label'] = $label;
 
-        // $data['list_data'] = $this->M_pimpinan->select('tb_pengeluaran');
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        // $data['list_data'] = $this->M_data->select('tb_pengeluaran');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Pengeluaran';
         $this->load->view('pimpinan/tabel/tabel_pengeluaran', $data);
     }
@@ -579,20 +579,20 @@ class Pimpinan extends CI_Controller
         // $bulan = date('m');
         // $tahun = date('Y');
         if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
-            $data['list_data'] = $this->M_pimpinan->get_data_pemasukan('tb_pendapatan');
-            $data['total_data'] = $this->M_pimpinan->sum_pemasukan('tb_pendapatan');
+            $data['list_data'] = $this->M_data->get_data_pemasukan('tb_pendapatan');
+            $data['total_data'] = $this->M_data->sum_pemasukan('tb_pendapatan');
             $label = 'Bulan ke ...' . ' Tahun ...';
         } else {
-            $data['list_data'] = $this->M_pimpinan->pemasukan_periode('tb_pendapatan', $bulan, $tahun);
-            $data['total_data'] = $this->M_pimpinan->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
+            $data['list_data'] = $this->M_data->pemasukan_periode('tb_pendapatan', $bulan, $tahun);
+            $data['total_data'] = $this->M_data->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
             $label = 'Bulan ke ' . $bulan . ' Tahun ' .  $tahun;
         }
-        // $data['list_data'] = $this->M_pimpinan->get_data_u_keluar('tb_unit_keluar');
-        // $data['list_data'] = $this->M_pimpinan->pemasukan_periode('tb_unit_keluar', $bulan, $tahun);
+        // $data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_keluar');
+        // $data['list_data'] = $this->M_data->pemasukan_periode('tb_unit_keluar', $bulan, $tahun);
 
-        // $data['total_data'] = $this->M_pimpinan->sum_pendapatan('tb_unit_keluar');
+        // $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_keluar');
         $data['label'] = $label;
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Pendapatan';
         $this->load->view('pimpinan/tabel/tabel_pemasukan', $data);
     }
@@ -605,7 +605,7 @@ class Pimpinan extends CI_Controller
 
     public function laporan()
     {
-        $data['avatar'] = $this->M_pimpinan->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Laporan';
         $this->load->view('pimpinan/report/laporan', $data);
     }
