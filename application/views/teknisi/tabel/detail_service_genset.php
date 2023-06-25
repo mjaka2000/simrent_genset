@@ -1,6 +1,6 @@
 <?php $this->load->view('template/head'); ?>
-<?php $this->load->view('pimpinan/template/nav'); ?>
-<?php $this->load->view('pimpinan/template/sidebar'); ?>
+<?php $this->load->view('teknisi/template/nav'); ?>
+<?php $this->load->view('teknisi/template/sidebar'); ?>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -12,8 +12,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= site_url('pimpinan'); ?>"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="<?= site_url('pimpinan/tabel_service_genset'); ?>">Perbaikan Genset</a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('teknisi'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('teknisi/tabel_service_genset'); ?>">Perbaikan Genset</a></li>
                         <li class="breadcrumb-item active">Detail Perbaikan Genset</li>
                     </ol>
                 </div><!-- /.col -->
@@ -43,7 +43,7 @@
                                 </div>
                             <?php } ?>
                             <?php foreach ($list_data as $d) : ?>
-                                <!-- <button onclick="window.location.href='<?= site_url('pimpinan/tambah_service_detail/' . $d->id_perbaikan_gst); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button> -->
+                                <button onclick="window.location.href='<?= site_url('teknisi/tambah_service_detail/' . $d->id_perbaikan_gst); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
                                 <a href="<?= site_url('report/cetak_service_detail/' . $d->id_perbaikan_gst); ?>" target="_blank" type="button" style="margin-bottom:10px;margin-left: 10px;" class="btn btn-sm btn-default" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a>
                                 <table class="table" style="width:35%">
                                     <tr>
@@ -110,7 +110,7 @@
                                     </tr>
                                     <tr>
                                         <th style="vertical-align: middle">Ket. Perbaikan</th>
-                                        <form action="<?= site_url('pimpinan/proses_update_ket_service'); ?>" method="post" role="form">
+                                        <form action="<?= site_url('teknisi/proses_update_ket_service'); ?>" method="post" role="form">
                                             <td style="vertical-align: middle;">
                                                 <div class="row">
                                                     <div class="col-lg-8">
@@ -175,7 +175,7 @@
                                                 <td><?= date('d-m-Y', strtotime($dt->tanggal)); ?></td>
                                                 <td><?= $dt->kendala; ?></td>
                                                 <td><?= $dt->status; ?></td>
-                                                <td><a href="<?= site_url('pimpinan/hapus_detail/' . $dt->id_detail_serv); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
+                                                <td><a href="<?= site_url('teknisi/hapus_detail/' . $dt->id_detail_serv); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
                                                 </td>
 
                                             </tr>
@@ -192,7 +192,7 @@
 </div>
 <?php $this->load->view('template/footer'); ?>
 
-<?php $this->load->view('pimpinan/template/script') ?>
+<?php $this->load->view('teknisi/template/script') ?>
 <script>
     //* Script untuk menampilkan loading
     document.onreadystatechange = function() {

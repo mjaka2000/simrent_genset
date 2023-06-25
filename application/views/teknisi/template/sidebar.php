@@ -58,25 +58,25 @@
                 </li> -->
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= site_url(); ?>teknisi/tabel_genset" class="nav-link">
                         <i class="fas fa-edit nav-icon"></i>
                         <p>Data Genset</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= site_url(); ?>teknisi/tabel_service_genset" class="nav-link">
                         <i class="fas fa-edit nav-icon"></i>
                         <p>Data Perbaikan Genset</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= site_url(); ?>teknisi/tabel_sparepart" class="nav-link">
                         <i class="fas fa-edit nav-icon"></i>
                         <p>Data Stok Sparepart</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= site_url(); ?>teknisi/" class="nav-link">
                         <i class="fas fa-clipboard nav-icon"></i>
                         <p>Laporan Data</p>
                     </a>

@@ -1,0 +1,101 @@
+<?php $this->load->view('template/head'); ?>
+<?php $this->load->view('teknisi/template/nav'); ?>
+<?php $this->load->view('teknisi/template/sidebar'); ?>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Data Perbaikan Genset</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="<?= site_url('teknisi'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('teknisi/tabel_service_genset'); ?>">Perbaikan Genset</a></li>
+                        <li class="breadcrumb-item active">Tambah Data </li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row tengah">
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header">
+                            Tambah Detail Perbaikan Genset
+                        </div>
+                        <div class="card-body">
+                            <?php if ($this->session->flashdata('msg_sukses')) { ?>
+                                <div class="alert alert-success alert-dismissable">
+                                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                                    <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
+                                </div>
+                            <?php } ?>
+                            <?php if (validation_errors()) { ?>
+                                <div class="alert alert-warning alert-dismissable">
+                                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                                    <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
+                                </div>
+                            <?php } ?>
+
+                            <?php foreach ($list_data as $det) { ?>
+                                <form action="<?= site_url('teknisi/proses_tambah_service_detail'); ?>" method="post" role="form">
+                                    <input type="hidden" name="id_perbaikan_gst" value="<?= $det->id_perbaikan_gst; ?>">
+                                    <div class="form-group">
+                                        <label for="pekerjaan" class="form-label">Pekerjaan</label>
+
+                                        <input type="text" name="pekerjaan" class="form-control" id="pekerjaan" placeholder="Pekerjaan" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Tanggal" class="form-label">Tanggal</label>
+
+                                        <input type="date" name="tanggal" class="form-control" id="tanggal" placeholder="Tanggal" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kendala" class="form-label">Kendala</label>
+
+                                        <input type="text" name="kendala" class="form-control" id="kendala" placeholder="Kendala" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status" class="form-label">Status</label>
+
+                                        <select name="status" class="form-control" id="status" required>
+                                            <option value="">-- Status --</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Selesai">Selesai</option>
+                                        </select>
+                                    </div>
+                                <?php } ?>
+                                <hr>
+                                <div class="form-group" align="center">
+                                    <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                    <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-eraser mr-2"></i>Reset</button>
+                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
+                                </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+</div>
+<?php $this->load->view('template/footer'); ?>
+
+<?php $this->load->view('teknisi/template/script') ?>
+
+
+
+
+</body>
+
+</html>
