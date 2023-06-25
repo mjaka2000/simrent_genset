@@ -65,18 +65,19 @@
                                         <label for="role" class="col-sm-3 col-form-label">Role</label>
                                         <div class="col-sm-9">
                                             <select name="role" id="" style="width: 50%;" class="form-control">
+                                                <option value="" selected="" disabled>--Pilih Role User--</option>
                                                 <?php if ($d->role == 0) { ?>
                                                     <option value="0" selected="">User Admin</option>
                                                     <option value="1">User Pimpinan</option>
                                                     <option value="2">User Teknisi</option>
                                                 <?php } elseif ($d->role == 1) { ?>
-                                                    <option value="1" selected="">User Pimpinan</option>
                                                     <option value="0">User Admin</option>
+                                                    <option value="1" selected="">User Pimpinan</option>
                                                     <option value="2">User Teknisi</option>
                                                 <?php } else { ?>
-                                                    <option value="2" selected="">User Teknisi</option>
                                                     <option value="0">User Admin</option>
                                                     <option value="1">User Pimpinan</option>
+                                                    <option value="2" selected="">User Teknisi</option>
                                                 <?php } ?> ?>
                                             </select>
                                         </div>
