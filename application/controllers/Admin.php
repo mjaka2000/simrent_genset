@@ -1677,7 +1677,7 @@ class Admin extends CI_Controller
 	}
 
 	####################################
-	//* Data Jadwal Penyewaan Genset
+	//* End Data Jadwal Penyewaan Genset
 	####################################
 	####################################
 	//* Pemasukan

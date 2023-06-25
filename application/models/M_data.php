@@ -32,15 +32,15 @@ class M_data extends CI_Model
 
 
   ####################################
-  //! Old Query 
+  //! Old query but still use
   ####################################
 
 
-  public function get_data($tabel, $id_transaksi)
+  public function get_data($tabel, $where)
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->where($id_transaksi)
+      ->where($where)
       ->get();
     return $query->result();
   }
@@ -85,7 +85,7 @@ class M_data extends CI_Model
   public function update_status_aju($tabel, $where, $status_a)
   {
     $this->db->set("status_ajuan", $status_a);
-    $this->db->where("id_transaksi", $where);
+    $this->db->where($where);
     $this->db->update($tabel);
   }
 
@@ -128,7 +128,7 @@ class M_data extends CI_Model
 
   //! Batas Query User
 
-  public function get_avatar($tabel, $username) //*Query User
+  public function get_avatar($tabel, $username) //* Query User
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -137,7 +137,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function update_avatar($where, $data) //*Query Avatar User
+  public function update_avatar($where, $data) //* Query Avatar User
   {
     $this->db->set($data);
     $this->db->where($where);
