@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jun 2023 pada 04.01
+-- Waktu pembuatan: 25 Jun 2023 pada 13.38
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -33,7 +33,7 @@ CREATE TABLE `tb_detail_serv` (
   `pekerjaan` varchar(255) NOT NULL,
   `tanggal` date NOT NULL,
   `kendala` varchar(255) NOT NULL,
-  `status` enum('Pending','Selesai') NOT NULL
+  `status` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -41,11 +41,11 @@ CREATE TABLE `tb_detail_serv` (
 --
 
 INSERT INTO `tb_detail_serv` (`id_detail_serv`, `id_perbaikan_gst`, `pekerjaan`, `tanggal`, `kendala`, `status`) VALUES
-(1, 2, 'Pemasangan filter', '2023-06-15', 'baut lepas', 'Pending'),
-(3, 2, 'bongkar mesin', '2023-06-16', '-', 'Selesai'),
-(5, 18, 'Bongkar Fuel pump', '2023-06-15', 'Filter kotor', 'Selesai'),
-(6, 18, 'bersihkan pump', '2023-06-15', '-', 'Selesai'),
-(7, 19, 'Penggantian oli mesin', '2023-06-16', '-', 'Selesai');
+(1, 2, 'Pemasangan filter', '2023-06-15', 'baut lepas', 0),
+(3, 2, 'bongkar mesin', '2023-06-16', '-', 1),
+(5, 18, 'Bongkar Fuel pump', '2023-06-15', 'Filter kotor', 0),
+(6, 18, 'bersihkan pump', '2023-06-15', '-', 1),
+(7, 19, 'Penggantian oli mesin', '2023-06-16', '-', 0);
 
 -- --------------------------------------------------------
 
@@ -234,7 +234,7 @@ CREATE TABLE `tb_serv_genset` (
   `id_sparepart` int(11) DEFAULT NULL,
   `jenis_perbaikan` varchar(255) NOT NULL,
   `tgl_perbaikan` date NOT NULL,
-  `ket_perbaikan` varchar(255) NOT NULL,
+  `ket_perbaikan` tinyint(4) NOT NULL,
   `biaya_perbaikan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -243,10 +243,10 @@ CREATE TABLE `tb_serv_genset` (
 --
 
 INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `jenis_perbaikan`, `tgl_perbaikan`, `ket_perbaikan`, `biaya_perbaikan`) VALUES
-(1, 2, 1, 'ganti filter solar', '2023-04-12', 'Selesai Diperbaiki', '0'),
-(2, 3, 2, 'Ganti Oli', '2023-04-14', 'Selesai Diperbaiki', '250000'),
-(18, 4, 4, 'GantiFuel pump', '2023-06-14', 'Masih Terkendala', '150000'),
-(19, 4, 1, 'cek oli', '2023-06-16', 'Selesai Diperbaiki', '0');
+(1, 2, 1, 'ganti filter solar', '2023-04-12', 0, '0'),
+(2, 3, 2, 'Ganti Oli', '2023-04-14', 1, '250000'),
+(18, 4, 4, 'GantiFuel pump', '2023-06-14', 1, '150000'),
+(19, 4, 1, 'cek oli', '2023-06-16', 1, '0');
 
 -- --------------------------------------------------------
 
@@ -357,9 +357,9 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '25-06-2023 9:17'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '25-06-2023 9:12'),
-(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '25-06-2023 9:27'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '25-06-2023 19:12'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '25-06-2023 19:08'),
+(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '25-06-2023 19:09'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26');
 
 --
@@ -509,7 +509,7 @@ ALTER TABLE `tb_pengeluaran`
 -- AUTO_INCREMENT untuk tabel `tb_serv_genset`
 --
 ALTER TABLE `tb_serv_genset`
-  MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_sparepart`
