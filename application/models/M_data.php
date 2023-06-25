@@ -193,6 +193,7 @@ class M_data extends CI_Model
       ->from($tabel)
       ->join('tb_genset', 'tb_genset.id_genset = tb_serv_genset.id_genset')
       ->join('tb_sparepart', 'tb_sparepart.id_sparepart = tb_serv_genset.id_sparepart')
+      ->order_by('id_perbaikan_gst', 'asc')
       ->get();
     return $query->result();
   }
