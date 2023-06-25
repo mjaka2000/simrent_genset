@@ -70,8 +70,8 @@
 
                                         <select name="status" class="form-control" id="status" required>
                                             <option value="">-- Status --</option>
-                                            <option value="Pending">Pending</option>
-                                            <option value="Selesai">Selesai</option>
+                                            <option value="0">Pending</option>
+                                            <option value="1">Selesai</option>
                                         </select>
                                     </div>
                                 <?php } ?>

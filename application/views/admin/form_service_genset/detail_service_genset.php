@@ -118,12 +118,12 @@
                                                             <input type="hidden" name="id_perbaikan_gst" value="<?= $d->id_perbaikan_gst; ?>">
                                                             :&nbsp;<span><select name="ket_perbaikan" class="form-control" id="ket_perbaikan">
                                                                     <option value="">-- Status --</option>
-                                                                    <?php if ($d->ket_perbaikan == "Selesai Diperbaiki") { ?>
-                                                                        <option value="Selesai Diperbaiki" selected>Selesai Diperbaiki</option>
-                                                                        <option value="Masih Terkendala">Masih Terkendala</option>
+                                                                    <?php if ($d->ket_perbaikan == "1") { ?>
+                                                                        <option value="1" selected>Selesai Diperbaiki</option>
+                                                                        <option value="0">Masih Terkendala</option>
                                                                     <?php } else { ?>
-                                                                        <option value="Selesai Diperbaiki">Selesai Diperbaiki</option>
-                                                                        <option value="Masih Terkendala" selected>Masih Terkendala</option>
+                                                                        <option value="1">Selesai Diperbaiki</option>
+                                                                        <option value="0" selected>Masih Terkendala</option>
                                                                     <?php } ?>
 
                                                                 </select>
@@ -174,7 +174,11 @@
                                                 <td><?= $dt->pekerjaan; ?></td>
                                                 <td><?= date('d-m-Y', strtotime($dt->tanggal)); ?></td>
                                                 <td><?= $dt->kendala; ?></td>
-                                                <td><?= $dt->status; ?></td>
+                                                <?php if ($dt->status == "1") { ?>
+                                                    <td>Selesai</td>
+                                                <?php } else { ?>
+                                                    <td>Pending</td>
+                                                <?php } ?>
                                                 <td><a href="<?= site_url('admin/hapus_detail/' . $dt->id_detail_serv); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
                                                 </td>
 

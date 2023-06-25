@@ -102,14 +102,12 @@
 
                                         <select name="ket_perbaikan" class="form-control" id="ket_perbaikan" required>
                                             <option value="">-- Status --</option>
-                                            <?php foreach ($list_data as $k) { ?>
-                                                <?php if ($k->ket_perbaikan == "Selesai Diperbaiki") { ?>
-                                                    <option value="Selesai Diperbaiki" selected>Selesai Diperbaiki</option>
-                                                    <option value="Masih Terkendala">Masih Terkendala</option>
-                                                <?php } else { ?>
-                                                    <option value="Selesai Diperbaiki">Selesai Diperbaiki</option>
-                                                    <option value="Masih Terkendala" selected>Masih Terkendala</option>
-                                                <?php } ?>
+                                            <?php if ($ld->ket_perbaikan == "1") { ?>
+                                                <option value="1" selected>Selesai Diperbaiki</option>
+                                                <option value="0">Masih Terkendala</option>
+                                            <?php } else { ?>
+                                                <option value="1">Selesai Diperbaiki</option>
+                                                <option value="0" selected>Masih Terkendala</option>
                                             <?php } ?>
                                         </select>
                                     </div>
