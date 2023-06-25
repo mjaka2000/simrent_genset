@@ -70,7 +70,7 @@
                                                 <td><?= $dt->jenis_perbaikan; ?></td>
                                                 <td><?= $dt->nama_sparepart; ?></td>
                                                 <td><?= date('d-m-Y', strtotime($dt->tgl_perbaikan)); ?></td>
-                                                <?php if ($dt->ket_perbaikan == "Selesai Diperbaiki") { ?>
+                                                <?php if ($dt->ket_perbaikan == "1") { ?>
                                                     <td><a href="#" type="button" class="btn btn-xs btn-success">Selesai Diperbaiki</a></td>
                                                 <?php } else { ?>
                                                     <td><a href="#" type="button" class="btn btn-xs btn-danger">Masih Terkendala</a></td>
