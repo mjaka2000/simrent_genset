@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Jun 2023 pada 07.54
+-- Waktu pembuatan: 25 Jun 2023 pada 04.01
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -42,7 +42,10 @@ CREATE TABLE `tb_detail_serv` (
 
 INSERT INTO `tb_detail_serv` (`id_detail_serv`, `id_perbaikan_gst`, `pekerjaan`, `tanggal`, `kendala`, `status`) VALUES
 (1, 2, 'Pemasangan filter', '2023-06-15', 'baut lepas', 'Pending'),
-(3, 2, 'bongkar mesin', '2023-06-16', '-', 'Selesai');
+(3, 2, 'bongkar mesin', '2023-06-16', '-', 'Selesai'),
+(5, 18, 'Bongkar Fuel pump', '2023-06-15', 'Filter kotor', 'Selesai'),
+(6, 18, 'bersihkan pump', '2023-06-15', '-', 'Selesai'),
+(7, 19, 'Penggantian oli mesin', '2023-06-16', '-', 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -240,8 +243,10 @@ CREATE TABLE `tb_serv_genset` (
 --
 
 INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `jenis_perbaikan`, `tgl_perbaikan`, `ket_perbaikan`, `biaya_perbaikan`) VALUES
-(1, 2, 1, 'ganti filter solar', '2023-04-12', 'Masih Terkendala', '0'),
-(2, 3, 2, 'Ganti Oli', '2023-04-14', 'Selesai Diperbaiki', '250000');
+(1, 2, 1, 'ganti filter solar', '2023-04-12', 'Selesai Diperbaiki', '0'),
+(2, 3, 2, 'Ganti Oli', '2023-04-14', 'Selesai Diperbaiki', '250000'),
+(18, 4, 4, 'GantiFuel pump', '2023-06-14', 'Masih Terkendala', '150000'),
+(19, 4, 1, 'cek oli', '2023-06-16', 'Selesai Diperbaiki', '0');
 
 -- --------------------------------------------------------
 
@@ -262,8 +267,10 @@ CREATE TABLE `tb_sparepart` (
 --
 
 INSERT INTO `tb_sparepart` (`id_sparepart`, `nama_sparepart`, `tanggal_beli`, `tempat_beli`, `stok`) VALUES
-(1, 'Filter Oli Donaldson', '2023-03-14', 'Multi Filter', '3'),
-(2, 'oli sx', '2023-03-16', 'Bengkel Yuno', '4');
+(1, 'Filter Oli Donaldson', '2023-03-14', 'Multi Filter', '2'),
+(2, 'oli sx', '2023-03-16', 'Bengkel Yuno', '4'),
+(4, 'Fuel Pump Denyo', '2023-06-12', 'Anugerah Jaya', '3'),
+(5, 'ring piston', '2023-06-19', 'Bintang Mulia', '4');
 
 -- --------------------------------------------------------
 
@@ -350,9 +357,9 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '24-06-2023 11:31'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '24-06-2023 13:52'),
-(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '22-06-2023 19:26'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '25-06-2023 9:17'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '25-06-2023 9:12'),
+(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '25-06-2023 9:27'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26');
 
 --
@@ -454,7 +461,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT untuk tabel `tb_detail_serv`
 --
 ALTER TABLE `tb_detail_serv`
-  MODIFY `id_detail_serv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_detail_serv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_genset`
@@ -502,13 +509,13 @@ ALTER TABLE `tb_pengeluaran`
 -- AUTO_INCREMENT untuk tabel `tb_serv_genset`
 --
 ALTER TABLE `tb_serv_genset`
-  MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_sparepart`
 --
 ALTER TABLE `tb_sparepart`
-  MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_unit_keluar`
