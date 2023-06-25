@@ -76,7 +76,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= site_url(); ?>teknisi/" class="nav-link">
+                    <a href="<?= site_url(); ?>teknisi/laporan" class="nav-link">
                         <i class="fas fa-clipboard nav-icon"></i>
                         <p>Laporan Data</p>
                     </a>

@@ -514,4 +514,18 @@ class Teknisi extends CI_Controller
     ####################################
     //* End Data Sparepart 
     ####################################
+    ####################################
+    //* Laporan
+    ####################################
+
+    public function laporan()
+    {
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Laporan';
+        $this->load->view('teknisi/report/laporan', $data);
+    }
+
+    ####################################
+    //* End Laporan
+    ####################################
 }
