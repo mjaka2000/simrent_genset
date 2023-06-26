@@ -70,14 +70,22 @@
                                                     <option value="0" selected="">User Admin</option>
                                                     <option value="1">User Pimpinan</option>
                                                     <option value="2">User Teknisi</option>
+                                                    <option value="3">User Penyewa</option>
                                                 <?php } elseif ($d->role == 1) { ?>
                                                     <option value="0">User Admin</option>
                                                     <option value="1" selected="">User Pimpinan</option>
                                                     <option value="2">User Teknisi</option>
-                                                <?php } else { ?>
+                                                    <option value="3">User Penyewa</option>
+                                                <?php } elseif ($d->role == 2) { ?>
                                                     <option value="0">User Admin</option>
                                                     <option value="1">User Pimpinan</option>
                                                     <option value="2" selected="">User Teknisi</option>
+                                                    <option value="3">User Penyewa</option>
+                                                <?php } else { ?>
+                                                    <option value="0">User Admin</option>
+                                                    <option value="1">User Pimpinan</option>
+                                                    <option value="2">User Teknisi</option>
+                                                    <option value="3" selected="">User Penyewa</option>
                                                 <?php } ?> ?>
                                             </select>
                                         </div>

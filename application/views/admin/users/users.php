@@ -67,8 +67,10 @@
                                                     <td>User Admin</td>
                                                 <?php } elseif ($u->role == 1) { ?>
                                                     <td>User Pimpinan</td>
-                                                <?php } else { ?>
+                                                <?php } elseif ($u->role == 2) { ?>
                                                     <td>User Teknisi</td>
+                                                <?php } else { ?>
+                                                    <td>User Penyewa</td>
                                                 <?php } ?>
                                                 <td><?= $u->last_login ?></td>
                                                 <td><a href="<?= site_url('admin/edit_user/' . $u->id_user); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a>
