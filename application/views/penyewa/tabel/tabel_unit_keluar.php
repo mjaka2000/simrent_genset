@@ -41,7 +41,7 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <!-- <button onclick="window.location.href='<?= site_url('penyewa/tambah_unit_keluar'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button> -->
+                            <button onclick="window.location.href='<?= site_url('penyewa/tambah_unit_keluar'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
@@ -83,8 +83,7 @@
 
                                             <?php if ($dt->status == 1) { ?>
                                                 <td>
-                                                    <a href="<?= site_url('penyewa/unit_keluar_update/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs bg-fuchsia btn-unitpanjang" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a><br>
-                                                    <a href="<?= site_url('penyewa/unit_masuk/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs btn-danger btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a>
+                                                    <a href="#" type="button" class="btn btn-xs bg-fuchsia" name="btn_barangmasuk"><i class="fa fa-info mr-2"></i>Genset Masih Digunakan</a>
                                                 </td>
                                             <?php } else { ?>
                                                 <td>Genset Masuk (Kembali)</td>
@@ -100,11 +99,7 @@
                                 </tbody>
                             </table>
                             <div class="box-footer">
-                                <?php foreach ($total_data as $td) : ?>
-                                    <h5>
-                                        <p style="color: red;">Total Pendapatan: Rp&nbsp;<?= number_format($td->total); ?></p>
-                                    </h5>
-                                <?php endforeach; ?>
+
                                 <!-- <h5><strong>Keterangan :</strong></h5> -->
                                 <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
                                 <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash "></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->

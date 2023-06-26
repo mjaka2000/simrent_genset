@@ -70,6 +70,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?= site_url(); ?>penyewa/tabel_unit_keluar" class="nav-link">
+                        <i class="far fa-edit nav-icon"></i>
+                        <p>Data Penyewaan Genset</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?= site_url(); ?>penyewa/laporan" class="nav-link">
                         <i class="fas fa-clipboard nav-icon"></i>
                         <p>Laporan Data</p>

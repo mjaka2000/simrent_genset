@@ -28,8 +28,8 @@
         </div>
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <div class="row">
-                <div class="col-12">
+            <div class="row tengah">
+                <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
                             Data Pelanggan
@@ -45,7 +45,7 @@
                             <?php foreach ($list_pelanggan as $d) : ?>
                                 <button onclick="window.location.href='<?= site_url('penyewa/update_data_pelanggan/' . $d->id_pelanggan); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-edit mr-2" aria-hidden="true"></i>Ubah Data</button>&nbsp;
 
-                                <table class="table" style="width:35%">
+                                <table class="table" style="width:80%">
                                     <tr>
                                         <th style="vertical-align: middle">Nama</th>
                                         <td style="vertical-align: middle;">
