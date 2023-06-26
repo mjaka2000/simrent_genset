@@ -66,10 +66,11 @@ class Login extends CI_Controller
 						redirect(site_url('admin'));
 					} elseif ($isi->role == 1) {
 						redirect(site_url('pimpinan'));
-					} else {
+					} elseif ($isi->role == 2) {
 						redirect(site_url('teknisi'));
+					} else {
+						redirect(site_url('penyewa'));
 					}
-				} else {
 					$this->session->set_flashdata('msg', 'Username Dan Password Salah');
 					redirect(site_url());
 				}

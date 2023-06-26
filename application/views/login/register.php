@@ -29,6 +29,12 @@
                     <!-- <p class="login-box-msg">Login Untuk Memulai Sesi</p> -->
                     <hr>
                     <form action="<?= site_url('register/proses_register'); ?>" class="login" method="post">
+                        <?php if ($this->session->flashdata('msg_daftar')) { ?>
+                            <div class="alert alert-success alert-dismissable">
+                                <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                                <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_daftar'); ?>
+                            </div>
+                        <?php } ?>
                         <?php if ($this->session->flashdata('msg')) { ?>
                             <div class="alert alert-warning alert-dismissible">
                                 <button class="close" data-dismiss="alert" aria-label="close">&times;</button>

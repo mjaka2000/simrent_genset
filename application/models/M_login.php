@@ -55,7 +55,12 @@ class M_login extends CI_Model
     ####################################
     //* New Query
     ####################################
-
-
-
+    public function get_id_user($tabel, $nama)
+    {
+        $query = $this->db->select('id_user')
+            ->from($tabel)
+            ->where('nama', $nama)
+            ->get()->row();
+        return $query->result();
+    }
 }
