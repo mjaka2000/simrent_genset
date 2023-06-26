@@ -307,5 +307,19 @@ class Penyewa extends CI_Controller
     ####################################
     //* End Data Unit Keluar 
     ####################################
+    ####################################
+    //* Laporan
+    ####################################
+
+    public function laporan()
+    {
+        $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Laporan';
+        $this->load->view('penyewa/report/laporan', $data);
+    }
+
+    ####################################
+    //* End Laporan
+    ####################################
 
 }
