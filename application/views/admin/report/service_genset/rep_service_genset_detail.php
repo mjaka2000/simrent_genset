@@ -94,7 +94,11 @@
                                 <div class="row">
                                     <div class="col-lg-8">
                                         <div class="row">
-                                            :&nbsp;<?= $d->ket_perbaikan; ?>
+                                            :&nbsp;<?php if ($d->ket_perbaikan == "1") { ?>
+                                            Selesai Diperbaiki
+                                        <?php } else { ?>
+                                            Masih Terkendala
+                                        <?php } ?>
                                         </div>
 
                                     </div>

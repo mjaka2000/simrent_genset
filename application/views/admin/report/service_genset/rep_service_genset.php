@@ -49,7 +49,11 @@
                             <td><?= $dt->jenis_perbaikan; ?></td>
                             <td><?= $dt->nama_sparepart; ?></td>
                             <td><?= date('d-m-Y', strtotime($dt->tgl_perbaikan)); ?></td>
-                            <td><?= $dt->ket_perbaikan; ?></td>
+                            <?php if ($dt->ket_perbaikan == "1") { ?>
+                                <td>Selesai Diperbaiki</td>
+                            <?php } else { ?>
+                                <td>Masih Terkendala</td>
+                            <?php } ?>
                             <td>Rp <?= number_format($dt->biaya_perbaikan); ?></td>
                         </tr>
                     <?php endforeach; ?>
