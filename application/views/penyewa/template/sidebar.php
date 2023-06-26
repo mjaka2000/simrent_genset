@@ -26,13 +26,13 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-header">MAIN NAVIGATION</li>
                 <li class="nav-item">
-                    <a href="<?= base_url('teknisi') ?>" class="nav-link">
+                    <a href="<?= site_url('penyewa') ?>" class="nav-link">
                         <i class="nav-icon fa fa-home"></i>
                         <p>Dashboard</p>
                     </a>
 
                 </li>
-                <li class="nav-item ">
+                <!-- <li class="nav-item ">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-list-alt"></i>
                         <p>
@@ -55,28 +55,49 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
 
-                <!-- <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item">
+                    <a href="<?= site_url(); ?>penyewa/tabel_genset" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Data Genset</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= site_url(); ?>penyewa/tabel_pelanggan" class="nav-link">
+                        <i class="far fa-edit nav-icon"></i>
+                        <p>Data Pelanggan</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= site_url(); ?>penyewa/laporan" class="nav-link">
                         <i class="fas fa-clipboard nav-icon"></i>
                         <p>Laporan Data</p>
                     </a>
-                </li> -->
+                </li>
                 <!-- <li class="nav-header">LAPORAN DATA</li> -->
                 <li class="nav-header">PENGATURAN</li>
                 <li class="nav-item ">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
-                            Profile
+                            Menu User
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
 
+                        <li class="nav-item">
+                            <a href="<?= site_url(); ?>penyewa/profile" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Profile</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= base_url(''); ?>teknisi/logout" class="nav-link">
+                    <a href="<?= base_url(''); ?>penyewa/logout" class="nav-link">
                         <i class="fas fa-sign-out-alt nav-icon"></i>
                         <p>Logout</p>
                     </a>

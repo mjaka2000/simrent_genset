@@ -27,7 +27,7 @@
             <img src="<?= base_url(); ?>assets/style/loading.gif" alt="loading" width="50%">
         </div>
         <div class="container-fluid">
-            <h2 align="center">Selamat Datang, <strong><?= $this->session->userdata('name') ?></strong> sebagai Penyewa!</h2>
+            <h2 align="center">Selamat Datang, <strong><?= $this->session->userdata('nama') ?></strong> sebagai Penyewa!</h2>
             <div class="row">
                 <div class="card-body bg-info">
                     <div class="inner">
@@ -36,7 +36,19 @@
                     <div class="icon">
                     </div>
                 </div>
-                <!-- /.col-md-6 -->
+                <!-- <div class="col-lg-3 col-xs-6">
+                    <?php foreach ($edit_data as $ed) { ?>
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <p>Profil</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-wrench"></i>
+                            </div>
+                            <a href="<?= site_url('penyewa/tabel_data_pelanggan/' . $ed->id_pelanggan); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    <?php } ?>
+                </div> -->
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
