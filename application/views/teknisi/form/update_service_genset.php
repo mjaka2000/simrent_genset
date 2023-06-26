@@ -100,14 +100,14 @@
                                     <div class="form-group">
                                         <label for="ket_perbaikan" class="form-label">Keterangan Perbaikan</label>
 
-                                        <select name="ket_perbaikan" class="form-control" id="ket_perbaikan" required>
+                                        <select name="ket_perbaikan" class="form-control" id="ket_perbaikan">
                                             <option value="">-- Status --</option>
-                                            <?php if ($ld->ket_perbaikan == "1") { ?>
-                                                <option value="1" selected>Selesai Diperbaiki</option>
-                                                <option value="0">Masih Terkendala</option>
-                                            <?php } else { ?>
-                                                <option value="1">Selesai Diperbaiki</option>
+                                            <?php if ($ld->ket_perbaikan == "0") { ?>
                                                 <option value="0" selected>Masih Terkendala</option>
+                                                <option value="1" disabled>Selesai Diperbaiki</option>
+                                            <?php } else { ?>
+                                                <option value="0">Masih Terkendala</option>
+                                                <option value="1" disabled selected>Selesai Diperbaiki</option>
                                             <?php } ?>
                                         </select>
                                     </div>

@@ -115,20 +115,11 @@
                                                 <div class="row">
                                                     <div class="col-lg-8">
                                                         <div class="row">
-                                                            <input type="hidden" name="id_perbaikan_gst" value="<?= $d->id_perbaikan_gst; ?>">
-                                                            :&nbsp;<span><select name="ket_perbaikan" class="form-control" id="ket_perbaikan">
-                                                                    <option value="">-- Status --</option>
-                                                                    <?php if ($d->ket_perbaikan == "1") { ?>
-                                                                        <option value="1" selected>Selesai Diperbaiki</option>
-                                                                        <option value="0">Masih Terkendala</option>
-                                                                    <?php } else { ?>
-                                                                        <option value="1">Selesai Diperbaiki</option>
-                                                                        <option value="0" selected>Masih Terkendala</option>
-                                                                    <?php } ?>
-
-                                                                </select>
-                                                                <span><button type="submit" class="btn btn-xs btn-success"><i class="fa fa-check mr-2"></i>Update</button></span>
-                                                            </span>
+                                                            :&nbsp;<?php if ($d->ket_perbaikan == "1") { ?>
+                                                            <a href="#" type="button" class="btn btn-xs btn-success">Selesai Diperbaiki</a>
+                                                        <?php } else { ?>
+                                                            <a href="#" type="button" class="btn btn-xs btn-danger">Masih Terkendala</a>
+                                                        <?php } ?>
                                                         </div>
 
                                                     </div>

@@ -93,8 +93,8 @@
 
                                     <select name="ket_perbaikan" class="form-control" id="ket_perbaikan" required>
                                         <option value="">-- Status --</option>
-                                        <option value="1">Selesai Diperbaiki</option>
                                         <option value="0">Masih Terkendala</option>
+                                        <option value="1">Selesai Diperbaiki</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
