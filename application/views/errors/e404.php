@@ -14,7 +14,7 @@
 
             <div class="error-content">
                 <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
-                <p>🙏Maaf, halaman yang anda cari tidak ditemukan. Silahkan <a href="#" onclick="history.back(-1)">kembali</a> ke halaman sebelumnya. 🙏</p>
+                <p>🙏Maaf, halaman yang anda cari tidak ditemukan. Silahkan <button class="btn btn-link" type="button" onclick="history.back(-1)">kembali</button> ke halaman sebelumnya. 🙏</p>
             </div>
             <!-- /.error-content -->
         </div>
