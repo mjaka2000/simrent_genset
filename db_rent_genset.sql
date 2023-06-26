@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jun 2023 pada 13.38
+-- Waktu pembuatan: 26 Jun 2023 pada 05.56
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -142,16 +142,17 @@ CREATE TABLE `tb_pelanggan` (
   `namaperusahaan_plg` varchar(50) NOT NULL,
   `tglupdate_plg` date NOT NULL,
   `status_plg` int(10) DEFAULT NULL,
-  `ket_plg` int(11) DEFAULT 1
+  `ket_plg` int(11) DEFAULT 1,
+  `id_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data untuk tabel `tb_pelanggan`
 --
 
-INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`) VALUES
-(4, 'anonim', 'Jl. Sunga Andai', '0895619213134', 'Laki-Laki', 'PT Rahmat', '2023-04-11', 0, 1),
-(5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 0, 1);
+INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`, `id_user`) VALUES
+(4, 'anonim', 'Jl. Sunga Andai', '0895619213134', 'Laki-Laki', 'PT Rahmat', '2023-04-11', 0, 1, 0),
+(5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -357,10 +358,11 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '25-06-2023 19:12'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '26-06-2023 7:58'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '25-06-2023 19:08'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '25-06-2023 19:09'),
-(34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26');
+(34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
+(36, 'wanda123', 'Wanda', '$2y$10$e1/hFaDbfwOM0NFkDeckJ.6sxhWsJi9pOkHzAN6LBwNieTkv3L0Zy', 3, 'nopic.png', '26-06-2023 11:49');
 
 --
 -- Indexes for dumped tables
@@ -395,7 +397,8 @@ ALTER TABLE `tb_operator`
 -- Indeks untuk tabel `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
-  ADD PRIMARY KEY (`id_pelanggan`);
+  ADD PRIMARY KEY (`id_pelanggan`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indeks untuk tabel `tb_pelanggan_blacklist`
@@ -533,7 +536,7 @@ ALTER TABLE `tb_unit_masuk`
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
