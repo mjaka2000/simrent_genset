@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Jun 2023 pada 08.27
+-- Waktu pembuatan: 26 Jun 2023 pada 12.36
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -286,7 +286,7 @@ CREATE TABLE `tb_unit_keluar` (
   `tanggal_keluar` date NOT NULL,
   `tanggal_masuk` date NOT NULL,
   `lokasi` varchar(50) NOT NULL,
-  `id_operator` int(11) NOT NULL,
+  `id_operator` int(11) DEFAULT NULL,
   `id_pelanggan` int(11) NOT NULL,
   `id_genset` int(11) NOT NULL,
   `id_mobil` int(11) DEFAULT NULL,
@@ -363,7 +363,7 @@ INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '25-06-2023 19:08'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '25-06-2023 19:09'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
-(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '26-06-2023 13:22');
+(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '26-06-2023 17:45');
 
 --
 -- Indexes for dumped tables
