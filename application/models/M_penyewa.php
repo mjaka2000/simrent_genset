@@ -66,6 +66,12 @@ class M_penyewa extends CI_Model
         $this->db->update('tb_user');
     }
 
+    public function update_password($tabel, $where, $data)
+    {
+        $this->db->where($where);
+        $this->db->update($tabel, $data);
+    }
+
     public function get_user($tabel)
     {
         $query = $this->db->select()
