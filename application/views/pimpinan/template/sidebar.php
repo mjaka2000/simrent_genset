@@ -16,7 +16,7 @@
                 <?php } ?>
             </div>
             <div class="info">
-                <a href="#" class="d-block"><strong><?= $this->session->userdata('name') ?></strong></a>
+                <a href="#" class="d-block"><strong><?= $this->session->userdata('nama') ?></strong></a>
             </div>
         </div>
         <!-- Sidebar Menu -->

@@ -20,7 +20,7 @@
                 <?php foreach ($avatar as $a) { ?>
                     <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="user-image img-circle elevation-2" alt="User Image">
                 <?php } ?>
-                <span class="hidden-xs" style="color: white;"><?= $this->session->userdata('name') ?></span>
+                <span class="hidden-xs" style="color: white;"><?= $this->session->userdata('nama') ?></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
@@ -30,7 +30,7 @@
                     <?php } ?>
 
                     <p>
-                        <strong><?= $this->session->userdata('name') ?></strong> - Administrator <br>
+                        <strong><?= $this->session->userdata('nama') ?></strong> - Administrator <br>
                         <small>Last Login : <?= $this->session->userdata('last_login') ?></small><br>
                     </p>
                 </li>
