@@ -27,7 +27,7 @@
             <img src="<?= base_url(); ?>assets/style/loading.gif" alt="loading" width="50%">
         </div>
         <div class="container-fluid">
-            <h2 align="center">Selamat Datang, <strong><?= $this->session->userdata('name') ?></strong> sebagai Teknisi!</h2>
+            <h2 align="center">Selamat Datang, <strong><?= $this->session->userdata('nama') ?></strong> sebagai Teknisi!</h2>
             <div class="row">
                 <div class="card-body bg-info">
                     <div class="inner">

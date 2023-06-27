@@ -39,7 +39,7 @@
                                         <img src="<?= base_url('assets/upload/user/' . $a->nama_file); ?>" class="profile-user-img img-fluid img-circle" alt="User Image">
                                     <?php } ?>
                                     </div>
-                                    <strong><?= $this->session->userdata('name') ?></strong> sebagai Teknisi
+                                    <strong><?= $this->session->userdata('nama') ?></strong> sebagai Teknisi
                                     <br><small>Last Login : <?= $this->session->userdata('last_login') ?></small>
                             </div>
                             <?php if ($this->session->flashdata('msg_gambar_sukses')) { ?>

@@ -28,7 +28,7 @@
         </div>
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <h2 align="center">Selamat Datang, <strong><?= $this->session->userdata('name') ?></strong> sebagai Teknisi!</h2>
+            <h2 align="center">Selamat Datang, <strong><?= $this->session->userdata('nama') ?></strong> sebagai Teknisi!</h2>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
