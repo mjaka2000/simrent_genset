@@ -9,7 +9,7 @@ class Penyewa extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_penyewa');
-        if ($this->session->userdata('status') != 'login') {
+        if ($this->session->userdata('role') != '3') {
             redirect(site_url("login"));
         }
     }
