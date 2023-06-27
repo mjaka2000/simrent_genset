@@ -47,33 +47,33 @@ class M_data extends CI_Model
 
 
 
-  public function mengurangi($tabel, $id_genset, $stok_gd_new)
-  {
-    $this->db->set("stok_gd", $stok_gd_new);
-    $this->db->where('id_genset', $id_genset);
-    $this->db->update($tabel);
-  }
+  // public function mengurangi($tabel, $id_genset, $stok_gd_new)
+  // {
+  //   $this->db->set("stok_gd", $stok_gd_new);
+  //   $this->db->where('id_genset', $id_genset);
+  //   $this->db->update($tabel);
+  // }
 
-  public function mengurangi_kembali($tabel, $id_genset, $stok_pj_new)
-  {
-    $this->db->set("stok_pj", $stok_pj_new);
-    $this->db->where('id_genset', $id_genset);
-    $this->db->update($tabel);
-  }
+  // public function mengurangi_kembali($tabel, $id_genset, $stok_pj_new)
+  // {
+  //   $this->db->set("stok_pj", $stok_pj_new);
+  //   $this->db->where('id_genset', $id_genset);
+  //   $this->db->update($tabel);
+  // }
 
-  public function menambah($tabel, $id_genset, $stok_pj_new)
-  {
-    $this->db->set("stok_pj", $stok_pj_new);
-    $this->db->where('id_genset', $id_genset);
-    $this->db->update($tabel);
-  }
+  // public function menambah($tabel, $id_genset, $stok_pj_new)
+  // {
+  //   $this->db->set("stok_pj", $stok_pj_new);
+  //   $this->db->where('id_genset', $id_genset);
+  //   $this->db->update($tabel);
+  // }
 
-  public function menambah_kembali($tabel, $id_genset, $stok_gd_new)
-  {
-    $this->db->set("stok_gd", $stok_gd_new);
-    $this->db->where('id_genset', $id_genset);
-    $this->db->update($tabel);
-  }
+  // public function menambah_kembali($tabel, $id_genset, $stok_gd_new)
+  // {
+  //   $this->db->set("stok_gd", $stok_gd_new);
+  //   $this->db->where('id_genset', $id_genset);
+  //   $this->db->update($tabel);
+  // }
 
   public function update_status($tabel, $where, $status)
   {
@@ -89,20 +89,16 @@ class M_data extends CI_Model
     $this->db->update($tabel);
   }
 
-  public function update_password($tabel, $where, $data)
-  {
-    $this->db->where($where);
-    $this->db->update($tabel, $data);
-  }
 
 
-  public function sum($tabel, $field)
-  {
-    $query = $this->db->select_sum($field)
-      ->from($tabel)
-      ->get();
-    return $query->result();
-  }
+
+  // public function sum($tabel, $field)
+  // {
+  //   $query = $this->db->select_sum($field)
+  //     ->from($tabel)
+  //     ->get();
+  //   return $query->result();
+  // }
 
   public function numrows($tabel)
   {
@@ -142,6 +138,12 @@ class M_data extends CI_Model
     $this->db->set($data);
     $this->db->where($where);
     $this->db->update('tb_user');
+  }
+
+  public function update_password($tabel, $where, $data)
+  {
+    $this->db->where($where);
+    $this->db->update($tabel, $data);
   }
 
   //! Batas Query User
