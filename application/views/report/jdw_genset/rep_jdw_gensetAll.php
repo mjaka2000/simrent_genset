@@ -19,7 +19,7 @@
                 </td>
             </tr>
         </table>
-        <h2 align="center">Laporan Data Pelanggan Di Blacklist</h2><span>
+        <h2 align="center">Laporan Jadwal Penyewaan Genset</h2><span>
             <!-- <p align="right" style="font-size:10pt">Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></p> -->
         </span>
         <!-- <?php echo $label ?> -->
@@ -28,31 +28,28 @@
                 <thead>
                     <tr>
                         <th style="width :10px">No.</th>
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>No. HP</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Nama Perusahaan</th>
-                        <!-- <th>Tanggal Update</th> -->
+                        <th>Pemakai</th>
+                        <th>Nama Genset</th>
+                        <th>Dipakai Tanggal</th>
+                        <th>Sampai Tanggal</th>
+                        <th>Lokasi Sewa</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $no = 1;
-                    // $list_data = isset($_POST['list_data']) ? $_POST['list_data'] : '';
-                    if (is_array($list_pelanggan_blacklist)) { ?>
-                        <?php foreach ($list_pelanggan_blacklist as $dt) : ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $dt->nama_plg_blk; ?></td>
-                                <td><?= $dt->alamat_plg_blk; ?></td>
-                                <td><?= $dt->nohp_plg_blk; ?></td>
-                                <td><?= $dt->jk_plg_blk; ?></td>
-                                <td><?= $dt->namaperusahaan_plg_blk; ?></td>
-                                <!-- <td><?= $dt->tglupdate_plg_blk; ?></td> -->
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php } ?>
+                    ?>
+                    <?php foreach ($list_data as $d) : ?>
+                        <tr>
+                            <td><?= $no++; ?></td>
+                            <td><?= $d->nama_plg; ?></td>
+                            <td><?= $d->nama_genset; ?></td>
+                            <td><?= date('d-m-Y', strtotime($d->tanggal_keluar)); ?></td>
+                            <td><?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></td>
+                            <td><?= $d->lokasi; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+
                 </tbody>
             </table>
             <table>
@@ -63,7 +60,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="right">
-                        <?= $this->session->userdata('name') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <?= $this->session->userdata('nama') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                 </tr>
 

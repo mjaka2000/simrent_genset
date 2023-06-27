@@ -19,38 +19,41 @@
                 </td>
             </tr>
         </table>
-        <h2 align="center">Laporan Pengeluaran</h2><span>
+        <h2 align="center">Laporan Data Pelanggan</h2><span>
             <!-- <p align="right" style="font-size:10pt">Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></p> -->
         </span>
         <!-- <?php echo $label ?> -->
         <div class="row tengah">
             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                 <thead>
-
                     <tr>
                         <th style="width :10px">No.</th>
-                        <th>Tanggal</th>
-                        <th>Keterangan Pengeluaran</th>
-                        <th>Biaya Pengeluaran</th>
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>No. HP</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Nama Perusahaan</th>
+                        <th>Tanggal Update</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $no = 1;
+                    // $list_data = isset($_POST['list_data']) ? $_POST['list_data'] : '';
                     ?>
                     <?php foreach ($list_data as $dt) : ?>
                         <tr>
                             <td><?= $no++; ?></td>
-                            <td><?= date('d-m-Y', strtotime($dt->tgl_pengeluaran)); ?></td>
-                            <td><?= $dt->pengeluaran; ?></td>
-                            <td>Rp&nbsp;<?= number_format($dt->biaya_pengeluaran); ?></td>
+                            <td><?= $dt->nama_plg; ?></td>
+                            <td><?= $dt->alamat_plg; ?></td>
+                            <td><?= $dt->nohp_plg; ?></td>
+                            <td><?= $dt->jk_plg; ?></td>
+                            <td><?= $dt->namaperusahaan_plg; ?></td>
+                            <td><?= date('d-m-Y', strtotime($dt->tglupdate_plg)); ?></td>
+
                         </tr>
                     <?php endforeach; ?>
-                    <tr>
-                        <?php foreach ($total_data as $td) : ?>
-                            <th colspan="4" style="text-align: center;">Total Pengeluaran <?php echo $label ?>: <span style="color: red;">Rp&nbsp;<?= number_format($td->biaya_pengeluaran); ?></span></th>
-                        <?php endforeach; ?>
-                    </tr>
+
                 </tbody>
             </table>
             <table>
@@ -61,7 +64,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="right">
-                        <?= $this->session->userdata('name') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <?= $this->session->userdata('nama') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                 </tr>
 

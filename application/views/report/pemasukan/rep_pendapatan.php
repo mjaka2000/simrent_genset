@@ -19,38 +19,44 @@
                 </td>
             </tr>
         </table>
-        <h2 align="center">Laporan Data Stok Sparepart</h2><span>
+        <h2 align="center">Laporan Pendapatan</h2><span>
             <!-- <p align="right" style="font-size:10pt">Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></p> -->
         </span>
         <!-- <?php echo $label ?> -->
         <div class="row tengah">
             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                 <thead>
+
                     <tr>
                         <th style="width :10px">No.</th>
-                        <th>Nama Sparepart</th>
-                        <th>Tanggal Beli</th>
-                        <th>Tempat Beli</th>
-                        <th>Stok</th>
+                        <th>Tanggal Penyewaan</th>
+                        <th>ID Transaksi</th>
+                        <th>Tanggal Di Update</th>
+                        <th>Pendapatan</th>
+                        <th>Keterangan</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $no = 1;
-                    // $list_data = isset($_POST['list_data']) ? $_POST['list_data'] : '';
-                    if (is_array($list_sparepart)) { ?>
-                        <?php foreach ($list_sparepart as $dt) : ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $dt->nama_sparepart; ?></td>
-                                <td><?= date('d-m-Y', strtotime($dt->tanggal_beli)); ?></td>
-                                <td><?= $dt->tempat_beli; ?></td>
-                                <td><?= $dt->stok; ?></td>
-                            </tr>
+                    ?>
+                    <?php foreach ($list_data as $d) : ?>
+                        <tr>
+                            <td><?= $no++; ?></td>
+                            <!-- <td><?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></td> -->
+                            <td><?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></td>
+                            <td><?= $d->id_transaksi; ?></td>
+                            <td><?= date('d-m-Y', strtotime($d->tgl_update)); ?></td>
+                            <td>Rp&nbsp;<?= number_format($d->total); ?></td>
+                            <td><?= $d->keterangan; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    <tr>
+                        <?php foreach ($total_data as $td) : ?>
+                            <th colspan="6" style="text-align: center;">Total Pendapatan <?php echo $label ?>: <span style="color: red;">Rp&nbsp;<?= number_format($td->total); ?></span></th>
                         <?php endforeach; ?>
-                    <?php } else { ?>
-                        <td colspan="9" align="center"><strong>Data Kosong</strong></td>
-                    <?php } ?>
+                    </tr>
                 </tbody>
             </table>
             <table>
@@ -61,7 +67,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="right">
-                        <?= $this->session->userdata('name') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <?= $this->session->userdata('nama') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                 </tr>
 

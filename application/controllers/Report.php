@@ -16,14 +16,14 @@ class Report extends CI_Controller
         $where = array('id_u_keluar' => $uri);
         $data['list_data'] = $this->M_data->select_data_u_keluar('tb_unit_keluar', $where);
         $data['title'] = 'Laporan Jadwal Penyewaan Genset';
-        $this->load->view('admin/report/jdw_genset/rep_jdw_genset', $data);
+        $this->load->view('report/jdw_genset/rep_jdw_genset', $data);
     }
 
     public function cetak_jdw_gensetAll()
     {
         $data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_keluar');
         $data['title'] = 'Laporan Jadwal Penyewaan Genset';
-        $this->load->view('admin/report/jdw_genset/rep_jdw_gensetAll', $data);
+        $this->load->view('report/jdw_genset/rep_jdw_gensetAll', $data);
     }
 
     public function cetak_pengeluaran_periode()
@@ -41,7 +41,7 @@ class Report extends CI_Controller
         }
         $data['label'] = $label;
         $data['title'] = 'Laporan Pengeluaran';
-        $this->load->view('admin/report/pengeluaran/rep_pengeluaran', $data);
+        $this->load->view('report/pengeluaran/rep_pengeluaran', $data);
     }
 
     public function cetak_pemasukan_periode()
@@ -59,7 +59,7 @@ class Report extends CI_Controller
         }
         $data['label'] = $label;
         $data['title'] = 'Laporan Pendapatan';
-        $this->load->view('admin/report/pemasukan/rep_pendapatan', $data);
+        $this->load->view('report/pemasukan/rep_pendapatan', $data);
     }
 
     public function cetak_penyewaan()
@@ -75,35 +75,35 @@ class Report extends CI_Controller
         }
         $data['label'] = $label;
         $data['title'] = 'Laporan Penyewaan ';
-        $this->load->view('admin/report/unit_keluar/rep_unit_keluar', $data);
+        $this->load->view('report/unit_keluar/rep_unit_keluar', $data);
     }
 
     public function cetak_serv_gensetAll()
     {
         $data['list_data'] = $this->M_data->get_data_service('tb_serv_genset');
         $data['title'] = 'Laporan Perbaikan Genset';
-        $this->load->view('admin/report/service_genset/rep_service_genset', $data);
+        $this->load->view('report/service_genset/rep_service_genset', $data);
     }
 
     public function cetak_Pelanggan()
     {
         $data['list_data'] = $this->M_data->select('tb_pelanggan');
         $data['title'] = 'Laporan Data Pelanggan';
-        $this->load->view('admin/report/pelanggan/rep_pelanggan', $data);
+        $this->load->view('report/pelanggan/rep_pelanggan', $data);
     }
 
     public function cetak_Pelanggan_blacklist()
     {
         $data['list_pelanggan_blacklist'] = $this->M_data->select('tb_pelanggan_blacklist');
         $data['title'] = 'Laporan Data Pelanggan Blacklist';
-        $this->load->view('admin/report/pelanggan/rep_pelanggan_blacklist', $data);
+        $this->load->view('report/pelanggan/rep_pelanggan_blacklist', $data);
     }
 
     public function cetak_sparepart()
     {
         $data['list_sparepart'] = $this->M_data->select('tb_sparepart');
         $data['title'] = 'Laporan Data Sparepart';
-        $this->load->view('admin/report/sparepart/rep_sparepart', $data);
+        $this->load->view('report/sparepart/rep_sparepart', $data);
     }
 
     public function cetak_penyewaan_detail()
@@ -112,7 +112,7 @@ class Report extends CI_Controller
         $where = array('id_u_keluar' => $uri);
         $data['list_data'] = $this->M_data->select_data_u_keluar('tb_unit_keluar', $where);
         $data['title'] = 'Laporan Detail Data Penyewaan Genset';
-        $this->load->view('admin/report/unit_keluar/rep_unit_keluar_detail', $data);
+        $this->load->view('report/unit_keluar/rep_unit_keluar_detail', $data);
     }
 
     public function cetak_service_detail()
@@ -122,7 +122,7 @@ class Report extends CI_Controller
         $data['list_data'] = $this->M_data->get_detail_perbaikan('tb_serv_genset', $where);
         $data['detail_perbaikan'] = $this->M_data->detail_perbaikan('tb_detail_serv', $where);
         $data['title'] = 'Laporan Detail Perbaikan Genset';
-        $this->load->view('admin/report/service_genset/rep_service_genset_detail', $data);
+        $this->load->view('report/service_genset/rep_service_genset_detail', $data);
     }
 
     public function cetak_cetak_penyewaan_usr()
