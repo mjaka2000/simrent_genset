@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jun 2023 pada 07.39
+-- Waktu pembuatan: 28 Jun 2023 pada 16.18
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -191,6 +191,14 @@ CREATE TABLE `tb_pendapatan` (
   `tgl_update` date NOT NULL,
   `keterangan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data untuk tabel `tb_pendapatan`
+--
+
+INSERT INTO `tb_pendapatan` (`id_pendapatan`, `id_u_masuk`, `tgl_update`, `keterangan`) VALUES
+(6, 1, '2023-06-26', 'hasil sewa jarr'),
+(7, 2, '2023-06-28', 'sewa kh ujar');
 
 -- --------------------------------------------------------
 
@@ -498,7 +506,7 @@ ALTER TABLE `tb_pelanggan_blacklist`
 -- AUTO_INCREMENT untuk tabel `tb_pendapatan`
 --
 ALTER TABLE `tb_pendapatan`
-  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pengeluaran`
@@ -545,6 +553,12 @@ ALTER TABLE `tb_user`
 --
 ALTER TABLE `tb_detail_serv`
   ADD CONSTRAINT `tb_detail_serv_ibfk_1` FOREIGN KEY (`id_perbaikan_gst`) REFERENCES `tb_serv_genset` (`id_perbaikan_gst`);
+
+--
+-- Ketidakleluasaan untuk tabel `tb_pendapatan`
+--
+ALTER TABLE `tb_pendapatan`
+  ADD CONSTRAINT `tb_pendapatan_ibfk_1` FOREIGN KEY (`id_u_masuk`) REFERENCES `tb_unit_masuk` (`id_u_masuk`);
 
 --
 -- Ketidakleluasaan untuk tabel `tb_serv_genset`
