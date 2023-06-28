@@ -73,7 +73,7 @@
                                                 <?php if ($dt->ket_perbaikan == "1") { ?>
                                                     <td><a href="#" type="button" class="btn btn-xs btn-success">Selesai Diperbaiki</a></td>
                                                 <?php } else { ?>
-                                                    <td><a href="#" type="button" class="btn btn-xs btn-danger">Masih Terkendala</a></td>
+                                                    <td><a href="#" type="button" class="btn btn-xs btn-danger">Masih Proses</a></td>
                                                 <?php } ?>
                                                 <td>Rp&nbsp;<?= number_format($dt->biaya_perbaikan); ?></td>
                                                 <td>
