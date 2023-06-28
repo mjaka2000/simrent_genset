@@ -308,6 +308,34 @@ class Penyewa extends CI_Controller
     //* End Data Unit Keluar 
     ####################################
     ####################################
+    //* Data Unit Masuk 
+    ####################################
+    public function tabel_unit_masuk()
+    {
+        $data = array(
+            // 'list_mobil' => $this->M_penyewa->select('tb_mobil'),
+            'list_data' => $this->M_penyewa->sel_data_u_masuk('tb_unit_masuk'),
+            'avatar'    => $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'))
+        );
+        // $data['total_data'] = $this->M_penyewa->sum_pendapatan('tb_unit_masuk');
+        $data['title'] = 'Data Unit Masuk/Kembali';
+        $this->load->view('penyewa/tabel/tabel_unit_masuk', $data);
+    }
+
+    public function detail_unit_masuk($id_transaksi)
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_u_masuk' => $uri);
+        $data['list_data'] = $this->M_penyewa->get_data_u_masuk('tb_unit_masuk', $where);
+        $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Detail Data Unit Kembali';
+        $this->load->view('penyewa/tabel/detail_masuk', $data);
+    }
+
+    ####################################
+    //* End Data Unit Masuk 
+    ####################################
+    ####################################
     //* Laporan
     ####################################
 
