@@ -297,6 +297,15 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
+
+  // public function select_sparepart($tabel)
+  // {
+  //   $query = $this->db->select()
+  //     ->from($tabel)
+  //     ->where('stok >', 0)
+  //     ->get();
+  //   return $query->result();
+  // }
   ####################################
   //* End Data Perbaikan Genset 
   ####################################
@@ -357,6 +366,7 @@ class M_data extends CI_Model
       ->join('tb_operator', 'tb_operator.id_operator = tb_unit_masuk.id_operator')
       ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
       ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
+      ->order_by('id_transaksi', 'asc')
       ->get();
     return $query->result();
   }
