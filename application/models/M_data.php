@@ -321,40 +321,12 @@ class M_data extends CI_Model
       ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
       ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
       ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->where('status =', 1)
       ->get();
     return $query->result();
   }
 
-  public function gsel_data_u_keluar($tabel)
-  {
-    $query = $this->db->select()
-      ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
-      ->where('status =', 0)
 
-      ->get();
-    return $query->result();
-  }
-
-  public function grep_data_u_keluar($tabel, $bulan, $tahun)
-  {
-    $bulan = $this->db->escape($bulan);
-    $tahun = $this->db->escape($tahun);
-
-    $query = $this->db->select()
-      ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
-      ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
-      ->where('status =', 0)
-      ->get();
-    return $query->result();
-  }
 
   public function select_data_u_keluar($tabel, $where)
   {
@@ -389,6 +361,50 @@ class M_data extends CI_Model
     return $query->result();
   }
 
+  public function select_data_u_masuk($tabel, $where)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where($where)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_masuk.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_masuk.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
+      ->get();
+    return $query->result();
+  }
+
+  public function gsel_data_u_keluar($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_masuk.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_masuk.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
+      ->where('status =', 0)
+
+      ->get();
+    return $query->result();
+  }
+
+  public function grep_data_u_keluar($tabel, $bulan, $tahun)
+  {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
+
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_masuk.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_masuk.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
+      ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
+      ->where('status =', 0)
+      ->get();
+    return $query->result();
+  }
+
   public function sum_pendapatan($tabel)
   {
     $query = $this->db->select_sum('total')
@@ -406,7 +422,7 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      ->join('tb_unit_masuk', 'tb_unit_masuk.id_u_masuk = tb_pendapatan.id_u_masuk')
       ->get();
     return $query->result();
   }
@@ -415,7 +431,7 @@ class M_data extends CI_Model
   {
     $query = $this->db->select_sum('total')
       ->from($tabel)
-      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      ->join('tb_unit_masuk', 'tb_unit_masuk.id_u_masuk = tb_pendapatan.id_u_masuk')
       ->get();
     return $query->result();
   }
@@ -427,7 +443,7 @@ class M_data extends CI_Model
 
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      ->join('tb_unit_masuk', 'tb_unit_masuk.id_u_masuk = tb_pendapatan.id_u_masuk')
       ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
       // ->where('YEAR (tanggal_masuk)' . $tahun)
       // ->order_by('tanggal_masuk', 'asc')
@@ -441,7 +457,7 @@ class M_data extends CI_Model
     $tahun = $this->db->escape($tahun);
     $query = $this->db->select_sum('total')
       ->from($tabel)
-      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      ->join('tb_unit_masuk', 'tb_unit_masuk.id_u_masuk = tb_pendapatan.id_u_masuk')
       ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
       ->get();
     return $query->result();
@@ -452,7 +468,7 @@ class M_data extends CI_Model
     // $tahun = $this->db->escape($tahun);
     $query = $this->db->select('MONTH (tanggal_masuk),total')
       ->from($tabel)
-      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_pendapatan.id_u_keluar')
+      ->join('tb_unit_masuk', 'tb_unit_masuk.id_u_masuk = tb_pendapatan.id_u_masuk')
       // ->where('MONTH (tanggal_masuk) =' . $bln . ' AND YEAR (tanggal_masuk) =' . $thn)
       ->order_by('total', 'asc')
       ->get();
