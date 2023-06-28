@@ -1717,7 +1717,7 @@ class Admin extends CI_Controller
 
 	public function tambah_pemasukan()
 	{
-		$data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_keluar');
+		$data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_masuk');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Tambah Data Pendapatan';
 		$this->load->view('admin/pemasukan/tambah_pemasukan', $data);
@@ -1726,17 +1726,17 @@ class Admin extends CI_Controller
 	public function proses_tambah_pemasukan()
 	{
 
-		$this->form_validation->set_rules('id_u_keluar', 'ID Transaksi', 'trim|required|is_unique[tb_pendapatan.id_u_keluar]');
+		$this->form_validation->set_rules('id_u_masuk', 'ID Transaksi', 'trim|required|is_unique[tb_pendapatan.id_u_masuk]');
 		$this->form_validation->set_rules('tgl_update', 'Tanggal Update', 'trim|required');
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
-			$id_u_keluar = $this->input->post('id_u_keluar', TRUE);
+			$id_u_masuk = $this->input->post('id_u_masuk', TRUE);
 			$tgl_update = $this->input->post('tgl_update', TRUE);
 			$keterangan = $this->input->post('keterangan', TRUE);
 
 			$data = array(
-				'id_u_keluar' => $id_u_keluar,
+				'id_u_masuk' => $id_u_masuk,
 				'tgl_update' => $tgl_update,
 				'keterangan' => $keterangan
 			);
@@ -1744,7 +1744,7 @@ class Admin extends CI_Controller
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
 			redirect(site_url('admin/tabel_pemasukan'));
 		} else {
-			$data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_keluar');
+			$data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_masuk');
 			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 			$data['title'] = 'Tambah Data Pendapatan';
 			$this->load->view('admin/pemasukan/tambah_pemasukan', $data);
@@ -1756,7 +1756,7 @@ class Admin extends CI_Controller
 		$uri = $this->uri->segment(3);
 		$where = array('id_pendapatan' => $uri);
 		$data['edit_data'] = $this->M_data->get_data('tb_pendapatan', $where);
-		$data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_keluar');
+		$data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_masuk');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Ubah Data Pendapatan';
 		$this->load->view('admin/pemasukan/edit_pemasukan', $data);
@@ -1765,19 +1765,19 @@ class Admin extends CI_Controller
 	public function proses_edit_pemasukan()
 	{
 
-		$this->form_validation->set_rules('id_u_keluar', 'ID Transaksi', 'trim|required');
+		$this->form_validation->set_rules('id_u_masuk', 'ID Transaksi', 'trim|required');
 		$this->form_validation->set_rules('tgl_update', 'Tanggal Update', 'trim|required');
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
 			$id_pendapatan = $this->input->post('id_pendapatan', TRUE);
-			$id_u_keluar = $this->input->post('id_u_keluar', TRUE);
+			$id_u_masuk = $this->input->post('id_u_masuk', TRUE);
 			$tgl_update = $this->input->post('tgl_update', TRUE);
 			$keterangan = $this->input->post('keterangan', TRUE);
 
 			$where = array('id_pendapatan' => $id_pendapatan);
 			$data = array(
-				'id_u_keluar' => $id_u_keluar,
+				'id_u_masuk' => $id_u_masuk,
 				'tgl_update' => $tgl_update,
 				'keterangan' => $keterangan
 			);
