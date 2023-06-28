@@ -67,10 +67,10 @@ class Report extends CI_Controller
         $bulan = $this->input->post('bulan');
         $tahun = $this->input->post('tahun');
         if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
-            $data['list_data'] = $this->M_data->gsel_data_u_keluar('tb_unit_keluar');
+            $data['list_data'] = $this->M_data->gsel_data_u_keluar('tb_unit_masuk');
             $label = 'Bulan ...' . ' Tahun ...';
         } else {
-            $data['list_data'] = $this->M_data->grep_data_u_keluar('tb_unit_keluar', $bulan, $tahun);
+            $data['list_data'] = $this->M_data->grep_data_u_keluar('tb_unit_masuk', $bulan, $tahun);
             $label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
         }
         $data['label'] = $label;
@@ -109,8 +109,8 @@ class Report extends CI_Controller
     public function cetak_penyewaan_detail()
     {
         $uri = $this->uri->segment(3);
-        $where = array('id_u_keluar' => $uri);
-        $data['list_data'] = $this->M_data->select_data_u_keluar('tb_unit_keluar', $where);
+        $where = array('id_u_masuk' => $uri);
+        $data['list_data'] = $this->M_data->select_data_u_masuk('tb_unit_masuk', $where);
         $data['title'] = 'Laporan Detail Data Penyewaan Genset';
         $this->load->view('report/unit_keluar/rep_unit_keluar_detail', $data);
     }
