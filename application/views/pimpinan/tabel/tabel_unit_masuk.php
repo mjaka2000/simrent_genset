@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data Penyewaan Genset</h1>
+                    <h1 class="m-0">Data Unit Masuk (Kembali)</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= site_url('pimpinan'); ?>"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item active">Penyewaan Genset</li>
+                        <li class="breadcrumb-item active">Unit Masuk (Kembali)</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -32,7 +32,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Data Penyewaan Genset (Keluar)
+                            Data Unit Masuk (Kembali)
                         </div>
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
@@ -48,8 +48,8 @@
                                     <tr>
                                         <th style="width :10px">No.</th>
                                         <th>ID</th>
-                                        <th>Tanggal Keluar</th>
-                                        <!-- <th>Tanggal Masuk (Kembali)</th> -->
+                                        <!-- <th>Tanggal Keluar</th> -->
+                                        <th>Tanggal Masuk (Kembali)</th>
                                         <th>Lokasi</th>
                                         <th>Nama Pelanggan</th>
                                         <th>Nama Genset</th>
@@ -57,7 +57,6 @@
                                         <th>Mobil</th>
                                         <th>Jml. Hari</th>
                                         <th>Total</th>
-                                        <!-- <th>Status</th> -->
                                         <th>Status Genset</th>
                                         <th style="width:10%">Aksi</th>
                                     </tr>
@@ -71,8 +70,8 @@
                                         <tr>
                                             <td><?= $no++; ?></td>
                                             <td><?= $dt->id_transaksi; ?></td>
-                                            <td><?= date('d-m-Y', strtotime($dt->tanggal_keluar)); ?></td>
-                                            <!-- <td><?= date('d-m-Y', strtotime($dt->tanggal_masuk)); ?></td> -->
+                                            <!-- <td><?= $dt->tanggal_keluar; ?></td> -->
+                                            <td><?= date('d-m-Y', strtotime($dt->tanggal_masuk)); ?></td>
                                             <td><?= $dt->lokasi; ?></td>
                                             <td><?= $dt->nama_plg; ?></td>
                                             <td><?= $dt->nama_genset; ?></td>
@@ -80,28 +79,26 @@
                                             <td><?= $dt->nopol; ?></td>
                                             <td><?= $dt->jumlah_hari; ?></td>
                                             <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
-
-                                            <?php if ($dt->status == 1) { ?>
-                                                <td>
-                                                    <a href="#" type="button" class="btn btn-xs bg-fuchsia btn-unitpanjang" name="btn_barangmasuk"><i class="fa fa-info mr-2"></i>Genset Masih Digunakan</a><br>
-                                                    <!-- <a href="<?= site_url('pimpinan/unit_keluar_update/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs bg-fuchsia btn-unitpanjang" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a><br> -->
-                                                    <!-- <a href="<?= site_url('pimpinan/unit_masuk/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs btn-danger btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a> -->
+                                            <?php if ($dt->status == NULL || $dt->status == 0) { ?>
+                                                <td>Genset Masuk (Kembali)
                                                 </td>
                                             <?php } else { ?>
                                                 <td>Genset Masuk (Kembali)</td>
                                             <?php } ?>
                                             <td>
-                                                <!-- <a href="<?= site_url('pimpinan/update_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
-                                                <!-- <a href="<?= site_url('pimpinan/hapus_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
-                                                <a href="<?= site_url('pimpinan/detail_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
-
+                                                <a href="<?= base_url('pimpinan/hapus_unit_masuk/' . $dt->id_u_masuk); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
+                                                <a href="<?= base_url('pimpinan/detail_unit_masuk/' . $dt->id_u_masuk); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
                             <div class="box-footer">
-
+                                <?php foreach ($total_data as $td) : ?>
+                                    <h5>
+                                        <p style="color: red;">Total Pendapatan: Rp&nbsp;<?= number_format($td->total); ?></p>
+                                    </h5>
+                                <?php endforeach; ?>
                                 <!-- <h5><strong>Keterangan :</strong></h5> -->
                                 <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
                                 <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash "></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->
@@ -166,22 +163,22 @@
 </script>
 <script>
     //* Script untuk memuat sweetalert status genset
-    $('.btn-kembali').on('click', function() {
-        var getLink = $(this).attr('href');
-        Swal.fire({
-            title: 'Ubah Status',
-            text: 'Yakin ingin ubah Status Genset menjadi Genset Masuk (Kembali)?',
-            type: 'warning',
-            confirmButtonColor: '#d9534f',
-            showCancelButton: true,
-        }).then(result => {
-            //jika klik ya maka arahkan ke proses.php
-            if (result.isConfirmed) {
-                window.location.href = getLink
-            }
-        })
-        return false;
-    });
+    // $('.btn-kembali').on('click', function() {
+    //     var getLink = $(this).attr('href');
+    //     Swal.fire({
+    //         title: 'Ubah Status',
+    //         text: 'Yakin ingin ubah Status Genset menjadi Genset Masuk (Kembali)?',
+    //         type: 'warning',
+    //         confirmButtonColor: '#d9534f',
+    //         showCancelButton: true,
+    //     }).then(result => {
+    //         //jika klik ya maka arahkan ke proses.php
+    //         if (result.isConfirmed) {
+    //             window.location.href = getLink
+    //         }
+    //     })
+    //     return false;
+    // });
 </script>
 </body>
 

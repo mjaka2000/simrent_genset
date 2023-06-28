@@ -517,13 +517,33 @@ class Pimpinan extends CI_Controller
     //* End Data Unit Keluar
     ####################################
     ####################################
-    //* Data Barang Masuk
+    //* Data Unit Masuk
     ####################################
+    public function tabel_unit_masuk()
+    {
+        $data = array(
+            'list_mobil' => $this->M_data->select('tb_mobil'),
+            'list_data' => $this->M_data->get_data_u_masuk('tb_unit_masuk'),
+            'avatar'    => $this->M_data->get_avatar('tb_user', $this->session->userdata('name'))
+        );
+        $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_masuk');
+        $data['title'] = 'Data Unit Masuk/Kembali';
+        $this->load->view('pimpinan/tabel/tabel_unit_masuk', $data);
+    }
 
+    public function detail_unit_masuk($id_transaksi)
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_u_masuk' => $uri);
+        $data['list_data'] = $this->M_data->select_data_u_masuk('tb_unit_masuk', $where);
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Detail Data Unit Kembali';
+        $this->load->view('pimpinan/tabel/detail_masuk', $data);
+    }
 
 
     ####################################
-    //* End Data Barang Masuk
+    //* End Data Unit Masuk
     ####################################
     ####################################
     //* Data Jadwal Penyewaan Genset

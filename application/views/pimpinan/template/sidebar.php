@@ -88,13 +88,24 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-
                         <li class="nav-item">
+                            <a href="<?= site_url(); ?>pimpinan/tabel_unit_keluar" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Penyewaan Genset (Keluar)</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= site_url(); ?>pimpinan/tabel_unit_masuk" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Unit Masuk (Kembali)</p>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
                             <a href="<?= site_url(); ?>pimpinan/tabel_unit_keluar" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Penyewaan Genset</p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="<?= site_url(); ?>pimpinan/tabel_jdw_genset" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
