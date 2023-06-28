@@ -72,7 +72,7 @@
                                                 <?php if ($dt->ket_perbaikan == "1") { ?>
                                                     <td><a href="#" type="button" class="btn btn-xs btn-success">Selesai Diperbaiki</a></td>
                                                 <?php } else { ?>
-                                                    <td><a href="#" type="button" class="btn btn-xs btn-danger">Masih Terkendala</a></td>
+                                                    <td><a href="#" type="button" class="btn btn-xs btn-danger">Masih Proses</a></td>
                                                 <?php } ?>
                                                 <td>Rp&nbsp;<?= number_format($dt->biaya_perbaikan); ?></td>
                                                 <td><a href="<?= base_url('admin/update_data_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>

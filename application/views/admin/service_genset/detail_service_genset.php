@@ -120,10 +120,10 @@
                                                                     <option value="">-- Status --</option>
                                                                     <?php if ($d->ket_perbaikan == "1") { ?>
                                                                         <option value="1" selected>Selesai Diperbaiki</option>
-                                                                        <option value="0">Masih Terkendala</option>
+                                                                        <option value="0">Masih Proses</option>
                                                                     <?php } else { ?>
                                                                         <option value="1">Selesai Diperbaiki</option>
-                                                                        <option value="0" selected>Masih Terkendala</option>
+                                                                        <option value="0" selected>Masih Proses</option>
                                                                     <?php } ?>
 
                                                                 </select>
