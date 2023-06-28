@@ -22,7 +22,7 @@ class Admin extends CI_Controller
 		$label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
 		$data['pendapatan'] = $this->M_data->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
 		// $data['pendapatanChart'] = $this->M_data->chart_pendapatanMasuk('tb_pendapatan');
-		$data['stokBarangKeluar'] = $this->M_data->numrows('tb_unit_keluar');
+		$data['stokBarangKeluar'] = $this->M_data->numrows('tb_unit_masuk');
 		$data['dataUser'] = $this->M_data->numrows('tb_user');
 		$data['dataPelanggan'] = $this->M_data->numrows('tb_pelanggan');
 		$data['dataOperator'] = $this->M_data->numrows('tb_operator');
@@ -1248,7 +1248,7 @@ class Admin extends CI_Controller
 	public function tabel_unit_keluar()
 	{
 		$data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_keluar');
-		$data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_keluar');
+		// $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_keluar');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Data Unit Sewa';
 		$this->load->view('admin/unit_keluar/tabel_unit_keluar', $data);
@@ -1514,10 +1514,10 @@ class Admin extends CI_Controller
 			$this->M_data->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
 			// $this->M_data->menambah_kembali('tb_genset', $id_genset, $stok_gd_new);
 			// $this->M_data->mengurangi_kembali('tb_genset', $id_genset, $stok_pj_new);
-			// $this->M_data->insert('tb_unit_masuk', $data);
+			$this->M_data->insert('tb_unit_masuk', $data);
 			$this->session->set_flashdata('msg_sukses', 'Data Status diubah menjadi Masuk (Kembali)');
 			// $this->M_data->delete('tb_barang_masuk',$where);
-			redirect(site_url('admin/tabel_unit_keluar'));
+			redirect(site_url('admin/tabel_unit_masuk'));
 		} else {
 			// $data['title'] = 'Update Genset Masuk';
 			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
@@ -1529,31 +1529,42 @@ class Admin extends CI_Controller
 	//* End Data Unit Keluar
 	####################################
 	####################################
-	//! Data Unit Masuk
+	//* Data Unit Masuk
 	####################################
 
-	// public function tabel_unit_masuk()
-	// {
-	// 	$data = array(
-	// 'list_mobil' => $this->M_data->select('tb_mobil'),
-	// 		'list_data' => $this->M_data->get_data_u_masuk('tb_unit_masuk'),
-	// 		'avatar'    => $this->M_data->get_avatar('tb_user', $this->session->userdata('name'))
-	// 	);
-	// 	$data['title'] = 'Data Unit Masuk/Kembali';
-	// 	$this->load->view('admin/unit_masuk/tabel_unit_masuk', $data);
-	// }
+	public function tabel_unit_masuk()
+	{
+		$data = array(
+			// 'list_mobil' => $this->M_data->select('tb_mobil'),
+			'list_data' => $this->M_data->get_data_u_masuk('tb_unit_masuk'),
+			'avatar'    => $this->M_data->get_avatar('tb_user', $this->session->userdata('name'))
+		);
+		$data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_masuk');
+		$data['title'] = 'Data Unit Masuk/Kembali';
+		$this->load->view('admin/unit_masuk/tabel_unit_masuk', $data);
+	}
 
-	// public function detail_barang_masuk($id_transaksi)
-	// {
-	// 	$where = array('id_transaksi' => $id_transaksi);
-	// 	$data['list_data'] = $this->M_data->get_data('tb_barang_masuk', $where);
-	// 	$data['avatar'] = $this->M_data->get_data_gambar('tb_upload_gambar_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Detail Genset Masuk';
-	// 	$this->load->view('admin/barang_masuk/detail_masuk', $data);
-	// }
+	public function detail_unit_masuk($id_transaksi)
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_u_masuk' => $uri);
+		$data['list_data'] = $this->M_data->select_data_u_masuk('tb_unit_masuk', $where);
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Detail Data Unit Kembali';
+		$this->load->view('admin/unit_masuk/detail_masuk', $data);
+	}
+
+	public function hapus_unit_masuk()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_u_masuk' => $uri);
+		$this->M_data->delete('tb_unit_masuk', $where);
+		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+		redirect(site_url('admin/tabel_unit_keluar'));
+	}
 
 	####################################
-	//! End Data Unit Masuk
+	//* End Data Unit Masuk
 	####################################
 	####################################
 	//* Data Pengeluaran

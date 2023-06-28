@@ -32,7 +32,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Data Penyewaan Genset
+                            Data Penyewaan Genset (Keluar)
                         </div>
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
@@ -49,7 +49,7 @@
                                         <th style="width :10px">No.</th>
                                         <th>ID</th>
                                         <th>Tanggal Keluar</th>
-                                        <th>Tanggal Masuk (Kembali)</th>
+                                        <!-- <th>Tanggal Masuk (Kembali)</th> -->
                                         <th>Lokasi</th>
                                         <th>Nama Pelanggan</th>
                                         <th>Nama Genset</th>
@@ -72,7 +72,7 @@
                                             <td><?= $no++; ?></td>
                                             <td><?= $dt->id_transaksi; ?></td>
                                             <td><?= date('d-m-Y', strtotime($dt->tanggal_keluar)); ?></td>
-                                            <td><?= date('d-m-Y', strtotime($dt->tanggal_masuk)); ?></td>
+                                            <!-- <td><?= date('d-m-Y', strtotime($dt->tanggal_masuk)); ?></td> -->
                                             <td><?= $dt->lokasi; ?></td>
                                             <td><?= $dt->nama_plg; ?></td>
                                             <td><?= $dt->nama_genset; ?></td>
@@ -100,11 +100,11 @@
                                 </tbody>
                             </table>
                             <div class="box-footer">
-                                <?php foreach ($total_data as $td) : ?>
+                                <!-- <?php foreach ($total_data as $td) : ?>
                                     <h5>
                                         <p style="color: red;">Total Pendapatan: Rp&nbsp;<?= number_format($td->total); ?></p>
                                     </h5>
-                                <?php endforeach; ?>
+                                <?php endforeach; ?> -->
                                 <!-- <h5><strong>Keterangan :</strong></h5> -->
                                 <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
                                 <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash "></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->
