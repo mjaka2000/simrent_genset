@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Jun 2023 pada 11.56
+-- Waktu pembuatan: 28 Jun 2023 pada 07.39
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -70,7 +70,7 @@ CREATE TABLE `tb_genset` (
 INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `harga`, `ket_genset`, `gambar_genset`) VALUES
 (2, '02', 'Hartech 45 P-02', '40', '1000000', 0, 'ht45p-02.jpg'),
 (3, '07', 'Denyo 25 ES-07', '20', '750000', 0, 'denyo25es-07.jpg'),
-(4, '10', 'Denyo 25 ES-10', '20', '750000', 1, 'denyo25es-10.jpg'),
+(4, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg'),
 (5, '16', 'Hartech 50 P-16', '50', '1250000', 0, 'ht50p-16.jpg'),
 (6, '08', 'Kubota 13-08', '13', '500000', 0, 'kubota13-08.jpg'),
 (7, '250', 'Hartech C-250', '250', '3500000', 0, 'ht250.jpg');
@@ -123,7 +123,7 @@ CREATE TABLE `tb_operator` (
 
 INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `status_op`) VALUES
 (1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', 0),
-(2, 'adi', 'jl sukamara', '0878907678956', 1),
+(2, 'adi', 'jl sukamara', '0878907678956', 0),
 (3, 'ijum', 'jl pulau laut', '0897819271234', 0),
 (5, 'wanda', 'sungai miai', '0897618391837', 0);
 
@@ -153,7 +153,7 @@ CREATE TABLE `tb_pelanggan` (
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`, `id_user`) VALUES
 (4, 'anonim', 'Jl. Sunga Andai', '0895619213134', 'Laki-Laki', 'PT Rahmat', '2023-04-11', 0, 1, 0),
 (5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 0, 1, 0),
-(8, 'Wanda', 'Jl. Mantuil', '0897738493722', 'Laki-Laki', 'PT. Abadi', '2023-06-26', 1, 1, 37);
+(8, 'Wanda', 'Jl. Mantuil', '0897738493722', 'Laki-Laki', 'PT. Abadi', '2023-06-26', 0, 1, 37);
 
 -- --------------------------------------------------------
 
@@ -187,20 +187,10 @@ INSERT INTO `tb_pelanggan_blacklist` (`id_plg_blacklist`, `nama_plg_blk`, `alama
 
 CREATE TABLE `tb_pendapatan` (
   `id_pendapatan` int(10) NOT NULL,
-  `id_u_keluar` int(10) NOT NULL,
+  `id_u_masuk` int(10) NOT NULL,
   `tgl_update` date NOT NULL,
   `keterangan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data untuk tabel `tb_pendapatan`
---
-
-INSERT INTO `tb_pendapatan` (`id_pendapatan`, `id_u_keluar`, `tgl_update`, `keterangan`) VALUES
-(1, 6, '2023-06-19', 'hasil sewa genset'),
-(2, 11, '2023-06-17', 'hasil sewa genset jarr'),
-(4, 10, '2023-06-21', 'hasil'),
-(5, 9, '2023-06-20', 'ujar');
 
 -- --------------------------------------------------------
 
@@ -308,7 +298,7 @@ INSERT INTO `tb_unit_keluar` (`id_u_keluar`, `id_transaksi`, `tanggal_keluar`, `
 (10, 'GE-Jun0004', '2023-06-16', '2023-06-19', 'Martapura', 1, 4, 3, 1, 'Box Panel', '3', '2250000', 0),
 (11, 'GE-Jun0005', '2023-05-23', '2023-05-25', 'Gambut', 2, 5, 3, 2, '-', '2', '1500000', 0),
 (12, 'GE-Jun0006', '2023-06-23', '2023-06-26', 'Martapura', 3, 5, 5, 4, 'kabel 20M', '3', '3750000', 0),
-(15, 'GE-Jun0007', '2023-06-21', '2023-06-24', 'Tanjung', 2, 8, 4, 2, '-', '3', '2250000', 1);
+(15, 'GE-Jun0007', '2023-06-21', '2023-06-25', 'Tanjung', 2, 8, 4, 2, '-', '4', '3000000', 0);
 
 -- --------------------------------------------------------
 
@@ -317,7 +307,7 @@ INSERT INTO `tb_unit_keluar` (`id_u_keluar`, `id_transaksi`, `tanggal_keluar`, `
 --
 
 CREATE TABLE `tb_unit_masuk` (
-  `id` int(11) NOT NULL,
+  `id_u_masuk` int(11) NOT NULL,
   `id_transaksi` varchar(20) NOT NULL,
   `tanggal_keluar` date NOT NULL,
   `tanggal_masuk` date NOT NULL,
@@ -336,13 +326,14 @@ CREATE TABLE `tb_unit_masuk` (
 -- Dumping data untuk tabel `tb_unit_masuk`
 --
 
-INSERT INTO `tb_unit_masuk` (`id`, `id_transaksi`, `tanggal_keluar`, `tanggal_masuk`, `lokasi`, `id_operator`, `id_pelanggan`, `id_genset`, `id_mobil`, `tambahan`, `jumlah_hari`, `total`, `status`) VALUES
-(1, 'GE-Jun0001', '2023-06-06', '2023-06-09', 'Binuang', 2, 4, 2, 1, 'kabel', '3', '3000000', NULL),
-(2, 'GE-Jun0002', '2023-06-13', '2023-06-17', 'Gambut', 2, 5, 4, 1, 'kabel', '4', '3000000', NULL),
-(3, 'GE-Jun0003', '2023-06-16', '2023-06-19', 'Martapura', 2, 5, 4, 2, 'Box Panel', '3', '2250000 	', 0),
+INSERT INTO `tb_unit_masuk` (`id_u_masuk`, `id_transaksi`, `tanggal_keluar`, `tanggal_masuk`, `lokasi`, `id_operator`, `id_pelanggan`, `id_genset`, `id_mobil`, `tambahan`, `jumlah_hari`, `total`, `status`) VALUES
+(1, 'GE-Jun0001', '2023-06-06', '2023-06-09', 'Binuang', 2, 4, 2, 1, 'kabel', '3', '3000000', 0),
+(2, 'GE-Jun0002', '2023-06-13', '2023-06-17', 'Gambut', 2, 5, 4, 1, 'kabel', '4', '3000000', 0),
+(3, 'GE-Jun0003', '2023-06-16', '2023-06-19', 'Martapura', 2, 5, 4, 2, 'Box Panel', '3', '2250000', 0),
 (4, 'GE-Jun0004', '2023-06-16', '2023-06-19', 'Martapura', 1, 4, 3, 1, 'Box Panel', '3', '2250000', 0),
 (5, 'GE-Jun0005', '2023-05-23', '2023-05-25', 'Gambut', 2, 5, 3, 2, '-', '2', '1500000', 0),
-(6, 'GE-Jun0006', '2023-06-23', '2023-06-26', 'Martapura', 3, 5, 5, 4, 'kabel 20M', '3', '3750000', 0);
+(6, 'GE-Jun0006', '2023-06-23', '2023-06-26', 'Martapura', 3, 5, 5, 4, 'kabel 20M', '3', '3750000', 0),
+(10, 'GE-Jun0007', '2023-06-21', '2023-06-25', 'Tanjung', 2, 8, 4, 2, '-', '4', '3000000', 0);
 
 -- --------------------------------------------------------
 
@@ -365,11 +356,11 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '27-06-2023 8:33'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '25-06-2023 19:08'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '28-06-2023 13:19'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '28-06-2023 13:27'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '27-06-2023 9:04'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
-(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '27-06-2023 8:43');
+(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '28-06-2023 13:24');
 
 --
 -- Indexes for dumped tables
@@ -418,7 +409,7 @@ ALTER TABLE `tb_pelanggan_blacklist`
 --
 ALTER TABLE `tb_pendapatan`
   ADD PRIMARY KEY (`id_pendapatan`),
-  ADD KEY `id_u_keluar` (`id_u_keluar`);
+  ADD KEY `id_u_keluar` (`id_u_masuk`);
 
 --
 -- Indeks untuk tabel `tb_pengeluaran`
@@ -454,7 +445,7 @@ ALTER TABLE `tb_unit_keluar`
 -- Indeks untuk tabel `tb_unit_masuk`
 --
 ALTER TABLE `tb_unit_masuk`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_u_masuk`),
   ADD KEY `id_operator` (`id_operator`,`id_pelanggan`,`id_genset`,`id_mobil`);
 
 --
@@ -537,7 +528,7 @@ ALTER TABLE `tb_unit_keluar`
 -- AUTO_INCREMENT untuk tabel `tb_unit_masuk`
 --
 ALTER TABLE `tb_unit_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_u_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
