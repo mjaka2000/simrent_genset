@@ -374,7 +374,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function gsel_data_u_keluar($tabel)
+  public function gsel_data_u_keluar($tabel) //! Untuk report cetak_penyewaan all
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -388,7 +388,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function grep_data_u_keluar($tabel, $bulan, $tahun)
+  public function grep_data_u_keluar($tabel, $bulan, $tahun) //! Untuk report cetak_penyewaan periode
   {
     $bulan = $this->db->escape($bulan);
     $tahun = $this->db->escape($tahun);
