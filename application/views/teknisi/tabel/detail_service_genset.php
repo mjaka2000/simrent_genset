@@ -118,7 +118,7 @@
                                                             :&nbsp;<?php if ($d->ket_perbaikan == "1") { ?>
                                                             <a href="#" type="button" class="btn btn-xs btn-success">Selesai Diperbaiki</a>
                                                         <?php } else { ?>
-                                                            <a href="#" type="button" class="btn btn-xs btn-danger">Masih Terkendala</a>
+                                                            <a href="#" type="button" class="btn btn-xs btn-danger">Masih Proses</a>
                                                         <?php } ?>
                                                         </div>
 

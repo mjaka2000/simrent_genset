@@ -103,10 +103,10 @@
                                         <select name="ket_perbaikan" class="form-control" id="ket_perbaikan">
                                             <option value="">-- Status --</option>
                                             <?php if ($ld->ket_perbaikan == "0") { ?>
-                                                <option value="0" selected>Masih Terkendala</option>
+                                                <option value="0" selected>Masih Proses</option>
                                                 <option value="1" disabled>Selesai Diperbaiki</option>
                                             <?php } else { ?>
-                                                <option value="0">Masih Terkendala</option>
+                                                <option value="0">Masih Proses</option>
                                                 <option value="1" disabled selected>Selesai Diperbaiki</option>
                                             <?php } ?>
                                         </select>
