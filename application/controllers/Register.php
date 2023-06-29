@@ -66,12 +66,6 @@ class Register extends CI_Controller
                     'id_user' => $last_id
                 );
 
-                // $dataUpload = array(
-                //     'id' => '',
-                //     'username_user' => $username,
-                //     'nama_file' => 'nopic.png'
-                // );
-
                 $this->M_login->insert('tb_pelanggan', $dataPlg);
 
                 $this->db->trans_complete();

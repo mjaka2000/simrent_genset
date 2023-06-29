@@ -89,7 +89,11 @@
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="row">
-                                                        :&nbsp;<?= $d->jk_plg; ?> </div>
+                                                        :&nbsp;<?php if ($dt->jk_plg == 'L') { ?>
+                                                        Laki - Laki
+                                                    <?php } else { ?>
+                                                        Perempuan
+                                                    <?php } ?> </div>
 
                                                 </div>
                                             </div>

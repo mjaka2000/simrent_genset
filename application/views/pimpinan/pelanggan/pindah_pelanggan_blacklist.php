@@ -69,7 +69,16 @@
                                         <div class="form-group">
                                             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
 
-                                            <input type="text" name="jk_plg_blk" class="form-control" id="jk_plg_blk" placeholder="Jenis Kelamin" readonly required value="<?= $d->jk_plg; ?>">
+                                            <select name="jk_plg" id="jk_plg" class="form-control">
+                                                <option value="">-- Pilih --</option>
+                                                <?php if ($d->jk_plg == 'L') { ?>
+                                                    <option value="L" selected>Laki-Laki</option>
+                                                    <option value="P">Perempuan</option>
+                                                <?php } else { ?>
+                                                    <option value="L">Laki-Laki</option>
+                                                    <option value="P" selected>Perempuan</option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="nama_perusahaan" class="form-label">Nama Perusahaan</label>

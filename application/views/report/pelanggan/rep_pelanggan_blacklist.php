@@ -44,11 +44,15 @@
                         <?php foreach ($list_pelanggan_blacklist as $dt) : ?>
                             <tr>
                                 <td><?= $no++; ?></td>
-                                <td><?= $dt->nama_plg_blk; ?></td>
-                                <td><?= $dt->alamat_plg_blk; ?></td>
-                                <td><?= $dt->nohp_plg_blk; ?></td>
-                                <td><?= $dt->jk_plg_blk; ?></td>
-                                <td><?= $dt->namaperusahaan_plg_blk; ?></td>
+                                <td><?= $dt->nama_plg; ?></td>
+                                <td><?= $dt->alamat_plg; ?></td>
+                                <td><?= $dt->nohp_plg; ?></td>
+                                <?php if ($dt->jk_plg == 'L') { ?>
+                                    <td>Laki - Laki</td>
+                                <?php } else { ?>
+                                    <td>Perempuan</td>
+                                <?php } ?>
+                                <td><?= $dt->namaperusahaan_plg; ?></td>
                                 <!-- <td><?= $dt->tglupdate_plg_blk; ?></td> -->
                             </tr>
                         <?php endforeach; ?>

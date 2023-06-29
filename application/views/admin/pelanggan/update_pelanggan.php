@@ -70,12 +70,12 @@
 
                                         <select name="jk_plg" id="jk_plg" class="form-control">
                                             <option value="">-- Pilih --</option>
-                                            <?php if ($d->jk_plg == "Laki-Laki") { ?>
-                                                <option value="Laki-Laki" selected>Laki-Laki</option>
-                                                <option value="Perempuan">Perempuan</option>
+                                            <?php if ($d->jk_plg == 'L') { ?>
+                                                <option value="L" selected>Laki-Laki</option>
+                                                <option value="P">Perempuan</option>
                                             <?php } else { ?>
-                                                <option value="Laki-Laki">Laki-Laki</option>
-                                                <option value="Perempuan" selected>Perempuan</option>
+                                                <option value="L">Laki-Laki</option>
+                                                <option value="P" selected>Perempuan</option>
                                             <?php } ?>
                                         </select>
                                     </div>

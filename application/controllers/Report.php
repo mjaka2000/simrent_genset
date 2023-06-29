@@ -87,14 +87,14 @@ class Report extends CI_Controller
 
     public function cetak_Pelanggan()
     {
-        $data['list_data'] = $this->M_data->select('tb_pelanggan');
+        $data['list_data'] = $this->M_data->get_Plg('tb_pelanggan');
         $data['title'] = 'Laporan Data Pelanggan';
         $this->load->view('report/pelanggan/rep_pelanggan', $data);
     }
 
     public function cetak_Pelanggan_blacklist()
     {
-        $data['list_pelanggan_blacklist'] = $this->M_data->select('tb_pelanggan_blacklist');
+        $data['list_pelanggan_blacklist'] = $this->M_data->get_Plg_Blc('tb_pelanggan');
         $data['title'] = 'Laporan Data Pelanggan Blacklist';
         $this->load->view('report/pelanggan/rep_pelanggan_blacklist', $data);
     }

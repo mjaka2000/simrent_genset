@@ -69,8 +69,8 @@
 
                                     <select name="jk_plg" id="jk_plg" class="form-control" required>
                                         <option value="">-- Pilih --</option>
-                                        <option value="Laki-Laki">Laki-Laki</option>
-                                        <option value="Perempuan">Perempuan</option>
+                                        <option value="L">Laki-Laki</option>
+                                        <option value="P">Perempuan</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

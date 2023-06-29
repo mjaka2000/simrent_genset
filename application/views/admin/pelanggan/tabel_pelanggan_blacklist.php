@@ -64,16 +64,20 @@
                                         <?php foreach ($list_pelanggan_blacklist as $dt) : ?>
                                             <tr>
                                                 <td><?= $no++; ?></td>
-                                                <td><?= $dt->nama_plg_blk; ?></td>
-                                                <td><?= $dt->alamat_plg_blk; ?></td>
-                                                <td><?= $dt->nohp_plg_blk; ?></td>
-                                                <td><?= $dt->jk_plg_blk; ?></td>
-                                                <td><?= $dt->namaperusahaan_plg_blk; ?></td>
+                                                <td><?= $dt->nama_plg; ?></td>
+                                                <td><?= $dt->alamat_plg; ?></td>
+                                                <td><?= $dt->nohp_plg; ?></td>
+                                                <?php if ($dt->jk_plg == 'L') { ?>
+                                                    <td>Laki - Laki</td>
+                                                <?php } else { ?>
+                                                    <td>Perempuan</td>
+                                                <?php } ?>
+                                                <td><?= $dt->namaperusahaan_plg; ?></td>
                                                 <!-- <td><?= $dt->tglupdate_plg_blk; ?></td> -->
                                                 <td>
-                                                    <!-- <a href="<?= site_url('admin/update_data_pelanggan/' . $dt->id_plg_blacklist); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
-                                                    <!-- <a href="<?= site_url('admin/kembalikan_pelanggan/' . $dt->id_plg_blacklist); ?>" type="button" class="btn btn-sm btn-warning" name="btn_delete"><i class="fa fa-history"></i></a> -->
-                                                    <a href="<?= site_url('admin/hapus_pelanggan_blacklist/' . $dt->id_plg_blacklist); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
+                                                    <!-- <a href="<?= site_url('admin/update_data_pelanggan/' . $dt->id_pelanggan); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
+                                                    <a href="<?= site_url('admin/kembalikan_pelanggan/' . $dt->id_pelanggan); ?>" type="button" class="btn btn-sm btn-warning btn-plg" name="btn_delete"><i class="fa fa-history"></i></a>
+                                                    <!-- <a href="<?= site_url('admin/hapus_pelanggan_blacklist/' . $dt->id_pelanggan); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -118,6 +122,25 @@
             'autoWidth': false
         })
     }); //* Script untuk memuat datatable
+</script>
+<script>
+    //* Script untuk memuat sweetalert status pelanggan
+    $('.btn-plg').on('click', function() {
+        var getLink = $(this).attr('href');
+        Swal.fire({
+            title: 'Ubah Status',
+            text: 'Yakin ingin mengembalikan Status Pelanggan?',
+            type: 'warning',
+            confirmButtonColor: '#d9534f',
+            showCancelButton: true,
+        }).then(result => {
+            //jika klik ya maka arahkan ke proses.php
+            if (result.isConfirmed) {
+                window.location.href = getLink
+            }
+        })
+        return false;
+    });
 </script>
 <script type="text/javascript">
     $('.btn-delete').on('click', function() {

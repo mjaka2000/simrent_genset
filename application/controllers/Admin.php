@@ -1070,7 +1070,7 @@ class Admin extends CI_Controller
 
 	public function tabel_pelanggan()
 	{
-		$data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
+		$data['list_pelanggan'] = $this->M_data->get_Plg('tb_pelanggan');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Data Pelanggan';
 		$this->load->view('admin/pelanggan/tabel_pelanggan', $data);
@@ -1179,7 +1179,7 @@ class Admin extends CI_Controller
 
 	public function tabel_pelanggan_blacklist()
 	{
-		$data['list_pelanggan_blacklist'] = $this->M_data->select('tb_pelanggan_blacklist');
+		$data['list_pelanggan_blacklist'] = $this->M_data->get_Plg_Blc('tb_pelanggan');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Data Pelanggan Blacklist';
 		$this->load->view('admin/pelanggan/tabel_pelanggan_blacklist', $data);
@@ -1189,57 +1189,88 @@ class Admin extends CI_Controller
 	{
 		$uri = $this->uri->segment(3);
 		$where = array('id_pelanggan' => $uri);
-		$data['list_plg'] = $this->M_data->get_data('tb_pelanggan', $where);
-		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-		$data['title'] = 'Pindah Data Pelanggan';
-		$this->load->view('admin/pelanggan/pindah_pelanggan_blacklist', $data);
-	}
+		// $data['list_plg'] = $this->M_data->get_data('tb_pelanggan', $where);
+		$ket_plg = 0;
+		$data = array(
+			'ket_plg' => $ket_plg
+		);
+		$this->M_data->update('tb_pelanggan', $data, $where);
+		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dipindah');
 
-	public function proses_blacklist_pelanggan()
-	{
-		$id = $this->input->post('id_pelanggan', TRUE);
-		$this->form_validation->set_rules('nama_plg_blk', 'Nama', 'trim|required');
-		$this->form_validation->set_rules('alamat_plg_blk', 'Alamat', 'trim|required');
-		$this->form_validation->set_rules('nohp_plg_blk', 'No Hp', 'trim|required');
-		$this->form_validation->set_rules('jk_plg_blk', 'Jenis Kelamin', 'trim|required');
-		$this->form_validation->set_rules('namaperusahaan_plg_blk', 'Nama Perusahaan', 'trim|required');
-		$this->form_validation->set_rules('tglupdate_plg_blk', 'Tanggal Update', 'trim|required');
-		if ($this->form_validation->run() === TRUE) {
-			$nama = $this->input->post('nama_plg_blk', TRUE);
-			$alamat = $this->input->post('alamat_plg_blk', TRUE);
-			$no_hp = $this->input->post('nohp_plg_blk', TRUE);
-			$jenis_kelamin = $this->input->post('jk_plg_blk', TRUE);
-			$nama_perusahaan = $this->input->post('namaperusahaan_plg_blk', TRUE);
-			$tgl_update = $this->input->post('tglupdate_plg_blk', TRUE);
-
-			$where = array('id_pelanggan' => $id);
-			$data = array(
-				'nama_plg_blk' => $nama,
-				'alamat_plg_blk' => $alamat,
-				'nohp_plg_blk' => $no_hp,
-				'jk_plg_blk' => $jenis_kelamin,
-				'namaperusahaan_plg_blk' => $nama_perusahaan,
-				'tglupdate_plg_blk' => $tgl_update
-			);
-			$this->M_data->insert('tb_pelanggan_blacklist', $data);
-			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dipindah');
-			$this->M_data->delete('tb_pelanggan', $where);
-			redirect(site_url('admin/tabel_pelanggan_blacklist'));
-		} else {
-			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-			$data['title'] = 'Pindah Data Pelanggan';
-			$this->load->view('admin/pelanggan/pindah_pelanggan_blacklist');
-		}
-	}
-
-	public function hapus_pelanggan_blacklist()
-	{
-		$uri = $this->uri->segment(3);
-		$where = array('id_plg_blacklist' => $uri);
-		$this->M_data->delete('tb_pelanggan_blacklist', $where);
-		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+		// $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		redirect(site_url('admin/tabel_pelanggan_blacklist'));
 	}
+
+	public function kembalikan_pelanggan()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_pelanggan' => $uri);
+		// $data['list_plg'] = $this->M_data->get_data('tb_pelanggan', $where);
+		$ket_plg = 1;
+		$data = array(
+			'ket_plg' => $ket_plg
+		);
+		$this->M_data->update('tb_pelanggan', $data, $where);
+		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dipindah');
+
+		// $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		redirect(site_url('admin/tabel_pelanggan'));
+	}
+	// public function pindah_data_pelanggan()
+	// {
+	// 	$uri = $this->uri->segment(3);
+	// 	$where = array('id_pelanggan' => $uri);
+	// 	$data['list_plg'] = $this->M_data->get_data('tb_pelanggan', $where);
+	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+	// 	$data['title'] = 'Pindah Data Pelanggan';
+	// 	$this->load->view('admin/pelanggan/pindah_pelanggan_blacklist', $data);
+	// }
+
+	// public function proses_blacklist_pelanggan()
+	// {
+	// 	$id = $this->input->post('id_pelanggan', TRUE);
+	// 	$this->form_validation->set_rules('nama_plg_blk', 'Nama', 'trim|required');
+	// 	$this->form_validation->set_rules('alamat_plg_blk', 'Alamat', 'trim|required');
+	// 	$this->form_validation->set_rules('nohp_plg_blk', 'No Hp', 'trim|required');
+	// 	$this->form_validation->set_rules('jk_plg_blk', 'Jenis Kelamin', 'trim|required');
+	// 	$this->form_validation->set_rules('namaperusahaan_plg_blk', 'Nama Perusahaan', 'trim|required');
+	// 	$this->form_validation->set_rules('tglupdate_plg_blk', 'Tanggal Update', 'trim|required');
+	// 	if ($this->form_validation->run() === TRUE) {
+	// 		$nama = $this->input->post('nama_plg_blk', TRUE);
+	// 		$alamat = $this->input->post('alamat_plg_blk', TRUE);
+	// 		$no_hp = $this->input->post('nohp_plg_blk', TRUE);
+	// 		$jenis_kelamin = $this->input->post('jk_plg_blk', TRUE);
+	// 		$nama_perusahaan = $this->input->post('namaperusahaan_plg_blk', TRUE);
+	// 		$tgl_update = $this->input->post('tglupdate_plg_blk', TRUE);
+
+	// 		$where = array('id_pelanggan' => $id);
+	// 		$data = array(
+	// 			'nama_plg_blk' => $nama,
+	// 			'alamat_plg_blk' => $alamat,
+	// 			'nohp_plg_blk' => $no_hp,
+	// 			'jk_plg_blk' => $jenis_kelamin,
+	// 			'namaperusahaan_plg_blk' => $nama_perusahaan,
+	// 			'tglupdate_plg_blk' => $tgl_update
+	// 		);
+	// 		$this->M_data->insert('tb_pelanggan_blacklist', $data);
+	// 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dipindah');
+	// 		$this->M_data->delete('tb_pelanggan', $where);
+	// 		redirect(site_url('admin/tabel_pelanggan_blacklist'));
+	// 	} else {
+	// 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+	// 		$data['title'] = 'Pindah Data Pelanggan';
+	// 		$this->load->view('admin/pelanggan/pindah_pelanggan_blacklist');
+	// 	}
+	// }
+
+	// public function hapus_pelanggan_blacklist()
+	// {
+	// 	$uri = $this->uri->segment(3);
+	// 	$where = array('id_plg_blacklist' => $uri);
+	// 	$this->M_data->delete('tb_pelanggan_blacklist', $where);
+	// 	$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+	// 	redirect(site_url('admin/tabel_pelanggan_blacklist'));
+	// }
 
 	####################################
 	//* End Data Pelanggan 
@@ -1283,7 +1314,7 @@ class Admin extends CI_Controller
 
 		$data['list_mobil'] = $this->M_data->select('tb_mobil');
 		$data['list_genset'] = $this->M_data->select_gst('tb_genset');
-		$data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
+		$data['list_pelanggan'] = $this->M_data->get_Plg('tb_pelanggan');
 		$data['list_operator'] = $this->M_data->select_op('tb_operator');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Tambah Unit Sewa';

@@ -70,7 +70,11 @@
                                                 <td><?= $dt->nama_plg; ?></td>
                                                 <td><?= $dt->alamat_plg; ?></td>
                                                 <td><?= $dt->nohp_plg; ?></td>
-                                                <td><?= $dt->jk_plg; ?></td>
+                                                <?php if ($dt->jk_plg == 'L') { ?>
+                                                    <td>Laki - Laki</td>
+                                                <?php } else { ?>
+                                                    <td>Perempuan</td>
+                                                <?php } ?>
                                                 <td><?= $dt->namaperusahaan_plg; ?></td>
                                                 <td><?= date('d-m-Y', strtotime($dt->tglupdate_plg)); ?></td>
                                                 <?php if ($dt->status_plg == NULL || $dt->status_plg == 0) { ?>

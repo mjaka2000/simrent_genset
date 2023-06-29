@@ -136,6 +136,24 @@ class M_data extends CI_Model
   //* New Query
   ####################################
 
+  public function get_Plg($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where('ket_plg =', 1)
+      ->get();
+    return $query->result();
+  }
+
+  public function get_Plg_Blc($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where('ket_plg =', 0)
+      ->get();
+    return $query->result();
+  }
+
   public function notif_stok($tabel)
   {
     $query = $this->db->select()
