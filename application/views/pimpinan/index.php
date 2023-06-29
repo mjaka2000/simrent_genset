@@ -9,8 +9,8 @@
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0">Dashboard <small>Control Panel</small></h1>
-          <!-- <li class="nav nav-item dropdown">
-            <a href="#" class="nav-link" data-toggle="dropdown">
+          <li class="nav nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="far fa-bell"></i>
               <?php if (empty($num)) { ?>
                 <span></span>
@@ -19,23 +19,20 @@
               <?php } ?>
             </a>
             <div class="dropdown-menu dropdown-menu-lg">
-              <span class="dropdown-header" style="background-color: #2596be; color: white;">You have <?= $num; ?> notifications</span>
+              <span class="dropdown-item dropdown-header" style="background-color: #2596be;color: white;"><?= $num; ?> Pemberitahuan sewa genset</span>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <div class="col-lg">
-                  <?php foreach ($notifOut as $c) : ?>
-                    <a href="<?= site_url('pimpinan/detail_unit_keluar/' . $c->id_u_keluar); ?>" style="text-decoration: none; color: black;"><span><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong></span><br>
-                      <small style="color: red;">Pengambilan Genset Tanggal <strong><?= date('d/m/Y', strtotime($c->tanggal_masuk)); ?></strong></small></a>
-                  <?php endforeach ?>
+              <?php foreach ($notifOut as $c) : ?>
+                <div class="card-body">
+                  <a href="<?= site_url('admin/detail_unit_keluar/' . $c->id_u_keluar); ?>" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
+                    <small style="color: red;">Pengambilan Genset Tanggal <strong><?= date('d/m/Y', strtotime($c->tanggal_masuk)); ?></strong></small></a>
+                  <!-- <a href="#" class="dropdown-item">
+                  </a> -->
                 </div>
-              </a>
-
-
+              <?php endforeach ?>
               <div class="dropdown-divider"></div>
-              <a href="#" style="background-color: #2596be;" class="dropdown-item dropdown-footer"></a>
+              <a href="#" class="dropdown-item dropdown-footer"></a>
             </div>
-
-          </li> -->
+          </li>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -162,7 +159,7 @@
             <a href="<?= site_url('pimpinan/laporan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <?php foreach ($notifOut as $c) : ?>
+        <!-- <?php foreach ($notifOut as $c) : ?>
           <div class="col-lg-3 col-xs-6">
             <div class="small-box ">
               <div class="alert alert-warning alert-dismissible">
@@ -173,7 +170,7 @@
               </div>
             </div>
           </div>
-        <?php endforeach ?>
+        <?php endforeach ?> -->
       </div>
       <div class="card">
         <!-- <div class="card-body">
