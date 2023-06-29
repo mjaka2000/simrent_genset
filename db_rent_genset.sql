@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Jun 2023 pada 12.09
+-- Waktu pembuatan: 29 Jun 2023 pada 15.40
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -142,7 +142,7 @@ CREATE TABLE `tb_pelanggan` (
   `nama_plg` varchar(50) NOT NULL,
   `alamat_plg` varchar(50) NOT NULL,
   `nohp_plg` varchar(20) NOT NULL,
-  `jk_plg` varchar(20) NOT NULL,
+  `jk_plg` enum('L','P') NOT NULL,
   `namaperusahaan_plg` varchar(50) NOT NULL,
   `tglupdate_plg` date NOT NULL,
   `status_plg` int(10) DEFAULT NULL,
@@ -155,34 +155,10 @@ CREATE TABLE `tb_pelanggan` (
 --
 
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`, `id_user`) VALUES
-(4, 'anonim', 'Jl. Sunga Andai', '0895619213134', 'Laki-Laki', 'PT Rahmat', '2023-04-11', 0, 1, 0),
-(5, 'iwan f', 'jl kp melayu', '0878123121234', 'Laki-Laki', 'pt rahmat', '2023-04-16', 0, 1, 0),
-(8, 'Wanda', 'Jl. Mantuil', '0897738493722', 'Laki-Laki', 'PT. Abadi', '2023-06-26', 1, 1, 37),
-(9, 'Bayu Agung', 'Jl. A. Yani KM. 06', '0821564721344', 'Laki-Laki', '-', '2023-06-29', 1, 1, 38);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tb_pelanggan_blacklist`
---
-
-CREATE TABLE `tb_pelanggan_blacklist` (
-  `id_plg_blacklist` int(11) NOT NULL,
-  `nama_plg_blk` varchar(50) NOT NULL,
-  `alamat_plg_blk` varchar(50) NOT NULL,
-  `nohp_plg_blk` varchar(20) NOT NULL,
-  `jk_plg_blk` varchar(20) NOT NULL,
-  `namaperusahaan_plg_blk` varchar(50) NOT NULL,
-  `tglupdate_plg_blk` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data untuk tabel `tb_pelanggan_blacklist`
---
-
-INSERT INTO `tb_pelanggan_blacklist` (`id_plg_blacklist`, `nama_plg_blk`, `alamat_plg_blk`, `nohp_plg_blk`, `jk_plg_blk`, `namaperusahaan_plg_blk`, `tglupdate_plg_blk`) VALUES
-(2, 'Engkoh', 'Sungai Jingah', '089561921342', 'Laki-Laki', 'PT RTR', '2023-04-11'),
-(3, 'ami', 'jl. sjingah', '0821312341087', 'Perempuan', 'pt amanah', '2023-04-18');
+(4, 'anonim', 'Jl. Sunga Andai', '0895619213134', 'L', 'PT Rahmat', '2023-04-11', 0, 0, 0),
+(5, 'iwan f', 'jl kp melayu', '0878123121234', 'L', 'pt rahmat', '2023-04-16', 0, 1, 0),
+(8, 'Wanda', 'Jl. Mantuil', '0897738493722', 'L', 'PT. Abadi', '2023-06-26', 1, 1, 37),
+(9, 'Bayu Agung', 'Jl. A. Yani KM. 06', '0821564721344', 'L', '-', '2023-06-29', 1, 1, 38);
 
 -- --------------------------------------------------------
 
@@ -374,12 +350,12 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '29-06-2023 18:08'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '29-06-2023 18:06'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '29-06-2023 21:35'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '29-06-2023 21:28'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '29-06-2023 9:26'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
-(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '29-06-2023 13:35'),
-(38, 'abay021', 'Bayu Agung', '$2y$10$QEeN8oD4rPRK2xQnGrdNA.omD00N3KHv.ND5Xy4wUGj65ZWWl7ZVe', 3, 'nopic.png', '29-06-2023 18:05');
+(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '29-06-2023 20:19'),
+(38, 'abay021', 'Bayu Agung', '$2y$10$QEeN8oD4rPRK2xQnGrdNA.omD00N3KHv.ND5Xy4wUGj65ZWWl7ZVe', 3, 'nopic.png', '29-06-2023 20:18');
 
 --
 -- Indexes for dumped tables
@@ -416,12 +392,6 @@ ALTER TABLE `tb_operator`
 ALTER TABLE `tb_pelanggan`
   ADD PRIMARY KEY (`id_pelanggan`),
   ADD KEY `id_user` (`id_user`);
-
---
--- Indeks untuk tabel `tb_pelanggan_blacklist`
---
-ALTER TABLE `tb_pelanggan_blacklist`
-  ADD PRIMARY KEY (`id_plg_blacklist`);
 
 --
 -- Indeks untuk tabel `tb_pendapatan`
@@ -506,12 +476,6 @@ ALTER TABLE `tb_operator`
 --
 ALTER TABLE `tb_pelanggan`
   MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT untuk tabel `tb_pelanggan_blacklist`
---
-ALTER TABLE `tb_pelanggan_blacklist`
-  MODIFY `id_plg_blacklist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pendapatan`
