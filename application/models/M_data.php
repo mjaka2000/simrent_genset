@@ -30,11 +30,38 @@ class M_data extends CI_Model
     $this->db->delete($tabel);
   }
 
+  ####################################
+  //! Batas Query User (Jangan diubah)
+  ####################################
 
+  public function get_avatar($tabel, $username) //* Query get avatar User
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where('username', $username)
+      ->get();
+    return $query->result();
+  }
+
+  public function update_avatar($where, $data) //* Query update Avatar User
+  {
+    $this->db->set($data);
+    $this->db->where($where);
+    $this->db->update('tb_user');
+  }
+
+  public function update_password($tabel, $where, $data) //* Update password
+  {
+    $this->db->where($where);
+    $this->db->update($tabel, $data);
+  }
+
+  ####################################
+  //! End Batas Query User (Jangan diubah)
+  ####################################
   ####################################
   //! Old query but still use
   ####################################
-
 
   public function get_data($tabel, $where)
   {
@@ -44,8 +71,6 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
-
-
 
   // public function mengurangi($tabel, $id_genset, $stok_gd_new)
   // {
@@ -89,17 +114,6 @@ class M_data extends CI_Model
     $this->db->update($tabel);
   }
 
-
-
-
-  // public function sum($tabel, $field)
-  // {
-  //   $query = $this->db->select_sum($field)
-  //     ->from($tabel)
-  //     ->get();
-  //   return $query->result();
-  // }
-
   public function numrows($tabel)
   {
     $query = $this->db->select()
@@ -121,32 +135,6 @@ class M_data extends CI_Model
   ####################################
   //* New Query
   ####################################
-
-  //! Batas Query User
-
-  public function get_avatar($tabel, $username) //* Query User
-  {
-    $query = $this->db->select()
-      ->from($tabel)
-      ->where('username', $username)
-      ->get();
-    return $query->result();
-  }
-
-  public function update_avatar($where, $data) //* Query Avatar User
-  {
-    $this->db->set($data);
-    $this->db->where($where);
-    $this->db->update('tb_user');
-  }
-
-  public function update_password($tabel, $where, $data)
-  {
-    $this->db->where($where);
-    $this->db->update($tabel, $data);
-  }
-
-  //! Batas Query User
 
   public function notif_stok($tabel)
   {
@@ -349,8 +337,6 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
-
-
 
   ####################################
   //* End Data Unit Keluar 

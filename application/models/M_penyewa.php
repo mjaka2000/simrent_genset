@@ -45,12 +45,10 @@ class M_penyewa extends CI_Model
     }
 
     ####################################
-    //* New Query
+    //! Batas Query User (Jangan diubah)
     ####################################
 
-    //! Batas Query User
-
-    public function get_avatar($tabel, $username) //* Query User
+    public function get_avatar($tabel, $username) //* Query get avatar User
     {
         $query = $this->db->select()
             ->from($tabel)
@@ -59,30 +57,22 @@ class M_penyewa extends CI_Model
         return $query->result();
     }
 
-    public function update_avatar($where, $data) //* Query Avatar User
+    public function update_avatar($where, $data) //* Query update Avatar User
     {
         $this->db->set($data);
         $this->db->where($where);
         $this->db->update('tb_user');
     }
 
-    public function update_password($tabel, $where, $data)
+    public function update_password($tabel, $where, $data) //* Update password
     {
         $this->db->where($where);
         $this->db->update($tabel, $data);
     }
 
-    public function get_user($tabel)
-    {
-        $query = $this->db->select()
-            ->from($tabel)
-            // ->where('nama', $nama)
-            ->join('tb_pelanggan', 'tb_pelanggan.id_user = tb_user.id_user')
-            ->where('id_user', $this->session->userdata('id_user'))
-            ->get();
-        return $query->result();
-    }
-
+    ####################################
+    //! End Batas Query User (Jangan diubah)
+    ####################################
     public function get_data_plg($tabel)
     {
         $query = $this->db->select()
@@ -94,7 +84,9 @@ class M_penyewa extends CI_Model
     }
 
     //! Batas Query User
-
+    ####################################
+    //* New Query
+    ####################################
     public function update_status_gst($tabel, $where, $status_gst)
     {
         $this->db->set("ket_genset", $status_gst);
