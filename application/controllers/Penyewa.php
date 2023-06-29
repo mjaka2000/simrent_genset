@@ -230,9 +230,9 @@ class Penyewa extends CI_Controller
         $data['kode_auto'] = $auto_kode;
 
         $data['list_mobil'] = $this->M_penyewa->select('tb_mobil');
-        $data['list_genset'] = $this->M_penyewa->select('tb_genset');
+        $data['list_genset'] = $this->M_penyewa->select_gst('tb_genset');
         $data['list_pelanggan'] = $this->M_penyewa->get_data_plg('tb_pelanggan');
-        $data['list_operator'] = $this->M_penyewa->select('tb_operator');
+        $data['list_operator'] = $this->M_penyewa->select_op('tb_operator');
         $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Tambah Unit Sewa';
         $this->load->view('penyewa/unit_keluar/tambah_unit_keluar', $data);

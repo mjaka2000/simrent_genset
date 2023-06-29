@@ -17,11 +17,13 @@ class Admin extends CI_Controller
 	{
 		// $bulan = $this->input->get('bulan');
 		// $tahun = $this->input->get('tahun');
+		$tgl = date('Y-m-d');
 		$bulan = date('m');
 		$tahun = date('Y');
 		$label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
 		$data['pendapatan'] = $this->M_data->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
 		// $data['pendapatanChart'] = $this->M_data->chart_pendapatanMasuk('tb_pendapatan');
+		$data['notifOut'] = $this->M_data->notif_u_keluar('tb_unit_keluar', $tgl);
 		$data['stokBarangKeluar'] = $this->M_data->numrows('tb_unit_masuk');
 		$data['dataUser'] = $this->M_data->numrows('tb_user');
 		$data['dataPelanggan'] = $this->M_data->numrows('tb_pelanggan');
@@ -29,8 +31,8 @@ class Admin extends CI_Controller
 		$data['dataServGenset'] = $this->M_data->numrows('tb_serv_genset');
 		$data['dataStokSparepart'] = $this->M_data->numrows('tb_sparepart');
 		$data['dataPengeluaran'] = $this->M_data->numrows('tb_pengeluaran');
-		$data['count'] = $this->M_data->notif_stok('tb_sparepart');
-		$data['num'] = $this->M_data->notif_stok_jml('tb_sparepart');
+		// $data['count'] = $this->M_data->notif_stok('tb_sparepart');
+		// $data['num'] = $this->M_data->notif_stok_jml('tb_sparepart');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Home';
 		$data['label'] = $label;
@@ -1279,9 +1281,9 @@ class Admin extends CI_Controller
 		$data['kode_auto'] = $auto_kode;
 
 		$data['list_mobil'] = $this->M_data->select('tb_mobil');
-		$data['list_genset'] = $this->M_data->select('tb_genset');
+		$data['list_genset'] = $this->M_data->select_gst('tb_genset');
 		$data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
-		$data['list_operator'] = $this->M_data->select('tb_operator');
+		$data['list_operator'] = $this->M_data->select_op('tb_operator');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Tambah Unit Sewa';
 		$this->load->view('admin/unit_keluar/tambah_unit_keluar', $data);

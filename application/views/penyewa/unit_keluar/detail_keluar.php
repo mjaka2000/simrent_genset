@@ -55,19 +55,7 @@
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="row">
-                                                        :&nbsp;<?= date('d-m-Y', strtotime($d->tanggal_keluar)); ?> </div>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th style="vertical-align: middle">Tanggal Masuk</th>
-                                        <td style="vertical-align: middle;">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <div class="row">
-                                                        :&nbsp;<?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?> </div>
+                                                        :&nbsp;<?= date('d-m-Y', strtotime($d->tanggal_keluar)); ?> s/d <?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></div>
 
                                                 </div>
                                             </div>
@@ -227,7 +215,7 @@
                         </div>
                         <div class="card-footer" align="center">
                             <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                            <a href="<?= site_url('report/cetak_penyewaan_detail/' . $d->id_u_keluar); ?>" target="_blank" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a>
+                            <a href="<?= site_url('report/cetak_penyewaan_detailOut/' . $d->id_u_keluar); ?>" target="_blank" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a>
 
                         </div>
                     </div>

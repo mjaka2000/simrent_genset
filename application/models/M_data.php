@@ -310,6 +310,50 @@ class M_data extends CI_Model
     return $query->result();
   }
 
+  public function notif_u_keluar($tabel, $tgl)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->where('status =', 1)
+      ->where('DATEDIFF(DATE_SUB(tanggal_masuk, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
+
+      ->get();
+    return $query->result();
+  }
+
+  public function notif_u_keluarJml($tabel, $tgl)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->where('status =', 1)
+      ->where('DATEDIFF(DATE_SUB(tanggal_masuk, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
+
+      ->get();
+    return $query->num_rows();
+  }
+
+  public function select_op($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where('status_op =', 0)
+      ->get();
+    return $query->result();
+  }
+
+  public function select_gst($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where('ket_genset =', 0)
+      ->get();
+    return $query->result();
+  }
+
   public function get_data_u_keluar($tabel)
   {
     $query = $this->db->select()

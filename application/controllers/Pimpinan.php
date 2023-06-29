@@ -12,12 +12,31 @@ class Pimpinan extends CI_Controller
         if ($this->session->userdata('role') != '1') {
             redirect(site_url("login"));
         }
+        // $tgl = date('Y-m-d');
+        // $nav['num'] = $this->M_data->notif_u_keluarJml('tb_unit_keluar', $tgl);
+        // $nav['notifOut'] = $this->M_data->notif_u_keluar('tb_unit_keluar', $tgl);
+        // $this->load->view('pimpinan/template/nav', $nav);
     }
 
     public function index()
     {
+        $tgl = date('Y-m-d');
+        $bulan = date('m');
+        $tahun = date('Y');
+        $label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
+        $data['pendapatan'] = $this->M_data->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
+        $data['num'] = $this->M_data->notif_u_keluarJml('tb_unit_keluar', $tgl);
+        $data['notifOut'] = $this->M_data->notif_u_keluar('tb_unit_keluar', $tgl);
+        $data['stokBarangKeluar'] = $this->M_data->numrows('tb_unit_masuk');
+        $data['dataUser'] = $this->M_data->numrows('tb_user');
+        $data['dataPelanggan'] = $this->M_data->numrows('tb_pelanggan');
+        $data['dataOperator'] = $this->M_data->numrows('tb_operator');
+        $data['dataServGenset'] = $this->M_data->numrows('tb_serv_genset');
+        $data['dataStokSparepart'] = $this->M_data->numrows('tb_sparepart');
+        $data['dataPengeluaran'] = $this->M_data->numrows('tb_pengeluaran');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Home';
+        $data['label'] = $label;
         $this->load->view('pimpinan/index', $data);
     }
 
@@ -36,6 +55,7 @@ class Pimpinan extends CI_Controller
     {
         return password_hash($password, PASSWORD_DEFAULT);
     }
+
 
     ####################################
     //* Profile

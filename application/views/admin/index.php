@@ -184,6 +184,7 @@
             <?php } ?>
           </div> -->
         </div>
+
         <!-- <div class="card card-info">
           <div class="card-header">
             <h3 class="card-title">Line Chart</h3>
@@ -204,6 +205,18 @@
           </div>
         </div> -->
       </div>
+      <?php foreach ($notifOut as $c) : ?>
+        <div class="col-lg-3 col-xs-6">
+          <div class="small-box">
+            <div class="alert alert-warning alert-dismissible">
+              <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+              <p align="center"><strong>Pemberitahuan!</strong></p>
+              <a href="<?= site_url('admin/detail_unit_keluar/' . $c->id_u_keluar); ?>" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong></span><br>
+                <small style="color: red;">Pengambilan Genset Tanggal <strong><?= date('d/m/Y', strtotime($c->tanggal_masuk)); ?></strong></small></a>
+            </div>
+          </div>
+        </div>
+      <?php endforeach ?>
     </div>
 </div><!-- /.container-fluid -->
 </section>

@@ -119,6 +119,25 @@ class M_penyewa extends CI_Model
         return $query->result();
     }
 
+    public function select_op($tabel)
+    {
+        $query = $this->db->select()
+            ->from($tabel)
+            ->where('status_op =', 0)
+            ->get();
+        return $query->result();
+    }
+
+    public function select_gst($tabel)
+    {
+        $query = $this->db->select()
+            ->from($tabel)
+            ->where('ket_genset =', 0)
+            ->get();
+        return $query->result();
+    }
+
+
     public function sel_data_u_keluar($tabel)
     {
         $query = $this->db->select()
