@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data Penyewaan Genset</h1>
+                    <h1 class="m-0">Data Unit Masuk (Kembali)</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= site_url('pimpinan'); ?>"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="<?= site_url('pimpinan/tabel_unit_keluar'); ?>">Penyewaan Genset</a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('pimpinan/tabel_unit_masuk'); ?>">Unit Masuk (Kembali)</a></li>
                         <li class="breadcrumb-item active">Detail Data Penyewaan Genset </li>
                     </ol>
                 </div><!-- /.col -->
@@ -31,7 +31,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
-                            Detail Data Penyewaan Genset
+                            Detail Data Unit Masuk (Kembali)
                         </div>
                         <div class="card-body">
                             <?php foreach ($list_data as $d) { ?>

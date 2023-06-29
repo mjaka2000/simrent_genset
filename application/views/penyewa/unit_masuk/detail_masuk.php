@@ -1,6 +1,6 @@
 <?php $this->load->view('template/head'); ?>
-<?php $this->load->view('admin/template/nav'); ?>
-<?php $this->load->view('admin/template/sidebar'); ?>
+<?php $this->load->view('penyewa/template/nav'); ?>
+<?php $this->load->view('penyewa/template/sidebar'); ?>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -12,8 +12,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="<?= site_url('admin/tabel_unit_keluar'); ?>">Penyewaan Genset</a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('penyewa'); ?>"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('penyewa/tabel_unit_masuk'); ?>">Penyewaan Genset</a></li>
                         <li class="breadcrumb-item active">Detail Data Penyewaan Genset </li>
                     </ol>
                 </div><!-- /.col -->
@@ -50,24 +50,12 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th style="vertical-align: middle">Tanggal Keluar</th>
+                                        <th style="vertical-align: middle">Tanggal</th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="row">
-                                                        :&nbsp;<?= date('d-m-Y', strtotime($d->tanggal_keluar)); ?> </div>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th style="vertical-align: middle">Tanggal Masuk</th>
-                                        <td style="vertical-align: middle;">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <div class="row">
-                                                        :&nbsp;<?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?> </div>
+                                                        :&nbsp;<?= date('d-m-Y', strtotime($d->tanggal_keluar)); ?> s/d <?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?> </div>
 
                                                 </div>
                                             </div>
@@ -227,7 +215,7 @@
                         </div>
                         <div class="card-footer" align="center">
                             <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                            <a href="<?= site_url('report/cetak_penyewaan_detail/' . $d->id_u_masuk); ?>" target="_blank" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a>
+                            <a href="<?= site_url('report/cetak_penyewaan_detailPlg/' . $d->id_u_masuk); ?>" target="_blank" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a>
 
                         </div>
                     </div>
@@ -238,7 +226,7 @@
 </div>
 
 <?php $this->load->view('template/footer'); ?>
-<?php $this->load->view('admin/template/script') ?>
+<?php $this->load->view('penyewa/template/script') ?>
 
 
 </body>

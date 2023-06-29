@@ -81,12 +81,12 @@
                         <p>Data Riwayat</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="<?= site_url(); ?>penyewa/laporan" class="nav-link">
                         <i class="fas fa-clipboard nav-icon"></i>
                         <p>Laporan Data</p>
                     </a>
-                </li>
+                </li> -->
                 <!-- <li class="nav-header">LAPORAN DATA</li> -->
                 <li class="nav-header">PENGATURAN</li>
                 <li class="nav-item ">
