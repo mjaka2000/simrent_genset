@@ -555,5 +555,81 @@ class M_data extends CI_Model
   ####################################
   //* End Pengeluaran 
   ####################################
+  ####################################
+  //! Model Khusus User Penyewa 
+  ####################################
+
+  public function get_data_plg($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_user', 'tb_user.id_user = tb_pelanggan.id_user')
+      ->where('tb_pelanggan.id_user =', $this->session->userdata('id_user'))
+      ->get();
+    return $query->result();
+  }
+
+  public function sel_data_u_keluar($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->join('tb_user', 'tb_user.id_user = tb_pelanggan.id_user')
+      ->where('tb_pelanggan.id_user =', $this->session->userdata('id_user'))
+      ->where('status =', 1)
+
+      ->get();
+    return $query->result();
+  }
+
+  public function get_data_Ukeluar($tabel, $where)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->where($where)
+      // ->where('tb_pelanggan.id_user =', $this->session->userdata('id_user'))
+      ->get();
+    return $query->result();
+  }
+
+  public function sel_data_u_masuk($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_masuk.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_masuk.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
+      ->join('tb_user', 'tb_user.id_user = tb_pelanggan.id_user')
+      ->where('tb_pelanggan.id_user =', $this->session->userdata('id_user'))
+      // ->where('status =', )
+
+      ->get();
+    return $query->result();
+  }
+
+  public function get_data_Umasuk($tabel, $where)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_masuk.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_masuk.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
+      ->where($where)
+      // ->where('tb_pelanggan.id_user =', $this->session->userdata('id_user'))
+      ->get();
+    return $query->result();
+  }
+  ####################################
+  //! End Model Khusus User Penyewa
+  ####################################
 
 }

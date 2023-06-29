@@ -8,7 +8,7 @@ class Penyewa extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_penyewa');
+        $this->load->model('M_data');
         if ($this->session->userdata('role') != '3') {
             redirect(site_url("login"));
         }
@@ -16,8 +16,8 @@ class Penyewa extends CI_Controller
 
     public function index()
     {
-        // $data['edit_data'] = $this->M_penyewa->get_data('tb_pelanggan');
-        $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+        // $data['edit_data'] = $this->M_data->get_data('tb_pelanggan');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Home';
         $this->load->view('penyewa/index', $data);
     }
@@ -43,7 +43,7 @@ class Penyewa extends CI_Controller
     ####################################
     public function profile()
     {
-        $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Profile';
         $this->load->view('penyewa/users/profile', $data);
     }
@@ -67,11 +67,11 @@ class Penyewa extends CI_Controller
             $where = array(
                 'id_user' => $this->session->userdata('id_user')
             );
-            $this->M_penyewa->update_password('tb_user', $where, $data);
+            $this->M_data->update_password('tb_user', $where, $data);
             $this->session->set_flashdata('msg_sukses', 'Password Berhasil Diganti, Silahkan Logout dan Login Kembali');
             redirect(site_url('penyewa/profile'));
         } else {
-            $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Profile';
             $this->load->view('penyewa/users/profile', $data);
         }
@@ -94,7 +94,7 @@ class Penyewa extends CI_Controller
 
         if (!$this->upload->do_upload('userpicture')) {
             $this->session->set_flashdata('msg_gambar_error', $this->upload->display_errors());
-            $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Profile';
             $this->load->view('penyewa/users/profile', $data);
         } else {
@@ -108,7 +108,7 @@ class Penyewa extends CI_Controller
                 'nama_file' => $nama_file
             );
 
-            $this->M_penyewa->update_avatar($where, $data);
+            $this->M_data->update_avatar($where, $data);
             $this->session->set_flashdata('msg_gambar_sukses', 'Gambar Berhasil Di Upload');
             redirect(site_url('penyewa/profile'));
         }
@@ -123,8 +123,8 @@ class Penyewa extends CI_Controller
 
     public function tabel_genset()
     {
-        $data['list_data'] = $this->M_penyewa->select('tb_genset');
-        $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_data'] = $this->M_data->select('tb_genset');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Genset';
         $this->load->view('penyewa/genset/tabel_genset', $data);
     }
@@ -138,8 +138,8 @@ class Penyewa extends CI_Controller
 
     public function tabel_pelanggan()
     {
-        $data['list_pelanggan'] = $this->M_penyewa->get_data_plg('tb_pelanggan');
-        $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_pelanggan'] = $this->M_data->get_data_plg('tb_pelanggan');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Pelanggan';
         $this->load->view('penyewa/pelanggan/tabel_pelanggan', $data);
     }
@@ -148,8 +148,8 @@ class Penyewa extends CI_Controller
     {
         $uri = $this->uri->segment(3);
         $where = array('id_pelanggan' => $uri);
-        $data['list_data'] = $this->M_penyewa->get_data('tb_pelanggan', $where);
-        $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_data'] = $this->M_data->get_data('tb_pelanggan', $where);
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Ubah Data Pelanggan';
         $this->load->view('penyewa/pelanggan/update_pelanggan', $data);
     }
@@ -183,11 +183,11 @@ class Penyewa extends CI_Controller
                 'tglupdate_plg' => $tgl_update,
                 // 'id_user' => $id_user
             );
-            $this->M_penyewa->update('tb_pelanggan', $data, $where);
+            $this->M_data->update('tb_pelanggan', $data, $where);
             $this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
             redirect(site_url('penyewa/tabel_pelanggan'));
         } else {
-            $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Ubah Data Pelanggan';
             $this->load->view('penyewa/pelanggan/update_pelanggan');
         }
@@ -199,8 +199,8 @@ class Penyewa extends CI_Controller
 
     public function tabel_unit_keluar()
     {
-        $data['list_data'] = $this->M_penyewa->sel_data_u_keluar('tb_unit_keluar');
-        $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_data'] = $this->M_data->sel_data_u_keluar('tb_unit_keluar');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Unit Sewa';
         $this->load->view('penyewa/unit_keluar/tabel_unit_keluar', $data);
     }
@@ -209,15 +209,15 @@ class Penyewa extends CI_Controller
     {
         $uri = $this->uri->segment(3);
         $where = array('id_u_keluar' => $uri);
-        $data['list_data'] = $this->M_penyewa->get_data_u_keluar('tb_unit_keluar', $where);
-        $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_data'] = $this->M_data->get_data_Ukeluar('tb_unit_keluar', $where);
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Detail Data Unit Sewa';
         $this->load->view('penyewa/unit_keluar/detail_keluar', $data);
     }
 
     public function tambah_unit_keluar()
     {
-        $kode_id = $this->M_penyewa->get_auto_id('tb_unit_keluar');
+        $kode_id = $this->M_data->get_auto_id('tb_unit_keluar');
         foreach ($kode_id as $kd) {
             if ($kd) {
                 $nilai     = substr($kd->id_transaksi, 6);
@@ -229,11 +229,11 @@ class Penyewa extends CI_Controller
         }
         $data['kode_auto'] = $auto_kode;
 
-        $data['list_mobil'] = $this->M_penyewa->select('tb_mobil');
-        $data['list_genset'] = $this->M_penyewa->select_gst('tb_genset');
-        $data['list_pelanggan'] = $this->M_penyewa->get_data_plg('tb_pelanggan');
-        $data['list_operator'] = $this->M_penyewa->select_op('tb_operator');
-        $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_mobil'] = $this->M_data->select('tb_mobil');
+        $data['list_genset'] = $this->M_data->select_gst('tb_genset');
+        $data['list_pelanggan'] = $this->M_data->get_data_plg('tb_pelanggan');
+        $data['list_operator'] = $this->M_data->select_op('tb_operator');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Tambah Unit Sewa';
         $this->load->view('penyewa/unit_keluar/tambah_unit_keluar', $data);
     }
@@ -285,21 +285,21 @@ class Penyewa extends CI_Controller
             // $stok_gd_new = ++$stok_gd;
             // $stok_pj_new = --$stok_pj;
 
-            // $this->M_penyewa->mengurangi('tb_genset', $id_genset, $stok_gd_new);
-            // $this->M_penyewa->menambah('tb_genset', $id_genset, $stok_pj_new);
-            $this->M_penyewa->update_status_gst('tb_genset', $id_genset, $status_gst);
-            $this->M_penyewa->update_status_op('tb_operator', $id_operator, $status_op);
-            $this->M_penyewa->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
-            $this->M_penyewa->insert('tb_unit_keluar', $data);
+            // $this->M_data->mengurangi('tb_genset', $id_genset, $stok_gd_new);
+            // $this->M_data->menambah('tb_genset', $id_genset, $stok_pj_new);
+            $this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
+            $this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
+            $this->M_data->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
+            $this->M_data->insert('tb_unit_keluar', $data);
             $this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
 
             redirect(site_url('penyewa/tabel_unit_keluar'));
         } else {
-            $data['list_mobil'] = $this->M_penyewa->select('tb_mobil');
-            $data['list_genset'] = $this->M_penyewa->select('tb_genset');
-            $data['list_pelanggan'] = $this->M_penyewa->get_data_plg('tb_pelanggan');
-            $data['list_operator'] = $this->M_penyewa->select('tb_operator');
-            $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['list_mobil'] = $this->M_data->select('tb_mobil');
+            $data['list_genset'] = $this->M_data->select('tb_genset');
+            $data['list_pelanggan'] = $this->M_data->get_data_plg('tb_pelanggan');
+            $data['list_operator'] = $this->M_data->select('tb_operator');
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Tambah Unit Sewa';
             $this->load->view('penyewa/unit_keluar/tambah_unit_keluar', $data);
         }
@@ -313,11 +313,11 @@ class Penyewa extends CI_Controller
     public function tabel_unit_masuk()
     {
         $data = array(
-            // 'list_mobil' => $this->M_penyewa->select('tb_mobil'),
-            'list_data' => $this->M_penyewa->sel_data_u_masuk('tb_unit_masuk'),
-            'avatar'    => $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'))
+            // 'list_mobil' => $this->M_data->select('tb_mobil'),
+            'list_data' => $this->M_data->sel_data_u_masuk('tb_unit_masuk'),
+            'avatar'    => $this->M_data->get_avatar('tb_user', $this->session->userdata('name'))
         );
-        // $data['total_data'] = $this->M_penyewa->sum_pendapatan('tb_unit_masuk');
+        // $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_masuk');
         $data['title'] = 'Data Unit Masuk/Kembali';
         $this->load->view('penyewa/unit_masuk/tabel_unit_masuk', $data);
     }
@@ -326,8 +326,8 @@ class Penyewa extends CI_Controller
     {
         $uri = $this->uri->segment(3);
         $where = array('id_u_masuk' => $uri);
-        $data['list_data'] = $this->M_penyewa->get_data_u_masuk('tb_unit_masuk', $where);
-        $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['list_data'] = $this->M_data->get_data_Umasuk('tb_unit_masuk', $where);
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Detail Data Unit Kembali';
         $this->load->view('penyewa/unit_masuk/detail_masuk', $data);
     }
@@ -341,7 +341,7 @@ class Penyewa extends CI_Controller
 
     public function laporan()
     {
-        $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Laporan';
         $this->load->view('penyewa/report/laporan', $data);
     }
