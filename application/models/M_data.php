@@ -286,14 +286,14 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  // public function select_sparepart($tabel)
-  // {
-  //   $query = $this->db->select()
-  //     ->from($tabel)
-  //     ->where('stok >', 0)
-  //     ->get();
-  //   return $query->result();
-  // }
+  public function select_sparepart($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where('stok >', 0)
+      ->get();
+    return $query->result();
+  }
   ####################################
   //* End Data Perbaikan Genset 
   ####################################
