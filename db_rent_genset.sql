@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jun 2023 pada 16.18
+-- Waktu pembuatan: 29 Jun 2023 pada 03.57
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -125,7 +125,11 @@ INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `st
 (1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', 0),
 (2, 'adi', 'jl sukamara', '0878907678956', 0),
 (3, 'ijum', 'jl pulau laut', '0897819271234', 0),
-(5, 'wanda', 'sungai miai', '0897618391837', 0);
+(5, 'wanda', 'sungai miai', '0897618391837', 0),
+(6, 'Wawan', 'Jl. Belitung Darat RT. 02', '0878124354432', 0),
+(7, 'Agus', 'Jl. Manggis', '0821876723433', 0),
+(8, 'Andre S.', 'Jl. Handil Bakti Komp. Persada', '0898213489123', 0),
+(9, 'Sukma Lelana', 'Jl. Handil bakti', '0878678734658', 0);
 
 -- --------------------------------------------------------
 
@@ -243,7 +247,7 @@ CREATE TABLE `tb_serv_genset` (
 --
 
 INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `jenis_perbaikan`, `tgl_perbaikan`, `ket_perbaikan`, `biaya_perbaikan`) VALUES
-(1, 2, 1, 'ganti filter solar', '2023-04-12', 0, '0'),
+(1, 2, 1, 'ganti filter solar', '2023-04-12', 1, '0'),
 (2, 3, 2, 'Ganti Oli', '2023-04-14', 1, '250000'),
 (18, 4, 4, 'GantiFuel pump', '2023-06-14', 1, '150000'),
 (19, 4, 1, 'cek oli', '2023-06-16', 1, '0');
@@ -267,11 +271,13 @@ CREATE TABLE `tb_sparepart` (
 --
 
 INSERT INTO `tb_sparepart` (`id_sparepart`, `nama_sparepart`, `tanggal_beli`, `tempat_beli`, `stok`) VALUES
-(1, 'Filter Oli Donaldson', '2023-03-14', 'Multi Filter', '2'),
+(1, 'Filter Oli Donaldson J8620291', '2023-03-14', 'Multi Filter', '2'),
 (2, 'oli sx', '2023-03-16', 'Bengkel Yuno', '4'),
 (4, 'Fuel Pump Denyo', '2023-06-12', 'Anugerah Jaya', '3'),
 (5, 'ring piston', '2023-06-19', 'Bintang Mulia', '4'),
-(6, 'null', '0001-01-01', 'null', '0');
+(6, 'null', '0001-01-01', 'null', '0'),
+(7, 'Filter Oli Donaldson P557111', '2023-06-08', 'Multi Guna Filter', '5'),
+(8, 'Filter solar PERKINS 4816635', '2023-06-07', 'Multi Filter', '4');
 
 -- --------------------------------------------------------
 
@@ -364,11 +370,11 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '28-06-2023 13:19'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '28-06-2023 13:27'),
-(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '27-06-2023 9:04'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '29-06-2023 9:47'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '29-06-2023 9:25'),
+(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '29-06-2023 9:26'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
-(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '28-06-2023 13:24');
+(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '29-06-2023 9:30');
 
 --
 -- Indexes for dumped tables
@@ -488,7 +494,7 @@ ALTER TABLE `tb_mobil`
 -- AUTO_INCREMENT untuk tabel `tb_operator`
 --
 ALTER TABLE `tb_operator`
-  MODIFY `id_operator` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_operator` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pelanggan`
@@ -524,7 +530,7 @@ ALTER TABLE `tb_serv_genset`
 -- AUTO_INCREMENT untuk tabel `tb_sparepart`
 --
 ALTER TABLE `tb_sparepart`
-  MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_unit_keluar`
