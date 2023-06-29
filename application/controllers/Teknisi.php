@@ -44,7 +44,7 @@ class Teknisi extends CI_Controller
     {
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Profile';
-        $this->load->view('teknisi/profile/profile', $data);
+        $this->load->view('teknisi/users/profile', $data);
     }
 
     public function proses_newpassword()

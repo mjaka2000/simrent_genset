@@ -101,7 +101,7 @@ class Report extends CI_Controller
 
     public function cetak_sparepart()
     {
-        $data['list_sparepart'] = $this->M_data->select('tb_sparepart');
+        $data['list_sparepart'] = $this->M_data->select_sparepart('tb_sparepart');
         $data['title'] = 'Laporan Data Sparepart';
         $this->load->view('report/sparepart/rep_sparepart', $data);
     }
@@ -113,6 +113,15 @@ class Report extends CI_Controller
         $data['list_data'] = $this->M_data->select_data_u_masuk('tb_unit_masuk', $where);
         $data['title'] = 'Laporan Detail Data Penyewaan Genset';
         $this->load->view('report/unit_keluar/rep_unit_keluar_detail', $data);
+    }
+
+    public function cetak_penyewaan_detailPlg()
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_u_masuk' => $uri);
+        $data['list_data'] = $this->M_data->select_data_u_masuk('tb_unit_masuk', $where);
+        $data['title'] = 'Laporan Detail Data Penyewaan Genset';
+        $this->load->view('penyewa/report/rep_unit_keluar_detail', $data);
     }
 
     public function cetak_service_detail()
