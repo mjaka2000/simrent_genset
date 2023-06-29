@@ -72,7 +72,7 @@ class Teknisi extends CI_Controller
         } else {
             $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Profile';
-            $this->load->view('teknisi/profile/profile', $data);
+            $this->load->view('teknisi/users/profile', $data);
         }
     }
 
@@ -95,7 +95,7 @@ class Teknisi extends CI_Controller
             $this->session->set_flashdata('msg_gambar_error', $this->upload->display_errors());
             $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Profile';
-            $this->load->view('teknisi/profile/profile', $data);
+            $this->load->view('teknisi/users/profile', $data);
         } else {
             $data_upload = array('upload_data' => $this->upload->data());
             $nama_file = $data_upload['upload_data']['file_name'];
@@ -125,7 +125,7 @@ class Teknisi extends CI_Controller
         $data['list_data'] = $this->M_data->select('tb_genset');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Genset';
-        $this->load->view('teknisi/tabel/tabel_genset', $data);
+        $this->load->view('teknisi/genset/tabel_genset', $data);
     }
 
     ####################################
@@ -140,44 +140,8 @@ class Teknisi extends CI_Controller
         $data['list_data'] = $this->M_data->get_data_service('tb_serv_genset');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Perbaikan Genset';
-        $this->load->view('teknisi/tabel/tabel_service_genset', $data);
+        $this->load->view('teknisi/service_genset/tabel_service_genset', $data);
     }
-
-    /*
-	public function ajax_list_serv()
-	{
-		header('Content-Type: application/json');
-		$list_data = $this->M_data->get_datatables_serv();
-		$data = array();
-		$no = $this->input->post('start');
-		//looping data mahasiswa
-		foreach ($list_data as $d) {
-			$no++;
-			$row = array();
-			//row pertama akan kita gunakan untuk btn edit dan delete
-			$row[] = $no;
-			$row[] = $d->kode_genset;
-			$row[] = $d->nama_genset;
-			$row[] = $d->jenis_perbaikan;
-			$row[] = $d->nama_sparepart;
-			$row[] = date('d-m-Y', strtotime($d->tgl_perbaikan));
-			$row[] = $d->ket_perbaikan;
-			$row[] = 'Rp&nbsp;' . number_format($d->biaya_perbaikan);
-			$row[] = '<a href="' . site_url('teknisi/update_data_service_genset/' . $d->id_perbaikan_gst) . '" id="id_pemakai" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
-            <a href="' . site_url('teknisi/hapus_service_genset/' . $d->id_perbaikan_gst) . '" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
-            <a href="' . site_url('teknisi/detail_service_genset/' . $d->id_perbaikan_gst) . '" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle"></i></a>';
-			$data[] = $row;
-		}
-		$output = array(
-			"draw" => $this->input->post('draw'),
-			"recordsTotal" => $this->M_data->count_all_serv(),
-			"recordsFiltered" => $this->M_data->count_filtered_serv(),
-			"data" => $data,
-		);
-		//output to json format
-		$this->output->set_output(json_encode($output));
-	}
-*/
 
     public function tambah_service_genset()
     {
@@ -185,7 +149,7 @@ class Teknisi extends CI_Controller
         $data['list_sparepart'] = $this->M_data->select('tb_sparepart');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Tambah Perbaikan Genset';
-        $this->load->view('teknisi/form/tambah_service_genset', $data);
+        $this->load->view('teknisi/service_genset/tambah_service_genset', $data);
     }
 
     public function proses_tambah_service_genset()
@@ -227,7 +191,7 @@ class Teknisi extends CI_Controller
         } else {
             $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Tambah Perbaikan Genset';
-            $this->load->view('teknisi/form/tambah_service_genset', $data);
+            $this->load->view('teknisi/service_genset/tambah_service_genset', $data);
         }
     }
 
@@ -240,7 +204,7 @@ class Teknisi extends CI_Controller
         $data['list_data'] = $this->M_data->get_data('tb_serv_genset', $where);
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Update Perbaikan Genset';
-        $this->load->view('teknisi/form/update_service_genset', $data);
+        $this->load->view('teknisi/service_genset/update_service_genset', $data);
     }
 
     public function proses_update_service_genset()
@@ -283,7 +247,7 @@ class Teknisi extends CI_Controller
         } else {
             $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Update Perbaikan Genset';
-            $this->load->view('teknisi/form/update_service_genset', $data);
+            $this->load->view('teknisi/service_genset/update_service_genset', $data);
         }
     }
 
@@ -304,7 +268,7 @@ class Teknisi extends CI_Controller
         $data['detail_perbaikan'] = $this->M_data->detail_perbaikan('tb_detail_serv', $where);
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Update Perbaikan Genset';
-        $this->load->view('teknisi/tabel/detail_service_genset', $data);
+        $this->load->view('teknisi/service_genset/detail_service_genset', $data);
     }
 
     public function tambah_service_detail()
@@ -315,7 +279,7 @@ class Teknisi extends CI_Controller
         $data['detail_perbaikan'] = $this->M_data->detail_perbaikan('tb_detail_serv', $where);
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Tambah Detail Perbaikan';
-        $this->load->view('teknisi/form/tambah_detailservice_genset', $data);
+        $this->load->view('teknisi/service_genset/tambah_detailservice_genset', $data);
     }
 
     public function proses_tambah_service_detail()
@@ -347,7 +311,7 @@ class Teknisi extends CI_Controller
         } else {
             $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Tambah Detail Perbaikan';
-            $this->load->view('teknisi/form/tambah_detailservice_genset', $data);
+            $this->load->view('teknisi/service_genset/tambah_detailservice_genset', $data);
         }
     }
 
@@ -400,7 +364,7 @@ class Teknisi extends CI_Controller
         } else {
             $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Update Perbaikan Genset';
-            $this->load->view('teknisi/form/update_service_genset', $data);
+            $this->load->view('teknisi/service_genset/detail_service_genset', $data);
         }
     }
     ####################################
@@ -419,14 +383,14 @@ class Teknisi extends CI_Controller
         $data['list_sparepart'] = $this->M_data->select('tb_sparepart');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Sparepart';
-        $this->load->view('teknisi/tabel/tabel_sparepart', $data);
+        $this->load->view('teknisi/sparepart/tabel_sparepart', $data);
     }
 
     public function tambah_data_sparepart()
     {
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Tambah Stok Sparepart';
-        $this->load->view('teknisi/form/tambah_sparepart', $data);
+        $this->load->view('teknisi/sparepart/tambah_sparepart', $data);
     }
 
     public function proses_tambah_sparepart()
@@ -456,7 +420,7 @@ class Teknisi extends CI_Controller
         } else {
             $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Tambah Stok Sparepart';
-            $this->load->view('teknisi/form/tambah_sparepart', $data);
+            $this->load->view('teknisi/sparepart/tambah_sparepart', $data);
         }
     }
 
@@ -467,7 +431,7 @@ class Teknisi extends CI_Controller
         $data['data_sparepart'] = $this->M_data->get_data('tb_sparepart', $where);
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Edit Stok Sparepart';
-        $this->load->view('teknisi/form/update_sparepart', $data);
+        $this->load->view('teknisi/sparepart/update_sparepart', $data);
     }
 
     public function proses_update_sparepart()
@@ -498,7 +462,7 @@ class Teknisi extends CI_Controller
         } else {
             $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Edit Stok Sparepart';
-            $this->load->view('teknisi/form/update_sparepart', $data);
+            $this->load->view('teknisi/sparepart/update_sparepart', $data);
         }
     }
 

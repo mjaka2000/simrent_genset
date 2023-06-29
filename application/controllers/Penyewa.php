@@ -45,7 +45,7 @@ class Penyewa extends CI_Controller
     {
         $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Profile';
-        $this->load->view('penyewa/profile/profile', $data);
+        $this->load->view('penyewa/users/profile', $data);
     }
 
     public function proses_newpassword()
@@ -73,7 +73,7 @@ class Penyewa extends CI_Controller
         } else {
             $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Profile';
-            $this->load->view('penyewa/profile/profile', $data);
+            $this->load->view('penyewa/users/profile', $data);
         }
     }
 
@@ -96,7 +96,7 @@ class Penyewa extends CI_Controller
             $this->session->set_flashdata('msg_gambar_error', $this->upload->display_errors());
             $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Profile';
-            $this->load->view('penyewa/profile/profile', $data);
+            $this->load->view('penyewa/users/profile', $data);
         } else {
             $data_upload = array('upload_data' => $this->upload->data());
             $nama_file = $data_upload['upload_data']['file_name'];
@@ -126,7 +126,7 @@ class Penyewa extends CI_Controller
         $data['list_data'] = $this->M_penyewa->select('tb_genset');
         $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Genset';
-        $this->load->view('penyewa/tabel/tabel_genset', $data);
+        $this->load->view('penyewa/genset/tabel_genset', $data);
     }
 
     ####################################
@@ -141,7 +141,7 @@ class Penyewa extends CI_Controller
         $data['list_pelanggan'] = $this->M_penyewa->get_data_plg('tb_pelanggan');
         $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Pelanggan';
-        $this->load->view('penyewa/tabel/tabel_pelanggan', $data);
+        $this->load->view('penyewa/pelanggan/tabel_pelanggan', $data);
     }
 
     public function update_data_pelanggan()
@@ -151,7 +151,7 @@ class Penyewa extends CI_Controller
         $data['list_data'] = $this->M_penyewa->get_data('tb_pelanggan', $where);
         $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Ubah Data Pelanggan';
-        $this->load->view('penyewa/form/update_pelanggan', $data);
+        $this->load->view('penyewa/pelanggan/update_pelanggan', $data);
     }
 
     public function proses_update_pelanggan()
@@ -189,7 +189,7 @@ class Penyewa extends CI_Controller
         } else {
             $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Ubah Data Pelanggan';
-            $this->load->view('penyewa/form/update_pelanggan');
+            $this->load->view('penyewa/pelanggan/update_pelanggan');
         }
     }
 
@@ -202,7 +202,7 @@ class Penyewa extends CI_Controller
         $data['list_data'] = $this->M_penyewa->sel_data_u_keluar('tb_unit_keluar');
         $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Unit Sewa';
-        $this->load->view('penyewa/tabel/tabel_unit_keluar', $data);
+        $this->load->view('penyewa/unit_keluar/tabel_unit_keluar', $data);
     }
 
     public function detail_unit_keluar($id_transaksi)
@@ -212,7 +212,7 @@ class Penyewa extends CI_Controller
         $data['list_data'] = $this->M_penyewa->get_data_u_keluar('tb_unit_keluar', $where);
         $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Detail Data Unit Sewa';
-        $this->load->view('penyewa/tabel/detail_keluar', $data);
+        $this->load->view('penyewa/unit_keluar/detail_keluar', $data);
     }
 
     public function tambah_unit_keluar()
@@ -235,7 +235,7 @@ class Penyewa extends CI_Controller
         $data['list_operator'] = $this->M_penyewa->select('tb_operator');
         $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Tambah Unit Sewa';
-        $this->load->view('penyewa/form/tambah_unit_keluar', $data);
+        $this->load->view('penyewa/unit_keluar/tambah_unit_keluar', $data);
     }
 
     public function proses_tambah_unit_keluar()
@@ -301,7 +301,7 @@ class Penyewa extends CI_Controller
             $data['list_operator'] = $this->M_penyewa->select('tb_operator');
             $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Tambah Unit Sewa';
-            $this->load->view('penyewa/form/tambah_unit_keluar', $data);
+            $this->load->view('penyewa/unit_keluar/tambah_unit_keluar', $data);
         }
     }
     ####################################
@@ -319,7 +319,7 @@ class Penyewa extends CI_Controller
         );
         // $data['total_data'] = $this->M_penyewa->sum_pendapatan('tb_unit_masuk');
         $data['title'] = 'Data Unit Masuk/Kembali';
-        $this->load->view('penyewa/tabel/tabel_unit_masuk', $data);
+        $this->load->view('penyewa/unit_masuk/tabel_unit_masuk', $data);
     }
 
     public function detail_unit_masuk($id_transaksi)
@@ -329,7 +329,7 @@ class Penyewa extends CI_Controller
         $data['list_data'] = $this->M_penyewa->get_data_u_masuk('tb_unit_masuk', $where);
         $data['avatar'] = $this->M_penyewa->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Detail Data Unit Kembali';
-        $this->load->view('penyewa/tabel/detail_masuk', $data);
+        $this->load->view('penyewa/unit_masuk/detail_masuk', $data);
     }
 
     ####################################

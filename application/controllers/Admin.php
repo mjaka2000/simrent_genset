@@ -688,7 +688,7 @@ class Admin extends CI_Controller
 		} else {
 			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 			$data['title'] = 'Update Perbaikan Genset';
-			$this->load->view('admin/service_genset/update_service_genset', $data);
+			$this->load->view('admin/service_genset/detail_service_genset', $data);
 		}
 	}
 	####################################
