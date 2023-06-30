@@ -15,7 +15,7 @@
             <tr>
                 <td align="right">
                     <hr>
-                    <small>Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></small>
+                    <!-- <small>Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></small> -->
                 </td>
             </tr>
         </table>

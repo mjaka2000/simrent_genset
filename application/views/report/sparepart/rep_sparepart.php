@@ -1,76 +1,86 @@
-<?php $this->load->view('template/head_rep'); ?>
+<?php
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+// document informasi
+$pdf->SetCreator('SIMRENT Genset Web');
+$pdf->SetTitle('Laporan Data Sparepart');
+$pdf->SetSubject('Operator');
+
+$PDF_HEADER_STRING = "";
+
+$pdf->SetHeaderData('KOP_SURAT_WARDAH_SOLUTION.png', 170, '', $PDF_HEADER_STRING, array(0, 0, 0), array(0, 0, 0));
+
+$pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, 'I', 9));
+$pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+//set margin
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER, 5);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+$pdf->SetAutoPageBreak(FALSE, PDF_MARGIN_BOTTOM);
+$pdf->SetDisplayMode('fullpage', 'Fit');
+
+//SET Scaling ImagickPixel
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+//FONT Subsetting
+$pdf->setFontSubsetting(true);
+
+$pdf->SetFont('helvetica', '', 10, '', true);
+
+$pdf->AddPage('p');
+
+$tanggal = format_indo(date('Y-m-d'));
+
+// set auto page breaks
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+$html =
+    '<div>
+       <h1 align="center">Laporan Data Sparepart</h1>
+       
+       <table cellspacing="1" cellpadding="2"  border="1" >
+         <tr bgcolor=" #d1d1d1 ">
+         <th width="50px" align="center">No.</th>
+         <th width="200px" align="center">Nama Sparepart</th>
+         <th align="center">Tanggal Beli</th>
+         <th width="150px" align="center">Tempat Beli</th>
+         <th width="100px" align="center">Stok</th>
+         </tr>';
+
+$no = 1;
+
+foreach ($list_sparepart as $d) :
+    $html .= '<tr>
+    <td align="center">' . $no . '</td>
+    <td >' . $d->nama_sparepart . '</td>
+    <td >' . date('d-m-Y', strtotime($d->tanggal_beli)) . '</td>
+    <td >' . $d->tempat_beli . '</td>
+    <td align="center">' . $d->stok . '</td>';
+    $html .= '</tr>';
+    $no++;
+endforeach;
 
 
-<body class="A4">
-    <section class="sheet padding-10mm">
-        <table border="0">
-            <tr>
-                <th align="left">
-                    <img src="<?= base_url() ?>assets/style/logo/KOP_SURAT_WARDAH_SOLUTION.png" alt="" width="100%">
-                </th>
-                <!-- <th>
-                    <p align="center" style="font-family:Arial; font-size:15pt"> PT. RAHMAT TAUFIK RAMADAN </p>
-                </th> -->
-            </tr>
-            <tr>
-                <td align="right">
-                    <hr>
-                    <small>Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></small>
-                </td>
-            </tr>
-        </table>
-        <h2 align="center">Laporan Data Stok Sparepart</h2><span>
-            <!-- <p align="right" style="font-size:10pt">Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></p> -->
-        </span>
-        <!-- <?php echo $label ?> -->
-        <div class="row tengah">
-            <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th style="width :10px">No.</th>
-                        <th>Nama Sparepart</th>
-                        <th>Tanggal Beli</th>
-                        <th>Tempat Beli</th>
-                        <th>Stok</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $no = 1;
-                    // $list_data = isset($_POST['list_data']) ? $_POST['list_data'] : '';
-                    if (is_array($list_sparepart)) { ?>
-                        <?php foreach ($list_sparepart as $dt) : ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $dt->nama_sparepart; ?></td>
-                                <td><?= date('d-m-Y', strtotime($dt->tanggal_beli)); ?></td>
-                                <td><?= $dt->tempat_beli; ?></td>
-                                <td><?= $dt->stok; ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php } else { ?>
-                        <td colspan="9" align="center"><strong>Data Kosong</strong></td>
-                    <?php } ?>
-                </tbody>
-            </table>
-            <table>
-                <tr>
-                    <td><br><br><br><br><br><br><br></td>
-                    <td align="right">Banjarmasin, <?= format_indo(date('Y-m-d')); ?></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="right">
-                        <?= $this->session->userdata('nama') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </td>
-                </tr>
+$html .= '
+         </table><br><br><br><br>
+         <table>
+         <tr>
+             <td><br><br><br><br><br></td>
+             <td align="right">Banjarmasin, ' . format_indo(date('Y-m-d')) . '</td>
+         </tr>
+         <tr>
+             <td colspan="2" align="right">' .
+    $this->session->userdata('nama') . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             </td>
+         </tr>
 
-            </table>
-        </div>
-    </section>
+     </table>
+       </div>';
 
-</body>
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, '', true);
 
-</html>
-<script type="text/javascript">
-    window.print();
-</script>
+$pdf->Output('laporan_operator.pdf', 'I');

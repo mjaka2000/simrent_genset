@@ -1,82 +1,93 @@
-<?php $this->load->view('template/head_rep'); ?>
+<?php
+
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+// document informasi
+$pdf->SetCreator('SIMRENT Genset Web');
+$pdf->SetTitle('Laporan Data Pelanggan Di Blacklist');
+$pdf->SetSubject('Operator');
+
+$PDF_HEADER_STRING = "";
+
+$pdf->SetHeaderData('KOP_SURAT_WARDAH_SOLUTION.png', 170, '', $PDF_HEADER_STRING, array(0, 0, 0), array(0, 0, 0));
+
+$pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, 'I', 9));
+$pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+//set margin
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER, 5);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+$pdf->SetAutoPageBreak(FALSE, PDF_MARGIN_BOTTOM);
+$pdf->SetDisplayMode('fullpage', 'Fit');
+
+//SET Scaling ImagickPixel
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+//FONT Subsetting
+$pdf->setFontSubsetting(true);
+
+$pdf->SetFont('helvetica', '', 10, '', true);
+
+$pdf->AddPage('p');
+
+$tanggal = format_indo(date('Y-m-d'));
+
+// set auto page breaks
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+$html =
+    '<div>
+      <h1 align="center">Laporan Data Pelanggan Di Blacklist</h1>
+      
+      <table border="1" cellspacing="1" cellpadding="2">
+        <tr bgcolor=" #d1d1d1 ">
+        <th align="center" width="50px" >No.</th>
+        <th align="center">Nama</th>
+                <th  width="150px" align="center">Alamat</th>
+                <th width="110px" align="center">No. HP</th>
+                <th align="center">Jenis Kelamin</th>
+                <th align="center">Nama Perusahaan</th>
+        </tr>';
+
+$no = 1;
+
+foreach ($list_pelanggan_blacklist as $d) :
+    $html .= '<tr>
+    <td align="center">' . $no . '</td>
+    <td>' . $d->nama_plg . '</td>
+    <td>' . $d->alamat_plg . '</td>
+    <td>' . $d->nohp_plg . '</td>';
+    if ($d->jk_plg == 'L') {
+        $html .= '<td>Laki - Laki</td>';
+    } else {
+        '<td>Perempuan</td>';
+    }
+    $html .= '<td>' . $d->namaperusahaan_plg . '</td>
+    </tr>';
+    $no++;
+endforeach;
 
 
-<body class="A4">
-    <section class="sheet padding-10mm">
-        <table border="0">
-            <tr>
-                <th align="left">
-                    <img src="<?= base_url() ?>assets/style/logo/KOP_SURAT_WARDAH_SOLUTION.png" alt="" width="100%">
-                </th>
-                <!-- <th>
-                    <p align="center" style="font-family:Arial; font-size:15pt"> PT. RAHMAT TAUFIK RAMADAN </p>
-                </th> -->
-            </tr>
-            <tr>
-                <td align="right">
-                    <hr>
-                    <small>Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></small>
-                </td>
-            </tr>
-        </table>
-        <h2 align="center">Laporan Data Pelanggan Di Blacklist</h2><span>
-            <!-- <p align="right" style="font-size:10pt">Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></p> -->
-        </span>
-        <!-- <?php echo $label ?> -->
-        <div class="row tengah">
-            <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th style="width :10px">No.</th>
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>No. HP</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Nama Perusahaan</th>
-                        <!-- <th>Tanggal Update</th> -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $no = 1;
-                    // $list_data = isset($_POST['list_data']) ? $_POST['list_data'] : '';
-                    if (is_array($list_pelanggan_blacklist)) { ?>
-                        <?php foreach ($list_pelanggan_blacklist as $dt) : ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $dt->nama_plg; ?></td>
-                                <td><?= $dt->alamat_plg; ?></td>
-                                <td><?= $dt->nohp_plg; ?></td>
-                                <?php if ($dt->jk_plg == 'L') { ?>
-                                    <td>Laki - Laki</td>
-                                <?php } else { ?>
-                                    <td>Perempuan</td>
-                                <?php } ?>
-                                <td><?= $dt->namaperusahaan_plg; ?></td>
-                                <!-- <td><?= $dt->tglupdate_plg_blk; ?></td> -->
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php } ?>
-                </tbody>
-            </table>
-            <table>
-                <tr>
-                    <td><br><br><br><br><br><br><br></td>
-                    <td align="right">Banjarmasin, <?= format_indo(date('Y-m-d')); ?></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="right">
-                        <?= $this->session->userdata('nama') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </td>
-                </tr>
+$html .= '
+        </table><br><br><br><br>
+        <table>
+        <tr>
+            <td><br><br><br><br><br></td>
+            <td align="right">Banjarmasin, ' . format_indo(date('Y-m-d')) . '</td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">' .
+    $this->session->userdata('nama') . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+        </tr>
 
-            </table>
-        </div>
-    </section>
+    </table>
+      </div>';
 
-</body>
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, '', true);
 
-</html>
-<script type="text/javascript">
-    window.print();
-</script>
+$pdf->Output('laporan_operator.pdf', 'I');

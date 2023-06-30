@@ -1,92 +1,100 @@
-<?php $this->load->view('template/head_rep'); ?>
+<?php
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
+// document informasi
+$pdf->SetCreator('SIMRENT Genset Web');
+$pdf->SetTitle('Laporan Penyewaan');
+$pdf->SetSubject('Operator');
 
-<body class="A4">
-    <section class="sheet padding-10mm">
-        <table border="0">
-            <tr>
-                <th align="left">
-                    <img src="<?= base_url() ?>assets/style/logo/KOP_SURAT_WARDAH_SOLUTION.png" alt="" width="100%">
-                </th>
-                <!-- <th>
-                    <p align="center" style="font-family:Arial; font-size:15pt"> PT. RAHMAT TAUFIK RAMADAN </p>
-                </th> -->
+$PDF_HEADER_STRING = "";
+
+$pdf->SetHeaderData('KOP_SURAT_WARDAH_SOLUTION.png', 170, '', $PDF_HEADER_STRING, array(0, 0, 0), array(0, 0, 0));
+
+$pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, 'I', 9));
+$pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+//set margin
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER, 5);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+$pdf->SetAutoPageBreak(FALSE, PDF_MARGIN_BOTTOM);
+$pdf->SetDisplayMode('fullpage', 'default');
+
+//SET Scaling ImagickPixel
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+//FONT Subsetting
+$pdf->setFontSubsetting(true);
+
+$pdf->SetFont('helvetica', '', 10, '', true);
+
+$pdf->AddPage('l');
+
+$tanggal = format_indo(date('Y-m-d'));
+
+// set auto page breaks
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+$html =
+    '<div>
+      <h1 align="center">Laporan Penyewaan</h1>
+      <br><br><br><br>
+      <table border="1" cellspacing="1" cellpadding="2">
+        <tr bgcolor=" #d1d1d1 ">
+                <th colspan="11" align="center">' . $label . '</th>
             </tr>
-            <tr>
-                <td align="right">
-                    <hr>
-                    <small>Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></small>
-                </td>
-            </tr>
-        </table>
-        <h2 align="center">Laporan Penyewaan </h2><span>
-            <!-- <p align="right" style="font-size:10pt">Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></p> -->
-        </span>
-        <!-- <?php echo $label ?> -->
-        <div class="row tengah">
-            <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
-                <thead>
-                    <tr>
+        <tr bgcolor=" #d1d1d1 ">
+        <th width="50px" align="center">No.</th>
+        <th align="center">ID </th>
+        <th width="100px" align="center">Tanggal Keluar</th>
+                <th width="100px" align="center">Tanggal Masuk (Kembali)</th>
+                <th align="center">Lokasi</th>
+                <th align="center">Nama Pelanggan</th>
+                <th align="center">Nama Genset</th>
+                <th align="center">Daya</th>
+                <th align="center">Mobil</th>
+                <th align="center">Jml. Hari</th>
+                <th align="center">Total</th>
+        </tr>';
 
-                        <th colspan="11" style="text-align: center;"><?php echo $label ?></th>
+$no = 1;
 
-                    </tr>
-                    <tr>
-                        <th style="width :10px">No.</th>
-                        <th>ID</th>
-                        <th>Tanggal Keluar</th>
-                        <th>Tanggal Masuk (Kembali)</th>
-                        <th>Lokasi</th>
-                        <th>Nama Pelanggan</th>
-                        <th>Nama Genset</th>
-                        <th>Daya</th>
-                        <th>Mobil</th>
-                        <th>Jml. Hari</th>
-                        <th>Total</th>
+foreach ($list_data as $d) :
+    $html .= '<tr>
+    <td align="center">' . $no . '</td>
+    <td >' . $d->id_transaksi . '</td>
+    <td >' . date('d-m-Y', strtotime($d->tanggal_keluar)) . '</td>
+    <td >' . date('d-m-Y', strtotime($d->tanggal_masuk)) . '</td>
+    <td >' . $d->lokasi . '</td>
+    <td >' . $d->nama_plg . '</td>
+    <td >' . $d->nama_genset . '</td>
+    <td >' . $d->daya . '</td>
+    <td >' . $d->nopol . '</td>
+    <td  align="center">' . $d->jumlah_hari . '</td>
+    <td align="center">Rp ' . number_format($d->total) . '</td>
+    </tr>';
+    $no++;
+endforeach;
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $no = 1;
-                    // $list_data = isset($_POST['list_data']) ? $_POST['list_data'] : '';
-                    ?>
-                    <?php foreach ($list_data as $dt) : ?>
-                        <tr>
-                            <td><?= $no++; ?></td>
-                            <td><?= $dt->id_transaksi; ?></td>
-                            <td><?= date('d-m-Y', strtotime($dt->tanggal_keluar)); ?></td>
-                            <td><?= date('d-m-Y', strtotime($dt->tanggal_masuk)); ?></td>
-                            <td><?= $dt->lokasi; ?></td>
-                            <td><?= $dt->nama_plg; ?></td>
-                            <td><?= $dt->nama_genset; ?></td>
-                            <td><?= $dt->daya; ?></td>
-                            <td><?= $dt->nopol; ?></td>
-                            <td><?= $dt->jumlah_hari; ?></td>
-                            <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
+$html .= '
+        </table><br><br><br><br>
+        <table> 
+        <tr>
+            <td><br><br><br><br><br></td>
+            <td align="right">Banjarmasin, ' . format_indo(date('Y-m-d')) . '</td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">' .
+    $this->session->userdata('nama') . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+        </tr>
 
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-            <table>
-                <tr>
-                    <td><br><br><br><br><br><br><br></td>
-                    <td align="right">Banjarmasin, <?= format_indo(date('Y-m-d')); ?></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="right">
-                        <?= $this->session->userdata('nama') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </td>
-                </tr>
+    </table>
+      </div>';
 
-            </table>
-        </div>
-    </section>
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, '', true);
 
-</body>
-
-</html>
-<script type="text/javascript">
-    window.print();
-</script>
+$pdf->Output('Laporan Pendapatan.pdf', 'I');
