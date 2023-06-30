@@ -653,38 +653,18 @@ class Admin extends CI_Controller
 
 	public function proses_update_ket_service()
 	{
-		// $this->form_validation->set_rules('id_genset', 'Kode Genset', 'trim|required');
-		// $this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
-		// $this->form_validation->set_rules('jenis_perbaikan', 'Jenis Perbaikan', 'trim|required');
-		// $this->form_validation->set_rules('tgl_perbaikan', 'Tanggal Perbaikan', 'trim|required');
+
 		$this->form_validation->set_rules('ket_perbaikan', 'Keterangan Perbaikan', 'trim|required');
-		// $this->form_validation->set_rules('biaya_perbaikan', 'Biaya Perbaikan', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
-			// $stok = $this->input->post('stok', true);
 
 			$id = $this->input->post('id_perbaikan_gst', TRUE);
-			// $kode_genset = $this->input->post('id_genset', TRUE);
-			// $nama_genset = $this->input->post('nama_genset', TRUE);
-			// $jenis_perbaikan = $this->input->post('jenis_perbaikan', TRUE);
-			// $spare_part = $this->input->post('id_sparepart', TRUE);
-			// $tgl_perbaikan = $this->input->post('tgl_perbaikan', TRUE);
 			$ket_perbaikan = $this->input->post('ket_perbaikan', TRUE);
-			// $biaya_perbaikan = $this->input->post('biaya_perbaikan', TRUE);
 
 			$where = array('id_perbaikan_gst' => $id);
 			$data = array(
-				// 'id_genset' => $kode_genset,
-				// 'nama_genset' => $nama_genset,
-				// 'jenis_perbaikan' => $jenis_perbaikan,
-				// 'id_sparepart' => $spare_part,
-				// 'tgl_perbaikan' => $tgl_perbaikan,
 				'ket_perbaikan' => $ket_perbaikan,
-				// 'biaya_perbaikan' => $biaya_perbaikan,
 			);
-			// $stok_new = --$stok;
-
-			// $this->M_data->mengurangi_stok('tb_sparepart', $spare_part, $stok_new);
 			$this->M_data->update('tb_serv_genset', $data, $where);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
 			redirect(site_url('admin/tabel_service_genset'));
@@ -1189,7 +1169,6 @@ class Admin extends CI_Controller
 	{
 		$uri = $this->uri->segment(3);
 		$where = array('id_pelanggan' => $uri);
-		// $data['list_plg'] = $this->M_data->get_data('tb_pelanggan', $where);
 		$ket_plg = 0;
 		$data = array(
 			'ket_plg' => $ket_plg
@@ -1197,7 +1176,6 @@ class Admin extends CI_Controller
 		$this->M_data->update('tb_pelanggan', $data, $where);
 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dipindah');
 
-		// $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		redirect(site_url('admin/tabel_pelanggan_blacklist'));
 	}
 
@@ -1205,7 +1183,6 @@ class Admin extends CI_Controller
 	{
 		$uri = $this->uri->segment(3);
 		$where = array('id_pelanggan' => $uri);
-		// $data['list_plg'] = $this->M_data->get_data('tb_pelanggan', $where);
 		$ket_plg = 1;
 		$data = array(
 			'ket_plg' => $ket_plg
@@ -1213,7 +1190,6 @@ class Admin extends CI_Controller
 		$this->M_data->update('tb_pelanggan', $data, $where);
 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dipindah');
 
-		// $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		redirect(site_url('admin/tabel_pelanggan'));
 	}
 	// public function pindah_data_pelanggan()
