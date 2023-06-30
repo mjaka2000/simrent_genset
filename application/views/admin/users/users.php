@@ -95,11 +95,12 @@
 <script type="text/javascript">
     $(function() {
         $('#example1').DataTable({
-            'paging': true,
-            'lengthChange': false,
-            'searching': false,
-            'ordering': false,
-            'info': true,
+            // 'paging': true,
+            // 'lengthChange': false,
+            // 'searching': false,
+            // 'ordering': false,
+            // 'info': true,
+            'responsive': true,
             'autoWidth': false
         })
     }); //* Script untuk memuat datatable
