@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Jun 2023 pada 04.27
+-- Waktu pembuatan: 30 Jun 2023 pada 16.38
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -68,7 +68,7 @@ CREATE TABLE `tb_genset` (
 --
 
 INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `harga`, `ket_genset`, `gambar_genset`) VALUES
-(2, '02', 'Hartech 45 P-02', '40', '1000000', 0, 'ht45p-02.jpg'),
+(2, '02', 'Hartech 45 P-02', '40', '1000000', 1, 'ht45p-02.jpg'),
 (3, '07', 'Denyo 25 ES-07', '20', '750000', 1, 'denyo25es-07.jpg'),
 (4, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg'),
 (5, '16', 'Hartech 50 P-16', '50', '1250000', 0, 'ht50p-16.jpg'),
@@ -122,7 +122,7 @@ CREATE TABLE `tb_operator` (
 --
 
 INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `status_op`) VALUES
-(1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', 0),
+(1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', 1),
 (2, 'adi', 'jl sukamara', '0878907678956', 1),
 (3, 'ijum', 'jl pulau laut', '0897819271234', 0),
 (5, 'wanda', 'sungai miai', '0897618391837', 0),
@@ -179,7 +179,8 @@ CREATE TABLE `tb_pendapatan` (
 
 INSERT INTO `tb_pendapatan` (`id_pendapatan`, `id_u_masuk`, `tgl_update`, `keterangan`) VALUES
 (6, 1, '2023-06-26', 'hasil sewa jarr'),
-(7, 2, '2023-06-28', 'sewa kh ujar');
+(7, 2, '2023-06-28', 'sewa kh ujar'),
+(8, 3, '2023-06-30', 'Sewa kah jarr');
 
 -- --------------------------------------------------------
 
@@ -352,11 +353,11 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '30-06-2023 10:22'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '30-06-2023 22:28'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '29-06-2023 21:28'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '29-06-2023 9:26'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
-(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '29-06-2023 20:19'),
+(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '30-06-2023 22:27'),
 (38, 'abay021', 'Bayu Agung', '$2y$10$QEeN8oD4rPRK2xQnGrdNA.omD00N3KHv.ND5Xy4wUGj65ZWWl7ZVe', 3, 'nopic.png', '30-06-2023 10:20');
 
 --
@@ -483,7 +484,7 @@ ALTER TABLE `tb_pelanggan`
 -- AUTO_INCREMENT untuk tabel `tb_pendapatan`
 --
 ALTER TABLE `tb_pendapatan`
-  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pengeluaran`
@@ -507,7 +508,7 @@ ALTER TABLE `tb_sparepart`
 -- AUTO_INCREMENT untuk tabel `tb_unit_keluar`
 --
 ALTER TABLE `tb_unit_keluar`
-  MODIFY `id_u_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_u_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_unit_masuk`
