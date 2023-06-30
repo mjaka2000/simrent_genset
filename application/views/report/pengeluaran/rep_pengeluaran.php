@@ -55,8 +55,7 @@
             </table>
             <table>
                 <tr>
-
-                    <td><br><br><br><br><br><br><br><br><br><br><br><br></td>
+                    <td><br><br><br><br><br><br><br></td>
                     <td align="right">Banjarmasin, <?= format_indo(date('Y-m-d')); ?></td>
                 </tr>
                 <tr>
@@ -64,7 +63,6 @@
                         <?= $this->session->userdata('nama') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                 </tr>
-
             </table>
         </div>
     </section>
