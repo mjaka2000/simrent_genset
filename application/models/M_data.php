@@ -441,6 +441,7 @@ class M_data extends CI_Model
       ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
       ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
       ->where('status =', 0)
+      ->order_by('tanggal_masuk', 'asc')
 
       ->get();
     return $query->result();
@@ -459,6 +460,7 @@ class M_data extends CI_Model
       ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
       ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
       ->where('status =', 0)
+      ->order_by('tanggal_masuk', 'asc')
       ->get();
     return $query->result();
   }
