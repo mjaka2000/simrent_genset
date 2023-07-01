@@ -41,7 +41,7 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <!-- <button onclick="window.location.href='<?= site_url('admin/#'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-print"></i>&nbsp;Cetak</button> -->
+                            <button onclick="window.location.href='<?= site_url('admin/tambah_jdw_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
@@ -51,7 +51,7 @@
                                         <th>Nama Genset</th>
                                         <th>Dipakai Tanggal</th>
                                         <th>Sampai Tanggal</th>
-                                        <th>Lokasi Sewa</th>
+                                        <th>Keterangan</th>
                                         <th style="width:10%">Aksi</th>
                                     </tr>
                                 </thead>
@@ -66,11 +66,11 @@
                                             <td><?= $d->nama_genset; ?></td>
                                             <td><?= date('d-m-Y', strtotime($d->tanggal_keluar)); ?></td>
                                             <td><?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></td>
-                                            <td><?= $d->lokasi; ?></td>
+                                            <td><?= $d->keterangan; ?></td>
                                             <td>
-                                                <!-- <a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a> -->
-                                                <!-- <a href="<?= site_url('admin/hapus_data/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a> -->
-                                                <a href="<?= site_url('report/cetak_jdw_genset/' . $d->id_u_keluar); ?>" target="_blank" type="button" class="btn btn-sm btn-info" name="btn_detail"><i class="fa fa-print"></i></a>
+                                                <!-- <a href="<?= site_url('admin/update_genset/' . $d->id_jadwal_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a> -->
+                                                <!-- <a href="<?= site_url('admin/hapus_data/' . $d->id_jadwal_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash mr-2"></i></a> -->
+                                                <a href="<?= site_url('report/cetak_jdw_genset/' . $d->id_jadwal_genset); ?>" target="_blank" type="button" class="btn btn-sm btn-info" name="btn_detail"><i class="fa fa-print"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

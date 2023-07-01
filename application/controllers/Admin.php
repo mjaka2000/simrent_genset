@@ -1688,12 +1688,44 @@ class Admin extends CI_Controller
 	####################################
 	public function tabel_jdw_genset()
 	{
-		$data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_keluar');
+		$data['list_data'] = $this->M_data->select_jdw_gst('tb_jadwal_genset');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Jadwal Penyewaan Genset';
 		$this->load->view('admin/jdw_genset/tabel_jdw_genset', $data);
 	}
 
+	public function tambah_jdw_genset()
+	{
+		$data['list_data'] = $this->M_data->ambil_data_u_keluar('tb_unit_keluar');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Data Jadwal Penyewaan Genset';
+		$this->load->view('admin/jdw_genset/tambah_jdw_genset', $data);
+	}
+
+	public function proses_tambah_jdw_genset()
+	{
+
+		$this->form_validation->set_rules('id_u_keluar', 'ID Transaksi', 'trim|required|is_unique[tb_jadwal_genset.id_u_keluar]');
+		$this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
+
+		if ($this->form_validation->run() === TRUE) {
+			$id_u_keluar = $this->input->post('id_u_keluar', TRUE);
+			$keterangan = $this->input->post('keterangan', TRUE);
+
+			$data = array(
+				'id_u_keluar' => $id_u_keluar,
+				'keterangan' => $keterangan
+			);
+			$this->M_data->insert('tb_jadwal_genset', $data);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
+			redirect(site_url('admin/tabel_jdw_genset'));
+		} else {
+			$data['list_data'] = $this->M_data->ambil_data_u_keluar('tb_unit_keluar');
+			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+			$data['title'] = 'Tambah Data Jadwal Penyewaan Genset';
+			$this->load->view('admin/jdw_genset/tambah_jdw_genset', $data);
+		}
+	}
 	####################################
 	//* End Data Jadwal Penyewaan Genset
 	####################################
