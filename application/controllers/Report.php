@@ -22,7 +22,7 @@ class Report extends CI_Controller
 
     public function cetak_jdw_gensetAll()
     {
-        $data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_keluar');
+        $data['list_data'] = $this->M_data->select_jdw_gst('tb_jadwal_genset');
         $data['title'] = 'Laporan Jadwal Penyewaan Genset';
         $this->load->view('report/jdw_genset/rep_jdw_gensetAll', $data);
     }

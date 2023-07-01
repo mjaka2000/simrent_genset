@@ -50,7 +50,7 @@ $html =
                 <th align="center">Nama Genset</th>
                 <th align="center">Dipakai Tanggal</th>
                 <th align="center">Sampai Tanggal</th>
-                <th width="150px" align="center">Lokasi Sewa</th>
+                <th width="150px" align="center">Keterangan</th>
                 </tr>';
 
 $no = 1;
@@ -62,7 +62,7 @@ foreach ($list_data as $d) :
             <td >' . $d->nama_genset . '</td>
             <td >' . date('d-m-Y', strtotime($d->tanggal_keluar)) . '</td>
             <td >' . date('d-m-Y', strtotime($d->tanggal_masuk)) . '</td>
-            <td >' . $d->lokasi . '</td>
+            <td >' . $d->keterangan . '</td>
             </tr>';
     $no++;
 endforeach;

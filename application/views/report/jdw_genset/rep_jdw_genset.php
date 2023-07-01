@@ -27,7 +27,19 @@
             <div class="row tengah">
                 <table class="table">
                     <tr>
-                        <th style="vertical-align: middle">Tanggal Keluar</th>
+                        <th style="vertical-align: middle">Pemakai</th>
+                        <td style="vertical-align: middle;">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="row">
+                                        :&nbsp;<?= $dt->nama_plg; ?> </div>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="vertical-align: middle">Dipakai Tanggal</th>
                         <td style="vertical-align: middle;">
                             <div class="row">
                                 <div class="col-lg-8">
@@ -40,7 +52,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th style="vertical-align: middle">Tanggal Masuk</th>
+                        <th style="vertical-align: middle">Sampai Tanggal</th>
                         <td style="vertical-align: middle;">
                             <div class="row">
                                 <div class="col-lg-8">
@@ -89,25 +101,12 @@
                         </td>
                     </tr>
                     <tr>
-                        <th style="vertical-align: middle">Daya</th>
+                        <th style="vertical-align: middle">Keterangan</th>
                         <td style="vertical-align: middle;">
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="row">
-                                        :&nbsp;<?= $dt->daya; ?>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="vertical-align: middle">Harga Perhari</th>
-                        <td style="vertical-align: middle;">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="row">
-                                        :&nbsp;Rp&nbsp;<?= number_format($dt->harga); ?>
+                                        :&nbsp;<?= $dt->keterangan; ?>
 
                                     </div>
                                 </div>
