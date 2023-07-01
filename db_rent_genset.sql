@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Jun 2023 pada 16.44
+-- Waktu pembuatan: 01 Jul 2023 pada 06.02
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -74,6 +74,27 @@ INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `har
 (5, '16', 'Hartech 50 P-16', '50', '1250000', 0, 'ht50p-16.jpg'),
 (6, '08', 'Kubota 13-08', '13', '500000', 0, 'kubota13-08.jpg'),
 (7, '250', 'Hartech C-250', '250', '3500000', 0, 'ht250.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_jadwal_genset`
+--
+
+CREATE TABLE `tb_jadwal_genset` (
+  `id_jadwal_genset` int(11) NOT NULL,
+  `id_u_keluar` int(11) NOT NULL,
+  `keterangan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data untuk tabel `tb_jadwal_genset`
+--
+
+INSERT INTO `tb_jadwal_genset` (`id_jadwal_genset`, `id_u_keluar`, `keterangan`) VALUES
+(1, 6, 'genset disewakan untuk acara'),
+(2, 8, 'untuk testing sound system'),
+(3, 9, 'Cobai Kelistrikan jarr');
 
 -- --------------------------------------------------------
 
@@ -180,7 +201,11 @@ CREATE TABLE `tb_pendapatan` (
 INSERT INTO `tb_pendapatan` (`id_pendapatan`, `id_u_masuk`, `tgl_update`, `keterangan`) VALUES
 (6, 1, '2023-06-26', 'hasil sewa jarr'),
 (7, 2, '2023-06-28', 'sewa kh ujar'),
-(8, 3, '2023-06-30', 'Sewa kah jarr');
+(8, 3, '2023-06-30', 'Sewa kah jarr'),
+(9, 4, '2023-07-01', 'menyewa kah'),
+(10, 5, '2023-07-02', 'ambil genset'),
+(11, 6, '2023-07-02', 'testing'),
+(12, 10, '2023-07-02', 'wooww');
 
 -- --------------------------------------------------------
 
@@ -353,8 +378,8 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '30-06-2023 22:41'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '29-06-2023 21:28'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '01-07-2023 10:57'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '01-07-2023 11:58'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '29-06-2023 9:26'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
 (37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '30-06-2023 22:27'),
@@ -376,6 +401,13 @@ ALTER TABLE `tb_detail_serv`
 --
 ALTER TABLE `tb_genset`
   ADD PRIMARY KEY (`id_genset`);
+
+--
+-- Indeks untuk tabel `tb_jadwal_genset`
+--
+ALTER TABLE `tb_jadwal_genset`
+  ADD PRIMARY KEY (`id_jadwal_genset`),
+  ADD KEY `id_u_keluar` (`id_u_keluar`);
 
 --
 -- Indeks untuk tabel `tb_mobil`
@@ -463,6 +495,12 @@ ALTER TABLE `tb_genset`
   MODIFY `id_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_jadwal_genset`
+--
+ALTER TABLE `tb_jadwal_genset`
+  MODIFY `id_jadwal_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_mobil`
 --
 ALTER TABLE `tb_mobil`
@@ -484,7 +522,7 @@ ALTER TABLE `tb_pelanggan`
 -- AUTO_INCREMENT untuk tabel `tb_pendapatan`
 --
 ALTER TABLE `tb_pendapatan`
-  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pengeluaran`
