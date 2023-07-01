@@ -385,7 +385,19 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-
+  public function ambil_data_u_keluar($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      // ->where('status =', 1)
+      ->order_by('id_transaksi', 'asc')
+      ->get();
+    return $query->result();
+  }
 
   public function select_data_u_keluar($tabel, $where)
   {
@@ -400,6 +412,30 @@ class M_data extends CI_Model
     return $query->result();
   }
 
+  public function select_jdw_gst($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_jadwal_genset.id_u_keluar')
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+
+      ->get();
+    return $query->result();
+  }
+
+  public function get_jdw_gst($tabel, $where)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where($where)
+      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_jadwal_genset.id_u_keluar')
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+
+      ->get();
+    return $query->result();
+  }
   ####################################
   //* End Data Unit Keluar 
   ####################################
