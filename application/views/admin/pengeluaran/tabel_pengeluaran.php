@@ -42,7 +42,7 @@
                                 </div>
                             <?php } ?>
                             <button onclick="window.location.href='<?= site_url('admin/tambah_data_pengeluaran'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
-                            <button data-toggle="modal" data-target="#staticKeluarBulanan" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="KeluarBulanan"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
+                            <button data-toggle="modal" data-target="#staticKeluarBulanan" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-success" name="KeluarBulanan"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
