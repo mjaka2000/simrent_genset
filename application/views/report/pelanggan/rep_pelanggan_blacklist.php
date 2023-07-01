@@ -64,7 +64,7 @@ foreach ($list_pelanggan_blacklist as $d) :
     if ($d->jk_plg == 'L') {
         $html .= '<td>Laki - Laki</td>';
     } else {
-        '<td>Perempuan</td>';
+        $html .= '<td>Perempuan</td>';
     }
     $html .= '<td>' . $d->namaperusahaan_plg . '</td>
     </tr>';
