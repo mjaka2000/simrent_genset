@@ -14,8 +14,8 @@ class Report extends CI_Controller
     public function cetak_jdw_genset()
     {
         $uri = $this->uri->segment(3);
-        $where = array('id_u_keluar' => $uri);
-        $data['list_data'] = $this->M_data->select_data_u_keluar('tb_unit_keluar', $where);
+        $where = array('id_jadwal_genset' => $uri);
+        $data['list_data'] = $this->M_data->get_jdw_gst('tb_jadwal_genset', $where);
         $data['title'] = 'Laporan Jadwal Penyewaan Genset';
         $this->load->view('report/jdw_genset/rep_jdw_genset', $data);
     }
