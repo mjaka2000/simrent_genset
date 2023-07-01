@@ -149,7 +149,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <th style="vertical-align: middle">Nopol Mobil</th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
@@ -160,8 +160,8 @@
                                                 </div>
                                             </div>
                                         </td>
-                                    </tr>
-                                    <tr>
+                                    </tr> -->
+                                    <!-- <tr>
                                         <th style="vertical-align: middle">Merek</th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
@@ -172,7 +172,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                     <tr>
                                         <th style="vertical-align: middle">Tambahan</th>
                                         <td style="vertical-align: middle;">
