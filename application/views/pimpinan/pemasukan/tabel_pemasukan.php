@@ -42,7 +42,7 @@
                                 </div>
                             <?php } ?>
                             <!-- <button onclick="window.location.href='<?= site_url('pimpinan/tambah_pemasukan'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button> -->
-                            <button data-toggle="modal" data-target="#staticBulanan" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
+                            <button data-toggle="modal" data-target="#staticBulanan" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-success" name="tambah_data"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>

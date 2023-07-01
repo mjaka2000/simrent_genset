@@ -602,7 +602,7 @@ class Pimpinan extends CI_Controller
 
     public function tabel_jdw_genset()
     {
-        $data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_keluar');
+        $data['list_data'] = $this->M_data->select_jdw_gst('tb_jadwal_genset');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Jadwal Penyewaan Genset';
         $this->load->view('pimpinan/jdw_genset/tabel_jdw_genset', $data);
