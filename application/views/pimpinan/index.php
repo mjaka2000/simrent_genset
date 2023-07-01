@@ -12,18 +12,18 @@
           <li class="nav nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="far fa-bell"></i>
-              <?php if (empty($num)) { ?>
+              <?php if (empty($numOut)) { ?>
                 <span></span>
               <?php } else { ?>
-                <span class="badge badge-warning"><?= $num; ?></span>
+                <span class="badge badge-warning"><?= $numOut; ?></span>
               <?php } ?>
             </a>
             <div class="dropdown-menu dropdown-menu-lg">
-              <span class="dropdown-item dropdown-header" style="background-color: #2596be;color: white;"><?= $num; ?> Pemberitahuan sewa genset</span>
+              <span class="dropdown-item dropdown-header" style="background-color: #2596be;color: white;"><?= $numOut; ?> Pemberitahuan sewa genset</span>
               <div class="dropdown-divider"></div>
               <?php foreach ($notifOut as $c) : ?>
                 <div class="card-body">
-                  <a href="<?= site_url('admin/detail_unit_keluar/' . $c->id_u_keluar); ?>" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
+                  <a href="#" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
                     <small style="color: red;">Pengambilan Genset Tanggal <strong><?= date('d/m/Y', strtotime($c->tanggal_masuk)); ?></strong></small></a>
                   <!-- <a href="#" class="dropdown-item">
                   </a> -->
