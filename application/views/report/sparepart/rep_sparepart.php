@@ -29,7 +29,7 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 //FONT Subsetting
 $pdf->setFontSubsetting(true);
 
-$pdf->SetFont('helvetica', '', 10, '', true);
+$pdf->SetFont('times', '', 10, '', true);
 
 $pdf->AddPage('p');
 
@@ -66,17 +66,17 @@ endforeach;
 
 
 $html .= '
-         </table><br><br><br><br>
-         <table>
-         <tr>
-             <td><br><br><br><br><br></td>
-             <td align="right">Banjarmasin, ' . format_indo(date('Y-m-d')) . '</td>
-         </tr>
-         <tr>
-             <td colspan="2" align="right">' .
-    $this->session->userdata('nama') . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             </td>
-         </tr>
+</table><br><br><br><br>
+<table> 
+<tr>
+    <td ><br><br><br><br><br></td>
+    <td ></td>
+    <td align="center">Banjarmasin, ' . format_indo(date('Y-m-d')) . '<br>Mengetahui,<br>Pimpinan</td>
+</tr>
+<tr>
+    <td colspan="2"></td>
+    <td align="center">......................................</td>
+</tr>
 
      </table>
        </div>';

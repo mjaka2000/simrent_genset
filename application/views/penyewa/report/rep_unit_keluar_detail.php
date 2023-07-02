@@ -1,5 +1,58 @@
-<?php $this->load->view('template/head_rep'); ?>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $title; ?></title>
+    <link rel="stylesheet" href="<?= base_url() ?>assets/style/paper.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/style/style.css">
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/style/style-rep.css"> -->
+
+    <style>
+        @page {
+            size: A4
+        }
+
+        /* h4 {
+            font-weight: bold;
+            font-size: 13pt;
+            text-align: center;
+        } */
+
+        table {
+            border-collapse: collapse;
+            /* width: 100%; */
+        }
+
+        .table th {
+            padding: 8px 8px;
+            /* border: 1px solid #000000; */
+            text-align: left;
+
+        }
+
+        .table td {
+            padding: 3px 3px;
+            /* border: 1px solid #000000; */
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .horizontal_center {
+            border-top: 3px solid black;
+            height: 2px;
+            line-height: 30px;
+        }
+
+        .kanan {
+            float: right;
+        }
+    </style>
+</head>
 
 <body class="A4">
     <section class="sheet padding-10mm">
@@ -25,7 +78,7 @@
         <!-- <?php echo $label ?> -->
         <div class="row tengah">
             <?php foreach ($list_data as $d) { ?>
-                <table class="table" style="width:100%">
+                <table class="table" rules="rows" style="width:75%">
                     <tr>
                         <th style="vertical-align: middle">ID Transaksi</th>
                         <td style="vertical-align: middle;">
@@ -202,19 +255,14 @@
 
                 </table>
             <?php } ?>
-            <table>
-                <tr>
-                    <td><br><br><br><br><br><br><br></td>
-                    <td align="right">Banjarmasin, <?= format_indo(date('Y-m-d')); ?></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="right">
-                        <?= $this->session->userdata('nama') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </td>
-                </tr>
-
-            </table>
         </div>
+        <tr>
+            <td><br><br><br><br><br><br><br></td>
+            <td align="center">Banjarmasin, <?= format_indo(date('Y-m-d')); ?><br>Mengetahui,<br>Pimpinan</td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">......................................</td>
+        </tr>
     </section>
 
 </body>

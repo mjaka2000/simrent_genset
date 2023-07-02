@@ -1,5 +1,58 @@
-<?php $this->load->view('template/head_rep'); ?>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $title; ?></title>
+    <link rel="stylesheet" href="<?= base_url() ?>assets/style/paper.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/style/style.css">
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/style/style-rep.css"> -->
+
+    <style>
+        @page {
+            size: A4
+        }
+
+        /* h4 {
+            font-weight: bold;
+            font-size: 13pt;
+            text-align: center;
+        } */
+
+        table {
+            border-collapse: collapse;
+            /* width: 100%; */
+        }
+
+        .table th {
+            padding: 8px 8px;
+            /* border: 1px solid #000000; */
+            text-align: left;
+
+        }
+
+        .table td {
+            padding: 3px 3px;
+            /* border: 1px solid #000000; */
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .horizontal_center {
+            border-top: 3px solid black;
+            height: 2px;
+            line-height: 30px;
+        }
+
+        .kanan {
+            float: right;
+        }
+    </style>
+</head>
 
 <body class="A4">
     <section class="sheet padding-10mm">
@@ -23,7 +76,7 @@
             <!-- <p align="right" style="font-size:10pt">Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></p> -->
         </span>
         <div class="row tengah">
-            <table class="table" style="width:50%">
+            <table class="table" rules="rows" style="width:75%">
                 <?php foreach ($list_data as $d) : ?>
                     <tr>
                         <th style="vertical-align: middle">Nomor Genset</th>
@@ -124,12 +177,12 @@
         <br>
         <br>
 
-        <table align="center" class="table" style="width:100%">
+        <table align="center" class="table" border="1" style="width:100%">
             <thead>
-                <tr>
+                <tr bgcolor=" #d1d1d1 ">
                     <th colspan="6" style="text-align: center;">Tracking Aktivitas Perbaikan Genset</th>
                 </tr>
-                <tr>
+                <tr bgcolor=" #d1d1d1 ">
                     <th style="width :10px">No.</th>
                     <th>Pekerjaan</th>
                     <th>Tanggal</th>
@@ -147,22 +200,24 @@
                         <td><?= $dt->pekerjaan; ?></td>
                         <td><?= date('d-m-Y', strtotime($dt->tanggal)); ?></td>
                         <td><?= $dt->kendala; ?></td>
-                        <td><?= $dt->status; ?></td>
+                        <?php if ($dt->status == "1") { ?>
+                            <td>Selesai</td>
+                        <?php } else { ?>
+                            <td>Pending</td>
+                        <?php } ?>
 
                     </tr>
                 <?php endforeach; ?>
 
             </tbody>
         </table>
-        <table>
+        <table class="kanan">
             <tr>
                 <td><br><br><br><br><br><br><br></td>
-                <td align="right">Banjarmasin, <?= format_indo(date('Y-m-d')); ?></td>
+                <td align="center">Banjarmasin, <?= format_indo(date('Y-m-d')); ?><br>Mengetahui,<br>Pimpinan</td>
             </tr>
             <tr>
-                <td colspan="2" align="right">
-                    <?= $this->session->userdata('nama') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </td>
+                <td colspan="2" align="center">......................................</td>
             </tr>
 
         </table>
