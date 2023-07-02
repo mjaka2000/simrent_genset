@@ -15,6 +15,8 @@ class Teknisi extends CI_Controller
 
     public function index()
     {
+        $data['dataServGenset'] = $this->M_data->numrows('tb_serv_genset');
+        $data['dataStokSparepart'] = $this->M_data->numrows('tb_sparepart');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Home';
         $this->load->view('teknisi/index', $data);

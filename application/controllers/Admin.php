@@ -1169,7 +1169,7 @@ class Admin extends CI_Controller
 	{
 		$uri = $this->uri->segment(3);
 		$where = array('id_pelanggan' => $uri);
-		$ket_plg = 0;
+		$ket_plg = 1;
 		$data = array(
 			'ket_plg' => $ket_plg
 		);
@@ -1183,7 +1183,7 @@ class Admin extends CI_Controller
 	{
 		$uri = $this->uri->segment(3);
 		$where = array('id_pelanggan' => $uri);
-		$ket_plg = 1;
+		$ket_plg = 0;
 		$data = array(
 			'ket_plg' => $ket_plg
 		);
