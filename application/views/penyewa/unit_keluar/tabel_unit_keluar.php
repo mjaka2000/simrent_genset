@@ -48,7 +48,7 @@
                                     <tr>
                                         <th style="width :10px">No.</th>
                                         <th>ID</th>
-                                        <th>Tanggal Keluar</th>
+                                        <th>Tanggal Dipakai</th>
                                         <!-- <th>Tanggal Masuk (Kembali)</th> -->
                                         <th>Lokasi</th>
                                         <th>Nama Pelanggan</th>

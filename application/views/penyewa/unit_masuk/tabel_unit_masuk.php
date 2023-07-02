@@ -49,7 +49,7 @@
                                         <th style="width :10px">No.</th>
                                         <th>ID</th>
                                         <!-- <th>Tanggal Keluar</th> -->
-                                        <th>Tanggal Masuk (Kembali)</th>
+                                        <th>Tanggal Pengembalian</th>
                                         <th>Lokasi</th>
                                         <th>Nama Pelanggan</th>
                                         <th>Nama Genset</th>
