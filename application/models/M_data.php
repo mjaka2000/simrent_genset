@@ -140,7 +140,7 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->where('ket_plg =', 1)
+      ->where('ket_plg =', 0)
       ->get();
     return $query->result();
   }
@@ -149,7 +149,7 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->where('ket_plg =', 0)
+      ->where('ket_plg =', 1)
       ->get();
     return $query->result();
   }
