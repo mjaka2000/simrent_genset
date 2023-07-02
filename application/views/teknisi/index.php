@@ -29,14 +29,48 @@
         <div class="container-fluid">
             <h2 align="center">Selamat Datang, <strong><?= $this->session->userdata('nama') ?></strong> sebagai Teknisi!</h2>
             <div class="row">
-                <div class="card-body bg-info">
+                <!-- <div class="card-body bg-info">
                     <div class="inner">
                         <h3 align="center">This Page Will Coming Soon!!!</h3>
                     </div>
                     <div class="icon">
                     </div>
-                </div>
+                </div> -->
                 <!-- /.col-md-6 -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <?php if (!empty($dataServGenset)) { ?>
+                                <h3><?= $dataServGenset ?></h3>
+                            <?php } else { ?>
+                                <h3>0</h3>
+                            <?php } ?>
+                            <p>Perbaikan Genset</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <a href="<?= site_url(); ?>teknisi/tabel_service_genset" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <?php if (!empty($dataStokSparepart)) { ?>
+                                <h3><?= $dataStokSparepart ?></h3>
+                            <?php } else { ?>
+                                <h3>0</h3>
+                            <?php } ?>
+                            <p>Stok Sparepart</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <a href="<?= site_url(); ?>teknisi/tabel_sparepart" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->

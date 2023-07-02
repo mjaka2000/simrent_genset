@@ -29,13 +29,13 @@
         <div class="container-fluid">
             <h2 align="center">Selamat Datang, <strong><?= $this->session->userdata('nama') ?></strong> sebagai Penyewa!</h2>
             <div class="row">
-                <div class="card-body bg-info">
+                <!-- <div class="card-body bg-info">
                     <div class="inner">
                         <h3 align="center">This Page Will Coming Soon!!!</h3>
                     </div>
                     <div class="icon">
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="col-lg-3 col-xs-6">
                     <?php foreach ($edit_data as $ed) { ?>
                         <div class="small-box bg-info">

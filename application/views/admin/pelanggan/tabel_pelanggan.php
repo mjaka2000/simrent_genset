@@ -77,12 +77,12 @@
                                                 <?php } ?>
                                                 <td><?= $dt->namaperusahaan_plg; ?></td>
                                                 <td><?= date('d-m-Y', strtotime($dt->tglupdate_plg)); ?></td>
-                                                <?php if ($dt->status_plg == NULL || $dt->status_plg == 0) { ?>
+                                                <?php if ($dt->status_plg == 0) { ?>
                                                     <td><a href="#" class="btn btn-success btn-xs">Tidak Menyewa</a></td>
                                                 <?php } else { ?>
                                                     <td><a href="#" class="btn btn-danger btn-xs"> Sedang Menyewa</a></td>
                                                 <?php } ?>
-                                                <?php if ($dt->ket_plg == 1) { ?>
+                                                <?php if ($dt->ket_plg == 0) { ?>
                                                     <td><a href="<?= site_url('admin/pindah_data_pelanggan/' . $dt->id_pelanggan); ?>" type="button" class="btn btn-xs btn-danger btn-plg" name="btn_ket_plg">Blacklist?</a></td>
                                                 <?php } else { ?>
                                                     <td><em>Blacklist</em></td>

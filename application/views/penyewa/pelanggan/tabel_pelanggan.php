@@ -44,7 +44,7 @@
                             <!--<button onclick="window.location.href='<?= site_url('penyewa/tabel_pelanggan_blacklist'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-default" name="blacklist_data">Data Pelanggan Blacklist</button> -->
                             <?php foreach ($list_pelanggan as $d) : ?>
                                 <button onclick="window.location.href='<?= site_url('penyewa/update_data_pelanggan/' . $d->id_pelanggan); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-edit mr-2" aria-hidden="true"></i>Ubah Data</button>&nbsp;
-
+                                <span><small style="color: red;">*Lengkapi data Anda dibawah ini!</small></span>
                                 <table class="table" style="width:80%">
                                     <tr>
                                         <th style="vertical-align: middle">Nama</th>

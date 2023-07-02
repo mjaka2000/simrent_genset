@@ -256,13 +256,16 @@
                 </table>
             <?php } ?>
         </div>
-        <tr>
-            <td><br><br><br><br><br><br><br></td>
-            <td align="center">Banjarmasin, <?= format_indo(date('Y-m-d')); ?><br>Mengetahui,<br>Pimpinan</td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">......................................</td>
-        </tr>
+        <table class="kanan">
+            <tr>
+                <td><br><br><br><br><br><br><br></td>
+                <td align="center">Banjarmasin, <?= format_indo(date('Y-m-d')); ?><br>Mengetahui,</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">......................................</td>
+            </tr>
+
+        </table>
     </section>
 
 </body>
