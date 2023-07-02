@@ -883,3 +883,29 @@ $pdf->Output('laporan_jadwal_genset.pdf', 'I');
     window.print();
 </script>
 =========================================================================================================================================
+</table><br><br><br><br>
+                <table> 
+                <tr>
+                    <td><br><br><br><br><br></td>
+                    <td align="right">Banjarmasin, ' . format_indo(date('Y-m-d')) . '</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right">' .
+    $this->session->userdata('nama') . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                </tr>
+
+            </table>
+
+
+<table border="1" class="kanan">
+                <tr>
+                    <td><br><br><br><br><br><br><br></td>
+                    <td align="center">Banjarmasin, <?= format_indo(date('Y-m-d')); ?><br>Mengetahui,<br>Pimpinan</td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center"><?= $this->session->userdata('nama') ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                </tr>
+
+            </table>
+=========================================================================================================================================
