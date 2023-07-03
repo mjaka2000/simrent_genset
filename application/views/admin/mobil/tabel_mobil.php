@@ -75,7 +75,7 @@
                                                 <td><?= $dt->jenis_bbm; ?></td>
                                                 <td><?= date('d-m-Y', strtotime($dt->pajak)); ?></td>
                                                 <td><?= date('d-m-Y', strtotime($dt->stnk)); ?></td>
-                                                <td><img src="<?= site_url('assets/upload/mobil/' . $dt->gambar_mobil); ?>" class="img-box" width="100" height="100" alt="<?= $dt->nopol; ?>"></td>
+                                                <td><img src="<?= site_url('assets/upload/mobil/' . $dt->gambar_mobil); ?>" class="img-box" width="100" height="100" alt="<?= $dt->gambar_mobil; ?>"></td>
                                                 <td><a href="<?= site_url('admin/update_data_mobil/' . $dt->id_mobil); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a>
                                                     <a href="<?= site_url('admin/hapus_mobil/' . $dt->id_mobil); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
                                                     <!-- <a href="<?= site_url('admin/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->

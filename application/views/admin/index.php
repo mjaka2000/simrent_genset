@@ -11,7 +11,7 @@
           <h1 class="m-0">Dashboard <small>Control Panel</small></h1>
           <li class="nav nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="far fa-bell"></i>
+              <i class="fas fa-bell"></i>
               <?php if (empty($numOut)) { ?>
                 <span></span>
               <?php } else { ?>
