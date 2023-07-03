@@ -685,7 +685,7 @@ class Admin extends CI_Controller
 	{
 		$data['list_data'] = $this->M_data->select('tb_serv_gst_acc');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-		$data['title'] = 'Data Perbaikan Genset';
+		$data['title'] = 'Perbaikan Genset Disetujui';
 		$this->load->view('admin/service_gensetAcc/tabel_service_gensetAcc', $data);
 	}
 
