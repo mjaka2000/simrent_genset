@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Jul 2023 pada 13.39
+-- Waktu pembuatan: 03 Jul 2023 pada 05.58
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -68,7 +68,7 @@ CREATE TABLE `tb_genset` (
 --
 
 INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `harga`, `ket_genset`, `gambar_genset`) VALUES
-(2, '02', 'Hartech 45 P-02', '40', '1000000', 0, 'ht45p-02.jpg'),
+(2, '02', 'Hartech 45 P-02', '40', '1000000', 0, 'ht45p-02-2.jpg'),
 (3, '07', 'Denyo 25 ES-07', '20', '750000', 0, 'denyo25es-07.jpg'),
 (4, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg'),
 (5, '16', 'Hartech 50 P-16', '50', '1250000', 0, 'ht50p-16.jpg'),
@@ -262,6 +262,20 @@ INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_serv_gst_acc`
+--
+
+CREATE TABLE `tb_serv_gst_acc` (
+  `id_serv_gst_acc` int(11) NOT NULL,
+  `id_perbaikan_gst` int(11) NOT NULL,
+  `tgl_setujui` date NOT NULL,
+  `keterangan` varchar(255) NOT NULL,
+  `status_ajuan` int(10) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_sparepart`
 --
 
@@ -383,12 +397,12 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '02-07-2023 19:31'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '03-07-2023 11:09'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '02-07-2023 19:36'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '02-07-2023 18:55'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
 (37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '30-06-2023 22:27'),
-(38, 'abay021', 'Bayu Agung', '$2y$10$QEeN8oD4rPRK2xQnGrdNA.omD00N3KHv.ND5Xy4wUGj65ZWWl7ZVe', 3, 'nopic.png', '02-07-2023 13:17'),
+(38, 'abay021', 'Bayu Agung', '$2y$10$QEeN8oD4rPRK2xQnGrdNA.omD00N3KHv.ND5Xy4wUGj65ZWWl7ZVe', 3, 'nopic.png', '02-07-2023 19:41'),
 (39, 'khai021', 'Khairullah', '$2y$10$m1dBvC60tGx0JgaX7LEDQ.Y.Inx4FAjeUZS1bEw6RmLdS4muAfnCu', 3, 'nopic.png', '02-07-2023 19:17'),
 (40, 'adrian123', 'Adrian Ali', '$2y$10$m/Cqzifn67ZQ3Pz762CatO3DKHUJ5/pH.G32YtqyC3vzEZ6HQ7CYK', 3, 'nopic.png', '02-07-2023 19:21'),
 (41, 'yaniAhm021', 'Ahmad Yani', '$2y$10$COCwQrSXoewNGdajAHUy4ORtyvvd8DIxNjTrsLO0mr4ekwy3rUMnW', 3, 'nopic.png', '02-07-2023 19:24'),
@@ -457,6 +471,13 @@ ALTER TABLE `tb_serv_genset`
   ADD PRIMARY KEY (`id_perbaikan_gst`),
   ADD KEY `id_genset` (`id_genset`),
   ADD KEY `id_sparepart` (`id_sparepart`);
+
+--
+-- Indeks untuk tabel `tb_serv_gst_acc`
+--
+ALTER TABLE `tb_serv_gst_acc`
+  ADD PRIMARY KEY (`id_serv_gst_acc`),
+  ADD KEY `id_perbaikan_gst` (`id_perbaikan_gst`);
 
 --
 -- Indeks untuk tabel `tb_sparepart`
@@ -544,6 +565,12 @@ ALTER TABLE `tb_pengeluaran`
 --
 ALTER TABLE `tb_serv_genset`
   MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_serv_gst_acc`
+--
+ALTER TABLE `tb_serv_gst_acc`
+  MODIFY `id_serv_gst_acc` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_sparepart`
