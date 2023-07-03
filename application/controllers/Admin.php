@@ -678,6 +678,22 @@ class Admin extends CI_Controller
 	//* End Data Perbaikan Genset 
 	####################################
 	####################################
+	//* Data Perbaikan Genset Acc
+	####################################
+
+	public function service_genset_acc()
+	{
+		$data['list_data'] = $this->M_data->select('tb_serv_gst_acc');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Data Perbaikan Genset';
+		$this->load->view('admin/service_gensetAcc/tabel_service_gensetAcc', $data);
+	}
+
+
+	####################################
+	//* End Data Perbaikan Genset Acc
+	####################################
+	####################################
 	//* Data Sparepart 
 	####################################
 
