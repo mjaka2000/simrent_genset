@@ -213,6 +213,38 @@ class M_data extends CI_Model
     $this->db->update($tabel);
   }
 
+  public function get_Serv($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = tb_serv_genset.id_genset')
+      ->where('ket_perbaikan =', 1)
+      ->get();
+    return $query->result();
+  }
+
+  public function select_ServGstAcc($tabel)
+  {
+    $query = $this->db->select('*')
+      ->from($tabel)
+      ->join('tb_serv_genset', 'tb_serv_genset.id_perbaikan_gst = tb_serv_gst_acc.id_perbaikan_gst')
+      ->join('tb_genset', 'tb_genset.id_genset = tb_serv_genset.id_genset')
+      // ->where('ket_perbaikan =', 1)
+      ->get();
+    return $query->result();
+  }
+
+  public function get_ServGstAcc($tabel, $where)
+  {
+    $query = $this->db->select('*')
+      ->from($tabel)
+      ->join('tb_serv_genset', 'tb_serv_genset.id_perbaikan_gst = tb_serv_gst_acc.id_perbaikan_gst')
+      ->join('tb_genset', 'tb_genset.id_genset = tb_serv_genset.id_genset')
+      ->where($where)
+      ->get();
+    return $query->result();
+  }
+
   ####################################
   //* AJAX Data Perbaikan Genset 
   ####################################

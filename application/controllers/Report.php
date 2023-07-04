@@ -144,11 +144,10 @@ class Report extends CI_Controller
         $this->load->view('report/service_genset/rep_service_genset_detail', $data);
     }
 
-    public function cetak_cetak_penyewaan_usr()
+    public function cetak_service_genset_acc()
     {
-        $this->load->model('M_penyewa');
-        $data['list_data'] = $this->M_penyewa->sel_data_u_keluar('tb_unit_keluar');
-        $data['title'] = 'Laporan Data Penyewaan';
-        $this->load->view('penyewa/report/rep_unit_keluar', $data);
+        $data['list_data'] = $this->M_data->select_ServGstAcc('tb_serv_gst_acc');
+        $data['title'] = 'Laporan Perbaikan Genset Disetujui';
+        $this->load->view('report/service_gensetAcc/rep_service_gensetAcc', $data);
     }
 }
