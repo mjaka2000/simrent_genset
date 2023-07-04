@@ -231,6 +231,19 @@ class Pimpinan extends CI_Controller
     //* End Data Perbaikan Genset 
     ####################################
     ####################################
+    //* Data Perbaikan Genset Acc
+    ####################################
+    public function service_genset_acc()
+    {
+        $data['list_data'] = $this->M_data->select_ServGstAcc('tb_serv_gst_acc');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Perbaikan Genset Disetujui';
+        $this->load->view('pimpinan/service_gensetAcc/tabel_service_gensetAcc', $data);
+    }
+    ####################################
+    //* End Data Perbaikan Genset Acc
+    ####################################
+    ####################################
     //* Data Sparepart 
     ####################################
 
