@@ -683,13 +683,103 @@ class Admin extends CI_Controller
 
 	public function service_genset_acc()
 	{
-		$data['list_data'] = $this->M_data->select('tb_serv_gst_acc');
+		$data['list_data'] = $this->M_data->select_ServGstAcc('tb_serv_gst_acc');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Perbaikan Genset Disetujui';
 		$this->load->view('admin/service_gensetAcc/tabel_service_gensetAcc', $data);
 	}
 
+	public function tambah_service_genset_acc()
+	{
+		$data['list_perbaikan'] = $this->M_data->get_Serv('tb_serv_genset');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Perbaikan Genset Disetujui';
+		$this->load->view('admin/service_gensetAcc/tambah_service_gensetAcc', $data);
+	}
 
+	public function proses_tambah_ServGstAcc()
+	{
+		$this->form_validation->set_rules('id_perbaikan_gst', 'Perbaikan Genset Selesai', 'trim|required|is_unique[tb_serv_gst_acc.id_perbaikan_gst]');
+		$this->form_validation->set_rules('tgl_setujui', 'Tanggal', 'trim|required');
+		$this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
+		$this->form_validation->set_rules('status_ajuan', 'Status', 'trim|required');
+
+		if ($this->form_validation->run() === true) {
+
+			$id_perbaikan_gst = $this->input->post('id_perbaikan_gst', true);
+			$tgl_setujui = $this->input->post('tgl_setujui', true);
+			$keterangan = $this->input->post('keterangan', true);
+			$status_ajuan = $this->input->post('status_ajuan', true);
+
+			$data = array(
+				'id_perbaikan_gst' => $id_perbaikan_gst,
+				'tgl_setujui' => $tgl_setujui,
+				'keterangan' => $keterangan,
+				'status_ajuan' => $status_ajuan,
+			);
+			$this->M_data->insert('tb_serv_gst_acc', $data);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
+			redirect(site_url('admin/service_genset_acc'));
+		} else {
+			$data['list_perbaikan'] = $this->M_data->get_Serv('tb_serv_genset');
+			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+			$data['title'] = 'Tambah Perbaikan Genset Disetujui';
+			$this->load->view('admin/service_gensetAcc/tambah_service_gensetAcc', $data);
+		}
+	}
+
+	public function update_service_genset_acc()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_serv_gst_acc' => $uri);
+		$data['list_data'] = $this->M_data->get_ServGstAcc('tb_serv_gst_acc', $where);
+		$data['list_perbaikan'] = $this->M_data->get_Serv('tb_serv_genset');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Ubah Perbaikan Genset Disetujui';
+		$this->load->view('admin/service_gensetAcc/ubah_service_gensetAcc', $data);
+	}
+
+	public function proses_ubah_ServGstAcc()
+	{
+		$this->form_validation->set_rules('id_perbaikan_gst', 'Perbaikan Genset Selesai', 'trim|required');
+		$this->form_validation->set_rules('tgl_setujui', 'Tanggal', 'trim|required');
+		$this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
+		$this->form_validation->set_rules('status_ajuan', 'Status', 'trim|required');
+
+		if ($this->form_validation->run() === true) {
+
+			$id_serv_gst_acc = $this->input->post('id_serv_gst_acc', true);
+			$id_perbaikan_gst = $this->input->post('id_perbaikan_gst', true);
+			$tgl_setujui = $this->input->post('tgl_setujui', true);
+			$keterangan = $this->input->post('keterangan', true);
+			$status_ajuan = $this->input->post('status_ajuan', true);
+
+			$where = array('id_serv_gst_acc' => $id_serv_gst_acc);
+			$data = array(
+				'id_perbaikan_gst' => $id_perbaikan_gst,
+				'tgl_setujui' => $tgl_setujui,
+				'keterangan' => $keterangan,
+				'status_ajuan' => $status_ajuan,
+			);
+			$this->M_data->update('tb_serv_gst_acc', $data, $where);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+			redirect(site_url('admin/service_genset_acc'));
+		} else {
+			$data['list_perbaikan'] = $this->M_data->get_Serv('tb_serv_genset');
+			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+			$data['title'] = 'Ubah Perbaikan Genset Disetujui';
+			$this->load->view('admin/service_gensetAcc/ubah_service_gensetAcc', $data);
+		}
+	}
+
+	public function hapus_service_genset_acc()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_serv_gst_acc' => $uri);
+		$this->M_data->delete('tb_serv_gst_acc', $where);
+		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+		redirect(site_url('admin/service_genset_acc'));
+	}
 	####################################
 	//* End Data Perbaikan Genset Acc
 	####################################
