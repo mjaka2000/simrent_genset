@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Jul 2023 pada 05.58
+-- Waktu pembuatan: 04 Jul 2023 pada 07.42
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -256,7 +256,7 @@ CREATE TABLE `tb_serv_genset` (
 INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `jenis_perbaikan`, `tgl_perbaikan`, `ket_perbaikan`, `biaya_perbaikan`) VALUES
 (1, 2, 1, 'ganti filter solar', '2023-04-12', 1, '0'),
 (2, 3, 2, 'Ganti Oli', '2023-04-14', 1, '250000'),
-(18, 4, 4, 'GantiFuel pump', '2023-06-14', 1, '150000'),
+(18, 4, 4, 'GantiFuel pump', '2023-06-14', 0, '150000'),
 (19, 4, 1, 'cek oli', '2023-06-16', 1, '0');
 
 -- --------------------------------------------------------
@@ -272,6 +272,15 @@ CREATE TABLE `tb_serv_gst_acc` (
   `keterangan` varchar(255) NOT NULL,
   `status_ajuan` int(10) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data untuk tabel `tb_serv_gst_acc`
+--
+
+INSERT INTO `tb_serv_gst_acc` (`id_serv_gst_acc`, `id_perbaikan_gst`, `tgl_setujui`, `keterangan`, `status_ajuan`) VALUES
+(1, 1, '2023-07-03', 'Filter Solar diganti', 1),
+(3, 2, '2023-07-04', 'Oli diganti yang baru', 1),
+(4, 19, '2023-07-04', 'Oli tidak bermasalah', 0);
 
 -- --------------------------------------------------------
 
@@ -397,9 +406,9 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '03-07-2023 11:09'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '02-07-2023 19:36'),
-(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '02-07-2023 18:55'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '04-07-2023 12:38'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '04-07-2023 13:19'),
+(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '04-07-2023 13:26'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
 (37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '30-06-2023 22:27'),
 (38, 'abay021', 'Bayu Agung', '$2y$10$QEeN8oD4rPRK2xQnGrdNA.omD00N3KHv.ND5Xy4wUGj65ZWWl7ZVe', 3, 'nopic.png', '02-07-2023 19:41'),
@@ -570,7 +579,7 @@ ALTER TABLE `tb_serv_genset`
 -- AUTO_INCREMENT untuk tabel `tb_serv_gst_acc`
 --
 ALTER TABLE `tb_serv_gst_acc`
-  MODIFY `id_serv_gst_acc` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_serv_gst_acc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_sparepart`
