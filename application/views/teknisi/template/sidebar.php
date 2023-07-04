@@ -76,6 +76,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?= site_url(); ?>teknisi/service_genset_acc" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Perbaikan Genset Disetujui</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?= site_url(); ?>teknisi/laporan" class="nav-link">
                         <i class="fas fa-clipboard nav-icon"></i>
                         <p>Laporan Data</p>
