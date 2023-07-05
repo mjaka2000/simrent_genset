@@ -426,7 +426,7 @@ class M_data extends CI_Model
       ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
       ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
       // ->where('status =', 1)
-      ->order_by('id_transaksi', 'asc')
+      // ->order_by('id_transaksi', 'asc')
       ->get();
     return $query->result();
   }
