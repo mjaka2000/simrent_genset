@@ -1382,17 +1382,17 @@ class Admin extends CI_Controller
 
 	public function tambah_unit_keluar()
 	{
-		$kode_id = $this->M_data->get_auto_id('tb_unit_keluar');
+		/*	$kode_id = $this->M_data->get_auto_id('tb_unit_keluar');
 		foreach ($kode_id as $kd) {
-			if ($kd) {
-				$nilai     = substr($kd->id_transaksi, 6);
-				$kode     = (int) $nilai;
-				//tambahkan sebanyak + 1
-				$kode     = $kode + 1;
-				$auto_kode = "GE-" . date('M') . str_pad($kode, 4, "0",  STR_PAD_LEFT);
-			}
+			// if ($kd) {
+			$nilai     = substr($kd->id_transaksi[0], 6);
+			$kode     = (int) $nilai;
+			//tambahkan sebanyak + 1
+			$kode     = $kode + 1;
+			$auto_kode = "GE-" . date('M') . str_pad($kode, 4, "0",  STR_PAD_LEFT);
+			// }
 		}
-		$data['kode_auto'] = $auto_kode;
+		$data['kode_auto'] = $auto_kode; */
 
 		$data['list_mobil'] = $this->M_data->select('tb_mobil');
 		$data['list_genset'] = $this->M_data->select_gst('tb_genset');
@@ -1474,6 +1474,21 @@ class Admin extends CI_Controller
 	{
 		$uri = $this->uri->segment(3);
 		$where = array('id_u_keluar' => $uri);
+		// $id_operator    = $this->input->post('id_operator', TRUE);
+		// $id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
+		// $id_genset      = $this->input->post('id_genset', TRUE);
+		// $data = array(
+		// 	'id_operator'    => $id_operator,
+		// 	'id_pelanggan'   => $id_pelanggan,
+		// 	'id_genset'      => $id_genset
+		// );
+		// $status_gst = 0;
+		// $status_op = 0;
+		// $status_plg = 0;
+
+		// $this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
+		// $this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
+		// $this->M_data->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
 		$this->M_data->delete('tb_unit_keluar', $where);
 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
 		redirect(site_url('admin/tabel_unit_keluar'));
@@ -1499,8 +1514,8 @@ class Admin extends CI_Controller
 		$id_u_keluar       = $this->input->post('id_u_keluar', TRUE);
 
 		if ($this->form_validation->run() === TRUE) {
-			$stok_gd           = $this->input->post('stok_gd', TRUE);
-			$stok_pj           = $this->input->post('stok_pj', TRUE);
+			// $stok_gd           = $this->input->post('stok_gd', TRUE);
+			// $stok_pj           = $this->input->post('stok_pj', TRUE);
 
 			$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
 			$tanggal_masuk    = $this->input->post('tanggal_masuk', TRUE);
@@ -1578,8 +1593,8 @@ class Admin extends CI_Controller
 		$id_u_keluar       = $this->input->post('id_u_keluar', TRUE);
 
 		if ($this->form_validation->run() === TRUE) {
-			$stok_gd           = $this->input->post('stok_gd', TRUE);
-			$stok_pj           = $this->input->post('stok_pj', TRUE);
+			// $stok_gd           = $this->input->post('stok_gd', TRUE);
+			// $stok_pj           = $this->input->post('stok_pj', TRUE);
 			$id_transaksi     = $this->input->post('id_transaksi', TRUE);
 
 			$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
