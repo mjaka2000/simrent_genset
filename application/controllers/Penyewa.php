@@ -217,7 +217,7 @@ class Penyewa extends CI_Controller
 
     public function tambah_unit_keluar()
     {
-        $kode_id = $this->M_data->get_auto_id('tb_unit_keluar');
+        /*    $kode_id = $this->M_data->get_auto_id('tb_unit_keluar');
         foreach ($kode_id as $kd) {
             if ($kd) {
                 $nilai     = substr($kd->id_transaksi, 6);
@@ -227,7 +227,7 @@ class Penyewa extends CI_Controller
                 $auto_kode = "GE-" . date('M') . str_pad($kode, 4, "0",  STR_PAD_LEFT);
             }
         }
-        $data['kode_auto'] = $auto_kode;
+        $data['kode_auto'] = $auto_kode; */
 
         $data['list_mobil'] = $this->M_data->select('tb_mobil');
         $data['list_genset'] = $this->M_data->select_gst('tb_genset');
