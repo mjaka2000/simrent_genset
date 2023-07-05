@@ -52,7 +52,7 @@
                                 <div class="form-group row">
                                     <label for="id_transaksi" class="col-sm-3 col-form-label">ID</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="id_transaksi" class="form-control" readonly value="<?= $kode_auto; ?>">
+                                        <input type="text" name="id_transaksi" class="form-control" readonly value="GE-<?= date("M"); ?><?= random_string('numeric', 4); ?>">
                                     </div>
                                 </div>
                                 <div class="form-group row">
