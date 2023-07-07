@@ -199,7 +199,7 @@ class Penyewa extends CI_Controller
 
     public function tabel_unit_keluar()
     {
-        $data['list_data'] = $this->M_data->sel_data_u_keluar('tb_unit_keluar');
+        $data['list_data'] = $this->M_data->sel_data_u_keluar('tb_unit_penyewaan');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Unit Sewa';
         $this->load->view('penyewa/unit_keluar/tabel_unit_keluar', $data);
@@ -208,8 +208,8 @@ class Penyewa extends CI_Controller
     public function detail_unit_keluar($id_transaksi)
     {
         $uri = $this->uri->segment(3);
-        $where = array('id_u_keluar' => $uri);
-        $data['list_data'] = $this->M_data->get_data_Ukeluar('tb_unit_keluar', $where);
+        $where = array('id_u_sewa' => $uri);
+        $data['list_data'] = $this->M_data->get_data_Ukeluar('tb_unit_penyewaan', $where);
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Detail Data Unit Sewa';
         $this->load->view('penyewa/unit_keluar/detail_keluar', $data);
@@ -217,7 +217,7 @@ class Penyewa extends CI_Controller
 
     public function tambah_unit_keluar()
     {
-        /*    $kode_id = $this->M_data->get_auto_id('tb_unit_keluar');
+        /*    $kode_id = $this->M_data->get_auto_id('tb_unit_penyewaan');
         foreach ($kode_id as $kd) {
             if ($kd) {
                 $nilai     = substr($kd->id_transaksi, 6);
@@ -290,7 +290,7 @@ class Penyewa extends CI_Controller
             $this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
             $this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
             $this->M_data->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
-            $this->M_data->insert('tb_unit_keluar', $data);
+            $this->M_data->insert('tb_unit_penyewaan', $data);
             $this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
 
             redirect(site_url('penyewa/tabel_unit_keluar'));
@@ -314,10 +314,10 @@ class Penyewa extends CI_Controller
     {
         $data = array(
             // 'list_mobil' => $this->M_data->select('tb_mobil'),
-            'list_data' => $this->M_data->sel_data_u_masuk('tb_unit_masuk'),
+            'list_data' => $this->M_data->sel_data_u_masuk('tb_unit_penyewaan'),
             'avatar'    => $this->M_data->get_avatar('tb_user', $this->session->userdata('name'))
         );
-        // $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_masuk');
+        // $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_penyewaan');
         $data['title'] = 'Data Unit Masuk/Kembali';
         $this->load->view('penyewa/unit_masuk/tabel_unit_masuk', $data);
     }
@@ -325,8 +325,8 @@ class Penyewa extends CI_Controller
     public function detail_unit_masuk($id_transaksi)
     {
         $uri = $this->uri->segment(3);
-        $where = array('id_u_masuk' => $uri);
-        $data['list_data'] = $this->M_data->get_data_Umasuk('tb_unit_masuk', $where);
+        $where = array('id_u_sewa' => $uri);
+        $data['list_data'] = $this->M_data->get_data_Umasuk('tb_unit_penyewaan', $where);
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Detail Data Unit Kembali';
         $this->load->view('penyewa/unit_masuk/detail_masuk', $data);
