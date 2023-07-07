@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jul 2023 pada 05.36
+-- Waktu pembuatan: 07 Jul 2023 pada 14.13
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -46,7 +46,10 @@ INSERT INTO `tb_detail_serv` (`id_detail_serv`, `id_perbaikan_gst`, `pekerjaan`,
 (5, 18, 'Bongkar Fuel pump', '2023-06-15', 'Filter kotor', 0),
 (6, 18, 'bersihkan pump', '2023-06-15', '-', 1),
 (7, 19, 'Penggantian oli mesin', '2023-06-16', '-', 0),
-(8, 1, 'Testing', '2023-04-17', 'Tester', 1);
+(8, 1, 'Testing', '2023-04-17', 'Tester', 1),
+(9, 1, 'Selang solar mampet', '2023-04-14', 'Selang kotor dibersihkan', 1),
+(10, 21, 'Kuras tangki solar', '2023-07-03', 'Tangki kotor sulit dibersihkan', 0),
+(11, 21, 'Bongkar dan cuci tangki', '2023-07-04', '-', 1);
 
 -- --------------------------------------------------------
 
@@ -74,7 +77,8 @@ INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `har
 (4, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg'),
 (5, '16', 'Hartech 50 P-16', '50', '1250000', 0, 'ht50p-16.jpg'),
 (6, '08', 'Kubota 13-08', '13', '500000', 0, 'kubota13-08.jpg'),
-(7, '250', 'Hartech C-250', '250', '3500000', 0, 'ht250.jpg');
+(7, '250', 'Hartech C-250', '250', '3500000', 0, 'ht250.jpg'),
+(8, '18', 'Hartech 45 P-18', '40', '1000000', 0, 'ht45p-18.jpg');
 
 -- --------------------------------------------------------
 
@@ -122,7 +126,7 @@ CREATE TABLE `tb_mobil` (
 INSERT INTO `tb_mobil` (`id_mobil`, `merek`, `tipe`, `tahun`, `nopol`, `jenis_bbm`, `pajak`, `stnk`, `gambar_mobil`) VALUES
 (1, 'Daihatsu Gran Max Biru', 'Pickup', '2015', 'DA 1231 CJ', 'Bensin', '2023-05-18', '2024-05-18', 'daihatsu-gran-max-blu.jpg'),
 (2, 'Mobil Penyewa', 'Mobil Penyewa', '-', 'Mobil Penyewa', 'Bensin', '0001-01-01', '0001-01-01', 'nopic.png'),
-(3, 'Mitsubishi Truk Engkel Kuning', 'Truk', '2005', 'DA 1231 CJ', 'Solar', '2023-06-01', '2024-06-01', 'truk_engkel.jpg'),
+(3, 'Mitsubishi Truk Engkel Kuning', 'Truk', '2005', 'DA 5674 CJ', 'Solar', '2023-06-01', '2024-06-01', 'truk_engkel.jpg'),
 (4, 'L300', 'Pickup', '2010', 'DA 4351 SF', 'Solar', '2023-03-01', '2024-03-01', 'l300.jpg');
 
 -- --------------------------------------------------------
@@ -151,7 +155,8 @@ INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `st
 (6, 'Wawan', 'Jl. Belitung Darat RT. 02', '0878124354432', 0),
 (7, 'Agus', 'Jl. Manggis', '0821876723433', 0),
 (8, 'Andre S.', 'Jl. Handil Bakti Komp. Persada', '0898213489123', 0),
-(9, 'Sukma Lelana', 'Jl. Handil bakti', '0878678734658', 0);
+(9, 'Sukma Lelana', 'Jl. Handil bakti', '0878678734658', 0),
+(10, 'Ahmad Musa', 'Jl. Sungai Jingah', '0896316721892', 0);
 
 -- --------------------------------------------------------
 
@@ -178,7 +183,7 @@ CREATE TABLE `tb_pelanggan` (
 
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`, `id_user`) VALUES
 (4, 'anonim', 'Jl. Sunga Andai', '0895619213134', 'L', 'PT Rahmat', '2023-04-11', 0, 1, 0),
-(5, 'iwan f', 'jl kp melayu', '0878123121234', 'L', 'pt rahmat', '2023-04-16', 0, 0, 0),
+(5, 'iwan f', 'jl kp melayu', '0878123121234', 'L', 'pt rahmat', '2023-04-16', 0, 1, 0),
 (8, 'Wanda', 'Jl. Mantuil', '0897738493722', 'L', 'PT. Abadi', '2023-06-26', 0, 0, 37),
 (9, 'Bayu Agung', 'Jl. A. Yani KM. 06', '0821564721344', 'L', '-', '2023-06-29', 0, 0, 38),
 (10, 'Khairullah', 'Jl. Dharma Praja 07', '0878671234123', 'L', 'Pribadi', '2023-07-02', 0, 0, 39),
@@ -258,7 +263,9 @@ INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `
 (1, 2, 1, 'ganti filter solar', '2023-04-12', 1, '0'),
 (2, 3, 2, 'Ganti Oli', '2023-04-14', 1, '250000'),
 (18, 4, 4, 'GantiFuel pump', '2023-06-14', 0, '150000'),
-(19, 4, 1, 'cek oli', '2023-06-16', 1, '0');
+(19, 4, 1, 'cek oli', '2023-06-16', 1, '0'),
+(21, 5, 7, 'Solar Tersumbat', '2023-07-03', 0, '80000'),
+(22, 6, 2, 'Ganti Oli mesin', '2023-07-04', 1, '0');
 
 -- --------------------------------------------------------
 
@@ -303,12 +310,13 @@ CREATE TABLE `tb_sparepart` (
 
 INSERT INTO `tb_sparepart` (`id_sparepart`, `nama_sparepart`, `tanggal_beli`, `tempat_beli`, `stok`) VALUES
 (1, 'Filter Solar Donaldson J8620291', '2023-03-14', 'Multi Filter', '2'),
-(2, 'oli sx', '2023-03-16', 'Bengkel Yuno', '4'),
+(2, 'oli sx', '2023-03-16', 'Bengkel Yuno', '3'),
 (4, 'Fuel Pump Denyo', '2023-06-12', 'Anugerah Jaya', '3'),
 (5, 'ring piston', '2023-06-19', 'Bintang Mulia', '4'),
-(6, 'null', '0001-01-01', 'null', '0'),
-(7, 'Filter Solar Donaldson P557111', '2023-06-08', 'Multi Guna Filter', '5'),
-(8, 'Filter solar PERKINS 4816635', '2023-06-07', 'Multi Filter', '4');
+(6, 'null', '0001-01-01', 'null', '1000'),
+(7, 'Filter Solar Donaldson P557111', '2023-06-08', 'Multi Guna Filter', '4'),
+(8, 'Filter solar PERKINS 4816635', '2023-06-07', 'Multi Filter', '4'),
+(9, 'Air Aki Botol Merah', '2023-06-30', 'Toko Aki Bersama', '6');
 
 -- --------------------------------------------------------
 
@@ -369,7 +377,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '07-07-2023 11:23'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '07-07-2023 19:40'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '05-07-2023 9:58'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '05-07-2023 11:01'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
@@ -481,13 +489,13 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT untuk tabel `tb_detail_serv`
 --
 ALTER TABLE `tb_detail_serv`
-  MODIFY `id_detail_serv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_detail_serv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_genset`
 --
 ALTER TABLE `tb_genset`
-  MODIFY `id_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_jadwal_genset`
@@ -505,7 +513,7 @@ ALTER TABLE `tb_mobil`
 -- AUTO_INCREMENT untuk tabel `tb_operator`
 --
 ALTER TABLE `tb_operator`
-  MODIFY `id_operator` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_operator` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pelanggan`
@@ -529,7 +537,7 @@ ALTER TABLE `tb_pengeluaran`
 -- AUTO_INCREMENT untuk tabel `tb_serv_genset`
 --
 ALTER TABLE `tb_serv_genset`
-  MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_serv_gst_acc`
@@ -541,7 +549,7 @@ ALTER TABLE `tb_serv_gst_acc`
 -- AUTO_INCREMENT untuk tabel `tb_sparepart`
 --
 ALTER TABLE `tb_sparepart`
-  MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_unit_penyewaan`
