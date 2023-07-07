@@ -103,7 +103,7 @@ class M_data extends CI_Model
   public function update_status($tabel, $where, $status)
   {
     $this->db->set("status", $status);
-    $this->db->where("id_u_keluar", $where);
+    $this->db->where("id_u_sewa", $where);
     $this->db->update($tabel);
   }
 
@@ -199,8 +199,8 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_serv_genset.id_genset')
-      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = tb_serv_genset.id_sparepart')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = ' . $tabel . '.id_sparepart')
       ->order_by('id_perbaikan_gst', 'asc')
       ->get();
     return $query->result();
@@ -227,7 +227,7 @@ class M_data extends CI_Model
   {
     $query = $this->db->select('*')
       ->from($tabel)
-      ->join('tb_serv_genset', 'tb_serv_genset.id_perbaikan_gst = tb_serv_gst_acc.id_perbaikan_gst')
+      ->join('tb_serv_genset', 'tb_serv_genset.id_perbaikan_gst = ' . $tabel . '.id_perbaikan_gst')
       ->join('tb_genset', 'tb_genset.id_genset = tb_serv_genset.id_genset')
       // ->where('ket_perbaikan =', 1)
       ->get();
@@ -238,7 +238,7 @@ class M_data extends CI_Model
   {
     $query = $this->db->select('*')
       ->from($tabel)
-      ->join('tb_serv_genset', 'tb_serv_genset.id_perbaikan_gst = tb_serv_gst_acc.id_perbaikan_gst')
+      ->join('tb_serv_genset', 'tb_serv_genset.id_perbaikan_gst = ' . $tabel . '.id_perbaikan_gst')
       ->join('tb_genset', 'tb_genset.id_genset = tb_serv_genset.id_genset')
       ->where($where)
       ->get();
@@ -315,23 +315,23 @@ class M_data extends CI_Model
   ####################################
   //* End AJAX Data Perbaikan Genset 
   ####################################
-  public function get_detail_perbaikan($tabel, $id_perbaikan_gst)
+  public function get_detail_perbaikan($tabel, $where)
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_serv_genset.id_genset')
-      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = tb_serv_genset.id_sparepart')
-      ->where($id_perbaikan_gst)
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = ' . $tabel . '.id_sparepart')
+      ->where($where)
       ->get();
     return $query->result();
   }
 
-  public function detail_perbaikan($tabel, $id_perbaikan_gst)
+  public function detail_perbaikan($tabel, $where)
   {
     $query = $this->db->select()
       ->from($tabel)
-      // ->join('tb_serv_genset', 'tb_serv_genset.id_perbaikan_gst = tb_detail_serv.id_perbaikan_gst ')
-      ->where($id_perbaikan_gst)
+      // ->join('tb_serv_genset', 'tb_serv_genset.where = tb_detail_serv.id_perbaikan_gst ')
+      ->where($where)
       ->get();
     return $query->result();
   }
@@ -364,8 +364,8 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
       ->where('status =', 1)
       ->where('DATEDIFF(DATE_SUB(tanggal_masuk, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
 
@@ -377,8 +377,8 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
       ->where('status =', 1)
       ->where('DATEDIFF(DATE_SUB(tanggal_masuk, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
 
@@ -408,10 +408,10 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->where('status =', 1)
       ->get();
     return $query->result();
@@ -421,10 +421,10 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       // ->where('status =', 1)
       // ->order_by('id_transaksi', 'asc')
       ->get();
@@ -436,10 +436,10 @@ class M_data extends CI_Model
     $query = $this->db->select()
       ->from($tabel)
       ->where($where)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->get();
     return $query->result();
   }
@@ -448,9 +448,9 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_jadwal_genset.id_u_keluar')
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_penyewaan.id_genset')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_penyewaan.id_pelanggan')
 
       ->get();
     return $query->result();
@@ -461,9 +461,9 @@ class M_data extends CI_Model
     $query = $this->db->select()
       ->from($tabel)
       ->where($where)
-      ->join('tb_unit_keluar', 'tb_unit_keluar.id_u_keluar = tb_jadwal_genset.id_u_keluar')
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
+      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_penyewaan.id_genset')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_penyewaan.id_pelanggan')
 
       ->get();
     return $query->result();
@@ -478,11 +478,12 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_masuk.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_masuk.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
-      ->order_by('id_transaksi', 'asc')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
+      // ->order_by('id_transaksi', 'asc')
+      ->where('status =', 0)
       ->get();
     return $query->result();
   }
@@ -492,10 +493,10 @@ class M_data extends CI_Model
     $query = $this->db->select()
       ->from($tabel)
       ->where($where)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_masuk.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_masuk.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->get();
     return $query->result();
   }
@@ -504,12 +505,12 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_masuk.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_masuk.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->where('status =', 0)
-      ->order_by('tanggal_masuk', 'asc')
+      // ->order_by('tanggal_masuk', 'asc')
 
       ->get();
     return $query->result();
@@ -522,13 +523,13 @@ class M_data extends CI_Model
 
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_masuk.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_masuk.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
       ->where('status =', 0)
-      ->order_by('tanggal_masuk', 'asc')
+      // ->order_by('tanggal_masuk', 'asc')
       ->get();
     return $query->result();
   }
@@ -550,7 +551,7 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_unit_masuk', 'tb_unit_masuk.id_u_masuk = tb_pendapatan.id_u_masuk')
+      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
       ->get();
     return $query->result();
   }
@@ -559,7 +560,7 @@ class M_data extends CI_Model
   {
     $query = $this->db->select_sum('total')
       ->from($tabel)
-      ->join('tb_unit_masuk', 'tb_unit_masuk.id_u_masuk = tb_pendapatan.id_u_masuk')
+      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
       ->get();
     return $query->result();
   }
@@ -571,7 +572,7 @@ class M_data extends CI_Model
 
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_unit_masuk', 'tb_unit_masuk.id_u_masuk = tb_pendapatan.id_u_masuk')
+      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
       ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
       // ->where('YEAR (tanggal_masuk)' . $tahun)
       // ->order_by('tanggal_masuk', 'asc')
@@ -585,7 +586,7 @@ class M_data extends CI_Model
     $tahun = $this->db->escape($tahun);
     $query = $this->db->select_sum('total')
       ->from($tabel)
-      ->join('tb_unit_masuk', 'tb_unit_masuk.id_u_masuk = tb_pendapatan.id_u_masuk')
+      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
       ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
       ->get();
     return $query->result();
@@ -596,7 +597,7 @@ class M_data extends CI_Model
     // $tahun = $this->db->escape($tahun);
     $query = $this->db->select('MONTH (tanggal_masuk),total')
       ->from($tabel)
-      ->join('tb_unit_masuk', 'tb_unit_masuk.id_u_masuk = tb_pendapatan.id_u_masuk')
+      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = tb_pendapatan.id_u_sewa')
       // ->where('MONTH (tanggal_masuk) =' . $bln . ' AND YEAR (tanggal_masuk) =' . $thn)
       ->order_by('total', 'asc')
       ->get();
@@ -661,10 +662,10 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->join('tb_user', 'tb_user.id_user = tb_pelanggan.id_user')
       ->where('tb_pelanggan.id_user =', $this->session->userdata('id_user'))
       ->where('status =', 1)
@@ -677,10 +678,10 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_keluar.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_keluar.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_keluar.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_keluar.id_mobil')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->where($where)
       // ->where('tb_pelanggan.id_user =', $this->session->userdata('id_user'))
       ->get();
@@ -691,10 +692,10 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_masuk.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_masuk.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->join('tb_user', 'tb_user.id_user = tb_pelanggan.id_user')
       ->where('tb_pelanggan.id_user =', $this->session->userdata('id_user'))
       // ->where('status =', )
@@ -707,10 +708,10 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_masuk.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = tb_unit_masuk.id_operator')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_masuk.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = tb_unit_masuk.id_mobil')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->where($where)
       // ->where('tb_pelanggan.id_user =', $this->session->userdata('id_user'))
       ->get();
