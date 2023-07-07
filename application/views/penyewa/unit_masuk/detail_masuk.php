@@ -215,7 +215,7 @@
                         </div>
                         <div class="card-footer" align="center">
                             <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                            <a href="<?= site_url('report/cetak_penyewaan_detailPlg/' . $d->id_u_masuk); ?>" target="_blank" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a>
+                            <a href="<?= site_url('report/cetak_penyewaan_detailPlg/' . $d->id_u_sewa); ?>" target="_blank" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a>
 
                         </div>
                     </div>

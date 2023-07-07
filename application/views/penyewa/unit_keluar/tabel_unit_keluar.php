@@ -89,9 +89,9 @@
                                                 <td>Genset Masuk (Kembali)</td>
                                             <?php } ?>
                                             <td>
-                                                <!-- <a href="<?= site_url('penyewa/update_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
-                                                <!-- <a href="<?= site_url('penyewa/hapus_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
-                                                <a href="<?= site_url('penyewa/detail_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
+                                                <!-- <a href="<?= site_url('penyewa/update_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
+                                                <!-- <a href="<?= site_url('penyewa/hapus_unit_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
+                                                <a href="<?= site_url('penyewa/detail_unit_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
 
                                             </td>
                                         </tr>

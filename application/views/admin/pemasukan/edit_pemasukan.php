@@ -54,13 +54,13 @@
                                     <div class="form-group">
                                         <label for="bulan" class="form-label">ID Transaksi</label>
 
-                                        <select name="id_u_masuk" class="form-control" id="id_transaksi" required>
+                                        <select name="id_u_sewa" class="form-control" id="id_transaksi" required>
                                             <option value="">-- Pilih ID Transaksi --</option>
                                             <?php foreach ($list_data as $d) { ?>
-                                                <?php if ($ed->id_u_masuk == $d->id_u_masuk) { ?>
-                                                    <option value="<?= $ed->id_u_masuk ?>" selected><?= $d->id_transaksi ?></option>
+                                                <?php if ($ed->id_u_sewa == $d->id_u_sewa) { ?>
+                                                    <option value="<?= $ed->id_u_sewa ?>" selected><?= $d->id_transaksi ?></option>
                                                 <?php } else { ?>
-                                                    <option value="<?= $d->id_u_masuk ?>"><?= $d->id_transaksi ?></option>
+                                                    <option value="<?= $d->id_u_sewa ?>"><?= $d->id_transaksi ?></option>
                                                 <?php } ?>
                                             <?php } ?>
                                         </select>
@@ -111,7 +111,7 @@
         // let stok_gd = document.getElementById("stok_gd");
 
         <?php foreach ($list_data as $s) { ?>
-            if (id_transaksi == "<?php echo $s->id_u_masuk ?>") {
+            if (id_transaksi == "<?php echo $s->id_u_sewa ?>") {
 
                 $("#tanggal_masuk").val("<?php echo date('d-m-Y', strtotime($s->tanggal_masuk)) ?>");
                 $("#nama_plg").val("<?php echo $s->nama_plg ?>");
@@ -125,7 +125,7 @@
         // let stok_gd = document.getElementById("stok_gd");
 
         <?php foreach ($list_data as $s) { ?>
-            if (id_transaksi == "<?php echo $s->id_u_masuk ?>") {
+            if (id_transaksi == "<?php echo $s->id_u_sewa ?>") {
 
                 $("#tanggal_masuk").val("<?php echo date('d-m-Y', strtotime($s->tanggal_masuk)) ?>");
                 $("#nama_plg").val("<?php echo $s->nama_plg ?>");

@@ -83,16 +83,16 @@
 
                                             <?php if ($dt->status == 1) { ?>
                                                 <td>
-                                                    <a href="<?= site_url('admin/unit_keluar_update/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs bg-fuchsia btn-unitpanjang" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a><br>
-                                                    <a href="<?= site_url('admin/unit_masuk/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-xs btn-danger btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a>
+                                                    <a href="<?= site_url('admin/unit_keluar_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs bg-fuchsia btn-unitpanjang" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a><br>
+                                                    <a href="<?= site_url('admin/unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-danger btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a>
                                                 </td>
                                             <?php } else { ?>
                                                 <td>Genset Masuk (Kembali)</td>
                                             <?php } ?>
                                             <td>
-                                                <!-- <a href="<?= site_url('admin/update_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
-                                                <a href="<?= site_url('admin/hapus_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
-                                                <a href="<?= site_url('admin/detail_unit_keluar/' . $dt->id_u_keluar); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
+                                                <!-- <a href="<?= site_url('admin/update_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
+                                                <a href="<?= site_url('admin/hapus_unit_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
+                                                <a href="<?= site_url('admin/detail_unit_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
 
                                             </td>
                                         </tr>

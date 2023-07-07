@@ -86,8 +86,8 @@
                                                 <td>Genset Masuk (Kembali)</td>
                                             <?php } ?> -->
                                             <td>
-                                                <!-- <a href="<?= base_url('penyewa/hapus_unit_masuk/' . $dt->id_u_masuk); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
-                                                <a href="<?= base_url('penyewa/detail_unit_masuk/' . $dt->id_u_masuk); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
+                                                <!-- <a href="<?= base_url('penyewa/hapus_unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
+                                                <a href="<?= base_url('penyewa/detail_unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

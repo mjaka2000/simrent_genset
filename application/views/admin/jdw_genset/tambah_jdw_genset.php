@@ -52,10 +52,10 @@
                                 <div class="form-group">
                                     <label for="bulan" class="form-label">ID Transaksi</label>
 
-                                    <select name="id_u_keluar" class="form-control" id="id_transaksi" required>
+                                    <select name="id_u_sewa" class="form-control" id="id_transaksi" required>
                                         <option value="">-- Pilih ID Transaksi --</option>
                                         <?php foreach ($list_data as $d) { ?>
-                                            <option value="<?= $d->id_u_keluar ?>"><?= $d->id_transaksi ?></option>
+                                            <option value="<?= $d->id_u_sewa ?>"><?= $d->id_transaksi ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -99,7 +99,7 @@
         // let stok_gd = document.getElementById("stok_gd");
 
         <?php foreach ($list_data as $s) { ?>
-            if (id_transaksi == "<?php echo $s->id_u_keluar ?>") {
+            if (id_transaksi == "<?php echo $s->id_u_sewa ?>") {
 
                 $("#tanggal_keluar").val("<?php echo date('d-m-Y', strtotime($s->tanggal_keluar)) ?>");
                 $("#tanggal_masuk").val("<?php echo date('d-m-Y', strtotime($s->tanggal_masuk)) ?>");

@@ -50,7 +50,7 @@
                             <form action="<?= site_url('admin/proses_perpanjangan'); ?>" method="post" role="form">
 
                                 <?php foreach ($data_unit_update as $du) { ?>
-                                    <input type="hidden" name="id_u_keluar" value="<?= $du->id_u_keluar; ?>">
+                                    <input type="hidden" name="id_u_sewa" value="<?= $du->id_u_sewa; ?>">
                                     <div class="form-group row">
                                         <label for="id_transaksi" class="col-sm-3 col-form-label">ID Transaksi</label>
                                         <div class="col-sm-9">
