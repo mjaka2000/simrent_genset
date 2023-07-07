@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Jul 2023 pada 05.09
+-- Waktu pembuatan: 07 Jul 2023 pada 05.20
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -83,7 +83,7 @@ INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `har
 
 CREATE TABLE `tb_jadwal_genset` (
   `id_jadwal_genset` int(11) NOT NULL,
-  `id_u_keluar` int(11) NOT NULL,
+  `id_u_sewa` int(11) NOT NULL,
   `keterangan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -91,7 +91,7 @@ CREATE TABLE `tb_jadwal_genset` (
 -- Dumping data untuk tabel `tb_jadwal_genset`
 --
 
-INSERT INTO `tb_jadwal_genset` (`id_jadwal_genset`, `id_u_keluar`, `keterangan`) VALUES
+INSERT INTO `tb_jadwal_genset` (`id_jadwal_genset`, `id_u_sewa`, `keterangan`) VALUES
 (1, 6, 'genset disewakan untuk acara'),
 (2, 8, 'untuk testing sound system'),
 (3, 9, 'Cobai Kelistrikan jarr');
@@ -193,7 +193,7 @@ INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`
 
 CREATE TABLE `tb_pendapatan` (
   `id_pendapatan` int(10) NOT NULL,
-  `id_u_masuk` int(10) NOT NULL,
+  `id_u_sewa` int(10) NOT NULL,
   `tgl_update` date NOT NULL,
   `keterangan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -202,12 +202,12 @@ CREATE TABLE `tb_pendapatan` (
 -- Dumping data untuk tabel `tb_pendapatan`
 --
 
-INSERT INTO `tb_pendapatan` (`id_pendapatan`, `id_u_masuk`, `tgl_update`, `keterangan`) VALUES
-(6, 1, '2023-06-26', 'hasil sewa jarr'),
-(7, 2, '2023-06-28', 'sewa kh ujar'),
-(8, 3, '2023-06-30', 'Sewa kah jarr'),
-(9, 4, '2023-07-01', 'menyewa kah'),
-(10, 5, '2023-07-02', 'ambil genset'),
+INSERT INTO `tb_pendapatan` (`id_pendapatan`, `id_u_sewa`, `tgl_update`, `keterangan`) VALUES
+(6, 8, '2023-06-26', 'hasil sewa jarr'),
+(7, 9, '2023-06-28', 'sewa kh ujar'),
+(8, 11, '2023-06-30', 'Sewa kah jarr'),
+(9, 12, '2023-07-01', 'menyewa kah'),
+(10, 15, '2023-07-02', 'ambil genset'),
 (11, 6, '2023-07-02', 'testing'),
 (12, 10, '2023-07-02', 'wooww');
 
@@ -312,11 +312,11 @@ INSERT INTO `tb_sparepart` (`id_sparepart`, `nama_sparepart`, `tanggal_beli`, `t
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_unit_keluar`
+-- Struktur dari tabel `tb_unit_penyewaan`
 --
 
-CREATE TABLE `tb_unit_keluar` (
-  `id_u_keluar` int(11) NOT NULL,
+CREATE TABLE `tb_unit_penyewaan` (
+  `id_u_sewa` int(11) NOT NULL,
   `id_transaksi` varchar(20) NOT NULL,
   `tanggal_keluar` date NOT NULL,
   `tanggal_masuk` date NOT NULL,
@@ -332,10 +332,10 @@ CREATE TABLE `tb_unit_keluar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data untuk tabel `tb_unit_keluar`
+-- Dumping data untuk tabel `tb_unit_penyewaan`
 --
 
-INSERT INTO `tb_unit_keluar` (`id_u_keluar`, `id_transaksi`, `tanggal_keluar`, `tanggal_masuk`, `lokasi`, `id_operator`, `id_pelanggan`, `id_genset`, `id_mobil`, `tambahan`, `jumlah_hari`, `total`, `status`) VALUES
+INSERT INTO `tb_unit_penyewaan` (`id_u_sewa`, `id_transaksi`, `tanggal_keluar`, `tanggal_masuk`, `lokasi`, `id_operator`, `id_pelanggan`, `id_genset`, `id_mobil`, `tambahan`, `jumlah_hari`, `total`, `status`) VALUES
 (6, 'GE-Jun4940', '2023-06-06', '2023-06-09', 'Binuang', 2, 4, 2, 1, 'kabel', '3', '3000000', 0),
 (8, 'GE-Jun7741', '2023-06-13', '2023-06-17', 'Gambut', 2, 5, 4, 1, 'kabel', '4', '3000000', 0),
 (9, 'GE-Jun2650', '2023-06-16', '2023-06-19', 'Martapura', 2, 5, 4, 2, 'Box Panel', '3', '2250000', 0),
@@ -346,44 +346,6 @@ INSERT INTO `tb_unit_keluar` (`id_u_keluar`, `id_transaksi`, `tanggal_keluar`, `
 (16, 'GE-Jun7627', '2023-06-28', '2023-06-30', 'Pemko BJM', 1, 9, 2, 2, 'Panel', '2', '2000000', 0),
 (17, 'GE-Jun2828', '2023-06-29', '2023-07-02', 'Banjarbaru', 2, 8, 3, 2, '-', '3', '2250000', 0),
 (18, 'GE-Jun4679', '2023-06-28', '2023-06-30', 'Pemko BJM', 3, 9, 4, 2, '-', '2', '1500000', 0);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tb_unit_masuk`
---
-
-CREATE TABLE `tb_unit_masuk` (
-  `id_u_masuk` int(11) NOT NULL,
-  `id_transaksi` varchar(20) NOT NULL,
-  `tanggal_keluar` date NOT NULL,
-  `tanggal_masuk` date NOT NULL,
-  `lokasi` varchar(50) NOT NULL,
-  `id_operator` int(11) NOT NULL,
-  `id_pelanggan` int(11) NOT NULL,
-  `id_genset` int(11) NOT NULL,
-  `id_mobil` int(11) DEFAULT NULL,
-  `tambahan` varchar(255) NOT NULL,
-  `jumlah_hari` varchar(10) NOT NULL,
-  `total` varchar(50) NOT NULL,
-  `status` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data untuk tabel `tb_unit_masuk`
---
-
-INSERT INTO `tb_unit_masuk` (`id_u_masuk`, `id_transaksi`, `tanggal_keluar`, `tanggal_masuk`, `lokasi`, `id_operator`, `id_pelanggan`, `id_genset`, `id_mobil`, `tambahan`, `jumlah_hari`, `total`, `status`) VALUES
-(1, 'GE-Jun4940', '2023-06-06', '2023-06-09', 'Binuang', 2, 4, 2, 1, 'kabel', '3', '3000000', 0),
-(2, 'GE-Jun7741', '2023-06-13', '2023-06-17', 'Gambut', 2, 5, 4, 1, 'kabel', '4', '3000000', 0),
-(3, 'GE-Jun2650', '2023-06-16', '2023-06-19', 'Martapura', 2, 5, 4, 2, 'Box Panel', '3', '2250000', 0),
-(4, 'GE-Jun4676', '2023-06-16', '2023-06-19', 'Martapura', 1, 4, 3, 1, 'Box Panel', '3', '2250000', 0),
-(5, 'GE-Jun2678', '2023-05-23', '2023-05-25', 'Gambut', 2, 5, 3, 2, '-', '2', '1500000', 0),
-(6, 'GE-Jun6992', '2023-06-23', '2023-06-26', 'Martapura', 3, 5, 5, 4, 'kabel 20M', '3', '3750000', 0),
-(10, 'GE-Jun2082', '2023-06-21', '2023-06-25', 'Tanjung', 2, 8, 4, 2, '-', '4', '3000000', 0),
-(11, 'GE-Jun4679', '2023-06-28', '2023-06-30', 'Pemko BJM', 3, 9, 4, 2, '-', '2', '1500000', 0),
-(12, 'GE-Jun7627', '2023-06-28', '2023-06-30', 'Pemko BJM', 1, 9, 2, 2, 'Panel', '2', '2000000', 0),
-(13, 'GE-Jun2828', '2023-06-29', '2023-07-02', 'Banjarbaru', 2, 8, 3, 2, '-', '3', '2250000', 0);
 
 -- --------------------------------------------------------
 
@@ -406,11 +368,11 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '05-07-2023 9:40'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '07-07-2023 10:54'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '05-07-2023 9:58'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '05-07-2023 11:01'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
-(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '30-06-2023 22:27'),
+(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '07-07-2023 11:15'),
 (38, 'abay021', 'Bayu Agung', '$2y$10$QEeN8oD4rPRK2xQnGrdNA.omD00N3KHv.ND5Xy4wUGj65ZWWl7ZVe', 3, 'nopic.png', '05-07-2023 11:01'),
 (39, 'khai021', 'Khairullah', '$2y$10$m1dBvC60tGx0JgaX7LEDQ.Y.Inx4FAjeUZS1bEw6RmLdS4muAfnCu', 3, 'nopic.png', '05-07-2023 8:03'),
 (40, 'adrian123', 'Adrian Ali', '$2y$10$m/Cqzifn67ZQ3Pz762CatO3DKHUJ5/pH.G32YtqyC3vzEZ6HQ7CYK', 3, 'nopic.png', '02-07-2023 19:21'),
@@ -439,7 +401,7 @@ ALTER TABLE `tb_genset`
 --
 ALTER TABLE `tb_jadwal_genset`
   ADD PRIMARY KEY (`id_jadwal_genset`),
-  ADD KEY `id_u_keluar` (`id_u_keluar`);
+  ADD KEY `id_u_keluar` (`id_u_sewa`);
 
 --
 -- Indeks untuk tabel `tb_mobil`
@@ -465,7 +427,7 @@ ALTER TABLE `tb_pelanggan`
 --
 ALTER TABLE `tb_pendapatan`
   ADD PRIMARY KEY (`id_pendapatan`),
-  ADD KEY `id_u_keluar` (`id_u_masuk`);
+  ADD KEY `id_u_sewa` (`id_u_sewa`) USING BTREE;
 
 --
 -- Indeks untuk tabel `tb_pengeluaran`
@@ -495,21 +457,14 @@ ALTER TABLE `tb_sparepart`
   ADD PRIMARY KEY (`id_sparepart`);
 
 --
--- Indeks untuk tabel `tb_unit_keluar`
+-- Indeks untuk tabel `tb_unit_penyewaan`
 --
-ALTER TABLE `tb_unit_keluar`
-  ADD PRIMARY KEY (`id_u_keluar`),
+ALTER TABLE `tb_unit_penyewaan`
+  ADD PRIMARY KEY (`id_u_sewa`),
   ADD KEY `id_operator` (`id_operator`,`id_pelanggan`,`id_genset`,`id_mobil`),
   ADD KEY `id_mobil` (`id_mobil`),
   ADD KEY `id_pelanggan` (`id_pelanggan`),
   ADD KEY `id_genset` (`id_genset`);
-
---
--- Indeks untuk tabel `tb_unit_masuk`
---
-ALTER TABLE `tb_unit_masuk`
-  ADD PRIMARY KEY (`id_u_masuk`),
-  ADD KEY `id_operator` (`id_operator`,`id_pelanggan`,`id_genset`,`id_mobil`);
 
 --
 -- Indeks untuk tabel `tb_user`
@@ -588,16 +543,10 @@ ALTER TABLE `tb_sparepart`
   MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_unit_keluar`
+-- AUTO_INCREMENT untuk tabel `tb_unit_penyewaan`
 --
-ALTER TABLE `tb_unit_keluar`
-  MODIFY `id_u_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT untuk tabel `tb_unit_masuk`
---
-ALTER TABLE `tb_unit_masuk`
-  MODIFY `id_u_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+ALTER TABLE `tb_unit_penyewaan`
+  MODIFY `id_u_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
@@ -616,12 +565,6 @@ ALTER TABLE `tb_detail_serv`
   ADD CONSTRAINT `tb_detail_serv_ibfk_1` FOREIGN KEY (`id_perbaikan_gst`) REFERENCES `tb_serv_genset` (`id_perbaikan_gst`);
 
 --
--- Ketidakleluasaan untuk tabel `tb_pendapatan`
---
-ALTER TABLE `tb_pendapatan`
-  ADD CONSTRAINT `tb_pendapatan_ibfk_1` FOREIGN KEY (`id_u_masuk`) REFERENCES `tb_unit_masuk` (`id_u_masuk`);
-
---
 -- Ketidakleluasaan untuk tabel `tb_serv_genset`
 --
 ALTER TABLE `tb_serv_genset`
@@ -629,13 +572,13 @@ ALTER TABLE `tb_serv_genset`
   ADD CONSTRAINT `tb_serv_genset_ibfk_3` FOREIGN KEY (`id_sparepart`) REFERENCES `tb_sparepart` (`id_sparepart`);
 
 --
--- Ketidakleluasaan untuk tabel `tb_unit_keluar`
+-- Ketidakleluasaan untuk tabel `tb_unit_penyewaan`
 --
-ALTER TABLE `tb_unit_keluar`
-  ADD CONSTRAINT `tb_unit_keluar_ibfk_1` FOREIGN KEY (`id_mobil`) REFERENCES `tb_mobil` (`id_mobil`),
-  ADD CONSTRAINT `tb_unit_keluar_ibfk_2` FOREIGN KEY (`id_pelanggan`) REFERENCES `tb_pelanggan` (`id_pelanggan`),
-  ADD CONSTRAINT `tb_unit_keluar_ibfk_3` FOREIGN KEY (`id_operator`) REFERENCES `tb_operator` (`id_operator`),
-  ADD CONSTRAINT `tb_unit_keluar_ibfk_4` FOREIGN KEY (`id_genset`) REFERENCES `tb_genset` (`id_genset`);
+ALTER TABLE `tb_unit_penyewaan`
+  ADD CONSTRAINT `tb_unit_penyewaan_ibfk_1` FOREIGN KEY (`id_mobil`) REFERENCES `tb_mobil` (`id_mobil`),
+  ADD CONSTRAINT `tb_unit_penyewaan_ibfk_2` FOREIGN KEY (`id_pelanggan`) REFERENCES `tb_pelanggan` (`id_pelanggan`),
+  ADD CONSTRAINT `tb_unit_penyewaan_ibfk_3` FOREIGN KEY (`id_operator`) REFERENCES `tb_operator` (`id_operator`),
+  ADD CONSTRAINT `tb_unit_penyewaan_ibfk_4` FOREIGN KEY (`id_genset`) REFERENCES `tb_genset` (`id_genset`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
