@@ -47,6 +47,47 @@
                                 <p>Data Genset</p>
                             </a>
                         </li>
+                        <!-- <li class="nav-item">
+                            <a href="<?= site_url(); ?>pimpinan/tabel_service_genset" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Perbaikan Genset</p>
+                            </a>
+                        </li> -->
+                        <!-- <li class="nav-item">
+                            <a href="<?= site_url(); ?>pimpinan/tabel_sparepart" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Stok Sparepart</p>
+                            </a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a href="<?= site_url(); ?>pimpinan/tabel_mobil" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Mobil</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= site_url(); ?>pimpinan/tabel_operator" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Operator</p>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a href="<?= site_url(); ?>pimpinan/tabel_pelanggan" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Pelanggan</p>
+                            </a>
+                        </li> -->
+                    </ul>
+                </li>
+                <li class="nav-item ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Menu Data Transaksi
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="<?= site_url(); ?>pimpinan/tabel_service_genset" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -60,34 +101,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= site_url(); ?>pimpinan/tabel_mobil" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Data Mobil</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= site_url(); ?>pimpinan/tabel_operator" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Data Operator</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="<?= site_url(); ?>pimpinan/tabel_pelanggan" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Pelanggan</p>
                             </a>
                         </li>
-                    </ul>
-                </li>
-                <li class="nav-item ">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Menu Data Transaksi
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="<?= site_url(); ?>pimpinan/service_genset_acc" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
