@@ -47,18 +47,18 @@
                                 <p>Data Genset</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?= site_url(); ?>admin/tabel_service_genset" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Perbaikan Genset</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a href="<?= site_url(); ?>admin/tabel_sparepart" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Stok Sparepart</p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="<?= site_url(); ?>admin/tabel_mobil" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -71,12 +71,12 @@
                                 <p>Data Operator</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?= site_url(); ?>admin/tabel_pelanggan" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Pelanggan</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
 
@@ -113,7 +113,24 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-
+                        <li class="nav-item">
+                            <a href="<?= site_url(); ?>admin/tabel_service_genset" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Perbaikan Genset</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= site_url(); ?>admin/tabel_sparepart" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Stok Sparepart</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= site_url(); ?>admin/tabel_pelanggan" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Pelanggan</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="<?= site_url(); ?>admin/service_genset_acc" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
