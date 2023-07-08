@@ -20,7 +20,7 @@
                     <div class="modal-body">
                         <h6>
                             <p><strong>Version</strong> 1.2.0</p>
-                            This website uses:
+                            This web app uses:
                             <ul>
                                 <li><a href="https://www.codeigniter.com/download" target="_blank"><u>Codeigniter</u></a> Version 3.1.13</li>
                                 <li>PHP Version 7.4</li>
