@@ -45,12 +45,12 @@ $html =
               <br><br><br><br>
               <table border="1" cellspacing="1" cellpadding="2">
                 <tr bgcolor=" #d1d1d1 ">
-                <th width="50px" align="center">No.</th>
-                <th align="center">Pemakai</th>
-                <th align="center">Nama Genset</th>
-                <th align="center">Dipakai Tanggal</th>
-                <th align="center">Sampai Tanggal</th>
-                <th width="150px" align="center">Keterangan</th>
+                <th width="50px" align="center"><b>No.</b></th>
+                <th align="center"><b>Pemakai</b></th>
+                <th align="center"><b>Nama Genset</b></th>
+                <th align="center"><b>Dipakai Tanggal</b></th>
+                <th align="center"><b>Sampai Tanggal</b></th>
+                <th width="150px" align="center"><b>Keterangan</b></th>
                 </tr>';
 
 $no = 1;
@@ -84,6 +84,6 @@ $html .= '
             </table>
               </div>';
 
-$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, 'C', true);
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, '', true);
 
-$pdf->Output('laporan Jadwal Penyewaan Genset.pdf', 'I');
+$pdf->Output('Laporan Jadwal Penyewaan Genset.pdf', 'I');

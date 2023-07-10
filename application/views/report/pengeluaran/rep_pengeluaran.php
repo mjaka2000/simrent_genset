@@ -45,10 +45,10 @@ $html =
               <br><br><br><br>
               <table border="1" cellspacing="1" cellpadding="2">
                 <tr bgcolor=" #d1d1d1 ">
-                <th width="50px" align="center">No.</th>
-                <th align="center">Tanggal</th>
-                <th width="250px" align="center">Keterangan Pengeluaran</th>
-                <th align="center">Biaya Pengeluaran</th>
+                <th width="50px" align="center"><b>No.</b> </th>
+                <th align="center"><b>Tanggal</b></th>
+                <th width="250px" align="center"><b>Keterangan Pengeluaran</b></th>
+                <th align="center"><b>Biaya Pengeluaran</b></th>
                 </tr>';
 
 $no = 1;
@@ -58,14 +58,15 @@ foreach ($list_data as $d) :
             <td align="center">' . $no . '</td>
             <td >' . date('d-m-Y', strtotime($d->tgl_pengeluaran)) . '</td>
             <td >' . $d->pengeluaran . '</td>
-            <td align="center">Rp ' . number_format($d->biaya_pengeluaran) . '</td>
+            <td align="right">Rp ' . number_format($d->biaya_pengeluaran) . '</td>
             </tr>';
     $no++;
 endforeach;
 foreach ($total_data as $td) :
     $html .=
         '<tr>
-                            <th colspan="4" style="text-align: center;">Total Pengeluaran ' . $label . ': <span style="color: red;">Rp&nbsp;' . number_format($td->biaya_pengeluaran) . '</span></th>
+                            <th colspan="3" align="center"><b>Total Pengeluaran ' . $label . '</b></th>
+                            <th align="right"><b><span style="color: red;">Rp&nbsp;' . number_format($td->biaya_pengeluaran) . '</span></b></th>
                             </tr>';
 endforeach;
 

@@ -44,14 +44,14 @@ $html =
        <br><br><br><br>
        <table border="1" cellspacing="1" cellpadding="2">
          <tr bgcolor=" #d1d1d1 ">
-         <th width="50px" align="center">No.</th>
-                 <th align="center">Nomor Genset</th>
-                 <th align="center">Nama Genset</th>
-                 <th align="center">Jenis Perbaikan</th>
-                 <th align="center">Spare Part (Diganti)</th>
-                 <th align="center">Tgl. Perbaikan</th>
-                 <th align="center">Ket. Perbaikan</th>
-                 <th align="center">Biaya Perbaikan</th>
+         <th width="50px" align="center"><b>No.</b></th>
+                 <th width="50px" align="center"><b>Nomor Genset</b></th>
+                 <th align="center"><b>Nama Genset</b></th>
+                 <th width="100px" align="center"><b>Jenis Perbaikan</b></th>
+                 <th align="center"><b>Spare Part (Diganti)</b></th>
+                 <th align="center"><b>Tgl. Perbaikan</b></th>
+                 <th width="100px" align="center"><b>Ket. Perbaikan</b></th>
+                 <th align="center"><b>Biaya Perbaikan</b></th>
          </tr>';
 
 $no = 1;
@@ -59,7 +59,7 @@ $no = 1;
 foreach ($list_data as $d) :
     $html .= '<tr>
      <td align="center">' . $no . '</td>
-     <td>' . $d->kode_genset . '</td>
+     <td align="center">' . $d->kode_genset . '</td>
      <td>' . $d->nama_genset . '</td>
      <td>' . $d->jenis_perbaikan . '</td>
      <td>' . $d->nama_sparepart . '</td>
@@ -69,7 +69,7 @@ foreach ($list_data as $d) :
     } else {
         $html .=    '<td>Masih Proses</td>';
     }
-    $html .= '<td>Rp ' . number_format($d->biaya_perbaikan) . '</td>
+    $html .= '<td align="right">Rp ' . number_format($d->biaya_perbaikan) . '</td>
      </tr>';
     $no++;
 endforeach;
@@ -91,6 +91,6 @@ $html .= '
      </table>
        </div>';
 
-$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, 'C', true);
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, '', true);
 
-$pdf->Output('Laporan Jadwal Penyewaan Genset.pdf', 'I');
+$pdf->Output('Laporan Perbaikan Genset.pdf', 'I');

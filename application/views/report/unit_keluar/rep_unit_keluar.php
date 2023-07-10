@@ -44,20 +44,20 @@ $html =
       <br><br><br><br>
       <table border="1" cellspacing="1" cellpadding="2">
         <tr bgcolor=" #d1d1d1 ">
-                <th colspan="11" align="center">' . $label . '</th>
+                <th colspan="11" align="center"><b>' . $label . '</b></th>
             </tr>
         <tr bgcolor=" #d1d1d1 ">
-        <th width="50px" align="center">No.</th>
-        <th align="center">ID </th>
-        <th width="100px" align="center">Tanggal Keluar</th>
-                <th width="100px" align="center">Tanggal Masuk (Kembali)</th>
-                <th align="center">Lokasi</th>
-                <th align="center">Nama Pelanggan</th>
-                <th align="center">Nama Genset</th>
-                <th align="center">Daya</th>
-                <th align="center">Mobil</th>
-                <th align="center">Jml. Hari</th>
-                <th align="center">Total</th>
+        <th width="50px" align="center"><b>No.</b></th>
+        <th align="center"><b>ID Transaksi</b></th>
+        <th width="100px" align="center"><b>Tanggal Keluar</b></th>
+                <th width="100px" align="center"><b>Tanggal Masuk (Kembali)</b></th>
+                <th align="center"><b>Lokasi</b></th>
+                <th align="center"><b>Nama Pelanggan</b></th>
+                <th align="center"><b>Nama Genset</b></th>
+                <th align="center"><b>Daya</b></th>
+                <th align="center"><b>Mobil</b></th>
+                <th align="center"><b>Jml. Hari</b></th>
+                <th align="center"><b>Total</b></th>
         </tr>';
 
 $no = 1;
@@ -71,10 +71,10 @@ foreach ($list_data as $d) :
     <td >' . $d->lokasi . '</td>
     <td >' . $d->nama_plg . '</td>
     <td >' . $d->nama_genset . '</td>
-    <td >' . $d->daya . '</td>
+    <td align="center">' . $d->daya . ' (KVA)</td>
     <td >' . $d->nopol . '</td>
     <td  align="center">' . $d->jumlah_hari . '</td>
-    <td align="center">Rp ' . number_format($d->total) . '</td>
+    <td align="right">Rp ' . number_format($d->total) . '</td>
     </tr>';
     $no++;
 endforeach;
@@ -97,4 +97,4 @@ $html .= '
 
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, '', true);
 
-$pdf->Output('Laporan Pendapatan.pdf', 'I');
+$pdf->Output('Laporan Penyewaan.pdf', 'I');

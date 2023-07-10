@@ -45,13 +45,13 @@ $html =
               
               <table border="1" cellspacing="1" cellpadding="2">
                 <tr bgcolor=" #d1d1d1 ">
-                <th width="50px" align="center">No.</th>
-                <th align="center">Nama</th>
-                        <th  width="110px" align="center">Alamat</th>
-                        <th width="110px" align="center">No. HP</th>
-                        <th align="center">Jenis Kelamin</th>
-                        <th align="center">Nama Perusahaan</th>
-                        <th align="center">Tanggal Update</th>
+                <th width="50px" align="center"><b>No.</b></th>
+                <th align="center"><b>Nama</b></th>
+                        <th  width="120px" align="center"><b>Alamat</b></th>
+                        <th width="100px" align="center"><b>No. HP</b></th>
+                        <th align="center"><b>Jenis Kelamin</b></th>
+                        <th align="center"><b>Nama Perusahaan</b></th>
+                        <th align="center"><b>Tanggal Update</b></th>
                 </tr>';
 
 $no = 1;

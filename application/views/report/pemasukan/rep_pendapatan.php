@@ -45,12 +45,12 @@ $html =
               <br><br><br><br>
               <table border="1" cellspacing="1" cellpadding="2">
                 <tr bgcolor=" #d1d1d1 ">
-                <th width="50px" align="center">No.</th>
-                <th align="center">Tanggal Penyewaan</th>
-                <th align="center">ID Transaksi</th>
-                <th  align="center">Tanggal Di Update</th>
-                <th align="center">Pendapatan</th>
-                <th width="150px" align="center">Keterangan</th>
+                <th width="50px" align="center"><b>No.</b></th>
+                <th align="center"><b>Tanggal Penyewaan</b></th>
+                <th align="center"><b>ID Transaksi</b></th>
+                <th  align="center"><b>Tanggal Di Update</b></th>
+                <th width="150px" align="center"><b>Keterangan</b></th>
+                <th align="center"><b>Pendapatan</b></th>
                 </tr>';
 
 $no = 1;
@@ -61,15 +61,16 @@ foreach ($list_data as $d) :
             <td >' . date('d-m-Y', strtotime($d->tanggal_masuk)) . '</td>
             <td >' . $d->id_transaksi . '</td>
             <td >' . date('d-m-Y', strtotime($d->tgl_update)) . '</td>
-            <td align="center">Rp ' . number_format($d->total) . '</td>
             <td >' . $d->keterangan . '</td>
+            <td align="right">Rp ' . number_format($d->total) . '</td>
             </tr>';
     $no++;
 endforeach;
 foreach ($total_data as $td) :
     $html .=
         '<tr>
-                            <th colspan="6" style="text-align: center;">Total Pendapatan ' . $label . ': <span style="color: red;">Rp&nbsp;' . number_format($td->total) . '</span></th>
+                            <th colspan="5" align="center"><b>Total Pendapatan ' . $label . '</b></th>
+                            <th align="right"><b><span style="color: red;">Rp&nbsp;' . number_format($td->total) . '</span></b></th>
                             </tr>';
 endforeach;
 

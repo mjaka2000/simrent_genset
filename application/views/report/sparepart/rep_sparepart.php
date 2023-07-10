@@ -44,11 +44,12 @@ $html =
        
        <table cellspacing="1" cellpadding="2"  border="1" >
          <tr bgcolor=" #d1d1d1 ">
-         <th width="50px" align="center">No.</th>
-         <th width="200px" align="center">Nama Sparepart</th>
-         <th align="center">Tanggal Beli</th>
-         <th width="150px" align="center">Tempat Beli</th>
-         <th width="100px" align="center">Stok</th>
+         <th width="50px" align="center"><b>No.</b></th>
+         <th width="180px" align="center"><b>Nama Sparepart</b></th>
+         <th align="center"><b>Tanggal Beli</b></th>
+         <th width="150px" align="center"><b>Tempat Beli</b></th>
+         <th width="50px" align="center"><b>Stok</b></th>
+         <th width="100px" align="center"><b>Harga Sparepart</b></th>
          </tr>';
 
 $no = 1;
@@ -59,7 +60,8 @@ foreach ($list_sparepart as $d) :
     <td >' . $d->nama_sparepart . '</td>
     <td >' . date('d-m-Y', strtotime($d->tanggal_beli)) . '</td>
     <td >' . $d->tempat_beli . '</td>
-    <td align="center">' . $d->stok . '</td>';
+    <td align="center">' . $d->stok . '</td>
+    <td align="right">Rp ' . number_format($d->harga_sparepart) . '</td>';
     $html .= '</tr>';
     $no++;
 endforeach;
@@ -83,4 +85,4 @@ $html .= '
 
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, '', true);
 
-$pdf->Output('laporan_operator.pdf', 'I');
+$pdf->Output('Laporan Data Sparepart.pdf', 'I');

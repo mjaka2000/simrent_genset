@@ -45,12 +45,12 @@ $html =
       
       <table border="1" cellspacing="1" cellpadding="2">
         <tr bgcolor=" #d1d1d1 ">
-        <th align="center" width="50px" >No.</th>
-        <th align="center">Nama</th>
-                <th  width="150px" align="center">Alamat</th>
-                <th width="110px" align="center">No. HP</th>
-                <th align="center">Jenis Kelamin</th>
-                <th align="center">Nama Perusahaan</th>
+        <th align="center" width="50px" ><b>No.</b></th>
+        <th align="center"><b>Nama</b></th>
+                <th  width="150px" align="center"><b>Alamat</b></th>
+                <th width="110px" align="center"><b>No. HP</b></th>
+                <th align="center"><b>Jenis Kelamin</b></th>
+                <th align="center"><b>Nama Perusahaan</b></th>
         </tr>';
 
 $no = 1;
@@ -90,4 +90,4 @@ $html .= '
 
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0, 0, true, '', true);
 
-$pdf->Output('laporan_operator.pdf', 'I');
+$pdf->Output('Laporan Data Pelanggan Di Blacklist.pdf', 'I');
