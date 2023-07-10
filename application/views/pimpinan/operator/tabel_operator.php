@@ -51,6 +51,7 @@
                                         <th>Nama</th>
                                         <th>Alamat</th>
                                         <th>No. HP</th>
+                                        <th>No. KTP</th>
                                         <th>Status</th>
                                         <!-- <th style="width:10%">Aksi</th> -->
                                     </tr>
@@ -66,6 +67,7 @@
                                                 <td><?= $dt->nama_op; ?></td>
                                                 <td><?= $dt->alamat_op; ?></td>
                                                 <td><?= $dt->nohp_op; ?></td>
+                                                <td><?= $dt->noktp_op; ?></td>
                                                 <?php if ($dt->status_op == NULL || $dt->status_op == 0) { ?>
                                                     <td><em>Standby</em></td>
                                                 <?php } else { ?>
