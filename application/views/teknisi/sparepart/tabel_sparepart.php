@@ -79,6 +79,7 @@
                                         <th>Tanggal Beli</th>
                                         <th>Tempat Beli</th>
                                         <th>Stok</th>
+                                        <th>Harga Sparepart</th>
                                         <th style="width:10%">Aksi</th>
                                     </tr>
                                 </thead>
@@ -94,6 +95,7 @@
                                                 <td><?= date('d-m-Y', strtotime($dt->tanggal_beli)); ?></td>
                                                 <td><?= $dt->tempat_beli; ?></td>
                                                 <td><?= $dt->stok; ?></td>
+                                                <td>Rp&nbsp;<?= number_format($dt->harga_sparepart); ?></td>
                                                 <td><a href="<?= site_url('teknisi/update_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
                                                     <a href="<?= site_url('teknisi/hapus_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
                                                     <!-- <a href="<?= site_url('teknisi/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle"></i></a> -->

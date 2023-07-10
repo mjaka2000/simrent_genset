@@ -506,6 +506,7 @@ class Teknisi extends CI_Controller
         $this->form_validation->set_rules('tanggal_beli', 'Tanggal Beli', 'trim|required');
         $this->form_validation->set_rules('tempat_beli', 'Tempat Beli', 'trim|required');
         $this->form_validation->set_rules('stok', 'Stok', 'trim|required');
+        $this->form_validation->set_rules('harga_sparepart', 'Harga Sparepart', 'trim|required');
 
         if ($this->form_validation->run() === true) {
 
@@ -513,13 +514,15 @@ class Teknisi extends CI_Controller
             $tanggal_beli = $this->input->post('tanggal_beli', true);
             $tempat_beli = $this->input->post('tempat_beli', true);
             $stok = $this->input->post('stok', true);
+            $harga_sparepart = $this->input->post('harga_sparepart', true);
 
             // $tanggal_beli = date('Y-m-d', strtotime($tanggal_beli));
             $data = array(
                 'nama_sparepart' => $nama_sparepart,
                 'tanggal_beli' => $tanggal_beli,
                 'tempat_beli' => $tempat_beli,
-                'stok' => $stok
+                'stok' => $stok,
+                'harga_sparepart' => $harga_sparepart
             );
             $this->M_data->insert('tb_sparepart', $data);
             $this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
@@ -547,6 +550,7 @@ class Teknisi extends CI_Controller
         $this->form_validation->set_rules('tanggal_beli', 'Tanggal Beli', 'trim|required');
         $this->form_validation->set_rules('tempat_beli', 'Tempat Beli', 'trim|required');
         $this->form_validation->set_rules('stok', 'Stok', 'trim|required');
+        $this->form_validation->set_rules('harga_sparepart', 'Harga Sparepart', 'trim|required');
         if ($this->form_validation->run() === true) {
 
             $id = $this->input->post('id', true);
@@ -554,6 +558,7 @@ class Teknisi extends CI_Controller
             $tanggal_beli = $this->input->post('tanggal_beli', true);
             $tempat_beli = $this->input->post('tempat_beli', true);
             $stok = $this->input->post('stok', true);
+            $harga_sparepart = $this->input->post('harga_sparepart', true);
 
             // $tanggal_beli = date('Y-m-d', strtotime($tanggal_beli));
             $where = array('id_sparepart' => $id);
@@ -561,7 +566,9 @@ class Teknisi extends CI_Controller
                 'nama_sparepart' => $nama_sparepart,
                 'tanggal_beli' => $tanggal_beli,
                 'tempat_beli' => $tempat_beli,
-                'stok' => $stok
+                'stok' => $stok,
+                'harga_sparepart' => $harga_sparepart
+
             );
             $this->M_data->update('tb_sparepart', $data, $where);
             $this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
