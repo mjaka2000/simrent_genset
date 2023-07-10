@@ -71,6 +71,15 @@
 
                                         <input type="number" name="stok" class="form-control" id="stok" placeholder="Masukkan Stok yang Dibeli" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $dt->stok; ?>">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="stok" class="form-label">Harga Sparepart</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon">Rp</span>
+                                            </div>
+                                            <input type="number" name="harga_sparepart" class="form-control" id="harga_sparepart" placeholder="Masukkan Harga yang Dibeli" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $dt->harga_sparepart; ?>">
+                                        </div>
+                                    </div>
                                 <?php } ?>
                                 <hr>
                                 <div class="form-group" align="center">

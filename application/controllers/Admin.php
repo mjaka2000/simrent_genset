@@ -812,6 +812,7 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('tanggal_beli', 'Tanggal Beli', 'trim|required');
 		$this->form_validation->set_rules('tempat_beli', 'Tempat Beli', 'trim|required');
 		$this->form_validation->set_rules('stok', 'Stok', 'trim|required');
+		$this->form_validation->set_rules('harga_sparepart', 'Harga Sparepart', 'trim|required');
 
 		if ($this->form_validation->run() === true) {
 
@@ -819,13 +820,15 @@ class Admin extends CI_Controller
 			$tanggal_beli = $this->input->post('tanggal_beli', true);
 			$tempat_beli = $this->input->post('tempat_beli', true);
 			$stok = $this->input->post('stok', true);
+			$harga_sparepart = $this->input->post('harga_sparepart', true);
 
 			// $tanggal_beli = date('Y-m-d', strtotime($tanggal_beli));
 			$data = array(
 				'nama_sparepart' => $nama_sparepart,
 				'tanggal_beli' => $tanggal_beli,
 				'tempat_beli' => $tempat_beli,
-				'stok' => $stok
+				'stok' => $stok,
+				'harga_sparepart' => $harga_sparepart
 			);
 			$this->M_data->insert('tb_sparepart', $data);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
@@ -853,6 +856,7 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('tanggal_beli', 'Tanggal Beli', 'trim|required');
 		$this->form_validation->set_rules('tempat_beli', 'Tempat Beli', 'trim|required');
 		$this->form_validation->set_rules('stok', 'Stok', 'trim|required');
+		$this->form_validation->set_rules('harga_sparepart', 'Harga Sparepart', 'trim|required');
 		if ($this->form_validation->run() === true) {
 
 			$id = $this->input->post('id', true);
@@ -860,6 +864,7 @@ class Admin extends CI_Controller
 			$tanggal_beli = $this->input->post('tanggal_beli', true);
 			$tempat_beli = $this->input->post('tempat_beli', true);
 			$stok = $this->input->post('stok', true);
+			$harga_sparepart = $this->input->post('harga_sparepart', true);
 
 			// $tanggal_beli = date('Y-m-d', strtotime($tanggal_beli));
 			$where = array('id_sparepart' => $id);
@@ -867,7 +872,8 @@ class Admin extends CI_Controller
 				'nama_sparepart' => $nama_sparepart,
 				'tanggal_beli' => $tanggal_beli,
 				'tempat_beli' => $tempat_beli,
-				'stok' => $stok
+				'stok' => $stok,
+				'harga_sparepart' => $harga_sparepart
 			);
 			$this->M_data->update('tb_sparepart', $data, $where);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
@@ -1087,17 +1093,20 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('nama_op', 'Nama', 'trim|required');
 		$this->form_validation->set_rules('alamat_op', 'Alamat', 'trim|required');
 		$this->form_validation->set_rules('nohp_op', 'No Hp', 'trim|required');
+		$this->form_validation->set_rules('noktp_op', 'No KTP', 'trim|required|is_unique[tb_operator.nama_op]');
 
 		if ($this->form_validation->run() === TRUE) {
 			$nama_op = $this->input->post('nama_op', TRUE);
 			$alamat_op = $this->input->post('alamat_op', TRUE);
 			$nohp_op = $this->input->post('nohp_op', TRUE);
+			$noktp_op = $this->input->post('noktp_op', TRUE);
 			$status           = 0;
 
 			$data = array(
 				'nama_op' => $nama_op,
 				'alamat_op' => $alamat_op,
 				'nohp_op' => $nohp_op,
+				'noktp_op' => $noktp_op,
 				'status_op' => $status
 			);
 			$this->M_data->insert('tb_operator', $data);
@@ -1115,18 +1124,21 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('nama_op', 'Nama', 'trim|required');
 		$this->form_validation->set_rules('alamat_op', 'Alamat', 'trim|required');
 		$this->form_validation->set_rules('nohp_op', 'No Hp', 'trim|required');
+		$this->form_validation->set_rules('noktp_op', 'No KTP', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
 			$id = $this->input->post('id_operator', TRUE);
 			$nama = $this->input->post('nama_op', TRUE);
 			$alamat = $this->input->post('alamat_op', TRUE);
 			$no_hp = $this->input->post('nohp_op', TRUE);
+			$noktp_op = $this->input->post('noktp_op', TRUE);
 
 			$where = array('id_operator' => $id);
 			$data = array(
 				'nama_op' => $nama,
 				'alamat_op' => $alamat,
-				'nohp_op' => $no_hp
+				'nohp_op' => $no_hp,
+				'noktp_op' => $noktp_op
 			);
 			$this->M_data->update('tb_operator', $data, $where);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');

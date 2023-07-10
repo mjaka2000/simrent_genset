@@ -65,6 +65,11 @@
 
                                         <input type="text" maxlength="13" name="nohp_op" class="form-control" id="nohp_op" placeholder="Masukkan No. HP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $op->nohp_op; ?>">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="no_hp" class="form-label">No. KTP</label>
+
+                                        <input type="text" maxlength="16" name="noktp_op" class="form-control" id="noktp_op" placeholder="Masukkan No. KTP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $op->noktp_op; ?>">
+                                    </div>
                                 <?php } ?>
                                 <hr>
                                 <div class="form-group" align="center">
