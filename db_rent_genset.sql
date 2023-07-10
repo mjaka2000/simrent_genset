@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jul 2023 pada 14.33
+-- Waktu pembuatan: 10 Jul 2023 pada 08.04
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -140,6 +140,7 @@ CREATE TABLE `tb_operator` (
   `nama_op` varchar(50) NOT NULL,
   `alamat_op` varchar(50) NOT NULL,
   `nohp_op` varchar(50) NOT NULL,
+  `noktp_op` varchar(20) NOT NULL,
   `status_op` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -147,16 +148,16 @@ CREATE TABLE `tb_operator` (
 -- Dumping data untuk tabel `tb_operator`
 --
 
-INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `status_op`) VALUES
-(1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', 0),
-(2, 'adi', 'jl sukamara', '0878907678956', 0),
-(3, 'ijum', 'jl pulau laut', '0897819271234', 0),
-(5, 'wanda', 'sungai miai', '0897618391837', 0),
-(6, 'Wawan', 'Jl. Belitung Darat RT. 02', '0878124354432', 0),
-(7, 'Agus', 'Jl. Manggis', '0821876723433', 0),
-(8, 'Andre S.', 'Jl. Handil Bakti Komp. Persada', '0898213489123', 0),
-(9, 'Sukma Lelana', 'Jl. Handil bakti', '0878678734658', 0),
-(10, 'Ahmad Musa', 'Jl. Sungai Jingah', '0896316721892', 0);
+INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `noktp_op`, `status_op`) VALUES
+(1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', '1623123432345436', 0),
+(2, 'adi', 'jl sukamara', '0878907678956', '1624543765468998', 0),
+(3, 'ijum', 'jl pulau laut', '0897819271234', '1643253487656745', 0),
+(5, 'wanda', 'sungai miai', '0897618391837', '1675685465987534', 0),
+(6, 'Wawan', 'Jl. Belitung Darat RT. 02', '0878124354432', '1623435433245886', 0),
+(7, 'Agus', 'Jl. Manggis', '0821876723433', '1645765423457899', 0),
+(8, 'Andre S.', 'Jl. Handil Bakti Komp. Persada', '0898213489123', '1756435675346765', 0),
+(9, 'Sukma Lelana', 'Jl. Handil bakti', '0878678734658', '6756754567864567', 0),
+(10, 'Ahmad Musa', 'Jl. Sungai Jingah', '0896316721892', '6546876546534567', 0);
 
 -- --------------------------------------------------------
 
@@ -262,7 +263,7 @@ CREATE TABLE `tb_serv_genset` (
 INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `jenis_perbaikan`, `tgl_perbaikan`, `ket_perbaikan`, `biaya_perbaikan`) VALUES
 (1, 2, 1, 'ganti filter solar', '2023-04-12', 1, '0'),
 (2, 3, 2, 'Ganti Oli', '2023-04-14', 1, '250000'),
-(18, 4, 4, 'GantiFuel pump', '2023-06-14', 0, '150000'),
+(18, 4, 4, 'GantiFuel pump', '2023-06-14', 1, '150000'),
 (19, 4, 1, 'cek oli', '2023-06-16', 1, '0'),
 (21, 5, 7, 'Solar Tersumbat', '2023-07-03', 0, '80000'),
 (22, 6, 2, 'Ganti Oli mesin', '2023-07-04', 1, '0');
@@ -301,22 +302,23 @@ CREATE TABLE `tb_sparepart` (
   `nama_sparepart` varchar(255) NOT NULL,
   `tanggal_beli` date NOT NULL,
   `tempat_beli` varchar(255) NOT NULL,
-  `stok` varchar(20) NOT NULL
+  `stok` varchar(20) NOT NULL,
+  `harga_sparepart` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data untuk tabel `tb_sparepart`
 --
 
-INSERT INTO `tb_sparepart` (`id_sparepart`, `nama_sparepart`, `tanggal_beli`, `tempat_beli`, `stok`) VALUES
-(1, 'Filter Solar Donaldson J8620291', '2023-03-14', 'Multi Filter', '2'),
-(2, 'oli sx', '2023-03-16', 'Bengkel Yuno', '3'),
-(4, 'Fuel Pump Denyo', '2023-06-12', 'Anugerah Jaya', '3'),
-(5, 'ring piston', '2023-06-19', 'Bintang Mulia', '4'),
-(6, 'null', '0001-01-01', 'null', '1000'),
-(7, 'Filter Solar Donaldson P557111', '2023-06-08', 'Multi Guna Filter', '4'),
-(8, 'Filter solar PERKINS 4816635', '2023-06-07', 'Multi Filter', '4'),
-(9, 'Air Aki Botol Merah', '2023-06-30', 'Toko Aki Bersama', '6');
+INSERT INTO `tb_sparepart` (`id_sparepart`, `nama_sparepart`, `tanggal_beli`, `tempat_beli`, `stok`, `harga_sparepart`) VALUES
+(1, 'Filter Solar Donaldson J8620291', '2023-03-14', 'Multi Filter', '2', '80000'),
+(2, 'oli sx', '2023-03-16', 'Bengkel Yuno', '3', '300000'),
+(4, 'Fuel Pump Denyo', '2023-06-12', 'Anugerah Jaya', '3', '100000'),
+(5, 'ring piston', '2023-06-19', 'Bintang Mulia', '4', '95000'),
+(6, 'null', '0001-01-01', 'null', '1000', '0'),
+(7, 'Filter Solar Donaldson P557111', '2023-06-08', 'Multi Guna Filter', '4', '85000'),
+(8, 'Filter solar PERKINS 4816635', '2023-06-07', 'Multi Filter', '4', '65000'),
+(9, 'Air Aki Yuasa Botol', '2023-06-30', 'Toko Aki Bersama', '6', '25000');
 
 -- --------------------------------------------------------
 
@@ -377,9 +379,9 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '07-07-2023 19:40'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '07-07-2023 20:30'),
-(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '07-07-2023 20:31'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '10-07-2023 11:22'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '10-07-2023 12:57'),
+(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '10-07-2023 12:44'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
 (37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '07-07-2023 20:32'),
 (38, 'abay021', 'Bayu Agung', '$2y$10$QEeN8oD4rPRK2xQnGrdNA.omD00N3KHv.ND5Xy4wUGj65ZWWl7ZVe', 3, 'nopic.png', '05-07-2023 11:01'),
@@ -549,7 +551,7 @@ ALTER TABLE `tb_serv_gst_acc`
 -- AUTO_INCREMENT untuk tabel `tb_sparepart`
 --
 ALTER TABLE `tb_sparepart`
-  MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_unit_penyewaan`
