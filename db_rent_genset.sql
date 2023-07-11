@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jul 2023 pada 08.04
+-- Waktu pembuatan: 11 Jul 2023 pada 05.58
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -72,7 +72,7 @@ CREATE TABLE `tb_genset` (
 --
 
 INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `harga`, `ket_genset`, `gambar_genset`) VALUES
-(2, '02', 'Hartech 45 P-02', '40', '1000000', 0, 'ht45p-02-2.jpg'),
+(2, '02', 'Hartech 45 P-02', '40', '1000000', 2, 'ht45p-02-2.jpg'),
 (3, '07', 'Denyo 25 ES-07', '20', '750000', 0, 'denyo25es-07.jpg'),
 (4, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg'),
 (5, '16', 'Hartech 50 P-16', '50', '1250000', 0, 'ht50p-16.jpg'),
@@ -88,7 +88,13 @@ INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `har
 
 CREATE TABLE `tb_jadwal_genset` (
   `id_jadwal_genset` int(11) NOT NULL,
-  `id_u_sewa` int(11) NOT NULL,
+  `id_operator` int(11) NOT NULL,
+  `id_genset` int(11) NOT NULL,
+  `id_mobil` int(11) NOT NULL,
+  `tgl_keluar` date NOT NULL,
+  `tgl_masuk` date NOT NULL,
+  `jumlah_hari` varchar(10) NOT NULL,
+  `lokasi` varchar(50) NOT NULL,
   `keterangan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -96,10 +102,8 @@ CREATE TABLE `tb_jadwal_genset` (
 -- Dumping data untuk tabel `tb_jadwal_genset`
 --
 
-INSERT INTO `tb_jadwal_genset` (`id_jadwal_genset`, `id_u_sewa`, `keterangan`) VALUES
-(1, 6, 'genset disewakan untuk acara'),
-(2, 8, 'untuk testing sound system'),
-(3, 9, 'Cobai Kelistrikan jarr');
+INSERT INTO `tb_jadwal_genset` (`id_jadwal_genset`, `id_operator`, `id_genset`, `id_mobil`, `tgl_keluar`, `tgl_masuk`, `jumlah_hari`, `lokasi`, `keterangan`) VALUES
+(4, 1, 2, 1, '2023-07-12', '2023-07-14', '2', 'Tugu 0 Km', 'Wanda menyewa genset');
 
 -- --------------------------------------------------------
 
@@ -265,8 +269,7 @@ INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `
 (2, 3, 2, 'Ganti Oli', '2023-04-14', 1, '250000'),
 (18, 4, 4, 'GantiFuel pump', '2023-06-14', 1, '150000'),
 (19, 4, 1, 'cek oli', '2023-06-16', 1, '0'),
-(21, 5, 7, 'Solar Tersumbat', '2023-07-03', 0, '80000'),
-(22, 6, 2, 'Ganti Oli mesin', '2023-07-04', 1, '0');
+(21, 5, 7, 'Solar Tersumbat', '2023-07-03', 0, '80000');
 
 -- --------------------------------------------------------
 
@@ -379,11 +382,11 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '10-07-2023 11:22'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '10-07-2023 12:57'),
-(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '10-07-2023 12:44'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '11-07-2023 11:13'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '11-07-2023 11:44'),
+(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '11-07-2023 11:57'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
-(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '07-07-2023 20:32'),
+(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '11-07-2023 11:55'),
 (38, 'abay021', 'Bayu Agung', '$2y$10$QEeN8oD4rPRK2xQnGrdNA.omD00N3KHv.ND5Xy4wUGj65ZWWl7ZVe', 3, 'nopic.png', '05-07-2023 11:01'),
 (39, 'khai021', 'Khairullah', '$2y$10$m1dBvC60tGx0JgaX7LEDQ.Y.Inx4FAjeUZS1bEw6RmLdS4muAfnCu', 3, 'nopic.png', '05-07-2023 8:03'),
 (40, 'adrian123', 'Adrian Ali', '$2y$10$m/Cqzifn67ZQ3Pz762CatO3DKHUJ5/pH.G32YtqyC3vzEZ6HQ7CYK', 3, 'nopic.png', '02-07-2023 19:21'),
@@ -412,7 +415,7 @@ ALTER TABLE `tb_genset`
 --
 ALTER TABLE `tb_jadwal_genset`
   ADD PRIMARY KEY (`id_jadwal_genset`),
-  ADD KEY `id_u_keluar` (`id_u_sewa`);
+  ADD KEY `id_operator` (`id_operator`,`id_genset`,`id_mobil`);
 
 --
 -- Indeks untuk tabel `tb_mobil`
@@ -503,7 +506,7 @@ ALTER TABLE `tb_genset`
 -- AUTO_INCREMENT untuk tabel `tb_jadwal_genset`
 --
 ALTER TABLE `tb_jadwal_genset`
-  MODIFY `id_jadwal_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_jadwal_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_mobil`
