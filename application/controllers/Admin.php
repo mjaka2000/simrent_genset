@@ -1125,6 +1125,7 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('alamat_op', 'Alamat', 'trim|required');
 		$this->form_validation->set_rules('nohp_op', 'No Hp', 'trim|required');
 		$this->form_validation->set_rules('noktp_op', 'No KTP', 'trim|required');
+		$this->form_validation->set_rules('status_op', 'Status', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
 			$id = $this->input->post('id_operator', TRUE);
@@ -1132,13 +1133,15 @@ class Admin extends CI_Controller
 			$alamat = $this->input->post('alamat_op', TRUE);
 			$no_hp = $this->input->post('nohp_op', TRUE);
 			$noktp_op = $this->input->post('noktp_op', TRUE);
+			$status_op = $this->input->post('status_op', TRUE);
 
 			$where = array('id_operator' => $id);
 			$data = array(
 				'nama_op' => $nama,
 				'alamat_op' => $alamat,
 				'nohp_op' => $no_hp,
-				'noktp_op' => $noktp_op
+				'noktp_op' => $noktp_op,
+				'status_op' => $status_op
 			);
 			$this->M_data->update('tb_operator', $data, $where);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
@@ -1245,6 +1248,7 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('jk_plg', 'Jenis Kelamin', 'trim|required');
 		$this->form_validation->set_rules('namaperusahaan_plg', 'Nama Perusahaan', 'trim|required');
 		$this->form_validation->set_rules('tglupdate_plg', 'Tanggal Update', 'trim|required');
+		$this->form_validation->set_rules('status_plg', 'Status', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
 			$id = $this->input->post('id_pelanggan', TRUE);
@@ -1254,6 +1258,7 @@ class Admin extends CI_Controller
 			$jenis_kelamin = $this->input->post('jk_plg', TRUE);
 			$nama_perusahaan = $this->input->post('namaperusahaan_plg', TRUE);
 			$tgl_update = $this->input->post('tglupdate_plg', TRUE);
+			$status_plg = $this->input->post('status_plg', TRUE);
 
 			$where = array('id_pelanggan' => $id);
 			$data = array(
@@ -1262,7 +1267,8 @@ class Admin extends CI_Controller
 				'nohp_plg' => $no_hp,
 				'jk_plg' => $jenis_kelamin,
 				'namaperusahaan_plg' => $nama_perusahaan,
-				'tglupdate_plg' => $tgl_update
+				'tglupdate_plg' => $tgl_update,
+				'status_plg' => $status_plg
 
 			);
 			$this->M_data->update('tb_pelanggan', $data, $where);
