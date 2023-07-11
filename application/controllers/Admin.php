@@ -1975,6 +1975,15 @@ class Admin extends CI_Controller
 			$this->load->view('admin/jdw_genset/tambah_jdw_genset', $data);
 		}
 	}
+
+	public function hapus_jdw_genset()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_jadwal_genset' => $uri);
+		$this->M_data->delete('tb_jadwal_genset', $where);
+		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+		redirect(site_url('admin/tabel_jdw_genset'));
+	}
 	####################################
 	//* End Data Jadwal Penyewaan Genset
 	####################################
