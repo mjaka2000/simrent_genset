@@ -400,6 +400,7 @@ class M_data extends CI_Model
     $query = $this->db->select()
       ->from($tabel)
       ->where('ket_genset =', 0)
+      ->or_where('ket_genset =', 2)
       ->get();
     return $query->result();
   }
@@ -448,13 +449,24 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
-      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_penyewaan.id_genset')
-      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_penyewaan.id_pelanggan')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
 
       ->get();
     return $query->result();
   }
+  // public function select_jdw_gst($tabel)
+  // {
+  //   $query = $this->db->select()
+  //     ->from($tabel)
+  //     ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
+  //     ->join('tb_genset', 'tb_genset.id_genset = tb_unit_penyewaan.id_genset')
+  //     ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_penyewaan.id_pelanggan')
+
+  //     ->get();
+  //   return $query->result();
+  // }
 
   public function get_jdw_gst($tabel, $where)
   {
