@@ -46,11 +46,13 @@ $html =
               <table border="1" cellspacing="1" cellpadding="2">
                 <tr bgcolor=" #d1d1d1 ">
                 <th width="50px" align="center"><b>No.</b></th>
-                <th align="center"><b>Pemakai</b></th>
+                <th align="center"><b>Operator</b></th>
                 <th align="center"><b>Nama Genset</b></th>
+                <th align="center"><b>Mobil Angkut</b></th>
                 <th align="center"><b>Dipakai Tanggal</b></th>
                 <th align="center"><b>Sampai Tanggal</b></th>
-                <th width="150px" align="center"><b>Keterangan</b></th>
+                <th align="center"><b>Lokasi</b></th>
+                <th width="110px" align="center"><b>Keterangan</b></th>
                 </tr>';
 
 $no = 1;
@@ -58,10 +60,12 @@ $no = 1;
 foreach ($list_data as $d) :
     $html .= '<tr>
             <td align="center">' . $no . '</td>
-            <td >' . $d->nama_plg . '</td>
+            <td >' . $d->nama_op . '</td>
             <td >' . $d->nama_genset . '</td>
-            <td >' . date('d-m-Y', strtotime($d->tanggal_keluar)) . '</td>
-            <td >' . date('d-m-Y', strtotime($d->tanggal_masuk)) . '</td>
+            <td >' . $d->merek . '</td>
+            <td >' . date('d-m-Y', strtotime($d->tgl_keluar)) . '</td>
+            <td >' . date('d-m-Y', strtotime($d->tgl_masuk)) . '</td>
+            <td >' . $d->lokasi . '</td>
             <td >' . $d->keterangan . '</td>
             </tr>';
     $no++;
