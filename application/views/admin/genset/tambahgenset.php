@@ -74,7 +74,7 @@
                                         <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga Unit Perhari" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="stok_gd" class="form-label">Ket. Genset</label>
 
                                     <select name="ket_genset" class="form-control" id="ket_genset" required>
@@ -83,7 +83,7 @@
                                         <option value="1">Genset Sedang Disewa</option>
                                         <option value="2">Genset Dibooking</option>
                                     </select>
-                                </div>
+                                </div> -->
                                 <!-- <div class="form-group">
                                     <label for="stok_gd" class="form-label">Unit Digudang</label>
                                     <input type="number" name="stok_gd" class="form-control" id="stok_gd" placeholder="Unit Digudang" value="0" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
