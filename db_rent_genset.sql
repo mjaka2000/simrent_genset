@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Jul 2023 pada 11.08
+-- Waktu pembuatan: 11 Jul 2023 pada 11.36
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -63,7 +63,7 @@ CREATE TABLE `tb_genset` (
   `nama_genset` varchar(50) NOT NULL,
   `daya` varchar(50) NOT NULL,
   `harga` varchar(100) NOT NULL,
-  `ket_genset` int(10) DEFAULT 0,
+  `ket_genset` tinyint(4) DEFAULT 0,
   `gambar_genset` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -145,7 +145,7 @@ CREATE TABLE `tb_operator` (
   `alamat_op` varchar(50) NOT NULL,
   `nohp_op` varchar(50) NOT NULL,
   `noktp_op` varchar(20) NOT NULL,
-  `status_op` int(11) DEFAULT 0
+  `status_op` tinyint(4) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -177,8 +177,8 @@ CREATE TABLE `tb_pelanggan` (
   `jk_plg` enum('L','P') NOT NULL,
   `namaperusahaan_plg` varchar(50) NOT NULL,
   `tglupdate_plg` date NOT NULL,
-  `status_plg` int(10) DEFAULT 0,
-  `ket_plg` int(11) DEFAULT 0,
+  `status_plg` tinyint(4) DEFAULT 0,
+  `ket_plg` tinyint(4) DEFAULT 0,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -282,7 +282,7 @@ CREATE TABLE `tb_serv_gst_acc` (
   `id_perbaikan_gst` int(11) NOT NULL,
   `tgl_setujui` date NOT NULL,
   `keterangan` varchar(255) NOT NULL,
-  `status_ajuan` int(10) DEFAULT 0
+  `status_ajuan` tinyint(4) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -342,7 +342,7 @@ CREATE TABLE `tb_unit_penyewaan` (
   `tambahan` varchar(255) NOT NULL,
   `jumlah_hari` varchar(10) NOT NULL,
   `total` varchar(50) NOT NULL,
-  `status` int(11) DEFAULT NULL
+  `status` tinyint(4) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -382,8 +382,8 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '11-07-2023 16:38'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '11-07-2023 11:44'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '11-07-2023 17:24'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '11-07-2023 17:12'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '11-07-2023 11:57'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
 (37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '11-07-2023 11:55'),
