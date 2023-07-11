@@ -1829,12 +1829,61 @@ class Admin extends CI_Controller
 
 	public function tambah_jdw_genset()
 	{
-		$data['list_data'] = $this->M_data->ambil_data_u_keluar('tb_unit_penyewaan');
+		$data['list_mobil'] = $this->M_data->select('tb_mobil');
+		$data['list_genset'] = $this->M_data->select_gst('tb_genset');
+		$data['list_operator'] = $this->M_data->select_op('tb_operator');
+		// $data['list_data'] = $this->M_data->ambil_data_u_keluar('tb_unit_penyewaan');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Tambah Data Jadwal Penyewaan Genset';
 		$this->load->view('admin/jdw_genset/tambah_jdw_genset', $data);
 	}
 
+	public function proses_tambah_jdw_genset()
+	{
+		$this->form_validation->set_rules('id_operator', 'Nama Operator', 'required');
+		$this->form_validation->set_rules('id_genset', 'Genset', 'required');
+		$this->form_validation->set_rules('id_mobil', 'Mobil', 'required');
+		$this->form_validation->set_rules('tgl_keluar', 'Tanggal Keluar', 'required');
+		// $this->form_validation->set_rules('id_u_sewa', 'ID Transaksi', 'trim|required|is_unique[tb_jadwal_genset.id_u_sewa]');
+		$this->form_validation->set_rules('lokasi', 'Lokasi', 'trim|required');
+		$this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
+
+		if ($this->form_validation->run() === TRUE) {
+			// $id_u_sewa = $this->input->post('id_u_sewa', TRUE);
+			$id_operator    = $this->input->post('id_operator', TRUE);
+			$id_genset      = $this->input->post('id_genset', TRUE);
+			$id_mobil            = $this->input->post('id_mobil', TRUE);
+			$tgl_keluar          = $this->input->post('tgl_keluar', TRUE);
+			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
+			$lokasi      = $this->input->post('lokasi', TRUE);
+			$keterangan = $this->input->post('keterangan', TRUE);
+
+			$tgl_masuk    = date('Y-m-d', strtotime($tgl_keluar . "+" . $jumlah_hari . " days"));
+
+			$data = array(
+				// 'id_u_sewa' => $id_u_sewa,
+				'id_operator'    => $id_operator,
+				'id_genset'      => $id_genset,
+				'id_mobil'            => $id_mobil,
+				'tgl_keluar'          => $tgl_keluar,
+				'tgl_masuk'          => $tgl_masuk,
+				'jumlah_hari'      => $jumlah_hari,
+				'lokasi'      => $lokasi,
+				'keterangan' => $keterangan
+			);
+			$status_gst = 2;
+			$this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
+			$this->M_data->insert('tb_jadwal_genset', $data);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
+			redirect(site_url('admin/tabel_jdw_genset'));
+		} else {
+			$data['list_data'] = $this->M_data->ambil_data_u_keluar('tb_unit_penyewaan');
+			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+			$data['title'] = 'Tambah Data Jadwal Penyewaan Genset';
+			$this->load->view('admin/jdw_genset/tambah_jdw_genset', $data);
+		}
+	}
+	/*
 	public function proses_tambah_jdw_genset()
 	{
 
@@ -1851,6 +1900,73 @@ class Admin extends CI_Controller
 			);
 			$this->M_data->insert('tb_jadwal_genset', $data);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
+			redirect(site_url('admin/tabel_jdw_genset'));
+		} else {
+			$data['list_data'] = $this->M_data->ambil_data_u_keluar('tb_unit_penyewaan');
+			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+			$data['title'] = 'Tambah Data Jadwal Penyewaan Genset';
+			$this->load->view('admin/jdw_genset/tambah_jdw_genset', $data);
+		}
+	}
+	*/
+	public function update_jdw_genset()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_jadwal_genset' => $uri);
+		$data['list_data'] = $this->M_data->get_data('tb_jadwal_genset', $where);
+		$data['list_mobil'] = $this->M_data->select('tb_mobil');
+		$data['list_genset'] = $this->M_data->select_gst('tb_genset');
+		$data['list_operator'] = $this->M_data->select_op('tb_operator');
+		// $data['list_data'] = $this->M_data->ambil_data_u_keluar('tb_unit_penyewaan');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Ubah Data Jadwal Penyewaan Genset';
+		$this->load->view('admin/jdw_genset/update_jdw_genset', $data);
+	}
+
+	public function proses_ubah_jdw_genset()
+	{
+		$this->form_validation->set_rules('id_operator', 'Nama Operator', 'required');
+		$this->form_validation->set_rules('id_genset', 'Genset', 'required');
+		$this->form_validation->set_rules('id_mobil', 'Mobil', 'required');
+		$this->form_validation->set_rules('tgl_keluar', 'Tanggal Keluar', 'required');
+		// $this->form_validation->set_rules('id_u_sewa', 'ID Transaksi', 'trim|required|is_unique[tb_jadwal_genset.id_u_sewa]');
+		$this->form_validation->set_rules('lokasi', 'Lokasi', 'trim|required');
+		$this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
+
+		if ($this->form_validation->run() === TRUE) {
+			$id_jadwal_genset = $this->input->post('id_jadwal_genset', TRUE);
+			$id_operator    = $this->input->post('id_operator', TRUE);
+			$id_genset      = $this->input->post('id_genset', TRUE);
+			$id_mobil            = $this->input->post('id_mobil', TRUE);
+			$tgl_keluar          = $this->input->post('tgl_keluar', TRUE);
+			$tgl_masuk          = $this->input->post('tgl_masuk', TRUE);
+			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
+			$lokasi      = $this->input->post('lokasi', TRUE);
+			$keterangan = $this->input->post('keterangan', TRUE);
+
+			$tgl_masuk_new    = date('Y-m-d', strtotime($tgl_keluar . "+" . $jumlah_hari . " days"));
+			if ($tgl_masuk == $tgl_masuk_new) {
+				$tgl_masuk_up = $tgl_masuk;
+			} else {
+				$tgl_masuk_up = $tgl_masuk_new;
+			}
+
+			$where = array('id_jadwal_genset' => $id_jadwal_genset);
+			$data = array(
+				// 'id_u_sewa' => $id_u_sewa,
+				'id_operator'    => $id_operator,
+				'id_genset'      => $id_genset,
+				'id_mobil'            => $id_mobil,
+				'tgl_keluar'          => $tgl_keluar,
+				'tgl_masuk'          => $tgl_masuk_up,
+				'jumlah_hari'      => $jumlah_hari,
+				'lokasi'      => $lokasi,
+				'keterangan' => $keterangan
+			);
+			// $status_gst = 2;
+			// $this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
+			$this->M_data->update('tb_jadwal_genset', $data, $where);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
 			redirect(site_url('admin/tabel_jdw_genset'));
 		} else {
 			$data['list_data'] = $this->M_data->ambil_data_u_keluar('tb_unit_penyewaan');
