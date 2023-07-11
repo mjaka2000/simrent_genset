@@ -47,10 +47,12 @@
                                 <thead>
                                     <tr>
                                         <th style="width :10px">No.</th>
-                                        <th>Pemakai</th>
+                                        <th>Operator</th>
                                         <th>Nama Genset</th>
+                                        <th>Mobil Angkut</th>
                                         <th>Dipakai Tanggal</th>
                                         <th>Sampai Tanggal</th>
+                                        <th>Lokasi</th>
                                         <th>Keterangan</th>
                                         <th style="width:10%">Aksi</th>
                                     </tr>
@@ -62,10 +64,12 @@
                                     <?php foreach ($list_data as $d) : ?>
                                         <tr>
                                             <td><?= $no++; ?></td>
-                                            <td><?= $d->nama_plg; ?></td>
+                                            <td><?= $d->nama_op; ?></td>
                                             <td><?= $d->nama_genset; ?></td>
-                                            <td><?= date('d-m-Y', strtotime($d->tanggal_keluar)); ?></td>
-                                            <td><?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?></td>
+                                            <td><?= $d->merek; ?></td>
+                                            <td><?= date('d-m-Y', strtotime($d->tgl_keluar)); ?></td>
+                                            <td><?= date('d-m-Y', strtotime($d->tgl_masuk)); ?></td>
+                                            <td><?= $d->lokasi; ?></td>
                                             <td><?= $d->keterangan; ?></td>
                                             <td>
                                                 <!-- <a href="<?= site_url('pimpinan/update_genset/' . $d->id_jadwal_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit mr-2"></i></a> -->

@@ -69,10 +69,12 @@
                                                 <td><?= $d->nama_genset; ?></td>
                                                 <td><?= $d->daya; ?></td>
                                                 <td>Rp&nbsp;<?= number_format($d->harga); ?></td>
-                                                <?php if ($d->ket_genset == NULL || $d->ket_genset == 0) { ?>
+                                                <?php if ($d->ket_genset == 0) { ?>
                                                     <td><a href="#" class="btn btn-success btn-xs">Genset Ada </a></td>
-                                                <?php } else { ?>
+                                                <?php } elseif ($d->ket_genset == 1) { ?>
                                                     <td><a href="#" class="btn btn-danger btn-xs"> Genset Sedang Disewa</a></td>
+                                                <?php } else { ?>
+                                                    <td><a href="#" class="btn btn-warning btn-xs"> Genset Dibooking</a></td>
                                                 <?php } ?>
                                                 <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" class="img img-box" width="100" height="100" alt="<?= $d->gambar_genset; ?>"></td>
                                                 <!-- <td>
