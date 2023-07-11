@@ -15,6 +15,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/admin32/dist/css/adminlte.min.css">
 
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/sweetalert2/sweetalert2.css">
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/sweetalert2/sweetalert2.min.css">
+
   <link rel="stylesheet" href="<?= base_url() ?>assets/style/style-login.css">
   <link rel="icon" href="<?= base_url(); ?>assets/style/logo/ws-w.png">
 
