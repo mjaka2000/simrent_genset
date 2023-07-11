@@ -49,32 +49,73 @@
 
                             <form action="<?= site_url('admin/proses_tambah_jdw_genset'); ?>" method="post" role="form">
 
-                                <div class="form-group">
-                                    <label for="bulan" class="form-label">ID Transaksi</label>
+                                <div class="form-group row">
+                                    <label for="nama_operator" class="col-sm-3 col-form-label">Nama Operator</label>
+                                    <div class="col-sm-9">
+                                        <select name="id_operator" class="form-control" id="nama_operator" required>
+                                            <option value="">-- Pilih Operator --</option>
+                                            <?php foreach ($list_operator as $op) { ?>
+                                                <option value="<?= $op->id_operator ?>"><?= $op->nama_op ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="kode_genset" class="col-sm-3 col-form-label">Genset</label>
+                                    <div class="col-sm-9">
+                                        <select name="id_genset" class="form-control" id="kode_genset" required>
+                                            <option value="">-- Pilih Genset--</option>
+                                            <?php foreach ($list_genset as $g) { ?>
+                                                <option value="<?= $g->id_genset ?>"><?= $g->kode_genset ?> - <?= $g->nama_genset; ?> - <?= $g->daya; ?> KVA</option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="nopol_mobil" class="col-sm-3 col-form-label">Mobil</label>
+                                    <div class="col-sm-9">
+                                        <select name="id_mobil" id="nopol" class="form-control" required>
+                                            <option value="">-- Pilih Mobil--</option>
+                                            <?php foreach ($list_mobil as $m) { ?>
+                                                <option value="<?= $m->id_mobil ?>"><?= $m->nopol ?> - <?= $m->merek; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="genset" class="col-sm-3 col-form-label">Tanggal Digunakan</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" name="tgl_keluar" class="form-control" id="tgl_keluar">
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group row">
+                                    <label for="genset" class="col-sm-3 col-form-label">Tanggal Selesai</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" readonly name="tgl_masuk" class="form-control" id="tgl_masuk">
+                                    </div>
+                                </div> -->
+                                <div class="form-group row">
+                                    <label for="genset" class="col-sm-3 col-form-label">Jumlah Hari</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="jumlah_hari" class="form-control" id="jumlah_hari" placeholder="Masukkan Jumlah Hari">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="lokasi" class="col-sm-3 col-form-label">Lokasi</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="lokasi" class="form-control" id="lokasi" placeholder="Masukkan Lokasi Tujuan" required>
 
-                                    <select name="id_u_sewa" class="form-control" id="id_transaksi" required>
-                                        <option value="">-- Pilih ID Transaksi --</option>
-                                        <?php foreach ($list_data as $d) { ?>
-                                            <option value="<?= $d->id_u_sewa ?>"><?= $d->id_transaksi ?></option>
-                                        <?php } ?>
-                                    </select>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="genset" class="form-label">Tanggal Digunakan</label>
-                                    <input type="text" readonly name="tanggal_keluar" class="form-control" id="tanggal_keluar">
-                                </div>
-                                <div class="form-group">
-                                    <label for="genset" class="form-label">Tanggal Selesai</label>
-                                    <input type="text" readonly name="tanggal_masuk" class="form-control" id="tanggal_masuk">
-                                </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="genset" class="form-label">Nama Pelanggan</label>
                                     <input type="text" readonly name="nama_plg" class="form-control" id="nama_plg">
-                                </div>
-                                <div class="form-group">
-                                    <label for="tahun" class="form-label">Keterangan</label>
-
-                                    <input type="text" name="keterangan" class="form-control" id="keterangan" required>
+                                </div> -->
+                                <div class="form-group row">
+                                    <label for="tahun" class="col-sm-3 col-form-label">Keterangan</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="keterangan" class="form-control" id="keterangan" placeholder="Masukkan Keterangan" required>
+                                    </div>
                                 </div>
                                 <hr>
                                 <div class="form-group" align="center">
@@ -94,20 +135,20 @@
 
 <?php $this->load->view('admin/template/script') ?>
 <script>
-    $("#id_transaksi").change(function() {
-        let id_transaksi = $(this).val();
-        // let stok_gd = document.getElementById("stok_gd");
+    // $("#id_transaksi").change(function() {
+    //     let id_transaksi = $(this).val();
+    //     // let stok_gd = document.getElementById("stok_gd");
 
-        <?php foreach ($list_data as $s) { ?>
-            if (id_transaksi == "<?php echo $s->id_u_sewa ?>") {
+    //     <?php foreach ($list_data as $s) { ?>
+    //         if (id_transaksi == "<?php echo $s->id_u_sewa ?>") {
 
-                $("#tanggal_keluar").val("<?php echo date('d-m-Y', strtotime($s->tanggal_keluar)) ?>");
-                $("#tanggal_masuk").val("<?php echo date('d-m-Y', strtotime($s->tanggal_masuk)) ?>");
-                $("#nama_plg").val("<?php echo $s->nama_plg ?>");
+    //             $("#tanggal_keluar").val("<?php echo date('d-m-Y', strtotime($s->tanggal_keluar)) ?>");
+    //             $("#tanggal_masuk").val("<?php echo date('d-m-Y', strtotime($s->tanggal_masuk)) ?>");
+    //             $("#nama_plg").val("<?php echo $s->nama_plg ?>");
 
-            }
-        <?php } ?>
-    })
+    //         }
+    //     <?php } ?>
+    // })
 </script>
 </body>
 
