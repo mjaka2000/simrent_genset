@@ -31,3 +31,27 @@
         return true;
     };
 </script>
+<script type="text/javascript">
+    $('.btn-logout').on('click', function() {
+        var getLink = $(this).attr('href');
+        Swal.fire({
+            title: 'Logout',
+            text: 'Anda yakin ingin logout?',
+            type: 'warning',
+            confirmButtonColor: '#d9534f',
+            showCancelButton: true,
+        }).then(result => {
+            //jika klik ya maka arahkan ke proses.php
+            if (result.isConfirmed) {
+                // Swal.fire({
+                //     title: 'Logout',
+                //     text: 'Anda telah logout',
+                //     type: 'success',
+                //     timer: 2500
+                // })
+                window.location.href = getLink
+            }
+        })
+        return false;
+    }); //* Script untuk memuat sweetalert hapus data
+</script>

@@ -20,7 +20,7 @@
             </div>
         </div>
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
+        <nav class="mt-2 text-sm">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -109,7 +109,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= base_url(''); ?>teknisi/logout" class="nav-link">
+                    <a href="<?= base_url(''); ?>teknisi/logout" class="nav-link btn-logout">
                         <i class="fas fa-sign-out-alt nav-icon"></i>
                         <p>Logout</p>
                     </a>

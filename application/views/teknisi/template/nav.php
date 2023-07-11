@@ -41,10 +41,10 @@
                 <!-- Menu Footer-->
                 <li class="card-footer">
                     <span class="fa-pull-left">
-                        <button class="btn btn-default btn-sm" type="button" onclick="window.location.href='<?= site_url('teknisi/profile'); ?>'"><i class="fa fa-cog"></i>&nbsp;Profile</button>
+                        <a class="btn btn-default btn-sm" type="button" href="<?= site_url('teknisi/profile'); ?>"><i class="fa fa-cog"></i>&nbsp;Profile</a>
                     </span>
                     <span class="fa-pull-right">
-                        <button class="btn btn-default btn-sm" type="button" onclick="window.location.href='<?= site_url('teknisi/logout'); ?>'"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button>
+                        <a class="btn btn-default btn-sm btn-logout" type="button" href="<?= site_url('teknisi/logout'); ?>"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
                     </span>
                 </li>
             </ul>

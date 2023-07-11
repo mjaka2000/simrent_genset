@@ -179,7 +179,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= site_url(''); ?>pimpinan/logout" class="nav-link">
+                    <a href="<?= site_url(''); ?>pimpinan/logout" class="nav-link btn-logout">
                         <i class="fas fa-sign-out-alt nav-icon"></i>
                         <p>Logout</p>
                     </a>
