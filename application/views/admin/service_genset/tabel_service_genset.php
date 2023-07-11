@@ -75,7 +75,8 @@
                                                     <td><a href="#" type="button" class="btn btn-xs btn-danger">Masih Proses</a></td>
                                                 <?php } ?>
                                                 <td>Rp&nbsp;<?= number_format($dt->biaya_perbaikan); ?></td>
-                                                <td><a href="<?= base_url('admin/update_data_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
+                                                <td>
+                                                    <a href="<?= base_url('admin/update_data_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
                                                     <a href="<?= base_url('admin/hapus_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
                                                     <a href="<?= base_url('admin/detail_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
                                                 </td>
@@ -123,7 +124,7 @@
         })
     }); //* Script untuk memuat datatable
 </script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
     $('.btn-delete').on('click', function() {
         var getLink = $(this).attr('href');
         Swal.fire({
@@ -140,7 +141,7 @@
         })
         return false;
     }); //* Script untuk memuat sweetalert hapus data
-</script> -->
+</script>
 <script>
     //setting datatables
     // $('#tableserv').DataTable({
@@ -159,7 +160,7 @@
     //     }
     // });
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $('#tableserv').on('click', '.btn-delete', function() {
         var getLink = $(this).attr('href');
         // var id = $(this).data('id_pemakai');
@@ -178,7 +179,7 @@
     });
 
     //* Script untuk memuat sweetalert hapus data
-</script>
+</script> -->
 </body>
 
 </html>
