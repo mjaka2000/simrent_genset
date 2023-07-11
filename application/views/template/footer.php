@@ -18,19 +18,28 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h6>
-                            <p><strong>Version</strong> 1.2.0</p>
-                            This web app uses:
-                            <ul>
-                                <li><a href="https://www.codeigniter.com/download" target="_blank"><u>Codeigniter</u></a> Version 3.1.13</li>
-                                <li>PHP Version 7.4</li>
-                            </ul>
-                            <strong>Copyright &copy; 2022-<script type="text/javascript">
-                                    document.write(new Date().getFullYear());
-                                </script>
-                            </strong>
-                            <!-- Muhammad Jaka Permana Putra Agus -->
-                        </h6>
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="<?= base_url('assets/style/logo/ws-w.png'); ?>" alt="logo" width="100px" height="100px">
+                                </td>
+                                <td style="padding: 8px 8px;">
+                                    <h6>
+                                        <p><strong>Version</strong> 1.2.0</p>
+                                        This web app uses:
+                                        <ul>
+                                            <li><a href="https://www.codeigniter.com/download" target="_blank"><u>Codeigniter</u></a> Version 3.1.13</li>
+                                            <li>PHP Version 7.4</li>
+                                        </ul>
+                                        <strong>Copyright &copy; 2022-<script type="text/javascript">
+                                                document.write(new Date().getFullYear());
+                                            </script>
+                                        </strong>
+                                        <!-- Muhammad Jaka Permana Putra Agus -->
+                                    </h6>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
