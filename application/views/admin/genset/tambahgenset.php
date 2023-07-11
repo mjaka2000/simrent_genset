@@ -81,6 +81,7 @@
                                         <option value="">-- Status --</option>
                                         <option value="0">Genset Ada</option>
                                         <option value="1">Genset Sedang Disewa</option>
+                                        <option value="2">Genset Dibooking</option>
                                     </select>
                                 </div>
                                 <!-- <div class="form-group">

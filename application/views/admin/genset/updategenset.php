@@ -79,15 +79,21 @@
                                     <div class="form-group">
                                         <label for="stok_gd" class="form-label">Ket. Genset</label>
 
-                                        <select name="ket_genset" id="ket_genset" class="form-control">
+                                        <select name="ket_genset" id="ket_genset" class="form-control" required>
                                             <option value="">-- Status --</option>
                                             <?php foreach ($data_genset as $k) { ?>
                                                 <?php if ($k->ket_genset == "0") { ?>
                                                     <option value="0" selected>Genset Ada</option>
                                                     <option value="1">Genset Sedang Disewa</option>
-                                                <?php } else { ?>
+                                                    <option value="2">Genset Dibooking</option>
+                                                <?php } elseif ($k->ket_genset == 1) { ?>
                                                     <option value="0">Genset Ada</option>
                                                     <option value="1" selected>Genset Sedang Disewa</option>
+                                                    <option value="2">Genset Dibooking</option>
+                                                <?php } else { ?>
+                                                    <option value="0">Genset Ada</option>
+                                                    <option value="1">Genset Sedang Disewa</option>
+                                                    <option value="2" selected>Genset Dibooking</option>
                                                 <?php } ?>
                                             <?php } ?>
                                         </select>

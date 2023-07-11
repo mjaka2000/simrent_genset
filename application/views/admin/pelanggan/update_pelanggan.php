@@ -89,6 +89,21 @@
 
                                         <input type="date" name="tglupdate_plg" class="form-control" id="tanggal_update" placeholder="Tanggal Update" required value="<?= $d->tglupdate_plg; ?>">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="stok_gd" class="form-label">Status</label>
+                                        <select name="status_plg" id="status_plg" class="form-control" required>
+                                            <option value="">-- Status --</option>
+                                            <?php foreach ($list_data as $k) { ?>
+                                                <?php if ($k->status_plg == "0") { ?>
+                                                    <option value="0" selected>Tidak Menyewa</option>
+                                                    <option value="1">Sedang Menyewa</option>
+                                                <?php } else { ?>
+                                                    <option value="0">Tidak Menyewa</option>
+                                                    <option value="1" selected>Sedang Menyewa</option>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 <?php } ?>
                                 <hr>
                                 <div class="form-group" align="center">
