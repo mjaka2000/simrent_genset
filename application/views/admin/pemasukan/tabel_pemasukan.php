@@ -42,7 +42,7 @@
                                 </div>
                             <?php } ?>
                             <button onclick="window.location.href='<?= site_url('admin/tambah_pemasukan'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
-                            <button data-toggle="modal" data-target="#staticBulanan" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-success" name="tambah_data"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
+                            <button data-toggle="modal" data-target="#staticPendapatanBulanan" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-success" name="tambah_data"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
@@ -94,11 +94,11 @@
                         </div>
                     </div>
                     <!-- Modal -->
-                    <div class="modal fade" id="staticBulanan" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal fade" id="staticPendapatanBulanan" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h6 class="modal-title" id="staticBackdropLabel">Tampilkan Bulanan</h6>
+                                    <h6 class="modal-title" id="staticBackdropLabel">Tampilkan Pendapatan Bulanan</h6>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span>&times;</span>
                                     </button>
