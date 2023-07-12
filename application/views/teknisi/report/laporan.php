@@ -40,68 +40,26 @@
 
                                 <tr>
                                     <form action="<?= site_url(); ?>report/cetak_serv_gensetAll" method="post" role="form" target="_blank">
-                                        <th style="vertical-align: middle">Laporan Perbaikan Genset</th>
+                                        <th style="vertical-align: middle;width :550px;">Laporan Perbaikan Genset</th>
                                         <td style="vertical-align: middle;">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <div class="row">
-                                                        <!-- <div class="col-md-4">
-                                                            <input type="date" name="tgl_awal" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
-                                                        </div><span>&nbsp;s/d&nbsp;</span>
-                                                        <div class="col-md-4">
-                                                            <input type="date" name="tgl_akhir" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
-                                                        </div> -->
-                                                        <div class="col-md-6">
-                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Rekap Data</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
                                         </td>
                                     </form>
                                 </tr>
 
                                 <tr>
                                     <form action="<?= site_url(); ?>report/cetak_sparepart" method="post" role="form" target="_blank">
-                                        <th style="vertical-align: middle">Laporan Data Stok Sparepart</th>
+                                        <th style="vertical-align: middle;">Laporan Data Stok Sparepart</th>
                                         <td style="vertical-align: middle;">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <div class="row">
-                                                        <!-- <div class="col-md-4">
-                                                            <input type="date" name="tgl_awal" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
-                                                        </div><span>&nbsp;s/d&nbsp;</span>
-                                                        <div class="col-md-4">
-                                                            <input type="date" name="tgl_akhir" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
-                                                        </div> -->
-                                                        <div class="col-md-6">
-                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Rekap Data</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
                                         </td>
                                     </form>
                                 </tr>
                                 <tr>
                                     <form action="<?= site_url(); ?>report/cetak_service_genset_acc" method="post" role="form" target="_blank">
-                                        <th style="vertical-align: middle">Laporan Perbaikan Genset Disetujui</th>
+                                        <th style="vertical-align: middle;">Laporan Perbaikan Genset Disetujui</th>
                                         <td style="vertical-align: middle;">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <div class="row">
-                                                        <!-- <div class="col-md-4">
-                                                            <input type="date" name="tgl_awal" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
-                                                        </div><span>&nbsp;s/d&nbsp;</span>
-                                                        <div class="col-md-4">
-                                                            <input type="date" name="tgl_akhir" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
-                                                        </div> -->
-                                                        <div class="col-md-6">
-                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Rekap Data</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
                                         </td>
                                     </form>
                                 </tr>
