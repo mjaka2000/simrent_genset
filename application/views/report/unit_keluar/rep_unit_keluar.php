@@ -41,11 +41,9 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $html =
     '<div>
       <h1 align="center">Laporan Penyewaan</h1>
-      <br><br><br><br>
+      <b align="center">Penyewaan Periode ' . $label . '</b>
+      <br><br>
       <table border="1" cellspacing="1" cellpadding="2">
-        <tr bgcolor=" #d1d1d1 ">
-                <th colspan="11" align="center"><b>' . $label . '</b></th>
-            </tr>
         <tr bgcolor=" #d1d1d1 ">
         <th width="50px" align="center"><b>No.</b></th>
         <th align="center"><b>ID Transaksi</b></th>

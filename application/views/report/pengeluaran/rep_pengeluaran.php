@@ -42,7 +42,8 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $html =
     '<div>
               <h1 align="center">Laporan Pengeluaran</h1>
-              <br><br><br><br>
+              <b align="center">Pengeluaran Periode ' . $label . '</b>
+              <br><br>
               <table border="1" cellspacing="1" cellpadding="2">
                 <tr bgcolor=" #d1d1d1 ">
                 <th width="50px" align="center"><b>No.</b> </th>
@@ -65,7 +66,7 @@ endforeach;
 foreach ($total_data as $td) :
     $html .=
         '<tr>
-                            <th colspan="3" align="center"><b>Total Pengeluaran ' . $label . '</b></th>
+                            <th colspan="3" align="center"><b>Total</b></th>
                             <th align="right"><b><span style="color: red;">Rp&nbsp;' . number_format($td->biaya_pengeluaran) . '</span></b></th>
                             </tr>';
 endforeach;
