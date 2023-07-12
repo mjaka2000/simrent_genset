@@ -20,7 +20,7 @@
                     <div class="modal-body">
                         <table>
                             <tr>
-                                <td>
+                                <td style="padding: 8px 8px;">
                                     <img src="<?= base_url('assets/style/logo/ws-w.png'); ?>" alt="logo" width="100px" height="100px">
                                 </td>
                                 <td style="padding: 8px 8px;">
