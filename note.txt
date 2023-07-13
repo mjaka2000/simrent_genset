@@ -35,7 +35,6 @@ Sematic Versioning {Major.Minor.Patch(Rev)}:
 Gunakanlah site_url() saat Membuat link ke halaman tertentu, Melakukan redirect ke halaman tetentu, Membuat URL action pada form.
 Gunakanlah base_url() Saat membuat link/URL untuk CSS dan Javascript. biasanya sering dipakai untuk membuat URL atau link file statis seperti gambar, CSS, javascript, Video, dan file yang diupload.
 =========================================================================================================================================
-=========================================================================================================================================
 List report app:
 1. Laporan Detail Perbaikan Genset
 2. Laporan Detail Penyewaan
