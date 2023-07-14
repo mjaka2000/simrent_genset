@@ -80,7 +80,8 @@
             <div class="footer">
                 <center style="color: white;"><small>Copyright &copy; <script type="text/javascript">
                             document.write(new Date().getFullYear());
-                        </script></small>
+                        </script>
+                        SIMRent Genset.</small>
                 </center>
             </div>
         </div>

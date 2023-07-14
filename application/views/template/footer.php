@@ -13,9 +13,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table>
+                    <table border="0">
                         <tr>
-                            <td style="padding: 8px 8px;">
+                            <td>
                                 <img src="<?= base_url('assets/style/logo/ws-w.png'); ?>" alt="logo" width="100px" height="100px">
                             </td>
                             <td style="padding: 8px 8px;">
@@ -29,7 +29,9 @@
                                     <strong>Copyright &copy; <script type="text/javascript">
                                             document.write(new Date().getFullYear());
                                         </script>
+                                        SIMRent Genset.
                                     </strong>
+                                    All rights reserved.
                                     <!-- Muhammad Jaka Permana Putra Agus -->
                                 </h6>
                             </td>
