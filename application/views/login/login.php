@@ -78,7 +78,7 @@
                 <!-- /.login-card-body -->
             </div>
             <div class="footer">
-                <center style="color: white;"><small>Copyright &copy; 2022-<script type="text/javascript">
+                <center style="color: white;"><small>Copyright &copy; <script type="text/javascript">
                             document.write(new Date().getFullYear());
                         </script></small>
                 </center>
