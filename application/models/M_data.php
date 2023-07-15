@@ -710,7 +710,7 @@ class M_data extends CI_Model
       ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->join('tb_user', 'tb_user.id_user = tb_pelanggan.id_user')
       ->where('tb_pelanggan.id_user =', $this->session->userdata('id_user'))
-      // ->where('status =', )
+      ->where('status =', 0)
 
       ->get();
     return $query->result();
