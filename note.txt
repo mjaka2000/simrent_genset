@@ -1,15 +1,15 @@
 List report app:
-- Laporan Detail Perbaikan Genset
-- Laporan Detail Penyewaan
-- Laporan Pengeluaran
-- Laporan Pendapatan
-- Laporan Penyewaan Semua
-- Laporan Perbaikan Genset Disetujui
-- Laporan Jadwal Penyewaan Genset Semua
-- Laporan Perbaikan Genset
-- Laporan Data Pelanggan
-- Laporan Data Pelanggan Di Blacklist
-- Laporan Data Sparepart
+- Laporan Detail Perbaikan Genset*
+- Laporan Detail Penyewaan*
+- Laporan Pengeluaran*
+- Laporan Pendapatan*
+- Laporan Penyewaan Semua*
+- Laporan Perbaikan Genset Disetujui*
+- Laporan Jadwal Penyewaan Genset Semua*
+- Laporan Perbaikan Genset*
+- Laporan Data Pelanggan*
+- Laporan Data Pelanggan Di Blacklist*
+- Laporan Data Sparepart*
 =========================================================================================================================================
 - (ex) Laporan Jadwal Penyewaan Genset
 
