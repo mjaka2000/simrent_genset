@@ -11,7 +11,7 @@ List report app:
 - Laporan Data Pelanggan Di Blacklist
 - Laporan Data Sparepart
 =========================================================================================================================================
-- Laporan Jadwal Penyewaan Genset
+- (ex) Laporan Jadwal Penyewaan Genset
 
 <span>
                                         <!-- Rounded switch -->
