@@ -72,7 +72,7 @@
                 </td>
             </tr>
         </table>
-        <h2 align="center">Laporan Perbaikan Genset</h2><span>
+        <h2 align="center">Laporan Detail Perbaikan Genset</h2><span>
             <!-- <p align="right" style="font-size:10pt">Tanggal Dicetak: <?= format_indo(date('Y-m-d')); ?></p> -->
         </span>
         <div class="row tengah">
