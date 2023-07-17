@@ -400,7 +400,7 @@ class M_data extends CI_Model
     $query = $this->db->select()
       ->from($tabel)
       ->where('ket_genset =', 0)
-      // ->or_where('ket_genset =', 2)
+      ->or_where('ket_genset =', 2)
       ->get();
     return $query->result();
   }
@@ -550,6 +550,7 @@ class M_data extends CI_Model
   {
     $query = $this->db->select_sum('total')
       ->from($tabel)
+      ->where('status =', 0)
       ->get();
     return $query->result();
   }
