@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jul 2023 pada 11.20
+-- Waktu pembuatan: 17 Jul 2023 pada 18.46
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -74,10 +74,10 @@ CREATE TABLE `tb_genset` (
 --
 
 INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `harga`, `ket_genset`, `gambar_genset`) VALUES
-(2, '02', 'Hartech 45 P-02', '40', '1000000', 2, 'ht45p-02-2.jpg'),
+(2, '02', 'Hartech 45 P-02', '40', '1000000', 1, 'ht45p-02-2.jpg'),
 (3, '07', 'Denyo 25 ES-07', '20', '750000', 1, 'denyo25es-07.jpg'),
 (4, '10', 'Denyo 25 ES-10', '20', '750000', 1, 'denyo25es-10.jpg'),
-(5, '16', 'Hartech 50 P-16', '50', '1250000', 1, 'ht50p-16.jpg'),
+(5, '16', 'Hartech 50 P-16', '50', '1250000', 2, 'ht50p-16.jpg'),
 (6, '08', 'Kubota 13-08', '13', '500000', 2, 'kubota13-08.jpg'),
 (7, '250', 'Hartech C-250', '250', '3500000', 0, 'ht250.jpg'),
 (8, '18', 'Hartech 45 P-18', '40', '1000000', 2, 'ht45p-18.jpg');
@@ -107,7 +107,9 @@ CREATE TABLE `tb_jadwal_genset` (
 INSERT INTO `tb_jadwal_genset` (`id_jadwal_genset`, `id_operator`, `id_genset`, `id_mobil`, `tgl_keluar`, `tgl_masuk`, `jumlah_hari`, `lokasi`, `keterangan`) VALUES
 (4, 1, 2, 1, '2023-07-12', '2023-07-14', '2', 'Tugu 0 Km', 'Wanda menyewa genset'),
 (5, 6, 6, 4, '2023-07-12', '2023-07-15', '3', 'Polda Banjarbaru', 'Acara Peresmian'),
-(6, 7, 8, 4, '2023-07-12', '2023-07-15', '3', 'Polda Banjarbaru', 'Acara Peresmian polda bjb');
+(6, 7, 8, 4, '2023-07-12', '2023-07-15', '3', 'Polda Banjarbaru', 'Acara Peresmian polda bjb'),
+(7, 5, 5, 2, '2023-07-21', '2023-07-23', '2', 'Binuang', 'disewakan oleh tono untuk acara'),
+(8, 8, 6, 2, '2023-07-24', '2023-07-27', '3', 'Banjarbaru Balai Kota', 'disewakan oleh amad untuk acara peresmian');
 
 -- --------------------------------------------------------
 
@@ -134,7 +136,7 @@ CREATE TABLE `tb_mobil` (
 INSERT INTO `tb_mobil` (`id_mobil`, `merek`, `tipe`, `tahun`, `nopol`, `jenis_bbm`, `pajak`, `stnk`, `gambar_mobil`) VALUES
 (1, 'Daihatsu Gran Max Biru', 'Pickup', '2015', 'DA 1231 CJ', 'Bensin', '2023-05-18', '2024-05-18', 'daihatsu-gran-max-blu.jpg'),
 (2, 'Mobil Penyewa', 'Mobil Penyewa', '-', 'Mobil Penyewa', 'Bensin', '0001-01-01', '0001-01-01', 'nopic.png'),
-(3, 'Mitsubishi Truk Engkel Kuning', 'Truk', '2005', 'DA 5674 CJ', 'Solar', '2023-06-01', '2024-06-01', 'truk_engkel.jpg'),
+(3, 'Mitsubishi Truk Engkel Kuning', 'Truk', '2005', 'DA 5674 JD', 'Solar', '2023-06-01', '2024-06-01', 'truk_engkel.jpg'),
 (4, 'L300', 'Pickup', '2010', 'DA 4351 SF', 'Solar', '2023-03-01', '2024-03-01', 'l300.jpg');
 
 -- --------------------------------------------------------
@@ -373,9 +375,9 @@ INSERT INTO `tb_unit_penyewaan` (`id_u_sewa`, `id_transaksi`, `tanggal_keluar`, 
 (16, 'GE-Jun7627', '2023-06-28', '2023-06-30', 'Pemko BJM', 1, 9, 2, 2, 'Panel', '2', '2000000', 0),
 (17, 'GE-Jun2828', '2023-06-29', '2023-07-02', 'Banjarbaru', 2, 8, 3, 2, '-', '3', '2250000', 0),
 (18, 'GE-Jun4679', '2023-06-28', '2023-06-30', 'Pemko BJM', 3, 9, 4, 2, '-', '2', '1500000', 0),
-(21, 'GE-Jul0375', '2023-07-10', '2023-07-13', 'Binuang taman kota', 1, 8, 3, 2, 'Box Panel', '3', '2250000', 1),
-(22, 'GE-Jul9860', '2023-07-11', '2023-07-15', 'Siring', 2, 9, 4, 1, 'Kabel 20M', '4', '3000000', 1),
-(23, 'GE-Jul4590', '2023-07-12', '2023-07-14', 'Polda Banjarbaru', 3, 10, 5, 2, 'Box Panel', '2', '2500000', 1);
+(24, 'GE-Jul2460', '2023-07-20', '2023-07-23', 'Gambut', 1, 8, 2, 3, 'Box Panel', '3', '3000000', 1),
+(25, 'GE-Jul3527', '2023-07-21', '2023-07-23', 'Gambut', 2, 9, 3, 2, 'Kabel 20M', '2', '1500000', 1),
+(26, 'GE-Jul7491', '2023-07-19', '2023-07-21', 'Siring', 3, 10, 4, 2, 'Panel', '2', '1500000', 1);
 
 -- --------------------------------------------------------
 
@@ -398,8 +400,8 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '15-07-2023 14:03'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '15-07-2023 14:34'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '18-07-2023 0:40'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '18-07-2023 0:44'),
 (33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '12-07-2023 11:17'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
 (37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '15-07-2023 14:40'),
@@ -522,7 +524,7 @@ ALTER TABLE `tb_genset`
 -- AUTO_INCREMENT untuk tabel `tb_jadwal_genset`
 --
 ALTER TABLE `tb_jadwal_genset`
-  MODIFY `id_jadwal_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_jadwal_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_mobil`
@@ -576,7 +578,7 @@ ALTER TABLE `tb_sparepart`
 -- AUTO_INCREMENT untuk tabel `tb_unit_penyewaan`
 --
 ALTER TABLE `tb_unit_penyewaan`
-  MODIFY `id_u_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_u_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
