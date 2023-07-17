@@ -25,7 +25,7 @@ class Admin extends CI_Controller
 		// $data['pendapatanChart'] = $this->M_data->chart_pendapatanMasuk('tb_pendapatan');
 		$data['notifOut'] = $this->M_data->notif_u_keluar('tb_unit_penyewaan', $tgl);
 		$data['numOut'] = $this->M_data->notif_u_keluarJml('tb_unit_penyewaan', $tgl);
-		$data['stokBarangKeluar'] = $this->M_data->numrows('tb_unit_penyewaan');
+		$data['stokBarangKeluar'] = $this->M_data->numrows_where_uMasuk('tb_unit_penyewaan');
 		$data['dataUser'] = $this->M_data->numrows('tb_user');
 		$data['dataPelanggan'] = $this->M_data->numrows('tb_pelanggan');
 		$data['dataOperator'] = $this->M_data->numrows('tb_operator');

@@ -122,16 +122,6 @@ class M_data extends CI_Model
     return $query->num_rows();
   }
 
-  public function numrows_where($tabel, $where)
-  {
-    $query = $this->db->select()
-      ->from($tabel)
-      ->where($where)
-      ->get();
-    return $query->num_rows();
-  }
-
-
   ####################################
   //* New Query
   ####################################
@@ -486,6 +476,15 @@ class M_data extends CI_Model
   ####################################
   //* Data Unit Masuk 
   ####################################
+  public function numrows_where_uMasuk($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where('status =', 0)
+      ->get();
+    return $query->num_rows();
+  }
+
   public function get_data_u_masuk($tabel)
   {
     $query = $this->db->select()
