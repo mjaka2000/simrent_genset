@@ -73,7 +73,7 @@
                                                 <?php } elseif ($d->ket_genset == 1) { ?>
                                                     <td><a href="#" class="btn btn-danger btn-xs"> Genset Sedang Disewa</a></td>
                                                 <?php } else { ?>
-                                                    <td><a href="#" class="btn btn-warning btn-xs"> Genset Dibooking</a></td>
+                                                    <td><a href="#" class="btn btn-warning btn-xs"> Genset Dijadwalkan</a></td>
                                                 <?php } ?>
                                                 <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" class="img img-box" width="100" height="100" alt="<?= $d->gambar_genset; ?>"></td>
                                                 <td><a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>

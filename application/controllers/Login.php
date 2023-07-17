@@ -71,6 +71,7 @@ class Login extends CI_Controller
 					} else {
 						redirect(site_url('penyewa'));
 					}
+				} else {
 					$this->session->set_flashdata('msg', 'Username Dan Password Salah');
 					redirect(site_url());
 				}

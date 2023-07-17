@@ -85,15 +85,15 @@
                                                 <?php if ($k->ket_genset == "0") { ?>
                                                     <option value="0" selected>Genset Ada</option>
                                                     <option value="1">Genset Sedang Disewa</option>
-                                                    <option value="2">Genset Dibooking</option>
+                                                    <option value="2">Genset Dijadwalkan</option>
                                                 <?php } elseif ($k->ket_genset == 1) { ?>
                                                     <option value="0">Genset Ada</option>
                                                     <option value="1" selected>Genset Sedang Disewa</option>
-                                                    <option value="2">Genset Dibooking</option>
+                                                    <option value="2">Genset Dijadwalkan</option>
                                                 <?php } else { ?>
                                                     <option value="0">Genset Ada</option>
                                                     <option value="1">Genset Sedang Disewa</option>
-                                                    <option value="2" selected>Genset Dibooking</option>
+                                                    <option value="2" selected>Genset Dijadwalkan</option>
                                                 <?php } ?>
                                             <?php } ?>
                                         </select>
