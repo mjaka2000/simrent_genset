@@ -9,7 +9,7 @@
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0">Dashboard <small>Control Panel</small></h1>
-          <li class="nav nav-item dropdown">
+          <!-- <li class="nav nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="far fa-bell"></i>
               <?php if (empty($numOut)) { ?>
@@ -25,14 +25,13 @@
                 <div class="card-body">
                   <a href="#" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
                     <small style="color: red;">Pengambilan Genset Tanggal <strong><?= date('d/m/Y', strtotime($c->tanggal_masuk)); ?></strong></small></a>
-                  <!-- <a href="#" class="dropdown-item">
-                  </a> -->
+                  
                 </div>
               <?php endforeach ?>
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item dropdown-footer"></a>
             </div>
-          </li>
+          </li> -->
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
