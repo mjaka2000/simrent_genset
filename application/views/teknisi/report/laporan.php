@@ -43,8 +43,9 @@
                                         <th style="vertical-align: middle;width :550px;">Laporan Perbaikan Genset</th>
                                         <td style="vertical-align: middle;">
                                             <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
-                                        </td>
                                     </form>
+                                    <button data-toggle="modal" data-target="#staticRepPerbaikanDetail" class="btn btn-info btn-sm"><i class="fa fa-list"></i>&nbsp;Pilih Detail</button>
+                                    </td>
                                 </tr>
 
                                 <tr>
@@ -89,6 +90,61 @@
                             <!-- </div> -->
                         </div>
                     </div>
+                    <div class="modal fade" id="staticRepPerbaikanDetail" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="staticBackdropLabel">Laporan Perbaikan All</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <table id="" class="table table-bordered table-hover examplejk" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th style="width :10px">No.</th>
+                                                <th>Nomor Genset</th>
+                                                <th>Nama Genset</th>
+                                                <th>Jenis Perbaikan</th>
+                                                <th>Spare Part (Diganti)</th>
+                                                <th>Tgl. Perbaikan</th>
+                                                <th>Ket. Perbaikan</th>
+                                                <th>Biaya Perbaikan</th>
+                                                <th style="width:10%">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            ?>
+                                            <?php foreach ($list_perbaikan as $dt) : ?>
+                                                <tr>
+                                                    <td><?= $no++; ?></td>
+                                                    <td><?= $dt->kode_genset; ?></td>
+                                                    <td><?= $dt->nama_genset; ?></td>
+                                                    <td><?= $dt->jenis_perbaikan; ?></td>
+                                                    <td><?= $dt->nama_sparepart; ?></td>
+                                                    <td><?= date('d-m-Y', strtotime($dt->tgl_perbaikan)); ?></td>
+                                                    <?php if ($dt->ket_perbaikan == "1") { ?>
+                                                        <td><a href="#" type="button" class="btn btn-xs btn-success">Selesai Diperbaiki</a></td>
+                                                    <?php } else { ?>
+                                                        <td><a href="#" type="button" class="btn btn-xs btn-danger">Masih Proses</a></td>
+                                                    <?php } ?>
+                                                    <td>Rp&nbsp;<?= number_format($dt->biaya_perbaikan); ?></td>
+                                                    <td>
+                                                        <!-- <a href="<?= base_url('admin/update_data_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a> -->
+                                                        <!-- <a href="<?= base_url('admin/hapus_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a> -->
+                                                        <a href="<?= base_url('report/cetak_service_detail/' . $dt->id_perbaikan_gst); ?>" target="_blank" type="button" class="btn btn-xs btn-info" name="btn_detail"><i class="fa fa-print mr-2"></i>Cetak</a>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -112,6 +168,19 @@
                 "body").style.visibility = "visible";
         }
     };
+</script>
+<script type="text/javascript">
+    $(function() {
+        $('.examplejk').DataTable({
+            // 'paging': true,
+            // 'lengthChange': false,
+            // 'searching': faslse,
+            // 'ordering': false,
+            // 'info': true,
+            'responsive': true,
+            'autoWidth': false
+        })
+    }); //* Script untuk memuat datatable
 </script>
 </body>
 

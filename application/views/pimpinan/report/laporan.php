@@ -95,6 +95,16 @@
                                     <th style="vertical-align: middle;">Laporan Data Penyewaan <br><small style="color: red;">*Berdasarkan Periode</small></th>
                                     <td style="vertical-align: middle;">
                                         <button data-toggle="modal" data-target="#staticRepPenyewaanBulanan" class="btn btn-info btn-sm"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
+                                        <button data-toggle="modal" data-target="#staticRepPenyewaanDetail" class="btn btn-info btn-sm"><i class="fa fa-list"></i>&nbsp;Pilih Detail</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <form action="<?= site_url(); ?>report/cetak_serv_gensetAll" method="post" role="form" target="_blank">
+                                        <th style="vertical-align: middle;">Laporan Perbaikan Genset</th>
+                                        <td style="vertical-align: middle;">
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                    </form>
+                                    <button data-toggle="modal" data-target="#staticRepPerbaikanDetail" class="btn btn-info btn-sm"><i class="fa fa-list"></i>&nbsp;Pilih Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -108,14 +118,6 @@
                                 <tr>
                                     <form action="<?= site_url(); ?>report/cetak_jdw_gensetAll" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Data Jadwal Penyewaan Genset</th>
-                                        <td style="vertical-align: middle;">
-                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
-                                        </td>
-                                    </form>
-                                </tr>
-                                <tr>
-                                    <form action="<?= site_url(); ?>report/cetak_serv_gensetAll" method="post" role="form" target="_blank">
-                                        <th style="vertical-align: middle;">Laporan Perbaikan Genset</th>
                                         <td style="vertical-align: middle;">
                                             <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
                                         </td>
@@ -311,6 +313,127 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="modal fade" id="staticRepPenyewaanDetail" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="staticBackdropLabel">Laporan Penyewaan All</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <table id="" class="table table-bordered table-hover examplejk" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th style="width :10px">No.</th>
+                                                <th>ID</th>
+                                                <!-- <th>Tanggal Keluar</th> -->
+                                                <th>Tanggal Masuk (Kembali)</th>
+                                                <th>Lokasi</th>
+                                                <th>Nama Pelanggan</th>
+                                                <th>Nama Genset</th>
+                                                <th>Daya</th>
+                                                <th>Mobil</th>
+                                                <th>Jml. Hari</th>
+                                                <th>Total</th>
+                                                <th>Status Genset</th>
+                                                <th style="width:10%">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            // $list_data = isset($_POST['list_data']) ? $_POST['list_data'] : '';
+                                            ?>
+                                            <?php foreach ($list_sewa as $dt) : ?>
+                                                <tr>
+                                                    <td><?= $no++; ?></td>
+                                                    <td><?= $dt->id_transaksi; ?></td>
+                                                    <!-- <td><?= $dt->tanggal_keluar; ?></td> -->
+                                                    <td><?= date('d-m-Y', strtotime($dt->tanggal_masuk)); ?></td>
+                                                    <td><?= $dt->lokasi; ?></td>
+                                                    <td><?= $dt->nama_plg; ?></td>
+                                                    <td><?= $dt->nama_genset; ?></td>
+                                                    <td><?= $dt->daya; ?></td>
+                                                    <td><?= $dt->nopol; ?></td>
+                                                    <td><?= $dt->jumlah_hari; ?></td>
+                                                    <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
+                                                    <?php if ($dt->status == NULL || $dt->status == 0) { ?>
+                                                        <td>Genset Masuk (Kembali)
+                                                        </td>
+                                                    <?php } else { ?>
+                                                        <td>Genset Masuk (Kembali)</td>
+                                                    <?php } ?>
+                                                    <td>
+                                                        <!-- <a href="<?= base_url('admin/hapus_unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
+                                                        <a href="<?= base_url('report/cetak_penyewaan_detail/' . $dt->id_u_sewa); ?>" type="button" target="_blank" class="btn btn-xs btn-info" name="btn_detail"><i class="fa fa-print mr-2"></i>Cetak</a>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="staticRepPerbaikanDetail" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="staticBackdropLabel">Laporan Perbaikan All</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <table id="" class="table table-bordered table-hover examplejk" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th style="width :10px">No.</th>
+                                                <th>Nomor Genset</th>
+                                                <th>Nama Genset</th>
+                                                <th>Jenis Perbaikan</th>
+                                                <th>Spare Part (Diganti)</th>
+                                                <th>Tgl. Perbaikan</th>
+                                                <th>Ket. Perbaikan</th>
+                                                <th>Biaya Perbaikan</th>
+                                                <th style="width:10%">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            ?>
+                                            <?php foreach ($list_perbaikan as $dt) : ?>
+                                                <tr>
+                                                    <td><?= $no++; ?></td>
+                                                    <td><?= $dt->kode_genset; ?></td>
+                                                    <td><?= $dt->nama_genset; ?></td>
+                                                    <td><?= $dt->jenis_perbaikan; ?></td>
+                                                    <td><?= $dt->nama_sparepart; ?></td>
+                                                    <td><?= date('d-m-Y', strtotime($dt->tgl_perbaikan)); ?></td>
+                                                    <?php if ($dt->ket_perbaikan == "1") { ?>
+                                                        <td><a href="#" type="button" class="btn btn-xs btn-success">Selesai Diperbaiki</a></td>
+                                                    <?php } else { ?>
+                                                        <td><a href="#" type="button" class="btn btn-xs btn-danger">Masih Proses</a></td>
+                                                    <?php } ?>
+                                                    <td>Rp&nbsp;<?= number_format($dt->biaya_perbaikan); ?></td>
+                                                    <td>
+                                                        <!-- <a href="<?= base_url('admin/update_data_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a> -->
+                                                        <!-- <a href="<?= base_url('admin/hapus_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a> -->
+                                                        <a href="<?= base_url('report/cetak_service_detail/' . $dt->id_perbaikan_gst); ?>" target="_blank" type="button" class="btn btn-xs btn-info" name="btn_detail"><i class="fa fa-print mr-2"></i>Cetak</a>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -334,6 +457,19 @@
                 "body").style.visibility = "visible";
         }
     };
+</script>
+<script type="text/javascript">
+    $(function() {
+        $('.examplejk').DataTable({
+            // 'paging': true,
+            // 'lengthChange': false,
+            // 'searching': faslse,
+            // 'ordering': false,
+            // 'info': true,
+            'responsive': true,
+            'autoWidth': false
+        })
+    }); //* Script untuk memuat datatable
 </script>
 </body>
 

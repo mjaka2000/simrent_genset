@@ -734,6 +734,9 @@ class Pimpinan extends CI_Controller
 
     public function laporan()
     {
+        $data['list_sewa'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
+        $data['list_perbaikan'] = $this->M_data->get_data_service('tb_serv_genset');
+
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Laporan';
         $this->load->view('pimpinan/report/laporan', $data);
