@@ -53,7 +53,7 @@
                                         <th>Tanggal</th>
                                         <th>Keterangan</th>
                                         <th>Status</th>
-                                        <!-- <th style="width:10%">Aksi</th> -->
+                                        <th style="width:10%">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -73,11 +73,11 @@
                                                 <?php } else { ?>
                                                     <td><a href="#" type="button" class="btn btn-xs btn-success">verified</a></td>
                                                 <?php } ?>
-                                                <!-- <td> -->
-                                                <!-- <a href="<?= base_url('pimpinan/update_service_genset_acc/' . $d->id_serv_gst_acc); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a> -->
-                                                <!-- <a href="<?= base_url('pimpinan/hapus_service_genset_acc/' . $d->id_serv_gst_acc); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a> -->
-                                                <!-- <a href="<?= base_url('pimpinan/detail_service_genset/' . $d->id_serv_gst_acc); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
-                                                <!-- </td> -->
+                                                <td>
+                                                    <a href="<?= base_url('pimpinan/update_service_genset_acc/' . $d->id_serv_gst_acc); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
+                                                    <!-- <a href="<?= base_url('pimpinan/hapus_service_genset_acc/' . $d->id_serv_gst_acc); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a> -->
+                                                    <!-- <a href="<?= base_url('pimpinan/detail_service_genset/' . $d->id_serv_gst_acc); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
+                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php } ?>

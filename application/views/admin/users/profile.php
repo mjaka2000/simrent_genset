@@ -74,9 +74,9 @@
                                     <li class="nav-item">
                                         <a href="#picture" class="nav-link" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Ganti Gambar</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a href="#backupdb" class="nav-link" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Backup DB</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                             <div class="card-body">
