@@ -8,6 +8,7 @@ class Admin extends CI_Controller
 		parent::__construct();
 		$this->load->model('M_data');
 		$this->load->library('upload');
+		$this->load->library('mailer');
 		if ($this->session->userdata('role') != '0') {
 			redirect(site_url("login"));
 		}
@@ -2122,5 +2123,44 @@ class Admin extends CI_Controller
 
 	####################################
 	//* End Laporan
+	####################################
+	####################################
+	//* test email 
+	####################################
+
+	public function email()
+	{
+		// $data['list_email'] = $this->M_admin->select('tb_user');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'email';
+		$this->load->view('admin/email/v_email', $data);
+	}
+
+	public function kirim()
+	{
+		$email_penerima = $this->input->post('email_penerima');
+		$subjek = $this->input->post('subjek');
+		$pesan = $this->input->post('pesan');
+		$attachment = $_FILES['attachment'];
+		$content = $this->load->view('admin/email/content', array('pesan' => $pesan), true); // Ambil isi file content.php dan masukan ke variabel $content
+		$sendmail = array(
+			'email_penerima' => $email_penerima,
+			'subjek' => $subjek,
+			'content' => $content,
+			'attachment' => $attachment
+		);
+		if (empty($attachment['name'])) {
+			$send = $this->mailer->send($sendmail);
+		} else {
+			$send = $this->mailer->send_with_attachment($sendmail);
+		}
+
+		echo "<b>" . $send['status'] . "</b><br />";
+		echo $send['message'];
+		echo "<br /><a href='" . base_url("admin/email") . "'>Kembali ke Form</a>";
+	}
+
+	####################################
+	//* end test email 
 	####################################
 }
