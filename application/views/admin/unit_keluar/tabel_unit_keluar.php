@@ -85,13 +85,15 @@
                                                     <div class="btn-group">
                                                         <button type="button" class="btn btn-default btn-sm" title="Opsi"><i class="fa fa-cog"></i> </button>
                                                         <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                            <span class="sr-only">Toggle Dropdown</span>
                                                         </button>
                                                         <div class="dropdown-menu" role="menu">
-                                                            <a href="<?= site_url('admin/unit_keluar_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-block bg-fuchsia" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a><br>
-                                                            <a href="<?= site_url('admin/unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-danger btn-block btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a>
+                                                            <a href="<?= site_url('admin/unit_keluar_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-block bg-fuchsia" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a>
+                                                            <a href="<?= site_url('admin/unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-danger btn-block btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a>
                                                         </div>
+                                                    </div>
+                                                <?php } else { ?>
                                             </td>
-                                        <?php } else { ?>
                                             <td>Genset Masuk (Kembali)</td>
                                         <?php } ?>
                                         <td>
