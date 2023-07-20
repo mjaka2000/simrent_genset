@@ -103,7 +103,7 @@ class M_data extends CI_Model
   public function update_status($tabel, $where, $status)
   {
     $this->db->set("status", $status);
-    $this->db->where("id_u_sewa", $where);
+    $this->db->where($where);
     $this->db->update($tabel);
   }
 
