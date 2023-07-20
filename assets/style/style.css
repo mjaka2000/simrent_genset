@@ -127,6 +127,20 @@
     flex-direction: column;
     justify-content: center;
   }
+  
+  .kiri {
+    display: flex;
+    /* align-items: left; */
+    flex-direction: column;
+    justify-content: left;
+  }
+  
+  .kanan {
+    display: flex;
+    /* align-items: ; */
+    flex-direction: column;
+    justify-content: right;
+  }
 
    /* The switch - the box around the slider */
 .switch {
