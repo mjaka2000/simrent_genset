@@ -80,8 +80,8 @@
                                             <td><?= $dt->nopol; ?></td>
                                             <td><?= $dt->jumlah_hari; ?></td>
                                             <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
-                                            <td>
-                                                <?php if ($dt->status == 1) { ?>
+                                            <?php if ($dt->status == 1) { ?>
+                                                <td>
                                                     <div class="btn-group">
                                                         <button type="button" class="btn btn-default btn-sm" title="Opsi"><i class="fa fa-cog"></i> </button>
                                                         <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
@@ -92,16 +92,16 @@
                                                             <a href="<?= site_url('admin/unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-danger btn-block btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a>
                                                         </div>
                                                     </div>
-                                                <?php } else { ?>
-                                            </td>
-                                            <td>Genset Masuk (Kembali)</td>
-                                        <?php } ?>
-                                        <td>
-                                            <!-- <a href="<?= site_url('admin/update_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
-                                            <a href="<?= site_url('admin/hapus_unit_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
-                                            <a href="<?= site_url('admin/detail_unit_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
+                                                </td>
+                                            <?php } else { ?>
+                                                <td>Genset Masuk (Kembali)</td>
+                                            <?php } ?>
+                                            <td>
+                                                <!-- <a href="<?= site_url('admin/update_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
+                                                <a href="<?= site_url('admin/hapus_unit_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
+                                                <a href="<?= site_url('admin/detail_unit_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
 
-                                        </td>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
