@@ -113,6 +113,48 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
+
+              <?php if (!empty($UnitKeluar)) { ?>
+                <h3><?= $UnitKeluar ?></h3>
+              <?php } else { ?>
+                <h3>0</h3>
+              <?php } ?>
+              <p>Data Unit Keluar</p>
+
+            </div>
+            <div class="icon">
+              <i class="fa fa-copy"></i>
+            </div>
+            <!-- <a href="<?= site_url('pimpinan/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+            <li class="nav nav-item dropdown tengah small-box-footer">
+              <a class="nav-link" data-toggle="dropdown" href="#">
+                <span style="color: aliceblue;">More info <i class="fa fa-arrow-circle-right"></i></span>
+                <?php if (empty($numOut)) { ?>
+                  <span></span>
+                <?php } else { ?>
+                  <span class="badge badge-warning"><?= $numOut; ?></span>
+                <?php } ?>
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg">
+                <span class="dropdown-item dropdown-header" style="background-color: #2596be;color: white;"><?= $numOut; ?> Pemberitahuan sewa genset</span>
+                <div class="dropdown-divider"></div>
+                <?php foreach ($notifOut as $c) : ?>
+                  <div class="card-footer">
+                    <a href="#" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
+                      <small style="color: red;">Pengambilan Genset Tanggal <strong><?= date('d/m/Y', strtotime($c->tanggal_masuk)); ?></strong></small></a>
+
+                  </div>
+                <?php endforeach ?>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item dropdown-footer"></a>
+              </div>
+            </li>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
               <?php if (!empty($stokBarangKeluar)) { ?>
                 <h3><?= $stokBarangKeluar ?></h3>
               <?php } else { ?>
