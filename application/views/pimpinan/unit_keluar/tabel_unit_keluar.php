@@ -83,7 +83,7 @@
 
                                             <?php if ($dt->status == 1) { ?>
                                                 <td>
-                                                    <a href="#" type="button" class="btn btn-xs bg-fuchsia btn-unitpanjang" name="btn_barangmasuk"><i class="fa fa-info mr-2"></i>Genset Masih Digunakan</a><br>
+                                                    <a href="#" type="button" class="btn btn-xs btn-info" name="btn_barangmasuk"><i class="fa fa-info mr-2"></i>Genset Masih Digunakan</a><br>
                                                     <!-- <a href="<?= site_url('pimpinan/unit_keluar_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs bg-fuchsia btn-unitpanjang" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a><br> -->
                                                     <!-- <a href="<?= site_url('pimpinan/unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-danger btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a> -->
                                                 </td>

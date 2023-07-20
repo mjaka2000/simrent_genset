@@ -83,7 +83,7 @@
 
                                             <?php if ($dt->status == 1) { ?>
                                                 <td>
-                                                    <a href="#" type="button" class="btn btn-xs bg-fuchsia" name="btn_barangmasuk"><i class="fa fa-info mr-2"></i>Genset Masih Digunakan</a>
+                                                    <a href="#" type="button" class="btn btn-xs btn-info" name="btn_barangmasuk"><i class="fa fa-info mr-2"></i>Genset Masih Digunakan</a>
                                                 </td>
                                             <?php } else { ?>
                                                 <td>Genset Masuk (Kembali)</td>

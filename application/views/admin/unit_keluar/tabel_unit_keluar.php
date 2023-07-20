@@ -88,8 +88,8 @@
                                                             <span class="sr-only">Toggle Dropdown</span>
                                                         </button>
                                                         <div class="dropdown-menu" role="menu">
-                                                            <a href="<?= site_url('admin/unit_keluar_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-block bg-fuchsia" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a>
-                                                            <a href="<?= site_url('admin/unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-danger btn-block btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a>
+                                                            <a href="<?= site_url('admin/unit_keluar_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-info btn-xs btn-flat btn-block" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a>
+                                                            <a href="<?= site_url('admin/unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-success btn-flat btn-block btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a>
                                                         </div>
                                                     </div>
                                                 </td>
