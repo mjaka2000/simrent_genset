@@ -470,12 +470,22 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
+
+  public function numrows_where_uKeluar($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where('status =', 1)
+      ->get();
+    return $query->num_rows();
+  }
   ####################################
   //* End Data Unit Keluar 
   ####################################
   ####################################
   //* Data Unit Masuk 
   ####################################
+
   public function numrows_where_uMasuk($tabel)
   {
     $query = $this->db->select()
