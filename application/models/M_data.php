@@ -531,7 +531,7 @@ class M_data extends CI_Model
       ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
       ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
       ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
-      // ->order_by('id_transaksi', 'asc')
+      ->order_by('tanggal_masuk', 'asc')
       ->where('status =', 0)
       ->get();
     return $query->result();
@@ -559,7 +559,7 @@ class M_data extends CI_Model
       ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
       ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->where('status =', 0)
-      // ->order_by('tanggal_masuk', 'asc')
+      ->order_by('tanggal_masuk', 'asc')
 
       ->get();
     return $query->result();
@@ -578,7 +578,7 @@ class M_data extends CI_Model
       ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
       ->where('status =', 0)
-      // ->order_by('tanggal_masuk', 'asc')
+      ->order_by('tanggal_masuk', 'asc')
       ->get();
     return $query->result();
   }
