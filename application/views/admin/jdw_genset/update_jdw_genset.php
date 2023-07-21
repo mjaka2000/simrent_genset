@@ -131,6 +131,22 @@
                                             <input type="text" name="keterangan" class="form-control" id="keterangan" placeholder="Masukkan Keterangan" required value="<?= $ed->keterangan; ?>">
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label for="stok_gd" class="col-sm-3 col-form-label">Status</label>
+                                        <div class="col-sm-9">
+
+                                            <select name="status_jdw" id="status_jdw" class="form-control" required>
+                                                <option value="">-- Status --</option>
+                                                <?php if ($ed->status_jdw == "0") { ?>
+                                                    <option value="0" selected>Tidak Dijadwalkan</option>
+                                                    <option value="1">Dijadwalkan</option>
+                                                <?php } else { ?>
+                                                    <option value="0">Tidak Dijadwalkan</option>
+                                                    <option value="1" selected>Dijadwalkan</option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
                                 <?php } ?>
                                 <hr>
                                 <div class="form-group" align="center">

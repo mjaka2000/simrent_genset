@@ -446,6 +446,34 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
+
+  public function notif_jdwGst($tabel, $tgl)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
+      ->where('status_jdw =', 1)
+      ->where('DATEDIFF(DATE_SUB(tgl_keluar, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
+
+      ->get();
+    return $query->result();
+  }
+
+  public function notif_jdwGst_Jml($tabel, $tgl)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
+      ->where('status_jdw =', 1)
+      ->where('DATEDIFF(DATE_SUB(tgl_keluar, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
+
+      ->get();
+    return $query->num_rows();
+  }
   // public function select_jdw_gst($tabel)
   // {
   //   $query = $this->db->select()

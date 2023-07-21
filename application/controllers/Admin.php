@@ -28,6 +28,10 @@ class Admin extends CI_Controller
 		$data['numOut'] = $this->M_data->notif_u_keluarJml('tb_unit_penyewaan', $tgl);
 		$data['UnitKeluar'] = $this->M_data->numrows_where_uKeluar('tb_unit_penyewaan');
 		$data['stokBarangKeluar'] = $this->M_data->numrows_where_uMasuk('tb_unit_penyewaan');
+		$data['jdwGst'] = $this->M_data->numrows('tb_jadwal_genset');
+		$data['notifJdw'] = $this->M_data->notif_jdwGst('tb_jadwal_genset', $tgl);
+		$data['numJdw'] = $this->M_data->notif_jdwGst_Jml('tb_jadwal_genset', $tgl);
+
 		$data['dataUser'] = $this->M_data->numrows('tb_user');
 		$data['dataPelanggan'] = $this->M_data->numrows('tb_pelanggan');
 		$data['dataOperator'] = $this->M_data->numrows('tb_operator');
@@ -1865,6 +1869,7 @@ class Admin extends CI_Controller
 			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
 			$lokasi      = $this->input->post('lokasi', TRUE);
 			$keterangan = $this->input->post('keterangan', TRUE);
+			$status           = 1;
 
 			$tgl_masuk    = date('Y-m-d', strtotime($tgl_keluar . "+" . $jumlah_hari . " days"));
 
@@ -1877,7 +1882,9 @@ class Admin extends CI_Controller
 				'tgl_masuk'          => $tgl_masuk,
 				'jumlah_hari'      => $jumlah_hari,
 				'lokasi'      => $lokasi,
-				'keterangan' => $keterangan
+				'keterangan' => $keterangan,
+				'status_jdw'           => $status
+
 			);
 			$status_gst = 2;
 			$this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
@@ -1951,6 +1958,7 @@ class Admin extends CI_Controller
 			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
 			$lokasi      = $this->input->post('lokasi', TRUE);
 			$keterangan = $this->input->post('keterangan', TRUE);
+			$status_jdw = $this->input->post('status_jdw', TRUE);
 
 			$tgl_masuk_new    = date('Y-m-d', strtotime($tgl_keluar . "+" . $jumlah_hari . " days"));
 			if ($tgl_masuk == $tgl_masuk_new) {
@@ -1969,7 +1977,8 @@ class Admin extends CI_Controller
 				'tgl_masuk'          => $tgl_masuk_up,
 				'jumlah_hari'      => $jumlah_hari,
 				'lokasi'      => $lokasi,
-				'keterangan' => $keterangan
+				'keterangan' => $keterangan,
+				'status_jdw' => $status_jdw
 			);
 			// $status_gst = 2;
 			// $this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
