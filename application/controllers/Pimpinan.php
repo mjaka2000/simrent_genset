@@ -695,7 +695,86 @@ class Pimpinan extends CI_Controller
         $this->load->view('pimpinan/pengeluaran/tabel_pengeluaran', $data);
     }
 
+    public function tambah_data_pengeluaran()
+    {
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Tambah Data Pengeluaran';
+        $this->load->view('pimpinan/pengeluaran/tambah_pengeluaran', $data);
+    }
 
+    public function proses_tambah_pengeluaran()
+    {
+        $this->form_validation->set_rules('tgl_pengeluaran', 'Tanggal', 'trim|required');
+        $this->form_validation->set_rules('pengeluaran', 'Keterangan Pengeluaran', 'trim|required');
+        $this->form_validation->set_rules('biaya_pengeluaran', 'Biaya Pengeluaran', 'trim|required');
+
+        if ($this->form_validation->run() === TRUE) {
+            $tgl_pengeluaran = $this->input->post('tgl_pengeluaran', TRUE);
+            $pengeluaran = $this->input->post('pengeluaran', TRUE);
+            $biaya_pengeluaran = $this->input->post('biaya_pengeluaran', TRUE);
+
+            $data = array(
+                'tgl_pengeluaran' => $tgl_pengeluaran,
+                'pengeluaran' => $pengeluaran,
+                'biaya_pengeluaran' => $biaya_pengeluaran
+            );
+            $this->M_data->insert('tb_pengeluaran', $data);
+            $this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
+            redirect(site_url('pimpinan/tabel_pengeluaran'));
+        } else {
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['title'] = 'Tambah Data Pengeluaran';
+            $this->load->view('pimpinan/pengeluaran/tambah_pengeluaran', $data);
+        }
+    }
+
+    public function update_data_pengeluaran()
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_pengeluaran' => $uri);
+        $data['list_data'] = $this->M_data->get_data('tb_pengeluaran', $where);
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Ubah Data Pengeluaran';
+        $this->load->view('pimpinan/pengeluaran/update_pengeluaran', $data);
+    }
+
+    public function proses_edit_pengeluaran()
+    {
+        $this->form_validation->set_rules('tgl_pengeluaran', 'Tanggal', 'trim|required');
+        $this->form_validation->set_rules('pengeluaran', 'Keterangan Pengeluaran', 'trim|required');
+        $this->form_validation->set_rules('biaya_pengeluaran', 'Biaya Pengeluaran', 'trim|required');
+
+        if ($this->form_validation->run() === TRUE) {
+
+            $id_pengeluaran = $this->input->post('id_pengeluaran', TRUE);
+            $tgl_pengeluaran = $this->input->post('tgl_pengeluaran', TRUE);
+            $pengeluaran = $this->input->post('pengeluaran', TRUE);
+            $biaya_pengeluaran = $this->input->post('biaya_pengeluaran', TRUE);
+
+            $where = array('id_pengeluaran' => $id_pengeluaran);
+            $data = array(
+                'tgl_pengeluaran' => $tgl_pengeluaran,
+                'pengeluaran' => $pengeluaran,
+                'biaya_pengeluaran' => $biaya_pengeluaran
+            );
+            $this->M_data->update('tb_pengeluaran', $data, $where);
+            $this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+            redirect(site_url('pimpinan/tabel_pengeluaran'));
+        } else {
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['title'] = 'Ubah Data Pengeluaran';
+            $this->load->view('pimpinan/pengeluaran/update_pengeluaran', $data);
+        }
+    }
+
+    public function hapus_pengeluaran()
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_pengeluaran' => $uri);
+        $this->M_data->delete('tb_pengeluaran', $where);
+        $this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+        redirect(site_url('pimpinan/tabel_pemasukan'));
+    }
     ####################################
     //* End Data Pengeluaran
     ####################################
@@ -743,6 +822,90 @@ class Pimpinan extends CI_Controller
         $this->load->view('pimpinan/report/laporan', $data);
     }
 
+    public function tambah_pemasukan()
+    {
+        $data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Tambah Data Pendapatan';
+        $this->load->view('pimpinan/pemasukan/tambah_pemasukan', $data);
+    }
+
+    public function proses_tambah_pemasukan()
+    {
+
+        $this->form_validation->set_rules('id_u_sewa', 'ID Transaksi', 'trim|required|is_unique[tb_pendapatan.id_u_sewa]');
+        $this->form_validation->set_rules('tgl_update', 'Tanggal Update', 'trim|required');
+        $this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
+
+        if ($this->form_validation->run() === TRUE) {
+            $id_u_sewa = $this->input->post('id_u_sewa', TRUE);
+            $tgl_update = $this->input->post('tgl_update', TRUE);
+            $keterangan = $this->input->post('keterangan', TRUE);
+
+            $data = array(
+                'id_u_sewa' => $id_u_sewa,
+                'tgl_update' => $tgl_update,
+                'keterangan' => $keterangan
+            );
+            $this->M_data->insert('tb_pendapatan', $data);
+            $this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
+            redirect(site_url('pimpinan/tabel_pemasukan'));
+        } else {
+            $data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['title'] = 'Tambah Data Pendapatan';
+            $this->load->view('pimpinan/pemasukan/tambah_pemasukan', $data);
+        }
+    }
+
+    public function edit_pemasukan()
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_pendapatan' => $uri);
+        $data['edit_data'] = $this->M_data->get_data('tb_pendapatan', $where);
+        $data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Ubah Data Pendapatan';
+        $this->load->view('pimpinan/pemasukan/edit_pemasukan', $data);
+    }
+
+    public function proses_edit_pemasukan()
+    {
+
+        $this->form_validation->set_rules('id_u_sewa', 'ID Transaksi', 'trim|required');
+        $this->form_validation->set_rules('tgl_update', 'Tanggal Update', 'trim|required');
+        $this->form_validation->set_rules('keterangan', 'Keterangan', 'trim|required');
+
+        if ($this->form_validation->run() === TRUE) {
+            $id_pendapatan = $this->input->post('id_pendapatan', TRUE);
+            $id_u_sewa = $this->input->post('id_u_sewa', TRUE);
+            $tgl_update = $this->input->post('tgl_update', TRUE);
+            $keterangan = $this->input->post('keterangan', TRUE);
+
+            $where = array('id_pendapatan' => $id_pendapatan);
+            $data = array(
+                'id_u_sewa' => $id_u_sewa,
+                'tgl_update' => $tgl_update,
+                'keterangan' => $keterangan
+            );
+            $this->M_data->update('tb_pendapatan', $data, $where);
+            $this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+            redirect(site_url('pimpinan/tabel_pemasukan'));
+        } else {
+            $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+            $data['title'] = 'Ubah Data Pendapatan';
+            $this->load->view('pimpinan/pemasukan/edit_pemasukan', $data);
+        }
+    }
+
+    public function hapus_pemasukan()
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_pendapatan' => $uri);
+        $this->M_data->delete('tb_pendapatan', $where);
+        $this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+        redirect(site_url('pimpinan/tabel_pemasukan'));
+    }
     ####################################
     //* End Laporan
     ####################################
