@@ -192,7 +192,7 @@
                 <div class="dropdown-divider"></div>
                 <?php foreach ($notifJdw as $c) : ?>
                   <div class="card-footer">
-                    <a href="#" style="text-decoration: none; color: black;"><strong><?= $c->nama_op; ?><br><?= $c->nama_genset; ?><br><?= $c->merek; ?></strong><br>
+                    <a href="<?= site_url('admin/detail_jdw_genset/' . $c->id_jadwal_genset); ?>" style="text-decoration: none; color: black;"><strong><?= $c->nama_op; ?><br><?= $c->nama_genset; ?><br><?= $c->merek; ?></strong><br>
                       <small style="color: red;">Jadwal Berangkat Tanggal <strong><?= date('d/m/Y', strtotime($c->tgl_keluar)); ?></strong></small></a>
 
                   </div>

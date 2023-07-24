@@ -42,6 +42,7 @@
                                 </div>
                             <?php } ?>
                             <button onclick="window.location.href='<?= site_url('admin/tambah_jdw_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
+                            <!-- <button onclick="window.location.href='<?= site_url('admin/email_jdw_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button> -->
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
@@ -54,6 +55,7 @@
                                         <th>Sampai Tanggal</th>
                                         <th>Lokasi</th>
                                         <th>Keterangan</th>
+                                        <!-- <th>Status</th> -->
                                         <th style="width:10%">Aksi</th>
                                     </tr>
                                 </thead>
@@ -71,9 +73,15 @@
                                             <td><?= date('d-m-Y', strtotime($d->tgl_masuk)); ?></td>
                                             <td><?= $d->lokasi; ?></td>
                                             <td><?= $d->keterangan; ?></td>
+                                            <?php if ($d->status_jdw == "0") { ?>
+                                                <!-- <td><a href="#" type="button" class="btn btn-xs btn-success">Tidak Dijadwalkan</a></td> -->
+                                            <?php } else { ?>
+                                                <!-- <td><a href="#" type="button" class="btn btn-xs btn-warning">Dijadwalkan</a></td> -->
+                                            <?php } ?>
                                             <td>
                                                 <a href="<?= site_url('admin/update_jdw_genset/' . $d->id_jadwal_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
                                                 <a href="<?= site_url('admin/hapus_jdw_genset/' . $d->id_jadwal_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
+                                                <!-- <a href="<?= site_url('admin/detail_jdw_genset/' . $d->id_jadwal_genset); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle"></i></a> -->
                                                 <!-- <a href="<?= site_url('report/cetak_jdw_genset/' . $d->id_jadwal_genset); ?>" target="_blank" type="button" class="btn btn-sm btn-info" name="btn_detail"><i class="fa fa-print"></i></a> -->
                                             </td>
                                         </tr>

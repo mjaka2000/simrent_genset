@@ -151,6 +151,49 @@
             </li>
           </div>
         </div>
+
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+
+              <?php if (!empty($jdwGst)) { ?>
+                <h3><?= $jdwGst ?></h3>
+              <?php } else { ?>
+                <h3>0</h3>
+              <?php } ?>
+              <p>Jadwal Penyewaan Genset</p>
+
+            </div>
+            <div class="icon">
+              <i class="fa fa-copy"></i>
+            </div>
+            <!-- <a href="<?= site_url('pimpinan/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+            <li class="nav nav-item dropdown tengah small-box-footer">
+              <a class="nav-link" data-toggle="dropdown" href="#">
+                <span style="color: aliceblue;">More info <i class="fa fa-arrow-circle-right"></i></span>
+                <?php if (empty($numJdw)) { ?>
+                  <span></span>
+                <?php } else { ?>
+                  <span class="badge badge-warning"><?= $numJdw; ?></span>
+                <?php } ?>
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg">
+                <span class="dropdown-item dropdown-header" style="background-color: #2596be;color: white;"><?= $numJdw; ?> Pemberitahuan jadwal genset</span>
+                <div class="dropdown-divider"></div>
+                <?php foreach ($notifJdw as $c) : ?>
+                  <div class="card-footer">
+                    <a href="<?= site_url('pimpinan/detail_jdw_genset/' . $c->id_jadwal_genset); ?>" style="text-decoration: none; color: black;"><strong><?= $c->nama_op; ?><br><?= $c->nama_genset; ?><br><?= $c->merek; ?></strong><br>
+                      <small style="color: red;">Jadwal Berangkat Tanggal <strong><?= date('d/m/Y', strtotime($c->tgl_keluar)); ?></strong></small></a>
+
+                  </div>
+                <?php endforeach ?>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item dropdown-footer"></a>
+              </div>
+            </li>
+          </div>
+        </div>
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-info">
