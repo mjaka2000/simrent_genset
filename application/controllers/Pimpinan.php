@@ -35,6 +35,10 @@ class Pimpinan extends CI_Controller
         $data['dataServGenset'] = $this->M_data->numrows('tb_serv_genset');
         $data['dataStokSparepart'] = $this->M_data->numrows('tb_sparepart');
         $data['dataPengeluaran'] = $this->M_data->numrows('tb_pengeluaran');
+        $data['notifJdw'] = $this->M_data->notif_jdwGst('tb_jadwal_genset', $tgl);
+        $data['numJdw'] = $this->M_data->notif_jdwGst_Jml('tb_jadwal_genset', $tgl);
+        $data['jdwGst'] = $this->M_data->numrows('tb_jadwal_genset');
+
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Home';
         $data['label'] = $label;
@@ -665,6 +669,17 @@ class Pimpinan extends CI_Controller
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Jadwal Penyewaan Genset';
         $this->load->view('pimpinan/jdw_genset/tabel_jdw_genset', $data);
+    }
+
+    public function detail_jdw_genset()
+    {
+        $uri = $this->uri->segment(3);
+        $where = array('id_jadwal_genset' => $uri);
+        $data['list_data'] = $this->M_data->get_jdw_gst('tb_jadwal_genset', $where);
+
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Ubah Data Jadwal Penyewaan Genset';
+        $this->load->view('pimpinan/jdw_genset/detail_jdw_genset', $data);
     }
 
     ####################################

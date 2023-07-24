@@ -1924,6 +1924,17 @@ class Admin extends CI_Controller
 		}
 	}
 	*/
+	public function detail_jdw_genset()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_jadwal_genset' => $uri);
+		$data['list_data'] = $this->M_data->get_jdw_gst('tb_jadwal_genset', $where);
+
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Ubah Data Jadwal Penyewaan Genset';
+		$this->load->view('admin/jdw_genset/detail_jdw_genset', $data);
+	}
+
 	public function update_jdw_genset()
 	{
 		$uri = $this->uri->segment(3);
@@ -1936,6 +1947,25 @@ class Admin extends CI_Controller
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Ubah Data Jadwal Penyewaan Genset';
 		$this->load->view('admin/jdw_genset/update_jdw_genset', $data);
+	}
+
+	public function email_jdw_genset()
+	{
+		$tgl = date('Y-m-d');
+
+		// $data['list_email'] = $this->M_admin->select('tb_user');
+		$data['notifJdw'] = $this->M_data->notif_jdwGst('tb_jadwal_genset', $tgl);
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'email';
+		$this->load->view('admin/jdw_genset/email_jdw_genset', $data);
+	}
+
+	public function kirim_jdw_genset()
+	{
+		$data['list_data'] = $this->M_data->select_jdw_gst('tb_jadwal_genset');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Jadwal Penyewaan Genset';
+		$this->load->view('admin/jdw_genset/tabel_jdw_genset', $data);
 	}
 
 	public function proses_ubah_jdw_genset()
