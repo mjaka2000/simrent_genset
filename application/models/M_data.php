@@ -350,6 +350,20 @@ class M_data extends CI_Model
     return $query->result();
   }
 
+  public function notif_u_keluar1($tabel, $tgl, $where)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      ->where('status =', 1)
+      ->where('DATEDIFF(DATE_SUB(tanggal_masuk, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
+      ->where($where)
+
+      ->get();
+    return $query->result();
+  }
+
   public function notif_u_keluar($tabel, $tgl)
   {
     $query = $this->db->select()
@@ -456,6 +470,21 @@ class M_data extends CI_Model
       ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->where('status_jdw =', 1)
       ->where('DATEDIFF(DATE_SUB(tgl_keluar, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
+
+      ->get();
+    return $query->result();
+  }
+
+  public function notif_jdwGst1($tabel, $tgl, $where)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
+      ->where('status_jdw =', 1)
+      ->where('DATEDIFF(DATE_SUB(tgl_keluar, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
+      ->where($where)
 
       ->get();
     return $query->result();

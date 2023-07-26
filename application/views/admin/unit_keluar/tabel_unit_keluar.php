@@ -81,11 +81,10 @@
                                             <td><?= $dt->jumlah_hari; ?></td>
                                             <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
                                             <?php if ($dt->status == 1) { ?>
-                                                <td>
+                                                <td align="center">
                                                     <div class="btn-group">
-                                                        <button type="button" class="btn btn-default btn-sm" title="Opsi"><i class="fa fa-cog"></i> </button>
-                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                            <span class="sr-only">Toggle Dropdown</span>
+                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown" title="Opsi"><i class="fa fa-cog"></i> </button>
+                                                        <span class="sr-only">Toggle Dropdown</span>
                                                         </button>
                                                         <div class="dropdown-menu" role="menu">
                                                             <a href="<?= site_url('admin/unit_keluar_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-info btn-xs btn-flat btn-block" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a>

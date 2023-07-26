@@ -1404,6 +1404,43 @@ class Admin extends CI_Controller
 		$this->load->view('admin/unit_keluar/detail_keluar', $data);
 	}
 
+	public function email_unit_keluar()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_u_sewa' => $uri);
+		$tgl = date('Y-m-d');
+
+		// $data['list_email'] = $this->M_admin->select('tb_user');
+		$data['notifOut'] = $this->M_data->notif_u_keluar1('tb_unit_penyewaan', $tgl, $where);
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'email';
+		$this->load->view('admin/unit_keluar/email_unit_keluar', $data);
+	}
+
+	public function kirim_unit_keluar()
+	{
+		$email_penerima = $this->input->post('email_penerima');
+		$subjek = $this->input->post('subjek');
+		$pesan = $this->input->post('pesan');
+		// $attachment = $_FILES['attachment'];
+		$content = $this->load->view('admin/email/content', array('pesan' => $pesan), true); // Ambil isi file content.php dan masukan ke variabel $content
+		$sendmail = array(
+			'email_penerima' => $email_penerima,
+			'subjek' => $subjek,
+			'content' => $content,
+			// 'attachment' => $attachment
+		);
+		if (empty($attachment['name'])) {
+			$send = $this->mailer->send($sendmail);
+		} else {
+			$send = $this->mailer->send_with_attachment($sendmail);
+		}
+
+		echo "<b>" . $send['status'] . "</b><br />";
+		echo $send['message'];
+		echo "<br /><a href='" . base_url("admin/tabel_unit_keluar") . "'>Kembali ke Form</a>";
+	}
+
 	public function tambah_unit_keluar()
 	{
 		/*	$kode_id = $this->M_data->get_auto_id('tb_unit_penyewaan');
@@ -1951,10 +1988,12 @@ class Admin extends CI_Controller
 
 	public function email_jdw_genset()
 	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_jadwal_genset' => $uri);
 		$tgl = date('Y-m-d');
 
 		// $data['list_email'] = $this->M_admin->select('tb_user');
-		$data['notifJdw'] = $this->M_data->notif_jdwGst('tb_jadwal_genset', $tgl);
+		$data['notifJdw'] = $this->M_data->notif_jdwGst1('tb_jadwal_genset', $tgl, $where);
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'email';
 		$this->load->view('admin/jdw_genset/email_jdw_genset', $data);
@@ -1962,10 +2001,26 @@ class Admin extends CI_Controller
 
 	public function kirim_jdw_genset()
 	{
-		$data['list_data'] = $this->M_data->select_jdw_gst('tb_jadwal_genset');
-		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-		$data['title'] = 'Jadwal Penyewaan Genset';
-		$this->load->view('admin/jdw_genset/tabel_jdw_genset', $data);
+		$email_penerima = $this->input->post('email_penerima');
+		$subjek = $this->input->post('subjek');
+		$pesan = $this->input->post('pesan');
+		// $attachment = $_FILES['attachment'];
+		$content = $this->load->view('admin/email/content', array('pesan' => $pesan), true); // Ambil isi file content.php dan masukan ke variabel $content
+		$sendmail = array(
+			'email_penerima' => $email_penerima,
+			'subjek' => $subjek,
+			'content' => $content,
+			// 'attachment' => $attachment
+		);
+		if (empty($attachment['name'])) {
+			$send = $this->mailer->send($sendmail);
+		} else {
+			$send = $this->mailer->send_with_attachment($sendmail);
+		}
+
+		echo "<b>" . $send['status'] . "</b><br />";
+		echo $send['message'];
+		echo "<br /><a href='" . base_url("admin/tabel_jdw_genset") . "'>Kembali ke Form</a>";
 	}
 
 	public function proses_ubah_jdw_genset()

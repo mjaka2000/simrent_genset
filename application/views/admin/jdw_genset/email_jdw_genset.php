@@ -31,7 +31,7 @@
                 <div class="col-md-5 ">
                     <div class="card">
                         <div class="card-header">
-                            Detail Data Jadwal Penyewaan Genset
+                            Kirim Data Jadwal Penyewaan Genset
                         </div>
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
@@ -140,7 +140,7 @@
                                     </tr>
                                 <?php endforeach; ?>
                                 </table> -->
-                            <form action="<?= base_url('admin/kirim'); ?>" method="post" role="form" enctype="multipart/form-data">
+                            <form action="<?= base_url('admin/kirim_jdw_genset'); ?>" method="post" role="form" enctype="multipart/form-data">
 
                                 <div class="form-group">
                                     <label for="genset" class="form-label">Kepada</label>
@@ -148,66 +148,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="genset" class="form-label">Subjek</label>
-                                    <input type="text" name="subjek" class="form-control" id="subjek">
+                                    <input type="text" name="subjek" class="form-control" id="subjek" value="Jadwal Penyewaan Genset">
                                 </div>
                                 <?php foreach ($notifJdw as $ed) : ?>
                                     <!-- <input type="hidden" name="id_jadwal_genset" value="<?= $ed->id_jadwal_genset; ?>"> -->
+                                    <div class="form-group">
 
-                                    <div class="form-group row">
-                                        <label for="nama_operator" class="col-sm-3 col-form-label">Nama Operator</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" readonly name="nama_op" class="form-control" id="nama_op" value="<?= $ed->nama_op; ?>">
 
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="kode_genset" class="col-sm-3 col-form-label">Genset</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" readonly name="nama_genset" class="form-control" id="nama_genset" value="<?= $ed->nama_genset; ?>">
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="nopol_mobil" class="col-sm-3 col-form-label">Mobil</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" readonly name="merek" class="form-control" id="merek" value="<?= $ed->merek; ?>">
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="genset" class="col-sm-3 col-form-label">Tanggal Digunakan</label>
-                                        <div class="col-sm-9">
-                                            <input type="date" readonly name="tgl_keluar" class="form-control" id="tgl_keluar" value="<?= $ed->tgl_keluar; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="genset" class="col-sm-3 col-form-label">Sampai Tanggal</label>
-                                        <div class="col-sm-9">
-                                            <input type="date" readonly name="tgl_masuk" class="form-control" id="tgl_masuk" value="<?= $ed->tgl_masuk; ?>">
-                                        </div>
-                                    </div>
-                                    <!-- <div class="form-group row">
-                                        <label for="genset" class="col-sm-3 col-form-label">Jumlah Hari</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="jumlah_hari" class="form-control" id="jumlah_hari" placeholder="Masukkan Jumlah Hari" value="<?= $ed->jumlah_hari; ?>">
-                                        </div>
-                                    </div> -->
-                                    <div class="form-group row">
-                                        <label for="lokasi" class="col-sm-3 col-form-label">Lokasi</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" readonly name="lokasi" class="form-control" id="lokasi" placeholder="Masukkan Lokasi Tujuan" required value="<?= $ed->lokasi; ?>">
-
-                                        </div>
-                                    </div>
-                                    <!-- <div class="form-group">
-    <label for="genset" class="form-label">Nama Pelanggan</label>
-    <input type="text" readonly name="nama_plg" class="form-control" id="nama_plg">
-</div> -->
-                                    <div class="form-group row">
-                                        <label for="tahun" class="col-sm-3 col-form-label">Keterangan</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" readonly name="keterangan" class="form-control" id="keterangan" placeholder="Masukkan Keterangan" required value="<?= $ed->keterangan; ?>">
-                                        </div>
+                                        <label class="form-label">Pesan</label><br />
+                                        <textarea name="pesan" placeholder="Pesan" class="form-control" rows="8">Pemberitahuan Jadwal Penyewaan Genset Operator [<?= $ed->nama_op; ?>], Genset [<?= $ed->nama_genset; ?>], Mobil [<?= $ed->merek; ?>], Berangkat Pada Tanggal [<?= date('d-m-Y', strtotime($ed->tgl_keluar)); ?>], Lokasi di [<?= $ed->lokasi; ?>], dengan Keterangan [<?= $ed->keterangan; ?>].</textarea>
                                     </div>
                                 <?php endforeach ?>
 

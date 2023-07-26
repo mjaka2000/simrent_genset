@@ -150,8 +150,9 @@
                 <div class="dropdown-divider"></div>
                 <?php foreach ($notifOut as $c) : ?>
                   <div class="card-footer">
-                    <a href="#" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
+                    <a href="<?= site_url('admin/detail_unit_keluar/' . $dt->id_u_sewa); ?>" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
                       <small style="color: red;">Pengambilan Genset Tanggal <strong><?= date('d/m/Y', strtotime($c->tanggal_masuk)); ?></strong></small></a>
+                    <!-- <a href="<?= site_url('admin/email_unit_keluar/' . $c->id_u_sewa); ?>" type="button" class="btn btn-xs btn-success" name="btn_edit"><i class="fa fa-paper-plane"> Send</i></a> -->
 
                   </div>
                 <?php endforeach ?>
@@ -194,6 +195,7 @@
                   <div class="card-footer">
                     <a href="<?= site_url('admin/detail_jdw_genset/' . $c->id_jadwal_genset); ?>" style="text-decoration: none; color: black;"><strong><?= $c->nama_op; ?><br><?= $c->nama_genset; ?><br><?= $c->merek; ?></strong><br>
                       <small style="color: red;">Jadwal Berangkat Tanggal <strong><?= date('d/m/Y', strtotime($c->tgl_keluar)); ?></strong></small></a>
+                    <!-- <a href="<?= site_url('admin/email_jdw_genset/' . $c->id_jadwal_genset); ?>" type="button" class="btn btn-xs btn-success" name="btn_edit"><i class="fa fa-paper-plane"> Send</i></a> -->
 
                   </div>
                 <?php endforeach ?>
@@ -242,8 +244,7 @@
 
         <!-- ./col -->
 
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
+        <!-- <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-info">
             <div class="inner">
               <h3>Laporan</h3>
@@ -254,7 +255,7 @@
             </div>
             <a href="<?= site_url('admin/laporan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
-        </div>
+        </div> -->
         <div class="card">
           <!-- <div class="card-body">
             <?php if (is_array($count)) { ?>
