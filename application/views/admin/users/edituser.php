@@ -82,10 +82,10 @@
                                                     <option value="2" selected="">User Teknisi</option>
                                                     <option value="3" disabled>User Penyewa</option>
                                                 <?php } else { ?>
-                                                    <option value="0">User Admin</option>
-                                                    <option value="1">User Pimpinan</option>
-                                                    <option value="2">User Teknisi</option>
-                                                    <option value="3" disabled selected="">User Penyewa</option>
+                                                    <option value="0" disabled>User Admin</option>
+                                                    <option value="1" disabled>User Pimpinan</option>
+                                                    <option value="2" disabled>User Teknisi</option>
+                                                    <option value="3" selected="">User Penyewa</option>
                                                 <?php } ?> ?>
                                             </select>
                                         </div>
