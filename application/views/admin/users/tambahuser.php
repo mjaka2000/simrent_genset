@@ -81,7 +81,7 @@
                                             <option value="0">User Admin</option>
                                             <option value="1">User Teknisi</option>
                                             <option value="2">User Pimpinan</option>
-                                            <option value="3">User Penyewa</option>
+                                            <option value="3" disabled>User Penyewa</option>
                                         </select>
                                     </div>
                                 </div>

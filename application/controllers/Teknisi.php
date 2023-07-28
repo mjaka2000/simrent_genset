@@ -15,7 +15,12 @@ class Teknisi extends CI_Controller
 
     public function index()
     {
+        $tgl = date('Y-m-d');
+
+        $data['notifServGenset'] = $this->M_data->notif_ServGenset('tb_serv_genset', $tgl);
+        $data['numServGenset'] = $this->M_data->notif_ServGenset_Jml('tb_serv_genset', $tgl);
         $data['dataServGenset'] = $this->M_data->numrows('tb_serv_genset');
+        $data['dataServGensetAcc'] = $this->M_data->numrows('tb_serv_gst_acc');
         $data['dataStokSparepart'] = $this->M_data->numrows('tb_sparepart');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Home';

@@ -185,6 +185,46 @@ class M_data extends CI_Model
   //* Data Perbaikan Genset 
   ####################################
 
+  public function notif_ServGenset($tabel, $tgl)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = ' . $tabel . '.id_sparepart')
+      ->where('ket_perbaikan =', 0)
+      ->where('DATEDIFF(DATE_SUB(tgl_perbaikan, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
+
+      ->get();
+    return $query->result();
+  }
+
+  public function notif_ServGenset1($tabel, $tgl, $where)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = ' . $tabel . '.id_sparepart')
+      ->where('ket_perbaikan =', 0)
+      ->where('DATEDIFF(DATE_SUB(tgl_perbaikan, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
+      ->where($where)
+
+      ->get();
+    return $query->result();
+  }
+
+  public function notif_ServGenset_Jml($tabel, $tgl)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = ' . $tabel . '.id_sparepart')
+      ->where('ket_perbaikan =', 0)
+      ->where('DATEDIFF(DATE_SUB(tgl_perbaikan, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
+
+      ->get();
+    return $query->num_rows();
+  }
+
   public function get_data_service($tabel)
   {
     $query = $this->db->select()
