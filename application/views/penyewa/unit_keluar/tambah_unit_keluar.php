@@ -32,7 +32,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
-                            Tambah Data Genset Disewa
+                            Tambah Data Genset Digunakan
                         </div>
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
