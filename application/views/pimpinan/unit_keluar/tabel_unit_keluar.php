@@ -85,7 +85,8 @@
                                                 <td>Genset Masuk (Kembali)</td>
                                             <?php } elseif ($dt->status == 1) { ?>
                                                 <td>
-                                                    <a href="<?= site_url('admin/unit_new_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-danger" name="btn_barangmasuk"><i class="fa fa-times mr-2"></i>verifikasikan</a>
+                                                    <!-- <a href="<?= site_url('admin/unit_new_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-danger" name="btn_barangmasuk"><i class="fa fa-times mr-2"></i>verifikasikan</a> -->
+                                                    <a href="#" type="button" class="btn btn-xs btn-danger" name="btn_barangmasuk" title="*Data belum diverifikasi"><i class="fa fa-times mr-2"></i>not verified</a>
                                                 </td>
                                             <?php } else { ?>
                                                 <!-- <td align="center">
