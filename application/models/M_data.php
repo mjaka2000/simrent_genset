@@ -587,6 +587,7 @@ class M_data extends CI_Model
     $query = $this->db->select()
       ->from($tabel)
       ->where('status =', 1)
+      ->or_where('status =', 2)
       ->get();
     return $query->num_rows();
   }
