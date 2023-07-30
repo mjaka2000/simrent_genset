@@ -81,14 +81,27 @@
                                             <td><?= $dt->jumlah_hari; ?></td>
                                             <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
 
-                                            <?php if ($dt->status == 1) { ?>
+                                            <?php if ($dt->status == 0) { ?>
+                                                <td>Genset Masuk (Kembali)</td>
+                                            <?php } elseif ($dt->status == 1) { ?>
                                                 <td>
-                                                    <a href="#" type="button" class="btn btn-xs btn-info" name="btn_barangmasuk"><i class="fa fa-info mr-2"></i>Genset Masih Digunakan</a><br>
-                                                    <!-- <a href="<?= site_url('pimpinan/unit_keluar_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs bg-fuchsia btn-unitpanjang" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a><br> -->
-                                                    <!-- <a href="<?= site_url('pimpinan/unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-danger btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a> -->
+                                                    <a href="<?= site_url('admin/unit_new_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-danger" name="btn_barangmasuk"><i class="fa fa-times mr-2"></i>verifikasikan</a>
                                                 </td>
                                             <?php } else { ?>
-                                                <td>Genset Masuk (Kembali)</td>
+                                                <!-- <td align="center">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown" title="Opsi"><i class="fa fa-cog"></i> </button>
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                        </button>
+                                                        <div class="dropdown-menu" role="menu">
+                                                            <a href="<?= site_url('admin/unit_keluar_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-info btn-xs btn-flat btn-block" name="btn_barangmasuk"><i class="fa fa-edit mr-2"></i>Perpanjang</a>
+                                                            <a href="<?= site_url('admin/unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-success btn-flat btn-block btn-kembali" name="btn_barangkeluar"><i class="fas fa-sign-in-alt mr-2"></i>Genset Masuk</a>
+                                                        </div>
+                                                    </div>
+                                                </td> -->
+                                                <td>
+                                                    <a href="#" type="button" class="btn btn-xs btn-info" name="btn_barangmasuk"><i class="fa fa-info mr-2"></i>Genset Masih Digunakan</a><br>
+                                                </td>
                                             <?php } ?>
                                             <td>
                                                 <!-- <a href="<?= site_url('pimpinan/update_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->

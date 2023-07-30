@@ -1,6 +1,6 @@
-<?php $this->load->view('template/head-top-nav'); ?>
-<?php $this->load->view('penyewa/template/nav-top'); ?>
-<?php //$this->load->view('penyewa/template/sidebar'); 
+<?php $this->load->view('template/head'); ?>
+<?php $this->load->view('penyewa/template/nav'); ?>
+<?php $this->load->view('penyewa/template/sidebar');
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
