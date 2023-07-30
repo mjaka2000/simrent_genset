@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Jul 2023 pada 17.04
+-- Waktu pembuatan: 30 Jul 2023 pada 02.39
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -160,11 +160,11 @@ CREATE TABLE `tb_operator` (
 --
 
 INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `noktp_op`, `status_op`) VALUES
-(1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', '1623123432345436', 0),
+(1, 'Jaka Ja', 'Jl. sungai jingah', '0895619019104', '1623123432345436', 1),
 (2, 'adi', 'jl sukamara', '0878907678956', '1624543765468998', 0),
 (3, 'ijum', 'jl pulau laut', '0897819271234', '1643253487656745', 0),
 (5, 'wanda', 'sungai miai', '0897618391837', '1675685465987534', 0),
-(6, 'Wawan', 'Jl. Belitung Darat RT. 02', '0878124354432', '1623435433245886', 1),
+(6, 'Wawan', 'Jl. Belitung Darat RT. 02', '0878124354432', '1623435433245886', 0),
 (7, 'Agus', 'Jl. Manggis', '0821876723433', '1645765423457899', 0),
 (8, 'Andre S.', 'Jl. Handil Bakti Komp. Persada', '0898213489123', '1756435675346765', 0),
 (9, 'Sukma Lelana', 'Jl. Handil bakti', '0878678734658', '6756754567864567', 0),
@@ -196,10 +196,10 @@ CREATE TABLE `tb_pelanggan` (
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`, `id_user`) VALUES
 (4, 'anonim', 'Jl. Sunga Andai', '0895619213134', 'L', 'PT Rahmat', '2023-04-11', 0, 1, 0),
 (5, 'iwan f', 'jl kp melayu', '0878123121234', 'L', 'pt rahmat', '2023-04-16', 0, 1, 0),
-(8, 'Wanda', 'Jl. Mantuil', '0897738493722', 'L', 'PT. Abadi', '2023-06-26', 0, 0, 37),
+(8, 'Wanda', 'Jl. Mantuil', '0897738493722', 'L', 'PT. Abadi', '2023-06-26', 1, 0, 37),
 (9, 'Bayu Agung', 'Jl. A. Yani KM. 06', '0821564721344', 'L', '-', '2023-06-29', 0, 0, 38),
 (10, 'Khairullah', 'Jl. Dharma Praja 07', '0878671234123', 'L', 'Pribadi', '2023-07-02', 0, 0, 39),
-(11, 'Adrian Ali', 'Jl. Pahlawan, No. 10 Banjarmasin', '081345216712', 'L', 'PT. Maju Bersama', '2023-07-02', 1, 0, 40),
+(11, 'Adrian Ali', 'Jl. Pahlawan, No. 10 Banjarmasin', '081345216712', 'L', 'PT. Maju Bersama', '2023-07-02', 0, 0, 40),
 (12, 'Ahmad Yani', 'Jl. Pramuka, Komp. Satelit', '082132456712', 'L', 'Bintang Teknik', '2023-07-02', 0, 0, 41),
 (13, 'Nur Hikari', 'Jl. Sultan Adam, No. 15', '087812903478', 'P', '-', '2023-07-03', 0, 0, 42);
 
@@ -281,7 +281,7 @@ INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `
 (2, 3, 2, 'Ganti Oli', '2023-04-14', 1, '250000'),
 (18, 4, 4, 'GantiFuel pump', '2023-06-14', 1, '150000'),
 (19, 4, 1, 'cek oli', '2023-06-16', 1, '0'),
-(21, 5, 7, 'Solar Tersumbat', '2023-07-03', 0, '80000'),
+(21, 5, 7, 'Solar Tersumbat', '2023-07-03', 1, '80000'),
 (23, 6, 2, 'Penggantian oli mesin', '2023-07-14', 1, '150000'),
 (24, 8, 7, 'Penggantian Filter Solar', '2023-07-12', 1, '80000'),
 (25, 2, 6, 'Kuras tangki solar', '2023-07-13', 0, '0');
@@ -381,7 +381,7 @@ INSERT INTO `tb_unit_penyewaan` (`id_u_sewa`, `id_transaksi`, `tanggal_keluar`, 
 (24, 'GE-Jul2460', '2023-07-20', '2023-07-23', 'Gambut', 1, 8, 2, 3, 'Box Panel', '3', '3000000', 0),
 (25, 'GE-Jul3527', '2023-07-21', '2023-07-23', 'Gambut', 2, 9, 3, 2, 'Kabel 20M', '2', '1500000', 0),
 (26, 'GE-Jul7491', '2023-07-19', '2023-07-21', 'Siring', 3, 10, 4, 2, 'Panel', '2', '1500000', 0),
-(27, 'GE-Jul7890', '2023-07-27', '2023-07-30', 'Job Fair Siring', 6, 11, 4, 4, 'Box Panel Kecil', '3', '2250000', 1);
+(28, 'GE-Jul3274', '2023-07-30', '2023-08-01', 'BJB', 1, 8, 4, 3, '-', '2', '1500000', 2);
 
 -- --------------------------------------------------------
 
@@ -404,14 +404,14 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '26-07-2023 21:31'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '30-07-2023 8:36'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '24-07-2023 22:27'),
-(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '20-07-2023 9:55'),
+(33, 'aril', 'Teknik', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '28-07-2023 16:36'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '23-06-2023 18:26'),
-(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '20-07-2023 10:02'),
+(37, 'wanda123', 'Wanda', '$2y$10$wWJ.E/bIgYzelEjF4aGIMuuGxD7gdA46Pr3jLA7xwFuDgufsze/YC', 3, 'nopic.png', '30-07-2023 8:35'),
 (38, 'abay021', 'Bayu Agung', '$2y$10$QEeN8oD4rPRK2xQnGrdNA.omD00N3KHv.ND5Xy4wUGj65ZWWl7ZVe', 3, 'nopic.png', '15-07-2023 14:33'),
 (39, 'khai021', 'Khairullah', '$2y$10$m1dBvC60tGx0JgaX7LEDQ.Y.Inx4FAjeUZS1bEw6RmLdS4muAfnCu', 3, 'nopic.png', '05-07-2023 8:03'),
-(40, 'adrian123', 'Adrian Ali', '$2y$10$m/Cqzifn67ZQ3Pz762CatO3DKHUJ5/pH.G32YtqyC3vzEZ6HQ7CYK', 3, 'nopic.png', '02-07-2023 19:21'),
+(40, 'adrian123', 'Adrian Ali', '$2y$10$m/Cqzifn67ZQ3Pz762CatO3DKHUJ5/pH.G32YtqyC3vzEZ6HQ7CYK', 3, 'nopic.png', '30-07-2023 8:20'),
 (41, 'yaniAhm021', 'Ahmad Yani', '$2y$10$COCwQrSXoewNGdajAHUy4ORtyvvd8DIxNjTrsLO0mr4ekwy3rUMnW', 3, 'nopic.png', '02-07-2023 19:24'),
 (42, 'cahaya12', 'Nur Hikari', '$2y$10$OGy6N0Is0tgC/pWyTzQMxe6hza7xl63HrbrYCWuElDItwQ2JiOP1a', 3, 'nopic.png', '02-07-2023 19:26');
 
@@ -582,7 +582,7 @@ ALTER TABLE `tb_sparepart`
 -- AUTO_INCREMENT untuk tabel `tb_unit_penyewaan`
 --
 ALTER TABLE `tb_unit_penyewaan`
-  MODIFY `id_u_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_u_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
