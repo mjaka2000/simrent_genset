@@ -141,9 +141,11 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="harga" class="col-sm-3 col-form-label">Harga (Perhari)</label>
-                                        <div class="col-sm-9">
-
-                                            <input type="text" readonly name="harga" class="form-control" id="harga_perhari" value="">
+                                        <div class="input-group col-sm-9">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Rp</span>
+                                            </div>
+                                            <input type="text" readonly name="harga" class="form-control" id="harga_perhari">
                                         </div>
                                     </div>
                                     <hr>
@@ -186,8 +188,10 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="total" class="col-sm-3 col-form-label">Total Harga (Rp)</label>
-                                        <div class="col-sm-9">
-
+                                        <div class="input-group col-sm-9">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Rp</span>
+                                            </div>
                                             <input type="text" readonly name="total" class="form-control" id="total_harga" placeholder="Total Harga" value="<?= $du->total; ?>">
                                         </div>
                                     </div>
