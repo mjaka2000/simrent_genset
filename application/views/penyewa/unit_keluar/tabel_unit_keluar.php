@@ -82,12 +82,16 @@
                                             <td><?= $dt->jumlah_hari; ?></td>
                                             <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
 
-                                            <?php if ($dt->status == 1) { ?>
+                                            <?php if ($dt->status == 0) { ?>
                                                 <td>
-                                                    <a href="#" type="button" class="btn btn-xs btn-info" name="btn_barangmasuk"><i class="fa fa-info mr-2"></i>Genset Masih Digunakan</a>
+                                                    Genset Masuk (Kembali)
+                                                </td>
+                                            <?php } elseif ($dt->status == 1) { ?>
+                                                <td>
+                                                    <a href="#" type="button" class="btn btn-xs btn-danger" name="btn_barangmasuk" title="*Data belum diverifikasi"><i class="fa fa-times mr-2"></i>not verified</a>
                                                 </td>
                                             <?php } else { ?>
-                                                <td>Genset Masuk (Kembali)</td>
+                                                <td><a href="#" type="button" class="btn btn-xs btn-info" name="btn_barangmasuk"><i class="fa fa-info mr-2"></i>Genset Masih Digunakan</a></td>
                                             <?php } ?>
                                             <td>
                                                 <!-- <a href="<?= site_url('penyewa/update_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->

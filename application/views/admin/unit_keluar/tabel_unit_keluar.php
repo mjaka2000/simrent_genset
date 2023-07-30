@@ -80,7 +80,14 @@
                                             <td><?= $dt->nopol; ?></td>
                                             <td><?= $dt->jumlah_hari; ?></td>
                                             <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
-                                            <?php if ($dt->status == 1) { ?>
+
+                                            <?php if ($dt->status == 0) { ?>
+                                                <td>Genset Masuk (Kembali)</td>
+                                            <?php } elseif ($dt->status == 1) { ?>
+                                                <td>
+                                                    <a href="<?= site_url('admin/unit_new_update/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-xs btn-danger" name="btn_barangmasuk"><i class="fa fa-times mr-2"></i>verifikasikan</a>
+                                                </td>
+                                            <?php } else { ?>
                                                 <td align="center">
                                                     <div class="btn-group">
                                                         <button type="button" class="btn btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown" title="Opsi"><i class="fa fa-cog"></i> </button>
@@ -92,8 +99,6 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                            <?php } else { ?>
-                                                <td>Genset Masuk (Kembali)</td>
                                             <?php } ?>
                                             <td>
                                                 <!-- <a href="<?= site_url('admin/update_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->

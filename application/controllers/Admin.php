@@ -1555,6 +1555,92 @@ class Admin extends CI_Controller
 		redirect(site_url('admin/tabel_unit_keluar'));
 	}
 
+	public function unit_new_update()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_u_sewa' => $uri);
+		$data['data_unit_update'] = $this->M_data->get_data('tb_unit_penyewaan', $where);
+		$data['list_mobil'] = $this->M_data->select('tb_mobil');
+		$data['list_genset'] = $this->M_data->select('tb_genset');
+		$data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
+		$data['list_operator'] = $this->M_data->select('tb_operator');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Konfirmasi Pemakaian Genset';
+		$this->load->view('admin/unit_keluar/update_unit_new', $data);
+	}
+
+	public function proses_data_new()
+	{
+		$this->form_validation->set_rules('tanggal_masuk', 'Tanggal Masuk', 'trim|required');
+
+		$id_u_sewa       = $this->input->post('id_u_sewa', TRUE);
+
+		if ($this->form_validation->run() === TRUE) {
+			// $stok_gd           = $this->input->post('stok_gd', TRUE);
+			// $stok_pj           = $this->input->post('stok_pj', TRUE);
+			$id_transaksi     = $this->input->post('id_transaksi', TRUE);
+
+			$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
+			$tanggal_masuk    = $this->input->post('tanggal_masuk', TRUE);
+			$lokasi           = $this->input->post('lokasi', TRUE);
+			$id_operator    = $this->input->post('id_operator', TRUE);
+			$id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
+			$id_genset      = $this->input->post('id_genset', TRUE);
+			$id_mobil            = $this->input->post('id_mobil', TRUE);
+			$tambahan         = $this->input->post('tambahan', TRUE);
+			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
+			$jumlah_hari_lama = $this->input->post('jumlah_hari_lama', TRUE);
+			$total            = $this->input->post('total', TRUE);
+
+			$status_b = 2;
+
+			// if($jumlah_hari_lama == $jumlah_hari){
+			//   $status = 1;
+			// }else{
+			//   $status = 0;
+			// }
+
+			$where = array('id_u_sewa' => $id_u_sewa);
+			$data = array(
+				'id_transaksi'    => $id_transaksi,
+				'tanggal_keluar'          => $tanggal_keluar,
+				'tanggal_masuk'   => $tanggal_masuk,
+				'lokasi'           => $lokasi,
+				'id_operator'    => $id_operator,
+				'id_pelanggan'   => $id_pelanggan,
+				'id_genset'      => $id_genset,
+				'id_mobil'            => $id_mobil,
+				'tambahan'         => $tambahan,
+				'jumlah_hari'      => $jumlah_hari,
+				'total'            => $total,
+				'status'           => $status_b
+			);
+			// $stok_gd_new = ++$stok_gd;
+			// $stok_pj_new = --$stok_pj;
+			// $status_gst = 0;
+			// $status_op = 0;
+			// $status_plg = 0;
+			// $status = 2;
+
+			// $this->M_data->update_status('tb_unit_penyewaan', $where, $status_b);
+			// $this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
+			// $this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
+			// $this->M_data->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
+			// $this->M_data->menambah_kembali('tb_genset', $id_genset, $stok_gd_new);
+			// $this->M_data->mengurangi_kembali('tb_genset', $id_genset, $stok_pj_new);
+			// $this->M_data->insert('tb_unit_masuk', $data);
+			$this->M_data->update('tb_unit_penyewaan', $data, $where);
+			$this->session->set_flashdata('msg_sukses', 'Data Status diubah');
+			// $this->M_data->delete('tb_barang_masuk',$where);
+			redirect(site_url('admin/tabel_unit_keluar'));
+		} else {
+			// $data['title'] = 'Update Genset Masuk';
+			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+			$data['title'] = 'Konfirmasi Genset Masuk';
+			$this->load->view('admin/unit_keluar/update_unit_masuk', $data);
+		}
+	}
+
 	public function unit_keluar_update()
 	{
 		$uri = $this->uri->segment(3);
@@ -1590,7 +1676,7 @@ class Admin extends CI_Controller
 			$jumlah_hari_lama = $this->input->post('jumlah_hari_lama', TRUE);
 			$total            = $this->input->post('total', TRUE);
 
-			$status = 1;
+			// $status = 1;
 
 			$tanggal_masuk_new    = date('Y-m-d', strtotime($tanggal_keluar . "+" . $jumlah_hari . " days"));
 			// $total = $harga  * $jumlah_hari;
@@ -1619,11 +1705,11 @@ class Admin extends CI_Controller
 				'tambahan'         => $tambahan,
 				'jumlah_hari'      => $jumlah_hari,
 				'total'            => $total,
-				'status'           => $status
+				// 'status'           => $status
 			);
 
 			$this->M_data->update('tb_unit_penyewaan', $data, $where);
-			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+			$this->session->set_flashdata('msg_sukses', 'Tanggal Berhasil Diperpanjang');
 			// $this->M_data->delete('tb_barang_masuk',$where);
 			redirect(site_url('admin/tabel_unit_keluar'));
 		} else {

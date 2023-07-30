@@ -396,7 +396,7 @@ class M_data extends CI_Model
       ->from($tabel)
       ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
       ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
-      ->where('status =', 1)
+      ->where('status =', 2)
       ->where('DATEDIFF(DATE_SUB(tanggal_masuk, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
       ->where($where)
 
@@ -410,7 +410,7 @@ class M_data extends CI_Model
       ->from($tabel)
       ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
       ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
-      ->where('status =', 1)
+      ->where('status =', 2)
       ->where('DATEDIFF(DATE_SUB(tanggal_masuk, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
 
       ->get();
@@ -423,7 +423,7 @@ class M_data extends CI_Model
       ->from($tabel)
       ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
       ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
-      ->where('status =', 1)
+      ->where('status =', 2)
       ->where('DATEDIFF(DATE_SUB(tanggal_masuk, INTERVAL 1 DAY), "' . $tgl . '") <', 1)
 
       ->get();
@@ -458,6 +458,7 @@ class M_data extends CI_Model
       ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
       ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->where('status =', 1)
+      ->or_where('status =', 2)
       ->get();
     return $query->result();
   }
@@ -801,6 +802,7 @@ class M_data extends CI_Model
       ->join('tb_user', 'tb_user.id_user = tb_pelanggan.id_user')
       ->where('tb_pelanggan.id_user =', $this->session->userdata('id_user'))
       ->where('status =', 1)
+      ->or_where('status =', 2)
 
       ->get();
     return $query->result();

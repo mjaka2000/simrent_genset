@@ -150,7 +150,7 @@
                 <div class="dropdown-divider"></div>
                 <?php foreach ($notifOut as $c) : ?>
                   <div class="card-footer">
-                    <a href="<?= site_url('admin/detail_unit_keluar/' . $dt->id_u_sewa); ?>" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
+                    <a href="<?= site_url('admin/detail_unit_keluar/' . $c->id_u_sewa); ?>" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
                       <small style="color: red;">Pengambilan Genset Tanggal <strong><?= date('d/m/Y', strtotime($c->tanggal_masuk)); ?></strong></small></a>
                     <!-- <a href="<?= site_url('admin/email_unit_keluar/' . $c->id_u_sewa); ?>" type="button" class="btn btn-xs btn-success" name="btn_edit"><i class="fa fa-paper-plane"> Send</i></a> -->
 
