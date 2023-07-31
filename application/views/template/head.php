@@ -27,5 +27,5 @@
 
     </head>
 
-    <body class="hold-transition sidebar-mini" style="font-size: medium;">
+    <body class="hold-transition sidebar-mini text-sm">
       <div class="wrapper">

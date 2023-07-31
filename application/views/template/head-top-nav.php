@@ -25,5 +25,5 @@
       <link rel="icon" href="<?= base_url(); ?>assets/style/logo/ws-w.png">
     </head>
 
-    <body class="hold-transition layout-top-nav">
+    <body class="hold-transition layout-top-nav text-sm">
       <div class="wrapper">
