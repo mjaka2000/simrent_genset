@@ -330,7 +330,7 @@ class Admin extends CI_Controller
 	{
 		$config = array(
 			'upload_path' => './assets/upload/genset/',
-			'allowed_types' => 'gif|jpg|png',
+			'allowed_types' => 'jpg|png|jpeg',
 			'ecrypt_name'	=> false,
 			'overwrite'	=> true,
 			// 'file_name'	=> uniqid(),
@@ -946,7 +946,7 @@ class Admin extends CI_Controller
 	{
 		$config = array(
 			'upload_path' => './assets/upload/mobil/',
-			'allowed_types' => 'gif|jpg|png|jpeg',
+			'allowed_types' => 'jpg|png|jpeg',
 			'ecrypt_name'	=> false,
 			'overwrite'	=> true,
 			// 'file_name'	=> uniqid(),
