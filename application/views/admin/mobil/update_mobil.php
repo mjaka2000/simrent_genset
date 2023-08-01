@@ -101,6 +101,9 @@
 
                                         <input type="file" name="gambar_mobil" class="form-control" id="gambar_mobil">
                                         <input type="hidden" name="gambar_mobil_old" value="<?= $m->gambar_mobil; ?>">
+                                        <small style="color: red;">
+                                            <p>*File yang diijinkan "jpg|png|jpeg", max size 2MB.</p>
+                                        </small>
                                     </div>
 
                                     <hr>
