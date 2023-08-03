@@ -459,6 +459,7 @@ class M_data extends CI_Model
       ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->where('status =', 1)
       ->or_where('status =', 2)
+      ->order_by('tanggal_keluar', 'asc')
       ->get();
     return $query->result();
   }
