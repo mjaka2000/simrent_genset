@@ -76,7 +76,7 @@
                                                 <!-- <td><?= $dt->tglupdate_plg_blk; ?></td> -->
                                                 <td>
                                                     <!-- <a href="<?= site_url('admin/update_data_pelanggan/' . $dt->id_pelanggan); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
-                                                    <a href="<?= site_url('admin/kembalikan_pelanggan/' . $dt->id_pelanggan); ?>" type="button" class="btn btn-sm btn-warning btn-plg" name="btn_delete"><i class="fa fa-history"></i></a>
+                                                    <a href="<?= site_url('admin/kembalikan_pelanggan/' . $dt->id_pelanggan); ?>" title="Kembalikan Status Pelanggan" type="button" class="btn btn-sm btn-warning btn-plg" name="btn_delete"><i class="fa fa-history"></i></a>
                                                     <!-- <a href="<?= site_url('admin/hapus_pelanggan_blacklist/' . $dt->id_pelanggan); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
                                                 </td>
                                             </tr>

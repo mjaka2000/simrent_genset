@@ -113,42 +113,43 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
+              <li class="nav nav-item dropdown ">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                  <i class="far fa-bell fa-2x" style="color: white"></i>
+                  <?php if (empty($numOut)) { ?>
+                    <span></span>
+                  <?php } else { ?>
+                    <span class="badge badge-warning"><?= $numOut; ?></span>
+                  <?php } ?>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg">
+                  <span class="dropdown-item dropdown-header" style="background-color: #2596be;color: white;"><?= $numOut; ?> Pemberitahuan sewa genset</span>
+                  <div class="dropdown-divider"></div>
+                  <?php foreach ($notifOut as $c) : ?>
+                    <div class="card-footer">
+                      <a href="<?= site_url('pimpinan/detail_unit_keluar/' . $c->id_u_sewa); ?>" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
+                        <small style="color: red;">Pengambilan Genset Tanggal <strong><?= date('d/m/Y', strtotime($c->tanggal_masuk)); ?></strong></small></a>
+                      <!-- <a href="<?= site_url('pimpinan/email_unit_keluar/' . $c->id_u_sewa); ?>" type="button" class="btn btn-xs btn-success" name="btn_edit"><i class="fa fa-paper-plane"> Send</i></a> -->
 
-              <?php if (!empty($UnitKeluar)) { ?>
+                    </div>
+                  <?php endforeach ?>
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item dropdown-footer"></a>
+                </div>
+              </li>
+              <!-- <?php if (!empty($UnitKeluar)) { ?>
                 <h3><?= $UnitKeluar ?></h3>
               <?php } else { ?>
                 <h3>0</h3>
-              <?php } ?>
+              <?php } ?> -->
               <p>Data Unit Keluar</p>
 
             </div>
             <div class="icon">
               <i class="fa fa-copy"></i>
             </div>
-            <!-- <a href="<?= site_url('pimpinan/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
-            <li class="nav nav-item dropdown tengah small-box-footer">
-              <a class="nav-link" data-toggle="dropdown" href="#">
-                <span style="color: aliceblue;">More info <i class="fa fa-arrow-circle-right"></i></span>
-                <?php if (empty($numOut)) { ?>
-                  <span></span>
-                <?php } else { ?>
-                  <span class="badge badge-warning"><?= $numOut; ?></span>
-                <?php } ?>
-              </a>
-              <div class="dropdown-menu dropdown-menu-lg">
-                <span class="dropdown-item dropdown-header" style="background-color: #2596be;color: white;"><?= $numOut; ?> Pemberitahuan sewa genset</span>
-                <div class="dropdown-divider"></div>
-                <?php foreach ($notifOut as $c) : ?>
-                  <div class="card-footer">
-                    <a href="#" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
-                      <small style="color: red;">Pengambilan Genset Tanggal <strong><?= date('d/m/Y', strtotime($c->tanggal_masuk)); ?></strong></small></a>
+            <a href="<?= site_url('pimpinan/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 
-                  </div>
-                <?php endforeach ?>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer"></a>
-              </div>
-            </li>
           </div>
         </div>
 
@@ -156,42 +157,43 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
+              <li class="nav nav-item dropdown ">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                  <i class="far fa-bell fa-2x" style="color: white"></i>
+                  <?php if (empty($numJdw)) { ?>
+                    <span></span>
+                  <?php } else { ?>
+                    <span class="badge badge-warning"><?= $numJdw; ?></span>
+                  <?php } ?>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg">
+                  <span class="dropdown-item dropdown-header" style="background-color: #2596be;color: white;"><?= $numJdw; ?> Pemberitahuan jadwal genset</span>
+                  <div class="dropdown-divider"></div>
+                  <?php foreach ($notifJdw as $c) : ?>
+                    <div class="card-footer">
+                      <a href="<?= site_url('pimpinan/detail_jdw_genset/' . $c->id_jadwal_genset); ?>" style="text-decoration: none; color: black;"><strong><?= $c->nama_op; ?><br><?= $c->nama_genset; ?><br><?= $c->merek; ?></strong><br>
+                        <small style="color: red;">Jadwal Berangkat Tanggal <strong><?= date('d/m/Y', strtotime($c->tgl_keluar)); ?></strong></small></a>
+                      <!-- <a href="<?= site_url('pimpinan/email_jdw_genset/' . $c->id_jadwal_genset); ?>" type="button" class="btn btn-xs btn-success" name="btn_edit"><i class="fa fa-paper-plane"> Send</i></a> -->
 
-              <?php if (!empty($jdwGst)) { ?>
+                    </div>
+                  <?php endforeach ?>
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item dropdown-footer"></a>
+                </div>
+              </li>
+              <!-- <?php if (!empty($jdwGst)) { ?>
                 <h3><?= $jdwGst ?></h3>
               <?php } else { ?>
                 <h3>0</h3>
-              <?php } ?>
+              <?php } ?> -->
               <p>Jadwal Penyewaan Genset</p>
 
             </div>
             <div class="icon">
               <i class="fa fa-copy"></i>
             </div>
-            <!-- <a href="<?= site_url('pimpinan/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
-            <li class="nav nav-item dropdown tengah small-box-footer">
-              <a class="nav-link" data-toggle="dropdown" href="#">
-                <span style="color: aliceblue;">More info <i class="fa fa-arrow-circle-right"></i></span>
-                <?php if (empty($numJdw)) { ?>
-                  <span></span>
-                <?php } else { ?>
-                  <span class="badge badge-warning"><?= $numJdw; ?></span>
-                <?php } ?>
-              </a>
-              <div class="dropdown-menu dropdown-menu-lg">
-                <span class="dropdown-item dropdown-header" style="background-color: #2596be;color: white;"><?= $numJdw; ?> Pemberitahuan jadwal genset</span>
-                <div class="dropdown-divider"></div>
-                <?php foreach ($notifJdw as $c) : ?>
-                  <div class="card-footer">
-                    <a href="<?= site_url('pimpinan/detail_jdw_genset/' . $c->id_jadwal_genset); ?>" style="text-decoration: none; color: black;"><strong><?= $c->nama_op; ?><br><?= $c->nama_genset; ?><br><?= $c->merek; ?></strong><br>
-                      <small style="color: red;">Jadwal Berangkat Tanggal <strong><?= date('d/m/Y', strtotime($c->tgl_keluar)); ?></strong></small></a>
+            <a href="<?= site_url('pimpinan/tabel_unit_keluar') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 
-                  </div>
-                <?php endforeach ?>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer"></a>
-              </div>
-            </li>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">

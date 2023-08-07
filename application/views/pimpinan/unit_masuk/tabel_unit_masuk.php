@@ -84,18 +84,28 @@
                                             <?php } ?>
                                             <td>
                                                 <!-- <a href="<?= base_url('pimpinan/hapus_unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
-                                                <a href="<?= base_url('pimpinan/detail_unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
+                                                <!-- <a href="<?= base_url('pimpinan/detail_unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
+                                                <button type="button" data-toggle="modal" data-target="#DetailUMasuk<?= $dt->id_u_sewa; ?>" title="Lihat Detail" class="btn btn-warning btn-sm"><i class="fa fa-info-circle"></i></button>
+
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
                             <div class="box-footer">
-                                <?php foreach ($total_data as $td) : ?>
+                                <?php foreach ($pendapatan as $pd) { ?>
+                                    <?php if (!empty($pd->total)) { ?>
+                                        <h5>Rp&nbsp;<?= number_format($pd->total) ?></h5>
+                                    <?php } else { ?>
+                                        <h5>Rp&nbsp;0</h5>
+                                    <?php } ?>
+                                    <p style="color: red;">Total Pendapatan <?= $label ?></p>
+                                <?php } ?>
+                                <!-- <?php foreach ($total_data as $td) : ?>
                                     <h5>
                                         <p style="color: red;">Total Pendapatan: Rp&nbsp;<?= number_format($td->total); ?></p>
                                     </h5>
-                                <?php endforeach; ?>
+                                <?php endforeach; ?> -->
                                 <!-- <h5><strong>Keterangan :</strong></h5> -->
                                 <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
                                 <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash "></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->
@@ -103,6 +113,224 @@
                             </div>
                         </div>
                     </div>
+                    <?php foreach ($list_data as $d) { ?>
+
+                        <div class="modal fade" id="DetailUMasuk<?= $d->id_u_sewa; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title" id="staticBackdropLabel">Detail Data Penyewaan Genset</h6>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span>&times;</span>
+                                        </button>
+
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <?php if (validation_errors()) { ?>
+                                            <div class="alert alert-warning alert-dismissable">
+                                                <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                                                <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
+                                            </div>
+                                        <?php } ?>
+                                        <table class="table" style="width:100%">
+                                            <tr>
+                                                <th style="vertical-align: middle">ID Transaksi</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= $d->id_transaksi; ?>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Tanggal Keluar</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= date('d-m-Y', strtotime($d->tanggal_keluar)); ?> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Tanggal Masuk</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= date('d-m-Y', strtotime($d->tanggal_masuk)); ?> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th style="vertical-align: middle">Lokasi</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= $d->lokasi; ?>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Nama Operator</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= $d->nama_op; ?>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Nama Pelanggan</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= $d->nama_plg; ?>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Nomor Genset</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= $d->kode_genset; ?> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Nama Genset</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= $d->nama_genset; ?> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Daya</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= $d->daya; ?> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Harga (Perhari)</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;Rp&nbsp;<?= number_format($d->harga); ?> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Nopol Mobil</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= $d->nopol; ?> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Merek</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= $d->merek; ?> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Tambahan</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= $d->tambahan; ?> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Jumlah Hari</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;<?= $d->jumlah_hari; ?> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="vertical-align: middle">Total Harga (Rp)</th>
+                                                <td style="vertical-align: middle;">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                :&nbsp;Rp&nbsp;<?= number_format($d->total); ?> </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                        <!-- <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button> -->
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div><!-- /.container-fluid -->

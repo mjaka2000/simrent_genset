@@ -41,41 +41,42 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <?php if (!empty($dataServGenset)) { ?>
+                            <li class="nav nav-item dropdown ">
+                                <a class="nav-link" data-toggle="dropdown" href="#">
+                                    <i class="far fa-bell fa-2x" style="color: white"></i>
+                                    <?php if (empty($numServGenset)) { ?>
+                                        <span></span>
+                                    <?php } else { ?>
+                                        <span class="badge badge-warning"><?= $numServGenset; ?></span>
+                                    <?php } ?>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-lg">
+                                    <span class="dropdown-item dropdown-header" style="background-color: #2596be;color: white;"><?= $numServGenset; ?> Pemberitahuan perbaikan genset</span>
+                                    <div class="dropdown-divider"></div>
+                                    <?php foreach ($notifServGenset as $c) : ?>
+                                        <div class="card-footer">
+                                            <a href="<?= site_url('teknisi/detail_service_genset/' . $c->id_perbaikan_gst); ?>" style="text-decoration: none; color: black;"><strong><?= $c->nama_genset; ?><br><?= $c->jenis_perbaikan; ?></strong><br>
+                                                <small style="color: red;">Deadline pengajuan hasil perbaikan genset <strong><?= date('d/m/Y', strtotime($c->tgl_perbaikan)); ?></strong></small></a>
+                                            <!-- <a href="<?= site_url('teknisi/email_jdw_genset/' . $c->id_perbaikan_gst); ?>" type="button" class="btn btn-xs btn-success" name="btn_edit"><i class="fa fa-paper-plane"> Send</i></a> -->
+
+                                        </div>
+                                    <?php endforeach ?>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item dropdown-footer"></a>
+                                </div>
+                            </li>
+                            <!-- <?php if (!empty($dataServGenset)) { ?>
                                 <h3><?= $dataServGenset ?></h3>
                             <?php } else { ?>
                                 <h3>0</h3>
-                            <?php } ?>
+                            <?php } ?> -->
                             <p>Perbaikan Genset</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-wrench"></i>
                         </div>
-                        <!-- <a href="<?= site_url(); ?>teknisi/tabel_service_genset" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
-                        <li class="nav nav-item dropdown tengah small-box-footer">
-                            <a class="nav-link" data-toggle="dropdown" href="#">
-                                <span style="color: aliceblue;">More info <i class="fa fa-arrow-circle-right"></i></span>
-                                <?php if (empty($numServGenset)) { ?>
-                                    <span></span>
-                                <?php } else { ?>
-                                    <span class="badge badge-warning"><?= $numServGenset; ?></span>
-                                <?php } ?>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-lg">
-                                <span class="dropdown-item dropdown-header" style="background-color: #2596be;color: white;"><?= $numServGenset; ?> Pemberitahuan perbaikan genset</span>
-                                <div class="dropdown-divider"></div>
-                                <?php foreach ($notifServGenset as $c) : ?>
-                                    <div class="card-footer">
-                                        <a href="<?= site_url('teknisi/detail_service_genset/' . $c->id_perbaikan_gst); ?>" style="text-decoration: none; color: black;"><strong><?= $c->nama_genset; ?><br><?= $c->jenis_perbaikan; ?></strong><br>
-                                            <small style="color: red;">Deadline pengajuan hasil perbaikan genset <strong><?= date('d/m/Y', strtotime($c->tgl_perbaikan)); ?></strong></small></a>
-                                        <!-- <a href="<?= site_url('teknisi/email_jdw_genset/' . $c->id_perbaikan_gst); ?>" type="button" class="btn btn-xs btn-success" name="btn_edit"><i class="fa fa-paper-plane"> Send</i></a> -->
+                        <a href="<?= site_url(); ?>teknisi/tabel_service_genset" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 
-                                    </div>
-                                <?php endforeach ?>
-                                <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item dropdown-footer"></a>
-                            </div>
-                        </li>
                     </div>
                 </div>
                 <div class="col-lg-3 col-xs-6">

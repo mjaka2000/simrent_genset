@@ -96,7 +96,9 @@
                                                 <td><?= $dt->tempat_beli; ?></td>
                                                 <td><?= $dt->stok; ?></td>
                                                 <td>Rp&nbsp;<?= number_format($dt->harga_sparepart); ?></td>
-                                                <td><a href="<?= site_url('teknisi/update_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
+                                                <td>
+                                                    <button type="button" data-toggle="modal" data-target="#staticEditSparepart<?= $dt->id_sparepart; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
+                                                    <!-- <a href="<?= site_url('teknisi/update_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a> -->
                                                     <a href="<?= site_url('teknisi/hapus_sparepart/' . $dt->id_sparepart); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
                                                     <!-- <a href="<?= site_url('teknisi/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle"></i></a> -->
                                                 </td>
@@ -109,6 +111,128 @@
                             </table>
                         </div>
                     </div>
+                    <div class="modal fade" id="staticAddSparepart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="staticBackdropLabel">Tambah Data Stok Sparepart</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span>&times;</span>
+                                    </button>
+
+
+                                </div>
+                                <div class="modal-body">
+                                    <?php if (validation_errors()) { ?>
+                                        <div class="alert alert-warning alert-dismissable">
+                                            <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                                            <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
+                                        </div>
+                                    <?php } ?>
+
+                                    <form action="<?= site_url('teknisi/proses_tambah_sparepart'); ?>" method="post" role="form">
+
+                                        <div class="form-group">
+                                            <label for="nama_sparepart" class="form-label">Nama Sparepart</label>
+
+                                            <input type="text" name="nama_sparepart" class="form-control" id="nama_sparepart" placeholder="Masukkan Nama Sparepart" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tanggal_beli" class="form-label">Tanggal Beli</label>
+
+                                            <input type="date" name="tanggal_beli" class="form-control" id="tanggal_beli" placeholder="Masukkan Tanggal Beli">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tempat_beli" class="form-label">Tempat Beli</label>
+
+                                            <input type="text" name="tempat_beli" class="form-control" id="tempat_beli" placeholder="Masukkan Tempat Beli" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="stok" class="form-label">Stok</label>
+
+                                            <input type="number" name="stok" class="form-control" id="stok" placeholder="Masukkan Stok yang Dibeli" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="stok" class="form-label">Harga Sparepart</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon">Rp</span>
+                                                </div>
+                                                <input type="number" name="harga_sparepart" class="form-control" id="harga_sparepart" placeholder="Masukkan Harga yang Dibeli" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
+                                            </div>
+                                        </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <?php foreach ($list_sparepart as $dt) { ?>
+
+                        <div class="modal fade" id="staticEditSparepart<?= $dt->id_sparepart; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title" id="staticBackdropLabel">Ubah Data Stok Sparepart</h6>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span>&times;</span>
+                                        </button>
+
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <?php if (validation_errors()) { ?>
+                                            <div class="alert alert-warning alert-dismissable">
+                                                <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                                                <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
+                                            </div>
+                                        <?php } ?>
+                                        <form action="<?= site_url('teknisi/proses_update_sparepart'); ?>" method="post" role="form">
+
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="<?= $dt->id_sparepart; ?>">
+                                                <label for="nama_sparepart" class="form-label">Nama Sparepart</label>
+
+                                                <input type="text" name="nama_sparepart" class="form-control" id="nama_sparepart" placeholder="Masukkan Nama Sparepart" required value="<?= $dt->nama_sparepart; ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="tanggal_beli" class="form-label">Tanggal Beli</label>
+
+                                                <input type="date" name="tanggal_beli" class="form-control form_datetime" id="tanggal_beli" placeholder="Masukkan Tanggal Beli" required value="<?= $dt->tanggal_beli; ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="tempat_beli" class="form-label">Tempat Beli</label>
+
+                                                <input type="text" name="tempat_beli" class="form-control" id="tempat_beli" placeholder="Masukkan Tempat Beli" required value="<?= $dt->tempat_beli; ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="stok" class="form-label">Stok</label>
+
+                                                <input type="number" name="stok" class="form-control" id="stok" placeholder="Masukkan Stok yang Dibeli" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $dt->stok; ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="stok" class="form-label">Harga Sparepart</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon">Rp</span>
+                                                    </div>
+                                                    <input type="number" name="harga_sparepart" class="form-control" id="harga_sparepart" placeholder="Masukkan Harga yang Dibeli" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $dt->harga_sparepart; ?>">
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
+                                        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
