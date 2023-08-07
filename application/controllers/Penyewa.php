@@ -199,6 +199,10 @@ class Penyewa extends CI_Controller
 
     public function tabel_unit_keluar()
     {
+        $data['list_mobil'] = $this->M_data->select('tb_mobil');
+        $data['list_genset'] = $this->M_data->select_gst('tb_genset');
+        $data['list_pelanggan'] = $this->M_data->get_data_plg('tb_pelanggan');
+        $data['list_operator'] = $this->M_data->select_op('tb_operator');
         $data['list_data'] = $this->M_data->sel_data_u_keluar('tb_unit_penyewaan');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Unit Sewa';
@@ -301,7 +305,7 @@ class Penyewa extends CI_Controller
             $data['list_operator'] = $this->M_data->select('tb_operator');
             $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Tambah Unit Sewa';
-            $this->load->view('penyewa/unit_keluar/tambah_unit_keluar', $data);
+            $this->load->view('penyewa/unit_keluar/tabel_unit_keluar', $data);
         }
     }
     ####################################
