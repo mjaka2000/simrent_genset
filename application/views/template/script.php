@@ -53,5 +53,5 @@
             }
         })
         return false;
-    }); //* Script untuk memuat sweetalert hapus data
+    }); //* Script untuk memuat sweetalert logout
 </script>

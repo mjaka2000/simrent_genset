@@ -108,7 +108,7 @@
 </div>
 <?php $this->load->view('template/footer'); ?>
 
-<?php $this->load->view('pimpinan/template/script') ?>
+<?php $this->load->view('template/script') ?>
 
 </body>
 

@@ -41,7 +41,6 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <!-- <button onclick="window.location.href='<?= site_url('admin/tambah_users'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button> -->
                             <button data-toggle="modal" data-target="#AddUser" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
 
                             <table id="example1" class="table table-bordered table-hover" style="width:100%">
@@ -76,7 +75,6 @@
                                                 <td><?= $u->last_login ?></td>
                                                 <td>
                                                     <button type="button" data-toggle="modal" data-target="#EditUser<?= $u->id_user; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
-                                                    <!-- <a href="<?= site_url('admin/edit_user/' . $u->id_user); ?>" type="button" title="Edit" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
                                                     <a href="<?= site_url('admin/proses_deleteuser/' . $u->id_user); ?>" type="button" title="Hapus" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
                                                 </td>
                                             </tr>
@@ -234,7 +232,7 @@
 </div>
 <!-- /.content-wrapper -->
 <?php $this->load->view('template/footer'); ?>
-<?php $this->load->view('admin/template/script') ?>
+<?php $this->load->view('template/script') ?>
 
 <script type="text/javascript">
     $(function() {

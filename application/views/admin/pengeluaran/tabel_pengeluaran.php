@@ -41,7 +41,6 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <!-- <button onclick="window.location.href='<?= site_url('admin/tambah_data_pengeluaran'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button> -->
                             <button data-toggle="modal" data-target="#AddPengeluaran" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
                             <button data-toggle="modal" data-target="#staticKeluarBulanan" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-success" name="KeluarBulanan"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
 
@@ -72,9 +71,7 @@
                                             <td>Rp&nbsp;<?= number_format($dt->biaya_pengeluaran); ?></td>
                                             <td>
                                                 <button type="button" data-toggle="modal" data-target="#EditPengeluaran<?= $dt->id_pengeluaran; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
-                                                <!-- <a href="<?= site_url('admin/update_data_pengeluaran/' . $dt->id_pengeluaran); ?>" type="button" title="Edit" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
                                                 <a href="<?= site_url('admin/hapus_pengeluaran/' . $dt->id_pengeluaran); ?>" type="button" title="Hapus" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
-                                                <!-- <a href="<?= site_url('admin/'); ?>" type="button" class="btn btn-xs btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -241,7 +238,7 @@
 </div>
 <?php $this->load->view('template/footer'); ?>
 
-<?php $this->load->view('admin/template/script') ?>
+<?php $this->load->view('template/script') ?>
 <script>
     //* Script untuk menampilkan loading
     document.onreadystatechange = function() {

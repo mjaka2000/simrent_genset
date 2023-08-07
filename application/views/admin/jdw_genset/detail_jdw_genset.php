@@ -153,7 +153,7 @@
 </div>
 <?php $this->load->view('template/footer'); ?>
 
-<?php $this->load->view('admin/template/script') ?>
+<?php $this->load->view('template/script') ?>
 <script>
     // $("#id_transaksi").change(function() {
     //     let id_transaksi = $(this).val();

@@ -41,7 +41,6 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <!-- <button onclick="window.location.href='<?= site_url('admin/tambah_jdw_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button> -->
                             <!-- <button onclick="window.location.href='<?= site_url('admin/email_jdw_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button> -->
                             <button data-toggle="modal" data-target="#AddJdwGst" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
 
@@ -81,7 +80,6 @@
                                             <?php } ?>
                                             <td>
                                                 <button type="button" data-toggle="modal" data-target="#EditJdwGst<?= $d->id_jadwal_genset; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
-                                                <!-- <a href="<?= site_url('admin/update_jdw_genset/' . $d->id_jadwal_genset); ?>" type="button" title="Edit" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a> -->
                                                 <a href="<?= site_url('admin/hapus_jdw_genset/' . $d->id_jadwal_genset); ?>" type="button" title="Hapus" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
                                                 <!-- <a href="<?= site_url('admin/detail_jdw_genset/' . $d->id_jadwal_genset); ?>" title="Lihat Detail" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle"></i></a> -->
                                                 <!-- <a href="<?= site_url('report/cetak_jdw_genset/' . $d->id_jadwal_genset); ?>"  title="Cetak" target="_blank" type="button" class="btn btn-sm btn-info" name="btn_detail"><i class="fa fa-print"></i></a> -->
@@ -328,7 +326,7 @@
 </div>
 <?php $this->load->view('template/footer'); ?>
 
-<?php $this->load->view('admin/template/script') ?>
+<?php $this->load->view('template/script') ?>
 <script>
     //* Script untuk menampilkan loading
     document.onreadystatechange = function() {

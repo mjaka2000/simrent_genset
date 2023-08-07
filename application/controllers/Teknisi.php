@@ -322,7 +322,7 @@ class Teknisi extends CI_Controller
         } else {
             $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Tambah Detail Perbaikan';
-            $this->load->view('teknisi/service_genset/tambah_detailservice_genset', $data);
+            $this->load->view('teknisi/service_genset/tabel_service_genset', $data);
         }
     }
 

@@ -45,7 +45,6 @@
                             <?php foreach ($list_data as $d) : ?>
                                 <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali" style="margin-bottom:10px;"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                 <button data-toggle="modal" data-target="#staticAddServGstDet" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
-                                <!-- <button onclick="window.location.href='<?= site_url('teknisi/tambah_service_detail/' . $d->id_perbaikan_gst); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button> -->
                                 <!-- <a href="<?= site_url('report/cetak_service_detail/' . $d->id_perbaikan_gst); ?>" target="_blank" type="button" style="margin-bottom:10px;margin-left: 10px;" class="btn btn-sm btn-default" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a> -->
                                 <table class="table" style="width:35%">
                                     <tr>
@@ -181,7 +180,7 @@
                                                 <?php } else { ?>
                                                     <td>Pending</td>
                                                 <?php } ?>
-                                                <td><a href="<?= site_url('teknisi/hapus_detail/' . $dt->id_detail_serv); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
+                                                <td><a href="<?= site_url('teknisi/hapus_detail/' . $dt->id_detail_serv); ?>" type="button" title="Hapus" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
                                                 </td>
 
                                             </tr>
@@ -255,7 +254,7 @@
 </div>
 <?php $this->load->view('template/footer'); ?>
 
-<?php $this->load->view('teknisi/template/script') ?>
+<?php $this->load->view('template/script') ?>
 <script>
     //* Script untuk menampilkan loading
     document.onreadystatechange = function() {

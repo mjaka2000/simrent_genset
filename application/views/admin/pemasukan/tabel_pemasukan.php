@@ -42,14 +42,13 @@
                                 </div>
                             <?php } ?>
                             <button data-toggle="modal" data-target="#AddPendapatan" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
-                            <!-- <button onclick="window.location.href='<?= site_url('admin/tambah_pemasukan'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button> -->
                             <button data-toggle="modal" data-target="#staticPendapatanBulanan" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-success" name="tambah_data"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>
                                         <?php foreach ($total_data as $td) : ?>
-                                            <th colspan="7" style="text-align: center;">Total Pendapatan <?php echo $label ?> adalah: <span style="color: red;">Rp&nbsp;<?= number_format($td->total); ?></span></th>
+                                            <th colspan="8" style="text-align: center;">Total Pendapatan <?php echo $label ?> adalah: <span style="color: red;">Rp&nbsp;<?= number_format($td->total); ?></span></th>
                                         <?php endforeach; ?>
                                     </tr>
                                     <tr>
@@ -80,7 +79,6 @@
                                             <td><?= $d->keterangan; ?></td>
                                             <td>
                                                 <button type="button" data-toggle="modal" data-target="#EditPendapatan<?= $d->id_pendapatan; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
-                                                <!-- <a href="<?= site_url('admin/edit_pemasukan/' . $d->id_pendapatan); ?>" type="button" title="Edit" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
                                                 <a href="<?= site_url('admin/hapus_pemasukan/' . $d->id_pendapatan); ?>" type="button" title="Hapus" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
                                             </td>
                                         </tr>
@@ -282,7 +280,7 @@
 </div>
 <?php $this->load->view('template/footer'); ?>
 
-<?php $this->load->view('admin/template/script') ?>
+<?php $this->load->view('template/script') ?>
 <script>
     //* Script untuk menampilkan loading
     document.onreadystatechange = function() {

@@ -218,7 +218,7 @@
 </div>
 
 <?php $this->load->view('template/footer'); ?>
-<?php $this->load->view('pimpinan/template/script') ?>
+<?php $this->load->view('template/script') ?>
 <script type="text/javascript">
     //* Script untuk memuat data genset
     $("#kode_genset").change(function() {

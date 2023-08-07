@@ -189,7 +189,7 @@ class Penyewa extends CI_Controller
         } else {
             $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Ubah Data Pelanggan';
-            $this->load->view('penyewa/pelanggan/update_pelanggan');
+            $this->load->view('penyewa/pelanggan/tabel_pelanggan');
         }
     }
 

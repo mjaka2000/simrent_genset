@@ -41,7 +41,6 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <!-- <button onclick="window.location.href='<?= site_url('admin/tambah_service_genset_acc'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button> -->
                             <button data-toggle="modal" data-target="#staticAddServGstAcc" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
@@ -76,9 +75,7 @@
                                                 <?php } ?>
                                                 <td>
                                                     <button type="button" data-toggle="modal" data-target="#staticEditServGstAcc<?= $d->id_serv_gst_acc; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
-                                                    <!-- <a href="<?= base_url('admin/update_service_genset_acc/' . $d->id_serv_gst_acc); ?>" type="button" title="Edit" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a> -->
                                                     <a href="<?= base_url('admin/hapus_service_genset_acc/' . $d->id_serv_gst_acc); ?>" type="button" title="Hapus" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
-                                                    <!-- <a href="<?= base_url('admin/detail_service_genset/' . $d->id_serv_gst_acc); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -240,7 +237,7 @@
 </div>
 <?php $this->load->view('template/footer'); ?>
 
-<?php $this->load->view('admin/template/script') ?>
+<?php $this->load->view('template/script') ?>
 <script>
     //* Script untuk menampilkan loading
     document.onreadystatechange = function() {

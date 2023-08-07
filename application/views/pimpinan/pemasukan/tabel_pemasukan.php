@@ -49,7 +49,7 @@
                                 <thead>
                                     <tr>
                                         <?php foreach ($total_data as $td) : ?>
-                                            <th colspan="7" style="text-align: center;">Total Pendapatan <?php echo $label ?> adalah: <span style="color: red;">Rp&nbsp;<?= number_format($td->total); ?></span></th>
+                                            <th colspan="8" style="text-align: center;">Total Pendapatan <?php echo $label ?> adalah: <span style="color: red;">Rp&nbsp;<?= number_format($td->total); ?></span></th>
                                         <?php endforeach; ?>
                                     </tr>
                                     <tr>
@@ -283,7 +283,7 @@
 </div>
 <?php $this->load->view('template/footer'); ?>
 
-<?php $this->load->view('pimpinan/template/script') ?>
+<?php $this->load->view('template/script') ?>
 <script>
     //* Script untuk menampilkan loading
     document.onreadystatechange = function() {

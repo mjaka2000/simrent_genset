@@ -42,7 +42,6 @@
                                 </div>
                             <?php } ?>
 
-                            <!-- <button onclick="window.location.href='<?= site_url('teknisi/tambah_service_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button> -->
                             <button data-toggle="modal" data-target="#staticAddServGst" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
@@ -79,7 +78,6 @@
                                                 <td>Rp&nbsp;<?= number_format($dt->biaya_perbaikan); ?></td>
                                                 <td>
                                                     <button type="button" data-toggle="modal" data-target="#staticEditServGst<?= $dt->id_perbaikan_gst; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
-                                                    <!-- <a href="<?= base_url('teknisi/update_data_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a> -->
                                                     <!-- <a href="<?= base_url('teknisi/hapus_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" title="Hapus" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a> -->
                                                     <a href="<?= base_url('teknisi/detail_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" title="Lihat Detail" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>
                                                 </td>
@@ -289,7 +287,7 @@
 </div>
 <?php $this->load->view('template/footer'); ?>
 
-<?php $this->load->view('teknisi/template/script') ?>
+<?php $this->load->view('template/script') ?>
 <script>
     //* Script untuk menampilkan loading
     document.onreadystatechange = function() {

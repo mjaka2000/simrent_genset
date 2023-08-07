@@ -137,7 +137,7 @@
                   <div class="dropdown-divider"></div>
                   <?php foreach ($notifOut as $c) : ?>
                     <div class="card-footer">
-                      <a href="<?= site_url('admin/detail_unit_keluar/' . $c->id_u_sewa); ?>" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
+                      <a href="#" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong><br>
                         <small style="color: red;">Pengambilan Genset Tanggal <strong><?= date('d/m/Y', strtotime($c->tanggal_masuk)); ?></strong></small></a>
                       <!-- <a href="<?= site_url('admin/email_unit_keluar/' . $c->id_u_sewa); ?>" type="button" class="btn btn-xs btn-success" name="btn_edit"><i class="fa fa-paper-plane"> Send</i></a> -->
 
@@ -180,7 +180,7 @@
                   <div class="dropdown-divider"></div>
                   <?php foreach ($notifJdw as $c) : ?>
                     <div class="card-footer">
-                      <a href="<?= site_url('admin/detail_jdw_genset/' . $c->id_jadwal_genset); ?>" style="text-decoration: none; color: black;"><strong><?= $c->nama_op; ?><br><?= $c->nama_genset; ?><br><?= $c->merek; ?></strong><br>
+                      <a href="#" style="text-decoration: none; color: black;"><strong><?= $c->nama_op; ?><br><?= $c->nama_genset; ?><br><?= $c->merek; ?></strong><br>
                         <small style="color: red;">Jadwal Berangkat Tanggal <strong><?= date('d/m/Y', strtotime($c->tgl_keluar)); ?></strong></small></a>
                       <!-- <a href="<?= site_url('admin/email_jdw_genset/' . $c->id_jadwal_genset); ?>" type="button" class="btn btn-xs btn-success" name="btn_edit"><i class="fa fa-paper-plane"> Send</i></a> -->
 
@@ -308,7 +308,7 @@
 </div>
 <?php $this->load->view('template/footer'); ?>
 
-<?php $this->load->view('admin/template/script') ?>
+<?php $this->load->view('template/script') ?>
 <script>
   //* Script untuk menampilkan loading
   document.onreadystatechange = function() {
