@@ -52,7 +52,7 @@
                                                             <input type="date" name="tgl_akhir" class="form-control" id="tgl_update" placeholder="Tanggal Update" required value="<?= date('Y-m-d'); ?>">
                                                         </div> -->
                                                         <div class="col-md-6">
-                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                                            <button type="submit" class="btn btn-info"><i class="fas fa-print mr-2"></i>Cetak</button>
                                                         </div>
                                                     </div>
                                                 </div>

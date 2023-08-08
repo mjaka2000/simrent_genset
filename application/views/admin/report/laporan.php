@@ -102,7 +102,7 @@
                                     <form action="<?= site_url(); ?>report/cetak_serv_gensetAll" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Perbaikan Genset</th>
                                         <td style="vertical-align: middle;">
-                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                     </form>
                                     <button data-toggle="modal" data-target="#staticRepPerbaikanDetail" class="btn btn-info btn-sm"><i class="fa fa-list"></i>&nbsp;Pilih Detail</button>
                                     </td>
@@ -111,7 +111,7 @@
                                     <form action="<?= site_url(); ?>report/cetak_service_genset_acc" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Perbaikan Genset Disetujui</th>
                                         <td style="vertical-align: middle;">
-                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                         </td>
                                     </form>
                                 </tr>
@@ -119,7 +119,7 @@
                                     <form action="<?= site_url(); ?>report/cetak_jdw_gensetAll" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Data Jadwal Penyewaan Genset</th>
                                         <td style="vertical-align: middle;">
-                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                         </td>
                                     </form>
                                 </tr>
@@ -129,7 +129,7 @@
                                     <form action="<?= site_url(); ?>report/cetak_Pelanggan" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Data Pelanggan</th>
                                         <td style="vertical-align: middle;">
-                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                         </td>
                                     </form>
                                 </tr>
@@ -137,7 +137,7 @@
                                     <form action="<?= site_url(); ?>report/cetak_Pelanggan_blacklist" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Data Pelanggan Blacklist</th>
                                         <td style="vertical-align: middle;">
-                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                         </td>
                                     </form>
                                 </tr>
@@ -145,7 +145,7 @@
                                     <form action="<?= site_url(); ?>report/cetak_sparepart" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Data Stok Sparepart</th>
                                         <td style="vertical-align: middle;">
-                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                         </td>
                                     </form>
                                 </tr>
@@ -215,7 +215,7 @@
                                         </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-print mr-2"></i> Cetak</button>
+                                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                                 </div>
                                 </form>
@@ -261,7 +261,7 @@
                                         </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-print mr-2"></i> Cetak</button>
+                                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                                 </div>
                                 </form>
@@ -307,7 +307,7 @@
                                         </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-print mr-2"></i> Cetak</button>
+                                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                                 </div>
                                 </form>
@@ -368,7 +368,6 @@
                                                         <td>Genset Masuk (Kembali)</td>
                                                     <?php } ?>
                                                     <td>
-                                                        <!-- <a href="<?= base_url('admin/hapus_unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
                                                         <a href="<?= base_url('report/cetak_penyewaan_detail/' . $dt->id_u_sewa); ?>" type="button" target="_blank" class="btn btn-xs btn-info" name="btn_detail"><i class="fa fa-print mr-2"></i>Cetak</a>
                                                     </td>
                                                 </tr>
@@ -423,8 +422,6 @@
                                                     <?php } ?>
                                                     <td>Rp&nbsp;<?= number_format($dt->biaya_perbaikan); ?></td>
                                                     <td>
-                                                        <!-- <a href="<?= base_url('admin/update_data_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a> -->
-                                                        <!-- <a href="<?= base_url('admin/hapus_service_genset/' . $dt->id_perbaikan_gst); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a> -->
                                                         <a href="<?= base_url('report/cetak_service_detail/' . $dt->id_perbaikan_gst); ?>" target="_blank" type="button" class="btn btn-xs btn-info" name="btn_detail"><i class="fa fa-print mr-2"></i>Cetak</a>
                                                     </td>
                                                 </tr>

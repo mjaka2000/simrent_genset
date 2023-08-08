@@ -42,7 +42,7 @@
                                     <form action="<?= site_url(); ?>report/cetak_serv_gensetAll" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;width :550px;">Laporan Perbaikan Genset</th>
                                         <td style="vertical-align: middle;">
-                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                     </form>
                                     <button data-toggle="modal" data-target="#staticRepPerbaikanDetail" class="btn btn-info btn-sm"><i class="fa fa-list"></i>&nbsp;Pilih Detail</button>
                                     </td>
@@ -52,7 +52,7 @@
                                     <form action="<?= site_url(); ?>report/cetak_sparepart" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Data Stok Sparepart</th>
                                         <td style="vertical-align: middle;">
-                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                         </td>
                                     </form>
                                 </tr>
@@ -60,7 +60,7 @@
                                     <form action="<?= site_url(); ?>report/cetak_service_genset_acc" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Perbaikan Genset Disetujui</th>
                                         <td style="vertical-align: middle;">
-                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i> Rekap Data</button>
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                         </td>
                                     </form>
                                 </tr>
