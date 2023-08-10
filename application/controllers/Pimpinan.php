@@ -25,6 +25,7 @@ class Pimpinan extends CI_Controller
         $tahun = date('Y');
         $label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
         $data['pendapatan'] = $this->M_data->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
+        $data['pendapatanChart'] = $this->M_data->chart_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
         $data['numOut'] = $this->M_data->notif_u_keluarJml('tb_unit_penyewaan', $tgl);
         $data['notifOut'] = $this->M_data->notif_u_keluar('tb_unit_penyewaan', $tgl);
         $data['UnitKeluar'] = $this->M_data->numrows_where_uKeluar('tb_unit_penyewaan');

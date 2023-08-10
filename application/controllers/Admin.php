@@ -22,8 +22,9 @@ class Admin extends CI_Controller
 		$bulan = date('m');
 		$tahun = date('Y');
 		$label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
+		$label1 =  $bulan . ' ' . $tahun;
 		$data['pendapatan'] = $this->M_data->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
-		// $data['pendapatanChart'] = $this->M_data->chart_pendapatanMasuk('tb_pendapatan');
+		$data['pendapatanChart'] = $this->M_data->chart_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
 		$data['notifOut'] = $this->M_data->notif_u_keluar('tb_unit_penyewaan', $tgl);
 		$data['numOut'] = $this->M_data->notif_u_keluarJml('tb_unit_penyewaan', $tgl);
 		$data['UnitKeluar'] = $this->M_data->numrows_where_uKeluar('tb_unit_penyewaan');
@@ -43,6 +44,7 @@ class Admin extends CI_Controller
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Home';
 		$data['label'] = $label;
+		$data['label1'] = $label1;
 		$this->load->view('admin/index', $data);
 	}
 	public function logout()
