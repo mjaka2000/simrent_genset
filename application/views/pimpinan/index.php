@@ -257,6 +257,25 @@
             </div>
           </div>
         <?php endforeach ?> -->
+        <!-- <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Grafik Pendapatan <?= $label ?></h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart">
+              <canvas id="PendapatanChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+            </div>
+          </div>
+        </div> -->
       </div>
       <div class="card">
         <!-- <div class="card-body">
@@ -298,6 +317,44 @@
     }
   };
 </script>
+<script>
+  $(function() {
+    //-------------
+    //- LINE CHART -
+    //--------------
+
+    var ctx = document.getElementById('PendapatanChart').getContext('2d');
+    var chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [
+          <?php
+          if (count($pendapatanChart) > 0) {
+            foreach ($pendapatanChart as $pd) {
+              echo "'" . date('d-m-Y', strtotime($pd->tanggal_masuk)) . "',";
+            }
+          }
+          ?>
+        ],
+        datasets: [{
+          label: 'Jumlah Pendapatan',
+          backgroundColor: '#ADD8E6',
+          borderColor: '##93C3D2',
+          data: [
+            <?php
+            if (count($pendapatanChart) > 0) {
+              foreach ($pendapatanChart as $data) {
+                echo $data->total . ", ";
+              }
+            }
+            ?>
+          ]
+        }]
+      },
+    });
+  })
+</script>
+
 </body>
 
 </html>

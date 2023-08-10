@@ -167,7 +167,7 @@
 
                                             <select name="id_u_sewa" class="form-control" id="id_transaksi" required>
                                                 <option value="">-- Pilih ID Transaksi --</option>
-                                                <?php foreach ($list_data as $d) { ?>
+                                                <?php foreach ($get_data as $d) { ?>
                                                     <option value="<?= $d->id_u_sewa ?>"><?= $d->id_transaksi ?></option>
                                                 <?php } ?>
                                             </select>
