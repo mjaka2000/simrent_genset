@@ -146,7 +146,7 @@
                         <li class="nav-item">
                             <a href="<?= site_url(); ?>pimpinan/tabel_pemasukan" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Data Pemasukan</p>
+                                <p>Data Pendapatan</p>
                             </a>
                         </li>
                     </ul>
