@@ -86,11 +86,17 @@
                                 </td>
                                 </tr>
                                 <tr>
-                                    <th style="vertical-align: middle;">Laporan Data Pemasukan<br><small style="color: red;">*Berdasarkan Periode</small></th>
+                                    <th style="vertical-align: middle;">Laporan Data Pendapatan<br><small style="color: red;">*Berdasarkan Periode</small></th>
                                     <td style="vertical-align: middle;">
                                         <button data-toggle="modal" data-target="#staticRepPendapatanBulanan" class="btn btn-info btn-sm"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
                                     </td>
                                 </tr>
+                                <!-- <tr>
+                                    <th style="vertical-align: middle;">Laporan Grafik Data Pendapatan<br><small style="color: red;">*Berdasarkan Periode</small></th>
+                                    <td style="vertical-align: middle;">
+                                        <button data-toggle="modal" data-target="#staticRepGrafikPendapatanBulanan" class="btn btn-info btn-sm"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
+                                    </td>
+                                </tr> -->
                                 <tr>
                                     <th style="vertical-align: middle;">Laporan Data Penyewaan <br><small style="color: red;">*Berdasarkan Periode</small></th>
                                     <td style="vertical-align: middle;">
@@ -233,6 +239,52 @@
                                 </div>
                                 <div class="modal-body">
                                     <form action="<?= site_url('report/cetak_pemasukan_periode'); ?>" method="post" role="form" target="_blank">
+                                        <div class="form-group row">
+                                            <label for="bulan" class="col-sm-3 col-form-label">Bulan</label>
+                                            <div class="col-sm-6">
+                                                <select name="bulan" id="bulan" class="form-control">
+                                                    <option value="" selected="">--Pilih Bulan--</option>
+                                                    <option value="01">Januari</option>
+                                                    <option value="02">Februari</option>
+                                                    <option value="03">Maret</option>
+                                                    <option value="04">April</option>
+                                                    <option value="05">Mei</option>
+                                                    <option value="06">Juni</option>
+                                                    <option value="07">Juli</option>
+                                                    <option value="08">Agustus</option>
+                                                    <option value="09">September</option>
+                                                    <option value="10">Oktober</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">Desember</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="tahun" class="col-sm-3 col-form-label">Tahun</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="tahun" class="form-control" id="tahun" value="<?= date('Y'); ?>">
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="staticRepGrafikPendapatanBulanan" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="staticBackdropLabel">Laporan Grafik Pendapatan Bulanan</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="<?= site_url('report/cetak_grafik_pemasukan_periode'); ?>" method="post" role="form" target="_blank">
                                         <div class="form-group row">
                                             <label for="bulan" class="col-sm-3 col-form-label">Bulan</label>
                                             <div class="col-sm-6">

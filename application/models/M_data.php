@@ -742,6 +742,7 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
+
   public function chart_pendapatanMasuk($tabel, $bulan, $tahun)
   {
     $bulan = $this->db->escape($bulan);
@@ -750,6 +751,20 @@ class M_data extends CI_Model
       ->from($tabel)
       ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = tb_pendapatan.id_u_sewa')
       ->where('MONTH (tanggal_masuk) =' . $bulan)
+      ->order_by('tanggal_masuk,total', 'asc')
+      // ->order_by('tanggal_masuk', 'asc')
+      ->get();
+    return $query->result();
+  }
+
+  public function chart_pendapatanMasukAll($tabel)
+  {
+    // $bulan = $this->db->escape($bulan);
+    // $tahun = $this->db->escape($tahun);
+    $query = $this->db->select('tanggal_masuk, total')
+      ->from($tabel)
+      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = tb_pendapatan.id_u_sewa')
+      // ->where('MONTH (tanggal_masuk) =' . $bulan)
       ->order_by('tanggal_masuk,total', 'asc')
       // ->order_by('tanggal_masuk', 'asc')
       ->get();

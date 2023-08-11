@@ -63,6 +63,24 @@ class Report extends CI_Controller
         $this->load->view('report/pemasukan/rep_pendapatan', $data);
     }
 
+    public function cetak_grafik_pemasukan_periode()
+    {
+        $bulan = $this->input->post('bulan');
+        $tahun = $this->input->post('tahun');
+        if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+            $data['pendapatanChart'] = $this->M_data->chart_pendapatanMasukAll('tb_pendapatan');
+            $data['total_data'] = $this->M_data->sum_pemasukan('tb_pendapatan');
+            $label = 'Bulan ...' . ' Tahun ...';
+        } else {
+            $data['pendapatanChart'] = $this->M_data->chart_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
+            $data['total_data'] = $this->M_data->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
+            $label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
+        }
+        $data['label'] = $label;
+        $data['title'] = 'Laporan Grafik Pendapatan';
+        $this->load->view('report/pemasukan/rep_grafik_pendapatan', $data);
+    }
+
     public function cetak_penyewaan()
     {
         $bulan = $this->input->post('bulan');
