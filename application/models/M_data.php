@@ -225,6 +225,22 @@ class M_data extends CI_Model
     return $query->num_rows();
   }
 
+  public function filter_data_service($tabel, $genset, $bulan, $tahun)
+  {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = ' . $tabel . '.id_sparepart')
+      ->where('MONTH (' . $tabel . '.tgl_perbaikan) =' . $bulan . ' AND YEAR (' . $tabel . '.tgl_perbaikan) =' . $tahun)
+      ->where_in('tb_genset.nama_genset', $genset)
+      // ->or_like('tb_genset.nama_genset', 'match', $genset)
+      ->order_by('tgl_perbaikan', 'asc')
+      ->get();
+    return $query->result();
+  }
+
   public function get_data_service($tabel)
   {
     $query = $this->db->select()

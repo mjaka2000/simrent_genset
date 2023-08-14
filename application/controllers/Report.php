@@ -97,8 +97,27 @@ class Report extends CI_Controller
         $this->load->view('report/unit_keluar/rep_unit_keluar', $data);
     }
 
+    public function cetak_PerbaikanFilter()
+    {
+        $genset = $this->input->get('genset');
+        $bulan = $this->input->get('bulan');
+        $tahun = $this->input->get('tahun');
+        if (empty($bulan) or empty($tahun) or empty($genset)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+            $data['list_data'] = $this->M_data->get_data_service('tb_serv_genset');
+            $label = 'Genset Bulan ...' . ' Tahun ...';
+        } else {
+            $data['list_data'] = $this->M_data->filter_data_service('tb_serv_genset', $genset, $bulan, $tahun);
+            $label = 'Genset ' . $genset . ' Bulan ' . $bulan . ' Tahun ' .  $tahun;
+        }
+        $data['label'] = $label;
+        $data['title'] = 'Laporan Perbaikan Genset';
+        $this->load->view('report/service_genset/rep_service_genset', $data);
+    }
+
     public function cetak_serv_gensetAll()
     {
+        $label = 'Genset Bulan ...' . ' Tahun ...';
+        $data['label'] = $label;
         $data['list_data'] = $this->M_data->get_data_service('tb_serv_genset');
         $data['title'] = 'Laporan Perbaikan Genset';
         $this->load->view('report/service_genset/rep_service_genset', $data);
