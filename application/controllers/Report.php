@@ -114,6 +114,101 @@ class Report extends CI_Controller
         $this->load->view('report/service_genset/rep_service_genset', $data);
     }
 
+    public function cetak_serviceGensetAccFilterUnit()
+    {
+        $genset = $this->input->get('genset');
+        $bulan = $this->input->get('bulan');
+        $tahun = $this->input->get('tahun');
+        if (empty($bulan) or empty($tahun) or empty($genset)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+            $data['list_data'] = $this->M_data->select_ServGstAcc('tb_serv_gst_acc');
+
+            $label = 'Genset Bulan ...' . ' Tahun ...';
+        } else {
+            $data['list_data'] = $this->M_data->filter_data_serviceAccUnit('tb_serv_gst_acc', $genset, $bulan, $tahun);
+            $label = 'Genset ' . $genset . ' Bulan ' . $bulan . ' Tahun ' .  $tahun;
+        }
+        $data['label'] = $label;
+        $data['title'] = 'Laporan Perbaikan Genset Disetujui';
+        $this->load->view('report/service_gensetAcc/rep_service_gensetAcc', $data);
+    }
+
+    public function cetak_JadwalGensetFilter()
+    {
+        $genset = $this->input->get('genset');
+        $operator = $this->input->get('operator');
+        // $tahun = $this->input->get('tahun');
+        // if (empty($operator) or empty($genset)) {             
+        //     $data['list_data'] = $this->M_data->select_jdw_gst('tb_jadwal_genset');
+        if (empty($operator)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+            $data['list_data'] = $this->M_data->filter_JadwalGenset('tb_jadwal_genset', $genset, $operator);
+
+            // $label = 'Genset Bulan ...' . ' Tahun ...';
+            // } elseif (empty($operator)) {
+            // $data['list_data'] = $this->M_data->filter_JadwalGenset('tb_jadwal_genset', $genset, $operator);
+            // $label = 'Genset ' . $genset . ' Bulan ' . $bulan . ' Tahun ' .  $tahun;
+        } else {
+            $data['list_data'] = $this->M_data->filter_JadwalGenset('tb_jadwal_genset', $genset, $operator);
+        }
+        // $data['label'] = $label;
+        $data['title'] = 'Laporan Jadwal Penyewaan Genset';
+        $this->load->view('report/jdw_genset/rep_jdw_gensetAll', $data);
+    }
+
+    public function cetak_PelangganFilter()
+    {
+        $pelanggan = $this->input->get('pelanggan');
+
+        if (empty($pelanggan)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+            $data['list_data'] = $this->M_data->get_Plg('tb_pelanggan');
+
+            // $label = 'Genset Bulan ...' . ' Tahun ...';
+
+        } else {
+            $data['list_data'] = $this->M_data->filter_Pelanggan('tb_pelanggan', $pelanggan);
+        }
+        // $data['label'] = $label;
+        $data['title'] = 'Laporan Data Pelanggan';
+        $this->load->view('report/pelanggan/rep_pelanggan', $data);
+    }
+
+    public function cetak_PelangganBlacklistFilter()
+    {
+        $pelangganBlacklist = $this->input->get('pelangganBlacklist');
+
+        if (empty($pelangganBlacklist)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+            $data['list_pelanggan_blacklist'] = $this->M_data->get_Plg_Blc('tb_pelanggan');
+
+            // $label = 'Genset Bulan ...' . ' Tahun ...';
+
+        } else {
+            $data['list_pelanggan_blacklist'] = $this->M_data->cetak_PelangganBlacklistFilter('tb_pelanggan', $pelangganBlacklist);
+        }
+        // $data['label'] = $label;
+        $data['title'] = 'Laporan Data Pelanggan Blacklist';
+        $this->load->view('report/pelanggan/rep_pelanggan_blacklist', $data);
+    }
+
+    public function cetak_sparepartFilter()
+    {
+        // $this->form_validation->set_rules('stok', 'Stok', 'less_than[5]');
+        // if ($this->form_validation->run() === TRUE) {
+
+        $stok = $this->input->get('stok');
+
+        if (empty($stok)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+            $data['list_sparepart'] = $this->M_data->select_sparepart('tb_sparepart');
+
+            // $label = 'Genset Bulan ...' . ' Tahun ...';
+
+        } else {
+            $data['list_sparepart'] = $this->M_data->select_sparepartFilter('tb_sparepart', $stok);
+        }
+        // $data['label'] = $label;
+        $data['title'] = 'Laporan Data Sparepart';
+        $this->load->view('report/sparepart/rep_sparepart', $data);
+        // }
+    }
+
     public function cetak_serv_gensetAll()
     {
         $label = 'Genset Bulan ...' . ' Tahun ...';

@@ -110,7 +110,7 @@
                                         <td style="vertical-align: middle;">
                                             <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
                                     </form>
-                                    <button data-toggle="modal" data-target="#RepPerbaikanFilter" class="btn btn-info btn-sm"><i class="fa fa-filter"></i>&nbsp;Filter</button>
+                                    <button data-toggle="modal" data-target="#RepPerbaikanFilter" class="btn btn-info btn-sm" title="Filter Berdasarkan Unit"><i class="fa fa-filter"></i>&nbsp;Filter</button>
                                     <button data-toggle="modal" data-target="#staticRepPerbaikanDetail" class="btn btn-info btn-sm"><i class="fa fa-list"></i>&nbsp;Pilih Detail</button>
                                     </td>
                                 </tr>
@@ -119,16 +119,18 @@
                                         <th style="vertical-align: middle;">Laporan Perbaikan Genset Disetujui</th>
                                         <td style="vertical-align: middle;">
                                             <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
-                                        </td>
                                     </form>
+                                    <button data-toggle="modal" data-target="#RepPerbaikanAccFilterUnit" class="btn btn-info btn-sm" title="Filter Berdasarkan Unit"><i class="fa fa-filter"></i>&nbsp;Filter</button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <form action="<?= site_url(); ?>report/cetak_jdw_gensetAll" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Data Jadwal Penyewaan Genset</th>
                                         <td style="vertical-align: middle;">
                                             <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
-                                        </td>
                                     </form>
+                                    <button data-toggle="modal" data-target="#RepJadwalGensetFilter" class="btn btn-info btn-sm" title="Filter Data"><i class="fa fa-filter"></i>&nbsp;Filter</button>
+                                    </td>
                                 </tr>
 
 
@@ -137,24 +139,27 @@
                                         <th style="vertical-align: middle;">Laporan Data Pelanggan</th>
                                         <td style="vertical-align: middle;">
                                             <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
-                                        </td>
                                     </form>
+                                    <button data-toggle="modal" data-target="#RepPelangganFilter" class="btn btn-info btn-sm" title="Filter Data"><i class="fa fa-filter"></i>&nbsp;Filter</button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <form action="<?= site_url(); ?>report/cetak_Pelanggan_blacklist" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Data Pelanggan Blacklist</th>
                                         <td style="vertical-align: middle;">
                                             <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
-                                        </td>
                                     </form>
+                                    <button data-toggle="modal" data-target="#RepPelangganBlacklistFilter" class="btn btn-info btn-sm" title="Filter Data"><i class="fa fa-filter"></i>&nbsp;Filter</button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <form action="<?= site_url(); ?>report/cetak_sparepart" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Data Stok Sparepart</th>
                                         <td style="vertical-align: middle;">
                                             <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
-                                        </td>
                                     </form>
+                                    <button data-toggle="modal" data-target="#RepStokSparepartFilter" class="btn btn-info btn-sm" title="Filter Data"><i class="fa fa-filter"></i>&nbsp;Filter</button>
+                                    </td>
                                 </tr>
 
                                 <!-- <tr>
@@ -275,6 +280,63 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="modal fade" id="RepStokSparepartFilter" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="staticBackdropLabel">Laporan Filter Sparepart </h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form action="<?= site_url('report/cetak_sparepartFilter'); ?>" method="get" role="form" target="_blank">
+                                        <div class="form-group row">
+                                            <label for="tahun" class="col-sm-3 col-form-label">Stok</label>
+                                            <div class="col-sm-6">
+                                                <input type="number" name="stok" max="5" class="form-control" id="stok">
+                                                <small style="color: red;">
+                                                    <p>*Cari jumlah stok Sparepart kurang dari 5.</p>
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="form-group row">
+                                            <label for="bulan" class="col-sm-3 col-form-label">Bulan</label>
+                                            <div class="col-sm-6">
+                                                <select name="bulan" id="bulan" class="form-control">
+                                                    <option value="" selected="">--Pilih Bulan--</option>
+                                                    <option value="01">Januari</option>
+                                                    <option value="02">Februari</option>
+                                                    <option value="03">Maret</option>
+                                                    <option value="04">April</option>
+                                                    <option value="05">Mei</option>
+                                                    <option value="06">Juni</option>
+                                                    <option value="07">Juli</option>
+                                                    <option value="08">Agustus</option>
+                                                    <option value="09">September</option>
+                                                    <option value="10">Oktober</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">Desember</option>
+                                                </select>
+                                            </div>
+                                        </div> -->
+                                        <!-- <div class="form-group row">
+                                            <label for="tahun" class="col-sm-3 col-form-label">Tahun</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="tahun" class="form-control" id="tahun" value="<?= date('Y'); ?>">
+                                            </div>
+                                        </div> -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="modal fade" id="staticRepGrafikPendapatanBulanan" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -379,6 +441,173 @@
                                 </div>
                                 <div class="modal-body">
                                     <form action="<?= site_url('report/cetak_PerbaikanFilter'); ?>" method="get" role="form" target="_blank">
+                                        <div class="form-group row">
+                                            <label for="bulan" class="col-sm-3 col-form-label">Nama Genset</label>
+                                            <div class="col-sm-6">
+                                                <select name="genset" id="genset" class="form-control" required>
+                                                    <option value="" selected="" disabled>--Pilih Genset--</option>
+                                                    <?php foreach ($list_genset as $g) { ?>
+                                                        <option value="<?= $g->nama_genset ?>"><?= $g->kode_genset ?> - <?= $g->nama_genset; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="bulan" class="col-sm-3 col-form-label">Bulan</label>
+                                            <div class="col-sm-6">
+                                                <select name="bulan" id="bulan" class="form-control" required>
+                                                    <option value="" selected="">--Pilih Bulan--</option>
+                                                    <option value="01">Januari</option>
+                                                    <option value="02">Februari</option>
+                                                    <option value="03">Maret</option>
+                                                    <option value="04">April</option>
+                                                    <option value="05">Mei</option>
+                                                    <option value="06">Juni</option>
+                                                    <option value="07">Juli</option>
+                                                    <option value="08">Agustus</option>
+                                                    <option value="09">September</option>
+                                                    <option value="10">Oktober</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">Desember</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="tahun" class="col-sm-3 col-form-label">Tahun</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" name="tahun" class="form-control" id="tahun" value="<?= date('Y'); ?>">
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="RepJadwalGensetFilter" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="staticBackdropLabel">Laporan Filter Jadwal Penyewaan Genset</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="<?= site_url('report/cetak_JadwalGensetFilter'); ?>" method="get" role="form" target="_blank">
+                                        <div class="form-group row">
+                                            <label for="bulan" class="col-sm-3 col-form-label">Nama Genset</label>
+                                            <div class="col-sm-6">
+                                                <select name="genset" id="genset" class="form-control">
+                                                    <option value="" selected="">--Pilih Genset--</option>
+                                                    <?php foreach ($list_genset as $g) { ?>
+                                                        <option value="<?= $g->nama_genset ?>"><?= $g->kode_genset ?> - <?= $g->nama_genset; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="bulan" class="col-sm-3 col-form-label">Nama Operator</label>
+                                            <div class="col-sm-6">
+                                                <select name="operator" id="operator" class="form-control">
+                                                    <option value="" selected="">--Pilih Operator--</option>
+                                                    <?php foreach ($list_operator as $op) { ?>
+                                                        <option value="<?= $op->nama_op ?>"><?= $op->nama_op ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="RepPelangganFilter" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="staticBackdropLabel">Laporan Filter Data Pelanggan</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="<?= site_url('report/cetak_PelangganFilter'); ?>" method="get" role="form" target="_blank">
+                                        <div class="form-group row">
+                                            <label for="bulan" class="col-sm-3 col-form-label">Nama Pelanggan</label>
+                                            <div class="col-sm-6">
+                                                <select name="pelanggan" id="pelanggan" class="form-control">
+                                                    <option value="" selected="">--Pilih Pelanggan--</option>
+                                                    <?php foreach ($list_pelanggan as $p) { ?>
+                                                        <option value="<?= $p->nama_plg ?>"><?= $p->nama_plg ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="RepPelangganBlacklistFilter" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="staticBackdropLabel">Laporan Filter Data Pelanggan Blacklist</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="<?= site_url('report/cetak_PelangganBlacklistFilter'); ?>" method="get" role="form" target="_blank">
+                                        <div class="form-group row">
+                                            <label for="bulan" class="col-sm-3 col-form-label">Nama Pelanggan</label>
+                                            <div class="col-sm-6">
+                                                <select name="pelangganBlacklist" id="pelangganBlacklist" class="form-control">
+                                                    <option value="" selected="">--Pilih Pelanggan--</option>
+                                                    <?php foreach ($list_pelanggan_blacklist as $p) { ?>
+                                                        <option value="<?= $p->nama_plg ?>"><?= $p->nama_plg ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="RepPerbaikanAccFilterUnit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="staticBackdropLabel">Laporan Filter Perbaikan Disetujui</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="<?= site_url('report/cetak_serviceGensetAccFilterUnit'); ?>" method="get" role="form" target="_blank">
                                         <div class="form-group row">
                                             <label for="bulan" class="col-sm-3 col-form-label">Nama Genset</label>
                                             <div class="col-sm-6">

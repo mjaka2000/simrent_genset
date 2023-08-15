@@ -135,10 +135,30 @@ class M_data extends CI_Model
     return $query->result();
   }
 
+  public function filter_Pelanggan($tabel, $pelanggan)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where_in('nama_plg', $pelanggan)
+      ->where('ket_plg =', 0)
+      ->get();
+    return $query->result();
+  }
+
   public function get_Plg_Blc($tabel)
   {
     $query = $this->db->select()
       ->from($tabel)
+      ->where('ket_plg =', 1)
+      ->get();
+    return $query->result();
+  }
+
+  public function cetak_PelangganBlacklistFilter($tabel, $pelangganBlacklist)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where_in('nama_plg', $pelangganBlacklist)
       ->where('ket_plg =', 1)
       ->get();
     return $query->result();
@@ -237,6 +257,23 @@ class M_data extends CI_Model
       ->where_in('tb_genset.nama_genset', $genset)
       // ->or_like('tb_genset.nama_genset', 'match', $genset)
       ->order_by('tgl_perbaikan', 'asc')
+      ->get();
+    return $query->result();
+  }
+
+  public function filter_data_serviceAccUnit($tabel, $genset, $bulan, $tahun)
+  {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
+    $query = $this->db->select()
+      ->from($tabel)
+      // ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_serv_genset', 'tb_serv_genset.id_perbaikan_gst = ' . $tabel . '.id_perbaikan_gst')
+      ->join('tb_genset', 'tb_genset.id_genset = tb_serv_genset.id_genset')
+      ->where('MONTH (' . $tabel . '.tgl_setujui) =' . $bulan . ' AND YEAR (' . $tabel . '.tgl_setujui) =' . $tahun)
+      ->where_in('tb_genset.nama_genset', $genset)
+      // ->or_like('tb_genset.nama_genset', 'match', $genset)
+      ->order_by('tgl_setujui', 'asc')
       ->get();
     return $query->result();
   }
@@ -390,6 +427,17 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
+
+  public function select_sparepartFilter($tabel, $stok)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->where('stok < ', $stok)
+      // ->where_not_in('stok >', 5)
+      // ->where('stok >', 0)
+      ->get();
+    return $query->result();
+  }
   ####################################
   //* End Data Perbaikan Genset 
   ####################################
@@ -514,6 +562,21 @@ class M_data extends CI_Model
       ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
       ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
       ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
+
+      ->get();
+    return $query->result();
+  }
+
+  public function filter_JadwalGenset($tabel, $genset, $operator)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
+      ->where_in('tb_genset.nama_genset', $genset)
+      ->or_where_in('tb_operator.nama_op', $operator)
+      ->order_by('tgl_keluar', 'asc')
 
       ->get();
     return $query->result();

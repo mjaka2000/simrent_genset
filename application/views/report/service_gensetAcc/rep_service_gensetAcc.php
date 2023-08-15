@@ -42,8 +42,9 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $html =
     '<div>
               <h1 align="center">Laporan Perbaikan Genset Disetujui</h1>
-              
-              <table border="1" cellspacing="1" cellpadding="2">
+       <b align="center">Perbaikan ' . $label . '</b>
+       <br><br>
+       <table border="1" cellspacing="1" cellpadding="2">
                 <tr bgcolor=" #d1d1d1 ">
                 <th width="50px" align="center"><b>No.</b></th>
                 <th align="center"><b>Nomor Genset</b></th>

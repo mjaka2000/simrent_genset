@@ -2337,6 +2337,9 @@ class Admin extends CI_Controller
 		$data['list_sewa'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
 		$data['list_perbaikan'] = $this->M_data->get_data_service('tb_serv_genset');
 		$data['list_genset'] = $this->M_data->select('tb_genset');
+		$data['list_operator'] = $this->M_data->select('tb_operator');
+		$data['list_pelanggan'] = $this->M_data->get_Plg('tb_pelanggan');
+		$data['list_pelanggan_blacklist'] = $this->M_data->get_Plg_Blc('tb_pelanggan');
 
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Laporan';
