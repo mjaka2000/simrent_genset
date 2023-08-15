@@ -60,7 +60,7 @@ class Login extends CI_Controller
 
 					$this->session->set_userdata($data_session);
 
-					$this->M_login->edit_user(['username' => $username], ['last_login' => date('d-m-Y G:i')]);
+					$this->M_login->edit_user(['username' => $username], ['last_login' => date('Y-m-d H:i:s')]);
 
 					if ($isi->role == 0) {
 						redirect(site_url('admin'));

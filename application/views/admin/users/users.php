@@ -72,7 +72,8 @@
                                                 <?php } else { ?>
                                                     <td>User Penyewa</td>
                                                 <?php } ?>
-                                                <td><?= $u->last_login ?></td>
+                                                <td><?= date('d-m-Y H:i:s', strtotime($u->last_login))  ?></td>
+                                                <!-- <td><?= $u->last_login  ?></td> -->
                                                 <td>
                                                     <button type="button" data-toggle="modal" data-target="#EditUser<?= $u->id_user; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
                                                     <a href="<?= site_url('admin/proses_deleteuser/' . $u->id_user); ?>" type="button" title="Hapus" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>

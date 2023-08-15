@@ -61,7 +61,7 @@
 
                         <p>
                             <strong><?= $this->session->userdata('nama') ?></strong> - Penyewa <br>
-                            <small>Last Login : <?= $this->session->userdata('last_login') ?></small><br>
+                            <small>Last Login : <?= date('d-m-Y H:i:s', strtotime($this->session->userdata('last_login'))) ?></small><br>
                         </p>
                     </li>
                     <!-- Menu Body -->
