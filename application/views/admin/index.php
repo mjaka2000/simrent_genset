@@ -25,7 +25,7 @@
   <!-- Main content -->
   <section class="content">
     <div id="loading" class="tengah">
-      <img src="<?= site_url(); ?>assets/style/loading.gif" alt="loading" width="50%">
+      <img src="<?= base_url(); ?>assets/style/loading.gif" alt="loading" width="50%">
     </div>
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
