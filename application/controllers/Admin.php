@@ -955,14 +955,31 @@ class Admin extends CI_Controller
 		$this->load->view('admin/mobil/update_mobil', $data);
 	}
 
-	public function hapus_mobil()
+	public function hapus_data_mobil($id_mobil)
 	{
-		$uri = $this->uri->segment(3);
-		$where = array('id_mobil' => $uri);
-		$this->M_data->delete('tb_mobil', $where);
-		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
-		redirect(site_url('admin/tabel_mobil'));
+		// $uri = $this->uri->segment(3);
+		// $id_mobil = array('id_mobil' => $uri);
+		$data = $this->M_data->get_foto_mobil($id_mobil)->row();
+		$file = './assets/upload/mobil/' . $data->gambar_mobil;
+
+		if (is_readable($file) && unlink($file)) {
+			$this->M_data->del_foto_mobil($id_mobil);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+			redirect(site_url('admin/tabel_mobil'));
+		} else {
+			$this->session->set_flashdata('msg_gagal', 'Data Gagal Dihapus');
+			redirect(site_url('admin/tabel_mobil'));
+		}
 	}
+
+	// public function hapus_mobil()
+	// {
+	// 	$uri = $this->uri->segment(3);
+	// 	$where = array('id_mobil' => $uri);
+	// 	$this->M_data->delete('tb_mobil', $where);
+	// 	$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+	// 	redirect(site_url('admin/tabel_mobil'));
+	// }
 
 	public function upload_gambar_mobil()
 	{
@@ -1414,7 +1431,7 @@ class Admin extends CI_Controller
 	public function tabel_unit_keluar()
 	{
 		$data['list_mobil'] = $this->M_data->select('tb_mobil');
-		$data['list_genset'] = $this->M_data->select_gst('tb_genset');
+		$data['list_mobil'] = $this->M_data->select_gst('tb_genset');
 		$data['list_pelanggan'] = $this->M_data->get_Plg('tb_pelanggan');
 		$data['list_operator'] = $this->M_data->select_op('tb_operator');
 		$data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_penyewaan');

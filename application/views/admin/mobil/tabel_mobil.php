@@ -41,6 +41,12 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
+                            <?php if ($this->session->flashdata('msg_gagal')) { ?>
+                                <div class="alert alert-danger alert-dismissible">
+                                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                                    <strong>Gagal!</strong><br> <?= $this->session->flashdata('msg_gagal'); ?>
+                                </div>
+                            <?php } ?>
                             <button data-toggle="modal" data-target="#staticAddMobil" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
@@ -78,7 +84,7 @@
                                                 <td><img src="<?= site_url('assets/upload/mobil/' . $dt->gambar_mobil); ?>" class="img-box" width="100" height="100" alt="<?= $dt->gambar_mobil; ?>"></td>
                                                 <td>
                                                     <button type="button" data-toggle="modal" data-target="#staticEditMobil<?= $dt->id_mobil; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
-                                                    <a href="<?= site_url('admin/hapus_mobil/' . $dt->id_mobil); ?>" type="button" title="Hapus" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
+                                                    <a href="<?= site_url('admin/hapus_data_mobil/' . $dt->id_mobil); ?>" type="button" title="Hapus" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
