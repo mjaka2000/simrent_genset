@@ -41,6 +41,12 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
+                            <?php if ($this->session->flashdata('msg_gagal')) { ?>
+                                <div class="alert alert-danger alert-dismissible">
+                                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                                    <strong>Gagal!</strong><br> <?= $this->session->flashdata('msg_gagal'); ?>
+                                </div>
+                            <?php } ?>
                             <button data-toggle="modal" data-target="#staticAddGenset" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">

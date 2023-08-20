@@ -30,6 +30,14 @@ class M_data extends CI_Model
     $this->db->delete($tabel);
   }
 
+  public function delete_file($tabel, $file, $where)
+  {
+    $this->db->get_where($file)
+      ->row()
+      ->where($where)
+      ->delete($tabel);
+  }
+
   ####################################
   //! Batas Query User (Jangan diubah)
   ####################################
@@ -70,6 +78,21 @@ class M_data extends CI_Model
       ->where($where)
       ->get();
     return $query->result();
+  }
+  public function get_foto_genset($id_genset)
+  {
+    $this->db->select()
+      // ->from('tb_genset')
+      ->where('id_genset', $id_genset);
+    return $this->db->get('tb_genset');
+  }
+
+  public function del_foto_genset($id_genset)
+  {
+    $this->db->select()
+      // ->from('tb_genset')
+      ->where('id_genset', $id_genset);
+    return $this->db->delete('tb_genset');
   }
 
   // public function mengurangi($tabel, $id_genset, $stok_gd_new)

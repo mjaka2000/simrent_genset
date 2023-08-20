@@ -421,16 +421,23 @@ class Admin extends CI_Controller
 		}
 	}
 
-	public function hapus_data_genset()
+	public function hapus_data_genset($id_genset)
 	{
-		$uri = $this->uri->segment(3);
-		$where = array('id_genset' => $uri);
-		// $data['gambar_genset'] = $this->M_data->get_data('tb_genset', $where);
-		// unlink('assets/upload/genset/' . $where['gambar_genset']);
-		$this->M_data->delete('tb_genset', $where);
-		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
-		redirect(site_url('admin/tabel_genset'));
+		// $uri = $this->uri->segment(3);
+		// $id_genset = array('id_genset' => $uri);
+		$data = $this->M_data->get_foto_genset($id_genset)->row();
+		$file = './assets/upload/genset/' . $data->gambar_genset;
+
+		if (is_readable($file) && unlink($file)) {
+			$this->M_data->del_foto_genset($id_genset);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
+			redirect(site_url('admin/tabel_genset'));
+		} else {
+			$this->session->set_flashdata('msg_gagal', 'Data Gagal Dihapus');
+			redirect(site_url('admin/tabel_genset'));
+		}
 	}
+
 	####################################
 	//* End Data Genset 
 	####################################
