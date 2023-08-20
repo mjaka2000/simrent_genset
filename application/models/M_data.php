@@ -30,14 +30,6 @@ class M_data extends CI_Model
     $this->db->delete($tabel);
   }
 
-  public function delete_file($tabel, $file, $where)
-  {
-    $this->db->get_where($file)
-      ->row()
-      ->where($where)
-      ->delete($tabel);
-  }
-
   ####################################
   //! Batas Query User (Jangan diubah)
   ####################################
