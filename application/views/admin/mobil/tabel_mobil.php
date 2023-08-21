@@ -193,7 +193,7 @@
                                         <?php } ?>
                                         <form action="<?= site_url('admin/proses_update_mobil'); ?>" method="post" role="form" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                <input type="hidden" name="id" value="<?= $m->id_mobil; ?>">
+                                                <input type="hidden" name="id_mobil" value="<?= $m->id_mobil; ?>">
                                                 <label for="merek" class="form-label">Merek</label>
 
                                                 <input type="text" name="merek" class="form-control" id="merek" placeholder="Merek" required value="<?= $m->merek; ?>">

@@ -96,12 +96,20 @@ class M_data extends CI_Model
     return $this->db->delete('tb_genset');
   }
 
-  public function get_foto_mobil($id_mobil)
+  public function get_data_mobil($id_mobil)
   {
     $this->db->select()
       // ->from('tb_mobil')
       ->where('id_mobil', $id_mobil);
     return $this->db->get('tb_mobil');
+  }
+
+  public function update_data_mobil($id_mobil, $data)
+  {
+    $this->db->select()
+      // ->from('tb_mobil')
+      ->where('id_mobil', $id_mobil);
+    return $this->db->update('tb_mobil', $data);
   }
 
   public function del_foto_mobil($id_mobil)

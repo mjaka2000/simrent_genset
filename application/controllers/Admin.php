@@ -299,7 +299,7 @@ class Admin extends CI_Controller
 		// $this->form_validation->set_rules('stok_pj', 'Stok Pinjam', 'trim|required');
 
 		if ($this->form_validation->run() == true) {
-			$gambar_genset = $this->upload_gambargenset();
+			$gambar_genset = $this->upload_gambar_genset();
 
 			$kode_genset = $this->input->post('kode_genset', true);
 			$nama_genset = $this->input->post('nama_genset', true);
@@ -331,7 +331,7 @@ class Admin extends CI_Controller
 		}
 	}
 
-	public function upload_gambargenset()
+	public function upload_gambar_genset()
 	{
 		$config = array(
 			'upload_path' => './assets/upload/genset/',
@@ -400,8 +400,8 @@ class Admin extends CI_Controller
 			// } else {
 			// 	$gambar_genset_new = $gambar_genset;
 			// }
-			if (is_readable($file) && unlink($file)) {
-				$userfile = $this->upload_gambargenset();
+			if (file_exists($file) && unlink($file)) {
+				$userfile = $this->upload_gambar_genset();
 
 				// $where = array('id_genset' => $id_genset);
 				$data = array(
@@ -1130,9 +1130,11 @@ class Admin extends CI_Controller
 
 		if ($this->form_validation->run() === TRUE) {
 
-			$gambar_mobil = $this->upload_gambar_mobil();
 
-			$id = $this->input->post('id', TRUE);
+			$id_mobil = $this->input->post('id_mobil', TRUE);
+			$data = $this->M_data->get_data_mobil($id_mobil)->row();
+			$file = './assets/upload/mobil/' . $data->gambar_mobil;
+
 			$merek = $this->input->post('merek', TRUE);
 			$tipe = $this->input->post('tipe', TRUE);
 			$tahun = $this->input->post('tahun', TRUE);
@@ -1142,33 +1144,97 @@ class Admin extends CI_Controller
 			$stnk = $this->input->post('stnk', TRUE);
 			$gambar_mobil_old = $this->input->post('gambar_mobil_old', TRUE);
 
-			if ($gambar_mobil == '<p>You did not select a file to upload.</p>') {
+
+			$userfile = $this->upload_gambar_mobil();
+			if ($userfile == '<p>You did not select a file to upload.</p>') {
 				$gambar_mobil_new = $gambar_mobil_old;
 			} else {
-				$gambar_mobil_new = $gambar_mobil;
+				$gambar_mobil_new = $userfile;
 			}
+			if (file_exists($file) && unlink($file)) {
 
-			$where = array('id_mobil' => $id);
-			$data = array(
-				'merek' => $merek,
-				'tipe' => $tipe,
-				'tahun' => $tahun,
-				'nopol' => $nopol,
-				'jenis_bbm' => $jenis_bbm,
-				'pajak' => $pajak,
-				'stnk' => $stnk,
-				'gambar_mobil' => $gambar_mobil_new
-			);
-			$this->M_data->update('tb_mobil', $data, $where);
-			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
-			redirect(site_url('admin/tabel_mobil'));
+				$data = array(
+					'merek' => $merek,
+					'tipe' => $tipe,
+					'tahun' => $tahun,
+					'nopol' => $nopol,
+					'jenis_bbm' => $jenis_bbm,
+					'pajak' => $pajak,
+					'stnk' => $stnk,
+					'gambar_mobil' => $userfile
+				);
+				$this->M_data->update_data_mobil($id_mobil, $data);
+				$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+				redirect(site_url('admin/tabel_mobil'));
+			} else {
+				$this->session->set_flashdata('msg_gagal', 'Data Gagal Diubah');
+				redirect(site_url('admin/tabel_mobil'));
+			}
+			// $where = array('id_mobil' => $id_mobil);
+
+			// $this->M_data->update('tb_mobil', $data, $where);
+			// $this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+			// redirect(site_url('admin/tabel_mobil'));
 		} else {
+			$data['list_data'] = $this->M_data->select('tb_mobil');
 			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 			$data['title'] = 'Edit Data Mobil';
 			// $this->load->view('admin/mobil/update_mobil', $data);
 			$this->load->view('admin/mobil/tabel_mobil', $data);
 		}
 	}
+
+	// public function proses_update_mobil()
+	// {
+	// 	$this->form_validation->set_rules('merek', 'Merek', 'trim|required');
+	// 	$this->form_validation->set_rules('tipe', 'Tipe', 'trim|required');
+	// 	$this->form_validation->set_rules('tahun', 'Tahun', 'trim|required');
+	// 	$this->form_validation->set_rules('nopol', 'Nopol', 'trim|required');
+	// 	$this->form_validation->set_rules('jenis_bbm', 'Jenis_BBM', 'trim|required');
+	// 	$this->form_validation->set_rules('pajak', 'Pajak', 'trim|required');
+	// 	$this->form_validation->set_rules('stnk', 'Stnk', 'trim|required');
+
+	// 	if ($this->form_validation->run() === TRUE) {
+
+	// 		$gambar_mobil = $this->upload_gambar_mobil();
+
+	// 		$id = $this->input->post('id', TRUE);
+	// 		$merek = $this->input->post('merek', TRUE);
+	// 		$tipe = $this->input->post('tipe', TRUE);
+	// 		$tahun = $this->input->post('tahun', TRUE);
+	// 		$nopol = $this->input->post('nopol', TRUE);
+	// 		$jenis_bbm = $this->input->post('jenis_bbm', TRUE);
+	// 		$pajak = $this->input->post('pajak', TRUE);
+	// 		$stnk = $this->input->post('stnk', TRUE);
+	// 		$gambar_mobil_old = $this->input->post('gambar_mobil_old', TRUE);
+
+	// 		if ($gambar_mobil == '<p>You did not select a file to upload.</p>') {
+	// 			$gambar_mobil_new = $gambar_mobil_old;
+	// 		} else {
+	// 			$gambar_mobil_new = $gambar_mobil;
+	// 		}
+
+	// 		$where = array('id_mobil' => $id);
+	// 		$data = array(
+	// 			'merek' => $merek,
+	// 			'tipe' => $tipe,
+	// 			'tahun' => $tahun,
+	// 			'nopol' => $nopol,
+	// 			'jenis_bbm' => $jenis_bbm,
+	// 			'pajak' => $pajak,
+	// 			'stnk' => $stnk,
+	// 			'gambar_mobil' => $gambar_mobil_new
+	// 		);
+	// 		$this->M_data->update('tb_mobil', $data, $where);
+	// 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+	// 		redirect(site_url('admin/tabel_mobil'));
+	// 	} else {
+	// 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+	// 		$data['title'] = 'Edit Data Mobil';
+	// 		// $this->load->view('admin/mobil/update_mobil', $data);
+	// 		$this->load->view('admin/mobil/tabel_mobil', $data);
+	// 	}
+	// }
 
 	####################################
 	//* End Data Mobil 
