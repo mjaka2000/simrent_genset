@@ -71,12 +71,21 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
-  public function get_foto_genset($id_genset)
+
+  public function get_data_genset($id_genset)
   {
     $this->db->select()
       // ->from('tb_genset')
       ->where('id_genset', $id_genset);
     return $this->db->get('tb_genset');
+  }
+
+  public function update_data_genset($id_genset, $data)
+  {
+    $this->db->select()
+      // ->from('tb_genset')
+      ->where('id_genset', $id_genset);
+    return $this->db->update('tb_genset', $data);
   }
 
   public function del_foto_genset($id_genset)
@@ -539,6 +548,22 @@ class M_data extends CI_Model
       ->from($tabel)
       ->where('ket_genset =', 0)
       ->or_where('ket_genset =', 2)
+      ->get();
+    return $query->result();
+  }
+
+  public function get_data_valid_penyewaan($tabel)
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
+      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa', 'left')
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_penyewaan.id_genset', 'left')
+      ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_penyewaan.id_pelanggan', 'left')
+      ->where('status =', 1)
+      ->or_where('status =', 2)
+      ->order_by('tanggal_keluar', 'asc')
       ->get();
     return $query->result();
   }

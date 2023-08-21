@@ -234,7 +234,7 @@
                                                 <label for="gambar_genset" class="form-label">Gambar Genset</label>
 
                                                 <input type="file" name="gambar_genset" class="form-control" id="gambar_genset">
-                                                <input type="hidden" name="gambar_genset_old" value="<?= $d->gambar_genset; ?>">
+                                                <!-- <input type="hidden" name="gambar_genset_old" value="<?= $d->gambar_genset; ?>"> -->
                                                 <small style="color: red;">
                                                     <p>*File yang diijinkan "jpg|png|jpeg", max size 2MB.</p>
                                                 </small>

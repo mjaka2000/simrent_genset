@@ -380,7 +380,10 @@ class Admin extends CI_Controller
 
 		if ($this->form_validation->run() == true) {
 
-			$id = $this->input->post('id_genset', true);
+			$id_genset = $this->input->post('id_genset', true);
+			$data = $this->M_data->get_data_genset($id_genset)->row();
+			$file = './assets/upload/genset/' . $data->gambar_genset;
+
 			$kode_genset = $this->input->post('kode_genset', true);
 			$nama_genset = $this->input->post('nama_genset', true);
 			$daya = $this->input->post('daya', true);
@@ -388,32 +391,43 @@ class Admin extends CI_Controller
 			$ket_genset = $this->input->post('ket_genset', true);
 			// $stok_gd = $this->input->post('stok_gd', true);
 			// $stok_pj = $this->input->post('stok_pj', true);
-			$gambar_genset_old = $this->input->post('gambar_genset_old', true);
+			// $gambar_genset_old = $this->input->post('gambar_genset', true);
 
-			$gambar_genset = $this->upload_gambargenset();
 
-			if ($gambar_genset == '<p>You did not select a file to upload.</p>') {
-				$gambar_genset_new = $gambar_genset_old;
+
+			// if ($gambar_genset == '<p>You did not select a file to upload.</p>') {
+			// 	$gambar_genset_new = $gambar_genset_old;
+			// } else {
+			// 	$gambar_genset_new = $gambar_genset;
+			// }
+			if (is_readable($file) && unlink($file)) {
+				$userfile = $this->upload_gambargenset();
+
+				// $where = array('id_genset' => $id_genset);
+				$data = array(
+					'kode_genset' => $kode_genset,
+					'nama_genset' => $nama_genset,
+					'daya' => $daya,
+					'harga' => $harga,
+					'ket_genset' => $ket_genset,
+					// 'stok_gd' => $stok_gd,
+					// 'stok_pj' => $stok_pj,
+					'gambar_genset' => $userfile
+				);
+				$this->M_data->update_data_genset($id_genset, $data);
+				$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+				redirect(site_url('admin/tabel_genset'));
 			} else {
-				$gambar_genset_new = $gambar_genset;
+				$this->session->set_flashdata('msg_gagal', 'Data Gagal Diubah');
+				redirect(site_url('admin/tabel_genset'));
 			}
 
-			$where = array('id_genset' => $id);
-			$data = array(
-				'kode_genset' => $kode_genset,
-				'nama_genset' => $nama_genset,
-				'daya' => $daya,
-				'harga' => $harga,
-				'ket_genset' => $ket_genset,
-				// 'stok_gd' => $stok_gd,
-				// 'stok_pj' => $stok_pj,
-				'gambar_genset' => $gambar_genset_new
-			);
-			$this->M_data->update('tb_genset', $data, $where);
+			// $this->M_data->update('tb_genset', $data, $where);
 
-			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
-			redirect(site_url('admin/tabel_genset'));
+			// $this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+			// redirect(site_url('admin/tabel_genset'));
 		} else {
+			$data['list_data'] = $this->M_data->select('tb_genset');
 			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 			$data['title'] = 'Update Genset';
 			// $this->load->view('admin/genset/updategenset', $data);
@@ -421,11 +435,64 @@ class Admin extends CI_Controller
 		}
 	}
 
+	// public function proses_updategenset()
+	// {
+	// 	$this->form_validation->set_rules('kode_genset', 'Kode Genset', 'trim|required');
+	// 	$this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
+	// 	$this->form_validation->set_rules('daya', 'Daya', 'trim|required');
+	// 	$this->form_validation->set_rules('harga', 'Harga', 'trim|required');
+	// 	$this->form_validation->set_rules('ket_genset', 'Ket. Genset', 'trim|required');
+	// 	// $this->form_validation->set_rules('stok_gd', 'Stok GUdang', 'trim|required');
+	// 	// $this->form_validation->set_rules('stok_pj', 'Stok Pinjam', 'trim|required');
+
+	// 	if ($this->form_validation->run() == true) {
+
+	// 		$id = $this->input->post('id_genset', true);
+	// 		$kode_genset = $this->input->post('kode_genset', true);
+	// 		$nama_genset = $this->input->post('nama_genset', true);
+	// 		$daya = $this->input->post('daya', true);
+	// 		$harga = $this->input->post('harga', true);
+	// 		$ket_genset = $this->input->post('ket_genset', true);
+	// 		// $stok_gd = $this->input->post('stok_gd', true);
+	// 		// $stok_pj = $this->input->post('stok_pj', true);
+	// 		$gambar_genset_old = $this->input->post('gambar_genset_old', true);
+
+	// 		$gambar_genset = $this->upload_gambargenset();
+
+	// 		if ($gambar_genset == '<p>You did not select a file to upload.</p>') {
+	// 			$gambar_genset_new = $gambar_genset_old;
+	// 		} else {
+	// 			$gambar_genset_new = $gambar_genset;
+	// 		}
+
+	// 		$where = array('id_genset' => $id);
+	// 		$data = array(
+	// 			'kode_genset' => $kode_genset,
+	// 			'nama_genset' => $nama_genset,
+	// 			'daya' => $daya,
+	// 			'harga' => $harga,
+	// 			'ket_genset' => $ket_genset,
+	// 			// 'stok_gd' => $stok_gd,
+	// 			// 'stok_pj' => $stok_pj,
+	// 			'gambar_genset' => $gambar_genset_new
+	// 		);
+	// 		$this->M_data->update('tb_genset', $data, $where);
+
+	// 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+	// 		redirect(site_url('admin/tabel_genset'));
+	// 	} else {
+	// 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+	// 		$data['title'] = 'Update Genset';
+	// 		// $this->load->view('admin/genset/updategenset', $data);
+	// 		$this->load->view('admin/genset/tabel_genset', $data);
+	// 	}
+	// }
+
 	public function hapus_data_genset($id_genset)
 	{
 		// $uri = $this->uri->segment(3);
 		// $id_genset = array('id_genset' => $uri);
-		$data = $this->M_data->get_foto_genset($id_genset)->row();
+		$data = $this->M_data->get_data_genset($id_genset)->row();
 		$file = './assets/upload/genset/' . $data->gambar_genset;
 
 		if (is_readable($file) && unlink($file)) {
@@ -1434,7 +1501,7 @@ class Admin extends CI_Controller
 		$data['list_mobil'] = $this->M_data->select_gst('tb_genset');
 		$data['list_pelanggan'] = $this->M_data->get_Plg('tb_pelanggan');
 		$data['list_operator'] = $this->M_data->select_op('tb_operator');
-		$data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_penyewaan');
+		$data['list_data'] = $this->M_data->get_data_valid_penyewaan('tb_valid_penyewaan');
 		// $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_penyewaan');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Data Unit Sewa';
