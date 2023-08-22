@@ -86,10 +86,10 @@ class Report extends CI_Controller
         $bulan = $this->input->post('bulan');
         $tahun = $this->input->post('tahun');
         if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
-            $data['list_data'] = $this->M_data->gsel_data_u_keluar('tb_unit_penyewaan');
+            $data['list_data'] = $this->M_data->gsel_data_u_keluar('tb_valid_penyewaan');
             $label = 'Bulan ...' . ' Tahun ...';
         } else {
-            $data['list_data'] = $this->M_data->grep_data_u_keluar('tb_unit_penyewaan', $bulan, $tahun);
+            $data['list_data'] = $this->M_data->grep_data_u_keluar('tb_valid_penyewaan', $bulan, $tahun);
             $label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
         }
         $data['label'] = $label;
@@ -239,11 +239,11 @@ class Report extends CI_Controller
         $this->load->view('report/sparepart/rep_sparepart', $data);
     }
 
-    public function cetak_penyewaan_detail()
+    public function cetak_penyewaan_detail($where)
     {
-        $uri = $this->uri->segment(3);
-        $where = array('id_u_sewa' => $uri);
-        $data['list_data'] = $this->M_data->select_data_u_masuk('tb_unit_penyewaan', $where);
+        // $uri = $this->uri->segment(3);
+        // $where = array('id_u_sewa' => $uri);
+        $data['list_data'] = $this->M_data->det_data_valid_penyewaanMasuk('tb_valid_penyewaan', $where);
         $data['title'] = 'Laporan Detail Data Penyewaan Genset';
         $this->load->view('report/unit_keluar/rep_unit_keluar_detail', $data);
     }

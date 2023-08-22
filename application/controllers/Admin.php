@@ -1268,6 +1268,22 @@ class Admin extends CI_Controller
 		$this->load->view('admin/operator/update_operator', $data);
 	}
 
+	public function update_status_op_standby()
+	{
+		$uri = $this->uri->segment(3);
+		$data['status_op'] = $this->M_data->select('tb_operator');
+		$where = array('id_operator' => $uri);
+		$status_op = 0;
+
+		$data = array(
+			'status_op' => $status_op
+		);
+
+		$this->M_data->update('tb_operator', $data, $where);
+		$this->session->set_flashdata('msg_sukses', 'Data Status diubah');
+		redirect(site_url('admin/tabel_operator'));
+	}
+
 	public function proses_tambah_operator()
 	{
 		$this->form_validation->set_rules('nama_op', 'Nama', 'trim|required');
@@ -1564,7 +1580,7 @@ class Admin extends CI_Controller
 	public function tabel_unit_keluar()
 	{
 		$data['list_mobil'] = $this->M_data->select('tb_mobil');
-		$data['list_mobil'] = $this->M_data->select_gst('tb_genset');
+		$data['list_genset'] = $this->M_data->select_gst('tb_genset');
 		$data['list_pelanggan'] = $this->M_data->get_Plg('tb_pelanggan');
 		$data['list_operator'] = $this->M_data->select_op('tb_operator');
 		$data['list_data'] = $this->M_data->get_data_valid_penyewaan('tb_valid_penyewaan');
@@ -1578,7 +1594,7 @@ class Admin extends CI_Controller
 	{
 		$uri = $this->uri->segment(3);
 		$where = array('id_u_sewa' => $uri);
-		$data['list_data'] = $this->M_data->select_data_u_keluar('tb_unit_penyewaan', $where);
+		$data['list_data'] = $this->M_data->get_data_valid_penyewa('tb_valid_penyewaan', $where);
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Detail Data Unit Sewa';
 		$this->load->view('admin/unit_keluar/detail_keluar', $data);
@@ -1646,10 +1662,11 @@ class Admin extends CI_Controller
 
 	public function proses_tambah_unit_keluar()
 	{
+		$this->db->trans_start();
 		$this->form_validation->set_rules('id_transaksi', 'ID Data', 'required');
 		$this->form_validation->set_rules('tanggal_keluar', 'Tanggal Keluar', 'required');
 		$this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
-		$this->form_validation->set_rules('id_operator', 'Nama Operator', 'required');
+		// $this->form_validation->set_rules('id_operator', 'Nama Operator', 'required');
 		$this->form_validation->set_rules('id_pelanggan', 'Nama Pelanggan', 'required');
 		$this->form_validation->set_rules('id_genset', 'Kode Genset', 'required');
 
@@ -1660,14 +1677,14 @@ class Admin extends CI_Controller
 			$id_transaksi     = $this->input->post('id_transaksi', TRUE);
 			$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
 			$lokasi           = $this->input->post('lokasi', TRUE);
-			$id_operator    = $this->input->post('id_operator', TRUE);
+			// $id_operator    = $this->input->post('id_operator', TRUE);
 			$id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
 			$id_genset      = $this->input->post('id_genset', TRUE);
-			$id_mobil            = $this->input->post('id_mobil', TRUE);
+			// $id_mobil            = $this->input->post('id_mobil', TRUE);
 			$tambahan         = $this->input->post('tambahan', TRUE);
 			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
 			$total            = $this->input->post('total', TRUE);
-			$status           = 2;
+			$status           = 1;
 
 			$tanggal_masuk    = date('Y-m-d', strtotime($tanggal_keluar . "+" . $jumlah_hari . " days"));
 
@@ -1676,17 +1693,17 @@ class Admin extends CI_Controller
 				'tanggal_keluar'          => $tanggal_keluar,
 				'lokasi'           => $lokasi,
 				'tanggal_masuk'    => $tanggal_masuk,
-				'id_operator'    => $id_operator,
+				// 'id_operator'    => $id_operator,
 				'id_pelanggan'   => $id_pelanggan,
 				'id_genset'      => $id_genset,
-				'id_mobil'            => $id_mobil,
+				// 'id_mobil'            => $id_mobil,
 				'tambahan'         => $tambahan,
 				'jumlah_hari'      => $jumlah_hari,
 				'total'            => $total,
 				'status'           => $status
 			);
 			$status_gst = 1;
-			$status_op = 1;
+			// $status_op = 1;
 			$status_plg = 1;
 			// $stok_gd_new = ++$stok_gd;
 			// $stok_pj_new = --$stok_pj;
@@ -1694,23 +1711,99 @@ class Admin extends CI_Controller
 			// $this->M_data->mengurangi('tb_genset', $id_genset, $stok_gd_new);
 			// $this->M_data->menambah('tb_genset', $id_genset, $stok_pj_new);
 			$this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
-			$this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
+			// $this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
 			$this->M_data->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
 			$this->M_data->insert('tb_unit_penyewaan', $data);
+			$last_id = $this->db->insert_id();
+			$dataValid = array(
+				'id_u_sewa' => $last_id,
+				// 'tglupdate_plg' => $tglupdate_plg,
+				// 'id_user' => $last_id
+			);
+			$this->M_data->insert('tb_valid_penyewaan', $dataValid);
+			$this->db->trans_complete();
+
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
 
 			redirect(site_url('admin/tabel_unit_keluar'));
 		} else {
 			$data['list_mobil'] = $this->M_data->select('tb_mobil');
 			$data['list_genset'] = $this->M_data->select('tb_genset');
-			$data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
+			$data['list_pelanggan'] = $this->M_data->get_data_plg('tb_pelanggan');
 			$data['list_operator'] = $this->M_data->select('tb_operator');
 			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 			$data['title'] = 'Tambah Unit Sewa';
-			// $this->load->view('admin/unit_keluar/tambah_unit_keluar', $data);
 			$this->load->view('admin/unit_keluar/tabel_unit_keluar', $data);
 		}
 	}
+
+	// public function proses_tambah_unit_keluar()
+	// {
+	// 	$this->form_validation->set_rules('id_transaksi', 'ID Data', 'required');
+	// 	$this->form_validation->set_rules('tanggal_keluar', 'Tanggal Keluar', 'required');
+	// 	$this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
+	// 	$this->form_validation->set_rules('id_operator', 'Nama Operator', 'required');
+	// 	$this->form_validation->set_rules('id_pelanggan', 'Nama Pelanggan', 'required');
+	// 	$this->form_validation->set_rules('id_genset', 'Kode Genset', 'required');
+
+	// 	if ($this->form_validation->run() == TRUE) {
+	// 		// $stok_gd           = $this->input->post('stok_gd', TRUE);
+	// 		// $stok_pj           = $this->input->post('stok_pj', TRUE);
+
+	// 		$id_transaksi     = $this->input->post('id_transaksi', TRUE);
+	// 		$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
+	// 		$lokasi           = $this->input->post('lokasi', TRUE);
+	// 		$id_operator    = $this->input->post('id_operator', TRUE);
+	// 		$id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
+	// 		$id_genset      = $this->input->post('id_genset', TRUE);
+	// 		$id_mobil            = $this->input->post('id_mobil', TRUE);
+	// 		$tambahan         = $this->input->post('tambahan', TRUE);
+	// 		$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
+	// 		$total            = $this->input->post('total', TRUE);
+	// 		$status           = 2;
+
+	// 		$tanggal_masuk    = date('Y-m-d', strtotime($tanggal_keluar . "+" . $jumlah_hari . " days"));
+
+	// 		$data = array(
+	// 			'id_transaksi'     => $id_transaksi,
+	// 			'tanggal_keluar'          => $tanggal_keluar,
+	// 			'lokasi'           => $lokasi,
+	// 			'tanggal_masuk'    => $tanggal_masuk,
+	// 			'id_operator'    => $id_operator,
+	// 			'id_pelanggan'   => $id_pelanggan,
+	// 			'id_genset'      => $id_genset,
+	// 			'id_mobil'            => $id_mobil,
+	// 			'tambahan'         => $tambahan,
+	// 			'jumlah_hari'      => $jumlah_hari,
+	// 			'total'            => $total,
+	// 			'status'           => $status
+	// 		);
+	// 		$status_gst = 1;
+	// 		// $status_op = 1;
+	// 		$status_plg = 1;
+	// 		// $stok_gd_new = ++$stok_gd;
+	// 		// $stok_pj_new = --$stok_pj;
+
+	// 		// $this->M_data->mengurangi('tb_genset', $id_genset, $stok_gd_new);
+	// 		// $this->M_data->menambah('tb_genset', $id_genset, $stok_pj_new);
+	// 		$this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
+	// 		// $this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
+	// 		$this->M_data->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
+	// 		$this->M_data->insert('tb_unit_penyewaan', $data);
+	// 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
+
+	// 		redirect(site_url('admin/tabel_unit_keluar'));
+	// 	} else {
+	// 		$data['list_mobil'] = $this->M_data->select('tb_mobil');
+	// 		$data['list_genset'] = $this->M_data->select('tb_genset');
+	// 		$data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
+	// 		$data['list_operator'] = $this->M_data->select('tb_operator');
+	// 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+	// 		$data['title'] = 'Tambah Unit Sewa';
+	// 		// $this->load->view('admin/unit_keluar/tambah_unit_keluar', $data);
+	// 		$this->load->view('admin/unit_keluar/tabel_unit_keluar', $data);
+	// 	}
+	// }
 
 	public function hapus_unit_keluar()
 	{
@@ -1736,11 +1829,12 @@ class Admin extends CI_Controller
 		redirect(site_url('admin/tabel_unit_keluar'));
 	}
 
-	public function unit_new_update()
+	public function unit_new_update($where)
 	{
-		$uri = $this->uri->segment(3);
-		$where = array('id_u_sewa' => $uri);
-		$data['data_unit_update'] = $this->M_data->get_data('tb_unit_penyewaan', $where);
+		// $uri = $this->uri->segment(3);
+		// $where = array('id_u_sewa' => $uri);
+		$data['data_unit_update'] = $this->M_data->ambil_data_valid_penyewaan('tb_valid_penyewaan', $where);
+		$data['data_unit_list'] = $this->M_data->select_data_u_keluar('tb_unit_penyewaan', $where);
 		$data['list_mobil'] = $this->M_data->select('tb_mobil');
 		$data['list_genset'] = $this->M_data->select('tb_genset');
 		$data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
@@ -1748,6 +1842,33 @@ class Admin extends CI_Controller
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Konfirmasi Pemakaian Genset';
 		$this->load->view('admin/unit_keluar/update_unit_new', $data);
+	}
+
+	public function proses_update_valid()
+	{
+		$id_u_sewa       = $this->input->post('id_u_sewa', TRUE);
+		$id_transaksi     = $this->input->post('id_transaksi', TRUE);
+		$id_operator    = $this->input->post('id_operator', TRUE);
+		$id_mobil            = $this->input->post('id_mobil', TRUE);
+		$status_b = 2;
+		$status_op = 1;
+
+		$where = array('id_u_sewa' => $id_u_sewa);
+		$data = array(
+			'id_transaksi'    => $id_transaksi,
+			'id_operator'    => $id_operator,
+			'id_mobil'            => $id_mobil
+		);
+		// $data1 = array(
+		// 	'status'           => $status_b
+
+		// );
+
+		$this->M_data->update('tb_valid_penyewaan', $data, $where);
+		$this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
+		$this->M_data->update_status('tb_unit_penyewaan', $where, $status_b);
+		$this->session->set_flashdata('msg_sukses', 'Data Status diubah');
+		redirect(site_url('admin/tabel_unit_keluar'));
 	}
 
 	public function proses_data_new()
@@ -1764,10 +1885,8 @@ class Admin extends CI_Controller
 			$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
 			$tanggal_masuk    = $this->input->post('tanggal_masuk', TRUE);
 			$lokasi           = $this->input->post('lokasi', TRUE);
-			$id_operator    = $this->input->post('id_operator', TRUE);
 			$id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
 			$id_genset      = $this->input->post('id_genset', TRUE);
-			$id_mobil            = $this->input->post('id_mobil', TRUE);
 			$tambahan         = $this->input->post('tambahan', TRUE);
 			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
 			$jumlah_hari_lama = $this->input->post('jumlah_hari_lama', TRUE);
@@ -1787,10 +1906,10 @@ class Admin extends CI_Controller
 				'tanggal_keluar'          => $tanggal_keluar,
 				'tanggal_masuk'   => $tanggal_masuk,
 				'lokasi'           => $lokasi,
-				'id_operator'    => $id_operator,
+				// 'id_operator'    => $id_operator,
 				'id_pelanggan'   => $id_pelanggan,
 				'id_genset'      => $id_genset,
-				'id_mobil'            => $id_mobil,
+				// 'id_mobil'            => $id_mobil,
 				'tambahan'         => $tambahan,
 				'jumlah_hari'      => $jumlah_hari,
 				'total'            => $total,
@@ -1822,11 +1941,14 @@ class Admin extends CI_Controller
 		}
 	}
 
-	public function unit_keluar_update()
+	public function unit_keluar_update($where)
 	{
-		$uri = $this->uri->segment(3);
-		$where = array('id_u_sewa' => $uri);
-		$data['data_unit_update'] = $this->M_data->get_data('tb_unit_penyewaan', $where);
+		// $uri = $this->uri->segment(3);
+		// $where = array('id_u_sewa' => $uri);
+		$data['data_unit_update'] = $this->M_data->ambil_data_valid_penyewaan('tb_valid_penyewaan', $where);
+		$data['data_unit_list'] = $this->M_data->select_data_u_keluar('tb_unit_penyewaan', $where);
+
+		// $data['data_unit_update'] = $this->M_data->get_data('tb_unit_penyewaan', $where);
 		$data['list_mobil'] = $this->M_data->select('tb_mobil');
 		$data['list_genset'] = $this->M_data->select('tb_genset');
 		$data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
@@ -1848,10 +1970,10 @@ class Admin extends CI_Controller
 			$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
 			$tanggal_masuk    = $this->input->post('tanggal_masuk', TRUE);
 			$lokasi           = $this->input->post('lokasi', TRUE);
-			$id_operator    = $this->input->post('id_operator', TRUE);
+			// $id_operator    = $this->input->post('id_operator', TRUE);
 			$id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
 			$id_genset      = $this->input->post('id_genset', TRUE);
-			$id_mobil            = $this->input->post('id_mobil', TRUE);
+			// $id_mobil            = $this->input->post('id_mobil', TRUE);
 			$tambahan         = $this->input->post('tambahan', TRUE);
 			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
 			$jumlah_hari_lama = $this->input->post('jumlah_hari_lama', TRUE);
@@ -1879,10 +2001,10 @@ class Admin extends CI_Controller
 				'tanggal_keluar'          => $tanggal_keluar,
 				'tanggal_masuk'   => $tanggal_masuk_up,
 				'lokasi'           => $lokasi,
-				'id_operator'    => $id_operator,
+				// 'id_operator'    => $id_operator,
 				'id_pelanggan'   => $id_pelanggan,
 				'id_genset'      => $id_genset,
-				'id_mobil'            => $id_mobil,
+				// 'id_mobil'            => $id_mobil,
 				'tambahan'         => $tambahan,
 				'jumlah_hari'      => $jumlah_hari,
 				'total'            => $total,
@@ -1900,11 +2022,13 @@ class Admin extends CI_Controller
 		}
 	}
 
-	public function unit_masuk()
+	public function unit_masuk($where)
 	{
-		$uri = $this->uri->segment(3);
-		$where = array('id_u_sewa' => $uri);
-		$data['data_unit_update'] = $this->M_data->get_data('tb_unit_penyewaan', $where);
+		// $uri = $this->uri->segment(3);
+		// $where = array('id_u_sewa' => $uri);
+		$data['data_unit_update'] = $this->M_data->ambil_data_valid_penyewaan('tb_valid_penyewaan', $where);
+		$data['data_unit_list'] = $this->M_data->select_data_u_keluar('tb_unit_penyewaan', $where);
+		// $data['data_unit_update'] = $this->M_data->get_data('tb_unit_penyewaan', $where);
 		$data['list_mobil'] = $this->M_data->select('tb_mobil');
 		$data['list_genset'] = $this->M_data->select('tb_genset');
 		$data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
@@ -1928,10 +2052,10 @@ class Admin extends CI_Controller
 			$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
 			$tanggal_masuk    = $this->input->post('tanggal_masuk', TRUE);
 			$lokasi           = $this->input->post('lokasi', TRUE);
-			$id_operator    = $this->input->post('id_operator', TRUE);
+			// $id_operator    = $this->input->post('id_operator', TRUE);
 			$id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
 			$id_genset      = $this->input->post('id_genset', TRUE);
-			$id_mobil            = $this->input->post('id_mobil', TRUE);
+			// $id_mobil            = $this->input->post('id_mobil', TRUE);
 			$tambahan         = $this->input->post('tambahan', TRUE);
 			$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
 			$jumlah_hari_lama = $this->input->post('jumlah_hari_lama', TRUE);
@@ -1951,10 +2075,10 @@ class Admin extends CI_Controller
 				'tanggal_keluar'          => $tanggal_keluar,
 				'tanggal_masuk'   => $tanggal_masuk,
 				'lokasi'           => $lokasi,
-				'id_operator'    => $id_operator,
+				// 'id_operator'    => $id_operator,
 				'id_pelanggan'   => $id_pelanggan,
 				'id_genset'      => $id_genset,
-				'id_mobil'            => $id_mobil,
+				// 'id_mobil'            => $id_mobil,
 				'tambahan'         => $tambahan,
 				'jumlah_hari'      => $jumlah_hari,
 				'total'            => $total,
@@ -1969,7 +2093,7 @@ class Admin extends CI_Controller
 
 			$this->M_data->update_status('tb_unit_penyewaan', $where, $status);
 			$this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
-			$this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
+			// $this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
 			$this->M_data->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
 			// $this->M_data->menambah_kembali('tb_genset', $id_genset, $stok_gd_new);
 			// $this->M_data->mengurangi_kembali('tb_genset', $id_genset, $stok_pj_new);
@@ -1997,7 +2121,7 @@ class Admin extends CI_Controller
 		$tahun = date('Y');
 		$label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
 		$data['pendapatan'] = $this->M_data->sum_pendapatan('tb_unit_penyewaan', $bulan, $tahun);
-		$data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
+		$data['list_data'] = $this->M_data->get_data_valid_penyewaanMasuk('tb_valid_penyewaan');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['label'] = $label;
 		// $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_penyewaan');
@@ -2491,7 +2615,7 @@ class Admin extends CI_Controller
 
 	public function laporan()
 	{
-		$data['list_sewa'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
+		$data['list_sewa'] = $this->M_data->get_data_valid_penyewaanMasuk('tb_valid_penyewaan');
 		$data['list_perbaikan'] = $this->M_data->get_data_service('tb_serv_genset');
 		$data['list_genset'] = $this->M_data->select('tb_genset');
 		$data['list_operator'] = $this->M_data->select('tb_operator');

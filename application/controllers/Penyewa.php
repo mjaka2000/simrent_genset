@@ -203,7 +203,7 @@ class Penyewa extends CI_Controller
         $data['list_genset'] = $this->M_data->select_gst('tb_genset');
         $data['list_pelanggan'] = $this->M_data->get_data_plg('tb_pelanggan');
         $data['list_operator'] = $this->M_data->select_op('tb_operator');
-        $data['list_data'] = $this->M_data->sel_data_u_keluar('tb_unit_penyewaan');
+        $data['list_data'] = $this->M_data->sel_data_valid_penyewa('tb_valid_penyewaan');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Unit Sewa';
         $this->load->view('penyewa/unit_keluar/tabel_unit_keluar', $data);
@@ -213,7 +213,7 @@ class Penyewa extends CI_Controller
     {
         $uri = $this->uri->segment(3);
         $where = array('id_u_sewa' => $uri);
-        $data['list_data'] = $this->M_data->get_data_Ukeluar('tb_unit_penyewaan', $where);
+        $data['list_data'] = $this->M_data->get_data_valid_penyewa('tb_unit_penyewaan', $where);
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Detail Data Unit Sewa';
         $this->load->view('penyewa/unit_keluar/detail_keluar', $data);
@@ -244,6 +244,7 @@ class Penyewa extends CI_Controller
 
     public function proses_tambah_unit_keluar()
     {
+        $this->db->trans_start();
         $this->form_validation->set_rules('id_transaksi', 'ID Data', 'required');
         $this->form_validation->set_rules('tanggal_keluar', 'Tanggal Keluar', 'required');
         $this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
@@ -258,10 +259,10 @@ class Penyewa extends CI_Controller
             $id_transaksi     = $this->input->post('id_transaksi', TRUE);
             $tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
             $lokasi           = $this->input->post('lokasi', TRUE);
-            $id_operator    = $this->input->post('id_operator', TRUE);
+            // $id_operator    = $this->input->post('id_operator', TRUE);
             $id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
             $id_genset      = $this->input->post('id_genset', TRUE);
-            $id_mobil            = $this->input->post('id_mobil', TRUE);
+            // $id_mobil            = $this->input->post('id_mobil', TRUE);
             $tambahan         = $this->input->post('tambahan', TRUE);
             $jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
             $total            = $this->input->post('total', TRUE);
@@ -274,17 +275,17 @@ class Penyewa extends CI_Controller
                 'tanggal_keluar'          => $tanggal_keluar,
                 'lokasi'           => $lokasi,
                 'tanggal_masuk'    => $tanggal_masuk,
-                'id_operator'    => $id_operator,
+                // 'id_operator'    => $id_operator,
                 'id_pelanggan'   => $id_pelanggan,
                 'id_genset'      => $id_genset,
-                'id_mobil'            => $id_mobil,
+                // 'id_mobil'            => $id_mobil,
                 'tambahan'         => $tambahan,
                 'jumlah_hari'      => $jumlah_hari,
                 'total'            => $total,
                 'status'           => $status
             );
             $status_gst = 1;
-            $status_op = 1;
+            // $status_op = 1;
             $status_plg = 1;
             // $stok_gd_new = ++$stok_gd;
             // $stok_pj_new = --$stok_pj;
@@ -292,9 +293,18 @@ class Penyewa extends CI_Controller
             // $this->M_data->mengurangi('tb_genset', $id_genset, $stok_gd_new);
             // $this->M_data->menambah('tb_genset', $id_genset, $stok_pj_new);
             $this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
-            $this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
+            // $this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
             $this->M_data->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
             $this->M_data->insert('tb_unit_penyewaan', $data);
+            $last_id = $this->db->insert_id();
+            $dataValid = array(
+                'id_u_sewa' => $last_id,
+                // 'tglupdate_plg' => $tglupdate_plg,
+                // 'id_user' => $last_id
+            );
+            $this->M_data->insert('tb_valid_penyewaan', $dataValid);
+            $this->db->trans_complete();
+
             $this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
 
             redirect(site_url('penyewa/tabel_unit_keluar'));
@@ -318,7 +328,7 @@ class Penyewa extends CI_Controller
     {
         $data = array(
             // 'list_mobil' => $this->M_data->select('tb_mobil'),
-            'list_data' => $this->M_data->sel_data_u_masuk('tb_unit_penyewaan'),
+            'list_data' => $this->M_data->sel_data_valid_penyewaMasuk('tb_valid_penyewaan'),
             'avatar'    => $this->M_data->get_avatar('tb_user', $this->session->userdata('name'))
         );
         // $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_penyewaan');

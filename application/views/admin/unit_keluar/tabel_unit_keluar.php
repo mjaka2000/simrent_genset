@@ -77,7 +77,11 @@
                                             <td><?= $dt->nama_plg; ?></td>
                                             <td><?= $dt->nama_genset; ?></td>
                                             <td><?= $dt->daya; ?></td>
-                                            <td><?= $dt->nopol; ?></td>
+                                            <?php if ($dt->nopol == null) { ?>
+                                                <td><em>Mobil Belum Ditentukan</em></td>
+                                            <?php } else { ?>
+                                                <td><?= $dt->nopol; ?></td>
+                                            <?php } ?>
                                             <td><?= $dt->jumlah_hari; ?></td>
                                             <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
 
@@ -163,17 +167,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="nama_operator" class="col-sm-3 col-form-label">Nama Operator</label>
-                                            <div class="col-sm-9">
-                                                <select name="id_operator" class="form-control" id="nama_operator" required>
-                                                    <option value="">-- Pilih Operator --</option>
-                                                    <?php foreach ($list_operator as $op) { ?>
-                                                        <option value="<?= $op->id_operator ?>"><?= $op->nama_op ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
+
                                         <div class="form-group row">
                                             <label for="nama_pelanggan" class="col-sm-3 col-form-label">Nama Pelanggan</label>
                                             <div class="col-sm-9">
@@ -227,25 +221,7 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        <div class="form-group row">
-                                            <label for="nopol_mobil" class="col-sm-3 col-form-label">Nopol Mobil</label>
-                                            <div class="col-sm-9">
 
-                                                <select name="id_mobil" id="nopol" class="form-control" required>
-                                                    <option value="">-- Pilih Mobil--</option>
-                                                    <?php foreach ($list_mobil as $m) { ?>
-                                                        <option value="<?= $m->id_mobil ?>"><?= $m->nopol ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="tipe" class="col-sm-3 col-form-label">Merk</label>
-                                            <div class="col-sm-9">
-
-                                                <input type="text" readonly name="merk" class="form-control" id="merek">
-                                            </div>
-                                        </div>
                                         <div class="form-group row">
                                             <label for="tambahan" class="col-sm-3 col-form-label">Tambahan Alat</label>
                                             <div class="col-sm-9">

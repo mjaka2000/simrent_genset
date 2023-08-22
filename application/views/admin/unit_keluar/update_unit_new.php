@@ -27,7 +27,72 @@
 
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <div class="row tengah">
+            <div class="row ">
+                <div class="col-md-4">
+                    <div class="card">
+
+                        <div class="card-body card-primary card-outline" align="center">
+                            <div class="info">
+                                <?php //foreach ($data_valid as $dv) { 
+                                ?>
+                                <form action="<?= site_url('admin/proses_update_valid'); ?>" method="post" role="form">
+                                    <?php foreach ($data_unit_update as $du) { ?>
+                                        <input type="hidden" name="id_u_sewa" value="<?= $du->id_u_sewa; ?>">
+                                        <div class="form-group row">
+                                            <label for="id_transaksi" class="col-sm-3 col-form-label">ID Transaksi</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" name="id_transaksi" class="form-control" readonly value="<?= $du->id_transaksi; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="nama_operator" class="col-sm-3 col-form-label">Nama Operator</label>
+                                            <div class="col-sm-9">
+                                                <select name="id_operator" class="form-control" id="nama_operator" required>
+                                                    <option value="">-- Pilih Operator --</option>
+                                                    <?php foreach ($list_operator as $op) { ?>
+                                                        <?php if ($du->id_operator == $op->id_operator) { ?>
+                                                            <option value="<?= $du->id_operator ?>" selected><?= $op->nama_op ?></option>
+                                                        <?php } else { ?>
+                                                            <option value="<?= $op->id_operator ?>"><?= $op->nama_op ?></option>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="nopol_mobil" class="col-sm-3 col-form-label">Nopol Mobil</label>
+                                            <div class="col-sm-9">
+                                                <select name="id_mobil" id="nopol" class="form-control" required>
+                                                    <option value="">-- Pilih Mobil--</option>
+                                                    <?php foreach ($list_mobil as $m) { ?>
+                                                        <?php if ($du->id_mobil == $m->id_mobil) { ?>
+                                                            <option value="<?= $du->id_mobil ?>" selected><?= $m->nopol ?></option>
+                                                        <?php } else { ?>
+                                                            <option value="<?= $m->id_mobil ?>"><?= $m->nopol ?></option>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="tipe" class="col-sm-3 col-form-label">Merek</label>
+                                            <div class="col-sm-9">
+
+                                                <input type="text" readonly name="tipe" class="form-control" id="merek" value="">
+                                            </div>
+                                        </div>
+
+                                    <?php } ?>
+                            </div>
+                            <div class="card-footer" align="center">
+                                <!-- <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button> -->
+                                <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
+                            </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
@@ -49,58 +114,44 @@
 
                             <form action="<?= site_url('admin/proses_data_new'); ?>" method="post" role="form">
 
-                                <?php foreach ($data_unit_update as $du) { ?>
-                                    <input type="hidden" name="id_u_sewa" value="<?= $du->id_u_sewa; ?>">
+                                <?php foreach ($data_unit_list as $dl) { ?>
+                                    <input type="hidden" name="id_u_sewa" value="<?= $dl->id_u_sewa; ?>">
                                     <div class="form-group row">
                                         <label for="id_transaksi" class="col-sm-3 col-form-label">ID Transaksi</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="id_transaksi" class="form-control" readonly value="<?= $du->id_transaksi; ?>">
+                                            <input type="text" name="id_transaksi" class="form-control" readonly value="<?= $dl->id_transaksi; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="tanggal_keluar" class="col-sm-3 col-form-label">Tanggal Keluar</label>
                                         <div class="col-sm-9">
 
-                                            <input type="date" name="tanggal_keluar" class="form-control " id="tanggal_keluar" value="<?= $du->tanggal_keluar; ?>" required placeholder="Tanggal Keluar" readonly>
+                                            <input type="date" name="tanggal_keluar" class="form-control " id="tanggal_keluar" value="<?= $dl->tanggal_keluar; ?>" required placeholder="Tanggal Keluar" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="tanggal_masuk" class="col-sm-3 col-form-label">Tanggal Masuk</label>
                                         <div class="col-sm-9">
 
-                                            <input type="date" name="tanggal_masuk" class="form-control " id="tanggal_masuk" value="<?= $du->tanggal_masuk; ?>" required readonly placeholder="Tanggal Masuk">
+                                            <input type="date" name="tanggal_masuk" class="form-control " id="tanggal_masuk" value="<?= $dl->tanggal_masuk; ?>" required readonly placeholder="Tanggal Masuk">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="lokasi" class="col-sm-3 col-form-label">Lokasi</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="lokasi" class="form-control" id="lokasi" placeholder="Masukkan Lokasi" required value="<?= $du->lokasi; ?>">
+                                            <input type="text" name="lokasi" class="form-control" id="lokasi" placeholder="Masukkan Lokasi" required value="<?= $dl->lokasi; ?>">
 
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="nama_operator" class="col-sm-3 col-form-label">Nama Operator</label>
-                                        <div class="col-sm-9">
-                                            <select name="id_operator" class="form-control" id="nama_operator" required>
-                                                <option value="">-- Pilih Operator --</option>
-                                                <?php foreach ($list_operator as $op) { ?>
-                                                    <?php if ($du->id_operator == $op->id_operator) { ?>
-                                                        <option value="<?= $du->id_operator ?>" selected><?= $op->nama_op ?></option>
-                                                    <?php } else { ?>
-                                                        <option value="<?= $op->id_operator ?>"><?= $op->nama_op ?></option>
-                                                    <?php } ?>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
+
                                     <div class="form-group row">
                                         <label for="nama_pelanggan" class="col-sm-3 col-form-label">Nama Pelanggan</label>
                                         <div class="col-sm-9">
                                             <select name="id_pelanggan" class="form-control" id="nama_operator" required>
                                                 <option value="">-- Pilih Nama Pelanggan--</option>
                                                 <?php foreach ($list_pelanggan as $p) { ?>
-                                                    <?php if ($du->id_pelanggan == $p->id_pelanggan) { ?>
-                                                        <option value="<?= $du->id_pelanggan ?>" selected><?= $p->nama_plg ?></option>
+                                                    <?php if ($dl->id_pelanggan == $p->id_pelanggan) { ?>
+                                                        <option value="<?= $dl->id_pelanggan ?>" selected><?= $p->nama_plg ?></option>
                                                     <?php } else { ?>
                                                         <option value="<?= $p->id_pelanggan ?>"><?= $p->nama_plg ?></option>
                                                     <?php } ?>
@@ -115,8 +166,8 @@
                                             <select name="id_genset" class="form-control" id="kode_genset" required>
                                                 <option value="">-- Pilih Genset--</option>
                                                 <?php foreach ($list_genset as $g) { ?>
-                                                    <?php if ($du->id_genset == $g->id_genset) { ?>
-                                                        <option value="<?= $du->id_genset ?>" selected><?= $g->kode_genset ?></option>
+                                                    <?php if ($dl->id_genset == $g->id_genset) { ?>
+                                                        <option value="<?= $dl->id_genset ?>" selected><?= $g->kode_genset ?></option>
                                                     <?php } else { ?>
                                                         <option value="<?= $g->id_genset ?>"><?= $g->kode_genset ?></option>
                                                     <?php } ?>
@@ -150,41 +201,21 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="form-group row">
-                                        <label for="nopol_mobil" class="col-sm-3 col-form-label">Nopol Mobil</label>
-                                        <div class="col-sm-9">
-                                            <select name="id_mobil" id="nopol" class="form-control" required>
-                                                <option value="">-- Pilih Mobil--</option>
-                                                <?php foreach ($list_mobil as $m) { ?>
-                                                    <?php if ($du->id_mobil == $m->id_mobil) { ?>
-                                                        <option value="<?= $du->id_mobil ?>" selected><?= $m->nopol ?></option>
-                                                    <?php } else { ?>
-                                                        <option value="<?= $m->id_mobil ?>"><?= $m->nopol ?></option>
-                                                    <?php } ?>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="tipe" class="col-sm-3 col-form-label">Merek</label>
-                                        <div class="col-sm-9">
 
-                                            <input type="text" readonly name="tipe" class="form-control" id="merek" value="">
-                                        </div>
-                                    </div>
+                                    <!---->
                                     <div class="form-group row">
                                         <label for="tambahan" class="col-sm-3 col-form-label">Tambahan</label>
                                         <div class="col-sm-9">
 
-                                            <input type="text" name="tambahan" class="form-control" id="tambahan" placeholder="Tambahan Jika Ada" value="<?= $du->tambahan; ?>">
+                                            <input type="text" name="tambahan" class="form-control" id="tambahan" placeholder="Tambahan Jika Ada" value="<?= $dl->tambahan; ?>">
                                         </div>
                                     </div>
-                                    <input type="hidden" name="jumlah_hari_lama" value="<?= $du->jumlah_hari; ?>">
+                                    <input type="hidden" name="jumlah_hari_lama" value="<?= $dl->jumlah_hari; ?>">
                                     <div class="form-group row">
                                         <label for="jumlah_hari" class="col-sm-3 col-form-label">Jumlah Hari</label>
                                         <div class="col-sm-9">
 
-                                            <input type="number" name="jumlah_hari" class="form-control" id="jumlah_hari" placeholder="Masukkan Hari Pemakaian" value="<?= $du->jumlah_hari; ?>">
+                                            <input type="number" name="jumlah_hari" class="form-control" id="jumlah_hari" placeholder="Masukkan Hari Pemakaian" value="<?= $dl->jumlah_hari; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -193,7 +224,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Rp</span>
                                             </div>
-                                            <input type="text" readonly name="total" class="form-control" id="total_harga" placeholder="Total Harga" value="<?= $du->total; ?>">
+                                            <input type="text" readonly name="total" class="form-control" id="total_harga" placeholder="Total Harga" value="<?= $dl->total; ?>">
                                         </div>
                                     </div>
                                 <?php } ?>

@@ -451,7 +451,7 @@ class Pimpinan extends CI_Controller
 
     public function tabel_unit_keluar()
     {
-        $data['list_data'] = $this->M_data->get_data_u_keluar('tb_unit_penyewaan');
+        $data['list_data'] = $this->M_data->get_data_valid_penyewaan('tb_valid_penyewaan');
         // $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_penyewaan');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Data Unit Sewa';
@@ -642,8 +642,8 @@ class Pimpinan extends CI_Controller
         $tahun = date('Y');
         $label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
         $data['pendapatan'] = $this->M_data->sum_pendapatan('tb_unit_penyewaan', $bulan, $tahun);
+        $data['list_data'] = $this->M_data->get_data_valid_penyewaanMasuk('tb_valid_penyewaan');
         $data['label'] = $label;
-        $data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         // $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_penyewaan');
         $data['title'] = 'Data Unit Masuk/Kembali';

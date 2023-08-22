@@ -70,7 +70,7 @@
                                                 <?php if ($dt->status_op == 0) { ?>
                                                     <td><em>Standby</em></td>
                                                 <?php } else { ?>
-                                                    <td><a href="#" type="button" class="btn btn-xs btn-success" name="btn_status_op">Berangkat</a></td>
+                                                    <td><a href="<?= site_url('admin/update_status_op_standby/' . $dt->id_operator); ?>" type="button" class="btn btn-xs btn-success status-op" name="btn_status_op">Berangkat</a></td>
                                                 <?php } ?>
                                                 <td>
                                                     <button type="button" data-toggle="modal" data-target="#staticEditOp<?= $dt->id_operator; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
@@ -253,6 +253,25 @@
         })
         return false;
     }); //* Script untuk memuat sweetalert hapus data
+</script>
+<script>
+    //* Script untuk memuat sweetalert status genset
+    $('.status-op').on('click', function() {
+        var getLink = $(this).attr('href');
+        Swal.fire({
+            title: 'Ubah Status',
+            text: 'Yakin ingin ubah Status Operator?',
+            type: 'warning',
+            confirmButtonColor: '#d9534f',
+            showCancelButton: true,
+        }).then(result => {
+            //jika klik ya maka arahkan ke proses.php
+            if (result.isConfirmed) {
+                window.location.href = getLink
+            }
+        })
+        return false;
+    });
 </script>
 </body>
 

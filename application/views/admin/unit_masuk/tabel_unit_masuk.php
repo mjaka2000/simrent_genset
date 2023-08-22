@@ -91,7 +91,7 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
-                            <div class="box-footer">
+                            <div class="card-footer">
                                 <?php foreach ($pendapatan as $pd) { ?>
                                     <?php if (!empty($pd->total)) { ?>
                                         <h5>Rp&nbsp;<?= number_format($pd->total) ?></h5>
