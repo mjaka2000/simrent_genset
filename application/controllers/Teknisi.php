@@ -152,14 +152,14 @@ class Teknisi extends CI_Controller
         $this->load->view('teknisi/service_genset/tabel_service_genset', $data);
     }
 
-    public function tambah_service_genset()
-    {
-        $data['list_genset'] = $this->M_data->select('tb_genset');
-        $data['list_sparepart'] = $this->M_data->select('tb_sparepart');
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Tambah Perbaikan Genset';
-        $this->load->view('teknisi/service_genset/tambah_service_genset', $data);
-    }
+    // public function tambah_service_genset()
+    // {
+    //     $data['list_genset'] = $this->M_data->select('tb_genset');
+    //     $data['list_sparepart'] = $this->M_data->select('tb_sparepart');
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Tambah Perbaikan Genset';
+    //     $this->load->view('teknisi/service_genset/tambah_service_genset', $data);
+    // }
 
     public function proses_tambah_service_genset()
     {
@@ -205,17 +205,17 @@ class Teknisi extends CI_Controller
         }
     }
 
-    public function update_data_service_genset()
-    {
-        $data['list_genset'] = $this->M_data->select('tb_genset');
-        $data['list_sparepart'] = $this->M_data->select('tb_sparepart');
-        $uri = $this->uri->segment(3);
-        $where = array('id_perbaikan_gst' => $uri);
-        $data['list_data'] = $this->M_data->get_data('tb_serv_genset', $where);
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Update Perbaikan Genset';
-        $this->load->view('teknisi/service_genset/update_service_genset', $data);
-    }
+    // public function update_data_service_genset()
+    // {
+    //     $data['list_genset'] = $this->M_data->select('tb_genset');
+    //     $data['list_sparepart'] = $this->M_data->select('tb_sparepart');
+    //     $uri = $this->uri->segment(3);
+    //     $where = array('id_perbaikan_gst' => $uri);
+    //     $data['list_data'] = $this->M_data->get_data('tb_serv_genset', $where);
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Update Perbaikan Genset';
+    //     $this->load->view('teknisi/service_genset/update_service_genset', $data);
+    // }
 
     public function proses_update_service_genset()
     {
@@ -282,16 +282,16 @@ class Teknisi extends CI_Controller
         $this->load->view('teknisi/service_genset/detail_service_genset', $data);
     }
 
-    public function tambah_service_detail()
-    {
-        $uri = $this->uri->segment(3);
-        $where = array('id_perbaikan_gst' => $uri);
-        $data['list_data'] = $this->M_data->get_detail_perbaikan('tb_serv_genset', $where);
-        $data['detail_perbaikan'] = $this->M_data->detail_perbaikan('tb_detail_serv', $where);
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Tambah Detail Perbaikan';
-        $this->load->view('teknisi/service_genset/tambah_detailservice_genset', $data);
-    }
+    // public function tambah_service_detail()
+    // {
+    //     $uri = $this->uri->segment(3);
+    //     $where = array('id_perbaikan_gst' => $uri);
+    //     $data['list_data'] = $this->M_data->get_detail_perbaikan('tb_serv_genset', $where);
+    //     $data['detail_perbaikan'] = $this->M_data->detail_perbaikan('tb_detail_serv', $where);
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Tambah Detail Perbaikan';
+    //     $this->load->view('teknisi/service_genset/tambah_detailservice_genset', $data);
+    // }
 
     public function proses_tambah_service_detail()
     {
@@ -393,13 +393,13 @@ class Teknisi extends CI_Controller
         $this->load->view('teknisi/service_gensetAcc/tabel_service_gensetAcc', $data);
     }
 
-    public function tambah_service_genset_acc()
-    {
-        $data['list_perbaikan'] = $this->M_data->get_Serv('tb_serv_genset');
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Tambah Perbaikan Genset Disetujui';
-        $this->load->view('teknisi/service_gensetAcc/tambah_service_gensetAcc', $data);
-    }
+    // public function tambah_service_genset_acc()
+    // {
+    //     $data['list_perbaikan'] = $this->M_data->get_Serv('tb_serv_genset');
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Tambah Perbaikan Genset Disetujui';
+    //     $this->load->view('teknisi/service_gensetAcc/tambah_service_gensetAcc', $data);
+    // }
 
     public function proses_tambah_ServGstAcc()
     {
@@ -433,16 +433,16 @@ class Teknisi extends CI_Controller
         }
     }
 
-    public function update_service_genset_acc()
-    {
-        $uri = $this->uri->segment(3);
-        $where = array('id_serv_gst_acc' => $uri);
-        $data['list_data'] = $this->M_data->get_ServGstAcc('tb_serv_gst_acc', $where);
-        $data['list_perbaikan'] = $this->M_data->get_Serv('tb_serv_genset');
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Ubah Perbaikan Genset Disetujui';
-        $this->load->view('teknisi/service_gensetAcc/ubah_service_gensetAcc', $data);
-    }
+    // public function update_service_genset_acc()
+    // {
+    //     $uri = $this->uri->segment(3);
+    //     $where = array('id_serv_gst_acc' => $uri);
+    //     $data['list_data'] = $this->M_data->get_ServGstAcc('tb_serv_gst_acc', $where);
+    //     $data['list_perbaikan'] = $this->M_data->get_Serv('tb_serv_genset');
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Ubah Perbaikan Genset Disetujui';
+    //     $this->load->view('teknisi/service_gensetAcc/ubah_service_gensetAcc', $data);
+    // }
 
     public function proses_ubah_ServGstAcc()
     {
@@ -505,12 +505,12 @@ class Teknisi extends CI_Controller
         $this->load->view('teknisi/sparepart/tabel_sparepart', $data);
     }
 
-    public function tambah_data_sparepart()
-    {
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Tambah Stok Sparepart';
-        $this->load->view('teknisi/sparepart/tambah_sparepart', $data);
-    }
+    // public function tambah_data_sparepart()
+    // {
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Tambah Stok Sparepart';
+    //     $this->load->view('teknisi/sparepart/tambah_sparepart', $data);
+    // }
 
     public function proses_tambah_sparepart()
     {
@@ -547,15 +547,15 @@ class Teknisi extends CI_Controller
         }
     }
 
-    public function update_sparepart()
-    {
-        $uri = $this->uri->segment(3);
-        $where = array('id_sparepart' => $uri);
-        $data['data_sparepart'] = $this->M_data->get_data('tb_sparepart', $where);
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Edit Stok Sparepart';
-        $this->load->view('teknisi/sparepart/update_sparepart', $data);
-    }
+    // public function update_sparepart()
+    // {
+    //     $uri = $this->uri->segment(3);
+    //     $where = array('id_sparepart' => $uri);
+    //     $data['data_sparepart'] = $this->M_data->get_data('tb_sparepart', $where);
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Edit Stok Sparepart';
+    //     $this->load->view('teknisi/sparepart/update_sparepart', $data);
+    // }
 
     public function proses_update_sparepart()
     {

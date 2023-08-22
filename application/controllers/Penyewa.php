@@ -144,15 +144,15 @@ class Penyewa extends CI_Controller
         $this->load->view('penyewa/pelanggan/tabel_pelanggan', $data);
     }
 
-    public function update_data_pelanggan()
-    {
-        $uri = $this->uri->segment(3);
-        $where = array('id_pelanggan' => $uri);
-        $data['list_data'] = $this->M_data->get_data('tb_pelanggan', $where);
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Ubah Data Pelanggan';
-        $this->load->view('penyewa/pelanggan/update_pelanggan', $data);
-    }
+    // public function update_data_pelanggan()
+    // {
+    //     $uri = $this->uri->segment(3);
+    //     $where = array('id_pelanggan' => $uri);
+    //     $data['list_data'] = $this->M_data->get_data('tb_pelanggan', $where);
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Ubah Data Pelanggan';
+    //     $this->load->view('penyewa/pelanggan/update_pelanggan', $data);
+    // }
 
     public function proses_update_pelanggan()
     {
@@ -219,9 +219,9 @@ class Penyewa extends CI_Controller
         $this->load->view('penyewa/unit_keluar/detail_keluar', $data);
     }
 
-    public function tambah_unit_keluar()
-    {
-        /*    $kode_id = $this->M_data->get_auto_id('tb_unit_penyewaan');
+    // public function tambah_unit_keluar()
+    // {
+    /*    $kode_id = $this->M_data->get_auto_id('tb_unit_penyewaan');
         foreach ($kode_id as $kd) {
             if ($kd) {
                 $nilai     = substr($kd->id_transaksi, 6);
@@ -233,14 +233,14 @@ class Penyewa extends CI_Controller
         }
         $data['kode_auto'] = $auto_kode; */
 
-        $data['list_mobil'] = $this->M_data->select('tb_mobil');
-        $data['list_genset'] = $this->M_data->select_gst('tb_genset');
-        $data['list_pelanggan'] = $this->M_data->get_data_plg('tb_pelanggan');
-        $data['list_operator'] = $this->M_data->select_op('tb_operator');
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Tambah Unit Sewa';
-        $this->load->view('penyewa/unit_keluar/tambah_unit_keluar', $data);
-    }
+    //     $data['list_mobil'] = $this->M_data->select('tb_mobil');
+    //     $data['list_genset'] = $this->M_data->select_gst('tb_genset');
+    //     $data['list_pelanggan'] = $this->M_data->get_data_plg('tb_pelanggan');
+    //     $data['list_operator'] = $this->M_data->select_op('tb_operator');
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Tambah Unit Sewa';
+    //     $this->load->view('penyewa/unit_keluar/tambah_unit_keluar', $data);
+    // }
 
     public function proses_tambah_unit_keluar()
     {

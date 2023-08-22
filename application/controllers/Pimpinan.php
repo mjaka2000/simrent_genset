@@ -248,16 +248,16 @@ class Pimpinan extends CI_Controller
         $this->load->view('pimpinan/service_gensetAcc/tabel_service_gensetAcc', $data);
     }
 
-    public function update_service_genset_acc()
-    {
-        $uri = $this->uri->segment(3);
-        $where = array('id_serv_gst_acc' => $uri);
-        $data['list_data'] = $this->M_data->get_ServGstAcc('tb_serv_gst_acc', $where);
-        $data['list_perbaikan'] = $this->M_data->get_Serv('tb_serv_genset');
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Ubah Perbaikan Genset Disetujui';
-        $this->load->view('pimpinan/service_gensetAcc/ubah_service_gensetAcc', $data);
-    }
+    // public function update_service_genset_acc()
+    // {
+    //     $uri = $this->uri->segment(3);
+    //     $where = array('id_serv_gst_acc' => $uri);
+    //     $data['list_data'] = $this->M_data->get_ServGstAcc('tb_serv_gst_acc', $where);
+    //     $data['list_perbaikan'] = $this->M_data->get_Serv('tb_serv_genset');
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Ubah Perbaikan Genset Disetujui';
+    //     $this->load->view('pimpinan/service_gensetAcc/ubah_service_gensetAcc', $data);
+    // }
 
     public function proses_ubah_ServGstAcc()
     {
@@ -715,12 +715,12 @@ class Pimpinan extends CI_Controller
         $this->load->view('pimpinan/pengeluaran/tabel_pengeluaran', $data);
     }
 
-    public function tambah_data_pengeluaran()
-    {
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Tambah Data Pengeluaran';
-        $this->load->view('pimpinan/pengeluaran/tambah_pengeluaran', $data);
-    }
+    // public function tambah_data_pengeluaran()
+    // {
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Tambah Data Pengeluaran';
+    //     $this->load->view('pimpinan/pengeluaran/tambah_pengeluaran', $data);
+    // }
 
     public function proses_tambah_pengeluaran()
     {
@@ -748,15 +748,15 @@ class Pimpinan extends CI_Controller
         }
     }
 
-    public function update_data_pengeluaran()
-    {
-        $uri = $this->uri->segment(3);
-        $where = array('id_pengeluaran' => $uri);
-        $data['list_data'] = $this->M_data->get_data('tb_pengeluaran', $where);
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Ubah Data Pengeluaran';
-        $this->load->view('pimpinan/pengeluaran/update_pengeluaran', $data);
-    }
+    // public function update_data_pengeluaran()
+    // {
+    //     $uri = $this->uri->segment(3);
+    //     $where = array('id_pengeluaran' => $uri);
+    //     $data['list_data'] = $this->M_data->get_data('tb_pengeluaran', $where);
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Ubah Data Pengeluaran';
+    //     $this->load->view('pimpinan/pengeluaran/update_pengeluaran', $data);
+    // }
 
     public function proses_edit_pengeluaran()
     {
@@ -808,13 +808,13 @@ class Pimpinan extends CI_Controller
         // $bulan = date('m');
         // $tahun = date('Y');
         if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+            $data['get_data'] = $this->M_data->get_data_valid_penyewaanMasuk('tb_valid_penyewaan');
             $data['list_data'] = $this->M_data->get_data_pemasukan('tb_pendapatan');
-            $data['get_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
             $data['total_data'] = $this->M_data->sum_pemasukan('tb_pendapatan');
             $label = 'Bulan ke ...' . ' Tahun ...';
         } else {
+            $data['get_data'] = $this->M_data->get_data_valid_penyewaanMasuk('tb_valid_penyewaan');
             $data['list_data'] = $this->M_data->pemasukan_periode('tb_pendapatan', $bulan, $tahun);
-            $data['get_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
             $data['total_data'] = $this->M_data->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
             $label = 'Bulan ke ' . $bulan . ' Tahun ' .  $tahun;
         }
@@ -828,13 +828,13 @@ class Pimpinan extends CI_Controller
         $this->load->view('pimpinan/pemasukan/tabel_pemasukan', $data);
     }
 
-    public function tambah_pemasukan()
-    {
-        $data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Tambah Data Pendapatan';
-        $this->load->view('pimpinan/pemasukan/tambah_pemasukan', $data);
-    }
+    // public function tambah_pemasukan()
+    // {
+    //     $data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Tambah Data Pendapatan';
+    //     $this->load->view('pimpinan/pemasukan/tambah_pemasukan', $data);
+    // }
 
     public function proses_tambah_pemasukan()
     {
@@ -865,16 +865,16 @@ class Pimpinan extends CI_Controller
         }
     }
 
-    public function edit_pemasukan()
-    {
-        $uri = $this->uri->segment(3);
-        $where = array('id_pendapatan' => $uri);
-        $data['edit_data'] = $this->M_data->get_data('tb_pendapatan', $where);
-        $data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Ubah Data Pendapatan';
-        $this->load->view('pimpinan/pemasukan/edit_pemasukan', $data);
-    }
+    // public function edit_pemasukan()
+    // {
+    //     $uri = $this->uri->segment(3);
+    //     $where = array('id_pendapatan' => $uri);
+    //     $data['edit_data'] = $this->M_data->get_data('tb_pendapatan', $where);
+    //     $data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Ubah Data Pendapatan';
+    //     $this->load->view('pimpinan/pemasukan/edit_pemasukan', $data);
+    // }
 
     public function proses_edit_pemasukan()
     {
