@@ -468,7 +468,7 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      // ->join('tb_serv_genset', 'tb_serv_genset.where = tb_detail_serv.id_perbaikan_gst ')
+      ->join('tb_serv_genset', 'tb_serv_genset.id_perbaikan_gst = ' . $tabel . '.id_perbaikan_gst ')
       ->where($where)
       ->get();
     return $query->result();
