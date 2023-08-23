@@ -58,7 +58,6 @@
                                         <th>Mobil</th>
                                         <th>Jml. Hari</th>
                                         <th>Total</th>
-                                        <!-- <th>Status Genset</th> -->
                                         <th style="width:10%">Aksi</th>
                                     </tr>
                                 </thead>
@@ -80,28 +79,16 @@
                                             <td><?= $dt->nopol; ?></td>
                                             <td><?= $dt->jumlah_hari; ?></td>
                                             <td>Rp&nbsp;<?= number_format($dt->total); ?></td>
-                                            <!-- <?php if ($dt->status == NULL || $dt->status == 0) { ?>
-                                                <td>Genset Masuk (Kembali)
-                                                </td>
-                                            <?php } else { ?>
-                                                <td>Genset Masuk (Kembali)</td>
-                                            <?php } ?> -->
+
                                             <td>
                                                 <button type="button" data-toggle="modal" data-target="#DetailUMasuk<?= $dt->id_u_sewa; ?>" title="Lihat Detail" class="btn btn-warning btn-sm"><i class="fa fa-info-circle"></i></button>
-                                                <!-- <a href="<?= base_url('penyewa/hapus_unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
-                                                <!-- <a href="<?= base_url('penyewa/detail_unit_masuk/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
+
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
-                            <div class="box-footer">
 
-                                <!-- <h5><strong>Keterangan :</strong></h5> -->
-                                <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
-                                <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash "></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->
-                                <!-- <a href="#" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>&nbsp;<span>Untuk Melihat Detail </span> -->
-                            </div>
                         </div>
                     </div>
                     <?php foreach ($list_data as $d) { ?>

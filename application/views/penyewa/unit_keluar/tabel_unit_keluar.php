@@ -109,13 +109,7 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
-                            <div class="box-footer">
 
-                                <!-- <h5><strong>Keterangan :</strong></h5> -->
-                                <!-- <a href="#" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a>&nbsp;<span>Untuk Mengedit Data</span><br> -->
-                                <!-- <a href="#" type="button" class="btn btn-sm btn-danger" name="btn_delete"><i class="fa fa-trash "></i></a>&nbsp;<span>Untuk Menghapus Data</span><br> -->
-                                <!-- <a href="#" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a>&nbsp;<span>Untuk Melihat Detail </span> -->
-                            </div>
                         </div>
                     </div>
                     <div class="modal fade" id="staticAddUKeluar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
