@@ -495,7 +495,7 @@ class Admin extends CI_Controller
 		$data = $this->M_data->get_data_genset($id_genset)->row();
 		$file = './assets/upload/genset/' . $data->gambar_genset;
 
-		if (is_readable($file) && unlink($file)) {
+		if (file_exists($file) && unlink($file)) {
 			$this->M_data->del_foto_genset($id_genset);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
 			redirect(site_url('admin/tabel_genset'));
@@ -684,7 +684,7 @@ class Admin extends CI_Controller
 		$data['list_data'] = $this->M_data->get_detail_perbaikan('tb_serv_genset', $where);
 		$data['detail_perbaikan'] = $this->M_data->detail_perbaikan('tb_detail_serv', $where);
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-		$data['title'] = 'Update Perbaikan Genset';
+		$data['title'] = 'Detail Perbaikan Genset';
 		$this->load->view('admin/service_genset/detail_service_genset', $data);
 	}
 
@@ -1026,11 +1026,11 @@ class Admin extends CI_Controller
 	{
 		// $uri = $this->uri->segment(3);
 		// $id_mobil = array('id_mobil' => $uri);
-		$data = $this->M_data->get_foto_mobil($id_mobil)->row();
+		$data = $this->M_data->get_data_mobil($id_mobil)->row();
 		$file = './assets/upload/mobil/' . $data->gambar_mobil;
 
 		if (is_readable($file) && unlink($file)) {
-			$this->M_data->del_foto_mobil($id_mobil);
+			$this->M_data->del_data_mobil($id_mobil);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
 			redirect(site_url('admin/tabel_mobil'));
 		} else {
@@ -1579,26 +1579,25 @@ class Admin extends CI_Controller
 
 	public function tabel_unit_keluar()
 	{
-		$data['list_mobil'] = $this->M_data->select('tb_mobil');
+		// $data['list_mobil'] = $this->M_data->select('tb_mobil');
 		$data['list_genset'] = $this->M_data->select_gst('tb_genset');
 		$data['list_pelanggan'] = $this->M_data->get_Plg('tb_pelanggan');
-		$data['list_operator'] = $this->M_data->select_op('tb_operator');
+		// $data['list_operator'] = $this->M_data->select_op('tb_operator');
 		$data['list_data'] = $this->M_data->get_data_valid_penyewaan('tb_valid_penyewaan');
-		// $data['total_data'] = $this->M_data->sum_pendapatan('tb_unit_penyewaan');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Data Unit Sewa';
 		$this->load->view('admin/unit_keluar/tabel_unit_keluar', $data);
 	}
 
-	public function detail_unit_keluar($id_transaksi)
-	{
-		$uri = $this->uri->segment(3);
-		$where = array('id_u_sewa' => $uri);
-		$data['list_data'] = $this->M_data->get_data_valid_penyewa('tb_valid_penyewaan', $where);
-		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-		$data['title'] = 'Detail Data Unit Sewa';
-		$this->load->view('admin/unit_keluar/detail_keluar', $data);
-	}
+	// public function detail_unit_keluar($id_transaksi)
+	// {
+	// 	$uri = $this->uri->segment(3);
+	// 	$where = array('id_u_sewa' => $uri);
+	// 	$data['list_data'] = $this->M_data->get_data_valid_penyewa('tb_valid_penyewaan', $where);
+	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+	// 	$data['title'] = 'Detail Data Unit Sewa';
+	// 	$this->load->view('admin/unit_keluar/detail_keluar', $data);
+	// }
 
 	public function email_unit_keluar()
 	{
@@ -2129,15 +2128,15 @@ class Admin extends CI_Controller
 		$this->load->view('admin/unit_masuk/tabel_unit_masuk', $data);
 	}
 
-	public function detail_unit_masuk($id_transaksi)
-	{
-		$uri = $this->uri->segment(3);
-		$where = array('id_u_sewa' => $uri);
-		$data['list_data'] = $this->M_data->select_data_u_masuk('tb_unit_penyewaan', $where);
-		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-		$data['title'] = 'Detail Data Unit Kembali';
-		$this->load->view('admin/unit_masuk/detail_masuk', $data);
-	}
+	// public function detail_unit_masuk($id_transaksi)
+	// {
+	// 	$uri = $this->uri->segment(3);
+	// 	$where = array('id_u_sewa' => $uri);
+	// 	$data['list_data'] = $this->M_data->select_data_u_masuk('tb_unit_penyewaan', $where);
+	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+	// 	$data['title'] = 'Detail Data Unit Kembali';
+	// 	$this->load->view('admin/unit_masuk/detail_masuk', $data);
+	// }
 
 	public function hapus_unit_masuk()
 	{
