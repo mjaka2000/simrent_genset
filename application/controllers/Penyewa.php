@@ -209,15 +209,15 @@ class Penyewa extends CI_Controller
         $this->load->view('penyewa/unit_keluar/tabel_unit_keluar', $data);
     }
 
-    public function detail_unit_keluar($id_transaksi)
-    {
-        $uri = $this->uri->segment(3);
-        $where = array('id_u_sewa' => $uri);
-        $data['list_data'] = $this->M_data->get_data_valid_penyewa('tb_unit_penyewaan', $where);
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Detail Data Unit Sewa';
-        $this->load->view('penyewa/unit_keluar/detail_keluar', $data);
-    }
+    // public function detail_unit_keluar($id_transaksi)
+    // {
+    //     $uri = $this->uri->segment(3);
+    //     $where = array('id_u_sewa' => $uri);
+    //     $data['list_data'] = $this->M_data->get_data_valid_penyewa('tb_unit_penyewaan', $where);
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Detail Data Unit Sewa';
+    //     $this->load->view('penyewa/unit_keluar/detail_keluar', $data);
+    // }
 
     // public function tambah_unit_keluar()
     // {
@@ -336,15 +336,15 @@ class Penyewa extends CI_Controller
         $this->load->view('penyewa/unit_masuk/tabel_unit_masuk', $data);
     }
 
-    public function detail_unit_masuk($id_transaksi)
-    {
-        $uri = $this->uri->segment(3);
-        $where = array('id_u_sewa' => $uri);
-        $data['list_data'] = $this->M_data->get_data_Umasuk('tb_unit_penyewaan', $where);
-        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-        $data['title'] = 'Detail Data Unit Kembali';
-        $this->load->view('penyewa/unit_masuk/detail_masuk', $data);
-    }
+    // public function detail_unit_masuk($id_transaksi)
+    // {
+    //     $uri = $this->uri->segment(3);
+    //     $where = array('id_u_sewa' => $uri);
+    //     $data['list_data'] = $this->M_data->get_data_Umasuk('tb_unit_penyewaan', $where);
+    //     $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+    //     $data['title'] = 'Detail Data Unit Kembali';
+    //     $this->load->view('penyewa/unit_masuk/detail_masuk', $data);
+    // }
 
     ####################################
     //* End Data Unit Masuk 
