@@ -47,18 +47,7 @@
                                 <p>Data Genset</p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="<?= site_url(); ?>pimpinan/tabel_service_genset" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Data Perbaikan Genset</p>
-                            </a>
-                        </li> -->
-                        <!-- <li class="nav-item">
-                            <a href="<?= site_url(); ?>pimpinan/tabel_sparepart" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Data Stok Sparepart</p>
-                            </a>
-                        </li> -->
+
                         <li class="nav-item">
                             <a href="<?= site_url(); ?>pimpinan/tabel_mobil" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -71,12 +60,7 @@
                                 <p>Data Operator</p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="<?= site_url(); ?>pimpinan/tabel_pelanggan" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Data Pelanggan</p>
-                            </a>
-                        </li> -->
+
                     </ul>
                 </li>
                 <li class="nav-item ">
@@ -124,12 +108,7 @@
                                 <p>Data Unit Masuk (Kembali)</p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="<?= site_url(); ?>pimpinan/tabel_unit_keluar" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Data Penyewaan Genset</p>
-                            </a>
-                        </li> -->
+
                         <li class="nav-item">
                             <a href="<?= site_url(); ?>pimpinan/tabel_jdw_genset" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
