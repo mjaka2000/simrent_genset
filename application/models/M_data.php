@@ -34,7 +34,7 @@ class M_data extends CI_Model
   //! Batas Query User (Jangan diubah)
   ####################################
 
-  public function get_avatar($tabel, $username) //* Query get avatar User
+  public function get_avatar($tabel, $username) // Query get avatar User
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -43,14 +43,14 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function update_avatar($where, $data) //* Query update Avatar User
+  public function update_avatar($where, $data) // Query update Avatar User
   {
     $this->db->set($data);
     $this->db->where($where);
     $this->db->update('tb_user');
   }
 
-  public function update_password($tabel, $where, $data) //* Update password
+  public function update_password($tabel, $where, $data) // Update password user
   {
     $this->db->where($where);
     $this->db->update($tabel, $data);
@@ -72,7 +72,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function get_data_genset($id_genset)
+  public function get_data_genset($id_genset) // Ambil baris id data genset
   {
     $this->db->select()
       // ->from('tb_genset')
@@ -80,7 +80,7 @@ class M_data extends CI_Model
     return $this->db->get('tb_genset');
   }
 
-  public function update_data_genset($id_genset, $data)
+  public function update_data_genset($id_genset, $data) // Untuk proses update data genset
   {
     $this->db->select()
       // ->from('tb_genset')
@@ -88,7 +88,7 @@ class M_data extends CI_Model
     return $this->db->update('tb_genset', $data);
   }
 
-  public function del_foto_genset($id_genset)
+  public function del_data_genset($id_genset) // Untuk hapus data genset
   {
     $this->db->select()
       // ->from('tb_genset')
@@ -96,7 +96,7 @@ class M_data extends CI_Model
     return $this->db->delete('tb_genset');
   }
 
-  public function get_data_mobil($id_mobil)
+  public function get_data_mobil($id_mobil) // Ambil baris id data mobil
   {
     $this->db->select()
       // ->from('tb_mobil')
@@ -104,7 +104,7 @@ class M_data extends CI_Model
     return $this->db->get('tb_mobil');
   }
 
-  public function update_data_mobil($id_mobil, $data)
+  public function update_data_mobil($id_mobil, $data) // Untuk proses update data mobil
   {
     $this->db->select()
       // ->from('tb_mobil')
@@ -112,7 +112,7 @@ class M_data extends CI_Model
     return $this->db->update('tb_mobil', $data);
   }
 
-  public function del_foto_mobil($id_mobil)
+  public function del_data_mobil($id_mobil) // Untuk hapus data mobil
   {
     $this->db->select()
       // ->from('tb_mobil')
@@ -147,7 +147,7 @@ class M_data extends CI_Model
   //   $this->db->update($tabel);
   // }
 
-  public function update_status($tabel, $where, $status)
+  public function update_status($tabel, $where, $status) // Untuk update status Unit Masuk
   {
     $this->db->set("status", $status);
     $this->db->where($where);
@@ -173,7 +173,7 @@ class M_data extends CI_Model
   //* New Query
   ####################################
 
-  public function get_Plg($tabel)
+  public function get_Plg($tabel) // Menampilkan isi data pelanggan
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -192,7 +192,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function get_Plg_Blc($tabel)
+  public function get_Plg_Blc($tabel) // Menampilkan isi data pelanggan Blacklist
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -211,7 +211,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function notif_stok($tabel)
+  public function notif_stok($tabel) // Pemberitahuan stok
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -219,7 +219,7 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
-  public function notif_stok_jml($tabel)
+  public function notif_stok_jml($tabel) // Pemberitahuan jumlah stok
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -228,14 +228,14 @@ class M_data extends CI_Model
     return $query->num_rows();
   }
 
-  public function update_status_gst($tabel, $where, $status_gst)
+  public function update_status_gst($tabel, $where, $status_gst) // Untuk ubah status genset
   {
     $this->db->set("ket_genset", $status_gst);
     $this->db->where("id_genset", $where);
     $this->db->update($tabel);
   }
 
-  public function update_sts_op($tabel, $where, $status_op)
+  public function update_sts_op($tabel, $where, $status_op) // Untuk ubah status operator
   {
     $this->db->set("status_op", $status_op);
     $this->db->where("id_operator", $where);
@@ -243,14 +243,14 @@ class M_data extends CI_Model
     $this->db->update($tabel);
   }
 
-  public function update_status_op($tabel, $where, $status_op)
+  public function update_status_op($tabel, $where, $status_op) // Untuk ubah status operator
   {
     $this->db->set("status_op", $status_op);
     $this->db->where("id_operator", $where);
     $this->db->update($tabel);
   }
 
-  public function update_status_plg($tabel, $where, $status_plg)
+  public function update_status_plg($tabel, $where, $status_plg) // Untuk ubah status pelanggan
   {
     $this->db->set("status_plg", $status_plg);
     $this->db->where("id_pelanggan", $where);
@@ -333,7 +333,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function get_data_service($tabel)
+  public function get_data_service($tabel) // Tampilkan isi tabel Perbaikan Genset
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -344,14 +344,14 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function mengurangi_stok($tabel, $spare_part, $stok_new)
+  public function mengurangi_stok($tabel, $spare_part, $stok_new) // Mengurangi isi stok sparepart
   {
     $this->db->set("stok", $stok_new);
     $this->db->where('id_sparepart', $spare_part);
     $this->db->update($tabel);
   }
 
-  public function get_Serv($tabel)
+  public function get_Serv($tabel) // Tampilkan isi tabel Perbaikan Genset yang selesai
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -361,7 +361,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function select_ServGstAcc($tabel)
+  public function select_ServGstAcc($tabel) // Tampilkan isi tabel Perbaikan Genset Disetujui
   {
     $query = $this->db->select('*')
       ->from($tabel)
@@ -453,7 +453,7 @@ class M_data extends CI_Model
   ####################################
   //* End AJAX Data Perbaikan Genset 
   ####################################
-  public function get_detail_perbaikan($tabel, $where)
+  public function get_detail_perbaikan($tabel, $where) // Menampilkan isi detail Perbaikan Genset
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -464,7 +464,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function detail_perbaikan($tabel, $where)
+  public function detail_perbaikan($tabel, $where) // Menampilkan progress detail Perbaikan Genset
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -509,7 +509,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function notif_u_keluar1($tabel, $tgl, $where)
+  public function notif_u_keluar1($tabel, $tgl, $where) // Pemberitahuan pengambilan unit keluar
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -558,7 +558,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function select_gst($tabel)
+  public function select_gst($tabel) // Menampilkan isi genset yg masih ada atau dijadwalkan
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -568,7 +568,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function get_data_valid_penyewaan($tabel)
+  public function get_data_valid_penyewaan($tabel) // Menampilkan isi tabel Data Unit keluar atau sewa
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -584,7 +584,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function ambil_data_valid_penyewaan($tabel, $where)
+  public function ambil_data_valid_penyewaan($tabel, $where) // Ambil data penyewaan
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -630,7 +630,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function select_data_u_keluar($tabel, $where)
+  public function select_data_u_keluar($tabel, $where) // Ambil data unit penyewaan
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -643,7 +643,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function select_jdw_gst($tabel)
+  public function select_jdw_gst($tabel) // Tampilkan isi tabel Jadwal Penyewaan Genset
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -655,7 +655,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function filter_JadwalGenset($tabel, $genset, $operator)
+  public function filter_JadwalGenset($tabel, $genset, $operator) // Tampilkan filter isi tabel Jadwal Penyewaan Genset
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -670,7 +670,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function notif_jdwGst($tabel, $tgl)
+  public function notif_jdwGst($tabel, $tgl) // Pemeberitahuan Jadwal Penyewaan Genset
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -684,7 +684,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function notif_jdwGst1($tabel, $tgl, $where)
+  public function notif_jdwGst1($tabel, $tgl, $where) // Pemeberitahuan Jadwal Penyewaan Genset
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -699,7 +699,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function notif_jdwGst_Jml($tabel, $tgl)
+  public function notif_jdwGst_Jml($tabel, $tgl) // Pemeberitahuan jumlah Jadwal Penyewaan Genset
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -712,19 +712,8 @@ class M_data extends CI_Model
       ->get();
     return $query->num_rows();
   }
-  // public function select_jdw_gst($tabel)
-  // {
-  //   $query = $this->db->select()
-  //     ->from($tabel)
-  //     ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
-  //     ->join('tb_genset', 'tb_genset.id_genset = tb_unit_penyewaan.id_genset')
-  //     ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_penyewaan.id_pelanggan')
 
-  //     ->get();
-  //   return $query->result();
-  // }
-
-  public function get_jdw_gst($tabel, $where)
+  public function get_jdw_gst($tabel, $where) // Tampilkan isi detail Jadwal Penyewaan Genset
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -736,19 +725,6 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
-
-  // public function get_jdw_gst($tabel, $where)
-  // {
-  //   $query = $this->db->select()
-  //     ->from($tabel)
-  //     ->where($where)
-  //     ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
-  //     ->join('tb_genset', 'tb_genset.id_genset = tb_unit_penyewaan.id_genset')
-  //     ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_unit_penyewaan.id_pelanggan')
-
-  //     ->get();
-  //   return $query->result();
-  // }
 
   public function numrows_where_uKeluar($tabel)
   {
@@ -789,7 +765,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function get_data_valid_penyewaanMasuk($tabel)
+  public function get_data_valid_penyewaanMasuk($tabel) // Tampilkan isi tabel Data Unit Masuk/Kembali
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -876,7 +852,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function sum_pendapatan($tabel, $bulan, $tahun)
+  public function sum_pendapatan($tabel, $bulan, $tahun) // Jumlahkan total pendapatan Data Unit Masuk/Kembali
   {
     $bulan = $this->db->escape($bulan);
     $tahun = $this->db->escape($tahun);
@@ -894,7 +870,7 @@ class M_data extends CI_Model
   ####################################
   //* Pemasukan 
   ####################################
-  public function get_data_pemasukan($tabel)
+  public function get_data_pemasukan($tabel) // Tampilkan isi tabel Data Pendapatan
   {
     $query = $this->db->select()
       ->from($tabel)
@@ -905,7 +881,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function sum_pemasukan($tabel)
+  public function sum_pemasukan($tabel) // Jumlahkan total pendapatan Data Unit Masuk/Kembali
   {
     $query = $this->db->select_sum('total')
       ->from($tabel)
@@ -915,7 +891,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function pemasukan_periode($tabel, $bulan, $tahun)
+  public function pemasukan_periode($tabel, $bulan, $tahun) // Tampilkan isi tabel Data Pendapatan dalam periode
   {
     $bulan = $this->db->escape($bulan);
     $tahun = $this->db->escape($tahun);
@@ -940,7 +916,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function sum_pendapatanMasuk($tabel, $bulan, $tahun)
+  public function sum_pendapatanMasuk($tabel, $bulan, $tahun) // Jumlahkan total pendapatan Data Unit Masuk/Kembali dalam periode 
   {
     $bulan = $this->db->escape($bulan);
     $tahun = $this->db->escape($tahun);
@@ -952,7 +928,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function chart_pendapatanMasuk($tabel, $bulan, $tahun)
+  public function chart_pendapatanMasuk($tabel, $bulan, $tahun) // Tampilkan isi tabel Data Pendapatan dalam grafik dalam 1 bulan
   {
     $bulan = $this->db->escape($bulan);
     $tahun = $this->db->escape($tahun);
@@ -966,7 +942,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function chart_pendapatanMasukAll($tabel)
+  public function chart_pendapatanMasukAll($tabel) // Tampilkan isi tabel Data Pendapatan dalam grafik
   {
     // $bulan = $this->db->escape($bulan);
     // $tahun = $this->db->escape($tahun);
@@ -985,7 +961,7 @@ class M_data extends CI_Model
   ####################################
   //* Pengeluaran 
   ####################################
-  public function pengeluaran_periode($tabel, $bulan, $tahun)
+  public function pengeluaran_periode($tabel, $bulan, $tahun) // Tampilkan isi tabel Pengeluaran dalam periode
   {
     $bulan = $this->db->escape($bulan);
     $tahun = $this->db->escape($tahun);
@@ -999,7 +975,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function sum_penngeluaranPeriode($tabel, $bulan, $tahun)
+  public function sum_penngeluaranPeriode($tabel, $bulan, $tahun) // Jumlahkan biaya_pengeluaran pengeluaran dalam periode
   {
     $bulan = $this->db->escape($bulan);
     $tahun = $this->db->escape($tahun);
@@ -1010,7 +986,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function sum_pengeluaran($tabel)
+  public function sum_pengeluaran($tabel) // Jumlahkan biaya_pengeluaran pengeluaran
   {
     $query = $this->db->select_sum('biaya_pengeluaran')
       ->from($tabel)
@@ -1051,7 +1027,7 @@ class M_data extends CI_Model
     return $query->result();
   }
 
-  public function get_data_valid_penyewa($tabel, $where)
+  public function get_data_valid_penyewa($tabel, $where) // Menampilkan detail Data Unit Sewa
   {
     $query = $this->db->select()
       ->from($tabel)
