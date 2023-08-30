@@ -68,9 +68,29 @@
                                                 <td><?= $dt->nohp_op; ?></td>
                                                 <td><?= $dt->noktp_op; ?></td>
                                                 <?php if ($dt->status_op == 0) { ?>
-                                                    <td><em>Standby</em></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" title="Ubah Status" data-toggle="dropdown">
+                                                            Standby
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item disabled" href="#">Standby</a>
+                                                            <a class="dropdown-item" href="<?= site_url('admin/ubah_status_opBerangkat/' . $dt->id_operator); ?>">Berangkat</a>
+                                                        </div>
+                                                        <!-- <a href="#" class="btn btn-success btn-xs">Genset Ada </a> -->
+                                                    </td>
+                                                    <!-- <em>Standby</em></td> -->
                                                 <?php } else { ?>
-                                                    <td><a href="<?= site_url('admin/update_status_op_standby/' . $dt->id_operator); ?>" type="button" class="btn btn-xs btn-success status-op" name="btn_status_op">Berangkat</a></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle" title="Ubah Status" data-toggle="dropdown">
+                                                            Berangkat
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item " href="<?= site_url('admin/ubah_status_opStandby/' . $dt->id_operator); ?>">Standby</a>
+                                                            <a class="dropdown-item disabled" href="#">Berangkat</a>
+                                                        </div>
+                                                        <!-- <a href="#" class="btn btn-success btn-xs">Genset Ada </a> -->
+                                                    </td>
+                                                    <!-- <a href="<?= site_url('admin/update_status_op_standby/' . $dt->id_operator); ?>" type="button" class="btn btn-xs btn-success status-op" name="btn_status_op">Berangkat</a></td> -->
                                                 <?php } ?>
                                                 <td>
                                                     <button type="button" data-toggle="modal" data-target="#staticEditOp<?= $dt->id_operator; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
@@ -176,7 +196,7 @@
 
                                                 <input type="text" maxlength="16" name="noktp_op" class="form-control" id="noktp_op" placeholder="Masukkan No. KTP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $op->noktp_op; ?>">
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label for="stok_gd" class="form-label">Status</label>
                                                 <select name="status_op" id="status_op" class="form-control" required>
                                                     <option value="" disabled>-- Status --</option>
@@ -188,7 +208,7 @@
                                                         <option value="1" selected>Berangkat</option>
                                                     <?php } ?>
                                                 </select>
-                                            </div>
+                                            </div> -->
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>

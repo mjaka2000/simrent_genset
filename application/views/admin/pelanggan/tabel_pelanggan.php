@@ -78,10 +78,30 @@
                                                 <td><?= $dt->namaperusahaan_plg; ?></td>
                                                 <td><?= date('d-m-Y', strtotime($dt->tglupdate_plg)); ?></td>
                                                 <?php if ($dt->status_plg == 0) { ?>
-                                                    <td><a href="#" class="btn btn-success btn-xs">Tidak Menyewa</a></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle" title="Ubah Status" data-toggle="dropdown">
+                                                            Tidak Menyewa
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item disabled" href="#">Tidak Menyewa</a>
+                                                            <a class="dropdown-item" href="<?= site_url('admin/ubah_Status_pelangganMenyewa/' . $dt->id_pelanggan); ?>">Sedang Menyewa</a>
+                                                        </div>
+                                                        <!-- <a href="#" class="btn btn-success btn-xs">Genset Ada </a> -->
+                                                    </td>
+                                                    <!-- <a href="#" class="btn btn-success btn-xs">Tidak Menyewa</a></td> -->
                                                 <?php } else { ?>
-                                                    <td><a href="#" class="btn btn-danger btn-xs">Sedang Menyewa</a></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-danger btn-xs dropdown-toggle" title="Ubah Status" data-toggle="dropdown">
+                                                            Sedang Menyewa
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item " href="<?= site_url('admin/ubah_Status_pelangganTdkMenyewa/' . $dt->id_pelanggan); ?>">Tidak Menyewa</a>
+                                                            <a class="dropdown-item disabled" href="#">Sedang Menyewa</a>
+                                                        </div>
+                                                    </td>
+                                                    <!-- <a href="#" class="btn btn-danger btn-xs">Sedang Menyewa</a></td> -->
                                                 <?php } ?>
+
                                                 <?php if ($dt->ket_plg == 0) { ?>
                                                     <td><a href="<?= site_url('admin/pindah_data_pelanggan/' . $dt->id_pelanggan); ?>" type="button" class="btn btn-xs btn-danger btn-plg" name="btn_ket_plg">Blacklist?</a></td>
                                                 <?php } else { ?>
@@ -225,7 +245,7 @@
 
                                                 <input type="date" name="tglupdate_plg" class="form-control" id="tanggal_update" placeholder="Tanggal Update" required value="<?= $d->tglupdate_plg; ?>">
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label for="stok_gd" class="form-label">Status</label>
                                                 <select name="status_plg" id="status_plg" class="form-control" required>
                                                     <option value="">-- Status --</option>
@@ -237,7 +257,7 @@
                                                         <option value="1" selected>Sedang Menyewa</option>
                                                     <?php } ?>
                                                 </select>
-                                            </div>
+                                            </div> -->
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>

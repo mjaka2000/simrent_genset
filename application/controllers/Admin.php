@@ -374,7 +374,7 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
 		$this->form_validation->set_rules('daya', 'Daya', 'trim|required');
 		$this->form_validation->set_rules('harga', 'Harga', 'trim|required');
-		$this->form_validation->set_rules('ket_genset', 'Ket. Genset', 'trim|required');
+		// $this->form_validation->set_rules('ket_genset', 'Ket. Genset', 'trim|required');
 		// $this->form_validation->set_rules('stok_gd', 'Stok GUdang', 'trim|required');
 		// $this->form_validation->set_rules('stok_pj', 'Stok Pinjam', 'trim|required');
 
@@ -388,7 +388,7 @@ class Admin extends CI_Controller
 			$nama_genset = $this->input->post('nama_genset', true);
 			$daya = $this->input->post('daya', true);
 			$harga = $this->input->post('harga', true);
-			$ket_genset = $this->input->post('ket_genset', true);
+			// $ket_genset = $this->input->post('ket_genset', true);
 			// $stok_gd = $this->input->post('stok_gd', true);
 			// $stok_pj = $this->input->post('stok_pj', true);
 			// $gambar_genset_old = $this->input->post('gambar_genset', true);
@@ -409,7 +409,7 @@ class Admin extends CI_Controller
 					'nama_genset' => $nama_genset,
 					'daya' => $daya,
 					'harga' => $harga,
-					'ket_genset' => $ket_genset,
+					// 'ket_genset' => $ket_genset,
 					// 'stok_gd' => $stok_gd,
 					// 'stok_pj' => $stok_pj,
 					'gambar_genset' => $userfile
@@ -505,6 +505,47 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function ubah_ket_gensetAda($id_genset)
+	{
+		$data = $this->M_data->get_data_genset($id_genset)->row();
+
+		$ket_genset = 0;
+		$data = array(
+			'ket_genset' => $ket_genset
+		);
+		$this->M_data->update_data_genset($id_genset, $data);
+		$this->session->set_flashdata('msg_sukses', 'Status Berhasil Diubah');
+
+		redirect(site_url('admin/tabel_genset'));
+	}
+
+	public function ubah_ket_gensetDisewa($id_genset)
+	{
+		$data = $this->M_data->get_data_genset($id_genset)->row();
+
+		$ket_genset = 1;
+		$data = array(
+			'ket_genset' => $ket_genset
+		);
+		$this->M_data->update_data_genset($id_genset, $data);
+		$this->session->set_flashdata('msg_sukses', 'Status Berhasil Diubah');
+
+		redirect(site_url('admin/tabel_genset'));
+	}
+
+	public function ubah_ket_gensetDijadwalkan($id_genset)
+	{
+		$data = $this->M_data->get_data_genset($id_genset)->row();
+
+		$ket_genset = 2;
+		$data = array(
+			'ket_genset' => $ket_genset
+		);
+		$this->M_data->update_data_genset($id_genset, $data);
+		$this->session->set_flashdata('msg_sukses', 'Status Berhasil Diubah');
+
+		redirect(site_url('admin/tabel_genset'));
+	}
 	####################################
 	//* End Data Genset 
 	####################################
@@ -1322,7 +1363,7 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('alamat_op', 'Alamat', 'trim|required');
 		$this->form_validation->set_rules('nohp_op', 'No Hp', 'trim|required');
 		$this->form_validation->set_rules('noktp_op', 'No KTP', 'trim|required');
-		$this->form_validation->set_rules('status_op', 'Status', 'trim|required');
+		// $this->form_validation->set_rules('status_op', 'Status', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
 			$id = $this->input->post('id_operator', TRUE);
@@ -1330,7 +1371,7 @@ class Admin extends CI_Controller
 			$alamat = $this->input->post('alamat_op', TRUE);
 			$no_hp = $this->input->post('nohp_op', TRUE);
 			$noktp_op = $this->input->post('noktp_op', TRUE);
-			$status_op = $this->input->post('status_op', TRUE);
+			// $status_op = $this->input->post('status_op', TRUE);
 
 			$where = array('id_operator' => $id);
 			$data = array(
@@ -1338,7 +1379,7 @@ class Admin extends CI_Controller
 				'alamat_op' => $alamat,
 				'nohp_op' => $no_hp,
 				'noktp_op' => $noktp_op,
-				'status_op' => $status_op
+				// 'status_op' => $status_op
 			);
 			$this->M_data->update('tb_operator', $data, $where);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
@@ -1360,6 +1401,34 @@ class Admin extends CI_Controller
 		redirect(site_url('admin/tabel_operator'));
 	}
 
+
+	public function ubah_status_opBerangkat()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_operator' => $uri);
+		$status_op = 1;
+		$data = array(
+			'status_op' => $status_op
+		);
+		$this->M_data->update('tb_operator', $data, $where);
+		$this->session->set_flashdata('msg_sukses', 'Status Berhasil Diubah');
+
+		redirect(site_url('admin/tabel_operator'));
+	}
+
+	public function ubah_status_opStandby()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_operator' => $uri);
+		$status_op = 0;
+		$data = array(
+			'status_op' => $status_op
+		);
+		$this->M_data->update('tb_operator', $data, $where);
+		$this->session->set_flashdata('msg_sukses', 'Status Berhasil Diubah');
+
+		redirect(site_url('admin/tabel_operator'));
+	}
 	####################################
 	//* End Data Operator 
 	####################################
@@ -1446,7 +1515,7 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('jk_plg', 'Jenis Kelamin', 'trim|required');
 		$this->form_validation->set_rules('namaperusahaan_plg', 'Nama Perusahaan', 'trim|required');
 		$this->form_validation->set_rules('tglupdate_plg', 'Tanggal Update', 'trim|required');
-		$this->form_validation->set_rules('status_plg', 'Status', 'trim|required');
+		// $this->form_validation->set_rules('status_plg', 'Status', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
 			$id = $this->input->post('id_pelanggan', TRUE);
@@ -1456,7 +1525,7 @@ class Admin extends CI_Controller
 			$jenis_kelamin = $this->input->post('jk_plg', TRUE);
 			$nama_perusahaan = $this->input->post('namaperusahaan_plg', TRUE);
 			$tgl_update = $this->input->post('tglupdate_plg', TRUE);
-			$status_plg = $this->input->post('status_plg', TRUE);
+			// $status_plg = $this->input->post('status_plg', TRUE);
 
 			$where = array('id_pelanggan' => $id);
 			$data = array(
@@ -1466,7 +1535,7 @@ class Admin extends CI_Controller
 				'jk_plg' => $jenis_kelamin,
 				'namaperusahaan_plg' => $nama_perusahaan,
 				'tglupdate_plg' => $tgl_update,
-				'status_plg' => $status_plg
+				// 'status_plg' => $status_plg
 
 			);
 			$this->M_data->update('tb_pelanggan', $data, $where);
@@ -1511,6 +1580,34 @@ class Admin extends CI_Controller
 		);
 		$this->M_data->update('tb_pelanggan', $data, $where);
 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dipindah');
+
+		redirect(site_url('admin/tabel_pelanggan'));
+	}
+
+	public function ubah_Status_pelangganMenyewa()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_pelanggan' => $uri);
+		$status_plg = 1;
+		$data = array(
+			'status_plg' => $status_plg
+		);
+		$this->M_data->update('tb_pelanggan', $data, $where);
+		$this->session->set_flashdata('msg_sukses', 'Status Berhasil Diubah');
+
+		redirect(site_url('admin/tabel_pelanggan'));
+	}
+
+	public function ubah_Status_pelangganTdkMenyewa()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_pelanggan' => $uri);
+		$status_plg = 0;
+		$data = array(
+			'status_plg' => $status_plg
+		);
+		$this->M_data->update('tb_pelanggan', $data, $where);
+		$this->session->set_flashdata('msg_sukses', 'Status Berhasil Diubah');
 
 		redirect(site_url('admin/tabel_pelanggan'));
 	}

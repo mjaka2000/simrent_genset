@@ -75,11 +75,40 @@
                                                 <td><?= $d->daya; ?></td>
                                                 <td>Rp&nbsp;<?= number_format($d->harga); ?></td>
                                                 <?php if ($d->ket_genset == 0) { ?>
-                                                    <td><a href="#" class="btn btn-success btn-xs">Genset Ada </a></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-success btn-xs dropdown-toggle" title="Ubah Status" data-toggle="dropdown">
+                                                            Genset Ada
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item disabled" href="#">Genset Ada</a>
+                                                            <a class="dropdown-item" href="<?= site_url('admin/ubah_ket_gensetDisewa/' . $d->id_genset); ?>">Genset Sedang Disewa</a>
+                                                            <a class="dropdown-item" href="<?= site_url('admin/ubah_ket_gensetDijadwalkan/' . $d->id_genset); ?>">Genset Dijadwalkan</a>
+                                                        </div>
+                                                        <!-- <a href="#" class="btn btn-success btn-xs">Genset Ada </a> -->
+                                                    </td>
                                                 <?php } elseif ($d->ket_genset == 1) { ?>
-                                                    <td><a href="#" class="btn btn-danger btn-xs"> Genset Sedang Disewa</a></td>
-                                                <?php } else { ?>
-                                                    <td><a href="#" class="btn btn-warning btn-xs"> Genset Dijadwalkan</a></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-danger btn-xs dropdown-toggle" title="Ubah Status" data-toggle="dropdown">
+                                                            Genset Sedang Disewa
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item " href="<?= site_url('admin/ubah_ket_gensetAda/' . $d->id_genset); ?>">Genset Ada</a>
+                                                            <a class="dropdown-item disabled" href="#">Genset Sedang Disewa</a>
+                                                            <a class="dropdown-item" href="<?= site_url('admin/ubah_ket_gensetDijadwalkan/' . $d->id_genset); ?>">Genset Dijadwalkan</a>
+                                                        </div>
+                                                        <!-- <a href="#" class="btn btn-danger btn-xs"> Genset Sedang Disewa</a></td> -->
+                                                    <?php } else { ?>
+                                                    <td>
+                                                        <button type="button" class="btn btn-warning btn-xs dropdown-toggle" title="Ubah Status" data-toggle="dropdown">
+                                                            Genset Dijadwalkan
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item " href="<?= site_url('admin/ubah_ket_gensetAda/' . $d->id_genset); ?>">Genset Ada</a>
+                                                            <a class="dropdown-item" href="<?= site_url('admin/ubah_ket_gensetDisewa/' . $d->id_genset); ?>">Genset Sedang Disewa</a>
+                                                            <a class="dropdown-item disabled" href="#">Genset Dijadwalkan</a>
+                                                        </div>
+                                                        <!-- <a href="#" class="btn btn-warning btn-xs"> Genset Dijadwalkan</a> -->
+                                                    </td>
                                                 <?php } ?>
                                                 <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" class="img img-box" width="100" height="100" alt="<?= $d->gambar_genset; ?>"></td>
                                                 <td>
@@ -207,7 +236,7 @@
                                                     <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->harga; ?>">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label for="stok_gd" class="form-label">Ket. Genset</label>
 
                                                 <select name="ket_genset" id="ket_genset" class="form-control" required>
@@ -228,7 +257,7 @@
                                                     <?php } ?>
 
                                                 </select>
-                                            </div>
+                                            </div> -->
 
                                             <div class="form-group">
                                                 <label for="gambar_genset" class="form-label">Gambar Genset</label>
