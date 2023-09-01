@@ -245,19 +245,7 @@
 
                                                 <input type="date" name="tglupdate_plg" class="form-control" id="tanggal_update" placeholder="Tanggal Update" required value="<?= $d->tglupdate_plg; ?>">
                                             </div>
-                                            <!-- <div class="form-group">
-                                                <label for="stok_gd" class="form-label">Status</label>
-                                                <select name="status_plg" id="status_plg" class="form-control" required>
-                                                    <option value="">-- Status --</option>
-                                                    <?php if ($d->status_plg == "0") { ?>
-                                                        <option value="0" selected>Tidak Menyewa</option>
-                                                        <option value="1">Sedang Menyewa</option>
-                                                    <?php } else { ?>
-                                                        <option value="0">Tidak Menyewa</option>
-                                                        <option value="1" selected>Sedang Menyewa</option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div> -->
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>

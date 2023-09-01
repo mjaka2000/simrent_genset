@@ -236,28 +236,6 @@
                                                     <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->harga; ?>">
                                                 </div>
                                             </div>
-                                            <!-- <div class="form-group">
-                                                <label for="stok_gd" class="form-label">Ket. Genset</label>
-
-                                                <select name="ket_genset" id="ket_genset" class="form-control" required>
-                                                    <option value="">-- Status --</option>
-
-                                                    <?php if ($d->ket_genset == "0") { ?>
-                                                        <option value="0" selected>Genset Ada</option>
-                                                        <option value="1">Genset Sedang Disewa</option>
-                                                        <option value="2">Genset Dijadwalkan</option>
-                                                    <?php } elseif ($d->ket_genset == 1) { ?>
-                                                        <option value="0">Genset Ada</option>
-                                                        <option value="1" selected>Genset Sedang Disewa</option>
-                                                        <option value="2">Genset Dijadwalkan</option>
-                                                    <?php } else { ?>
-                                                        <option value="0">Genset Ada</option>
-                                                        <option value="1">Genset Sedang Disewa</option>
-                                                        <option value="2" selected>Genset Dijadwalkan</option>
-                                                    <?php } ?>
-
-                                                </select>
-                                            </div> -->
 
                                             <div class="form-group">
                                                 <label for="gambar_genset" class="form-label">Gambar Genset</label>

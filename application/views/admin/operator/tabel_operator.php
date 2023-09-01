@@ -196,19 +196,7 @@
 
                                                 <input type="text" maxlength="16" name="noktp_op" class="form-control" id="noktp_op" placeholder="Masukkan No. KTP" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $op->noktp_op; ?>">
                                             </div>
-                                            <!-- <div class="form-group">
-                                                <label for="stok_gd" class="form-label">Status</label>
-                                                <select name="status_op" id="status_op" class="form-control" required>
-                                                    <option value="" disabled>-- Status --</option>
-                                                    <?php if ($op->status_op == "0") { ?>
-                                                        <option value="0" selected>Standby</option>
-                                                        <option value="1">Berangkat</option>
-                                                    <?php } else { ?>
-                                                        <option value="0">Standby</option>
-                                                        <option value="1" selected>Berangkat</option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div> -->
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
