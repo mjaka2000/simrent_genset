@@ -110,7 +110,7 @@
                                                         <!-- <a href="#" class="btn btn-warning btn-xs"> Genset Dijadwalkan</a> -->
                                                     </td>
                                                 <?php } ?>
-                                                <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" class="img img-box" width="100" height="100" alt="<?= $d->gambar_genset; ?>"></td>
+                                                <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" title="Lihat Gambar Genset" data-toggle="modal" data-target="#LihatGst<?= $d->id_genset; ?>" class="img img-box" width="100" height="100" alt="<?= $d->gambar_genset; ?>"></td>
                                                 <td>
                                                     <button type="button" data-toggle="modal" data-target="#staticEditGenset<?= $d->id_genset; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
 
@@ -123,6 +123,26 @@
                             </table>
                         </div>
                     </div>
+                    <?php foreach ($list_data as $d) : ?>
+                        <div class="modal fade" id="LihatGst<?= $d->id_genset; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title" id="staticBackdropLabel">Lihat Gambar Genset</h6>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span>&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body tengah">
+                                        <a href="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" download>
+                                            <img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" class="img img-box" width="350" height="350" alt="<?= $d->gambar_genset; ?>">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                     <div class="modal fade" id="staticAddGenset" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
