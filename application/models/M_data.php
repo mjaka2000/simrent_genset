@@ -338,7 +338,7 @@ class M_data extends CI_Model
     $query = $this->db->select()
       ->from($tabel)
       ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
-      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = ' . $tabel . '.id_sparepart')
+      ->join('tb_sparepart', 'tb_sparepart.id_sparepart = ' . $tabel . '.id_sparepart', 'left')
       ->order_by('id_perbaikan_gst', 'asc')
       ->get();
     return $query->result();
@@ -459,7 +459,7 @@ class M_data extends CI_Model
       ->from($tabel)
       ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
       ->join('tb_sparepart', 'tb_sparepart.id_sparepart = ' . $tabel . '.id_sparepart')
-      ->where($where)
+      ->where('tb_serv_genset.id_perbaikan_gst', $where)
       ->get();
     return $query->result();
   }
@@ -469,7 +469,7 @@ class M_data extends CI_Model
     $query = $this->db->select()
       ->from($tabel)
       ->join('tb_serv_genset', 'tb_serv_genset.id_perbaikan_gst = ' . $tabel . '.id_perbaikan_gst ')
-      ->where($where)
+      ->where('tb_serv_genset.id_perbaikan_gst', $where)
       ->get();
     return $query->result();
   }

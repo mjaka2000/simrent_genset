@@ -550,6 +550,21 @@ class Admin extends CI_Controller
 	//* End Data Genset 
 	####################################
 	####################################
+	//* Data Perbaikan Genset yang Masuk 
+	####################################
+
+	public function tabel_service_genset_masuk()
+	{
+		// $data['list_data'] = $this->M_data->get_data_service('tb_serv_genset');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Data Perbaikan Genset yang Masuk';
+		$this->load->view('admin/service_genset_masuk/tabel_service_genset_masuk', $data);
+	}
+
+	####################################
+	//* End Data Perbaikan Genset yang Masuk 
+	####################################
+	####################################
 	//* Data Perbaikan Genset 
 	####################################
 
@@ -613,7 +628,7 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('id_genset', 'Kode Genset', 'trim|required');
 		// $this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
 		$this->form_validation->set_rules('jenis_perbaikan', 'Jenis Perbaikan', 'trim|required');
-		$this->form_validation->set_rules('id_sparepart', 'Nama Sparepart', 'trim|required');
+		// $this->form_validation->set_rules('id_sparepart', 'Nama Sparepart', 'trim|required');
 		$this->form_validation->set_rules('tgl_perbaikan', 'Tanggal Perbaikan', 'trim|required');
 		$this->form_validation->set_rules('ket_perbaikan', 'Keterangan Perbaikan', 'trim|required');
 		$this->form_validation->set_rules('biaya_perbaikan', 'Biaya Perbaikan', 'trim|required');
@@ -718,10 +733,10 @@ class Admin extends CI_Controller
 		redirect(site_url('admin/tabel_service_genset'));
 	}
 
-	public function detail_service_genset()
+	public function detail_service_genset($where)
 	{
-		$uri = $this->uri->segment(3);
-		$where = array('id_perbaikan_gst' => $uri);
+		// $uri = $this->uri->segment(3);
+		// $where = array('id_perbaikan_gst' => $uri);
 		$data['list_data'] = $this->M_data->get_detail_perbaikan('tb_serv_genset', $where);
 		$data['detail_perbaikan'] = $this->M_data->detail_perbaikan('tb_detail_serv', $where);
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
