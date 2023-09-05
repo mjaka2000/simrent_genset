@@ -70,9 +70,9 @@
                                                 <td><?= $dt->nama_sparepart; ?></td>
                                                 <td><?= date('d-m-Y', strtotime($dt->tgl_perbaikan)); ?></td>
                                                 <?php if ($dt->ket_perbaikan == "1") { ?>
-                                                    <td><a href="#" type="button" class="btn btn-xs btn-success">Selesai Diperbaiki</a></td>
+                                                    <td><span class="badge badge-success">Selesai Diperbaiki</span></td>
                                                 <?php } else { ?>
-                                                    <td><a href="#" type="button" class="btn btn-xs btn-danger">Masih Proses</a></td>
+                                                    <td><span class="badge badge-danger">Masih Proses</span></td>
                                                 <?php } ?>
                                                 <td>Rp&nbsp;<?= number_format($dt->biaya_perbaikan); ?></td>
                                                 <td>
@@ -114,15 +114,15 @@
                                             <select name="id_genset" class="form-control" id="id_genset" required>
                                                 <option value="" selected disabled>-- Pilih Nomor Genset --</option>
                                                 <?php foreach ($list_genset as $g) { ?>
-                                                    <option value="<?= $g->id_genset; ?>"><?= $g->kode_genset; ?></option>
+                                                    <option value="<?= $g->id_genset; ?>">No. <?= $g->kode_genset; ?> - <?= $g->nama_genset; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="nama_genset" class="form-label">Nama Genset</label>
 
                                             <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Nama Genset" readonly>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <label for="jenis_perbaikan" class="form-label">Jenis Perbaikan</label>
 
@@ -133,7 +133,7 @@
                                             <input type="hidden" name="stok" id="stok_input" value="">
                                             <!-- <input type="text" name="spare_part" class="form-control" id="spare_part" placeholder="Filter Oli, Filter Solar dll"> -->
 
-                                            <select name="id_sparepart" class="form-control" id="spare_part" required>
+                                            <select name="id_sparepart" class="form-control" id="spare_part">
                                                 <option value="" selected>-- Pilih Sparepart --</option>
                                                 <?php foreach ($list_sparepart as $s) { ?>
                                                     <option value="<?= $s->id_sparepart; ?>"><?= $s->nama_sparepart; ?></option>
