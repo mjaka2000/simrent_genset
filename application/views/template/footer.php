@@ -8,7 +8,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h6 class="modal-title" id="staticBackdropLabel">About Version</h6>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Close">
                         <span>&times;</span>
                     </button>
                 </div>
@@ -39,7 +39,6 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

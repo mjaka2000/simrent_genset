@@ -47,7 +47,7 @@
                                     <strong>Gagal!</strong><br> <?= $this->session->flashdata('msg_gagal'); ?>
                                 </div>
                             <?php } ?>
-                            <button data-toggle="modal" data-target="#staticAddGenset" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
+                            <button onclick="window.location.href='<?= site_url('admin/tambah_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
@@ -112,7 +112,7 @@
                                                 <?php } ?>
                                                 <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" title="Lihat Gambar Genset" data-toggle="modal" data-target="#LihatGst<?= $d->id_genset; ?>" class="img img-box" width="100" height="100" alt="<?= $d->gambar_genset; ?>"></td>
                                                 <td>
-                                                    <button type="button" data-toggle="modal" data-target="#staticEditGenset<?= $d->id_genset; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
+                                                    <a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
 
                                                     <a href="<?= site_url('admin/hapus_data_genset/' . $d->id_genset); ?>" title="Hapus" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
                                                 </td>
@@ -143,140 +143,6 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
-                    <div class="modal fade" id="staticAddGenset" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h6 class="modal-title" id="staticBackdropLabel">Tambah Data Genset</h6>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span>&times;</span>
-                                    </button>
-
-
-                                </div>
-                                <div class="modal-body">
-                                    <?php if (validation_errors()) { ?>
-                                        <div class="alert alert-warning alert-dismissable">
-                                            <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                            <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
-                                        </div>
-                                    <?php } ?>
-
-                                    <form action="<?= site_url('admin/proses_tambahgenset'); ?>" method="post" role="form" enctype="multipart/form-data">
-
-                                        <div class="form-group">
-                                            <label for="kode_genset" class="form-label">Nomor Genset</label>
-
-                                            <input type="text" name="kode_genset" class="form-control" id="kode_genset" placeholder="Masukkan Nomor Genset" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nama_genset" class="form-label">Nama Genset</label>
-
-                                            <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Masukkan Nama Genset" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="daya" class="form-label">Daya (KVA)</label>
-
-                                            <input type="text" name="daya" class="form-control" id="daya" placeholder="Daya" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="harga" class="form-label">Harga</label>
-
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon">Rp</span>
-                                                </div>
-                                                <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga Unit Perhari" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="gambar_genset" class="form-label">Gambar Genset</label>
-
-                                            <input type="file" name="gambar_genset" class="form-control" id="gambar_genset">
-                                            <small style="color: red;">
-                                                <p>*File yang diijinkan "jpg|png|jpeg", max size 2MB.</p>
-                                            </small>
-                                        </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <?php foreach ($list_data as $d) { ?>
-
-                        <div class="modal fade" id="staticEditGenset<?= $d->id_genset; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h6 class="modal-title" id="staticBackdropLabel">Ubah Data Genset</h6>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span>&times;</span>
-                                        </button>
-
-
-                                    </div>
-                                    <div class="modal-body">
-                                        <?php if (validation_errors()) { ?>
-                                            <div class="alert alert-warning alert-dismissable">
-                                                <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                                <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
-                                            </div>
-                                        <?php } ?>
-                                        <form action="<?= site_url('admin/proses_updategenset'); ?>" method="post" role="form" enctype="multipart/form-data">
-
-                                            <div class="form-group">
-                                                <input type="hidden" name="id_genset" value="<?= $d->id_genset; ?>">
-                                                <label for="kode_genset" class="form-label">Nomor Genset</label>
-
-                                                <input type="text" name="kode_genset" class="form-control" id="kode_genset" placeholder="Kode Genset" required value="<?= $d->kode_genset; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nama_genset" class="form-label">Nama Genset</label>
-
-                                                <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Nama Genset" required value="<?= $d->nama_genset; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="daya" class="form-label">Daya (KVA)</label>
-
-                                                <input type="text" name="daya" class="form-control" id="daya" placeholder="Daya" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->daya; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="harga" class="form-label">Harga</label>
-
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon">Rp</span>
-                                                    </div>
-                                                    <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga" required onkeypress='return (event.charCode > 47 && event.charCode < 58)' value="<?= $d->harga; ?>">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="gambar_genset" class="form-label">Gambar Genset</label>
-
-                                                <input type="file" name="gambar_genset" class="form-control" id="gambar_genset">
-                                                <!-- <input type="hidden" name="gambar_genset_old" value="<?= $d->gambar_genset; ?>"> -->
-                                                <small style="color: red;">
-                                                    <p>*File yang diijinkan "jpg|png|jpeg", max size 2MB.</p>
-                                                </small>
-                                            </div>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                                        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
 
                 </div>
             </div>

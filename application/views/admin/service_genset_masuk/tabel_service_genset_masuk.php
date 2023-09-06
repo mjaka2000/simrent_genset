@@ -32,7 +32,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Data Perbaikan Genset yang Masuk
+                            Data Lama Pemakaian Sewa Genset yang akan di service
                         </div>
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
@@ -48,13 +48,12 @@
                                 <thead>
                                     <tr>
                                         <th style="width :10px">No.</th>
-                                        <th>Data 0</th>
-                                        <th>Data 1</th>
-                                        <th>Data 2</th>
-                                        <th>Data 3</th>
-                                        <th>Data 4</th>
+                                        <th>Nomor Genset</th>
+                                        <th>Nama Genset</th>
+                                        <th>Daya</th>
+                                        <th>Lama Pakai</th>
+                                        <th>Tanggal Pemakaian</th>
                                         <th>Keterangan</th>
-                                        <!-- <th>Status</th> -->
                                         <th style="width:10%">Aksi</th>
                                     </tr>
                                 </thead>
@@ -62,12 +61,18 @@
                                     <?php
                                     $no = 1;
                                     ?>
-                                    <?php //foreach ($list_data as $d) : 
+                                    <?php foreach ($list_data as $d) :
                                     ?>
-                                    <tr>
-
-                                    </tr>
-                                    <?php //endforeach; 
+                                        <tr>
+                                            <td><?= $no++; ?></td>
+                                            <td><?= $dt->kode_genset; ?></td>
+                                            <td><?= $dt->nama_genset; ?></td>
+                                            <td><?= $dt->daya; ?></td>
+                                            <td><?= $dt->jumlah_hari; ?></td>
+                                            <td><?= date('d-m-Y', strtotime($dt->tanggal_masuk)); ?></td>
+                                            <td><?= $dt->ket_det_pakai_genset; ?></td>
+                                        </tr>
+                                    <?php endforeach;
                                     ?>
 
                                 </tbody>
