@@ -344,6 +344,18 @@ class M_data extends CI_Model
     return $query->result();
   }
 
+  public function get_data_pakaiGst($tabel) // Tampilkan isi tabel lama pemakaian Genset
+  {
+    $query = $this->db->select()
+      ->from($tabel)
+      // ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
+
+      // ->order_by('id_perbaikan_gst', 'asc')
+      ->get();
+    return $query->result();
+  }
+
   public function mengurangi_stok($tabel, $spare_part, $stok_new) // Mengurangi isi stok sparepart
   {
     $this->db->set("stok", $stok_new);
