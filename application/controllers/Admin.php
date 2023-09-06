@@ -281,12 +281,12 @@ class Admin extends CI_Controller
 		$this->load->view('admin/genset/tabel_genset', $data);
 	}
 
-	// public function tambah_genset()
-	// {
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Tambah Genset';
-	// 	$this->load->view('admin/genset/tambahgenset', $data);
-	// }
+	public function tambah_genset()
+	{
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Genset';
+		$this->load->view('admin/genset/tambahgenset', $data);
+	}
 
 	public function proses_tambahgenset()
 	{
@@ -326,8 +326,8 @@ class Admin extends CI_Controller
 		} else {
 			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 			$data['title'] = 'Tambah Genset';
-			// $this->load->view('admin/genset/tambahgenset', $data);
-			$this->load->view('admin/genset/tabel_genset', $data);
+			$this->load->view('admin/genset/tambahgenset', $data);
+			// $this->load->view('admin/genset/tabel_genset', $data);
 		}
 	}
 
@@ -358,17 +358,17 @@ class Admin extends CI_Controller
 		}
 	}
 
-	// public function update_genset()
-	// {
-	// 	$uri = $this->uri->segment(3);
-	// 	$where = array('id_genset' => $uri);
-	// 	$data['data_genset'] = $this->M_data->get_data('tb_genset', $where);
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Update Genset';
-	// 	$this->load->view('admin/genset/updategenset', $data);
-	// }
+	public function update_genset()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_genset' => $uri);
+		$data['edit_data'] = $this->M_data->get_data('tb_genset', $where);
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Update Genset';
+		$this->load->view('admin/genset/updategenset', $data);
+	}
 
-	public function proses_updategenset()
+	/*	public function proses_updategenset()
 	{
 		$this->form_validation->set_rules('kode_genset', 'Kode Genset', 'trim|required');
 		$this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
@@ -434,59 +434,59 @@ class Admin extends CI_Controller
 			$this->load->view('admin/genset/tabel_genset', $data);
 		}
 	}
+*/
+	public function proses_updategenset()
+	{
+		$this->form_validation->set_rules('kode_genset', 'Kode Genset', 'trim|required');
+		$this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
+		$this->form_validation->set_rules('daya', 'Daya', 'trim|required');
+		$this->form_validation->set_rules('harga', 'Harga', 'trim|required');
+		// $this->form_validation->set_rules('ket_genset', 'Ket. Genset', 'trim|required');
+		// $this->form_validation->set_rules('stok_gd', 'Stok GUdang', 'trim|required');
+		// $this->form_validation->set_rules('stok_pj', 'Stok Pinjam', 'trim|required');
 
-	// public function proses_updategenset()
-	// {
-	// 	$this->form_validation->set_rules('kode_genset', 'Kode Genset', 'trim|required');
-	// 	$this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
-	// 	$this->form_validation->set_rules('daya', 'Daya', 'trim|required');
-	// 	$this->form_validation->set_rules('harga', 'Harga', 'trim|required');
-	// 	$this->form_validation->set_rules('ket_genset', 'Ket. Genset', 'trim|required');
-	// 	// $this->form_validation->set_rules('stok_gd', 'Stok GUdang', 'trim|required');
-	// 	// $this->form_validation->set_rules('stok_pj', 'Stok Pinjam', 'trim|required');
+		if ($this->form_validation->run() == true) {
 
-	// 	if ($this->form_validation->run() == true) {
+			$id = $this->input->post('id_genset', true);
+			$kode_genset = $this->input->post('kode_genset', true);
+			$nama_genset = $this->input->post('nama_genset', true);
+			$daya = $this->input->post('daya', true);
+			$harga = $this->input->post('harga', true);
+			// $ket_genset = $this->input->post('ket_genset', true);
+			// $stok_gd = $this->input->post('stok_gd', true);
+			// $stok_pj = $this->input->post('stok_pj', true);
+			$gambar_genset_old = $this->input->post('gambar_genset_old', true);
 
-	// 		$id = $this->input->post('id_genset', true);
-	// 		$kode_genset = $this->input->post('kode_genset', true);
-	// 		$nama_genset = $this->input->post('nama_genset', true);
-	// 		$daya = $this->input->post('daya', true);
-	// 		$harga = $this->input->post('harga', true);
-	// 		$ket_genset = $this->input->post('ket_genset', true);
-	// 		// $stok_gd = $this->input->post('stok_gd', true);
-	// 		// $stok_pj = $this->input->post('stok_pj', true);
-	// 		$gambar_genset_old = $this->input->post('gambar_genset_old', true);
+			$gambar_genset = $this->upload_gambar_genset();
 
-	// 		$gambar_genset = $this->upload_gambargenset();
+			if ($gambar_genset == '<p>You did not select a file to upload.</p>') {
+				$gambar_genset_new = $gambar_genset_old;
+			} else {
+				$gambar_genset_new = $gambar_genset;
+			}
 
-	// 		if ($gambar_genset == '<p>You did not select a file to upload.</p>') {
-	// 			$gambar_genset_new = $gambar_genset_old;
-	// 		} else {
-	// 			$gambar_genset_new = $gambar_genset;
-	// 		}
+			$where = array('id_genset' => $id);
+			$data = array(
+				'kode_genset' => $kode_genset,
+				'nama_genset' => $nama_genset,
+				'daya' => $daya,
+				'harga' => $harga,
+				// 'ket_genset' => $ket_genset,
+				// 'stok_gd' => $stok_gd,
+				// 'stok_pj' => $stok_pj,
+				'gambar_genset' => $gambar_genset_new
+			);
+			$this->M_data->update('tb_genset', $data, $where);
 
-	// 		$where = array('id_genset' => $id);
-	// 		$data = array(
-	// 			'kode_genset' => $kode_genset,
-	// 			'nama_genset' => $nama_genset,
-	// 			'daya' => $daya,
-	// 			'harga' => $harga,
-	// 			'ket_genset' => $ket_genset,
-	// 			// 'stok_gd' => $stok_gd,
-	// 			// 'stok_pj' => $stok_pj,
-	// 			'gambar_genset' => $gambar_genset_new
-	// 		);
-	// 		$this->M_data->update('tb_genset', $data, $where);
-
-	// 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
-	// 		redirect(site_url('admin/tabel_genset'));
-	// 	} else {
-	// 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 		$data['title'] = 'Update Genset';
-	// 		// $this->load->view('admin/genset/updategenset', $data);
-	// 		$this->load->view('admin/genset/tabel_genset', $data);
-	// 	}
-	// }
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+			redirect(site_url('admin/tabel_genset'));
+		} else {
+			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+			$data['title'] = 'Update Genset';
+			$this->load->view('admin/genset/updategenset', $data);
+			// $this->load->view('admin/genset/tabel_genset', $data);
+		}
+	}
 
 	public function hapus_data_genset($id_genset)
 	{
@@ -555,7 +555,7 @@ class Admin extends CI_Controller
 
 	public function tabel_service_genset_masuk()
 	{
-		// $data['list_data'] = $this->M_data->get_data_service('tb_serv_genset');
+		$data['list_data'] = $this->M_data->get_data_pakaiGst('tb_det_pakai_genset');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Data Perbaikan Genset yang Masuk';
 		$this->load->view('admin/service_genset_masuk/tabel_service_genset_masuk', $data);
@@ -1060,23 +1060,23 @@ class Admin extends CI_Controller
 		$this->load->view('admin/mobil/tabel_mobil', $data);
 	}
 
-	// public function tambah_data_mobil()
-	// {
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Tambah Data Mobil';
-	// 	$this->load->view('admin/mobil/tambah_mobil', $data);
-	// }
+	public function tambah_data_mobil()
+	{
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Data Mobil';
+		$this->load->view('admin/mobil/tambah_mobil', $data);
+	}
 
-	// public function update_data_mobil()
-	// {
-	// 	$uri = $this->uri->segment(3);
-	// 	$where = array('id_mobil' => $uri);
-	// 	$data['list_data'] = $this->M_data->get_data('tb_mobil', $where);
-	// 	// $data['list_data_bbm'] = $this->M_data->get_data('tb_mobil', $where);
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Edit Data Mobil';
-	// 	$this->load->view('admin/mobil/update_mobil', $data);
-	// }
+	public function update_data_mobil()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_mobil' => $uri);
+		$data['edit_data'] = $this->M_data->get_data('tb_mobil', $where);
+		// $data['list_data_bbm'] = $this->M_data->get_data('tb_mobil', $where);
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Edit Data Mobil';
+		$this->load->view('admin/mobil/update_mobil', $data);
+	}
 
 	public function hapus_data_mobil($id_mobil)
 	{
@@ -1169,12 +1169,12 @@ class Admin extends CI_Controller
 		} else {
 			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 			$data['title'] = 'Tambah Data Mobil';
-			// $this->load->view('admin/mobil/tambah_mobil', $data);
-			$this->load->view('admin/mobil/tabel_mobil', $data);
+			$this->load->view('admin/mobil/tambah_mobil', $data);
+			// $this->load->view('admin/mobil/tabel_mobil', $data);
 		}
 	}
 
-	public function proses_update_mobil()
+	/*	public function proses_update_mobil()
 	{
 		$this->form_validation->set_rules('merek', 'Merek', 'trim|required');
 		$this->form_validation->set_rules('tipe', 'Tipe', 'trim|required');
@@ -1238,59 +1238,59 @@ class Admin extends CI_Controller
 			// $this->load->view('admin/mobil/update_mobil', $data);
 			$this->load->view('admin/mobil/tabel_mobil', $data);
 		}
+	} */
+
+	public function proses_update_mobil()
+	{
+		$this->form_validation->set_rules('merek', 'Merek', 'trim|required');
+		$this->form_validation->set_rules('tipe', 'Tipe', 'trim|required');
+		$this->form_validation->set_rules('tahun', 'Tahun', 'trim|required');
+		$this->form_validation->set_rules('nopol', 'Nopol', 'trim|required');
+		$this->form_validation->set_rules('jenis_bbm', 'Jenis_BBM', 'trim|required');
+		$this->form_validation->set_rules('pajak', 'Pajak', 'trim|required');
+		$this->form_validation->set_rules('stnk', 'Stnk', 'trim|required');
+
+		if ($this->form_validation->run() === TRUE) {
+
+			$gambar_mobil = $this->upload_gambar_mobil();
+
+			$id = $this->input->post('id', TRUE);
+			$merek = $this->input->post('merek', TRUE);
+			$tipe = $this->input->post('tipe', TRUE);
+			$tahun = $this->input->post('tahun', TRUE);
+			$nopol = $this->input->post('nopol', TRUE);
+			$jenis_bbm = $this->input->post('jenis_bbm', TRUE);
+			$pajak = $this->input->post('pajak', TRUE);
+			$stnk = $this->input->post('stnk', TRUE);
+			$gambar_mobil_old = $this->input->post('gambar_mobil_old', TRUE);
+
+			if ($gambar_mobil == '<p>You did not select a file to upload.</p>') {
+				$gambar_mobil_new = $gambar_mobil_old;
+			} else {
+				$gambar_mobil_new = $gambar_mobil;
+			}
+
+			$where = array('id_mobil' => $id);
+			$data = array(
+				'merek' => $merek,
+				'tipe' => $tipe,
+				'tahun' => $tahun,
+				'nopol' => $nopol,
+				'jenis_bbm' => $jenis_bbm,
+				'pajak' => $pajak,
+				'stnk' => $stnk,
+				'gambar_mobil' => $gambar_mobil_new
+			);
+			$this->M_data->update('tb_mobil', $data, $where);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+			redirect(site_url('admin/tabel_mobil'));
+		} else {
+			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+			$data['title'] = 'Edit Data Mobil';
+			$this->load->view('admin/mobil/update_mobil', $data);
+			// $this->load->view('admin/mobil/tabel_mobil', $data);
+		}
 	}
-
-	// public function proses_update_mobil()
-	// {
-	// 	$this->form_validation->set_rules('merek', 'Merek', 'trim|required');
-	// 	$this->form_validation->set_rules('tipe', 'Tipe', 'trim|required');
-	// 	$this->form_validation->set_rules('tahun', 'Tahun', 'trim|required');
-	// 	$this->form_validation->set_rules('nopol', 'Nopol', 'trim|required');
-	// 	$this->form_validation->set_rules('jenis_bbm', 'Jenis_BBM', 'trim|required');
-	// 	$this->form_validation->set_rules('pajak', 'Pajak', 'trim|required');
-	// 	$this->form_validation->set_rules('stnk', 'Stnk', 'trim|required');
-
-	// 	if ($this->form_validation->run() === TRUE) {
-
-	// 		$gambar_mobil = $this->upload_gambar_mobil();
-
-	// 		$id = $this->input->post('id', TRUE);
-	// 		$merek = $this->input->post('merek', TRUE);
-	// 		$tipe = $this->input->post('tipe', TRUE);
-	// 		$tahun = $this->input->post('tahun', TRUE);
-	// 		$nopol = $this->input->post('nopol', TRUE);
-	// 		$jenis_bbm = $this->input->post('jenis_bbm', TRUE);
-	// 		$pajak = $this->input->post('pajak', TRUE);
-	// 		$stnk = $this->input->post('stnk', TRUE);
-	// 		$gambar_mobil_old = $this->input->post('gambar_mobil_old', TRUE);
-
-	// 		if ($gambar_mobil == '<p>You did not select a file to upload.</p>') {
-	// 			$gambar_mobil_new = $gambar_mobil_old;
-	// 		} else {
-	// 			$gambar_mobil_new = $gambar_mobil;
-	// 		}
-
-	// 		$where = array('id_mobil' => $id);
-	// 		$data = array(
-	// 			'merek' => $merek,
-	// 			'tipe' => $tipe,
-	// 			'tahun' => $tahun,
-	// 			'nopol' => $nopol,
-	// 			'jenis_bbm' => $jenis_bbm,
-	// 			'pajak' => $pajak,
-	// 			'stnk' => $stnk,
-	// 			'gambar_mobil' => $gambar_mobil_new
-	// 		);
-	// 		$this->M_data->update('tb_mobil', $data, $where);
-	// 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
-	// 		redirect(site_url('admin/tabel_mobil'));
-	// 	} else {
-	// 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 		$data['title'] = 'Edit Data Mobil';
-	// 		// $this->load->view('admin/mobil/update_mobil', $data);
-	// 		$this->load->view('admin/mobil/tabel_mobil', $data);
-	// 	}
-	// }
 
 	####################################
 	//* End Data Mobil 
@@ -1301,28 +1301,28 @@ class Admin extends CI_Controller
 
 	public function tabel_operator()
 	{
-		$data['list_operator'] = $this->M_data->select('tb_operator');
+		$data['list_data'] = $this->M_data->select('tb_operator');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Data Operator';
 		$this->load->view('admin/operator/tabel_operator', $data);
 	}
 
-	// public function tambah_data_operator()
-	// {
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Tambah Data Operator';
-	// 	$this->load->view('admin/operator/tambah_operator', $data);
-	// }
+	public function tambah_data_operator()
+	{
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Data Operator';
+		$this->load->view('admin/operator/tambah_operator', $data);
+	}
 
-	// public function update_data_operator()
-	// {
-	// 	$uri = $this->uri->segment(3);
-	// 	$where = array('id_operator' => $uri);
-	// 	$data['list_data'] = $this->M_data->get_data('tb_operator', $where);
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Ubah Data Operator';
-	// 	$this->load->view('admin/operator/update_operator', $data);
-	// }
+	public function update_data_operator()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_operator' => $uri);
+		$data['edit_data'] = $this->M_data->get_data('tb_operator', $where);
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Ubah Data Operator';
+		$this->load->view('admin/operator/update_operator', $data);
+	}
 
 	public function update_status_op_standby()
 	{
