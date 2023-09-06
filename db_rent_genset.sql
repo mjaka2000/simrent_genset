@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Agu 2023 pada 06.26
+-- Waktu pembuatan: 06 Sep 2023 pada 12.22
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -39,6 +39,18 @@ CREATE TABLE `tb_detail_serv` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_det_pakai_genset`
+--
+
+CREATE TABLE `tb_det_pakai_genset` (
+  `id_det_pakai_genset` int(11) NOT NULL,
+  `id_u_sewa` int(11) NOT NULL,
+  `ket_det_pakai_genset` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_genset`
 --
 
@@ -57,7 +69,8 @@ CREATE TABLE `tb_genset` (
 --
 
 INSERT INTO `tb_genset` (`id_genset`, `kode_genset`, `nama_genset`, `daya`, `harga`, `ket_genset`, `gambar_genset`) VALUES
-(1, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg');
+(1, '10', 'Denyo 25 ES-10', '20', '750000', 0, 'denyo25es-10.jpg'),
+(2, '07', 'Denyo 25 ES-07', '20', '750000', 0, 'denyo25es-07.jpg');
 
 -- --------------------------------------------------------
 
@@ -101,7 +114,8 @@ CREATE TABLE `tb_mobil` (
 --
 
 INSERT INTO `tb_mobil` (`id_mobil`, `merek`, `tipe`, `tahun`, `nopol`, `jenis_bbm`, `pajak`, `stnk`, `gambar_mobil`) VALUES
-(1, 'Daihatsu Gran Max Putih', 'pick up', '2016', 'DA 4534 AS', 'Bensin', '2023-08-20', '2023-08-20', 'gran_max_wh.jpg');
+(1, 'Daihatsu Gran Max Putih', 'pick up', '2016', 'DA 4534 AS', 'Bensin', '2023-08-20', '2023-08-20', 'gran_max_wh.jpg'),
+(2, 'daihatsu gran max biru', 'pick up', '2016', 'DA 6754 QW', 'Bensin', '2024-08-01', '2024-08-01', 'daihatsu-gran-max-blu.jpg');
 
 -- --------------------------------------------------------
 
@@ -123,7 +137,8 @@ CREATE TABLE `tb_operator` (
 --
 
 INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `noktp_op`, `status_op`) VALUES
-(1, 'Adi', 'jl pulau laut', '0897819271234', '18377559303022', 1);
+(1, 'Adi', 'jl pulau laut bjm', '0897819271234', '18377559303022', 0),
+(2, 'Arul', 'Jl. AKT Dalam', '0897618391837', '1837755938776567', 0);
 
 -- --------------------------------------------------------
 
@@ -149,7 +164,8 @@ CREATE TABLE `tb_pelanggan` (
 --
 
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`, `id_user`) VALUES
-(1, 'Bayu Agung', 'jl kp melayu', '0878123123123', 'L', 'pt amanah', '2023-08-21', 0, 0, 43);
+(1, 'Bayu Agung', 'jl kp melayu', '0878123123123', 'L', 'pt amanah', '2023-08-21', 0, 0, 43),
+(2, 'Ibnu Jal', 'jl. sei jingah', '0878123121234', 'L', 'pt rtr', '2023-08-22', 0, 0, 44);
 
 -- --------------------------------------------------------
 
@@ -193,6 +209,13 @@ CREATE TABLE `tb_serv_genset` (
   `biaya_perbaikan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data untuk tabel `tb_serv_genset`
+--
+
+INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `jenis_perbaikan`, `tgl_perbaikan`, `ket_perbaikan`, `biaya_perbaikan`) VALUES
+(2, 1, 1, 'ganti oli', '2023-09-03', 1, '0');
+
 -- --------------------------------------------------------
 
 --
@@ -221,6 +244,14 @@ CREATE TABLE `tb_sparepart` (
   `stok` varchar(20) NOT NULL,
   `harga_sparepart` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data untuk tabel `tb_sparepart`
+--
+
+INSERT INTO `tb_sparepart` (`id_sparepart`, `nama_sparepart`, `tanggal_beli`, `tempat_beli`, `stok`, `harga_sparepart`) VALUES
+(1, 'Oli Meditran SX 1Lt', '2023-09-01', 'Bengkel Makmur', '4', '300000'),
+(2, 'Filter Solar Sakura', '2023-09-02', 'Filter Jaya', '3', '75000');
 
 -- --------------------------------------------------------
 
@@ -271,11 +302,12 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '2023-08-22 12:06:57'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '2023-08-22 11:51:32'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '2023-09-06 15:15:03'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '2023-08-23 09:46:53'),
 (33, 'aril', 'Syahril', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '2023-08-16 08:42:35'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '0000-00-00 00:00:00'),
-(43, 'abay021', 'Bayu Agung', '$2y$10$gYs55hE6HXox5mJfc5Q3t.7f/iauCe1ke2n6v3MoCddlqsXE8kniS', 3, 'nopic.png', '2023-08-22 12:01:07');
+(43, 'abay021', 'Bayu Agung', '$2y$10$gYs55hE6HXox5mJfc5Q3t.7f/iauCe1ke2n6v3MoCddlqsXE8kniS', 3, 'nopic.png', '2023-08-22 12:01:07'),
+(44, 'ibnu123', 'Ibnu', '$2y$10$xrUskK.7d7ZFMFrOLEoPZOuy6RXQsq.sx89z10kxbt4Ot8Oo9N0Uy', 3, 'nopic.png', '2023-08-22 17:05:54');
 
 -- --------------------------------------------------------
 
@@ -309,6 +341,13 @@ INSERT INTO `tb_valid_penyewaan` (`id_valid_penyewaan`, `id_u_sewa`, `id_transak
 ALTER TABLE `tb_detail_serv`
   ADD PRIMARY KEY (`id_detail_serv`),
   ADD KEY `id_perbaikan_gst` (`id_perbaikan_gst`);
+
+--
+-- Indeks untuk tabel `tb_det_pakai_genset`
+--
+ALTER TABLE `tb_det_pakai_genset`
+  ADD PRIMARY KEY (`id_det_pakai_genset`),
+  ADD KEY `id_u_sewa` (`id_u_sewa`);
 
 --
 -- Indeks untuk tabel `tb_genset`
@@ -410,10 +449,16 @@ ALTER TABLE `tb_detail_serv`
   MODIFY `id_detail_serv` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_det_pakai_genset`
+--
+ALTER TABLE `tb_det_pakai_genset`
+  MODIFY `id_det_pakai_genset` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_genset`
 --
 ALTER TABLE `tb_genset`
-  MODIFY `id_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_jadwal_genset`
@@ -425,19 +470,19 @@ ALTER TABLE `tb_jadwal_genset`
 -- AUTO_INCREMENT untuk tabel `tb_mobil`
 --
 ALTER TABLE `tb_mobil`
-  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_operator`
 --
 ALTER TABLE `tb_operator`
-  MODIFY `id_operator` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_operator` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pendapatan`
@@ -455,7 +500,7 @@ ALTER TABLE `tb_pengeluaran`
 -- AUTO_INCREMENT untuk tabel `tb_serv_genset`
 --
 ALTER TABLE `tb_serv_genset`
-  MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_serv_gst_acc`
@@ -467,7 +512,7 @@ ALTER TABLE `tb_serv_gst_acc`
 -- AUTO_INCREMENT untuk tabel `tb_sparepart`
 --
 ALTER TABLE `tb_sparepart`
-  MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_unit_penyewaan`
@@ -479,7 +524,7 @@ ALTER TABLE `tb_unit_penyewaan`
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_valid_penyewaan`
@@ -521,8 +566,7 @@ ALTER TABLE `tb_pendapatan`
 -- Ketidakleluasaan untuk tabel `tb_serv_genset`
 --
 ALTER TABLE `tb_serv_genset`
-  ADD CONSTRAINT `tb_serv_genset_ibfk_1` FOREIGN KEY (`id_genset`) REFERENCES `tb_genset` (`id_genset`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_serv_genset_ibfk_2` FOREIGN KEY (`id_sparepart`) REFERENCES `tb_sparepart` (`id_sparepart`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_serv_genset_ibfk_1` FOREIGN KEY (`id_genset`) REFERENCES `tb_genset` (`id_genset`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tb_serv_gst_acc`
