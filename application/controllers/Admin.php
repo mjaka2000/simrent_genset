@@ -1324,21 +1324,21 @@ class Admin extends CI_Controller
 		$this->load->view('admin/operator/update_operator', $data);
 	}
 
-	public function update_status_op_standby()
-	{
-		$uri = $this->uri->segment(3);
-		$data['status_op'] = $this->M_data->select('tb_operator');
-		$where = array('id_operator' => $uri);
-		$status_op = 0;
+	// public function update_status_op_standby()
+	// {
+	// 	$uri = $this->uri->segment(3);
+	// 	$data['status_op'] = $this->M_data->select('tb_operator');
+	// 	$where = array('id_operator' => $uri);
+	// 	$status_op = 0;
 
-		$data = array(
-			'status_op' => $status_op
-		);
+	// 	$data = array(
+	// 		'status_op' => $status_op
+	// 	);
 
-		$this->M_data->update('tb_operator', $data, $where);
-		$this->session->set_flashdata('msg_sukses', 'Data Status diubah');
-		redirect(site_url('admin/tabel_operator'));
-	}
+	// 	$this->M_data->update('tb_operator', $data, $where);
+	// 	$this->session->set_flashdata('msg_sukses', 'Data Status diubah');
+	// 	redirect(site_url('admin/tabel_operator'));
+	// }
 
 	public function proses_tambah_operator()
 	{
@@ -1845,74 +1845,6 @@ class Admin extends CI_Controller
 		}
 	}
 
-	// public function proses_tambah_unit_keluar()
-	// {
-	// 	$this->form_validation->set_rules('id_transaksi', 'ID Data', 'required');
-	// 	$this->form_validation->set_rules('tanggal_keluar', 'Tanggal Keluar', 'required');
-	// 	$this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
-	// 	$this->form_validation->set_rules('id_operator', 'Nama Operator', 'required');
-	// 	$this->form_validation->set_rules('id_pelanggan', 'Nama Pelanggan', 'required');
-	// 	$this->form_validation->set_rules('id_genset', 'Kode Genset', 'required');
-
-	// 	if ($this->form_validation->run() == TRUE) {
-	// 		// $stok_gd           = $this->input->post('stok_gd', TRUE);
-	// 		// $stok_pj           = $this->input->post('stok_pj', TRUE);
-
-	// 		$id_transaksi     = $this->input->post('id_transaksi', TRUE);
-	// 		$tanggal_keluar          = $this->input->post('tanggal_keluar', TRUE);
-	// 		$lokasi           = $this->input->post('lokasi', TRUE);
-	// 		$id_operator    = $this->input->post('id_operator', TRUE);
-	// 		$id_pelanggan   = $this->input->post('id_pelanggan', TRUE);
-	// 		$id_genset      = $this->input->post('id_genset', TRUE);
-	// 		$id_mobil            = $this->input->post('id_mobil', TRUE);
-	// 		$tambahan         = $this->input->post('tambahan', TRUE);
-	// 		$jumlah_hari      = $this->input->post('jumlah_hari', TRUE);
-	// 		$total            = $this->input->post('total', TRUE);
-	// 		$status           = 2;
-
-	// 		$tanggal_masuk    = date('Y-m-d', strtotime($tanggal_keluar . "+" . $jumlah_hari . " days"));
-
-	// 		$data = array(
-	// 			'id_transaksi'     => $id_transaksi,
-	// 			'tanggal_keluar'          => $tanggal_keluar,
-	// 			'lokasi'           => $lokasi,
-	// 			'tanggal_masuk'    => $tanggal_masuk,
-	// 			'id_operator'    => $id_operator,
-	// 			'id_pelanggan'   => $id_pelanggan,
-	// 			'id_genset'      => $id_genset,
-	// 			'id_mobil'            => $id_mobil,
-	// 			'tambahan'         => $tambahan,
-	// 			'jumlah_hari'      => $jumlah_hari,
-	// 			'total'            => $total,
-	// 			'status'           => $status
-	// 		);
-	// 		$status_gst = 1;
-	// 		// $status_op = 1;
-	// 		$status_plg = 1;
-	// 		// $stok_gd_new = ++$stok_gd;
-	// 		// $stok_pj_new = --$stok_pj;
-
-	// 		// $this->M_data->mengurangi('tb_genset', $id_genset, $stok_gd_new);
-	// 		// $this->M_data->menambah('tb_genset', $id_genset, $stok_pj_new);
-	// 		$this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
-	// 		// $this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
-	// 		$this->M_data->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
-	// 		$this->M_data->insert('tb_unit_penyewaan', $data);
-	// 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Disimpan');
-
-	// 		redirect(site_url('admin/tabel_unit_keluar'));
-	// 	} else {
-	// 		$data['list_mobil'] = $this->M_data->select('tb_mobil');
-	// 		$data['list_genset'] = $this->M_data->select('tb_genset');
-	// 		$data['list_pelanggan'] = $this->M_data->select('tb_pelanggan');
-	// 		$data['list_operator'] = $this->M_data->select('tb_operator');
-	// 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 		$data['title'] = 'Tambah Unit Sewa';
-	// 		// $this->load->view('admin/unit_keluar/tambah_unit_keluar', $data);
-	// 		$this->load->view('admin/unit_keluar/tabel_unit_keluar', $data);
-	// 	}
-	// }
-
 	public function hapus_unit_keluar()
 	{
 		$uri = $this->uri->segment(3);
@@ -2002,12 +1934,6 @@ class Admin extends CI_Controller
 
 			$status_b = 2;
 
-			// if($jumlah_hari_lama == $jumlah_hari){
-			//   $status = 1;
-			// }else{
-			//   $status = 0;
-			// }
-
 			$where = array('id_u_sewa' => $id_u_sewa);
 			$data = array(
 				'id_transaksi'    => $id_transaksi,
@@ -2023,20 +1949,7 @@ class Admin extends CI_Controller
 				'total'            => $total,
 				'status'           => $status_b
 			);
-			// $stok_gd_new = ++$stok_gd;
-			// $stok_pj_new = --$stok_pj;
-			// $status_gst = 0;
-			// $status_op = 0;
-			// $status_plg = 0;
-			// $status = 2;
 
-			// $this->M_data->update_status('tb_unit_penyewaan', $where, $status_b);
-			// $this->M_data->update_status_gst('tb_genset', $id_genset, $status_gst);
-			// $this->M_data->update_status_op('tb_operator', $id_operator, $status_op);
-			// $this->M_data->update_status_plg('tb_pelanggan', $id_pelanggan, $status_plg);
-			// $this->M_data->menambah_kembali('tb_genset', $id_genset, $stok_gd_new);
-			// $this->M_data->mengurangi_kembali('tb_genset', $id_genset, $stok_pj_new);
-			// $this->M_data->insert('tb_unit_masuk', $data);
 			$this->M_data->update('tb_unit_penyewaan', $data, $where);
 			$this->session->set_flashdata('msg_sukses', 'Data Status diubah');
 			// $this->M_data->delete('tb_barang_masuk',$where);
@@ -2283,12 +2196,12 @@ class Admin extends CI_Controller
 		$this->load->view('admin/pengeluaran/tabel_pengeluaran', $data);
 	}
 
-	// public function tambah_data_pengeluaran()
-	// {
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Tambah Data Pengeluaran';
-	// 	$this->load->view('admin/pengeluaran/tambah_pengeluaran', $data);
-	// }
+	public function tambah_data_pengeluaran()
+	{
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Data Pengeluaran';
+		$this->load->view('admin/pengeluaran/tambah_pengeluaran', $data);
+	}
 
 	public function proses_tambah_pengeluaran()
 	{
@@ -2317,15 +2230,15 @@ class Admin extends CI_Controller
 		}
 	}
 
-	// public function update_data_pengeluaran()
-	// {
-	// 	$uri = $this->uri->segment(3);
-	// 	$where = array('id_pengeluaran' => $uri);
-	// 	$data['list_data'] = $this->M_data->get_data('tb_pengeluaran', $where);
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Ubah Data Pengeluaran';
-	// 	$this->load->view('admin/pengeluaran/update_pengeluaran', $data);
-	// }
+	public function update_data_pengeluaran()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_pengeluaran' => $uri);
+		$data['list_data'] = $this->M_data->get_data('tb_pengeluaran', $where);
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Ubah Data Pengeluaran';
+		$this->load->view('admin/pengeluaran/update_pengeluaran', $data);
+	}
 
 	public function proses_edit_pengeluaran()
 	{
@@ -2382,16 +2295,16 @@ class Admin extends CI_Controller
 		$this->load->view('admin/jdw_genset/tabel_jdw_genset', $data);
 	}
 
-	// public function tambah_jdw_genset()
-	// {
-	// 	$data['list_mobil'] = $this->M_data->select('tb_mobil');
-	// 	$data['list_genset'] = $this->M_data->select_gst('tb_genset');
-	// 	$data['list_operator'] = $this->M_data->select_op('tb_operator');
-	// $data['list_data'] = $this->M_data->ambil_data_u_keluar('tb_unit_penyewaan');
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Tambah Data Jadwal Penyewaan Genset';
-	// 	$this->load->view('admin/jdw_genset/tambah_jdw_genset', $data);
-	// }
+	public function tambah_jdw_genset()
+	{
+		$data['list_mobil'] = $this->M_data->select('tb_mobil');
+		$data['list_genset'] = $this->M_data->select_gst('tb_genset');
+		$data['list_operator'] = $this->M_data->select_op('tb_operator');
+		// $data['list_data'] = $this->M_data->ambil_data_u_keluar('tb_unit_penyewaan');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Data Jadwal Penyewaan Genset';
+		$this->load->view('admin/jdw_genset/tambah_jdw_genset', $data);
+	}
 
 	public function proses_tambah_jdw_genset()
 	{
@@ -2454,19 +2367,19 @@ class Admin extends CI_Controller
 		$this->load->view('admin/jdw_genset/detail_jdw_genset', $data);
 	}
 
-	// public function update_jdw_genset()
-	// {
-	// 	$uri = $this->uri->segment(3);
-	// 	$where = array('id_jadwal_genset' => $uri);
-	// 	$data['list_data'] = $this->M_data->get_data('tb_jadwal_genset', $where);
-	// 	$data['list_mobil'] = $this->M_data->select('tb_mobil');
-	// 	$data['list_genset'] = $this->M_data->select_gst('tb_genset');
-	// 	$data['list_operator'] = $this->M_data->select_op('tb_operator');
-	// $data['list_data'] = $this->M_data->ambil_data_u_keluar('tb_unit_penyewaan');
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Ubah Data Jadwal Penyewaan Genset';
-	// 	$this->load->view('admin/jdw_genset/update_jdw_genset', $data);
-	// }
+	public function update_jdw_genset()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_jadwal_genset' => $uri);
+		$data['list_data'] = $this->M_data->get_data('tb_jadwal_genset', $where);
+		$data['list_mobil'] = $this->M_data->select('tb_mobil');
+		$data['list_genset'] = $this->M_data->select_gst('tb_genset');
+		$data['list_operator'] = $this->M_data->select_op('tb_operator');
+		// $data['list_data'] = $this->M_data->ambil_data_u_keluar('tb_unit_penyewaan');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Ubah Data Jadwal Penyewaan Genset';
+		$this->load->view('admin/jdw_genset/update_jdw_genset', $data);
+	}
 
 	public function email_jdw_genset()
 	{
@@ -2561,6 +2474,34 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function ubah_status_jdw()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_jadwal_genset' => $uri);
+		$status_jdw = 1;
+		$data = array(
+			'status_jdw' => $status_jdw
+		);
+		$this->M_data->update('tb_jadwal_genset', $data, $where);
+		$this->session->set_flashdata('msg_sukses', 'Status Berhasil Diubah');
+
+		redirect(site_url('admin/tabel_jdw_genset'));
+	}
+
+	public function ubah_status_Notjdw()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_jadwal_genset' => $uri);
+		$status_jdw = 0;
+		$data = array(
+			'status_jdw' => $status_jdw
+		);
+		$this->M_data->update('tb_jadwal_genset', $data, $where);
+		$this->session->set_flashdata('msg_sukses', 'Status Berhasil Diubah');
+
+		redirect(site_url('admin/tabel_jdw_genset'));
+	}
+
 	public function hapus_jdw_genset()
 	{
 		$uri = $this->uri->segment(3);
@@ -2602,13 +2543,13 @@ class Admin extends CI_Controller
 		$this->load->view('admin/pemasukan/tabel_pemasukan', $data);
 	}
 
-	// public function tambah_pemasukan()
-	// {
-	// 	$data['get_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Tambah Data Pendapatan';
-	// 	$this->load->view('admin/pemasukan/tambah_pemasukan', $data);
-	// }
+	public function tambah_pemasukan()
+	{
+		$data['get_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Data Pendapatan';
+		$this->load->view('admin/pemasukan/tambah_pemasukan', $data);
+	}
 
 	public function proses_tambah_pemasukan()
 	{
@@ -2639,16 +2580,16 @@ class Admin extends CI_Controller
 		}
 	}
 
-	// public function edit_pemasukan()
-	// {
-	// 	$uri = $this->uri->segment(3);
-	// 	$where = array('id_pendapatan' => $uri);
-	// 	$data['edit_data'] = $this->M_data->get_data('tb_pendapatan', $where);
-	// 	$data['list_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Ubah Data Pendapatan';
-	// 	$this->load->view('admin/pemasukan/edit_pemasukan', $data);
-	// }
+	public function edit_pemasukan()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_pendapatan' => $uri);
+		$data['list_data'] = $this->M_data->get_data('tb_pendapatan', $where);
+		$data['get_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Ubah Data Pendapatan';
+		$this->load->view('admin/pemasukan/edit_pemasukan', $data);
+	}
 
 	public function proses_edit_pemasukan()
 	{
