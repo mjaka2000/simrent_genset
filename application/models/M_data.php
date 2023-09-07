@@ -768,9 +768,9 @@ class M_data extends CI_Model
     $query = $this->db->select()
       ->from($tabel)
       ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
-      ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      // ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
       ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
-      ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
+      // ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
       ->order_by('tanggal_masuk', 'asc')
       ->where('status =', 0)
       ->get();
