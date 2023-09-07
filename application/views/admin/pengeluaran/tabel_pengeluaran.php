@@ -41,7 +41,7 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <button data-toggle="modal" data-target="#AddPengeluaran" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
+                            <button onclick="window.location.href='<?= site_url('admin/tambah_data_pengeluaran'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
                             <button data-toggle="modal" data-target="#staticKeluarBulanan" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-success" name="KeluarBulanan"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
@@ -70,7 +70,7 @@
                                             <td><?= $dt->pengeluaran; ?></td>
                                             <td>Rp&nbsp;<?= number_format($dt->biaya_pengeluaran); ?></td>
                                             <td>
-                                                <button type="button" data-toggle="modal" data-target="#EditPengeluaran<?= $dt->id_pengeluaran; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
+                                                <a href="<?= site_url('admin/update_data_pengeluaran/' . $dt->id_pengeluaran); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a>
                                                 <a href="<?= site_url('admin/hapus_pengeluaran/' . $dt->id_pengeluaran); ?>" type="button" title="Hapus" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
                                             </td>
                                         </tr>
@@ -128,109 +128,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal fade" id="AddPengeluaran" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h6 class="modal-title" id="staticBackdropLabel">Tambah Data Pengeluaran</h6>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span>&times;</span>
-                                    </button>
 
-
-                                </div>
-                                <div class="modal-body">
-                                    <?php if (validation_errors()) { ?>
-                                        <div class="alert alert-warning alert-dismissable">
-                                            <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                            <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
-                                        </div>
-                                    <?php } ?>
-
-                                    <form action="<?= site_url('admin/proses_tambah_pengeluaran'); ?>" method="post" role="form">
-
-                                        <div class="form-group">
-                                            <label for="nama" class="form-label">Tanggal</label>
-
-                                            <input type="date" name="tgl_pengeluaran" class="form-control" id="tgl_pengeluaran" placeholder="Masukkan Tanggal" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="alamat" class="form-label">Keterangan Pengeluaran</label>
-
-                                            <input type="text" name="pengeluaran" class="form-control" id="pengeluaran" placeholder="Masukkan Keterangan Pengeluaran" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="no_hp" class="form-label">Biaya Pengeluaran</label>
-
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon">Rp</span>
-                                                </div>
-                                                <input type="number" name="biaya_pengeluaran" class="form-control" id="biaya_pengeluaran" placeholder="Masukkan Biaya Pengeluaran" required>
-                                            </div>
-                                        </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <?php foreach ($list_data as $dt) { ?>
-
-                        <div class="modal fade" id="EditPengeluaran<?= $dt->id_pengeluaran; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h6 class="modal-title" id="staticBackdropLabel">Ubah Data Pengeluaran</h6>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span>&times;</span>
-                                        </button>
-
-
-                                    </div>
-                                    <div class="modal-body">
-                                        <?php if (validation_errors()) { ?>
-                                            <div class="alert alert-warning alert-dismissable">
-                                                <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                                <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
-                                            </div>
-                                        <?php } ?>
-                                        <form action="<?= site_url('admin/proses_edit_pengeluaran'); ?>" method="post" role="form">
-                                            <input type="hidden" name="id_pengeluaran" value="<?= $dt->id_pengeluaran; ?>">
-                                            <div class="form-group">
-                                                <label for="nama" class="form-label">Tanggal</label>
-
-                                                <input type="date" name="tgl_pengeluaran" class="form-control" id="tgl_pengeluaran" placeholder="Masukkan Tanggal" required value="<?= $dt->tgl_pengeluaran; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="alamat" class="form-label">Keterangan Pengeluaran</label>
-
-                                                <input type="text" name="pengeluaran" class="form-control" id="pengeluaran" placeholder="Masukkan Keterangan Pengeluaran" required value="<?= $dt->pengeluaran; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="no_hp" class="form-label">Biaya Pengeluaran</label>
-
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon">Rp</span>
-                                                    </div>
-                                                    <input type="number" name="biaya_pengeluaran" class="form-control" id="biaya_pengeluaran" placeholder="Masukkan Biaya Pengeluaran" required value="<?= $dt->biaya_pengeluaran; ?>">
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                                        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
                 </div>
             </div>
         </div><!-- /.container-fluid -->

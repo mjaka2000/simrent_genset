@@ -76,7 +76,6 @@
                                                             <a class="dropdown-item disabled" href="#">Standby</a>
                                                             <a class="dropdown-item" href="<?= site_url('admin/ubah_status_opBerangkat/' . $dt->id_operator); ?>">Berangkat</a>
                                                         </div>
-                                                        <!-- <a href="#" class="btn btn-success btn-xs">Genset Ada </a> -->
                                                     </td>
                                                     <!-- <em>Standby</em></td> -->
                                                 <?php } else { ?>
@@ -88,7 +87,6 @@
                                                             <a class="dropdown-item " href="<?= site_url('admin/ubah_status_opStandby/' . $dt->id_operator); ?>">Standby</a>
                                                             <a class="dropdown-item disabled" href="#">Berangkat</a>
                                                         </div>
-                                                        <!-- <a href="#" class="btn btn-success btn-xs">Genset Ada </a> -->
                                                     </td>
                                                     <!-- <a href="<?= site_url('admin/update_status_op_standby/' . $dt->id_operator); ?>" type="button" class="btn btn-xs btn-success status-op" name="btn_status_op">Berangkat</a></td> -->
                                                 <?php } ?>

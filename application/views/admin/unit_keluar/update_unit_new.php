@@ -84,6 +84,7 @@
 
                                     <?php } ?>
                             </div>
+                            <hr>
                             <div class="form-group" align="center">
                                 <!-- <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button> -->
                                 <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
