@@ -44,7 +44,7 @@
                             <?php } ?>
                             <?php foreach ($list_data as $d) : ?>
                                 <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali" style="margin-bottom:10px;"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                                <button data-toggle="modal" data-target="#staticAddServGstDet" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
+                                <button onclick="window.location.href='<?= site_url('admin/tambah_service_detail/' . $d->id_perbaikan_gst); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
                                 <!-- <a href="<?= site_url('report/cetak_service_detail/' . $d->id_perbaikan_gst); ?>" target="_blank" type="button" style="margin-bottom:10px;margin-left: 10px;" class="btn btn-sm btn-default" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a> -->
                                 <table class="table" style="width:35%">
                                     <tr>
@@ -138,7 +138,7 @@
                                         </form>
                                     </tr>
                                     <tr>
-                                        <th style="vertical-align: middle">Biaya Perbaikan</th>
+                                        <th style="vertical-align: middle">Perkiraan Biaya</th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
                                                 <div class="col-lg-8">
@@ -190,63 +190,7 @@
                                 </table>
                         </div>
                     </div>
-                    <div class="modal fade" id="staticAddServGstDet" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h6 class="modal-title" id="staticBackdropLabel">Tambah Detail Perbaikan Genset</h6>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span>&times;</span>
-                                    </button>
 
-
-                                </div>
-                                <div class="modal-body">
-                                    <?php if (validation_errors()) { ?>
-                                        <div class="alert alert-warning alert-dismissable">
-                                            <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                            <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
-                                        </div>
-                                    <?php } ?>
-
-                                    <?php foreach ($list_data as $det) { ?>
-                                        <form action="<?= site_url('admin/proses_tambah_service_detail'); ?>" method="post" role="form">
-                                            <input type="hidden" name="id_perbaikan_gst" value="<?= $det->id_perbaikan_gst; ?>">
-                                            <div class="form-group">
-                                                <label for="pekerjaan" class="form-label">Pekerjaan</label>
-
-                                                <input type="text" name="pekerjaan" class="form-control" id="pekerjaan" placeholder="Pekerjaan" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Tanggal" class="form-label">Tanggal</label>
-
-                                                <input type="date" name="tanggal" class="form-control" id="tanggal" placeholder="Tanggal" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="kendala" class="form-label">Kendala</label>
-
-                                                <input type="text" name="kendala" class="form-control" id="kendala" placeholder="Kendala" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="status" class="form-label">Status</label>
-
-                                                <select name="status" class="form-control" id="status" required>
-                                                    <option value="">-- Status --</option>
-                                                    <option value="0">Pending</option>
-                                                    <option value="1">Selesai</option>
-                                                </select>
-                                            </div>
-                                        <?php } ?>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
