@@ -84,7 +84,7 @@
 
                                     <?php } ?>
                             </div>
-                            <div class="card-footer" align="center">
+                            <div class="form-group" align="center">
                                 <!-- <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button> -->
                                 <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
                             </div>
@@ -229,7 +229,7 @@
                                     </div>
                                 <?php } ?>
                                 <hr>
-                                <div class="card-footer" align="center">
+                                <div class="form-group" align="center">
                                     <!-- <div class="form-group row">
                                         <a type="button" onclick="editHari()" class="btn btn-sm btn-danger" name="edit_hari" id="edit_hari"><i class="fa fa-edit mr-2"></i>Edit Jumlah Hari</a>
                                         <small style="color: red;">*Klik Untuk Perpanjang Hari</small>
