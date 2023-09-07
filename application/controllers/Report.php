@@ -266,10 +266,10 @@ class Report extends CI_Controller
         $this->load->view('penyewa/report/rep_unit_keluar_detail', $data);
     }
 
-    public function cetak_service_detail()
+    public function cetak_service_detail($where)
     {
-        $uri = $this->uri->segment(3);
-        $where = array('id_perbaikan_gst' => $uri);
+        // $uri = $this->uri->segment(3);
+        // $where = array('id_perbaikan_gst' => $uri);
         $data['list_data'] = $this->M_data->get_detail_perbaikan('tb_serv_genset', $where);
         $data['detail_perbaikan'] = $this->M_data->detail_perbaikan('tb_detail_serv', $where);
         $data['title'] = 'Laporan Detail Perbaikan Genset';
