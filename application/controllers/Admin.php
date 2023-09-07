@@ -614,14 +614,14 @@ class Admin extends CI_Controller
 	}
 */
 
-	// public function tambah_service_genset()
-	// {
-	// 	$data['list_genset'] = $this->M_data->select('tb_genset');
-	// 	$data['list_sparepart'] = $this->M_data->select('tb_sparepart');
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Tambah Perbaikan Genset';
-	// 	$this->load->view('admin/service_genset/tambah_service_genset', $data);
-	// }
+	public function tambah_service_genset()
+	{
+		$data['list_genset'] = $this->M_data->select('tb_genset');
+		$data['list_sparepart'] = $this->M_data->select('tb_sparepart');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Perbaikan Genset';
+		$this->load->view('admin/service_genset/tambah_service_genset', $data);
+	}
 
 	public function proses_tambah_service_genset()
 	{
@@ -667,17 +667,17 @@ class Admin extends CI_Controller
 		}
 	}
 
-	// public function update_data_service_genset()
-	// {
-	// 	$data['list_genset'] = $this->M_data->select('tb_genset');
-	// 	$data['list_sparepart'] = $this->M_data->select('tb_sparepart');
-	// 	$uri = $this->uri->segment(3);
-	// 	$where = array('id_perbaikan_gst' => $uri);
-	// 	$data['list_data'] = $this->M_data->get_data('tb_serv_genset', $where);
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Update Perbaikan Genset';
-	// 	$this->load->view('admin/service_genset/update_service_genset', $data);
-	// }
+	public function update_data_service_genset()
+	{
+		$data['list_genset'] = $this->M_data->select('tb_genset');
+		$data['list_sparepart'] = $this->M_data->select('tb_sparepart');
+		$uri = $this->uri->segment(3);
+		$where = array('id_perbaikan_gst' => $uri);
+		$data['list_data'] = $this->M_data->get_data('tb_serv_genset', $where);
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Update Perbaikan Genset';
+		$this->load->view('admin/service_genset/update_service_genset', $data);
+	}
 
 	public function proses_update_service_genset()
 	{
@@ -744,16 +744,16 @@ class Admin extends CI_Controller
 		$this->load->view('admin/service_genset/detail_service_genset', $data);
 	}
 
-	// public function tambah_service_detail()
-	// {
-	// 	$uri = $this->uri->segment(3);
-	// 	$where = array('id_perbaikan_gst' => $uri);
-	// 	$data['list_data'] = $this->M_data->get_detail_perbaikan('tb_serv_genset', $where);
-	// 	$data['detail_perbaikan'] = $this->M_data->detail_perbaikan('tb_detail_serv', $where);
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Tambah Detail Perbaikan';
-	// 	$this->load->view('admin/service_genset/tambah_detailservice_genset', $data);
-	// }
+	public function tambah_service_detail($where)
+	{
+		// $uri = $this->uri->segment(3);
+		// $where = array('id_perbaikan_gst' => $uri);
+		$data['list_data'] = $this->M_data->get_detail_perbaikan('tb_serv_genset', $where);
+		$data['detail_perbaikan'] = $this->M_data->detail_perbaikan('tb_detail_serv', $where);
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Detail Perbaikan';
+		$this->load->view('admin/service_genset/tambah_detailservice_genset', $data);
+	}
 
 	public function proses_tambah_service_detail()
 	{
@@ -794,7 +794,7 @@ class Admin extends CI_Controller
 		$where = array('id_detail_serv' => $uri);
 		$this->M_data->delete('tb_detail_serv', $where);
 		$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
-		redirect(site_url('admin/detail_service_genset'));
+		redirect(site_url('admin/tabel_service_genset'));
 	}
 
 	public function proses_update_ket_service()
@@ -942,18 +942,18 @@ class Admin extends CI_Controller
 		$data['count'] = $this->M_data->notif_stok('tb_sparepart');
 		$data['num'] = $this->M_data->notif_stok_jml('tb_sparepart');
 
-		$data['list_sparepart'] = $this->M_data->select('tb_sparepart');
+		$data['list_data'] = $this->M_data->select('tb_sparepart');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Data Sparepart';
 		$this->load->view('admin/sparepart/tabel_sparepart', $data);
 	}
 
-	// public function tambah_data_sparepart()
-	// {
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Tambah Stok Sparepart';
-	// 	$this->load->view('admin/sparepart/tambah_sparepart', $data);
-	// }
+	public function tambah_data_sparepart()
+	{
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Stok Sparepart';
+		$this->load->view('admin/sparepart/tambah_sparepart', $data);
+	}
 
 	public function proses_tambah_sparepart()
 	{
@@ -990,15 +990,15 @@ class Admin extends CI_Controller
 		}
 	}
 
-	// public function update_sparepart()
-	// {
-	// 	$uri = $this->uri->segment(3);
-	// 	$where = array('id_sparepart' => $uri);
-	// 	$data['data_sparepart'] = $this->M_data->get_data('tb_sparepart', $where);
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Edit Stok Sparepart';
-	// 	$this->load->view('admin/sparepart/update_sparepart', $data);
-	// }
+	public function update_sparepart()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_sparepart' => $uri);
+		$data['list_data'] = $this->M_data->get_data('tb_sparepart', $where);
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Edit Stok Sparepart';
+		$this->load->view('admin/sparepart/update_sparepart', $data);
+	}
 
 	public function proses_update_sparepart()
 	{
