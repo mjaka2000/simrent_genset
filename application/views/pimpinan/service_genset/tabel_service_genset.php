@@ -71,9 +71,9 @@
                                                 <td><?= $dt->nama_sparepart; ?></td>
                                                 <td><?= date('d-m-Y', strtotime($dt->tgl_perbaikan)); ?></td>
                                                 <?php if ($dt->ket_perbaikan == "1") { ?>
-                                                    <td><a href="#" type="button" class="btn btn-xs btn-success">Selesai Diperbaiki</a></td>
+                                                    <td><span class="badge badge-success">Selesai Diperbaiki</span></td>
                                                 <?php } else { ?>
-                                                    <td><a href="#" type="button" class="btn btn-xs btn-danger">Masih Proses</a></td>
+                                                    <td><span class="badge badge-danger">Masih Proses</span></td>
                                                 <?php } ?>
                                                 <td>Rp&nbsp;<?= number_format($dt->biaya_perbaikan); ?></td>
                                                 <td>

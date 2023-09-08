@@ -69,9 +69,9 @@
                                                 <td><?= $dt->nohp_op; ?></td>
                                                 <td><?= $dt->noktp_op; ?></td>
                                                 <?php if ($dt->status_op == NULL || $dt->status_op == 0) { ?>
-                                                    <td><em>Standby</em></td>
+                                                    <td><span class="badge badge-default"><em>Standby</em></span></td>
                                                 <?php } else { ?>
-                                                    <td><a href="#" type="button" class="btn btn-xs btn-success" name="btn_status_op">Berangkat</a></td>
+                                                    <td><span class="badge badge-success">Berangkat</span></td>
                                                 <?php } ?>
                                                 <!-- <td> -->
                                                 <!-- <a href="<?= site_url('pimpinan/update_data_operator/' . $dt->id_operator); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->

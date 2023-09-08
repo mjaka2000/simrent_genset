@@ -76,7 +76,7 @@
                                                 <td><?= $dt->jenis_bbm; ?></td>
                                                 <td><?= date('d-m-Y', strtotime($dt->pajak)); ?></td>
                                                 <td><?= date('d-m-Y', strtotime($dt->stnk)); ?></td>
-                                                <td><img src="<?= site_url('assets/upload/mobil/' . $dt->gambar_mobil); ?>" class="img-box" width="100" height="100" alt="<?= $dt->gambar_mobil; ?>"></td>
+                                                <td><img src="<?= site_url('assets/upload/mobil/' . $dt->gambar_mobil); ?>" title="Lihat Gambar Mobil" data-toggle="modal" data-target="#LihatMbl<?= $dt->id_mobil; ?>" class="img-box" width="100" height="100" alt="<?= $dt->gambar_mobil; ?>"></td>
                                                 <!-- <td> -->
                                                 <!-- <a href="<?= site_url('pimpinan/update_data_mobil/' . $dt->id_mobil); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
                                                 <!-- <a href="<?= site_url('pimpinan/hapus_mobil/' . $dt->id_mobil); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
@@ -89,6 +89,26 @@
                             </table>
                         </div>
                     </div>
+                    <?php foreach ($list_data as $d) : ?>
+                        <div class="modal fade" id="LihatMbl<?= $d->id_mobil; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title" id="staticBackdropLabel">Lihat Gambar Mobil</h6>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span>&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body tengah">
+                                        <a href="<?= base_url('assets/upload/mobil/' . $d->gambar_mobil); ?>" download>
+                                            <img src="<?= base_url('assets/upload/mobil/' . $d->gambar_mobil); ?>" class="img img-box" width="350" height="350" alt="<?= $d->gambar_mobil; ?>">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
