@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Sep 2023 pada 12.30
+-- Waktu pembuatan: 08 Sep 2023 pada 05.23
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -35,6 +35,13 @@ CREATE TABLE `tb_detail_serv` (
   `kendala` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data untuk tabel `tb_detail_serv`
+--
+
+INSERT INTO `tb_detail_serv` (`id_detail_serv`, `id_perbaikan_gst`, `pekerjaan`, `tanggal`, `kendala`, `status`) VALUES
+(2, 2, 'ted', '2023-09-08', 'fxz', 1);
 
 -- --------------------------------------------------------
 
@@ -205,7 +212,8 @@ CREATE TABLE `tb_pengeluaran` (
 --
 
 INSERT INTO `tb_pengeluaran` (`id_pengeluaran`, `tgl_pengeluaran`, `pengeluaran`, `biaya_pengeluaran`) VALUES
-(1, '2023-09-07', 'wifi indi', '350000');
+(1, '2023-09-07', 'wifi indi', '350000'),
+(2, '2023-09-08', 'tester', '500');
 
 -- --------------------------------------------------------
 
@@ -249,7 +257,7 @@ CREATE TABLE `tb_serv_gst_acc` (
 --
 
 INSERT INTO `tb_serv_gst_acc` (`id_serv_gst_acc`, `id_perbaikan_gst`, `tgl_setujui`, `keterangan`, `status_ajuan`) VALUES
-(1, 2, '2023-09-07', 'oli diganti', 0);
+(1, 2, '2023-09-07', 'oli diganti', 1);
 
 -- --------------------------------------------------------
 
@@ -272,7 +280,7 @@ CREATE TABLE `tb_sparepart` (
 
 INSERT INTO `tb_sparepart` (`id_sparepart`, `nama_sparepart`, `tanggal_beli`, `tempat_beli`, `stok`, `harga_sparepart`) VALUES
 (1, 'Oli Meditran SX 1Lt', '2023-09-01', 'Bengkel Makmur', '4', '300000'),
-(2, 'Filter Solar Sakura cf', '2023-09-02', 'Filter Jaya', '3', '70000');
+(2, 'Filter Solar Sakura cf', '2023-09-02', 'Filter Jaya', '4', '70000');
 
 -- --------------------------------------------------------
 
@@ -325,11 +333,11 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
 (1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '2023-09-07 15:28:07'),
-(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '2023-08-23 09:46:53'),
-(33, 'aril', 'Syahril', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '2023-08-16 08:42:35'),
+(32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '2023-09-08 08:02:36'),
+(33, 'aril', 'Syahril', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '2023-09-08 09:49:50'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '0000-00-00 00:00:00'),
 (43, 'abay021', 'Bayu Agung', '$2y$10$gYs55hE6HXox5mJfc5Q3t.7f/iauCe1ke2n6v3MoCddlqsXE8kniS', 3, 'nopic.png', '2023-08-22 12:01:07'),
-(44, 'ibnu123', 'Ibnu', '$2y$10$xrUskK.7d7ZFMFrOLEoPZOuy6RXQsq.sx89z10kxbt4Ot8Oo9N0Uy', 3, 'nopic.png', '2023-08-22 17:05:54');
+(44, 'ibnu123', 'Ibnu', '$2y$10$xrUskK.7d7ZFMFrOLEoPZOuy6RXQsq.sx89z10kxbt4Ot8Oo9N0Uy', 3, 'nopic.png', '2023-09-08 11:16:33');
 
 -- --------------------------------------------------------
 
@@ -469,7 +477,7 @@ ALTER TABLE `tb_valid_penyewaan`
 -- AUTO_INCREMENT untuk tabel `tb_detail_serv`
 --
 ALTER TABLE `tb_detail_serv`
-  MODIFY `id_detail_serv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_detail_serv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_det_pakai_genset`
@@ -517,7 +525,7 @@ ALTER TABLE `tb_pendapatan`
 -- AUTO_INCREMENT untuk tabel `tb_pengeluaran`
 --
 ALTER TABLE `tb_pengeluaran`
-  MODIFY `id_pengeluaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pengeluaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_serv_genset`
