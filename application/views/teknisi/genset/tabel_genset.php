@@ -70,13 +70,13 @@
                                                 <td><?= $d->daya; ?></td>
                                                 <td>Rp&nbsp;<?= number_format($d->harga); ?></td>
                                                 <?php if ($d->ket_genset == 0) { ?>
-                                                    <td><a href="#" class="btn btn-success btn-xs">Genset Ada </a></td>
+                                                    <td><span class="badge badge-success">Genset Ada </span></td>
                                                 <?php } elseif ($d->ket_genset == 1) { ?>
-                                                    <td><a href="#" class="btn btn-danger btn-xs"> Genset Sedang Disewa</a></td>
+                                                    <td><span class="badge badge-danger"> Genset Sedang Disewa</span></td>
                                                 <?php } else { ?>
-                                                    <td><a href="#" class="btn btn-warning btn-xs"> Genset Dijadwalkan</a></td>
+                                                    <td><span class="badge badge-warning"> Genset Dijadwalkan</span></td>
                                                 <?php } ?>
-                                                <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" class="img img-box" width="100" height="100" alt="<?= $d->gambar_genset; ?>"></td>
+                                                <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" title="Lihat Gambar Genset" data-toggle="modal" data-target="#LihatGst<?= $d->id_genset; ?>" class="img img-box" width="100" height="100" alt="<?= $d->gambar_genset; ?>"></td>
                                                 <!-- <td>
                                                     <a href="<?= site_url('teknisi/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
                                                     <a href="<?= site_url('teknisi/hapus_data_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
@@ -88,6 +88,26 @@
                             </table>
                         </div>
                     </div>
+                    <?php foreach ($list_data as $d) : ?>
+                        <div class="modal fade" id="LihatGst<?= $d->id_genset; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title" id="staticBackdropLabel">Lihat Gambar Genset</h6>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span>&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body tengah">
+                                        <a href="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" download>
+                                            <img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" class="img img-box" width="350" height="350" alt="<?= $d->gambar_genset; ?>">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div><!-- /.container-fluid -->

@@ -41,7 +41,7 @@
                                     <strong>Berhasil!</strong><br> <?= $this->session->flashdata('msg_sukses'); ?>
                                 </div>
                             <?php } ?>
-                            <button data-toggle="modal" data-target="#staticAddServGstAcc" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
+                            <button onclick="window.location.href='<?= site_url('teknisi/tambah_service_genset_acc'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
@@ -69,12 +69,12 @@
                                                 <td><?= date('d-m-Y', strtotime($d->tgl_setujui)); ?></td>
                                                 <td><?= $d->keterangan; ?></td>
                                                 <?php if ($d->status_ajuan == "0") { ?>
-                                                    <td><a href="#" type="button" class="btn btn-xs btn-danger">not verified</a></td>
+                                                    <td><span class="badge badge-danger">not verified</span></td>
                                                 <?php } else { ?>
-                                                    <td><a href="#" type="button" class="btn btn-xs btn-success">verified</a></td>
+                                                    <td><span class="badge badge-success">verified</span></td>
                                                 <?php } ?>
                                                 <td>
-                                                    <button type="button" data-toggle="modal" data-target="#staticEditServGstAcc<?= $d->id_serv_gst_acc; ?>" title="Edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></button>
+                                                    <a href="<?= base_url('teknisi/update_service_genset_acc/' . $d->id_serv_gst_acc); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
                                                     <!-- <a href="<?= base_url('teknisi/hapus_service_genset_acc/' . $d->id_serv_gst_acc); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a> -->
                                                     <!-- <a href="<?= base_url('teknisi/detail_service_genset/' . $d->id_serv_gst_acc); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
                                                 </td>
@@ -85,131 +85,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="modal fade" id="staticAddServGstAcc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h6 class="modal-title" id="staticBackdropLabel">Tambah Data Perbaikan Genset Disetujui</h6>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span>&times;</span>
-                                    </button>
 
-
-                                </div>
-                                <div class="modal-body">
-                                    <?php if (validation_errors()) { ?>
-                                        <div class="alert alert-warning alert-dismissable">
-                                            <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                            <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
-                                        </div>
-                                    <?php } ?>
-
-                                    <form action="<?= site_url('teknisi/proses_tambah_ServGstAcc'); ?>" method="post" role="form">
-
-                                        <div class="form-group">
-                                            <label for="nama" class="form-label">Perbaikan Genset Selesai</label>
-                                            <select name="id_perbaikan_gst" class="form-control" id="id_perbaikan_gst" required>
-                                                <option value="" selected>-- Pilih Nomor Genset --</option>
-                                                <?php foreach ($list_perbaikan as $g) { ?>
-                                                    <option value="<?= $g->id_perbaikan_gst; ?>"><?= $g->kode_genset; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="alamat" class="form-label">Nama Genset</label>
-
-                                            <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Nama Genset" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="no_hp" class="form-label">Jenis Perbaikan</label>
-
-                                            <input type="text" name="jenis_perbaikan" class="form-control" id="jenis_perbaikan" placeholder="Jenis Perbaikan" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="no_hp" class="form-label">Tanggal</label>
-
-                                            <input type="date" name="tgl_setujui" class="form-control" id="tgl_setujui">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="no_hp" class="form-label">Keterangan</label>
-
-                                            <input type="text" name="keterangan" class="form-control" id="keterangan" placeholder="Isi Keterangan">
-                                        </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <?php foreach ($list_data as $d) { ?>
-
-                        <div class="modal fade" id="staticEditServGstAcc<?= $d->id_serv_gst_acc; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h6 class="modal-title" id="staticBackdropLabel">Ubah Data Perbaikan Genset Disetujui</h6>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span>&times;</span>
-                                        </button>
-
-
-                                    </div>
-                                    <div class="modal-body">
-                                        <?php if (validation_errors()) { ?>
-                                            <div class="alert alert-warning alert-dismissable">
-                                                <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                                <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
-                                            </div>
-                                        <?php } ?>
-                                        <form action="<?= site_url('admin/proses_ubah_ServGstAcc'); ?>" method="post" role="form">
-                                            <input type="hidden" name="id_serv_gst_acc" value="<?= $d->id_serv_gst_acc; ?>">
-                                            <div class="form-group">
-                                                <label for="nama" class="form-label">Perbaikan Genset Selesai<span><small style="color: red;">*Arahkan untuk menampilkan isi field</small></span></label>
-                                                <select name="id_perbaikan_gst" class="form-control id_perbaikan_gst_ed" id="" required>
-                                                    <option value="" selected>-- Pilih Nomor Genset --</option>
-                                                    <?php foreach ($list_perbaikan as $g) { ?>
-                                                        <?php if ($d->id_perbaikan_gst == $g->id_perbaikan_gst) { ?>
-                                                            <option selected value="<?= $d->id_perbaikan_gst; ?>"><?= $g->kode_genset; ?></option>
-                                                        <?php } else { ?>
-                                                            <option value="<?= $g->id_perbaikan_gst; ?>"><?= $g->kode_genset; ?></option>
-                                                        <?php } ?>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="alamat" class="form-label">Nama Genset</label>
-
-                                                <input type="text" name="nama_genset" class="form-control nama_genset_ed" id="" placeholder="Nama Genset" readonly>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="no_hp" class="form-label">Jenis Perbaikan</label>
-
-                                                <input type="text" name="jenis_perbaikan" class="form-control jenis_perbaikan_ed" id="" placeholder="Jenis Perbaikan" readonly>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="no_hp" class="form-label">Tanggal</label>
-
-                                                <input type="date" name="tgl_setujui" class="form-control" id="tgl_setujui" value="<?= $d->tgl_setujui; ?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="no_hp" class="form-label">Keterangan</label>
-
-                                                <input type="text" name="keterangan" class="form-control" id="keterangan" placeholder="Isi Keterangan" value="<?= $d->keterangan; ?>">
-                                            </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                                        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -247,40 +123,7 @@
         })
     }); //* Script untuk memuat datatable
 </script>
-<script type="text/javascript">
-    // 
-    $("#id_perbaikan_gst").change(function() {
-        let kode_genset = $(this).val();
-        <?php foreach ($list_perbaikan as $l) { ?>
-            if (kode_genset == "<?php echo $l->id_perbaikan_gst ?>") {
-                $("#nama_genset").val("<?php echo $l->nama_genset ?>");
-                $("#jenis_perbaikan").val("<?php echo $l->jenis_perbaikan ?>");
-            }
-        <?php } ?>
-    })
-</script>
-<script type="text/javascript">
-    // 
-    $(".id_perbaikan_gst_ed").click(function() {
-        let kode_genset = $(this).val();
-        <?php foreach ($list_perbaikan as $l) { ?>
-            if (kode_genset == "<?php echo $l->id_perbaikan_gst ?>") {
-                $(".nama_genset_ed").val("<?php echo $l->nama_genset ?>");
-                $(".jenis_perbaikan_ed").val("<?php echo $l->jenis_perbaikan ?>");
-            }
-        <?php } ?>
-    })
 
-    $(".id_perbaikan_gst_ed").hover(function() {
-        let kode_genset = $(this).val();
-        <?php foreach ($list_perbaikan as $l) { ?>
-            if (kode_genset == "<?php echo $l->id_perbaikan_gst ?>") {
-                $(".nama_genset_ed").val("<?php echo $l->nama_genset ?>");
-                $(".jenis_perbaikan_ed").val("<?php echo $l->jenis_perbaikan ?>");
-            }
-        <?php } ?>
-    })
-</script>
 <script type="text/javascript">
     $('.btn-delete').on('click', function() {
         var getLink = $(this).attr('href');
