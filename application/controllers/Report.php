@@ -280,6 +280,6 @@ class Report extends CI_Controller
     {
         $data['list_data'] = $this->M_data->select_ServGstAcc('tb_serv_gst_acc');
         $data['title'] = 'Laporan Perbaikan Genset Disetujui';
-        $this->load->view('report/service_gensetAcc/rep_service_gensetAcc', $data);
+        $this->load->view('report/service_gensetAcc/rep_service_gensetAccAll', $data);
     }
 }
