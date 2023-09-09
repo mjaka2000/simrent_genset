@@ -92,15 +92,12 @@
                                                 </td>
                                             <?php } elseif ($dt->status == 1) { ?>
                                                 <td>
-                                                    <a href="#" type="button" class="btn btn-xs btn-danger" name="btn_barangmasuk" title="*Data belum diverifikasi"><i class="fa fa-times mr-2"></i>not verified</a>
+                                                    <span class="badge badge-danger" name="btn_barangmasuk" title="*Data belum diverifikasi"><i class="fa fa-times mr-2"></i>not verified</span>
                                                 </td>
                                             <?php } else { ?>
-                                                <td><a href="#" type="button" class="btn btn-xs btn-info" name="btn_barangmasuk"><i class="fa fa-info mr-2"></i>Genset Masih Digunakan</a></td>
+                                                <td><span class="badge badge-info" name="btn_barangmasuk"><i class="fa fa-info mr-2"></i>Genset Masih Digunakan</span></td>
                                             <?php } ?>
                                             <td>
-                                                <!-- <a href="<?= site_url('penyewa/update_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a> -->
-                                                <!-- <a href="<?= site_url('penyewa/hapus_unit_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a> -->
-                                                <!-- <a href="<?= site_url('penyewa/detail_unit_keluar/' . $dt->id_u_sewa); ?>" type="button" class="btn btn-sm btn-warning" name="btn_detail"><i class="fa fa-info-circle "></i></a> -->
                                                 <button type="button" data-toggle="modal" data-target="#DetailUKeluar<?= $dt->id_u_sewa; ?>" title="Lihat Detail" class="btn btn-warning btn-sm"><i class="fa fa-info-circle"></i></button>
 
                                             </td>
@@ -388,25 +385,7 @@
         return false;
     }); //* Script untuk memuat sweetalert hapus data
 </script>
-<script>
-    //* Script untuk memuat sweetalert status genset
-    $('.btn-kembali').on('click', function() {
-        var getLink = $(this).attr('href');
-        Swal.fire({
-            title: 'Ubah Status',
-            text: 'Yakin ingin ubah Status Genset menjadi Genset Masuk (Kembali)?',
-            type: 'warning',
-            confirmButtonColor: '#d9534f',
-            showCancelButton: true,
-        }).then(result => {
-            //jika klik ya maka arahkan ke proses.php
-            if (result.isConfirmed) {
-                window.location.href = getLink
-            }
-        })
-        return false;
-    });
-</script>
+
 </body>
 
 </html>
