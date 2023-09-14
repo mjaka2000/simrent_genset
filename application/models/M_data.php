@@ -763,6 +763,64 @@ class M_data extends CI_Model
     return $query->num_rows();
   }
 
+  public function get_data_det_genset($tabel, $where)
+  {
+    // $query = $this->db->select(' . $tabel . '.*,'kode_genset, nama_genset, daya')
+    // $query = $this->db->select('sum(' . $tabel . '.jumlah_hari)')
+    $query = $this->db->select_sum($tabel . '.jumlah_hari')
+      ->select('tb_genset.kode_genset, tb_genset.nama_genset, tb_genset.daya,tb_genset.harga,tb_genset.gambar_genset,tb_genset.id_genset')
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      // ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset', 'right')
+      // ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      // ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      // ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
+      ->order_by('tanggal_masuk', 'asc')
+      ->where('tb_genset.id_genset', $where)
+      // ->where_in('tb_genset.kode_genset, tb_genset.nama_genset, tb_genset.daya')
+      ->where('status =', 0)
+      ->get();
+    return $query->result();
+  }
+
+  public function det_genset_periode($tabel, $where, $bulan, $tahun)
+  {
+    $bulan = $this->db->escape($bulan);
+    $tahun = $this->db->escape($tahun);
+    // $query = $this->db->select(' . $tabel . '.*,'kode_genset, nama_genset, daya')
+    // $query = $this->db->select('sum(' . $tabel . '.jumlah_hari)')
+    $query = $this->db->select_sum($tabel . '.jumlah_hari')
+      ->select('tb_genset.kode_genset, tb_genset.nama_genset, tb_genset.daya,tb_genset.harga,tb_genset.gambar_genset,tb_genset.id_genset')
+      ->from($tabel)
+      ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      // ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset', 'right')
+      // ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+      // ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+      // ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
+      ->order_by('tanggal_masuk', 'asc')
+      ->where('tb_genset.id_genset', $where)
+      ->where('MONTH (tanggal_masuk) =' . $bulan . ' AND YEAR (tanggal_masuk) =' . $tahun)
+      // ->where_in('tb_genset.kode_genset, tb_genset.nama_genset, tb_genset.daya')
+      ->where('status =', 0)
+      ->get();
+    return $query->result();
+  }
+
+  // public function get_jumlah_hari_genset($tabel, $where)
+  // {
+  //   $query = $this->db->select_sum($tabel . '.jumlah_hari')
+  //     ->from($tabel)
+  //     ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+  // ->join('tb_operator', 'tb_operator.id_operator = ' . $tabel . '.id_operator')
+  // ->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = ' . $tabel . '.id_pelanggan')
+  // ->join('tb_mobil', 'tb_mobil.id_mobil = ' . $tabel . '.id_mobil')
+  //     ->order_by('tanggal_masuk', 'asc')
+  //     ->where('tb_genset.id_genset', $where)
+  //     ->where('status =', 0)
+  //     ->get();
+  //   return $query->result();
+  // }
+
   public function get_data_u_masuk($tabel)
   {
     $query = $this->db->select()
