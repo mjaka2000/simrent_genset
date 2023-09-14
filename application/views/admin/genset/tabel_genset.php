@@ -55,7 +55,7 @@
                                         <th style="width :10px">No.</th>
                                         <th>Nomor Genset</th>
                                         <th>Nama Genset</th>
-                                        <th>Daya (KVA)</th>
+                                        <th>Kapasitas Daya</th>
                                         <th>Harga Perhari</th>
                                         <th>Ket. Genset</th>
                                         <!-- <th>Unit Disewakan</th> -->
@@ -72,7 +72,7 @@
                                                 <td><?= $no++; ?></td>
                                                 <td><?= $d->kode_genset; ?></td>
                                                 <td><?= $d->nama_genset; ?></td>
-                                                <td><?= $d->daya; ?></td>
+                                                <td><?= $d->daya; ?> KVA</td>
                                                 <td>Rp&nbsp;<?= number_format($d->harga); ?></td>
                                                 <?php if ($d->ket_genset == 0) { ?>
                                                     <td>
@@ -112,8 +112,8 @@
                                                 <?php } ?>
                                                 <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" title="Lihat Gambar Genset" data-toggle="modal" data-target="#LihatGst<?= $d->id_genset; ?>" class="img img-box" width="100" height="100" alt="<?= $d->gambar_genset; ?>"></td>
                                                 <td>
-                                                    <a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
-
+                                                    <a href="<?= site_url('admin/detail_genset/' . $d->id_genset); ?>" title="Lihat Detail" type="button" class="btn btn-sm btn-warning" name="btn_edit"><i class="fa fa-eye"></i></a>
+                                                    <a href="<?= site_url('admin/update_genset/' . $d->id_genset); ?>" title="Ubah" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
                                                     <a href="<?= site_url('admin/hapus_data_genset/' . $d->id_genset); ?>" title="Hapus" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
