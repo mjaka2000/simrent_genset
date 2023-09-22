@@ -55,7 +55,7 @@
                                         <th>Ket. Genset</th>
                                         <!-- <th>Unit Disewakan</th> -->
                                         <th>Gambar</th>
-                                        <!-- <th style="width:10%">Aksi</th> -->
+                                        <th style="width:10%">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,10 +77,11 @@
                                                     <td><span class="badge badge-warning"> Genset Dijadwalkan</span></td>
                                                 <?php } ?>
                                                 <td><img src="<?= base_url('assets/upload/genset/' . $d->gambar_genset); ?>" title="Lihat Gambar Genset" data-toggle="modal" data-target="#LihatGst<?= $d->id_genset; ?>" class="img img-box" width="100" height="100" alt="<?= $d->gambar_genset; ?>"></td>
-                                                <!-- <td>
-                                                    <a href="<?= site_url('pimpinan/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
-                                                    <a href="<?= site_url('pimpinan/hapus_data_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a>
-                                                </td> -->
+                                                <td>
+                                                    <a href="<?= site_url('pimpinan/detail_genset/' . $d->id_genset); ?>" title="Lihat Detail" type="button" class="btn btn-sm btn-warning" name="btn_edit"><i class="fa fa-eye"></i></a>
+                                                    <!-- <a href="<?= site_url('#/update_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit"></i></a>
+                                                    <a href="<?= site_url('#/hapus_data_genset/' . $d->id_genset); ?>" type="button" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash"></i></a> -->
+                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php } ?>
