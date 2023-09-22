@@ -135,6 +135,26 @@ class Teknisi extends CI_Controller
         $this->load->view('teknisi/genset/tabel_genset', $data);
     }
 
+    public function detail_genset($where)
+    {
+        $bulan = $this->input->get('bulan');
+        $tahun = $this->input->get('tahun');
+        // $uri = $this->uri->segment(3);
+        // $where = array('id_genset' => $uri);
+        if (empty($bulan) or empty($tahun)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+            $data['list_data'] = $this->M_data->get_data_det_genset('tb_unit_penyewaan', $where);
+            $label = 'Bulan ke ...' . ' Tahun ...';
+            // $data['get_data'] = $this->M_data->get_jumlah_hari_genset('tb_unit_penyewaan', $where);
+        } else {
+            $data['list_data'] = $this->M_data->det_genset_periode('tb_unit_penyewaan', $where, $bulan, $tahun);
+            $label = 'Bulan ke ' . $bulan . ' Tahun ' .  $tahun;
+        }
+        $data['label'] = $label;
+        $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+        $data['title'] = 'Detail Data Genset';
+        $this->load->view('teknisi/genset/det_pakai_genset', $data);
+    }
+
     ####################################
     //* End Data Genset 
     ####################################
