@@ -46,7 +46,7 @@
                                 <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali" style="margin-bottom:10px;"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                 <button onclick="window.location.href='<?= site_url('admin/tambah_service_detail/' . $d->id_perbaikan_gst); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
                                 <!-- <a href="<?= site_url('report/cetak_service_detail/' . $d->id_perbaikan_gst); ?>" target="_blank" type="button" style="margin-bottom:10px;margin-left: 10px;" class="btn btn-sm btn-default" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a> -->
-                                <table class="table" style="width:35%">
+                                <table class="table" style="width:40%">
                                     <tr>
                                         <th style="vertical-align: middle">Nomor Genset</th>
                                         <td style="vertical-align: middle;">
@@ -111,11 +111,11 @@
                                     </tr>
                                     <tr>
                                         <th style="vertical-align: middle">Ket. Perbaikan</th>
-                                        <form action="<?= site_url('admin/proses_update_ket_service'); ?>" method="post" role="form">
-                                            <td style="vertical-align: middle;">
-                                                <div class="row">
-                                                    <div class="col-lg-8">
-                                                        <div class="row">
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        <form action="<?= site_url('admin/proses_update_ket_service'); ?>" class="form-inline" method="post" role="form">
                                                             <input type="hidden" name="id_perbaikan_gst" value="<?= $d->id_perbaikan_gst; ?>">
                                                             :&nbsp;<span><select name="ket_perbaikan" class="form-control" id="ket_perbaikan">
                                                                     <option value="">-- Status --</option>
@@ -130,12 +130,12 @@
                                                                 </select>
                                                                 <span><button type="submit" class="btn btn-xs btn-success"><i class="fa fa-check mr-2"></i>Update</button></span>
                                                             </span>
-                                                        </div>
-
+                                                        </form>
                                                     </div>
+
                                                 </div>
-                                            </td>
-                                        </form>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th style="vertical-align: middle">Perkiraan Biaya</th>
