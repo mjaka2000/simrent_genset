@@ -86,12 +86,15 @@
 
                                 </tbody>
                             </table>
-                            <div class="box-footer">
+                            <!-- <div class="card-footer">
 
-                                <h5>
-
-                                </h5>
-                            </div>
+                                <h6>
+                                    Pengeluaran Bulan ini :
+                                </h6>
+                                <h6>
+                                    Total Bersih Bulan ini :
+                                </h6>
+                            </div> -->
                         </div>
                     </div>
                     <!-- Modal -->
