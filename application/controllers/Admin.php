@@ -101,12 +101,12 @@ class Admin extends CI_Controller
 		$this->load->view('admin/users/users', $data);
 	}
 
-	// public function tambah_users()
-	// {
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$data['title'] = 'Tambah User';
-	// 	$this->load->view('admin/users/tambahuser', $data);
-	// }
+	public function tambah_users()
+	{
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah User';
+		$this->load->view('admin/users/tambahuser', $data);
+	}
 
 	public function proses_tambahuser()
 	{
@@ -150,15 +150,15 @@ class Admin extends CI_Controller
 		redirect(site_url('admin/users'));
 	}
 
-	// public function edit_user()
-	// {
-	// 	$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
-	// 	$id_user = $this->uri->segment(3);
-	// 	$where = array('id_user' => $id_user);
-	// 	$data['list_data'] = $this->M_data->get_data('tb_user', $where);
-	// 	$data['title'] = 'Edit User';
-	// 	$this->load->view('admin/users/edituser', $data);
-	// }
+	public function edit_user()
+	{
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$id_user = $this->uri->segment(3);
+		$where = array('id_user' => $id_user);
+		$data['list_data'] = $this->M_data->get_data('tb_user', $where);
+		$data['title'] = 'Edit User';
+		$this->load->view('admin/users/edituser', $data);
+	}
 
 	public function proses_edituser()
 	{
