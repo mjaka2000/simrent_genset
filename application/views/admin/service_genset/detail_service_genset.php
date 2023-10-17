@@ -46,7 +46,7 @@
                                 <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali" style="margin-bottom:10px;"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                 <button onclick="window.location.href='<?= site_url('admin/tambah_service_detail/' . $d->id_perbaikan_gst); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button>
                                 <!-- <a href="<?= site_url('report/cetak_service_detail/' . $d->id_perbaikan_gst); ?>" target="_blank" type="button" style="margin-bottom:10px;margin-left: 10px;" class="btn btn-sm btn-default" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a> -->
-                                <table class="table" style="width:40%">
+                                <table class="table table-sm" style="width:40%">
                                     <tr>
                                         <th style="vertical-align: middle">Nomor Genset</th>
                                         <td style="vertical-align: middle;">
@@ -73,7 +73,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th style="vertical-align: middle">Jenis Perbaikan</th>
+                                        <th style="vertical-align: middle">Ket. Jenis Perbaikan</th>
                                         <td style="vertical-align: middle;">
                                             <div class="row">
                                                 <div class="col-lg-8">
@@ -105,6 +105,31 @@
                                                         :&nbsp;<?= date('d-m-Y', strtotime($d->tgl_perbaikan)); ?>
 
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Tgl. Perbaikan Kembali</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= date('d-m-Y', strtotime($d->tgl_perbaikan_kembali)); ?>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Hours Meter Genset</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->jam_pakai; ?> &nbsp;<strong>H</strong></div>
+
                                                 </div>
                                             </div>
                                         </td>

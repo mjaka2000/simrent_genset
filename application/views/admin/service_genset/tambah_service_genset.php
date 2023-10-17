@@ -66,7 +66,7 @@
                                     <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Nama Genset" readonly>
                                 </div> -->
                                 <div class="form-group">
-                                    <label for="jenis_perbaikan" class="form-label">Jenis Perbaikan</label>
+                                    <label for="jenis_perbaikan" class="form-label">Ket. Jenis Perbaikan</label>
 
                                     <input type="text" name="jenis_perbaikan" class="form-control" id="jenis_perbaikan" placeholder="Contoh : Perbaikan Aki dll" required>
                                 </div>
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="jenis_perbaikan" class="form-label">Lama Pemakaian Genset (dalam Jam)</label>
+                                    <label for="jam_pakai" class="form-label">Hours Meter Genset</label>
 
                                     <input type="number" name="jam_pakai" class="form-control" id="jam_pakai" placeholder="Lama Pemakaian Genset (dalam Jam)" required>
                                 </div>
@@ -164,14 +164,14 @@
 </script>
 <script type="text/javascript">
     // 
-    $("#id_genset").change(function() {
-        let kode_genset = $(this).val();
-        <?php foreach ($list_genset as $l) { ?>
-            if (kode_genset == "<?php echo $l->id_genset ?>") {
-                $("#nama_genset").val("<?php echo $l->nama_genset ?>");
-            }
-        <?php } ?>
-    })
+    // $("#id_genset").change(function() {
+    //     let kode_genset = $(this).val();
+    //     <?php foreach ($list_genset as $l) { ?>
+    //         if (kode_genset == "<?php echo $l->id_genset ?>") {
+    //             $("#nama_genset").val("<?php echo $l->nama_genset ?>");
+    //         }
+    //     <?php } ?>
+    // })
 </script>
 
 

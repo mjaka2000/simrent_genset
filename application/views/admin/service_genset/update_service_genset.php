@@ -59,20 +59,20 @@
                                             <option value="" disabled>-- Pilih Nomor Genset --</option>
                                             <?php foreach ($list_genset as $g) { ?>
                                                 <?php if ($ld->id_genset == $g->id_genset) { ?>
-                                                    <option value="<?= $ld->id_genset; ?>" selected>No. <?= $g->kode_genset; ?></option>
+                                                    <option value="<?= $ld->id_genset; ?>" selected><?= $g->kode_genset; ?> - <?= $g->nama_genset; ?></option>
                                                 <?php } else { ?>
-                                                    <option value="<?= $g->id_genset; ?>">No. <?= $g->kode_genset; ?></option>
+                                                    <option value="<?= $g->id_genset; ?>"><?= $g->kode_genset; ?> - <?= $g->nama_genset; ?></option>
                                                 <?php } ?>
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="nama_genset" class="form-label">Nama Genset</label>
 
                                         <input type="text" name="nama_genset" class="form-control nama_genset_ed" id="" placeholder="Nama Genset" readonly>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
-                                        <label for="jenis_perbaikan" class="form-label">Jenis Perbaikan</label>
+                                        <label for="jenis_perbaikan" class="form-label">Ket. Jenis Perbaikan</label>
 
                                         <input type="text" name="jenis_perbaikan" class="form-control" id="jenis_perbaikan" placeholder="Contoh : Perbaikan Aki dll" required value="<?= $ld->jenis_perbaikan; ?>">
                                     </div>
@@ -92,12 +92,23 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="tgl_perbaikan" class="form-label">Tanggal Perbaikan</label>
+                                    <div class="form-row">
 
-                                        <input type="date" required name="tgl_perbaikan" class="form_datetime form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" value="<?= $ld->tgl_perbaikan; ?>">
+                                        <div class="form-group col-md-6">
+                                            <label for="tgl_perbaikan" class="form-label">Tanggal Perbaikan</label>
+                                            <input type="date" name="tgl_perbaikan" class="form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" value="<?= $ld->tgl_perbaikan; ?>" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="tgl_perbaikan" class="form-label">Tanggal Perbaikan Kembali</label>
+                                            <input type="date" name="tgl_perbaikan_kembali" class="form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" value="<?= $ld->tgl_perbaikan_kembali; ?>" required>
+
+                                        </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="jenis_perbaikan" class="form-label">Hours Meter Genset</label>
 
+                                        <input type="number" name="jam_pakai" class="form-control" id="jam_pakai" placeholder="Lama Pemakaian Genset (dalam Jam)" value="<?= $ld->jam_pakai; ?>" required>
+                                    </div>
                                     <div class="form-group">
                                         <label for="ket_perbaikan" class="form-label">Keterangan Perbaikan</label>
 
@@ -152,22 +163,22 @@
     })
 </script>
 <script type="text/javascript">
-    $(".id_genset_ed").show(function() {
-        let kode_genset = $(this).val();
-        <?php foreach ($list_genset as $g) { ?>
-            if (kode_genset == "<?php echo $g->id_genset ?>") {
-                $(".nama_genset_ed").val("<?php echo $g->nama_genset ?>");
-            }
-        <?php } ?>
-    })
-    $(".id_genset_ed").click(function() {
-        let kode_genset = $(this).val();
-        <?php foreach ($list_genset as $g) { ?>
-            if (kode_genset == "<?php echo $g->id_genset ?>") {
-                $(".nama_genset_ed").val("<?php echo $g->nama_genset ?>");
-            }
-        <?php } ?>
-    })
+    // $(".id_genset_ed").show(function() {
+    //     let kode_genset = $(this).val();
+    //     <?php foreach ($list_genset as $g) { ?>
+    //         if (kode_genset == "<?php echo $g->id_genset ?>") {
+    //             $(".nama_genset_ed").val("<?php echo $g->nama_genset ?>");
+    //         }
+    //     <?php } ?>
+    // })
+    // $(".id_genset_ed").click(function() {
+    //     let kode_genset = $(this).val();
+    //     <?php foreach ($list_genset as $g) { ?>
+    //         if (kode_genset == "<?php echo $g->id_genset ?>") {
+    //             $(".nama_genset_ed").val("<?php echo $g->nama_genset ?>");
+    //         }
+    //     <?php } ?>
+    // })
 </script>
 
 </body>
