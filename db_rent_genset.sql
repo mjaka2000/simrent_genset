@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Sep 2023 pada 01.27
+-- Waktu pembuatan: 17 Okt 2023 pada 06.44
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -192,7 +192,8 @@ CREATE TABLE `tb_pendapatan` (
 --
 
 INSERT INTO `tb_pendapatan` (`id_pendapatan`, `id_u_sewa`, `tgl_update`, `keterangan`) VALUES
-(1, 7, '2023-09-07', 'dah lh');
+(1, 7, '2023-09-07', 'dah lh'),
+(2, 6, '2023-10-16', 'tes rent');
 
 -- --------------------------------------------------------
 
@@ -227,6 +228,8 @@ CREATE TABLE `tb_serv_genset` (
   `id_sparepart` int(11) DEFAULT NULL,
   `jenis_perbaikan` varchar(255) NOT NULL,
   `tgl_perbaikan` date NOT NULL,
+  `tgl_perbaikan_kembali` date NOT NULL DEFAULT current_timestamp(),
+  `jam_pakai` varchar(10) NOT NULL,
   `ket_perbaikan` tinyint(4) NOT NULL,
   `biaya_perbaikan` varchar(255) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -235,8 +238,8 @@ CREATE TABLE `tb_serv_genset` (
 -- Dumping data untuk tabel `tb_serv_genset`
 --
 
-INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `jenis_perbaikan`, `tgl_perbaikan`, `ket_perbaikan`, `biaya_perbaikan`) VALUES
-(2, 1, 1, 'ganti oli', '2023-09-03', 1, '0');
+INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `jenis_perbaikan`, `tgl_perbaikan`, `tgl_perbaikan_kembali`, `jam_pakai`, `ket_perbaikan`, `biaya_perbaikan`) VALUES
+(2, 1, 1, 'ganti oli', '2023-09-03', '2023-10-17', '158', 1, '0');
 
 -- --------------------------------------------------------
 
@@ -332,7 +335,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '2023-09-14 09:35:47'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '2023-10-17 09:19:39'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '2023-09-08 08:02:36'),
 (33, 'aril', 'Syahril', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '2023-09-08 09:49:50'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '0000-00-00 00:00:00'),
@@ -519,7 +522,7 @@ ALTER TABLE `tb_pelanggan`
 -- AUTO_INCREMENT untuk tabel `tb_pendapatan`
 --
 ALTER TABLE `tb_pendapatan`
-  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pendapatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pengeluaran`
