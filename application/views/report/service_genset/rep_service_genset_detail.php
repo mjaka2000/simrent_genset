@@ -104,7 +104,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th style="vertical-align: middle">Jenis Perbaikan</th>
+                        <th style="vertical-align: middle">Ket. Jenis Perbaikan</th>
                         <td style="vertical-align: middle;">
                             <div class="row">
                                 <div class="col-lg-8">
@@ -136,6 +136,31 @@
                                         :&nbsp;<?= date('d-m-Y', strtotime($d->tgl_perbaikan)); ?>
 
                                     </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="vertical-align: middle">Tgl. Perbaikan Kembali</th>
+                        <td style="vertical-align: middle;">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="row">
+                                        :&nbsp;<?= date('d-m-Y', strtotime($d->tgl_perbaikan_kembali)); ?>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="vertical-align: middle">Hours Meter Genset</th>
+                        <td style="vertical-align: middle;">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="row">
+                                        :&nbsp;<?= $d->jam_pakai; ?> &nbsp;<strong>H</strong></div>
+
                                 </div>
                             </div>
                         </td>
