@@ -186,8 +186,10 @@ class Teknisi extends CI_Controller
         $this->form_validation->set_rules('id_genset', 'Kode Genset', 'trim|required');
         // $this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
         $this->form_validation->set_rules('jenis_perbaikan', 'Jenis Perbaikan', 'trim|required');
-        $this->form_validation->set_rules('id_sparepart', 'Nama Sparepart', 'trim|required');
+        // $this->form_validation->set_rules('id_sparepart', 'Nama Sparepart', 'trim|required');
         $this->form_validation->set_rules('tgl_perbaikan', 'Tanggal Perbaikan', 'trim|required');
+        $this->form_validation->set_rules('tgl_perbaikan_kembali', 'Tanggal Perbaikan Kembali', 'trim|required');
+        $this->form_validation->set_rules('jam_pakai', 'Hours Meter Genset', 'trim|required');
         $this->form_validation->set_rules('ket_perbaikan', 'Keterangan Perbaikan', 'trim|required');
         $this->form_validation->set_rules('biaya_perbaikan', 'Biaya Perbaikan', 'trim|required');
 
@@ -199,6 +201,8 @@ class Teknisi extends CI_Controller
             $jenis_perbaikan = $this->input->post('jenis_perbaikan', true);
             $spare_part = $this->input->post('id_sparepart', true);
             $tgl_perbaikan = $this->input->post('tgl_perbaikan', true);
+            $tgl_perbaikan_kembali = $this->input->post('tgl_perbaikan_kembali', true);
+            $jam_pakai = $this->input->post('jam_pakai', true);
             $ket_perbaikan = $this->input->post('ket_perbaikan', true);
             $biaya_perbaikan = $this->input->post('biaya_perbaikan', true);
 
@@ -208,6 +212,8 @@ class Teknisi extends CI_Controller
                 'jenis_perbaikan' => $jenis_perbaikan,
                 'id_sparepart' => $spare_part,
                 'tgl_perbaikan' => $tgl_perbaikan,
+                'tgl_perbaikan_kembali' => $tgl_perbaikan_kembali,
+                'jam_pakai' => $jam_pakai,
                 'ket_perbaikan' => $ket_perbaikan,
                 'biaya_perbaikan' => $biaya_perbaikan
             );
@@ -243,6 +249,8 @@ class Teknisi extends CI_Controller
         // $this->form_validation->set_rules('nama_genset', 'Nama Genset', 'trim|required');
         $this->form_validation->set_rules('jenis_perbaikan', 'Jenis Perbaikan', 'trim|required');
         $this->form_validation->set_rules('tgl_perbaikan', 'Tanggal Perbaikan', 'trim|required');
+        $this->form_validation->set_rules('tgl_perbaikan_kembali', 'Tanggal Perbaikan Kembali', 'trim|required');
+        $this->form_validation->set_rules('jam_pakai', 'Hours Meter Genset', 'trim|required');
         $this->form_validation->set_rules('ket_perbaikan', 'Keterangan Perbaikan', 'trim|required');
         $this->form_validation->set_rules('biaya_perbaikan', 'Biaya Perbaikan', 'trim|required');
 
@@ -255,6 +263,8 @@ class Teknisi extends CI_Controller
             $jenis_perbaikan = $this->input->post('jenis_perbaikan', TRUE);
             $spare_part = $this->input->post('id_sparepart', TRUE);
             $tgl_perbaikan = $this->input->post('tgl_perbaikan', TRUE);
+            $tgl_perbaikan_kembali = $this->input->post('tgl_perbaikan_kembali', true);
+            $jam_pakai = $this->input->post('jam_pakai', true);
             $ket_perbaikan = $this->input->post('ket_perbaikan', TRUE);
             $biaya_perbaikan = $this->input->post('biaya_perbaikan', TRUE);
 
@@ -265,6 +275,8 @@ class Teknisi extends CI_Controller
                 'jenis_perbaikan' => $jenis_perbaikan,
                 'id_sparepart' => $spare_part,
                 'tgl_perbaikan' => $tgl_perbaikan,
+                'tgl_perbaikan_kembali' => $tgl_perbaikan_kembali,
+                'jam_pakai' => $jam_pakai,
                 'ket_perbaikan' => $ket_perbaikan,
                 'biaya_perbaikan' => $biaya_perbaikan,
             );
@@ -278,6 +290,7 @@ class Teknisi extends CI_Controller
             $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
             $data['title'] = 'Update Perbaikan Genset';
             // $this->load->view('teknisi/service_genset/update_service_genset', $data);
+            $data['list_data'] = $this->M_data->get_data_service('tb_serv_genset');
             $this->load->view('teknisi/service_genset/tabel_service_genset', $data);
         }
     }
