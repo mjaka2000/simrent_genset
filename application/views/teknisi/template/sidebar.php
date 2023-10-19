@@ -32,30 +32,6 @@
                     </a>
 
                 </li>
-                <!-- <li class="nav-item ">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-list-alt"></i>
-                        <p>
-                            Menu Data
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Data #</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Data #</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li> -->
 
                 <li class="nav-item">
                     <a href="<?= site_url(); ?>teknisi/tabel_genset" class="nav-link">
@@ -70,17 +46,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= site_url(); ?>teknisi/tabel_sparepart" class="nav-link">
-                        <i class="fas fa-edit nav-icon"></i>
-                        <p>Data Stok Sparepart</p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="<?= site_url(); ?>teknisi/service_genset_acc" class="nav-link">
                         <i class="fas fa-edit nav-icon"></i>
                         <p>Perbaikan Genset Disetujui</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= site_url(); ?>teknisi/tabel_sparepart" class="nav-link">
+                        <i class="fas fa-edit nav-icon"></i>
+                        <p>Data Stok Sparepart</p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="<?= site_url(); ?>teknisi/laporan" class="nav-link">
                         <i class="fas fa-clipboard nav-icon"></i>
