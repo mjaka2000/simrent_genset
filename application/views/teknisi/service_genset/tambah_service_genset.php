@@ -55,17 +55,17 @@
                                     <select name="id_genset" class="form-control" id="id_genset" required>
                                         <option value="" selected disabled>-- Pilih Nomor Genset --</option>
                                         <?php foreach ($list_genset as $g) { ?>
-                                            <option value="<?= $g->id_genset; ?>"><?= $g->kode_genset; ?></option>
+                                            <option value="<?= $g->id_genset; ?>"><?= $g->kode_genset; ?> - <?= $g->nama_genset; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="nama_genset" class="form-label">Nama Genset</label>
 
                                     <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Nama Genset" disabled>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
-                                    <label for="jenis_perbaikan" class="form-label">Jenis Perbaikan</label>
+                                    <label for="jenis_perbaikan" class="form-label">Ket. Jenis Perbaikan</label>
 
                                     <input type="text" name="jenis_perbaikan" class="form-control" id="jenis_perbaikan" placeholder="Contoh : Perbaikan Aki dll" required>
                                 </div>
@@ -82,12 +82,23 @@
                                     </select>
                                     <small>*Sisa Stok&nbsp;<span style="color: red;" id="stk"></span></small>
                                 </div>
-                                <div class="form-group">
-                                    <label for="tgl_perbaikan" class="form-label">Tanggal Perbaikan</label>
+                                <div class="form-row">
 
-                                    <input type="date" name="tgl_perbaikan" class="form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" required>
+                                    <div class="form-group col-md-6">
+                                        <label for="tgl_perbaikan" class="form-label">Tanggal Perbaikan</label>
+                                        <input type="date" name="tgl_perbaikan" class="form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="tgl_perbaikan" class="form-label">Tanggal Perbaikan Kembali</label>
+                                        <input type="date" name="tgl_perbaikan_kembali" class="form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" required>
+
+                                    </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="jam_pakai" class="form-label">Hours Meter Genset</label>
 
+                                    <input type="number" name="jam_pakai" class="form-control" id="jam_pakai" placeholder="Lama Pemakaian Genset (dalam Jam)" required>
+                                </div>
                                 <div class="form-group">
                                     <label for="ket_perbaikan" class="form-label">Keterangan Perbaikan</label>
 
@@ -98,13 +109,13 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="biaya_perbaikan" class="form-label">Biaya Perbaikan</label>
+                                    <label for="biaya_perbaikan" class="form-label">Perkiraan Biaya</label>
 
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Rp</span>
                                         </div>
-                                        <input type="text" name="biaya_perbaikan" class="form-control" id="biaya_perbaikan" value="0">
+                                        <input type="text" name="biaya_perbaikan" class="form-control" id="biaya_perbaikan" placeholder="Masukkan Perkiraan Biaya">
                                     </div>
                                 </div>
                                 <hr>
@@ -152,14 +163,14 @@
 
 <script type="text/javascript">
     // 
-    $("#id_genset").change(function() {
-        let kode_genset = $(this).val();
-        <?php foreach ($list_genset as $l) { ?>
-            if (kode_genset == "<?php echo $l->id_genset ?>") {
-                $("#nama_genset").val("<?php echo $l->nama_genset ?>");
-            }
-        <?php } ?>
-    })
+    // $("#id_genset").change(function() {
+    //     let kode_genset = $(this).val();
+    //     <?php foreach ($list_genset as $l) { ?>
+    //         if (kode_genset == "<?php echo $l->id_genset ?>") {
+    //             $("#nama_genset").val("<?php echo $l->nama_genset ?>");
+    //         }
+    //     <?php } ?>
+    // })
 </script>
 
 </body>

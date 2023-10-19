@@ -87,67 +87,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="modal fade" id="staticAddServGst" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h6 class="modal-title" id="staticBackdropLabel">Tambah Data Perbaikan Genset</h6>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span>&times;</span>
-                                    </button>
 
-
-                                </div>
-                                <div class="modal-body">
-                                    <?php if (validation_errors()) { ?>
-                                        <div class="alert alert-warning alert-dismissable">
-                                            <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                            <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
-                                        </div>
-                                    <?php } ?>
-
-
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <?php foreach ($list_data as $ld) { ?>
-
-                        <div class="modal fade" id="staticEditServGst<?= $ld->id_perbaikan_gst; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h6 class="modal-title" id="staticBackdropLabel">Ubah Data Perbaikan Genset</h6>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span>&times;</span>
-                                        </button>
-
-
-                                    </div>
-                                    <div class="modal-body">
-                                        <?php if (validation_errors()) { ?>
-                                            <div class="alert alert-warning alert-dismissable">
-                                                <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                                <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
-                                            </div>
-                                        <?php } ?>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                                        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
