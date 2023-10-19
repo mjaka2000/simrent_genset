@@ -53,7 +53,7 @@
 
                                     <input type="hidden" name="id_perbaikan_gst" value="<?= $ld->id_perbaikan_gst; ?>">
                                     <div class="form-group">
-                                        <label for="kode_genset" class="form-label" title="*Arahkan untuk menampilkan nama genset">Nomor Genset <span><small style="color: red;">*Arahkan untuk menampilkan nama genset</small></span></label>
+                                        <label for="kode_genset" class="form-label" title="*Pilih untuk menampilkan nama genset">Nomor Genset <span><small style="color: red;">*Pilih untuk menampilkan nama genset</small></span></label>
 
                                         <select name="id_genset" class="form-control id_genset_ed" id="">
                                             <option value="" disabled>-- Pilih Nomor Genset --</option>
