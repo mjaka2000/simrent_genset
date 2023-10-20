@@ -39,6 +39,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
