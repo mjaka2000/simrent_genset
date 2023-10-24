@@ -52,7 +52,7 @@
                                 <form action="<?= site_url('admin/proses_ubah_ServGstAcc'); ?>" method="post" role="form">
                                     <input type="hidden" name="id_serv_gst_acc" value="<?= $d->id_serv_gst_acc; ?>">
                                     <div class="form-group">
-                                        <label for="nama" class="form-label" title="*Arahkan untuk menampilkan isi field">Perbaikan Genset Selesai<span><small style="color: red;">*Arahkan untuk menampilkan isi field</small></span></label>
+                                        <label for="nama" class="form-label" title="*Pilih untuk menampilkan isi field">Perbaikan Genset Selesai<span><small style="color: red;">*Pilih untuk menampilkan isi field</small></span></label>
                                         <select name="id_perbaikan_gst" class="form-control id_perbaikan_gst_ed" id="" required>
                                             <option value="" selected>-- Pilih Nomor Genset --</option>
                                             <?php foreach ($list_perbaikan as $g) { ?>
