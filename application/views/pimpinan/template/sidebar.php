@@ -79,6 +79,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?= site_url(); ?>pimpinan/service_genset_acc" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Perbaikan Genset Disetujui</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?= site_url(); ?>pimpinan/tabel_sparepart" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Stok Sparepart</p>
@@ -90,12 +96,7 @@
                                 <p>Data Pelanggan</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="<?= site_url(); ?>pimpinan/service_genset_acc" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Perbaikan Genset Disetujui</p>
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a href="<?= site_url(); ?>pimpinan/tabel_unit_keluar" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
