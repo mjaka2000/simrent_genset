@@ -46,7 +46,7 @@
                                 <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali" style="margin-bottom:10px;"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
                                 <!-- <button onclick="window.location.href='<?= site_url('pimpinan/tambah_service_detail/' . $d->id_perbaikan_gst); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus"></i>&nbsp;Tambah Data</button> -->
                                 <!-- <a href="<?= site_url('report/cetak_service_detail/' . $d->id_perbaikan_gst); ?>" target="_blank" type="button" style="margin-bottom:10px;margin-left: 10px;" class="btn btn-sm btn-default" name="btn_edit"><i class="fa fa-print mr-2"></i>Cetak Data</a> -->
-                                <table class="table" style="width:35%">
+                                <table class="table table-sm" style="width:40%">
                                     <tr>
                                         <th style="vertical-align: middle">Nomor Genset</th>
                                         <td style="vertical-align: middle;">
@@ -110,15 +110,40 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <th style="vertical-align: middle">Tgl. Perbaikan Kembali</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= date('d-m-Y', strtotime($d->tgl_perbaikan_kembali)); ?>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="vertical-align: middle">Hours Meter Genset</th>
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        :&nbsp;<?= $d->jam_pakai; ?> &nbsp;<strong>H</strong></div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <th style="vertical-align: middle">Ket. Perbaikan</th>
-                                        <form action="<?= site_url('pimpinan/proses_update_ket_service'); ?>" method="post" role="form">
-                                            <td style="vertical-align: middle;">
-                                                <div class="row">
-                                                    <div class="col-lg-8">
-                                                        <div class="row">
+                                        <td style="vertical-align: middle;">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="row">
+                                                        <form action="<?= site_url('pimpinan/proses_update_ket_service'); ?>" class="form-inline" method="post" role="form">
                                                             <input type="hidden" name="id_perbaikan_gst" value="<?= $d->id_perbaikan_gst; ?>">
                                                             :&nbsp;<span><select name="ket_perbaikan" class="form-control" id="ket_perbaikan">
-                                                                    <option value="">-- Status --</option>
+                                                                    <option value="" disabled>-- Status --</option>
                                                                     <?php if ($d->ket_perbaikan == "1") { ?>
                                                                         <option value="1" selected>Selesai Diperbaiki</option>
                                                                         <option value="0">Masih Proses</option>
@@ -130,12 +155,12 @@
                                                                 </select>
                                                                 <span><button type="submit" class="btn btn-xs btn-success"><i class="fa fa-check mr-2"></i>Update</button></span>
                                                             </span>
-                                                        </div>
-
+                                                        </form>
                                                     </div>
+
                                                 </div>
-                                            </td>
-                                        </form>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th style="vertical-align: middle">Biaya Perbaikan</th>
