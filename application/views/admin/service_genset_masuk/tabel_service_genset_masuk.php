@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data Perbaikan Genset Masuk</h1>
+                    <h1 class="m-0">Data Jadwal Perbaikan Genset Masuk</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item active">Perbaikan Genset Masuk</li>
+                        <li class="breadcrumb-item active">Jadwal Perbaikan Genset Masuk</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -42,10 +42,16 @@
                                 </div>
                             <?php } ?>
                             <!-- <button onclick="window.location.href='<?= site_url('admin/email_jdw_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button> -->
-                            <button data-toggle="modal" data-target="#AddAddServGstMasuk" class="btn btn-primary btn-sm" style="margin-bottom:10px;"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
+                            <button onclick="window.location.href='<?= site_url('admin/tambah_service_genset_masuk'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
+                            <button data-toggle="modal" data-target="#service_genset_masuk" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-success" name="KeluarBulanan"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
+                                    <tr>
+                                        <?php foreach ($total_data as $td) : ?>
+                                            <th colspan="8" style="text-align: center;"><?php echo $label ?><br> Total Pemakaian : <span style="color: red;"><?= $td->jumlah_hari; ?> Hari (<?= $td->jumlah_hari * 24; ?> Jam) Pemakaian</span></th>
+                                        <?php endforeach; ?>
+                                    </tr>
                                     <tr>
                                         <th style="width :10px">No.</th>
                                         <th>Nomor Genset</th>
@@ -79,11 +85,11 @@
                             </table>
                         </div>
                     </div>
-                    <div class="modal fade" id="AddAddServGstMasuk" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="service_genset_masuk" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h6 class="modal-title" id="staticBackdropLabel">Tambah Data Perbaikan Genset yang Masuk</h6>
+                                    <h6 class="modal-title" id="staticBackdropLabel">Filter Pertanggal</h6>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span>&times;</span>
                                     </button>
@@ -91,21 +97,34 @@
 
                                 </div>
                                 <div class="modal-body">
-                                    <?php if (validation_errors()) { ?>
-                                        <div class="alert alert-warning alert-dismissable">
-                                            <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-                                            <strong>Peringatan!</strong><br> <?php echo validation_errors(); ?>
-                                        </div>
-                                    <?php } ?>
-
                                     <form action="<?= site_url('admin/proses_tambah_service_genset_masuk'); ?>" method="post" role="form">
-
-
-
+                                        <div class="form-group row">
+                                            <label for="bulan" class="col-sm-3 col-form-label">Genset</label>
+                                            <div class="col-sm-6">
+                                                <select name="genset" id="bulan" class="form-control">
+                                                    <option value="" selected="" disabled>--Pilih Genset--</option>
+                                                    <?php foreach ($list_genset as $g) { ?>
+                                                        <option value="<?= $g->kode_genset; ?>"><?= $g->kode_genset; ?> - <?= $g->nama_genset; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="tahun" class="col-sm-3 col-form-label">Dari Tanggal</label>
+                                            <div class="col-sm-6">
+                                                <input type="date" name="tgl_awal" class="form-control" id="tgl_awal" value="<?= date('Y-m-d'); ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="tahun" class="col-sm-3 col-form-label">Ke Tanggal</label>
+                                            <div class="col-sm-6">
+                                                <input type="date" name="tgl_akhir" class="form-control" id="tgl_akhir" value="<?= date('Y-m-d'); ?>">
+                                            </div>
+                                        </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
-                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check mr-2"></i>Submit</button>
+                                    <button type="submit" class="btn btn-success btn-sm">Tampilkan</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                                 </div>
                                 </form>
                             </div>
