@@ -234,24 +234,6 @@
         })
     }); //* Script untuk memuat datatable
 </script>
-<script type="text/javascript">
-    $('.btn-delete').on('click', function() {
-        var getLink = $(this).attr('href');
-        Swal.fire({
-            title: 'Hapus Data',
-            text: 'Yakin ingin menghapus data?',
-            type: 'warning',
-            confirmButtonColor: '#d9534f',
-            showCancelButton: true,
-        }).then(result => {
-            //jika klik ya maka arahkan ke proses.php
-            if (result.isConfirmed) {
-                window.location.href = getLink
-            }
-        })
-        return false;
-    }); //* Script untuk memuat sweetalert hapus data
-</script>
 
 </body>
 
