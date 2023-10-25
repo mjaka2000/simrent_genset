@@ -348,8 +348,8 @@ class M_data extends CI_Model
   {
     $query = $this->db->select()
       ->from($tabel)
-      // ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
       ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_penyewaan.id_genset')
 
       // ->order_by('id_perbaikan_gst', 'asc')
       ->get();
@@ -360,7 +360,7 @@ class M_data extends CI_Model
   {
     $query = $this->db->select_sum('jumlah_hari')
       ->from($tabel)
-      // ->join('tb_genset', 'tb_genset.id_genset = ' . $tabel . '.id_genset')
+      // ->join('tb_genset', 'tb_genset.id_genset = tb_unit_penyewaan.id_genset')
       ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
 
       // ->order_by('id_perbaikan_gst', 'asc')
