@@ -32,7 +32,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
-                            Tambah Data Genset
+                            Tambah Data Lama Pemakaian Sewa Genset yang akan di service
                         </div>
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
@@ -48,42 +48,39 @@
                                 </div>
                             <?php } ?>
 
-                            <form action="<?= site_url('admin/proses_tambahgenset'); ?>" method="post" role="form" enctype="multipart/form-data">
-
+                            <form action="<?= site_url('admin/proses_tambahServ_genset_masuk'); ?>" method="post" role="form" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="kode_genset" class="form-label">Nomor Genset</label>
+                                    <label for="bulan" class="form-label">ID Transaksi</label>
 
-                                    <input type="text" name="kode_genset" class="form-control" id="kode_genset" placeholder="Masukkan Nomor Genset" required>
+                                    <select name="id_u_sewa" class="form-control" id="id_transaksi" required>
+                                        <option value="">-- Pilih ID Transaksi --</option>
+                                        <?php foreach ($get_data as $d) { ?>
+                                            <option value="<?= $d->id_u_sewa ?>"><?= $d->id_transaksi ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nama_genset" class="form-label">Nama Genset</label>
+                                    <label for="genset" class="form-label">Tanggal Pemakaian</label>
 
-                                    <input type="text" name="nama_genset" class="form-control" id="nama_genset" placeholder="Masukkan Nama Genset" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="daya" class="form-label">Daya (KVA)</label>
-
-                                    <input type="text" name="daya" class="form-control" id="daya" placeholder="Daya" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
-                                </div>
-                                <div class="form-group">
-                                    <label for="harga" class="form-label">Harga</label>
-
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon">Rp</span>
-                                        </div>
-                                        <input type="text" name="harga" class="form-control" id="harga" placeholder="Harga Unit Perhari" required onkeypress='return (event.charCode > 47 && event.charCode < 58)'>
-                                    </div>
+                                    <input type="text" readonly name="tanggal_masuk" class="form-control" id="tanggal_masuk">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="gambar_genset" class="form-label">Gambar Genset</label>
+                                    <label for="kode_genset" class="form-label">Genset</label>
 
-                                    <input type="file" name="gambar_genset" class="form-control" id="gambar_genset">
-                                    <small style="color: red;">
-                                        <p>*File yang diijinkan "jpg|png|jpeg", max size 2MB.</p>
-                                    </small>
+                                    <input type="text" readonly name="kode_genset" class="form-control" id="kode_genset" placeholder="Genset yang digunakan" required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="kode_genset" class="form-label">Lama Pemakaian</label>
+
+                                    <input type="text" readonly name="lama_pakai" class="form-control" id="lama_pakai" placeholder="Lama Genset yang digunakan" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tahun" class="form-label">Keterangan</label>
+
+                                    <input type="text" name="ket_det_pakai_genset" class="form-control" id="keterangan" required>
+                                </div>
+
                                 <hr>
                                 <div class="form-group" align="center">
                                     <button onclick="history.back(-1)" type="button" class="btn btn-sm btn-default" name="btn_kembali"><i class="fa fa-arrow-left mr-2"></i>Kembali</button>
@@ -100,7 +97,22 @@
 
 <?php $this->load->view('template/footer'); ?>
 <?php $this->load->view('template/script') ?>
+<script>
+    $("#id_transaksi").change(function() {
+        let id_transaksi = $(this).val();
+        // let stok_gd = document.getElementById("stok_gd");
 
+        <?php foreach ($get_data as $s) { ?>
+            if (id_transaksi == "<?php echo $s->id_u_sewa ?>") {
+
+                $("#tanggal_masuk").val("<?php echo date('d-m-Y', strtotime($s->tanggal_masuk)) ?>");
+                $("#kode_genset").val("<?php echo $s->kode_genset ?> - <?= $s->nama_genset; ?> - <?= $s->daya; ?> KVA");
+                $("#lama_pakai").val("<?php echo $s->jumlah_hari ?> Hari (<?= $d->jumlah_hari * 24; ?> Jam)");
+
+            }
+        <?php } ?>
+    })
+</script>
 
 
 </body>

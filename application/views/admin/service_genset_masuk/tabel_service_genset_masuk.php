@@ -67,16 +67,20 @@
                                     <?php
                                     $no = 1;
                                     ?>
-                                    <?php foreach ($list_data as $d) :
+                                    <?php foreach ($list_data as $dt) :
                                     ?>
                                         <tr>
                                             <td><?= $no++; ?></td>
                                             <td><?= $dt->kode_genset; ?></td>
                                             <td><?= $dt->nama_genset; ?></td>
                                             <td><?= $dt->daya; ?></td>
-                                            <td><?= $dt->jumlah_hari; ?></td>
+                                            <td><?= $dt->jumlah_hari; ?> Hari</td>
                                             <td><?= date('d-m-Y', strtotime($dt->tanggal_masuk)); ?></td>
                                             <td><?= $dt->ket_det_pakai_genset; ?></td>
+                                            <td>
+                                                <a href="<?= site_url('admin/edit_service_genset_masuk/' . $dt->id_det_pakai_genset); ?>" type="button" class="btn btn-sm btn-info" name="btn_edit"><i class="fa fa-edit "></i></a>
+                                                <a href="<?= site_url('admin/hapus_service_genset_masuk/' . $dt->id_det_pakai_genset); ?>" type="button" title="Hapus" class="btn btn-sm btn-danger btn-delete" name="btn_delete"><i class="fa fa-trash "></i></a>
+                                            </td>
                                         </tr>
                                     <?php endforeach;
                                     ?>
