@@ -575,12 +575,34 @@ class Admin extends CI_Controller
 
 	public function tabel_service_genset_masuk()
 	{
-		$data['list_data'] = $this->M_data->get_data_pakaiGst('tb_det_pakai_genset');
+		$tgl_awal = $this->input->get('tgl_awal');
+		$tgl_akhir = $this->input->get('tgl_akhir');
+		$genset = $this->input->get('genset');
+
+		if (empty($tgl_awal) or empty($tgl_akhir) or empty($genset)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+
+			$data['list_data'] = $this->M_data->get_data_pakaiGst('tb_jdw_pakai_genset');
+			$data['total_data'] = $this->M_data->sum_pakaiGst('tb_jdw_pakai_genset');
+			$label = 'Genset ... Dari Tanggal ... Sampai Tanggal ...';
+		} else {
+			$data['list_data'] = $this->M_data->get_periode_data_pakaiGst('tb_jdw_pakai_genset');
+			$data['total_data'] = $this->M_data->sum_periode_pakaiGst('tb_jdw_pakai_genset');
+			$label = 'Genset ' . $genset . 'Dari Tanggal ' . $tgl_awal . ' Sampai Tanggal ' . $tgl_akhir;
+		}
+		$data['label'] = $label;
+		$data['list_genset'] = $this->M_data->select('tb_genset');
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Data Perbaikan Genset yang Masuk';
 		$this->load->view('admin/service_genset_masuk/tabel_service_genset_masuk', $data);
 	}
 
+	public function tambah_service_genset_masuk()
+	{
+
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Tambah Perbaikan Genset yang Masuk';
+		$this->load->view('admin/service_genset_masuk/tambah_service_genset_masuk', $data);
+	}
 	####################################
 	//* End Data Perbaikan Genset yang Masuk 
 	####################################
