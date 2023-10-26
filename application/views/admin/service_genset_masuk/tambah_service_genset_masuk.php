@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data Jadwal Perbaikan Genset Masuk</h1>
+                    <h1 class="m-0">Data Lama Pemakaian Genset yang di service</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= site_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="<?= site_url('admin/tabel_service_genset_masuk'); ?>">Jadwal Perbaikan Genset Masuk</a></li>
+                        <li class="breadcrumb-item"><a href="<?= site_url('admin/tabel_service_genset_masuk'); ?>">Lama Pemakaian Genset yang di service</a></li>
                         <li class="breadcrumb-item active">Tambah Data </li>
                     </ol>
                 </div><!-- /.col -->
