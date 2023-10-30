@@ -368,6 +368,38 @@ class M_data extends CI_Model
     return $query->result();
   }
 
+  public function get_periode_data_pakaiGst($tabel, $tgl_awal, $tgl_akhir, $genset) // Tampilkan isi tabel lama pemakaian Genset
+  {
+    $tgl_awal = $this->db->escape($tgl_awal);
+    $tgl_akhir = $this->db->escape($tgl_akhir);
+    $query = $this->db->select()
+      ->from($tabel)
+      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_penyewaan.id_genset')
+      ->where('DATE (tanggal_masuk) BETWEEN ' . $tgl_awal . ' AND ' . $tgl_akhir)
+      ->where_in('tb_genset.kode_genset', $genset)
+
+      ->order_by('tanggal_masuk', 'asc')
+      ->get();
+    return $query->result();
+  }
+
+  public function sum_periode_pakaiGst($tabel, $tgl_awal, $tgl_akhir, $genset) // Tampilkan isi tabel lama pemakaian Genset
+  {
+    $tgl_awal = $this->db->escape($tgl_awal);
+    $tgl_akhir = $this->db->escape($tgl_akhir);
+    $query = $this->db->select_sum('jumlah_hari')
+      ->from($tabel)
+      ->join('tb_unit_penyewaan', 'tb_unit_penyewaan.id_u_sewa = ' . $tabel . '.id_u_sewa')
+      ->join('tb_genset', 'tb_genset.id_genset = tb_unit_penyewaan.id_genset')
+      ->where('DATE (tanggal_masuk) BETWEEN ' . $tgl_awal . ' AND ' . $tgl_akhir)
+      ->where_in('tb_genset.kode_genset', $genset)
+
+      ->order_by('tanggal_masuk', 'asc')
+      ->get();
+    return $query->result();
+  }
+
   public function mengurangi_stok($tabel, $spare_part, $stok_new) // Mengurangi isi stok sparepart
   {
     $this->db->set("stok", $stok_new);
