@@ -645,7 +645,7 @@ class Admin extends CI_Controller
 	public function proses_editServ_genset_masuk()
 	{
 
-		$this->form_validation->set_rules('id_u_sewa', 'ID Transaksi', 'trim|required|is_unique[tb_serv_genset_masuk.id_u_sewa]');
+		$this->form_validation->set_rules('id_u_sewa', 'ID Transaksi', 'trim|required');
 		$this->form_validation->set_rules('ket_det_pakai_genset', 'Keterangan', 'trim|required');
 
 		if ($this->form_validation->run() === TRUE) {
