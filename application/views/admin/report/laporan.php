@@ -105,6 +105,15 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <form action="<?= site_url(); ?>report/cetak_service_genset_masuk" method="post" role="form" target="_blank">
+                                        <th style="vertical-align: middle;">Laporan Lama Pemakaian Sewa Genset yang akan di service</th>
+                                        <td style="vertical-align: middle;">
+                                            <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
+                                    </form>
+                                    <button data-toggle="modal" data-target="#RepService_genset_masuk" class="btn btn-info btn-sm" title="Filter Berdasarkan Unit"><i class="fa fa-filter"></i>&nbsp;Filter</button>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <form action="<?= site_url(); ?>report/cetak_serv_gensetAll" method="post" role="form" target="_blank">
                                         <th style="vertical-align: middle;">Laporan Perbaikan Genset</th>
                                         <td style="vertical-align: middle;">
@@ -188,6 +197,7 @@
                             <!-- </div> -->
                         </div>
                     </div>
+                    <!-- MODAL BOOTSTRAP --> <!-- MODAL BOOTSTRAP --> <!-- MODAL BOOTSTRAP --> <!-- MODAL BOOTSTRAP -->
                     <div class="modal fade" id="staticRepKeluarBulanan" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -430,6 +440,51 @@
                         </div>
                     </div>
 
+                    <div class="modal fade" id="RepService_genset_masuk" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="staticBackdropLabel">Filter Pertanggal</h6>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span>&times;</span>
+                                    </button>
+
+
+                                </div>
+                                <div class="modal-body">
+                                    <form action="<?= site_url('report/cetak_service_genset_masukFilter'); ?>" method="get" role="form" target="_blank">
+                                        <div class="form-group row">
+                                            <label for="bulan" class="col-sm-3 col-form-label">Genset</label>
+                                            <div class="col-sm-6">
+                                                <select name="genset" id="bulan" class="form-control">
+                                                    <option value="" selected="" disabled>--Pilih Genset--</option>
+                                                    <?php foreach ($list_genset as $g) { ?>
+                                                        <option value="<?= $g->kode_genset; ?>"><?= $g->kode_genset; ?> - <?= $g->nama_genset; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="tahun" class="col-sm-3 col-form-label">Dari Tanggal</label>
+                                            <div class="col-sm-6">
+                                                <input type="date" name="tgl_awal" class="form-control" id="tgl_awal" value="<?= date('Y-m-d'); ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="tahun" class="col-sm-3 col-form-label">Ke Tanggal</label>
+                                            <div class="col-sm-6">
+                                                <input type="date" name="tgl_akhir" class="form-control" id="tgl_akhir" value="<?= date('Y-m-d'); ?>">
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-print mr-2"></i>Cetak</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="modal fade" id="RepPerbaikanFilter" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
