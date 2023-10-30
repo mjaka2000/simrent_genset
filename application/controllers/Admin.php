@@ -585,9 +585,9 @@ class Admin extends CI_Controller
 			$data['total_data'] = $this->M_data->sum_pakaiGst('tb_serv_genset_masuk');
 			$label = 'Genset ... Dari Tanggal ... Sampai Tanggal ...';
 		} else {
-			$data['list_data'] = $this->M_data->get_periode_data_pakaiGst('tb_serv_genset_masuk');
-			$data['total_data'] = $this->M_data->sum_periode_pakaiGst('tb_serv_genset_masuk');
-			$label = 'Genset ' . $genset . 'Dari Tanggal ' . $tgl_awal . ' Sampai Tanggal ' . $tgl_akhir;
+			$data['list_data'] = $this->M_data->get_periode_data_pakaiGst('tb_serv_genset_masuk', $tgl_awal, $tgl_akhir, $genset);
+			$data['total_data'] = $this->M_data->sum_periode_pakaiGst('tb_serv_genset_masuk', $tgl_awal, $tgl_akhir, $genset);
+			$label = 'Genset ' . $genset . ' Dari Tanggal ' . $tgl_awal . ' Sampai Tanggal ' . $tgl_akhir;
 		}
 		$data['label'] = $label;
 		$data['list_genset'] = $this->M_data->select('tb_genset');
@@ -631,6 +631,44 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function edit_service_genset_masuk()
+	{
+		$uri = $this->uri->segment(3);
+		$where = array('id_det_pakai_genset' => $uri);
+		$data['list_data'] = $this->M_data->get_data('tb_serv_genset_masuk', $where);
+		$data['get_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
+		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+		$data['title'] = 'Ubah Perbaikan Genset yang Masuk';
+		$this->load->view('admin/service_genset_masuk/edit_service_genset_masuk', $data);
+	}
+
+	public function proses_editServ_genset_masuk()
+	{
+
+		$this->form_validation->set_rules('id_u_sewa', 'ID Transaksi', 'trim|required|is_unique[tb_serv_genset_masuk.id_u_sewa]');
+		$this->form_validation->set_rules('ket_det_pakai_genset', 'Keterangan', 'trim|required');
+
+		if ($this->form_validation->run() === TRUE) {
+			$id_det_pakai_genset = $this->input->post('id_det_pakai_genset', TRUE);
+			$id_u_sewa = $this->input->post('id_u_sewa', TRUE);
+			$ket_det_pakai_genset = $this->input->post('ket_det_pakai_genset', TRUE);
+
+			$where = array('id_det_pakai_genset' => $id_det_pakai_genset);
+			$data = array(
+				'id_u_sewa' => $id_u_sewa,
+				'ket_det_pakai_genset' => $ket_det_pakai_genset
+			);
+			$this->M_data->update('tb_serv_genset_masuk', $data, $where);
+			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Diubah');
+			redirect(site_url('admin/tabel_service_genset_masuk'));
+		} else {
+			$data['get_data'] = $this->M_data->get_data_u_masuk('tb_unit_penyewaan');
+
+			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
+			$data['title'] = 'Tambah Perbaikan Genset yang Masuk';
+			$this->load->view('admin/service_genset_masuk/tambah_service_genset_masuk', $data);
+		}
+	}
 
 	public function hapus_service_genset_masuk()
 	{
