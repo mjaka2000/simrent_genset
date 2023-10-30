@@ -43,7 +43,7 @@
                             <?php } ?>
                             <!-- <button onclick="window.location.href='<?= site_url('admin/email_jdw_genset'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button> -->
                             <button onclick="window.location.href='<?= site_url('admin/tambah_service_genset_masuk'); ?>'" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-primary" name="tambah_data"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Tambah Data</button>
-                            <button data-toggle="modal" data-target="#service_genset_masuk" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-success" name="KeluarBulanan"><i class="fa fa-table"></i>&nbsp;Pilih Periode</button>
+                            <button data-toggle="modal" data-target="#service_genset_masuk" style="margin-bottom:10px;" type="button" class="btn btn-sm btn-success" name="KeluarBulanan"><i class="fa fa-filter"></i>&nbsp;Filter</button>
 
                             <table id="examplejk" class="table table-bordered table-hover" style="width:100%">
                                 <thead>
@@ -73,7 +73,7 @@
                                             <td><?= $no++; ?></td>
                                             <td><?= $dt->kode_genset; ?></td>
                                             <td><?= $dt->nama_genset; ?></td>
-                                            <td><?= $dt->daya; ?></td>
+                                            <td><?= $dt->daya; ?> KVA</td>
                                             <td><?= $dt->jumlah_hari; ?> Hari</td>
                                             <td><?= date('d-m-Y', strtotime($dt->tanggal_masuk)); ?></td>
                                             <td><?= $dt->ket_det_pakai_genset; ?></td>
@@ -101,7 +101,7 @@
 
                                 </div>
                                 <div class="modal-body">
-                                    <form action="<?= site_url('admin/proses_tambah_service_genset_masuk'); ?>" method="post" role="form">
+                                    <form action="<?= site_url('admin/tabel_service_genset_masuk'); ?>" method="get" role="form">
                                         <div class="form-group row">
                                             <label for="bulan" class="col-sm-3 col-form-label">Genset</label>
                                             <div class="col-sm-6">

@@ -48,7 +48,7 @@
                                 </div>
                             <?php } ?>
 
-                            <form action="<?= site_url('admin/proses_tambahServ_genset_masuk'); ?>" method="post" role="form" enctype="multipart/form-data">
+                            <form action="<?= site_url('admin/proses_tambahServ_genset_masuk'); ?>" method="post" role="form">
                                 <div class="form-group">
                                     <label for="bulan" class="form-label">ID Transaksi</label>
 
@@ -107,7 +107,7 @@
 
                 $("#tanggal_masuk").val("<?php echo date('d-m-Y', strtotime($s->tanggal_masuk)) ?>");
                 $("#kode_genset").val("<?php echo $s->kode_genset ?> - <?= $s->nama_genset; ?> - <?= $s->daya; ?> KVA");
-                $("#lama_pakai").val("<?php echo $s->jumlah_hari ?> Hari (<?= $d->jumlah_hari * 24; ?> Jam)");
+                $("#lama_pakai").val("<?php echo $s->jumlah_hari ?> Hari (<?= $s->jumlah_hari * 24; ?> Jam)");
 
             }
         <?php } ?>
