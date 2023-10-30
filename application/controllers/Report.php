@@ -218,6 +218,36 @@ class Report extends CI_Controller
         $this->load->view('report/service_genset/rep_service_genset', $data);
     }
 
+    public function cetak_service_genset_masuk()
+    {
+        $label = 'Genset ... Dari Tanggal ... Sampai Tanggal ...';
+        $data['label'] = $label;
+        $data['list_data'] = $this->M_data->get_data_pakaiGst('tb_serv_genset_masuk');
+        $data['title'] = 'Laporan Perbaikan Genset yang Masuk';
+        $this->load->view('report/service_genset_masuk/rep_service_genset_masuk', $data);
+    }
+
+    public function cetak_service_genset_masukFilter()
+    {
+        $tgl_awal = $this->input->get('tgl_awal');
+        $tgl_akhir = $this->input->get('tgl_akhir');
+        $genset = $this->input->get('genset');
+
+        if (empty($tgl_awal) or empty($tgl_akhir) or empty($genset)) { // Cek jika tgl_awal atau tgl_akhir kosong, maka :            
+
+            $data['list_data'] = $this->M_data->get_data_pakaiGst('tb_serv_genset_masuk');
+            $data['total_data'] = $this->M_data->sum_pakaiGst('tb_serv_genset_masuk');
+            $label = 'Genset ... Dari Tanggal ... Sampai Tanggal ...';
+        } else {
+            $data['list_data'] = $this->M_data->get_periode_data_pakaiGst('tb_serv_genset_masuk', $tgl_awal, $tgl_akhir, $genset);
+            $data['total_data'] = $this->M_data->sum_periode_pakaiGst('tb_serv_genset_masuk', $tgl_awal, $tgl_akhir, $genset);
+            $label = 'Genset ' . $genset . ' Dari Tanggal ' . $tgl_awal . ' Sampai Tanggal ' . $tgl_akhir;
+        }
+        $data['label'] = $label;
+        $data['title'] = 'Laporan Perbaikan Genset yang Masuk';
+        $this->load->view('report/service_genset_masuk/rep_service_genset_masuk', $data);
+    }
+
     public function cetak_Pelanggan()
     {
         $data['list_data'] = $this->M_data->get_Plg('tb_pelanggan');
