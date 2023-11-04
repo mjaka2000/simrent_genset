@@ -172,7 +172,9 @@ class M_data extends CI_Model
   ####################################
   //* New Query
   ####################################
-
+  ####################################
+  //* Data Pelanggan 
+  ####################################
   public function get_Plg($tabel) // Menampilkan isi data pelanggan
   {
     $query = $this->db->select()
@@ -210,7 +212,12 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
-
+  ####################################
+  //* End Data Pelanggan 
+  ####################################
+  ####################################
+  //* Data Sparepart 
+  ####################################
   public function notif_stok($tabel) // Pemberitahuan stok
   {
     $query = $this->db->select()
@@ -227,7 +234,12 @@ class M_data extends CI_Model
       ->get();
     return $query->num_rows();
   }
-
+  ####################################
+  //* End Data Sparepart 
+  ####################################
+  ####################################
+  //* Data Status
+  ####################################
   public function update_status_gst($tabel, $where, $status_gst) // Untuk ubah status genset
   {
     $this->db->set("ket_genset", $status_gst);
@@ -256,6 +268,9 @@ class M_data extends CI_Model
     $this->db->where("id_pelanggan", $where);
     $this->db->update($tabel);
   }
+  ####################################
+  //* End Data Status
+  ####################################
   ####################################
   //* Data Perbaikan Genset 
   ####################################
@@ -698,7 +713,12 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
-
+  ####################################
+  //* End Data Unit Keluar 
+  ####################################
+  ####################################
+  //* Data Jadwal Penyewaan Genset
+  ####################################
   public function select_jdw_gst($tabel) // Tampilkan isi tabel Jadwal Penyewaan Genset
   {
     $query = $this->db->select()
@@ -781,7 +801,9 @@ class M_data extends CI_Model
       ->get();
     return $query->result();
   }
-
+  ####################################
+  //* Data Jadwal Penyewaan Genset
+  ####################################
   public function numrows_where_uKeluar($tabel)
   {
     $query = $this->db->select()
@@ -791,9 +813,7 @@ class M_data extends CI_Model
       ->get();
     return $query->num_rows();
   }
-  ####################################
-  //* End Data Unit Keluar 
-  ####################################
+
   ####################################
   //* Data Unit Masuk 
   ####################################
