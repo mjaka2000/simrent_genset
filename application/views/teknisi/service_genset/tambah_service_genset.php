@@ -97,7 +97,7 @@
                                 <div class="form-group">
                                     <label for="jam_pakai" class="form-label">Hours Meter Genset</label>
 
-                                    <input type="number" name="jam_pakai" class="form-control" id="jam_pakai" placeholder="Lama Pemakaian Genset (dalam Jam)" required>
+                                    <input type="number" name="jam_pakai" class="form-control" id="jam_pakai" placeholder="Lama Pemakaian Genset sekarang (dalam Jam)" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="ket_perbaikan" class="form-label">Keterangan Perbaikan</label>
