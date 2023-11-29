@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Nov 2023 pada 01.52
+-- Waktu pembuatan: 29 Nov 2023 pada 07.43
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -160,7 +160,12 @@ CREATE TABLE `tb_pelanggan` (
 
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_plg`, `alamat_plg`, `nohp_plg`, `jk_plg`, `namaperusahaan_plg`, `tglupdate_plg`, `status_plg`, `ket_plg`, `id_user`) VALUES
 (1, 'Bayu Agung', 'jl kp melayu', '0878123123123', 'L', 'pt amanah', '2023-08-21', 0, 0, 43),
-(2, 'Ibnu Jal', 'jl. sei jingah', '0878123121234', 'L', 'pt rahmat', '2023-08-22', 0, 0, 44);
+(2, 'Ibnu Jal', 'jl. sei jingah', '0878123121234', 'L', 'pt rahmat', '2023-08-22', 0, 0, 44),
+(3, 'Wanda', 'Jl. Sungai Miai', '0878123121234', 'L', 'pt rtr', '2023-11-29', 0, 0, 45),
+(4, 'Khairullah', 'Jl. Kampung Melayu 07', '0821312341087', 'L', 'pt amanah', '2023-11-29', 0, 0, 46),
+(5, 'Adrian Ali', 'Jl. Pahlaman, No. 10 Banjarmasin', '0878123123123', 'L', '-', '2023-11-29', 0, 0, 47),
+(6, 'Ahmad Yani', 'Jl. Pramuka, No. 15 Banjarmasin', '0878123128976', 'L', 'Maju Bersama', '2023-11-29', 0, 0, 48),
+(7, 'Nur Hikari', 'Jl. Sultan Adam, No. 10', '0878123129861', 'P', 'PT Amanah', '2023-11-29', 0, 0, 49);
 
 -- --------------------------------------------------------
 
@@ -344,12 +349,17 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '2023-11-29 08:26:43'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '2023-11-29 14:28:02'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '2023-10-24 11:26:48'),
 (33, 'aril', 'Syahril', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '2023-10-19 09:38:21'),
 (34, 'aldir', 'Aldi', '$2y$10$/PLQHhHrXYDUB99txtigROvNfotOf/VIJbciIfeaQMPipOZgc86e6', 2, 'nopic.png', '0000-00-00 00:00:00'),
 (43, 'abay021', 'Bayu Agung', '$2y$10$gYs55hE6HXox5mJfc5Q3t.7f/iauCe1ke2n6v3MoCddlqsXE8kniS', 3, 'nopic.png', '2023-10-30 10:24:50'),
-(44, 'ibnu123', 'Ibnu', '$2y$10$xrUskK.7d7ZFMFrOLEoPZOuy6RXQsq.sx89z10kxbt4Ot8Oo9N0Uy', 3, 'nopic.png', '2023-10-30 10:25:18');
+(44, 'ibnu123', 'Ibnu', '$2y$10$xrUskK.7d7ZFMFrOLEoPZOuy6RXQsq.sx89z10kxbt4Ot8Oo9N0Uy', 3, 'nopic.png', '2023-10-30 10:25:18'),
+(45, 'wanda012', 'Wanda', '$2y$10$h3QlLXnF/tisWJGpmPeqB.0qKYc4o9/htnYoMLVK13aiSuz4cygoe', 3, 'nopic.png', '2023-11-29 14:19:40'),
+(46, 'irul021', 'Khairullah', '$2y$10$6k4V03w51B4MY2ZHRDkEEOjGubsrg4xgeHbUUEGzXdLnGY1itrjay', 3, 'nopic.png', '2023-11-29 14:21:31'),
+(47, 'adrianali01', 'Adrian Ali', '$2y$10$E8oUX6gAMg8uUj.UE2AVVOQjw4y2AO3nlsvUKp2eHVfDLGZB3TlUu', 3, 'nopic.png', '2023-11-29 14:23:05'),
+(48, 'ayani12', 'Ahmad Yani', '$2y$10$kjOrYMOWCXBYcwvJITtZYe8dbnSlskfydV1MG2abYblEyt7Mc2uTK', 3, 'nopic.png', '2023-11-29 14:24:23'),
+(49, 'hkari098', 'Nur Hikari', '$2y$10$Eml8N9Ceum0UXp7g.xr/SuNal0D0DUA7u/MM//hIdvfuSFeyOl1wS', 3, 'nopic.png', '2023-11-29 14:26:48');
 
 -- --------------------------------------------------------
 
@@ -520,7 +530,7 @@ ALTER TABLE `tb_operator`
 -- AUTO_INCREMENT untuk tabel `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pendapatan`
@@ -568,7 +578,7 @@ ALTER TABLE `tb_unit_penyewaan`
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_valid_penyewaan`
