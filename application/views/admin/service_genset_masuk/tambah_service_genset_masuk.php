@@ -32,7 +32,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
-                            Tambah Data Lama Pemakaian Sewa Genset yang akan di service
+                            Tambah Data Lama Pemakaian Genset yang akan di service
                         </div>
                         <div class="card-body">
                             <?php if ($this->session->flashdata('msg_sukses')) { ?>
