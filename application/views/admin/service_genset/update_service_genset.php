@@ -92,17 +92,10 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="tgl_perbaikan" class="form-label">Tanggal Perbaikan</label>
 
-                                        <div class="form-group col-md-6">
-                                            <label for="tgl_perbaikan" class="form-label">Tanggal Perbaikan</label>
-                                            <input type="date" name="tgl_perbaikan" class="form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" value="<?= $ld->tgl_perbaikan; ?>" required>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="tgl_perbaikan" class="form-label">Tanggal Perbaikan Kembali</label>
-                                            <input type="date" name="tgl_perbaikan_kembali" class="form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" value="<?= $ld->tgl_perbaikan_kembali; ?>" required>
-
-                                        </div>
+                                        <input type="date" required name="tgl_perbaikan" class="form_datetime form-control" id="tgl_perbaikan" placeholder="Tanggal Perbaikan" value="<?= $ld->tgl_perbaikan; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="jenis_perbaikan" class="form-label">Hours Meter Genset</label>
