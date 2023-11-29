@@ -140,7 +140,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th style="vertical-align: middle">Tgl. Perbaikan Kembali</th>
                         <td style="vertical-align: middle;">
                             <div class="row">
@@ -152,7 +152,7 @@
                                 </div>
                             </div>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th style="vertical-align: middle">Hours Meter Genset</th>
                         <td style="vertical-align: middle;">
