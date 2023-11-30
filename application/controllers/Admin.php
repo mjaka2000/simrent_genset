@@ -339,9 +339,9 @@ class Admin extends CI_Controller
 			'ecrypt_name'	=> false,
 			'overwrite'	=> true,
 			// 'file_name'	=> uniqid(),
-			'max_size' => 2048,
-			'max_height' => 1080,
-			'max_width' => 1920
+			'max_size' => 5100, //2048
+			'max_height' => 5000, //1080
+			'max_width' => 5000 //1920
 		);
 		$this->load->library('upload', $config);
 		$this->upload->initialize($config);
@@ -1241,9 +1241,9 @@ class Admin extends CI_Controller
 			'ecrypt_name'	=> false,
 			'overwrite'	=> true,
 			// 'file_name'	=> uniqid(),
-			'max_size' => 2048,
-			'max_height' => 1080,
-			'max_width' => 1920
+			'max_size' => 5000, //2048
+			'max_height' => 5000, //1080
+			'max_width' => 5000 //1920
 		);
 		$this->load->library('upload', $config);
 		$this->upload->initialize($config);
