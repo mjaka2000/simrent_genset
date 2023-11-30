@@ -117,7 +117,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="biaya_perbaikan" class="form-label">Biaya Perbaikan</label>
+                                        <label for="biaya_perbaikan" class="form-label">Perkiraan Biaya</label>
 
                                         <div class="input-group">
                                             <div class="input-group-prepend">
