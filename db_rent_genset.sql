@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Des 2023 pada 03.02
+-- Waktu pembuatan: 01 Des 2023 pada 09.47
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -41,7 +41,9 @@ CREATE TABLE `tb_detail_serv` (
 --
 
 INSERT INTO `tb_detail_serv` (`id_detail_serv`, `id_perbaikan_gst`, `pekerjaan`, `tanggal`, `kendala`, `status`) VALUES
-(2, 2, 'ted', '2023-09-08', 'fxz', 1);
+(2, 2, 'ted', '2023-09-08', 'fxz', 1),
+(3, 3, 'testing', '2023-04-12', 'tester', 1),
+(4, 3, 'selang solar mampet', '2023-04-12', 'selang kotor dibersihkan', 1);
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,7 @@ INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `no
 (1, 'Adi', 'jl pulau laut bjm', '0897819271234', '1837755930302264', 1),
 (2, 'Arul', 'Jl. AKT Dalam', '0897618391837', '1837755938776567', 1),
 (4, 'Ijum', 'jl pulau laut', '0897819271234', '1256237467583752', 1),
-(5, 'Wawan', 'jl sukamara', '0897819289283', '1620938473817289', 0),
+(5, 'Wawan', 'jl sukamara', '0897819289283', '1620938473817289', 1),
 (6, 'Agus', 'jl manggis', '0897618390485', '1620938473467583', 0),
 (7, 'Andre S', 'jl handil bakti', '0897618654602', '1256237457684938', 0),
 (8, 'Sukma Lelana', 'jl. sungai andai, komp. persada', '0897819256049', '1256237457172638', 0),
@@ -272,7 +274,10 @@ CREATE TABLE `tb_serv_genset_masuk` (
 INSERT INTO `tb_serv_genset_masuk` (`id_det_pakai_genset`, `id_u_sewa`, `ket_det_pakai_genset`) VALUES
 (2, 6, 'tes'),
 (3, 7, 'coba'),
-(4, 9, 'yeas');
+(4, 9, 'yeas'),
+(5, 10, 'genset kepanasan pada mesin'),
+(6, 11, 'tegangan kurang stabil'),
+(7, 13, 'perawatan rutin');
 
 -- --------------------------------------------------------
 
@@ -361,7 +366,9 @@ INSERT INTO `tb_unit_penyewaan` (`id_u_sewa`, `id_transaksi`, `tanggal_keluar`, 
 (10, 'GE-Dec6017', '2023-06-09', '2023-06-12', 'Binuang', 1, 5, '-', '3', '3000000', 0),
 (11, 'GE-Dec5892', '2023-06-17', '2023-06-21', 'Gambut', 2, 1, 'Kabel 20M', '4', '3000000', 0),
 (12, 'GE-Dec6304', '2023-06-19', '2023-06-22', 'Martapura', 3, 2, 'kabel', '3', '2250000', 0),
-(13, 'GE-Dec7501', '2023-06-19', '2023-06-22', 'Martapura', 3, 3, '-', '3', '2250000', 0);
+(13, 'GE-Dec7501', '2023-06-19', '2023-06-22', 'Martapura', 3, 3, '-', '3', '2250000', 0),
+(14, 'GE-Dec9270', '2023-11-13', '2023-11-16', 'Pemko BJM', 4, 4, '-', '3', '1500000', 0),
+(15, 'GE-Dec9367', '2023-11-14', '2023-11-17', 'Polda Banjarbaru', 4, 6, 'Kabel 20M', '3', '3000000', 0);
 
 -- --------------------------------------------------------
 
@@ -384,7 +391,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '2023-12-01 09:06:00'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '2023-12-01 15:59:12'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '2023-10-24 11:26:48'),
 (33, 'aril', 'Syahril', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '2023-10-19 09:38:21'),
 (43, 'abay021', 'Bayu Agung', '$2y$10$gYs55hE6HXox5mJfc5Q3t.7f/iauCe1ke2n6v3MoCddlqsXE8kniS', 3, 'nopic.png', '2023-10-30 10:24:50'),
@@ -421,7 +428,9 @@ INSERT INTO `tb_valid_penyewaan` (`id_valid_penyewaan`, `id_u_sewa`, `id_transak
 (6, 10, 'GE-Dec6017', 1, 1),
 (7, 11, 'GE-Dec5892', 2, 2),
 (8, 12, 'GE-Dec6304', 4, 4),
-(9, 13, 'GE-Dec7501', 4, 4);
+(9, 13, 'GE-Dec7501', 4, 4),
+(10, 14, 'GE-Dec9270', 5, 1),
+(11, 15, 'GE-Dec9367', 2, 4);
 
 --
 -- Indexes for dumped tables
@@ -538,7 +547,7 @@ ALTER TABLE `tb_valid_penyewaan`
 -- AUTO_INCREMENT untuk tabel `tb_detail_serv`
 --
 ALTER TABLE `tb_detail_serv`
-  MODIFY `id_detail_serv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_detail_serv` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_genset`
@@ -592,7 +601,7 @@ ALTER TABLE `tb_serv_genset`
 -- AUTO_INCREMENT untuk tabel `tb_serv_genset_masuk`
 --
 ALTER TABLE `tb_serv_genset_masuk`
-  MODIFY `id_det_pakai_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_det_pakai_genset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_serv_gst_acc`
@@ -610,7 +619,7 @@ ALTER TABLE `tb_sparepart`
 -- AUTO_INCREMENT untuk tabel `tb_unit_penyewaan`
 --
 ALTER TABLE `tb_unit_penyewaan`
-  MODIFY `id_u_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_u_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
@@ -622,7 +631,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT untuk tabel `tb_valid_penyewaan`
 --
 ALTER TABLE `tb_valid_penyewaan`
-  MODIFY `id_valid_penyewaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_valid_penyewaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
