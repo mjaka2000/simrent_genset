@@ -76,7 +76,7 @@
                                             <td><?= $dt->lokasi; ?></td>
                                             <td><?= $dt->nama_plg; ?></td>
                                             <td><?= $dt->nama_genset; ?></td>
-                                            <td><?= $dt->daya; ?></td>
+                                            <td><?= $dt->daya; ?> KVA</td>
                                             <?php if ($dt->nopol == null) { ?>
                                                 <td><em>Mobil Belum Ditentukan</em></td>
                                             <?php } else { ?>
@@ -251,7 +251,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-8">
                                                             <div class="row">
-                                                                :&nbsp;<?= $d->daya; ?> </div>
+                                                                :&nbsp;<?= $d->daya; ?> KVA</div>
 
                                                         </div>
                                                     </div>
