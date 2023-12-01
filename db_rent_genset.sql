@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Nov 2023 pada 16.35
+-- Waktu pembuatan: 01 Des 2023 pada 03.02
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -118,7 +118,8 @@ CREATE TABLE `tb_mobil` (
 INSERT INTO `tb_mobil` (`id_mobil`, `merek`, `tipe`, `tahun`, `nopol`, `jenis_bbm`, `pajak`, `stnk`, `gambar_mobil`) VALUES
 (1, 'Daihatsu Gran Max Putih', 'pick up', '2016', 'DA 4534 AS', 'Bensin', '2023-08-20', '2023-08-20', 'gran_max_wh.jpg'),
 (2, 'daihatsu gran max biru', 'pick up', '2016', 'DA 6754 QW', 'Bensin', '2024-08-01', '2024-08-01', 'daihatsu-gran-max-blu.jpg'),
-(3, 'Mitsubishi Truk Engkel Kuning', 'Truk', '2000', 'DA 8510 LF', 'Solar', '2024-09-08', '2028-09-08', 'truk_engkel.jpg');
+(3, 'Mitsubishi Truk Engkel Kuning', 'Truk', '2000', 'DA 8510 LF', 'Solar', '2024-09-08', '2028-09-08', 'truk_engkel.jpg'),
+(4, 'Mobil Penyewa', 'Mobil Penyewa', '-', 'Mobil Penyewa', 'Bensin', '0001-01-01', '0001-01-01', 'nopic.png');
 
 -- --------------------------------------------------------
 
@@ -140,9 +141,9 @@ CREATE TABLE `tb_operator` (
 --
 
 INSERT INTO `tb_operator` (`id_operator`, `nama_op`, `alamat_op`, `nohp_op`, `noktp_op`, `status_op`) VALUES
-(1, 'Adi', 'jl pulau laut bjm', '0897819271234', '1837755930302264', 0),
-(2, 'Arul', 'Jl. AKT Dalam', '0897618391837', '1837755938776567', 0),
-(4, 'Ijum', 'jl pulau laut', '0897819271234', '1256237467583752', 0),
+(1, 'Adi', 'jl pulau laut bjm', '0897819271234', '1837755930302264', 1),
+(2, 'Arul', 'Jl. AKT Dalam', '0897618391837', '1837755938776567', 1),
+(4, 'Ijum', 'jl pulau laut', '0897819271234', '1256237467583752', 1),
 (5, 'Wawan', 'jl sukamara', '0897819289283', '1620938473817289', 0),
 (6, 'Agus', 'jl manggis', '0897618390485', '1620938473467583', 0),
 (7, 'Andre S', 'jl handil bakti', '0897618654602', '1256237457684938', 0),
@@ -249,7 +250,8 @@ INSERT INTO `tb_serv_genset` (`id_perbaikan_gst`, `id_genset`, `id_sparepart`, `
 (3, 5, 8, 'ganti filter solar', '2023-04-12', '150', 1, '80000'),
 (4, 7, 6, 'ganti filter solar', '2023-06-14', '50', 1, '80000'),
 (5, 4, 1, 'Penggantian oli mesin', '2023-06-16', '80', 1, '100000'),
-(6, 6, 8, 'Solar Buntu', '2023-07-03', '110', 0, '120000');
+(6, 6, 8, 'Solar Buntu', '2023-07-03', '110', 0, '120000'),
+(7, 3, 9, 'kuras tangki solar', '2023-10-11', '20', 0, '0');
 
 -- --------------------------------------------------------
 
@@ -291,7 +293,10 @@ CREATE TABLE `tb_serv_gst_acc` (
 --
 
 INSERT INTO `tb_serv_gst_acc` (`id_serv_gst_acc`, `id_perbaikan_gst`, `tgl_setujui`, `keterangan`, `status_ajuan`) VALUES
-(1, 2, '2023-09-07', 'oli diganti', 1);
+(1, 2, '2023-09-07', 'oli diganti', 1),
+(2, 3, '2023-04-12', 'filter solar diganti', 1),
+(3, 4, '2023-06-14', 'filter solar aman', 1),
+(4, 5, '2023-06-17', 'oli diganti baru', 0);
 
 -- --------------------------------------------------------
 
@@ -321,7 +326,8 @@ INSERT INTO `tb_sparepart` (`id_sparepart`, `nama_sparepart`, `tanggal_beli`, `t
 (6, 'Filter Solar Perkins', '2023-10-11', 'Multi Filter', '3', '70000'),
 (7, 'Air Aki Yuasa Botol', '2023-09-26', 'Toko Aki Bersama', '6', '25000'),
 (8, 'Filter Solar Donaldson', '2023-10-16', 'Multi Filter', '2', '80000'),
-(9, 'null', '0001-01-01', 'null', '1000', '0');
+(9, 'null', '0001-01-01', 'null', '999', '0'),
+(10, 'selang vakum denyo', '2023-10-17', 'Anugerah Jaya', '3', '20000');
 
 -- --------------------------------------------------------
 
@@ -351,7 +357,11 @@ INSERT INTO `tb_unit_penyewaan` (`id_u_sewa`, `id_transaksi`, `tanggal_keluar`, 
 (6, 'GE-Aug5291', '2023-08-21', '2023-08-23', 'Binuang', 1, 1, 'Kabel 20M', '2', '1500000', 0),
 (7, 'GE-Aug0513', '2023-08-24', '2023-08-27', 'Banjarbaru', 1, 1, 'Box Panel', '3', '2250000', 0),
 (8, 'GE-Sep4160', '2023-09-07', '2023-09-09', 'Gambut', 1, 1, 'Panel', '2', '1500000', 0),
-(9, 'GE-Oct5632', '2023-10-30', '2023-11-03', 'Gambut', 2, 2, '-', '4', '3000000', 0);
+(9, 'GE-Oct5632', '2023-10-30', '2023-11-03', 'Gambut', 2, 2, '-', '4', '3000000', 0),
+(10, 'GE-Dec6017', '2023-06-09', '2023-06-12', 'Binuang', 1, 5, '-', '3', '3000000', 0),
+(11, 'GE-Dec5892', '2023-06-17', '2023-06-21', 'Gambut', 2, 1, 'Kabel 20M', '4', '3000000', 0),
+(12, 'GE-Dec6304', '2023-06-19', '2023-06-22', 'Martapura', 3, 2, 'kabel', '3', '2250000', 0),
+(13, 'GE-Dec7501', '2023-06-19', '2023-06-22', 'Martapura', 3, 3, '-', '3', '2250000', 0);
 
 -- --------------------------------------------------------
 
@@ -374,7 +384,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `nama`, `password`, `role`, `nama_file`, `last_login`) VALUES
-(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '2023-11-30 22:12:36'),
+(1, 'admin', 'Jaka Admin', '$2y$10$Yc8ohXuawX0etu5zcU7mgu84DfZY8YZ/r45KZ6/VwZMOISukO10ZG', 0, 'Muhammad_Jaka_Permana_(Latar_Merah)-1-.jpg', '2023-12-01 09:06:00'),
 (32, 'bos', 'Bos Jaka', '$2y$10$R4e0tMDfAU.8nz41SxIIhOQ1J5.itOq.sbA8YEAUzKJOSTVUJnV/m', 1, 'wifi-icon.png', '2023-10-24 11:26:48'),
 (33, 'aril', 'Syahril', '$2y$10$bX/22YuDFyiEtVzcX17ofujConoU4Rgl/KmrFBzKqU2E7RaAqgLIO', 2, 'nopic.png', '2023-10-19 09:38:21'),
 (43, 'abay021', 'Bayu Agung', '$2y$10$gYs55hE6HXox5mJfc5Q3t.7f/iauCe1ke2n6v3MoCddlqsXE8kniS', 3, 'nopic.png', '2023-10-30 10:24:50'),
@@ -407,7 +417,11 @@ INSERT INTO `tb_valid_penyewaan` (`id_valid_penyewaan`, `id_u_sewa`, `id_transak
 (2, 6, 'GE-Aug5291', 1, 1),
 (3, 7, 'GE-Aug0513', 1, 1),
 (4, 8, 'GE-Sep4160', 1, 1),
-(5, 9, 'GE-Oct5632', 2, 2);
+(5, 9, 'GE-Oct5632', 2, 2),
+(6, 10, 'GE-Dec6017', 1, 1),
+(7, 11, 'GE-Dec5892', 2, 2),
+(8, 12, 'GE-Dec6304', 4, 4),
+(9, 13, 'GE-Dec7501', 4, 4);
 
 --
 -- Indexes for dumped tables
@@ -542,7 +556,7 @@ ALTER TABLE `tb_jadwal_genset`
 -- AUTO_INCREMENT untuk tabel `tb_mobil`
 --
 ALTER TABLE `tb_mobil`
-  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_operator`
@@ -572,7 +586,7 @@ ALTER TABLE `tb_pengeluaran`
 -- AUTO_INCREMENT untuk tabel `tb_serv_genset`
 --
 ALTER TABLE `tb_serv_genset`
-  MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_perbaikan_gst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_serv_genset_masuk`
@@ -584,19 +598,19 @@ ALTER TABLE `tb_serv_genset_masuk`
 -- AUTO_INCREMENT untuk tabel `tb_serv_gst_acc`
 --
 ALTER TABLE `tb_serv_gst_acc`
-  MODIFY `id_serv_gst_acc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_serv_gst_acc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_sparepart`
 --
 ALTER TABLE `tb_sparepart`
-  MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_sparepart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_unit_penyewaan`
 --
 ALTER TABLE `tb_unit_penyewaan`
-  MODIFY `id_u_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_u_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
@@ -608,7 +622,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT untuk tabel `tb_valid_penyewaan`
 --
 ALTER TABLE `tb_valid_penyewaan`
-  MODIFY `id_valid_penyewaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_valid_penyewaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
