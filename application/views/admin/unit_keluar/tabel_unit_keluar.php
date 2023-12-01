@@ -196,10 +196,10 @@
                                                     <div class="row">
                                                         <div class="col-lg-8">
                                                             <div class="row">
-                                                                :&nbsp;<?php if ($dt->nama_op == null) { ?>
+                                                                :&nbsp;<?php if ($d->nama_op == null) { ?>
                                                                 <em>Operator Belum Ditentukan</em>
                                                             <?php } else { ?>
-                                                                <?= $dt->nama_op; ?>
+                                                                <?= $d->nama_op; ?>
                                                             <?php } ?>
 
 
@@ -275,10 +275,10 @@
                                                     <div class="row">
                                                         <div class="col-lg-8">
                                                             <div class="row">
-                                                                :&nbsp;<?php if ($dt->nopol == null) { ?>
+                                                                :&nbsp;<?php if ($d->nopol == null) { ?>
                                                                 <em>Mobil Belum Ditentukan</em>
                                                             <?php } else { ?>
-                                                                <?= $dt->nopol; ?>
+                                                                <?= $d->nopol; ?>
                                                             <?php } ?>
                                                             </div>
                                                         </div>
@@ -290,7 +290,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-8">
                                                             <div class="row">
-                                                                :&nbsp;<?php if ($dt->nopol == null) { ?>
+                                                                :&nbsp;<?php if ($d->nopol == null) { ?>
                                                                 <em>-</em>
                                                             <?php } else { ?>
                                                                 <?= $dt->merek; ?>
