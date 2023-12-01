@@ -20,7 +20,7 @@
                             </td>
                             <td style="padding: 8px 8px;">
                                 <h6>
-                                    <p><strong>Version</strong> 1.0.1</p>
+                                    <p><strong>Version</strong> 1.0.2</p>
                                     This web app uses:
                                     <ul>
                                         <li><a href="https://www.codeigniter.com/download" target="_blank"><u>Codeigniter</u></a> Version 3.1.13</li>
