@@ -1000,8 +1000,8 @@ class Admin extends CI_Controller
 			$data['list_perbaikan'] = $this->M_data->get_Serv('tb_serv_genset');
 			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 			$data['title'] = 'Tambah Perbaikan Genset Disetujui';
-			// $this->load->view('admin/service_gensetAcc/tambah_service_gensetAcc', $data);
-			$this->load->view('admin/service_gensetAcc/tabel_service_gensetAcc', $data);
+			$this->load->view('admin/service_gensetAcc/tambah_service_gensetAcc', $data);
+			// $this->load->view('admin/service_gensetAcc/tabel_service_gensetAcc', $data);
 		}
 	}
 
@@ -1045,8 +1045,8 @@ class Admin extends CI_Controller
 			$data['list_perbaikan'] = $this->M_data->get_Serv('tb_serv_genset');
 			$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 			$data['title'] = 'Ubah Perbaikan Genset Disetujui';
-			// $this->load->view('admin/service_gensetAcc/ubah_service_gensetAcc', $data);
-			$this->load->view('admin/service_gensetAcc/tabel_service_gensetAcc', $data);
+			$this->load->view('admin/service_gensetAcc/ubah_service_gensetAcc', $data);
+			// $this->load->view('admin/service_gensetAcc/tabel_service_gensetAcc', $data);
 		}
 	}
 
