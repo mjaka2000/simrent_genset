@@ -97,7 +97,8 @@
                                                             <a class="dropdown-item" href="<?= site_url('admin/ubah_ket_gensetDijadwalkan/' . $d->id_genset); ?>">Genset Dijadwalkan</a>
                                                         </div>
                                                         <!-- <a href="#" class="btn btn-danger btn-xs"> Genset Sedang Disewa</a></td> -->
-                                                    <?php } else { ?>
+                                                    </td>
+                                                <?php } else { ?>
                                                     <td>
                                                         <button type="button" class="btn btn-warning btn-xs dropdown-toggle" title="Ubah Status" data-toggle="dropdown">
                                                             Genset Dijadwalkan
