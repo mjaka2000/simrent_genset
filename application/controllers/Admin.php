@@ -516,7 +516,7 @@ class Admin extends CI_Controller
 		$file = './assets/upload/genset/' . $data->gambar_genset;
 
 		if (file_exists($file) && unlink($file)) {
-			$this->M_data->del_foto_genset($id_genset);
+			$this->M_data->del_data_genset($id_genset);
 			$this->session->set_flashdata('msg_sukses', 'Data Berhasil Dihapus');
 			redirect(site_url('admin/tabel_genset'));
 		} else {
