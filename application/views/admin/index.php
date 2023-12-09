@@ -243,65 +243,8 @@
         </div>
 
         <!-- ./col -->
-
-        <!-- <div class="col-lg-3 col-xs-6">
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>Laporan</h3>
-              <p>Cetak Laporan</p>
-            </div>
-            <div class="icon">
-              <i class="fas fa-clipboard"></i>
-            </div>
-            <a href="<?= site_url('admin/laporan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div> -->
-        <div class="card">
-          <!-- <div class="card-body">
-            <?php if (is_array($count)) { ?>
-              <?php foreach ($count as $c) : ?>
-                <div class="alert alert-warning alert-dismissible">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <a href="<?= site_url(); ?>admin/tabel_sparepart" style="text-decoration: none; color: black;"><strong> <?= $c->nama_sparepart; ?></strong><span> sisa <strong><?= $c->stok; ?></strong></span><br>
-                    <small style="color: red;">Segera lakukan pembelian untuk menambah stok</small></a>
-                </div>
-              <?php endforeach ?>
-            <?php } ?>
-          </div> -->
-        </div>
-
-        <!-- <div class="card card-info">
-          <div class="card-header">
-            <h3 class="card-title">Grafik Pendapatan <?= $label ?></h3>
-
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="chart">
-              <canvas id="PendapatanChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-            </div>
-          </div>
-        </div> -->
       </div>
-      <!-- <?php foreach ($notifOut as $c) : ?>
-        <div class="col-lg-3 col-xs-6">
-          <div class="small-box">
-            <div class="alert alert-warning alert-dismissible">
-              <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
-              <p align="center"><strong>Pemberitahuan!</strong></p>
-              <a href="<?= site_url('admin/detail_unit_keluar/' . $c->id_u_keluar); ?>" style="text-decoration: none; color: black;"><strong><?= $c->id_transaksi; ?><br><?= $c->nama_plg; ?><br><?= $c->nama_genset; ?></strong></span><br>
-                <small style="color: red;">Pengambilan Genset Tanggal <strong><?= date('d/m/Y', strtotime($c->tanggal_masuk)); ?></strong></small></a>
-            </div>
-          </div>
-        </div>
-      <?php endforeach ?> -->
+
     </div>
 </div><!-- /.container-fluid -->
 </section>
@@ -325,83 +268,7 @@
     }
   };
 </script>
-<script>
-  $(function() {
-    //-------------
-    //- LINE CHART -
-    //--------------
 
-    var ctx = document.getElementById('PendapatanChart').getContext('2d');
-    var chart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: [
-          <?php
-          if (count($pendapatanChart) > 0) {
-            foreach ($pendapatanChart as $pd) {
-              echo "'" . date('d-m-Y', strtotime($pd->tanggal_masuk)) . "',";
-            }
-          }
-          ?>
-        ],
-        datasets: [{
-          label: 'Jumlah Pendapatan',
-          backgroundColor: '#ADD8E6',
-          borderColor: '##93C3D2',
-          data: [
-            <?php
-            if (count($pendapatanChart) > 0) {
-              foreach ($pendapatanChart as $data) {
-                echo $data->total . ", ";
-              }
-            }
-            ?>
-          ]
-        }]
-      },
-    });
-
-    // var ctx = document.getElementById("lineChart").getContext('2d');
-    // var myChart = new Chart(ctx, {
-    //   type: 'line',
-    //   data: {
-    //     labels: ["Pendapatan", "Bulan"],
-    //     datasets: [{
-    //       label: '',
-
-    //       xAxis: {
-    //         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des']
-    //       },
-    //       yAxis: {
-    //         title: {
-    //           text: '(Rp)'
-    //         },
-    //         data: [
-    //           <?php foreach ($pendapatanChart as $pd) { ?>
-    //             <?= $pd->total; ?>
-    //           <?php } ?>
-    //         ],
-
-    //       },
-    //       borderColor: [
-    //         'rgba(255,99,132,1)',
-    //         'rgba(54, 162, 235, 1)'
-    //       ],
-    //       borderWidth: 1
-    //     }]
-    //   },
-    //   options: {
-    //     scales: {
-    //       yAxes: [{
-    //         ticks: {
-    //           beginAtZero: true
-    //         }
-    //       }]
-    //     }
-    //   }
-    // });
-  })
-</script>
 </body>
 
 </html>
