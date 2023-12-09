@@ -24,7 +24,7 @@ class Admin extends CI_Controller
 		$label = 'Bulan ' . $bulan . ' Tahun ' .  $tahun;
 		$label1 =  $bulan . ' ' . $tahun;
 		$data['pendapatan'] = $this->M_data->sum_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
-		$data['pendapatanChart'] = $this->M_data->chart_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
+		// $data['pendapatanChart'] = $this->M_data->chart_pendapatanMasuk('tb_pendapatan', $bulan, $tahun);
 		$data['notifOut'] = $this->M_data->notif_u_keluar('tb_unit_penyewaan', $tgl);
 		$data['numOut'] = $this->M_data->notif_u_keluarJml('tb_unit_penyewaan', $tgl);
 		$data['UnitKeluar'] = $this->M_data->numrows_where_uKeluar('tb_unit_penyewaan');
@@ -33,11 +33,11 @@ class Admin extends CI_Controller
 		$data['notifJdw'] = $this->M_data->notif_jdwGst('tb_jadwal_genset', $tgl);
 		$data['numJdw'] = $this->M_data->notif_jdwGst_Jml('tb_jadwal_genset', $tgl);
 
-		$data['dataUser'] = $this->M_data->numrows('tb_user');
+		// $data['dataUser'] = $this->M_data->numrows('tb_user');
 		$data['dataPelanggan'] = $this->M_data->numrows('tb_pelanggan');
 		$data['dataOperator'] = $this->M_data->numrows('tb_operator');
 		$data['dataServGenset'] = $this->M_data->numrows('tb_serv_genset');
-		$data['dataStokSparepart'] = $this->M_data->numrows('tb_sparepart');
+		// $data['dataStokSparepart'] = $this->M_data->numrows('tb_sparepart');
 		$data['dataPengeluaran'] = $this->M_data->numrows('tb_pengeluaran');
 		// $data['count'] = $this->M_data->notif_stok('tb_sparepart');
 		// $data['num'] = $this->M_data->notif_stok_jml('tb_sparepart');
