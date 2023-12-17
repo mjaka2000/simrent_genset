@@ -51,7 +51,7 @@
             <div class="icon">
               <i class="fas fa-clipboard"></i>
             </div>
-            <a href="<?= site_url('pimpinan/tabel_pengeluaran') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= site_url('pimpinan/#') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -87,7 +87,7 @@
               <div class="icon">
                 <i class="fa fa-download"></i>
               </div>
-              <a href="<?= site_url('pimpinan/tabel_pemasukan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="<?= site_url('pimpinan/#') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           <?php } ?>
         </div>
