@@ -2777,7 +2777,7 @@ class Admin extends CI_Controller
 
 		$data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
 		$data['title'] = 'Laporan';
-		$this->load->view('admin/report/laporan', $data);
+		$this->load->view('report/laporan', $data);
 	}
 
 	####################################
