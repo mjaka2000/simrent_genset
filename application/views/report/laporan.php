@@ -1,6 +1,13 @@
-<?php $this->load->view('template/head'); ?>
-<?php $this->load->view('admin/template/nav'); ?>
-<?php $this->load->view('admin/template/sidebar'); ?>
+<?php if ($this->session->userdata('role') == '0') : ?>
+    <?php $this->load->view('template/head'); ?>
+    <?php $this->load->view('admin/template/nav'); ?>
+    <?php $this->load->view('admin/template/sidebar'); ?>
+<?php endif; ?>
+<?php if ($this->session->userdata('role') == '1') : ?>
+    <?php $this->load->view('template/head'); ?>
+    <?php $this->load->view('pimpinan/template/nav'); ?>
+    <?php $this->load->view('pimpinan/template/sidebar'); ?>
+<?php endif; ?>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -28,7 +35,7 @@
         </div>
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <h2 align="center">Selamat Datang, <strong><?= $this->session->userdata('nama') ?></strong> sebagai Administrator!</h2>
+            <h2 align="center">Selamat Datang, <strong><?= $this->session->userdata('nama') ?></strong> sebagai <?php if ($this->session->userdata('role') == '0') : ?>Administrator<?php endif; ?><?php if ($this->session->userdata('role') == '1') : ?>Pimpinan<?php endif; ?>!</h2>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
