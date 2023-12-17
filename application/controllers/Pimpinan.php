@@ -773,7 +773,7 @@ class Pimpinan extends CI_Controller
 
         $data['avatar'] = $this->M_data->get_avatar('tb_user', $this->session->userdata('name'));
         $data['title'] = 'Laporan';
-        $this->load->view('pimpinan/report/laporan', $data);
+        $this->load->view('report/laporan', $data);
     }
 
     ####################################
